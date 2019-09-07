@@ -1,4 +1,15 @@
 {
+  "name": "fusio/sdk",
+  "description": "SDK to talk to the Fusio REST API",
+  "homepage": "https://www.fusio-project.org",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Christoph Kappestein",
+      "email": "christoph.kappestein@gmail.com",
+      "homepage": "http://christoph.kappestein.com"
+    }
+  ],
   "require": {
     "guzzlehttp/guzzle": "^6.3",
     "psx/schema": "^2.4"
