@@ -1,9 +1,9 @@
 
 # Fusio SDK
 
-This Javascript library helps to talk to the Fusio (https://www.fusio-project.org/)
-API. It uses the automatically generated typescript definition of the Fusio
-backend. The following code contains some samples how to use the SDK: 
+This PHP library helps to talk to the Fusio (https://www.fusio-project.org/)
+API. It uses the automatically generated PHP definition of the Fusio backend.
+The following code contains some samples how to use the SDK: 
 
 ## Authorization
 
@@ -19,101 +19,57 @@ Provides a simple way to obtain an access token using simply the username and
 password. If you need more fine control over the access token it is recommended
 to use an OAuth2 endpoint
 
-```javascript
-Fusio.init({
-    baseUrl: "https://myapi.com"
-});
+```php
+<?php
 
-Fusio.consumer.login.do().post({username: "", password: ""}).then((resp) => {
-    console.log("obtained token " + resp.data.token);
-});
-```
+$client = new \Fusio\Sdk\Client('https://myapi.com', '');
 
-### OAuth2 endpoints:
+$login = new \ConsumerLogin\Consumer_User_Login();
+$login->setUsername('username');
+$login->setPassword('password');
 
-#### Backend: `Fusio.backend.token`  
+$jwt = $client->consumer()->login()->do()->post($login);
 
-To obtain an access token to call the backend API, which can be used to
-configure Fusio
+// contains the JWT access token
+$jwt->getToken();
 
-```javascript
-Fusio.init({
-    baseUrl: "https://myapi.com"
-});
-
-Fusio.backend.token.do().clientCredentials("[username]", "[password]").then((resp) => {
-    console.log("obtained token " + resp.data.access_token);
-});
-```
-
-#### Consumer: `Fusio.consumer.token`  
-
-To obtain an access token to call the consumer API, which can be used to build a
-developer portal for the consumers of your API
-
-```javascript
-Fusio.init({
-    baseUrl: "https://myapi.com"
-});
-
-Fusio.consumer.token.do().clientCredentials("[username]", "[password]").then((resp) => {
-    console.log("obtained token " + resp.data.access_token);
-});
-```
-
-#### App: `Fusio.authorization.token`
-
-To obtain an access token for the API you are building with Fusio. Mostly you
-want to use the `authorization_code` flow.
-
-To initiate the flow you need to redirect the user to the login i.e.:
-`/developer/auth?response_type=code&client_id=[app_key]&redirect_uri=[url]&scope=authorization`
-
-After the user has authenticated and approved the app access, the user gets
-redirected to the `redirect_uri`. At the `redirect_uri` you need to exchange the
-code for an access token:
-
-```javascript
-Fusio.init({
-    baseUrl: "https://myapi.com"
-});
-
-Fusio.auth.token.do().authorizationCode("[code]", "[redirect_uri]", "[client_id]").then((resp) => {
-    console.log("obtained token " + resp.data.access_token);
-});
 ```
 
 ## Usage
 
 ### Backend
 
-```javascript
-Fusio.init({
-    baseUrl: "https://myapi.com",
-    accessToken: "[token]"
-});
+```php
+<?php
+
+$client = new \Fusio\Sdk\Client('https://myapi.com', '[token]');
 
 // output all configured backend routes
-Fusio.backend.routes.collection().get({}).then((res) => {
-    res.data.entry.forEach((entry) => {
-        console.log("route " + entry.path);
-    });
-});
+$collection = $client->backend()->routes()->collection()->get(new \BackendRoutes\GetQuery());
+foreach ($collection->getEntry() as $route) {
+    /** @var \BackendRoutes\Routes $route */
+    echo $route->getPath() . "\n";
+}
 
 ```
 
 ### Consumer
 
-```javascript
-Fusio.init({
-    baseUrl: "https://myapi.com",
-    accessToken: "[token]"
-});
+```php
+<?php
+
+$client = new \Fusio\Sdk\Client('https://myapi.com', '[token]');
 
 // exchange the password of the authenticated user
-Fusio.consumer.account.changePassword().put({newPassword: "", oldPassword: "", verifyPassword: ""}).then((resp) => {
-    console.log(resp.data.message);
-});
+$credentials = new \ConsumerAccountChange_password\Consumer_User_Credentials();
+$credentials->setNewPassword('new pw');
+$credentials->setOldPassword('old pw');
+$credentials->setVerifyPassword('new pw');
+
+$result = $client->consumer()->account()->changePassword()->put($credentials);
+
+if ($result->getSuccess()) {
+    echo $result->getMessage() . "\n";
+}
 
 ```
-
