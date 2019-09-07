@@ -1,0 +1,14 @@
+{
+  "require": {
+    "guzzlehttp/guzzle": "^6.3",
+    "psx/schema": "^2.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Fusio\\Sdk\\": "src/"
+    },
+    "files": [
+      "gen/"
+    ]
+  }
+}
