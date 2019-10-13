@@ -45,6 +45,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Cronjob
+     */
     public function get(): Cronjob
     {
         $options = [
@@ -59,6 +62,10 @@ class Resource
         return $this->convertToObject($data, Cronjob::class);
     }
 
+    /**
+     * @param Cronjob $data
+     * @return Message
+     */
     public function put(Cronjob $data): Message
     {
         $options = [
@@ -74,6 +81,9 @@ class Resource
         return $this->convertToObject($data, Message::class);
     }
 
+    /**
+     * @return Message
+     */
     public function delete(): Message
     {
         $options = [
@@ -134,35 +144,35 @@ class Cronjob_Error
      * @Type("integer")
      */
     protected $line;
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
-    public function setTrace($trace)
+    public function setTrace(?string $trace)
     {
         $this->trace = $trace;
     }
-    public function getTrace()
+    public function getTrace() : ?string
     {
         return $this->trace;
     }
-    public function setFile($file)
+    public function setFile(?string $file)
     {
         $this->file = $file;
     }
-    public function getFile()
+    public function getFile() : ?string
     {
         return $this->file;
     }
-    public function setLine($line)
+    public function setLine(?int $line)
     {
         $this->line = $line;
     }
-    public function getLine()
+    public function getLine() : ?int
     {
         return $this->line;
     }
@@ -182,19 +192,19 @@ class Message
      * @Type("string")
      */
     protected $message;
-    public function setSuccess($success)
+    public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
-    public function getSuccess()
+    public function getSuccess() : ?bool
     {
         return $this->success;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
@@ -242,59 +252,59 @@ class Cronjob
      * @Items(@Ref("PSX\Generation\Cronjob_Error"))
      */
     protected $errors;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setCron($cron)
+    public function setCron(?string $cron)
     {
         $this->cron = $cron;
     }
-    public function getCron()
+    public function getCron() : ?string
     {
         return $this->cron;
     }
-    public function setAction($action)
+    public function setAction(?int $action)
     {
         $this->action = $action;
     }
-    public function getAction()
+    public function getAction() : ?int
     {
         return $this->action;
     }
-    public function setExecuteDate($executeDate)
+    public function setExecuteDate(?\DateTime $executeDate)
     {
         $this->executeDate = $executeDate;
     }
-    public function getExecuteDate()
+    public function getExecuteDate() : ?\DateTime
     {
         return $this->executeDate;
     }
-    public function setExitCode($exitCode)
+    public function setExitCode(?int $exitCode)
     {
         $this->exitCode = $exitCode;
     }
-    public function getExitCode()
+    public function getExitCode() : ?int
     {
         return $this->exitCode;
     }
-    public function setErrors($errors)
+    public function setErrors(?array $errors)
     {
         $this->errors = $errors;
     }
-    public function getErrors()
+    public function getErrors() : ?array
     {
         return $this->errors;
     }
@@ -314,19 +324,19 @@ class Endpoint
      * @Ref("PSX\Generation\Message")
      */
     protected $Message;
-    public function setCronjob($Cronjob)
+    public function setCronjob(?Cronjob $Cronjob)
     {
         $this->Cronjob = $Cronjob;
     }
-    public function getCronjob()
+    public function getCronjob() : ?Cronjob
     {
         return $this->Cronjob;
     }
-    public function setMessage($Message)
+    public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
-    public function getMessage()
+    public function getMessage() : ?Message
     {
         return $this->Message;
     }

@@ -39,6 +39,10 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @param GetQuery $query
+     * @return Audit_Collection
+     */
     public function get(GetQuery $query): Audit_Collection
     {
         $options = [
@@ -102,27 +106,27 @@ class Audit_User
      * @Type("string")
      */
     protected $name;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
@@ -147,27 +151,27 @@ class Audit_App
      * @Type("string")
      */
     protected $name;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
@@ -218,67 +222,67 @@ class Audit
      * @Format("date-time")
      */
     protected $date;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setApp($app)
+    public function setApp(?Audit_App $app)
     {
         $this->app = $app;
     }
-    public function getApp()
+    public function getApp() : ?Audit_App
     {
         return $this->app;
     }
-    public function setUser($user)
+    public function setUser(?Audit_User $user)
     {
         $this->user = $user;
     }
-    public function getUser()
+    public function getUser() : ?Audit_User
     {
         return $this->user;
     }
-    public function setEvent($event)
+    public function setEvent(?string $event)
     {
         $this->event = $event;
     }
-    public function getEvent()
+    public function getEvent() : ?string
     {
         return $this->event;
     }
-    public function setIp($ip)
+    public function setIp(?string $ip)
     {
         $this->ip = $ip;
     }
-    public function getIp()
+    public function getIp() : ?string
     {
         return $this->ip;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
-    public function setContent($content)
+    public function setContent(?Audit_Object $content)
     {
         $this->content = $content;
     }
-    public function getContent()
+    public function getContent() : ?Audit_Object
     {
         return $this->content;
     }
-    public function setDate($date)
+    public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
-    public function getDate()
+    public function getDate() : ?\DateTime
     {
         return $this->date;
     }
@@ -304,27 +308,27 @@ class Audit_Collection
      * @Items(@Ref("PSX\Generation\Audit"))
      */
     protected $entry;
-    public function setTotalResults($totalResults)
+    public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
-    public function getTotalResults()
+    public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setEntry($entry)
+    public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
-    public function getEntry()
+    public function getEntry() : ?array
     {
         return $this->entry;
     }
@@ -386,83 +390,83 @@ class GetQuery
      * @Type("string")
      */
     protected $search;
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setCount($count)
+    public function setCount(?int $count)
     {
         $this->count = $count;
     }
-    public function getCount()
+    public function getCount() : ?int
     {
         return $this->count;
     }
-    public function setFrom($from)
+    public function setFrom(?\DateTime $from)
     {
         $this->from = $from;
     }
-    public function getFrom()
+    public function getFrom() : ?\DateTime
     {
         return $this->from;
     }
-    public function setTo($to)
+    public function setTo(?\DateTime $to)
     {
         $this->to = $to;
     }
-    public function getTo()
+    public function getTo() : ?\DateTime
     {
         return $this->to;
     }
-    public function setAppId($appId)
+    public function setAppId(?int $appId)
     {
         $this->appId = $appId;
     }
-    public function getAppId()
+    public function getAppId() : ?int
     {
         return $this->appId;
     }
-    public function setUserId($userId)
+    public function setUserId(?int $userId)
     {
         $this->userId = $userId;
     }
-    public function getUserId()
+    public function getUserId() : ?int
     {
         return $this->userId;
     }
-    public function setEvent($event)
+    public function setEvent(?string $event)
     {
         $this->event = $event;
     }
-    public function getEvent()
+    public function getEvent() : ?string
     {
         return $this->event;
     }
-    public function setIp($ip)
+    public function setIp(?string $ip)
     {
         $this->ip = $ip;
     }
-    public function getIp()
+    public function getIp() : ?string
     {
         return $this->ip;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
-    public function setSearch($search)
+    public function setSearch(?string $search)
     {
         $this->search = $search;
     }
-    public function getSearch()
+    public function getSearch() : ?string
     {
         return $this->search;
     }
@@ -482,19 +486,19 @@ class Endpoint
      * @Ref("PSX\Generation\Audit_Collection")
      */
     protected $Audit_Collection;
-    public function setGetQuery($GetQuery)
+    public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
-    public function getGetQuery()
+    public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
-    public function setAudit_Collection($Audit_Collection)
+    public function setAudit_Collection(?Audit_Collection $Audit_Collection)
     {
         $this->Audit_Collection = $Audit_Collection;
     }
-    public function getAudit_Collection()
+    public function getAudit_Collection() : ?Audit_Collection
     {
         return $this->Audit_Collection;
     }

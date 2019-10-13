@@ -45,6 +45,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Scope
+     */
     public function get(): Scope
     {
         $options = [
@@ -59,6 +62,10 @@ class Resource
         return $this->convertToObject($data, Scope::class);
     }
 
+    /**
+     * @param Scope $data
+     * @return Message
+     */
     public function put(Scope $data): Message
     {
         $options = [
@@ -74,6 +81,9 @@ class Resource
         return $this->convertToObject($data, Message::class);
     }
 
+    /**
+     * @return Message
+     */
     public function delete(): Message
     {
         $options = [
@@ -129,27 +139,27 @@ class Scope_Route
      * @Type("string")
      */
     protected $methods;
-    public function setRouteId($routeId)
+    public function setRouteId(?int $routeId)
     {
         $this->routeId = $routeId;
     }
-    public function getRouteId()
+    public function getRouteId() : ?int
     {
         return $this->routeId;
     }
-    public function setAllow($allow)
+    public function setAllow(?bool $allow)
     {
         $this->allow = $allow;
     }
-    public function getAllow()
+    public function getAllow() : ?bool
     {
         return $this->allow;
     }
-    public function setMethods($methods)
+    public function setMethods(?string $methods)
     {
         $this->methods = $methods;
     }
-    public function getMethods()
+    public function getMethods() : ?string
     {
         return $this->methods;
     }
@@ -169,19 +179,19 @@ class Message
      * @Type("string")
      */
     protected $message;
-    public function setSuccess($success)
+    public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
-    public function getSuccess()
+    public function getSuccess() : ?bool
     {
         return $this->success;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
@@ -213,35 +223,35 @@ class Scope
      * @Items(@Ref("PSX\Generation\Scope_Route"))
      */
     protected $routes;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setDescription($description)
+    public function setDescription(?string $description)
     {
         $this->description = $description;
     }
-    public function getDescription()
+    public function getDescription() : ?string
     {
         return $this->description;
     }
-    public function setRoutes($routes)
+    public function setRoutes(?array $routes)
     {
         $this->routes = $routes;
     }
-    public function getRoutes()
+    public function getRoutes() : ?array
     {
         return $this->routes;
     }
@@ -261,19 +271,19 @@ class Endpoint
      * @Ref("PSX\Generation\Message")
      */
     protected $Message;
-    public function setScope($Scope)
+    public function setScope(?Scope $Scope)
     {
         $this->Scope = $Scope;
     }
-    public function getScope()
+    public function getScope() : ?Scope
     {
         return $this->Scope;
     }
-    public function setMessage($Message)
+    public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
-    public function getMessage()
+    public function getMessage() : ?Message
     {
         return $this->Message;
     }

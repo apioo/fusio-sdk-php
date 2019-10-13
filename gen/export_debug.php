@@ -39,6 +39,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Export_Debug
+     */
     public function get(): Export_Debug
     {
         $options = [
@@ -50,6 +53,10 @@ class Resource
         return $this->convertToObject($data, Export_Debug::class);
     }
 
+    /**
+     * @param Passthru $data
+     * @return Export_Debug
+     */
     public function post(Passthru $data): Export_Debug
     {
         $options = [
@@ -62,6 +69,10 @@ class Resource
         return $this->convertToObject($data, Export_Debug::class);
     }
 
+    /**
+     * @param Passthru $data
+     * @return Export_Debug
+     */
     public function put(Passthru $data): Export_Debug
     {
         $options = [
@@ -74,6 +85,9 @@ class Resource
         return $this->convertToObject($data, Export_Debug::class);
     }
 
+    /**
+     * @return Export_Debug
+     */
     public function delete(): Export_Debug
     {
         $options = [
@@ -85,6 +99,10 @@ class Resource
         return $this->convertToObject($data, Export_Debug::class);
     }
 
+    /**
+     * @param Passthru $data
+     * @return Export_Debug
+     */
     public function patch(Passthru $data): Export_Debug
     {
         $options = [
@@ -168,35 +186,35 @@ class Export_Debug
      * @Ref("PSX\Generation\Export_Debug_Request")
      */
     protected $body;
-    public function setMethod($method)
+    public function setMethod(?string $method)
     {
         $this->method = $method;
     }
-    public function getMethod()
+    public function getMethod() : ?string
     {
         return $this->method;
     }
-    public function setHeaders($headers)
+    public function setHeaders(?Export_Debug_Headers $headers)
     {
         $this->headers = $headers;
     }
-    public function getHeaders()
+    public function getHeaders() : ?Export_Debug_Headers
     {
         return $this->headers;
     }
-    public function setParameters($parameters)
+    public function setParameters(?Export_Debug_Parameters $parameters)
     {
         $this->parameters = $parameters;
     }
-    public function getParameters()
+    public function getParameters() : ?Export_Debug_Parameters
     {
         return $this->parameters;
     }
-    public function setBody($body)
+    public function setBody(?Export_Debug_Request $body)
     {
         $this->body = $body;
     }
-    public function getBody()
+    public function getBody() : ?Export_Debug_Request
     {
         return $this->body;
     }
@@ -216,19 +234,19 @@ class Endpoint
      * @Ref("PSX\Generation\Passthru")
      */
     protected $Passthru;
-    public function setExport_Debug($Export_Debug)
+    public function setExport_Debug(?Export_Debug $Export_Debug)
     {
         $this->Export_Debug = $Export_Debug;
     }
-    public function getExport_Debug()
+    public function getExport_Debug() : ?Export_Debug
     {
         return $this->Export_Debug;
     }
-    public function setPassthru($Passthru)
+    public function setPassthru(?Passthru $Passthru)
     {
         $this->Passthru = $Passthru;
     }
-    public function getPassthru()
+    public function getPassthru() : ?Passthru
     {
         return $this->Passthru;
     }

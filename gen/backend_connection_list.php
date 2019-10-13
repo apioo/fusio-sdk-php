@@ -39,6 +39,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Connection_Index
+     */
     public function get(): Connection_Index
     {
         $options = [
@@ -89,19 +92,19 @@ class Connection_Connection
      * @Type("string")
      */
     protected $class;
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setClass($class)
+    public function setClass(?string $class)
     {
         $this->class = $class;
     }
-    public function getClass()
+    public function getClass() : ?string
     {
         return $this->class;
     }
@@ -117,11 +120,11 @@ class Connection_Index
      * @Items(@Ref("PSX\Generation\Connection_Connection"))
      */
     protected $connections;
-    public function setConnections($connections)
+    public function setConnections(?array $connections)
     {
         $this->connections = $connections;
     }
-    public function getConnections()
+    public function getConnections() : ?array
     {
         return $this->connections;
     }
@@ -136,11 +139,11 @@ class Endpoint
      * @Ref("PSX\Generation\Connection_Index")
      */
     protected $Connection_Index;
-    public function setConnection_Index($Connection_Index)
+    public function setConnection_Index(?Connection_Index $Connection_Index)
     {
         $this->Connection_Index = $Connection_Index;
     }
-    public function getConnection_Index()
+    public function getConnection_Index() : ?Connection_Index
     {
         return $this->Connection_Index;
     }

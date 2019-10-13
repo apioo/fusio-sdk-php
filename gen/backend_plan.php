@@ -39,6 +39,10 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @param GetQuery $query
+     * @return Plan_Collection
+     */
     public function get(GetQuery $query): Plan_Collection
     {
         $options = [
@@ -54,6 +58,10 @@ class Resource
         return $this->convertToObject($data, Plan_Collection::class);
     }
 
+    /**
+     * @param Plan $data
+     * @return Message
+     */
     public function post(Plan $data): Message
     {
         $options = [
@@ -102,19 +110,19 @@ class Message
      * @Type("string")
      */
     protected $message;
-    public function setSuccess($success)
+    public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
-    public function getSuccess()
+    public function getSuccess() : ?bool
     {
         return $this->success;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
@@ -155,51 +163,51 @@ class Plan
      * @Type("integer")
      */
     protected $period;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setDescription($description)
+    public function setDescription(?string $description)
     {
         $this->description = $description;
     }
-    public function getDescription()
+    public function getDescription() : ?string
     {
         return $this->description;
     }
-    public function setPrice($price)
+    public function setPrice(?float $price)
     {
         $this->price = $price;
     }
-    public function getPrice()
+    public function getPrice() : ?float
     {
         return $this->price;
     }
-    public function setPoints($points)
+    public function setPoints(?int $points)
     {
         $this->points = $points;
     }
-    public function getPoints()
+    public function getPoints() : ?int
     {
         return $this->points;
     }
-    public function setPeriod($period)
+    public function setPeriod(?int $period)
     {
         $this->period = $period;
     }
-    public function getPeriod()
+    public function getPeriod() : ?int
     {
         return $this->period;
     }
@@ -225,27 +233,27 @@ class Plan_Collection
      * @Items(@Ref("PSX\Generation\Plan"))
      */
     protected $entry;
-    public function setTotalResults($totalResults)
+    public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
-    public function getTotalResults()
+    public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setEntry($entry)
+    public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
-    public function getEntry()
+    public function getEntry() : ?array
     {
         return $this->entry;
     }
@@ -270,27 +278,27 @@ class GetQuery
      * @Type("string")
      */
     protected $search;
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setCount($count)
+    public function setCount(?int $count)
     {
         $this->count = $count;
     }
-    public function getCount()
+    public function getCount() : ?int
     {
         return $this->count;
     }
-    public function setSearch($search)
+    public function setSearch(?string $search)
     {
         $this->search = $search;
     }
-    public function getSearch()
+    public function getSearch() : ?string
     {
         return $this->search;
     }
@@ -320,35 +328,35 @@ class Endpoint
      * @Ref("PSX\Generation\Message")
      */
     protected $Message;
-    public function setGetQuery($GetQuery)
+    public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
-    public function getGetQuery()
+    public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
-    public function setPlan_Collection($Plan_Collection)
+    public function setPlan_Collection(?Plan_Collection $Plan_Collection)
     {
         $this->Plan_Collection = $Plan_Collection;
     }
-    public function getPlan_Collection()
+    public function getPlan_Collection() : ?Plan_Collection
     {
         return $this->Plan_Collection;
     }
-    public function setPlan($Plan)
+    public function setPlan(?Plan $Plan)
     {
         $this->Plan = $Plan;
     }
-    public function getPlan()
+    public function getPlan() : ?Plan
     {
         return $this->Plan;
     }
-    public function setMessage($Message)
+    public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
-    public function getMessage()
+    public function getMessage() : ?Message
     {
         return $this->Message;
     }

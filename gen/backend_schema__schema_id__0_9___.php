@@ -45,6 +45,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Schema
+     */
     public function get(): Schema
     {
         $options = [
@@ -59,6 +62,10 @@ class Resource
         return $this->convertToObject($data, Schema::class);
     }
 
+    /**
+     * @param Schema $data
+     * @return Message
+     */
     public function put(Schema $data): Message
     {
         $options = [
@@ -74,6 +81,9 @@ class Resource
         return $this->convertToObject($data, Message::class);
     }
 
+    /**
+     * @return Message
+     */
     public function delete(): Message
     {
         $options = [
@@ -131,19 +141,19 @@ class Message
      * @Type("string")
      */
     protected $message;
-    public function setSuccess($success)
+    public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
-    public function getSuccess()
+    public function getSuccess() : ?bool
     {
         return $this->success;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
@@ -174,35 +184,35 @@ class Schema
      * @Ref("PSX\Generation\Schema_Source")
      */
     protected $source;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setSource($source)
+    public function setSource(?Schema_Source $source)
     {
         $this->source = $source;
     }
-    public function getSource()
+    public function getSource() : ?Schema_Source
     {
         return $this->source;
     }
@@ -222,19 +232,19 @@ class Endpoint
      * @Ref("PSX\Generation\Message")
      */
     protected $Message;
-    public function setSchema($Schema)
+    public function setSchema(?Schema $Schema)
     {
         $this->Schema = $Schema;
     }
-    public function getSchema()
+    public function getSchema() : ?Schema
     {
         return $this->Schema;
     }
-    public function setMessage($Message)
+    public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
-    public function getMessage()
+    public function getMessage() : ?Message
     {
         return $this->Message;
     }

@@ -45,6 +45,10 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @param Action_Request $data
+     * @return Action_Response
+     */
     public function post(Action_Request $data): Action_Response
     {
         $options = [
@@ -122,27 +126,27 @@ class Action_Response
      * @Ref("PSX\Generation\Action_Response_Body")
      */
     protected $body;
-    public function setStatusCode($statusCode)
+    public function setStatusCode(?int $statusCode)
     {
         $this->statusCode = $statusCode;
     }
-    public function getStatusCode()
+    public function getStatusCode() : ?int
     {
         return $this->statusCode;
     }
-    public function setHeaders($headers)
+    public function setHeaders(?Action_Response_Headers $headers)
     {
         $this->headers = $headers;
     }
-    public function getHeaders()
+    public function getHeaders() : ?Action_Response_Headers
     {
         return $this->headers;
     }
-    public function setBody($body)
+    public function setBody(?Action_Response_Body $body)
     {
         $this->body = $body;
     }
-    public function getBody()
+    public function getBody() : ?Action_Response_Body
     {
         return $this->body;
     }
@@ -179,43 +183,43 @@ class Action_Request
      * @Ref("PSX\Generation\Action_Request_Body")
      */
     protected $body;
-    public function setMethod($method)
+    public function setMethod(?string $method)
     {
         $this->method = $method;
     }
-    public function getMethod()
+    public function getMethod() : ?string
     {
         return $this->method;
     }
-    public function setUriFragments($uriFragments)
+    public function setUriFragments(?string $uriFragments)
     {
         $this->uriFragments = $uriFragments;
     }
-    public function getUriFragments()
+    public function getUriFragments() : ?string
     {
         return $this->uriFragments;
     }
-    public function setParameters($parameters)
+    public function setParameters(?string $parameters)
     {
         $this->parameters = $parameters;
     }
-    public function getParameters()
+    public function getParameters() : ?string
     {
         return $this->parameters;
     }
-    public function setHeaders($headers)
+    public function setHeaders(?string $headers)
     {
         $this->headers = $headers;
     }
-    public function getHeaders()
+    public function getHeaders() : ?string
     {
         return $this->headers;
     }
-    public function setBody($body)
+    public function setBody(?Action_Request_Body $body)
     {
         $this->body = $body;
     }
-    public function getBody()
+    public function getBody() : ?Action_Request_Body
     {
         return $this->body;
     }
@@ -235,19 +239,19 @@ class Endpoint
      * @Ref("PSX\Generation\Action_Response")
      */
     protected $Action_Response;
-    public function setAction_Request($Action_Request)
+    public function setAction_Request(?Action_Request $Action_Request)
     {
         $this->Action_Request = $Action_Request;
     }
-    public function getAction_Request()
+    public function getAction_Request() : ?Action_Request
     {
         return $this->Action_Request;
     }
-    public function setAction_Response($Action_Response)
+    public function setAction_Response(?Action_Response $Action_Response)
     {
         $this->Action_Response = $Action_Response;
     }
-    public function getAction_Response()
+    public function getAction_Response() : ?Action_Response
     {
         return $this->Action_Response;
     }

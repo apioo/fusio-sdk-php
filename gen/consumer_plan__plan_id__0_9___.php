@@ -45,6 +45,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Consumer_Plan
+     */
     public function get(): Consumer_Plan
     {
         $options = [
@@ -110,43 +113,43 @@ class Consumer_Plan
      * @Type("integer")
      */
     protected $points;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setDescription($description)
+    public function setDescription(?string $description)
     {
         $this->description = $description;
     }
-    public function getDescription()
+    public function getDescription() : ?string
     {
         return $this->description;
     }
-    public function setPrice($price)
+    public function setPrice(?float $price)
     {
         $this->price = $price;
     }
-    public function getPrice()
+    public function getPrice() : ?float
     {
         return $this->price;
     }
-    public function setPoints($points)
+    public function setPoints(?int $points)
     {
         $this->points = $points;
     }
-    public function getPoints()
+    public function getPoints() : ?int
     {
         return $this->points;
     }
@@ -161,11 +164,11 @@ class Endpoint
      * @Ref("PSX\Generation\Consumer_Plan")
      */
     protected $Consumer_Plan;
-    public function setConsumer_Plan($Consumer_Plan)
+    public function setConsumer_Plan(?Consumer_Plan $Consumer_Plan)
     {
         $this->Consumer_Plan = $Consumer_Plan;
     }
-    public function getConsumer_Plan()
+    public function getConsumer_Plan() : ?Consumer_Plan
     {
         return $this->Consumer_Plan;
     }

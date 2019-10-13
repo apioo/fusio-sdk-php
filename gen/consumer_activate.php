@@ -39,6 +39,10 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @param Consumer_User_Activate $data
+     * @return Consumer_Message
+     */
     public function post(Consumer_User_Activate $data): Consumer_Message
     {
         $options = [
@@ -87,19 +91,19 @@ class Consumer_Message
      * @Type("string")
      */
     protected $message;
-    public function setSuccess($success)
+    public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
-    public function getSuccess()
+    public function getSuccess() : ?bool
     {
         return $this->success;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
@@ -115,11 +119,11 @@ class Consumer_User_Activate
      * @Type("string")
      */
     protected $token;
-    public function setToken($token)
+    public function setToken(?string $token)
     {
         $this->token = $token;
     }
-    public function getToken()
+    public function getToken() : ?string
     {
         return $this->token;
     }
@@ -139,19 +143,19 @@ class Endpoint
      * @Ref("PSX\Generation\Consumer_Message")
      */
     protected $Consumer_Message;
-    public function setConsumer_User_Activate($Consumer_User_Activate)
+    public function setConsumer_User_Activate(?Consumer_User_Activate $Consumer_User_Activate)
     {
         $this->Consumer_User_Activate = $Consumer_User_Activate;
     }
-    public function getConsumer_User_Activate()
+    public function getConsumer_User_Activate() : ?Consumer_User_Activate
     {
         return $this->Consumer_User_Activate;
     }
-    public function setConsumer_Message($Consumer_Message)
+    public function setConsumer_Message(?Consumer_Message $Consumer_Message)
     {
         $this->Consumer_Message = $Consumer_Message;
     }
-    public function getConsumer_Message()
+    public function getConsumer_Message() : ?Consumer_Message
     {
         return $this->Consumer_Message;
     }

@@ -39,6 +39,10 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @param GetQuery $query
+     * @return Log_Error_Collection
+     */
     public function get(GetQuery $query): Log_Error_Collection
     {
         $options = [
@@ -100,35 +104,35 @@ class Log_Error
      * @Type("integer")
      */
     protected $line;
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
-    public function setTrace($trace)
+    public function setTrace(?string $trace)
     {
         $this->trace = $trace;
     }
-    public function getTrace()
+    public function getTrace() : ?string
     {
         return $this->trace;
     }
-    public function setFile($file)
+    public function setFile(?string $file)
     {
         $this->file = $file;
     }
-    public function getFile()
+    public function getFile() : ?string
     {
         return $this->file;
     }
-    public function setLine($line)
+    public function setLine(?int $line)
     {
         $this->line = $line;
     }
-    public function getLine()
+    public function getLine() : ?int
     {
         return $this->line;
     }
@@ -154,27 +158,27 @@ class Log_Error_Collection
      * @Items(@Ref("PSX\Generation\Log_Error"))
      */
     protected $entry;
-    public function setTotalResults($totalResults)
+    public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
-    public function getTotalResults()
+    public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setEntry($entry)
+    public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
-    public function getEntry()
+    public function getEntry() : ?array
     {
         return $this->entry;
     }
@@ -199,27 +203,27 @@ class GetQuery
      * @Type("string")
      */
     protected $search;
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setCount($count)
+    public function setCount(?int $count)
     {
         $this->count = $count;
     }
-    public function getCount()
+    public function getCount() : ?int
     {
         return $this->count;
     }
-    public function setSearch($search)
+    public function setSearch(?string $search)
     {
         $this->search = $search;
     }
-    public function getSearch()
+    public function getSearch() : ?string
     {
         return $this->search;
     }
@@ -239,19 +243,19 @@ class Endpoint
      * @Ref("PSX\Generation\Log_Error_Collection")
      */
     protected $Log_Error_Collection;
-    public function setGetQuery($GetQuery)
+    public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
-    public function getGetQuery()
+    public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
-    public function setLog_Error_Collection($Log_Error_Collection)
+    public function setLog_Error_Collection(?Log_Error_Collection $Log_Error_Collection)
     {
         $this->Log_Error_Collection = $Log_Error_Collection;
     }
-    public function getLog_Error_Collection()
+    public function getLog_Error_Collection() : ?Log_Error_Collection
     {
         return $this->Log_Error_Collection;
     }

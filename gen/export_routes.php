@@ -39,6 +39,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Export_Routes
+     */
     public function get(): Export_Routes
     {
         $options = [
@@ -95,11 +98,11 @@ class Export_Routes
      * @Ref("PSX\Generation\Export_Routes_Paths")
      */
     protected $routes;
-    public function setRoutes($routes)
+    public function setRoutes(?Export_Routes_Paths $routes)
     {
         $this->routes = $routes;
     }
-    public function getRoutes()
+    public function getRoutes() : ?Export_Routes_Paths
     {
         return $this->routes;
     }
@@ -114,11 +117,11 @@ class Endpoint
      * @Ref("PSX\Generation\Export_Routes")
      */
     protected $Export_Routes;
-    public function setExport_Routes($Export_Routes)
+    public function setExport_Routes(?Export_Routes $Export_Routes)
     {
         $this->Export_Routes = $Export_Routes;
     }
-    public function getExport_Routes()
+    public function getExport_Routes() : ?Export_Routes
     {
         return $this->Export_Routes;
     }

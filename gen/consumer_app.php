@@ -39,6 +39,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Consumer_App_Collection
+     */
     public function get(): Consumer_App_Collection
     {
         $options = [
@@ -53,6 +56,10 @@ class Resource
         return $this->convertToObject($data, Consumer_App_Collection::class);
     }
 
+    /**
+     * @param Consumer_App $data
+     * @return Consumer_Message
+     */
     public function post(Consumer_App $data): Consumer_Message
     {
         $options = [
@@ -104,19 +111,19 @@ class Consumer_Message
      * @Type("string")
      */
     protected $message;
-    public function setSuccess($success)
+    public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
-    public function getSuccess()
+    public function getSuccess() : ?bool
     {
         return $this->success;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
@@ -176,75 +183,75 @@ class Consumer_App
      * @Items(@Schema(type="string"))
      */
     protected $scopes;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setUserId($userId)
+    public function setUserId(?int $userId)
     {
         $this->userId = $userId;
     }
-    public function getUserId()
+    public function getUserId() : ?int
     {
         return $this->userId;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setUrl($url)
+    public function setUrl(?string $url)
     {
         $this->url = $url;
     }
-    public function getUrl()
+    public function getUrl() : ?string
     {
         return $this->url;
     }
-    public function setAppKey($appKey)
+    public function setAppKey(?string $appKey)
     {
         $this->appKey = $appKey;
     }
-    public function getAppKey()
+    public function getAppKey() : ?string
     {
         return $this->appKey;
     }
-    public function setAppSecret($appSecret)
+    public function setAppSecret(?string $appSecret)
     {
         $this->appSecret = $appSecret;
     }
-    public function getAppSecret()
+    public function getAppSecret() : ?string
     {
         return $this->appSecret;
     }
-    public function setDate($date)
+    public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
-    public function getDate()
+    public function getDate() : ?\DateTime
     {
         return $this->date;
     }
-    public function setScopes($scopes)
+    public function setScopes(?array $scopes)
     {
         $this->scopes = $scopes;
     }
-    public function getScopes()
+    public function getScopes() : ?array
     {
         return $this->scopes;
     }
@@ -270,27 +277,27 @@ class Consumer_App_Collection
      * @Items(@Ref("PSX\Generation\Consumer_App"))
      */
     protected $entry;
-    public function setTotalResults($totalResults)
+    public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
-    public function getTotalResults()
+    public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setEntry($entry)
+    public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
-    public function getEntry()
+    public function getEntry() : ?array
     {
         return $this->entry;
     }
@@ -315,27 +322,27 @@ class Endpoint
      * @Ref("PSX\Generation\Consumer_Message")
      */
     protected $Consumer_Message;
-    public function setConsumer_App_Collection($Consumer_App_Collection)
+    public function setConsumer_App_Collection(?Consumer_App_Collection $Consumer_App_Collection)
     {
         $this->Consumer_App_Collection = $Consumer_App_Collection;
     }
-    public function getConsumer_App_Collection()
+    public function getConsumer_App_Collection() : ?Consumer_App_Collection
     {
         return $this->Consumer_App_Collection;
     }
-    public function setConsumer_App($Consumer_App)
+    public function setConsumer_App(?Consumer_App $Consumer_App)
     {
         $this->Consumer_App = $Consumer_App;
     }
-    public function getConsumer_App()
+    public function getConsumer_App() : ?Consumer_App
     {
         return $this->Consumer_App;
     }
-    public function setConsumer_Message($Consumer_Message)
+    public function setConsumer_Message(?Consumer_Message $Consumer_Message)
     {
         $this->Consumer_Message = $Consumer_Message;
     }
-    public function getConsumer_Message()
+    public function getConsumer_Message() : ?Consumer_Message
     {
         return $this->Consumer_Message;
     }

@@ -39,6 +39,10 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @param Consumer_User_Credentials $data
+     * @return Consumer_Message
+     */
     public function put(Consumer_User_Credentials $data): Consumer_Message
     {
         $options = [
@@ -90,19 +94,19 @@ class Consumer_Message
      * @Type("string")
      */
     protected $message;
-    public function setSuccess($success)
+    public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
-    public function getSuccess()
+    public function getSuccess() : ?bool
     {
         return $this->success;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
@@ -127,27 +131,27 @@ class Consumer_User_Credentials
      * @Type("string")
      */
     protected $verifyPassword;
-    public function setOldPassword($oldPassword)
+    public function setOldPassword(?string $oldPassword)
     {
         $this->oldPassword = $oldPassword;
     }
-    public function getOldPassword()
+    public function getOldPassword() : ?string
     {
         return $this->oldPassword;
     }
-    public function setNewPassword($newPassword)
+    public function setNewPassword(?string $newPassword)
     {
         $this->newPassword = $newPassword;
     }
-    public function getNewPassword()
+    public function getNewPassword() : ?string
     {
         return $this->newPassword;
     }
-    public function setVerifyPassword($verifyPassword)
+    public function setVerifyPassword(?string $verifyPassword)
     {
         $this->verifyPassword = $verifyPassword;
     }
-    public function getVerifyPassword()
+    public function getVerifyPassword() : ?string
     {
         return $this->verifyPassword;
     }
@@ -167,19 +171,19 @@ class Endpoint
      * @Ref("PSX\Generation\Consumer_Message")
      */
     protected $Consumer_Message;
-    public function setConsumer_User_Credentials($Consumer_User_Credentials)
+    public function setConsumer_User_Credentials(?Consumer_User_Credentials $Consumer_User_Credentials)
     {
         $this->Consumer_User_Credentials = $Consumer_User_Credentials;
     }
-    public function getConsumer_User_Credentials()
+    public function getConsumer_User_Credentials() : ?Consumer_User_Credentials
     {
         return $this->Consumer_User_Credentials;
     }
-    public function setConsumer_Message($Consumer_Message)
+    public function setConsumer_Message(?Consumer_Message $Consumer_Message)
     {
         $this->Consumer_Message = $Consumer_Message;
     }
-    public function getConsumer_Message()
+    public function getConsumer_Message() : ?Consumer_Message
     {
         return $this->Consumer_Message;
     }

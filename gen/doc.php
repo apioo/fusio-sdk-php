@@ -39,6 +39,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Documentation_Index
+     */
     public function get(): Documentation_Index
     {
         $options = [
@@ -86,19 +89,19 @@ class Discovery_Link
      * @Type("string")
      */
     protected $href;
-    public function setRel($rel)
+    public function setRel(?string $rel)
     {
         $this->rel = $rel;
     }
-    public function getRel()
+    public function getRel() : ?string
     {
         return $this->rel;
     }
-    public function setHref($href)
+    public function setHref(?string $href)
     {
         $this->href = $href;
     }
-    public function getHref()
+    public function getHref() : ?string
     {
         return $this->href;
     }
@@ -124,27 +127,27 @@ class Documentation_Route
      * @Type("string")
      */
     protected $version;
-    public function setPath($path)
+    public function setPath(?string $path)
     {
         $this->path = $path;
     }
-    public function getPath()
+    public function getPath() : ?string
     {
         return $this->path;
     }
-    public function setMethods($methods)
+    public function setMethods(?array $methods)
     {
         $this->methods = $methods;
     }
-    public function getMethods()
+    public function getMethods() : ?array
     {
         return $this->methods;
     }
-    public function setVersion($version)
+    public function setVersion(?string $version)
     {
         $this->version = $version;
     }
-    public function getVersion()
+    public function getVersion() : ?string
     {
         return $this->version;
     }
@@ -166,19 +169,19 @@ class Documentation_Index
      * @Items(@Ref("PSX\Generation\Discovery_Link"))
      */
     protected $links;
-    public function setRoutings($routings)
+    public function setRoutings(?array $routings)
     {
         $this->routings = $routings;
     }
-    public function getRoutings()
+    public function getRoutings() : ?array
     {
         return $this->routings;
     }
-    public function setLinks($links)
+    public function setLinks(?array $links)
     {
         $this->links = $links;
     }
-    public function getLinks()
+    public function getLinks() : ?array
     {
         return $this->links;
     }
@@ -193,11 +196,11 @@ class Endpoint
      * @Ref("PSX\Generation\Documentation_Index")
      */
     protected $Documentation_Index;
-    public function setDocumentation_Index($Documentation_Index)
+    public function setDocumentation_Index(?Documentation_Index $Documentation_Index)
     {
         $this->Documentation_Index = $Documentation_Index;
     }
-    public function getDocumentation_Index()
+    public function getDocumentation_Index() : ?Documentation_Index
     {
         return $this->Documentation_Index;
     }

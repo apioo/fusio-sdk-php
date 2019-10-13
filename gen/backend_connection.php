@@ -39,6 +39,10 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @param GetQuery $query
+     * @return Connection_Collection
+     */
     public function get(GetQuery $query): Connection_Collection
     {
         $options = [
@@ -54,6 +58,10 @@ class Resource
         return $this->convertToObject($data, Connection_Collection::class);
     }
 
+    /**
+     * @param Connection $data
+     * @return Message
+     */
     public function post(Connection $data): Message
     {
         $options = [
@@ -113,19 +121,19 @@ class Message
      * @Type("string")
      */
     protected $message;
-    public function setSuccess($success)
+    public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
-    public function getSuccess()
+    public function getSuccess() : ?bool
     {
         return $this->success;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
@@ -157,35 +165,35 @@ class Connection
      * @Ref("PSX\Generation\Connection_Config")
      */
     protected $config;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setClass($class)
+    public function setClass(?string $class)
     {
         $this->class = $class;
     }
-    public function getClass()
+    public function getClass() : ?string
     {
         return $this->class;
     }
-    public function setConfig($config)
+    public function setConfig(?Connection_Config $config)
     {
         $this->config = $config;
     }
-    public function getConfig()
+    public function getConfig() : ?Connection_Config
     {
         return $this->config;
     }
@@ -211,27 +219,27 @@ class Connection_Collection
      * @Items(@Ref("PSX\Generation\Connection"))
      */
     protected $entry;
-    public function setTotalResults($totalResults)
+    public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
-    public function getTotalResults()
+    public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setEntry($entry)
+    public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
-    public function getEntry()
+    public function getEntry() : ?array
     {
         return $this->entry;
     }
@@ -256,27 +264,27 @@ class GetQuery
      * @Type("string")
      */
     protected $search;
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setCount($count)
+    public function setCount(?int $count)
     {
         $this->count = $count;
     }
-    public function getCount()
+    public function getCount() : ?int
     {
         return $this->count;
     }
-    public function setSearch($search)
+    public function setSearch(?string $search)
     {
         $this->search = $search;
     }
-    public function getSearch()
+    public function getSearch() : ?string
     {
         return $this->search;
     }
@@ -306,35 +314,35 @@ class Endpoint
      * @Ref("PSX\Generation\Message")
      */
     protected $Message;
-    public function setGetQuery($GetQuery)
+    public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
-    public function getGetQuery()
+    public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
-    public function setConnection_Collection($Connection_Collection)
+    public function setConnection_Collection(?Connection_Collection $Connection_Collection)
     {
         $this->Connection_Collection = $Connection_Collection;
     }
-    public function getConnection_Collection()
+    public function getConnection_Collection() : ?Connection_Collection
     {
         return $this->Connection_Collection;
     }
-    public function setConnection($Connection)
+    public function setConnection(?Connection $Connection)
     {
         $this->Connection = $Connection;
     }
-    public function getConnection()
+    public function getConnection() : ?Connection
     {
         return $this->Connection;
     }
-    public function setMessage($Message)
+    public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
-    public function getMessage()
+    public function getMessage() : ?Message
     {
         return $this->Message;
     }

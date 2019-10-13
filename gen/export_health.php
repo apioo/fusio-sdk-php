@@ -39,6 +39,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Export_Health
+     */
     public function get(): Export_Health
     {
         $options = [
@@ -86,19 +89,19 @@ class Export_Health_Check
      * @Type("string")
      */
     protected $error;
-    public function setHealthy($healthy)
+    public function setHealthy(?bool $healthy)
     {
         $this->healthy = $healthy;
     }
-    public function getHealthy()
+    public function getHealthy() : ?bool
     {
         return $this->healthy;
     }
-    public function setError($error)
+    public function setError(?string $error)
     {
         $this->error = $error;
     }
-    public function getError()
+    public function getError() : ?string
     {
         return $this->error;
     }
@@ -125,19 +128,19 @@ class Export_Health
      * @Ref("PSX\Generation\Export_Health_Checks")
      */
     protected $checks;
-    public function setHealthy($healthy)
+    public function setHealthy(?bool $healthy)
     {
         $this->healthy = $healthy;
     }
-    public function getHealthy()
+    public function getHealthy() : ?bool
     {
         return $this->healthy;
     }
-    public function setChecks($checks)
+    public function setChecks(?Export_Health_Checks $checks)
     {
         $this->checks = $checks;
     }
-    public function getChecks()
+    public function getChecks() : ?Export_Health_Checks
     {
         return $this->checks;
     }
@@ -152,11 +155,11 @@ class Endpoint
      * @Ref("PSX\Generation\Export_Health")
      */
     protected $Export_Health;
-    public function setExport_Health($Export_Health)
+    public function setExport_Health(?Export_Health $Export_Health)
     {
         $this->Export_Health = $Export_Health;
     }
-    public function getExport_Health()
+    public function getExport_Health() : ?Export_Health
     {
         return $this->Export_Health;
     }

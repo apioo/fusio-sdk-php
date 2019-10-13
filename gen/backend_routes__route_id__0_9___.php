@@ -45,6 +45,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Routes
+     */
     public function get(): Routes
     {
         $options = [
@@ -59,6 +62,10 @@ class Resource
         return $this->convertToObject($data, Routes::class);
     }
 
+    /**
+     * @param Routes $data
+     * @return Message
+     */
     public function put(Routes $data): Message
     {
         $options = [
@@ -74,6 +81,9 @@ class Resource
         return $this->convertToObject($data, Message::class);
     }
 
+    /**
+     * @return Message
+     */
     public function delete(): Message
     {
         $options = [
@@ -186,107 +196,107 @@ class Routes_Method
      * @Type("integer")
      */
     protected $costs;
-    public function setMethod($method)
+    public function setMethod(?string $method)
     {
         $this->method = $method;
     }
-    public function getMethod()
+    public function getMethod() : ?string
     {
         return $this->method;
     }
-    public function setVersion($version)
+    public function setVersion(?int $version)
     {
         $this->version = $version;
     }
-    public function getVersion()
+    public function getVersion() : ?int
     {
         return $this->version;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setActive($active)
+    public function setActive(?bool $active)
     {
         $this->active = $active;
     }
-    public function getActive()
+    public function getActive() : ?bool
     {
         return $this->active;
     }
-    public function setPublic($public)
+    public function setPublic(?bool $public)
     {
         $this->public = $public;
     }
-    public function getPublic()
+    public function getPublic() : ?bool
     {
         return $this->public;
     }
-    public function setDescription($description)
+    public function setDescription(?string $description)
     {
         $this->description = $description;
     }
-    public function getDescription()
+    public function getDescription() : ?string
     {
         return $this->description;
     }
-    public function setOperationId($operationId)
+    public function setOperationId(?string $operationId)
     {
         $this->operationId = $operationId;
     }
-    public function getOperationId()
+    public function getOperationId() : ?string
     {
         return $this->operationId;
     }
-    public function setParameters($parameters)
+    public function setParameters(?int $parameters)
     {
         $this->parameters = $parameters;
     }
-    public function getParameters()
+    public function getParameters() : ?int
     {
         return $this->parameters;
     }
-    public function setRequest($request)
+    public function setRequest(?int $request)
     {
         $this->request = $request;
     }
-    public function getRequest()
+    public function getRequest() : ?int
     {
         return $this->request;
     }
-    public function setResponse($response)
+    public function setResponse(?int $response)
     {
         $this->response = $response;
     }
-    public function getResponse()
+    public function getResponse() : ?int
     {
         return $this->response;
     }
-    public function setResponses($responses)
+    public function setResponses(?Routes_Method_Responses $responses)
     {
         $this->responses = $responses;
     }
-    public function getResponses()
+    public function getResponses() : ?Routes_Method_Responses
     {
         return $this->responses;
     }
-    public function setAction($action)
+    public function setAction(?int $action)
     {
         $this->action = $action;
     }
-    public function getAction()
+    public function getAction() : ?int
     {
         return $this->action;
     }
-    public function setCosts($costs)
+    public function setCosts(?int $costs)
     {
         $this->costs = $costs;
     }
-    public function getCosts()
+    public function getCosts() : ?int
     {
         return $this->costs;
     }
@@ -318,27 +328,27 @@ class Routes_Version
      * @Ref("PSX\Generation\Routes_Methods")
      */
     protected $methods;
-    public function setVersion($version)
+    public function setVersion(?int $version)
     {
         $this->version = $version;
     }
-    public function getVersion()
+    public function getVersion() : ?int
     {
         return $this->version;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setMethods($methods)
+    public function setMethods(?Routes_Methods $methods)
     {
         $this->methods = $methods;
     }
-    public function getMethods()
+    public function getMethods() : ?Routes_Methods
     {
         return $this->methods;
     }
@@ -358,19 +368,19 @@ class Message
      * @Type("string")
      */
     protected $message;
-    public function setSuccess($success)
+    public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
-    public function getSuccess()
+    public function getSuccess() : ?bool
     {
         return $this->success;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
@@ -413,51 +423,51 @@ class Routes
      * @Items(@Ref("PSX\Generation\Routes_Version"))
      */
     protected $config;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setPriority($priority)
+    public function setPriority(?int $priority)
     {
         $this->priority = $priority;
     }
-    public function getPriority()
+    public function getPriority() : ?int
     {
         return $this->priority;
     }
-    public function setPath($path)
+    public function setPath(?string $path)
     {
         $this->path = $path;
     }
-    public function getPath()
+    public function getPath() : ?string
     {
         return $this->path;
     }
-    public function setController($controller)
+    public function setController(?string $controller)
     {
         $this->controller = $controller;
     }
-    public function getController()
+    public function getController() : ?string
     {
         return $this->controller;
     }
-    public function setScopes($scopes)
+    public function setScopes(?array $scopes)
     {
         $this->scopes = $scopes;
     }
-    public function getScopes()
+    public function getScopes() : ?array
     {
         return $this->scopes;
     }
-    public function setConfig(array $config)
+    public function setConfig(?array $config)
     {
         $this->config = $config;
     }
-    public function getConfig()
+    public function getConfig() : ?array
     {
         return $this->config;
     }
@@ -477,19 +487,19 @@ class Endpoint
      * @Ref("PSX\Generation\Message")
      */
     protected $Message;
-    public function setRoutes($Routes)
+    public function setRoutes(?Routes $Routes)
     {
         $this->Routes = $Routes;
     }
-    public function getRoutes()
+    public function getRoutes() : ?Routes
     {
         return $this->Routes;
     }
-    public function setMessage($Message)
+    public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
-    public function getMessage()
+    public function getMessage() : ?Message
     {
         return $this->Message;
     }

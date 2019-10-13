@@ -45,6 +45,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Config
+     */
     public function get(): Config
     {
         $options = [
@@ -59,6 +62,10 @@ class Resource
         return $this->convertToObject($data, Config::class);
     }
 
+    /**
+     * @param Config $data
+     * @return Message
+     */
     public function put(Config $data): Message
     {
         $options = [
@@ -110,19 +117,19 @@ class Message
      * @Type("string")
      */
     protected $message;
-    public function setSuccess($success)
+    public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
-    public function getSuccess()
+    public function getSuccess() : ?bool
     {
         return $this->success;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
@@ -157,35 +164,35 @@ class Config
      * @OneOf(@Schema(type="string"), @Schema(type="number"), @Schema(type="boolean"), @Schema(type="null"))
      */
     protected $value;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setType($type)
+    public function setType(?int $type)
     {
         $this->type = $type;
     }
-    public function getType()
+    public function getType() : ?int
     {
         return $this->type;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setDescription($description)
+    public function setDescription(?string $description)
     {
         $this->description = $description;
     }
-    public function getDescription()
+    public function getDescription() : ?string
     {
         return $this->description;
     }
@@ -213,19 +220,19 @@ class Endpoint
      * @Ref("PSX\Generation\Message")
      */
     protected $Message;
-    public function setConfig($Config)
+    public function setConfig(?Config $Config)
     {
         $this->Config = $Config;
     }
-    public function getConfig()
+    public function getConfig() : ?Config
     {
         return $this->Config;
     }
-    public function setMessage($Message)
+    public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
-    public function getMessage()
+    public function getMessage() : ?Message
     {
         return $this->Message;
     }

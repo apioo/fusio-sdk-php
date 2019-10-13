@@ -45,6 +45,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Schema_Preview_Response
+     */
     public function post(): Schema_Preview_Response
     {
         $options = [
@@ -90,11 +93,11 @@ class Schema_Preview_Response
      * @Type("string")
      */
     protected $preview;
-    public function setPreview($preview)
+    public function setPreview(?string $preview)
     {
         $this->preview = $preview;
     }
-    public function getPreview()
+    public function getPreview() : ?string
     {
         return $this->preview;
     }
@@ -109,11 +112,11 @@ class Endpoint
      * @Ref("PSX\Generation\Schema_Preview_Response")
      */
     protected $Schema_Preview_Response;
-    public function setSchema_Preview_Response($Schema_Preview_Response)
+    public function setSchema_Preview_Response(?Schema_Preview_Response $Schema_Preview_Response)
     {
         $this->Schema_Preview_Response = $Schema_Preview_Response;
     }
-    public function getSchema_Preview_Response()
+    public function getSchema_Preview_Response() : ?Schema_Preview_Response
     {
         return $this->Schema_Preview_Response;
     }

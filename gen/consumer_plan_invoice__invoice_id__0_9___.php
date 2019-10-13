@@ -45,6 +45,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Consumer_Plan_Invoice
+     */
     public function get(): Consumer_Plan_Invoice
     {
         $options = [
@@ -117,51 +120,51 @@ class Consumer_Plan_Invoice
      * @Format("date-time")
      */
     protected $insertDate;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setAmount($amount)
+    public function setAmount(?float $amount)
     {
         $this->amount = $amount;
     }
-    public function getAmount()
+    public function getAmount() : ?float
     {
         return $this->amount;
     }
-    public function setPoints($points)
+    public function setPoints(?int $points)
     {
         $this->points = $points;
     }
-    public function getPoints()
+    public function getPoints() : ?int
     {
         return $this->points;
     }
-    public function setPayDate($payDate)
+    public function setPayDate(?\DateTime $payDate)
     {
         $this->payDate = $payDate;
     }
-    public function getPayDate()
+    public function getPayDate() : ?\DateTime
     {
         return $this->payDate;
     }
-    public function setInsertDate($insertDate)
+    public function setInsertDate(?\DateTime $insertDate)
     {
         $this->insertDate = $insertDate;
     }
-    public function getInsertDate()
+    public function getInsertDate() : ?\DateTime
     {
         return $this->insertDate;
     }
@@ -176,11 +179,11 @@ class Endpoint
      * @Ref("PSX\Generation\Consumer_Plan_Invoice")
      */
     protected $Consumer_Plan_Invoice;
-    public function setConsumer_Plan_Invoice($Consumer_Plan_Invoice)
+    public function setConsumer_Plan_Invoice(?Consumer_Plan_Invoice $Consumer_Plan_Invoice)
     {
         $this->Consumer_Plan_Invoice = $Consumer_Plan_Invoice;
     }
-    public function getConsumer_Plan_Invoice()
+    public function getConsumer_Plan_Invoice() : ?Consumer_Plan_Invoice
     {
         return $this->Consumer_Plan_Invoice;
     }

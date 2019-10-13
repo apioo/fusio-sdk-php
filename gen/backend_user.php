@@ -39,6 +39,10 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @param GetQuery $query
+     * @return User_Collection
+     */
     public function get(GetQuery $query): User_Collection
     {
         $options = [
@@ -54,6 +58,10 @@ class Resource
         return $this->convertToObject($data, User_Collection::class);
     }
 
+    /**
+     * @param User $data
+     * @return Message
+     */
     public function post(User $data): Message
     {
         $options = [
@@ -124,51 +132,51 @@ class App_Token
      * @Format("date-time")
      */
     protected $date;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setToken($token)
+    public function setToken(?string $token)
     {
         $this->token = $token;
     }
-    public function getToken()
+    public function getToken() : ?string
     {
         return $this->token;
     }
-    public function setScope($scope)
+    public function setScope(?string $scope)
     {
         $this->scope = $scope;
     }
-    public function getScope()
+    public function getScope() : ?string
     {
         return $this->scope;
     }
-    public function setIp($ip)
+    public function setIp(?string $ip)
     {
         $this->ip = $ip;
     }
-    public function getIp()
+    public function getIp() : ?string
     {
         return $this->ip;
     }
-    public function setExpire($expire)
+    public function setExpire(?\DateTime $expire)
     {
         $this->expire = $expire;
     }
-    public function getExpire()
+    public function getExpire() : ?\DateTime
     {
         return $this->expire;
     }
-    public function setDate($date)
+    public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
-    public function getDate()
+    public function getDate() : ?\DateTime
     {
         return $this->date;
     }
@@ -244,91 +252,91 @@ class App
      * @Items(@Ref("PSX\Generation\App_Token"))
      */
     protected $tokens;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setUserId($userId)
+    public function setUserId(?int $userId)
     {
         $this->userId = $userId;
     }
-    public function getUserId()
+    public function getUserId() : ?int
     {
         return $this->userId;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setUrl($url)
+    public function setUrl(?string $url)
     {
         $this->url = $url;
     }
-    public function getUrl()
+    public function getUrl() : ?string
     {
         return $this->url;
     }
-    public function setParameters($parameters)
+    public function setParameters(?string $parameters)
     {
         $this->parameters = $parameters;
     }
-    public function getParameters()
+    public function getParameters() : ?string
     {
         return $this->parameters;
     }
-    public function setAppKey($appKey)
+    public function setAppKey(?string $appKey)
     {
         $this->appKey = $appKey;
     }
-    public function getAppKey()
+    public function getAppKey() : ?string
     {
         return $this->appKey;
     }
-    public function setAppSecret($appSecret)
+    public function setAppSecret(?string $appSecret)
     {
         $this->appSecret = $appSecret;
     }
-    public function getAppSecret()
+    public function getAppSecret() : ?string
     {
         return $this->appSecret;
     }
-    public function setDate($date)
+    public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
-    public function getDate()
+    public function getDate() : ?\DateTime
     {
         return $this->date;
     }
-    public function setScopes($scopes)
+    public function setScopes(?array $scopes)
     {
         $this->scopes = $scopes;
     }
-    public function getScopes()
+    public function getScopes() : ?array
     {
         return $this->scopes;
     }
-    public function setTokens($tokens)
+    public function setTokens(?array $tokens)
     {
         $this->tokens = $tokens;
     }
-    public function getTokens()
+    public function getTokens() : ?array
     {
         return $this->tokens;
     }
@@ -348,19 +356,19 @@ class Message
      * @Type("string")
      */
     protected $message;
-    public function setSuccess($success)
+    public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
-    public function getSuccess()
+    public function getSuccess() : ?bool
     {
         return $this->success;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
@@ -425,83 +433,83 @@ class User
      * @Type("string")
      */
     protected $password;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setEmail($email)
+    public function setEmail(?string $email)
     {
         $this->email = $email;
     }
-    public function getEmail()
+    public function getEmail() : ?string
     {
         return $this->email;
     }
-    public function setPoints($points)
+    public function setPoints(?int $points)
     {
         $this->points = $points;
     }
-    public function getPoints()
+    public function getPoints() : ?int
     {
         return $this->points;
     }
-    public function setScopes($scopes)
+    public function setScopes(?array $scopes)
     {
         $this->scopes = $scopes;
     }
-    public function getScopes()
+    public function getScopes() : ?array
     {
         return $this->scopes;
     }
-    public function setApps($apps)
+    public function setApps(?array $apps)
     {
         $this->apps = $apps;
     }
-    public function getApps()
+    public function getApps() : ?array
     {
         return $this->apps;
     }
-    public function setAttributes($attributes)
+    public function setAttributes(?User_Attributes $attributes)
     {
         $this->attributes = $attributes;
     }
-    public function getAttributes()
+    public function getAttributes() : ?User_Attributes
     {
         return $this->attributes;
     }
-    public function setDate($date)
+    public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
-    public function getDate()
+    public function getDate() : ?\DateTime
     {
         return $this->date;
     }
-    public function setPassword($password)
+    public function setPassword(?string $password)
     {
         $this->password = $password;
     }
-    public function getPassword()
+    public function getPassword() : ?string
     {
         return $this->password;
     }
@@ -527,27 +535,27 @@ class User_Collection
      * @Items(@Ref("PSX\Generation\User"))
      */
     protected $entry;
-    public function setTotalResults($totalResults)
+    public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
-    public function getTotalResults()
+    public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setEntry($entry)
+    public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
-    public function getEntry()
+    public function getEntry() : ?array
     {
         return $this->entry;
     }
@@ -572,27 +580,27 @@ class GetQuery
      * @Type("string")
      */
     protected $search;
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setCount($count)
+    public function setCount(?int $count)
     {
         $this->count = $count;
     }
-    public function getCount()
+    public function getCount() : ?int
     {
         return $this->count;
     }
-    public function setSearch($search)
+    public function setSearch(?string $search)
     {
         $this->search = $search;
     }
-    public function getSearch()
+    public function getSearch() : ?string
     {
         return $this->search;
     }
@@ -622,35 +630,35 @@ class Endpoint
      * @Ref("PSX\Generation\Message")
      */
     protected $Message;
-    public function setGetQuery($GetQuery)
+    public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
-    public function getGetQuery()
+    public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
-    public function setUser_Collection($User_Collection)
+    public function setUser_Collection(?User_Collection $User_Collection)
     {
         $this->User_Collection = $User_Collection;
     }
-    public function getUser_Collection()
+    public function getUser_Collection() : ?User_Collection
     {
         return $this->User_Collection;
     }
-    public function setUser($User)
+    public function setUser(?User $User)
     {
         $this->User = $User;
     }
-    public function getUser()
+    public function getUser() : ?User
     {
         return $this->User;
     }
-    public function setMessage($Message)
+    public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
-    public function getMessage()
+    public function getMessage() : ?Message
     {
         return $this->Message;
     }

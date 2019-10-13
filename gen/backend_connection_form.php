@@ -39,6 +39,10 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @param GetQuery $query
+     * @return Container
+     */
     public function get(GetQuery $query): Container
     {
         $options = [
@@ -90,19 +94,19 @@ class Option
      * @Type("string")
      */
     protected $value;
-    public function setKey($key)
+    public function setKey(?string $key)
     {
         $this->key = $key;
     }
-    public function getKey()
+    public function getKey() : ?string
     {
         return $this->key;
     }
-    public function setValue($value)
+    public function setValue(?string $value)
     {
         $this->value = $value;
     }
-    public function getValue()
+    public function getValue() : ?string
     {
         return $this->value;
     }
@@ -137,43 +141,43 @@ class Textarea
      * @Type("string")
      */
     protected $mode;
-    public function setElement($element)
+    public function setElement(?string $element)
     {
         $this->element = $element;
     }
-    public function getElement()
+    public function getElement() : ?string
     {
         return $this->element;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setTitle($title)
+    public function setTitle(?string $title)
     {
         $this->title = $title;
     }
-    public function getTitle()
+    public function getTitle() : ?string
     {
         return $this->title;
     }
-    public function setHelp($help)
+    public function setHelp(?string $help)
     {
         $this->help = $help;
     }
-    public function getHelp()
+    public function getHelp() : ?string
     {
         return $this->help;
     }
-    public function setMode($mode)
+    public function setMode(?string $mode)
     {
         $this->mode = $mode;
     }
-    public function getMode()
+    public function getMode() : ?string
     {
         return $this->mode;
     }
@@ -203,35 +207,35 @@ class Tag
      * @Type("string")
      */
     protected $help;
-    public function setElement($element)
+    public function setElement(?string $element)
     {
         $this->element = $element;
     }
-    public function getElement()
+    public function getElement() : ?string
     {
         return $this->element;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setTitle($title)
+    public function setTitle(?string $title)
     {
         $this->title = $title;
     }
-    public function getTitle()
+    public function getTitle() : ?string
     {
         return $this->title;
     }
-    public function setHelp($help)
+    public function setHelp(?string $help)
     {
         $this->help = $help;
     }
-    public function getHelp()
+    public function getHelp() : ?string
     {
         return $this->help;
     }
@@ -267,43 +271,43 @@ class Select
      * @Items(@Ref("PSX\Generation\Option"))
      */
     protected $options;
-    public function setElement($element)
+    public function setElement(?string $element)
     {
         $this->element = $element;
     }
-    public function getElement()
+    public function getElement() : ?string
     {
         return $this->element;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setTitle($title)
+    public function setTitle(?string $title)
     {
         $this->title = $title;
     }
-    public function getTitle()
+    public function getTitle() : ?string
     {
         return $this->title;
     }
-    public function setHelp($help)
+    public function setHelp(?string $help)
     {
         $this->help = $help;
     }
-    public function getHelp()
+    public function getHelp() : ?string
     {
         return $this->help;
     }
-    public function setOptions($options)
+    public function setOptions(?array $options)
     {
         $this->options = $options;
     }
-    public function getOptions()
+    public function getOptions() : ?array
     {
         return $this->options;
     }
@@ -338,43 +342,43 @@ class Input
      * @Type("string")
      */
     protected $type;
-    public function setElement($element)
+    public function setElement(?string $element)
     {
         $this->element = $element;
     }
-    public function getElement()
+    public function getElement() : ?string
     {
         return $this->element;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setTitle($title)
+    public function setTitle(?string $title)
     {
         $this->title = $title;
     }
-    public function getTitle()
+    public function getTitle() : ?string
     {
         return $this->title;
     }
-    public function setHelp($help)
+    public function setHelp(?string $help)
     {
         $this->help = $help;
     }
-    public function getHelp()
+    public function getHelp() : ?string
     {
         return $this->help;
     }
-    public function setType($type)
+    public function setType(?string $type)
     {
         $this->type = $type;
     }
-    public function getType()
+    public function getType() : ?string
     {
         return $this->type;
     }
@@ -390,11 +394,11 @@ class Container
      * @Items(@Schema(oneOf={@Ref("PSX\Generation\Input"), @Ref("PSX\Generation\Select"), @Ref("PSX\Generation\Tag"), @Ref("PSX\Generation\Textarea")}))
      */
     protected $element;
-    public function setElement($element)
+    public function setElement(?array $element)
     {
         $this->element = $element;
     }
-    public function getElement()
+    public function getElement() : ?array
     {
         return $this->element;
     }
@@ -409,11 +413,11 @@ class GetQuery
      * @Type("string")
      */
     protected $class;
-    public function setClass($class)
+    public function setClass(?string $class)
     {
         $this->class = $class;
     }
-    public function getClass()
+    public function getClass() : ?string
     {
         return $this->class;
     }
@@ -433,19 +437,19 @@ class Endpoint
      * @Ref("PSX\Generation\Container")
      */
     protected $Container;
-    public function setGetQuery($GetQuery)
+    public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
-    public function getGetQuery()
+    public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
-    public function setContainer($Container)
+    public function setContainer(?Container $Container)
     {
         $this->Container = $Container;
     }
-    public function getContainer()
+    public function getContainer() : ?Container
     {
         return $this->Container;
     }

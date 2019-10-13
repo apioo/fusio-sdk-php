@@ -45,6 +45,10 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @param Schema_Form $data
+     * @return Message
+     */
     public function put(Schema_Form $data): Message
     {
         $options = [
@@ -96,19 +100,19 @@ class Message
      * @Type("string")
      */
     protected $message;
-    public function setSuccess($success)
+    public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
-    public function getSuccess()
+    public function getSuccess() : ?bool
     {
         return $this->success;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
@@ -136,19 +140,19 @@ class Endpoint
      * @Ref("PSX\Generation\Message")
      */
     protected $Message;
-    public function setSchema_Form($Schema_Form)
+    public function setSchema_Form(?Schema_Form $Schema_Form)
     {
         $this->Schema_Form = $Schema_Form;
     }
-    public function getSchema_Form()
+    public function getSchema_Form() : ?Schema_Form
     {
         return $this->Schema_Form;
     }
-    public function setMessage($Message)
+    public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
-    public function getMessage()
+    public function getMessage() : ?Message
     {
         return $this->Message;
     }

@@ -39,6 +39,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Consumer_Plan_Collection
+     */
     public function get(): Consumer_Plan_Collection
     {
         $options = [
@@ -104,43 +107,43 @@ class Consumer_Plan
      * @Type("integer")
      */
     protected $points;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setDescription($description)
+    public function setDescription(?string $description)
     {
         $this->description = $description;
     }
-    public function getDescription()
+    public function getDescription() : ?string
     {
         return $this->description;
     }
-    public function setPrice($price)
+    public function setPrice(?float $price)
     {
         $this->price = $price;
     }
-    public function getPrice()
+    public function getPrice() : ?float
     {
         return $this->price;
     }
-    public function setPoints($points)
+    public function setPoints(?int $points)
     {
         $this->points = $points;
     }
-    public function getPoints()
+    public function getPoints() : ?int
     {
         return $this->points;
     }
@@ -166,27 +169,27 @@ class Consumer_Plan_Collection
      * @Items(@Ref("PSX\Generation\Consumer_Plan"))
      */
     protected $entry;
-    public function setTotalResults($totalResults)
+    public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
-    public function getTotalResults()
+    public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setEntry($entry)
+    public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
-    public function getEntry()
+    public function getEntry() : ?array
     {
         return $this->entry;
     }
@@ -201,11 +204,11 @@ class Endpoint
      * @Ref("PSX\Generation\Consumer_Plan_Collection")
      */
     protected $Consumer_Plan_Collection;
-    public function setConsumer_Plan_Collection($Consumer_Plan_Collection)
+    public function setConsumer_Plan_Collection(?Consumer_Plan_Collection $Consumer_Plan_Collection)
     {
         $this->Consumer_Plan_Collection = $Consumer_Plan_Collection;
     }
-    public function getConsumer_Plan_Collection()
+    public function getConsumer_Plan_Collection() : ?Consumer_Plan_Collection
     {
         return $this->Consumer_Plan_Collection;
     }

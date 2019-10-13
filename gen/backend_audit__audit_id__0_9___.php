@@ -45,6 +45,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Audit
+     */
     public function get(): Audit
     {
         $options = [
@@ -107,27 +110,27 @@ class Audit_User
      * @Type("string")
      */
     protected $name;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
@@ -152,27 +155,27 @@ class Audit_App
      * @Type("string")
      */
     protected $name;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
@@ -223,67 +226,67 @@ class Audit
      * @Format("date-time")
      */
     protected $date;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setApp($app)
+    public function setApp(?Audit_App $app)
     {
         $this->app = $app;
     }
-    public function getApp()
+    public function getApp() : ?Audit_App
     {
         return $this->app;
     }
-    public function setUser($user)
+    public function setUser(?Audit_User $user)
     {
         $this->user = $user;
     }
-    public function getUser()
+    public function getUser() : ?Audit_User
     {
         return $this->user;
     }
-    public function setEvent($event)
+    public function setEvent(?string $event)
     {
         $this->event = $event;
     }
-    public function getEvent()
+    public function getEvent() : ?string
     {
         return $this->event;
     }
-    public function setIp($ip)
+    public function setIp(?string $ip)
     {
         $this->ip = $ip;
     }
-    public function getIp()
+    public function getIp() : ?string
     {
         return $this->ip;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
-    public function setContent($content)
+    public function setContent(?Audit_Object $content)
     {
         $this->content = $content;
     }
-    public function getContent()
+    public function getContent() : ?Audit_Object
     {
         return $this->content;
     }
-    public function setDate($date)
+    public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
-    public function getDate()
+    public function getDate() : ?\DateTime
     {
         return $this->date;
     }
@@ -298,11 +301,11 @@ class Endpoint
      * @Ref("PSX\Generation\Audit")
      */
     protected $Audit;
-    public function setAudit($Audit)
+    public function setAudit(?Audit $Audit)
     {
         $this->Audit = $Audit;
     }
-    public function getAudit()
+    public function getAudit() : ?Audit
     {
         return $this->Audit;
     }

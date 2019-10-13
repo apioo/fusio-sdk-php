@@ -39,6 +39,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Routes_Providers
+     */
     public function get(): Routes_Providers
     {
         $options = [
@@ -89,19 +92,19 @@ class Routes_Provider
      * @Type("string")
      */
     protected $class;
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setClass($class)
+    public function setClass(?string $class)
     {
         $this->class = $class;
     }
-    public function getClass()
+    public function getClass() : ?string
     {
         return $this->class;
     }
@@ -117,11 +120,11 @@ class Routes_Providers
      * @Items(@Ref("PSX\Generation\Routes_Provider"))
      */
     protected $providers;
-    public function setProviders($providers)
+    public function setProviders(?array $providers)
     {
         $this->providers = $providers;
     }
-    public function getProviders()
+    public function getProviders() : ?array
     {
         return $this->providers;
     }
@@ -136,11 +139,11 @@ class Endpoint
      * @Ref("PSX\Generation\Routes_Providers")
      */
     protected $Routes_Providers;
-    public function setRoutes_Providers($Routes_Providers)
+    public function setRoutes_Providers(?Routes_Providers $Routes_Providers)
     {
         $this->Routes_Providers = $Routes_Providers;
     }
-    public function getRoutes_Providers()
+    public function getRoutes_Providers() : ?Routes_Providers
     {
         return $this->Routes_Providers;
     }

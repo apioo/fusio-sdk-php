@@ -45,6 +45,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Log_Error
+     */
     public function get(): Log_Error
     {
         $options = [
@@ -105,35 +108,35 @@ class Log_Error
      * @Type("integer")
      */
     protected $line;
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
-    public function setTrace($trace)
+    public function setTrace(?string $trace)
     {
         $this->trace = $trace;
     }
-    public function getTrace()
+    public function getTrace() : ?string
     {
         return $this->trace;
     }
-    public function setFile($file)
+    public function setFile(?string $file)
     {
         $this->file = $file;
     }
-    public function getFile()
+    public function getFile() : ?string
     {
         return $this->file;
     }
-    public function setLine($line)
+    public function setLine(?int $line)
     {
         $this->line = $line;
     }
-    public function getLine()
+    public function getLine() : ?int
     {
         return $this->line;
     }
@@ -148,11 +151,11 @@ class Endpoint
      * @Ref("PSX\Generation\Log_Error")
      */
     protected $Log_Error;
-    public function setLog_Error($Log_Error)
+    public function setLog_Error(?Log_Error $Log_Error)
     {
         $this->Log_Error = $Log_Error;
     }
-    public function getLog_Error()
+    public function getLog_Error() : ?Log_Error
     {
         return $this->Log_Error;
     }

@@ -45,6 +45,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Consumer_Transaction
+     */
     public function get(): Consumer_Transaction
     {
         $options = [
@@ -117,51 +120,51 @@ class Consumer_Transaction
      * @Format("date-time")
      */
     protected $insertDate;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setTransactionId($transactionId)
+    public function setTransactionId(?string $transactionId)
     {
         $this->transactionId = $transactionId;
     }
-    public function getTransactionId()
+    public function getTransactionId() : ?string
     {
         return $this->transactionId;
     }
-    public function setAmount($amount)
+    public function setAmount(?float $amount)
     {
         $this->amount = $amount;
     }
-    public function getAmount()
+    public function getAmount() : ?float
     {
         return $this->amount;
     }
-    public function setUpdateDate($updateDate)
+    public function setUpdateDate(?\DateTime $updateDate)
     {
         $this->updateDate = $updateDate;
     }
-    public function getUpdateDate()
+    public function getUpdateDate() : ?\DateTime
     {
         return $this->updateDate;
     }
-    public function setInsertDate($insertDate)
+    public function setInsertDate(?\DateTime $insertDate)
     {
         $this->insertDate = $insertDate;
     }
-    public function getInsertDate()
+    public function getInsertDate() : ?\DateTime
     {
         return $this->insertDate;
     }
@@ -176,11 +179,11 @@ class Endpoint
      * @Ref("PSX\Generation\Consumer_Transaction")
      */
     protected $Consumer_Transaction;
-    public function setConsumer_Transaction($Consumer_Transaction)
+    public function setConsumer_Transaction(?Consumer_Transaction $Consumer_Transaction)
     {
         $this->Consumer_Transaction = $Consumer_Transaction;
     }
-    public function getConsumer_Transaction()
+    public function getConsumer_Transaction() : ?Consumer_Transaction
     {
         return $this->Consumer_Transaction;
     }

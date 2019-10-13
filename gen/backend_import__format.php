@@ -45,6 +45,10 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @param Import $data
+     * @return Adapter
+     */
     public function post(Import $data): Adapter
     {
         $options = [
@@ -158,107 +162,107 @@ class Routes_Method
      * @Type("integer")
      */
     protected $costs;
-    public function setMethod($method)
+    public function setMethod(?string $method)
     {
         $this->method = $method;
     }
-    public function getMethod()
+    public function getMethod() : ?string
     {
         return $this->method;
     }
-    public function setVersion($version)
+    public function setVersion(?int $version)
     {
         $this->version = $version;
     }
-    public function getVersion()
+    public function getVersion() : ?int
     {
         return $this->version;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setActive($active)
+    public function setActive(?bool $active)
     {
         $this->active = $active;
     }
-    public function getActive()
+    public function getActive() : ?bool
     {
         return $this->active;
     }
-    public function setPublic($public)
+    public function setPublic(?bool $public)
     {
         $this->public = $public;
     }
-    public function getPublic()
+    public function getPublic() : ?bool
     {
         return $this->public;
     }
-    public function setDescription($description)
+    public function setDescription(?string $description)
     {
         $this->description = $description;
     }
-    public function getDescription()
+    public function getDescription() : ?string
     {
         return $this->description;
     }
-    public function setOperationId($operationId)
+    public function setOperationId(?string $operationId)
     {
         $this->operationId = $operationId;
     }
-    public function getOperationId()
+    public function getOperationId() : ?string
     {
         return $this->operationId;
     }
-    public function setParameters($parameters)
+    public function setParameters(?string $parameters)
     {
         $this->parameters = $parameters;
     }
-    public function getParameters()
+    public function getParameters() : ?string
     {
         return $this->parameters;
     }
-    public function setRequest($request)
+    public function setRequest(?string $request)
     {
         $this->request = $request;
     }
-    public function getRequest()
+    public function getRequest() : ?string
     {
         return $this->request;
     }
-    public function setResponse($response)
+    public function setResponse(?string $response)
     {
         $this->response = $response;
     }
-    public function getResponse()
+    public function getResponse() : ?string
     {
         return $this->response;
     }
-    public function setResponses($responses)
+    public function setResponses(?Routes_Method_Responses $responses)
     {
         $this->responses = $responses;
     }
-    public function getResponses()
+    public function getResponses() : ?Routes_Method_Responses
     {
         return $this->responses;
     }
-    public function setAction($action)
+    public function setAction(?string $action)
     {
         $this->action = $action;
     }
-    public function getAction()
+    public function getAction() : ?string
     {
         return $this->action;
     }
-    public function setCosts($costs)
+    public function setCosts(?int $costs)
     {
         $this->costs = $costs;
     }
-    public function getCosts()
+    public function getCosts() : ?int
     {
         return $this->costs;
     }
@@ -313,27 +317,27 @@ class Routes_Version
      * @Ref("PSX\Generation\Routes_Methods")
      */
     protected $methods;
-    public function setVersion($version)
+    public function setVersion(?int $version)
     {
         $this->version = $version;
     }
-    public function getVersion()
+    public function getVersion() : ?int
     {
         return $this->version;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setMethods($methods)
+    public function setMethods(?Routes_Methods $methods)
     {
         $this->methods = $methods;
     }
-    public function getMethods()
+    public function getMethods() : ?Routes_Methods
     {
         return $this->methods;
     }
@@ -364,35 +368,35 @@ class Connection
      * @Ref("PSX\Generation\Connection_Config")
      */
     protected $config;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setClass($class)
+    public function setClass(?string $class)
     {
         $this->class = $class;
     }
-    public function getClass()
+    public function getClass() : ?string
     {
         return $this->class;
     }
-    public function setConfig($config)
+    public function setConfig(?Connection_Config $config)
     {
         $this->config = $config;
     }
-    public function getConfig()
+    public function getConfig() : ?Connection_Config
     {
         return $this->config;
     }
@@ -423,35 +427,35 @@ class Schema
      * @Ref("PSX\Generation\Schema_Source")
      */
     protected $source;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setSource($source)
+    public function setSource(?Schema_Source $source)
     {
         $this->source = $source;
     }
-    public function getSource()
+    public function getSource() : ?Schema_Source
     {
         return $this->source;
     }
@@ -492,51 +496,51 @@ class Action
      * @Ref("PSX\Generation\Action_Config")
      */
     protected $config;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setClass($class)
+    public function setClass(?string $class)
     {
         $this->class = $class;
     }
-    public function getClass()
+    public function getClass() : ?string
     {
         return $this->class;
     }
-    public function setEngine($engine)
+    public function setEngine(?string $engine)
     {
         $this->engine = $engine;
     }
-    public function getEngine()
+    public function getEngine() : ?string
     {
         return $this->engine;
     }
-    public function setConfig($config)
+    public function setConfig(?Action_Config $config)
     {
         $this->config = $config;
     }
-    public function getConfig()
+    public function getConfig() : ?Action_Config
     {
         return $this->config;
     }
@@ -578,51 +582,51 @@ class Routes
      * @Items(@Ref("PSX\Generation\Routes_Version"))
      */
     protected $config;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setPriority($priority)
+    public function setPriority(?int $priority)
     {
         $this->priority = $priority;
     }
-    public function getPriority()
+    public function getPriority() : ?int
     {
         return $this->priority;
     }
-    public function setPath($path)
+    public function setPath(?string $path)
     {
         $this->path = $path;
     }
-    public function getPath()
+    public function getPath() : ?string
     {
         return $this->path;
     }
-    public function setController($controller)
+    public function setController(?string $controller)
     {
         $this->controller = $controller;
     }
-    public function getController()
+    public function getController() : ?string
     {
         return $this->controller;
     }
-    public function setScopes($scopes)
+    public function setScopes(?array $scopes)
     {
         $this->scopes = $scopes;
     }
-    public function getScopes()
+    public function getScopes() : ?array
     {
         return $this->scopes;
     }
-    public function setConfig($config)
+    public function setConfig(?array $config)
     {
         $this->config = $config;
     }
-    public function getConfig()
+    public function getConfig() : ?array
     {
         return $this->config;
     }
@@ -668,51 +672,51 @@ class Adapter
      * @Items(@Ref("PSX\Generation\Connection"))
      */
     protected $connection;
-    public function setActionClass($actionClass)
+    public function setActionClass(?array $actionClass)
     {
         $this->actionClass = $actionClass;
     }
-    public function getActionClass()
+    public function getActionClass() : ?array
     {
         return $this->actionClass;
     }
-    public function setConnectionClass($connectionClass)
+    public function setConnectionClass(?array $connectionClass)
     {
         $this->connectionClass = $connectionClass;
     }
-    public function getConnectionClass()
+    public function getConnectionClass() : ?array
     {
         return $this->connectionClass;
     }
-    public function setRoutes($routes)
+    public function setRoutes(?array $routes)
     {
         $this->routes = $routes;
     }
-    public function getRoutes()
+    public function getRoutes() : ?array
     {
         return $this->routes;
     }
-    public function setAction($action)
+    public function setAction(?array $action)
     {
         $this->action = $action;
     }
-    public function getAction()
+    public function getAction() : ?array
     {
         return $this->action;
     }
-    public function setSchema($schema)
+    public function setSchema(?array $schema)
     {
         $this->schema = $schema;
     }
-    public function getSchema()
+    public function getSchema() : ?array
     {
         return $this->schema;
     }
-    public function setConnection($connection)
+    public function setConnection(?array $connection)
     {
         $this->connection = $connection;
     }
-    public function getConnection()
+    public function getConnection() : ?array
     {
         return $this->connection;
     }
@@ -727,11 +731,11 @@ class Import
      * @Type("string")
      */
     protected $schema;
-    public function setSchema($schema)
+    public function setSchema(?string $schema)
     {
         $this->schema = $schema;
     }
-    public function getSchema()
+    public function getSchema() : ?string
     {
         return $this->schema;
     }
@@ -751,19 +755,19 @@ class Endpoint
      * @Ref("PSX\Generation\Adapter")
      */
     protected $Adapter;
-    public function setImport($Import)
+    public function setImport(?Import $Import)
     {
         $this->Import = $Import;
     }
-    public function getImport()
+    public function getImport() : ?Import
     {
         return $this->Import;
     }
-    public function setAdapter($Adapter)
+    public function setAdapter(?Adapter $Adapter)
     {
         $this->Adapter = $Adapter;
     }
-    public function getAdapter()
+    public function getAdapter() : ?Adapter
     {
         return $this->Adapter;
     }

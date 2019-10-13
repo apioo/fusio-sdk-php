@@ -39,6 +39,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Consumer_User_Account
+     */
     public function get(): Consumer_User_Account
     {
         $options = [
@@ -53,6 +56,10 @@ class Resource
         return $this->convertToObject($data, Consumer_User_Account::class);
     }
 
+    /**
+     * @param Consumer_User_Account $data
+     * @return Consumer_Message
+     */
     public function put(Consumer_User_Account $data): Consumer_Message
     {
         $options = [
@@ -111,19 +118,19 @@ class Consumer_Message
      * @Type("string")
      */
     protected $message;
-    public function setSuccess($success)
+    public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
-    public function getSuccess()
+    public function getSuccess() : ?bool
     {
         return $this->success;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
@@ -175,67 +182,67 @@ class Consumer_User_Account
      * @Format("date-time")
      */
     protected $date;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setEmail($email)
+    public function setEmail(?string $email)
     {
         $this->email = $email;
     }
-    public function getEmail()
+    public function getEmail() : ?string
     {
         return $this->email;
     }
-    public function setPoints($points)
+    public function setPoints(?int $points)
     {
         $this->points = $points;
     }
-    public function getPoints()
+    public function getPoints() : ?int
     {
         return $this->points;
     }
-    public function setScopes($scopes)
+    public function setScopes(?array $scopes)
     {
         $this->scopes = $scopes;
     }
-    public function getScopes()
+    public function getScopes() : ?array
     {
         return $this->scopes;
     }
-    public function setAttributes($attributes)
+    public function setAttributes(?Consumer_User_Attributes $attributes)
     {
         $this->attributes = $attributes;
     }
-    public function getAttributes()
+    public function getAttributes() : ?Consumer_User_Attributes
     {
         return $this->attributes;
     }
-    public function setDate($date)
+    public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
-    public function getDate()
+    public function getDate() : ?\DateTime
     {
         return $this->date;
     }
@@ -255,19 +262,19 @@ class Endpoint
      * @Ref("PSX\Generation\Consumer_Message")
      */
     protected $Consumer_Message;
-    public function setConsumer_User_Account($Consumer_User_Account)
+    public function setConsumer_User_Account(?Consumer_User_Account $Consumer_User_Account)
     {
         $this->Consumer_User_Account = $Consumer_User_Account;
     }
-    public function getConsumer_User_Account()
+    public function getConsumer_User_Account() : ?Consumer_User_Account
     {
         return $this->Consumer_User_Account;
     }
-    public function setConsumer_Message($Consumer_Message)
+    public function setConsumer_Message(?Consumer_Message $Consumer_Message)
     {
         $this->Consumer_Message = $Consumer_Message;
     }
-    public function getConsumer_Message()
+    public function getConsumer_Message() : ?Consumer_Message
     {
         return $this->Consumer_Message;
     }

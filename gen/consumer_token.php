@@ -39,7 +39,11 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
-    public function post(Authorization $data): Access_token
+    /**
+     * @param Authorization_code|Password|Client_credentials|Refresh_token $data
+     * @return Access_token
+     */
+    public function post( $data): Access_token
     {
         $options = [
             'json' => $this->convertToArray($data)
@@ -97,35 +101,35 @@ class Access_token
      * @Type("string")
      */
     protected $refresh_token;
-    public function setAccess_token($access_token)
+    public function setAccess_token(?string $access_token)
     {
         $this->access_token = $access_token;
     }
-    public function getAccess_token()
+    public function getAccess_token() : ?string
     {
         return $this->access_token;
     }
-    public function setToken_type($token_type)
+    public function setToken_type(?string $token_type)
     {
         $this->token_type = $token_type;
     }
-    public function getToken_type()
+    public function getToken_type() : ?string
     {
         return $this->token_type;
     }
-    public function setExpires_in($expires_in)
+    public function setExpires_in(?string $expires_in)
     {
         $this->expires_in = $expires_in;
     }
-    public function getExpires_in()
+    public function getExpires_in() : ?string
     {
         return $this->expires_in;
     }
-    public function setRefresh_token($refresh_token)
+    public function setRefresh_token(?string $refresh_token)
     {
         $this->refresh_token = $refresh_token;
     }
-    public function getRefresh_token()
+    public function getRefresh_token() : ?string
     {
         return $this->refresh_token;
     }
@@ -151,27 +155,27 @@ class Refresh_token
      * @Type("string")
      */
     protected $scope;
-    public function setGrant_type($grant_type)
+    public function setGrant_type(?string $grant_type)
     {
         $this->grant_type = $grant_type;
     }
-    public function getGrant_type()
+    public function getGrant_type() : ?string
     {
         return $this->grant_type;
     }
-    public function setRefresh_token($refresh_token)
+    public function setRefresh_token(?string $refresh_token)
     {
         $this->refresh_token = $refresh_token;
     }
-    public function getRefresh_token()
+    public function getRefresh_token() : ?string
     {
         return $this->refresh_token;
     }
-    public function setScope($scope)
+    public function setScope(?string $scope)
     {
         $this->scope = $scope;
     }
-    public function getScope()
+    public function getScope() : ?string
     {
         return $this->scope;
     }
@@ -192,19 +196,19 @@ class Client_credentials
      * @Type("string")
      */
     protected $scope;
-    public function setGrant_type($grant_type)
+    public function setGrant_type(?string $grant_type)
     {
         $this->grant_type = $grant_type;
     }
-    public function getGrant_type()
+    public function getGrant_type() : ?string
     {
         return $this->grant_type;
     }
-    public function setScope($scope)
+    public function setScope(?string $scope)
     {
         $this->scope = $scope;
     }
-    public function getScope()
+    public function getScope() : ?string
     {
         return $this->scope;
     }
@@ -235,35 +239,35 @@ class Password
      * @Type("string")
      */
     protected $scope;
-    public function setGrant_type($grant_type)
+    public function setGrant_type(?string $grant_type)
     {
         $this->grant_type = $grant_type;
     }
-    public function getGrant_type()
+    public function getGrant_type() : ?string
     {
         return $this->grant_type;
     }
-    public function setUsername($username)
+    public function setUsername(?string $username)
     {
         $this->username = $username;
     }
-    public function getUsername()
+    public function getUsername() : ?string
     {
         return $this->username;
     }
-    public function setPassword($password)
+    public function setPassword(?string $password)
     {
         $this->password = $password;
     }
-    public function getPassword()
+    public function getPassword() : ?string
     {
         return $this->password;
     }
-    public function setScope($scope)
+    public function setScope(?string $scope)
     {
         $this->scope = $scope;
     }
-    public function getScope()
+    public function getScope() : ?string
     {
         return $this->scope;
     }
@@ -294,35 +298,35 @@ class Authorization_code
      * @Type("string")
      */
     protected $client_id;
-    public function setGrant_type($grant_type)
+    public function setGrant_type(?string $grant_type)
     {
         $this->grant_type = $grant_type;
     }
-    public function getGrant_type()
+    public function getGrant_type() : ?string
     {
         return $this->grant_type;
     }
-    public function setCode($code)
+    public function setCode(?string $code)
     {
         $this->code = $code;
     }
-    public function getCode()
+    public function getCode() : ?string
     {
         return $this->code;
     }
-    public function setRedirect_uri($redirect_uri)
+    public function setRedirect_uri(?string $redirect_uri)
     {
         $this->redirect_uri = $redirect_uri;
     }
-    public function getRedirect_uri()
+    public function getRedirect_uri() : ?string
     {
         return $this->redirect_uri;
     }
-    public function setClient_id($client_id)
+    public function setClient_id(?string $client_id)
     {
         $this->client_id = $client_id;
     }
-    public function getClient_id()
+    public function getClient_id() : ?string
     {
         return $this->client_id;
     }
@@ -351,11 +355,11 @@ class Endpoint
     {
         return $this->Authorization;
     }
-    public function setAccess_token($Access_token)
+    public function setAccess_token(?Access_token $Access_token)
     {
         $this->Access_token = $Access_token;
     }
-    public function getAccess_token()
+    public function getAccess_token() : ?Access_token
     {
         return $this->Access_token;
     }

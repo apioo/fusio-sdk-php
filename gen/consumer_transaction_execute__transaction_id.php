@@ -47,6 +47,8 @@ class Resource
 
     /**
      * Executes the payment on the remote provider and redirects the user to the app using the provided return url
+     *
+     * @return void
      */
     public function get()
     {

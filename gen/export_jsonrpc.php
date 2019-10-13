@@ -39,7 +39,11 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
-    public function post(Export_Rpc_Request $data): Export_Rpc_Response
+    /**
+     * @param Export_Rpc_Request_Call|array $data
+     * @return |array
+     */
+    public function post( $data)
     {
         $options = [
             'headers' => [
@@ -51,7 +55,7 @@ class Resource
         $response = $this->httpClient->request('POST', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->convertToObject($data, Export_Rpc_Response::class);
+        return $this->convertToObject($data, null);
     }
 
     private function convertToArray($object)
@@ -96,19 +100,19 @@ class Export_Rpc_Response_Error
      * @Description("Error data")
      */
     protected $data;
-    public function setCode($code)
+    public function setCode(?int $code)
     {
         $this->code = $code;
     }
-    public function getCode()
+    public function getCode() : ?int
     {
         return $this->code;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
@@ -141,27 +145,27 @@ class Export_Rpc_Response_Return_Error
      * @Type("integer")
      */
     protected $id;
-    public function setJsonrpc($jsonrpc)
+    public function setJsonrpc(?string $jsonrpc)
     {
         $this->jsonrpc = $jsonrpc;
     }
-    public function getJsonrpc()
+    public function getJsonrpc() : ?string
     {
         return $this->jsonrpc;
     }
-    public function setError($error)
+    public function setError(?Export_Rpc_Response_Error $error)
     {
         $this->error = $error;
     }
-    public function getError()
+    public function getError() : ?Export_Rpc_Response_Error
     {
         return $this->error;
     }
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
@@ -187,11 +191,11 @@ class Export_Rpc_Response_Return_Success
      * @Type("integer")
      */
     protected $id;
-    public function setJsonrpc($jsonrpc)
+    public function setJsonrpc(?string $jsonrpc)
     {
         $this->jsonrpc = $jsonrpc;
     }
-    public function getJsonrpc()
+    public function getJsonrpc() : ?string
     {
         return $this->jsonrpc;
     }
@@ -203,11 +207,11 @@ class Export_Rpc_Response_Return_Success
     {
         return $this->result;
     }
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
@@ -238,19 +242,19 @@ class Export_Rpc_Request_Call
      * @Type("integer")
      */
     protected $id;
-    public function setJsonrpc($jsonrpc)
+    public function setJsonrpc(?string $jsonrpc)
     {
         $this->jsonrpc = $jsonrpc;
     }
-    public function getJsonrpc()
+    public function getJsonrpc() : ?string
     {
         return $this->jsonrpc;
     }
-    public function setMethod($method)
+    public function setMethod(?string $method)
     {
         $this->method = $method;
     }
-    public function getMethod()
+    public function getMethod() : ?string
     {
         return $this->method;
     }
@@ -262,11 +266,11 @@ class Export_Rpc_Request_Call
     {
         return $this->params;
     }
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }

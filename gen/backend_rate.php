@@ -39,6 +39,10 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @param GetQuery $query
+     * @return Rate_Collection
+     */
     public function get(GetQuery $query): Rate_Collection
     {
         $options = [
@@ -54,6 +58,10 @@ class Resource
         return $this->convertToObject($data, Rate_Collection::class);
     }
 
+    /**
+     * @param Rate $data
+     * @return Message
+     */
     public function post(Rate $data): Message
     {
         $options = [
@@ -117,43 +125,43 @@ class Rate_Allocation
      * @Type("string")
      */
     protected $parameters;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setRouteId($routeId)
+    public function setRouteId(?int $routeId)
     {
         $this->routeId = $routeId;
     }
-    public function getRouteId()
+    public function getRouteId() : ?int
     {
         return $this->routeId;
     }
-    public function setAppId($appId)
+    public function setAppId(?int $appId)
     {
         $this->appId = $appId;
     }
-    public function getAppId()
+    public function getAppId() : ?int
     {
         return $this->appId;
     }
-    public function setAuthenticated($authenticated)
+    public function setAuthenticated(?bool $authenticated)
     {
         $this->authenticated = $authenticated;
     }
-    public function getAuthenticated()
+    public function getAuthenticated() : ?bool
     {
         return $this->authenticated;
     }
-    public function setParameters($parameters)
+    public function setParameters(?string $parameters)
     {
         $this->parameters = $parameters;
     }
-    public function getParameters()
+    public function getParameters() : ?string
     {
         return $this->parameters;
     }
@@ -173,19 +181,19 @@ class Message
      * @Type("string")
      */
     protected $message;
-    public function setSuccess($success)
+    public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
-    public function getSuccess()
+    public function getSuccess() : ?bool
     {
         return $this->success;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
@@ -231,51 +239,51 @@ class Rate
      * @Items(@Ref("PSX\Generation\Rate_Allocation"))
      */
     protected $allocation;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setPriority($priority)
+    public function setPriority(?int $priority)
     {
         $this->priority = $priority;
     }
-    public function getPriority()
+    public function getPriority() : ?int
     {
         return $this->priority;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setRateLimit($rateLimit)
+    public function setRateLimit(?int $rateLimit)
     {
         $this->rateLimit = $rateLimit;
     }
-    public function getRateLimit()
+    public function getRateLimit() : ?int
     {
         return $this->rateLimit;
     }
-    public function setTimespan($timespan)
+    public function setTimespan(?\DateInterval $timespan)
     {
         $this->timespan = $timespan;
     }
-    public function getTimespan()
+    public function getTimespan() : ?\DateInterval
     {
         return $this->timespan;
     }
-    public function setAllocation($allocation)
+    public function setAllocation(?array $allocation)
     {
         $this->allocation = $allocation;
     }
-    public function getAllocation()
+    public function getAllocation() : ?array
     {
         return $this->allocation;
     }
@@ -301,27 +309,27 @@ class Rate_Collection
      * @Items(@Ref("PSX\Generation\Rate"))
      */
     protected $entry;
-    public function setTotalResults($totalResults)
+    public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
-    public function getTotalResults()
+    public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setEntry($entry)
+    public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
-    public function getEntry()
+    public function getEntry() : ?array
     {
         return $this->entry;
     }
@@ -346,27 +354,27 @@ class GetQuery
      * @Type("string")
      */
     protected $search;
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setCount($count)
+    public function setCount(?int $count)
     {
         $this->count = $count;
     }
-    public function getCount()
+    public function getCount() : ?int
     {
         return $this->count;
     }
-    public function setSearch($search)
+    public function setSearch(?string $search)
     {
         $this->search = $search;
     }
-    public function getSearch()
+    public function getSearch() : ?string
     {
         return $this->search;
     }
@@ -396,35 +404,35 @@ class Endpoint
      * @Ref("PSX\Generation\Message")
      */
     protected $Message;
-    public function setGetQuery($GetQuery)
+    public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
-    public function getGetQuery()
+    public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
-    public function setRate_Collection($Rate_Collection)
+    public function setRate_Collection(?Rate_Collection $Rate_Collection)
     {
         $this->Rate_Collection = $Rate_Collection;
     }
-    public function getRate_Collection()
+    public function getRate_Collection() : ?Rate_Collection
     {
         return $this->Rate_Collection;
     }
-    public function setRate($Rate)
+    public function setRate(?Rate $Rate)
     {
         $this->Rate = $Rate;
     }
-    public function getRate()
+    public function getRate() : ?Rate
     {
         return $this->Rate;
     }
-    public function setMessage($Message)
+    public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
-    public function getMessage()
+    public function getMessage() : ?Message
     {
         return $this->Message;
     }

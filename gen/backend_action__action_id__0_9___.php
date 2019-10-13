@@ -45,6 +45,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Action
+     */
     public function get(): Action
     {
         $options = [
@@ -59,6 +62,10 @@ class Resource
         return $this->convertToObject($data, Action::class);
     }
 
+    /**
+     * @param Action $data
+     * @return Message
+     */
     public function put(Action $data): Message
     {
         $options = [
@@ -74,6 +81,9 @@ class Resource
         return $this->convertToObject($data, Message::class);
     }
 
+    /**
+     * @return Message
+     */
     public function delete(): Message
     {
         $options = [
@@ -132,19 +142,19 @@ class Message
      * @Type("string")
      */
     protected $message;
-    public function setSuccess($success)
+    public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
-    public function getSuccess()
+    public function getSuccess() : ?bool
     {
         return $this->success;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
@@ -185,51 +195,51 @@ class Action
      * @Ref("PSX\Generation\Action_Config")
      */
     protected $config;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setClass($class)
+    public function setClass(?string $class)
     {
         $this->class = $class;
     }
-    public function getClass()
+    public function getClass() : ?string
     {
         return $this->class;
     }
-    public function setEngine($engine)
+    public function setEngine(?string $engine)
     {
         $this->engine = $engine;
     }
-    public function getEngine()
+    public function getEngine() : ?string
     {
         return $this->engine;
     }
-    public function setConfig($config)
+    public function setConfig(?Action_Config $config)
     {
         $this->config = $config;
     }
-    public function getConfig()
+    public function getConfig() : ?Action_Config
     {
         return $this->config;
     }
@@ -249,19 +259,19 @@ class Endpoint
      * @Ref("PSX\Generation\Message")
      */
     protected $Message;
-    public function setAction($Action)
+    public function setAction(?Action $Action)
     {
         $this->Action = $Action;
     }
-    public function getAction()
+    public function getAction() : ?Action
     {
         return $this->Action;
     }
-    public function setMessage($Message)
+    public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
-    public function getMessage()
+    public function getMessage() : ?Message
     {
         return $this->Message;
     }

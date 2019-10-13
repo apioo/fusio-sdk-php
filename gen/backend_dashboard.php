@@ -39,6 +39,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Dashboard
+     */
     public function get(): Dashboard
     {
         $options = [
@@ -105,43 +108,43 @@ class Dashboard_Transaction
      * @Format("date-time")
      */
     protected $date;
-    public function setStatus($status)
+    public function setStatus(?string $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?string
     {
         return $this->status;
     }
-    public function setProvider($provider)
+    public function setProvider(?string $provider)
     {
         $this->provider = $provider;
     }
-    public function getProvider()
+    public function getProvider() : ?string
     {
         return $this->provider;
     }
-    public function setTransactionId($transactionId)
+    public function setTransactionId(?string $transactionId)
     {
         $this->transactionId = $transactionId;
     }
-    public function getTransactionId()
+    public function getTransactionId() : ?string
     {
         return $this->transactionId;
     }
-    public function setAmount($amount)
+    public function setAmount(?float $amount)
     {
         $this->amount = $amount;
     }
-    public function getAmount()
+    public function getAmount() : ?float
     {
         return $this->amount;
     }
-    public function setDate($date)
+    public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
-    public function getDate()
+    public function getDate() : ?\DateTime
     {
         return $this->date;
     }
@@ -167,27 +170,27 @@ class Dashboard_User
      * @Format("date-time")
      */
     protected $date;
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setDate($date)
+    public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
-    public function getDate()
+    public function getDate() : ?\DateTime
     {
         return $this->date;
     }
@@ -213,27 +216,27 @@ class Dashboard_Request
      * @Format("date-time")
      */
     protected $date;
-    public function setPath($path)
+    public function setPath(?string $path)
     {
         $this->path = $path;
     }
-    public function getPath()
+    public function getPath() : ?string
     {
         return $this->path;
     }
-    public function setIp($ip)
+    public function setIp(?string $ip)
     {
         $this->ip = $ip;
     }
-    public function getIp()
+    public function getIp() : ?string
     {
         return $this->ip;
     }
-    public function setDate($date)
+    public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
-    public function getDate()
+    public function getDate() : ?\DateTime
     {
         return $this->date;
     }
@@ -254,19 +257,19 @@ class Dashboard_App
      * @Format("date-time")
      */
     protected $date;
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setDate($date)
+    public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
-    public function getDate()
+    public function getDate() : ?\DateTime
     {
         return $this->date;
     }
@@ -282,11 +285,11 @@ class Dashboard_Transactions
      * @Items(@Ref("PSX\Generation\Dashboard_Transaction"))
      */
     protected $entry;
-    public function setEntry($entry)
+    public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
-    public function getEntry()
+    public function getEntry() : ?array
     {
         return $this->entry;
     }
@@ -302,11 +305,11 @@ class Dashboard_Users
      * @Items(@Ref("PSX\Generation\Dashboard_User"))
      */
     protected $entry;
-    public function setEntry($entry)
+    public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
-    public function getEntry()
+    public function getEntry() : ?array
     {
         return $this->entry;
     }
@@ -322,11 +325,11 @@ class Dashboard_Requests
      * @Items(@Ref("PSX\Generation\Dashboard_Request"))
      */
     protected $entry;
-    public function setEntry($entry)
+    public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
-    public function getEntry()
+    public function getEntry() : ?array
     {
         return $this->entry;
     }
@@ -342,11 +345,11 @@ class Dashboard_Apps
      * @Items(@Ref("PSX\Generation\Dashboard_App"))
      */
     protected $entry;
-    public function setEntry($entry)
+    public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
-    public function getEntry()
+    public function getEntry() : ?array
     {
         return $this->entry;
     }
@@ -374,27 +377,27 @@ class Statistic_Chart
      * @Items(@Schema(type="string"))
      */
     protected $series;
-    public function setLabels($labels)
+    public function setLabels(?array $labels)
     {
         $this->labels = $labels;
     }
-    public function getLabels()
+    public function getLabels() : ?array
     {
         return $this->labels;
     }
-    public function setData($data)
+    public function setData(?array $data)
     {
         $this->data = $data;
     }
-    public function getData()
+    public function getData() : ?array
     {
         return $this->data;
     }
-    public function setSeries($series)
+    public function setSeries(?array $series)
     {
         $this->series = $series;
     }
-    public function getSeries()
+    public function getSeries() : ?array
     {
         return $this->series;
     }
@@ -449,75 +452,75 @@ class Dashboard
      * @Ref("PSX\Generation\Dashboard_Transactions")
      */
     protected $latestTransactions;
-    public function setErrorsPerRoute($errorsPerRoute)
+    public function setErrorsPerRoute(?Statistic_Chart $errorsPerRoute)
     {
         $this->errorsPerRoute = $errorsPerRoute;
     }
-    public function getErrorsPerRoute()
+    public function getErrorsPerRoute() : ?Statistic_Chart
     {
         return $this->errorsPerRoute;
     }
-    public function setIncomingRequests($incomingRequests)
+    public function setIncomingRequests(?Statistic_Chart $incomingRequests)
     {
         $this->incomingRequests = $incomingRequests;
     }
-    public function getIncomingRequests()
+    public function getIncomingRequests() : ?Statistic_Chart
     {
         return $this->incomingRequests;
     }
-    public function setIncomingTransactions($incomingTransactions)
+    public function setIncomingTransactions(?Statistic_Chart $incomingTransactions)
     {
         $this->incomingTransactions = $incomingTransactions;
     }
-    public function getIncomingTransactions()
+    public function getIncomingTransactions() : ?Statistic_Chart
     {
         return $this->incomingTransactions;
     }
-    public function setMostUsedRoutes($mostUsedRoutes)
+    public function setMostUsedRoutes(?Statistic_Chart $mostUsedRoutes)
     {
         $this->mostUsedRoutes = $mostUsedRoutes;
     }
-    public function getMostUsedRoutes()
+    public function getMostUsedRoutes() : ?Statistic_Chart
     {
         return $this->mostUsedRoutes;
     }
-    public function setTimePerRoute($timePerRoute)
+    public function setTimePerRoute(?Statistic_Chart $timePerRoute)
     {
         $this->timePerRoute = $timePerRoute;
     }
-    public function getTimePerRoute()
+    public function getTimePerRoute() : ?Statistic_Chart
     {
         return $this->timePerRoute;
     }
-    public function setLatestApps($latestApps)
+    public function setLatestApps(?Dashboard_Apps $latestApps)
     {
         $this->latestApps = $latestApps;
     }
-    public function getLatestApps()
+    public function getLatestApps() : ?Dashboard_Apps
     {
         return $this->latestApps;
     }
-    public function setLatestRequests($latestRequests)
+    public function setLatestRequests(?Dashboard_Requests $latestRequests)
     {
         $this->latestRequests = $latestRequests;
     }
-    public function getLatestRequests()
+    public function getLatestRequests() : ?Dashboard_Requests
     {
         return $this->latestRequests;
     }
-    public function setLatestUsers($latestUsers)
+    public function setLatestUsers(?Dashboard_Users $latestUsers)
     {
         $this->latestUsers = $latestUsers;
     }
-    public function getLatestUsers()
+    public function getLatestUsers() : ?Dashboard_Users
     {
         return $this->latestUsers;
     }
-    public function setLatestTransactions($latestTransactions)
+    public function setLatestTransactions(?Dashboard_Transactions $latestTransactions)
     {
         $this->latestTransactions = $latestTransactions;
     }
-    public function getLatestTransactions()
+    public function getLatestTransactions() : ?Dashboard_Transactions
     {
         return $this->latestTransactions;
     }
@@ -532,11 +535,11 @@ class Endpoint
      * @Ref("PSX\Generation\Dashboard")
      */
     protected $Dashboard;
-    public function setDashboard($Dashboard)
+    public function setDashboard(?Dashboard $Dashboard)
     {
         $this->Dashboard = $Dashboard;
     }
-    public function getDashboard()
+    public function getDashboard() : ?Dashboard
     {
         return $this->Dashboard;
     }

@@ -39,6 +39,10 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @param GetQuery $query
+     * @return Consumer_Authorize_Meta
+     */
     public function get(GetQuery $query): Consumer_Authorize_Meta
     {
         $options = [
@@ -54,6 +58,10 @@ class Resource
         return $this->convertToObject($data, Consumer_Authorize_Meta::class);
     }
 
+    /**
+     * @param Consumer_Authorize_Request $data
+     * @return Consumer_Authorize_Response
+     */
     public function post(Consumer_Authorize_Request $data): Consumer_Authorize_Response
     {
         $options = [
@@ -115,35 +123,35 @@ class Consumer_Authorize_Token
      * @Type("string")
      */
     protected $scope;
-    public function setAccess_token($access_token)
+    public function setAccess_token(?string $access_token)
     {
         $this->access_token = $access_token;
     }
-    public function getAccess_token()
+    public function getAccess_token() : ?string
     {
         return $this->access_token;
     }
-    public function setToken_type($token_type)
+    public function setToken_type(?string $token_type)
     {
         $this->token_type = $token_type;
     }
-    public function getToken_type()
+    public function getToken_type() : ?string
     {
         return $this->token_type;
     }
-    public function setExpires_in($expires_in)
+    public function setExpires_in(?string $expires_in)
     {
         $this->expires_in = $expires_in;
     }
-    public function getExpires_in()
+    public function getExpires_in() : ?string
     {
         return $this->expires_in;
     }
-    public function setScope($scope)
+    public function setScope(?string $scope)
     {
         $this->scope = $scope;
     }
-    public function getScope()
+    public function getScope() : ?string
     {
         return $this->scope;
     }
@@ -169,27 +177,27 @@ class Consumer_Scope
      * @Type("string")
      */
     protected $description;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setDescription($description)
+    public function setDescription(?string $description)
     {
         $this->description = $description;
     }
-    public function getDescription()
+    public function getDescription() : ?string
     {
         return $this->description;
     }
@@ -219,35 +227,35 @@ class Consumer_Authorize_Response
      * @Type("string")
      */
     protected $redirectUri;
-    public function setType($type)
+    public function setType(?string $type)
     {
         $this->type = $type;
     }
-    public function getType()
+    public function getType() : ?string
     {
         return $this->type;
     }
-    public function setToken($token)
+    public function setToken(?Consumer_Authorize_Token $token)
     {
         $this->token = $token;
     }
-    public function getToken()
+    public function getToken() : ?Consumer_Authorize_Token
     {
         return $this->token;
     }
-    public function setCode($code)
+    public function setCode(?string $code)
     {
         $this->code = $code;
     }
-    public function getCode()
+    public function getCode() : ?string
     {
         return $this->code;
     }
-    public function setRedirectUri($redirectUri)
+    public function setRedirectUri(?string $redirectUri)
     {
         $this->redirectUri = $redirectUri;
     }
-    public function getRedirectUri()
+    public function getRedirectUri() : ?string
     {
         return $this->redirectUri;
     }
@@ -288,51 +296,51 @@ class Consumer_Authorize_Request
      * @Type("boolean")
      */
     protected $allow;
-    public function setResponseType($responseType)
+    public function setResponseType(?string $responseType)
     {
         $this->responseType = $responseType;
     }
-    public function getResponseType()
+    public function getResponseType() : ?string
     {
         return $this->responseType;
     }
-    public function setClientId($clientId)
+    public function setClientId(?string $clientId)
     {
         $this->clientId = $clientId;
     }
-    public function getClientId()
+    public function getClientId() : ?string
     {
         return $this->clientId;
     }
-    public function setRedirectUri($redirectUri)
+    public function setRedirectUri(?string $redirectUri)
     {
         $this->redirectUri = $redirectUri;
     }
-    public function getRedirectUri()
+    public function getRedirectUri() : ?string
     {
         return $this->redirectUri;
     }
-    public function setScope($scope)
+    public function setScope(?string $scope)
     {
         $this->scope = $scope;
     }
-    public function getScope()
+    public function getScope() : ?string
     {
         return $this->scope;
     }
-    public function setState($state)
+    public function setState(?string $state)
     {
         $this->state = $state;
     }
-    public function getState()
+    public function getState() : ?string
     {
         return $this->state;
     }
-    public function setAllow($allow)
+    public function setAllow(?bool $allow)
     {
         $this->allow = $allow;
     }
-    public function getAllow()
+    public function getAllow() : ?bool
     {
         return $this->allow;
     }
@@ -358,27 +366,27 @@ class Consumer_Authorize_Meta
      * @Items(@Ref("PSX\Generation\Consumer_Scope"))
      */
     protected $scopes;
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setUrl($url)
+    public function setUrl(?string $url)
     {
         $this->url = $url;
     }
-    public function getUrl()
+    public function getUrl() : ?string
     {
         return $this->url;
     }
-    public function setScopes($scopes)
+    public function setScopes(?array $scopes)
     {
         $this->scopes = $scopes;
     }
-    public function getScopes()
+    public function getScopes() : ?array
     {
         return $this->scopes;
     }
@@ -398,19 +406,19 @@ class GetQuery
      * @Type("string")
      */
     protected $scope;
-    public function setClient_id($client_id)
+    public function setClient_id(?string $client_id)
     {
         $this->client_id = $client_id;
     }
-    public function getClient_id()
+    public function getClient_id() : ?string
     {
         return $this->client_id;
     }
-    public function setScope($scope)
+    public function setScope(?string $scope)
     {
         $this->scope = $scope;
     }
-    public function getScope()
+    public function getScope() : ?string
     {
         return $this->scope;
     }
@@ -440,35 +448,35 @@ class Endpoint
      * @Ref("PSX\Generation\Consumer_Authorize_Response")
      */
     protected $Consumer_Authorize_Response;
-    public function setGetQuery($GetQuery)
+    public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
-    public function getGetQuery()
+    public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
-    public function setConsumer_Authorize_Meta($Consumer_Authorize_Meta)
+    public function setConsumer_Authorize_Meta(?Consumer_Authorize_Meta $Consumer_Authorize_Meta)
     {
         $this->Consumer_Authorize_Meta = $Consumer_Authorize_Meta;
     }
-    public function getConsumer_Authorize_Meta()
+    public function getConsumer_Authorize_Meta() : ?Consumer_Authorize_Meta
     {
         return $this->Consumer_Authorize_Meta;
     }
-    public function setConsumer_Authorize_Request($Consumer_Authorize_Request)
+    public function setConsumer_Authorize_Request(?Consumer_Authorize_Request $Consumer_Authorize_Request)
     {
         $this->Consumer_Authorize_Request = $Consumer_Authorize_Request;
     }
-    public function getConsumer_Authorize_Request()
+    public function getConsumer_Authorize_Request() : ?Consumer_Authorize_Request
     {
         return $this->Consumer_Authorize_Request;
     }
-    public function setConsumer_Authorize_Response($Consumer_Authorize_Response)
+    public function setConsumer_Authorize_Response(?Consumer_Authorize_Response $Consumer_Authorize_Response)
     {
         $this->Consumer_Authorize_Response = $Consumer_Authorize_Response;
     }
-    public function getConsumer_Authorize_Response()
+    public function getConsumer_Authorize_Response() : ?Consumer_Authorize_Response
     {
         return $this->Consumer_Authorize_Response;
     }

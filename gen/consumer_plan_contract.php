@@ -39,6 +39,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Consumer_Plan_Contract_Collection
+     */
     public function get(): Consumer_Plan_Contract_Collection
     {
         $options = [
@@ -53,6 +56,10 @@ class Resource
         return $this->convertToObject($data, Consumer_Plan_Contract_Collection::class);
     }
 
+    /**
+     * @param Consumer_Plan_Order_Request $data
+     * @return Consumer_Plan_Order_Response
+     */
     public function post(Consumer_Plan_Order_Request $data): Consumer_Plan_Order_Response
     {
         $options = [
@@ -126,51 +133,51 @@ class Consumer_Plan_Invoice
      * @Format("date-time")
      */
     protected $insertDate;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setAmount($amount)
+    public function setAmount(?float $amount)
     {
         $this->amount = $amount;
     }
-    public function getAmount()
+    public function getAmount() : ?float
     {
         return $this->amount;
     }
-    public function setPoints($points)
+    public function setPoints(?int $points)
     {
         $this->points = $points;
     }
-    public function getPoints()
+    public function getPoints() : ?int
     {
         return $this->points;
     }
-    public function setPayDate($payDate)
+    public function setPayDate(?\DateTime $payDate)
     {
         $this->payDate = $payDate;
     }
-    public function getPayDate()
+    public function getPayDate() : ?\DateTime
     {
         return $this->payDate;
     }
-    public function setInsertDate($insertDate)
+    public function setInsertDate(?\DateTime $insertDate)
     {
         $this->insertDate = $insertDate;
     }
-    public function getInsertDate()
+    public function getInsertDate() : ?\DateTime
     {
         return $this->insertDate;
     }
@@ -205,43 +212,43 @@ class Consumer_Plan
      * @Type("integer")
      */
     protected $points;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setDescription($description)
+    public function setDescription(?string $description)
     {
         $this->description = $description;
     }
-    public function getDescription()
+    public function getDescription() : ?string
     {
         return $this->description;
     }
-    public function setPrice($price)
+    public function setPrice(?float $price)
     {
         $this->price = $price;
     }
-    public function getPrice()
+    public function getPrice() : ?float
     {
         return $this->price;
     }
-    public function setPoints($points)
+    public function setPoints(?int $points)
     {
         $this->points = $points;
     }
-    public function getPoints()
+    public function getPoints() : ?int
     {
         return $this->points;
     }
@@ -293,67 +300,67 @@ class Consumer_Plan_Contract
      * @Format("date-time")
      */
     protected $insertDate;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setPlan($plan)
+    public function setPlan(?Consumer_Plan $plan)
     {
         $this->plan = $plan;
     }
-    public function getPlan()
+    public function getPlan() : ?Consumer_Plan
     {
         return $this->plan;
     }
-    public function setAmount($amount)
+    public function setAmount(?float $amount)
     {
         $this->amount = $amount;
     }
-    public function getAmount()
+    public function getAmount() : ?float
     {
         return $this->amount;
     }
-    public function setPoints($points)
+    public function setPoints(?int $points)
     {
         $this->points = $points;
     }
-    public function getPoints()
+    public function getPoints() : ?int
     {
         return $this->points;
     }
-    public function setPeriod($period)
+    public function setPeriod(?int $period)
     {
         $this->period = $period;
     }
-    public function getPeriod()
+    public function getPeriod() : ?int
     {
         return $this->period;
     }
-    public function setInvoices($invoices)
+    public function setInvoices(?array $invoices)
     {
         $this->invoices = $invoices;
     }
-    public function getInvoices()
+    public function getInvoices() : ?array
     {
         return $this->invoices;
     }
-    public function setInsertDate($insertDate)
+    public function setInsertDate(?\DateTime $insertDate)
     {
         $this->insertDate = $insertDate;
     }
-    public function getInsertDate()
+    public function getInsertDate() : ?\DateTime
     {
         return $this->insertDate;
     }
@@ -373,19 +380,19 @@ class Consumer_Plan_Order_Response
      * @Type("integer")
      */
     protected $invoiceId;
-    public function setContractId($contractId)
+    public function setContractId(?int $contractId)
     {
         $this->contractId = $contractId;
     }
-    public function getContractId()
+    public function getContractId() : ?int
     {
         return $this->contractId;
     }
-    public function setInvoiceId($invoiceId)
+    public function setInvoiceId(?int $invoiceId)
     {
         $this->invoiceId = $invoiceId;
     }
-    public function getInvoiceId()
+    public function getInvoiceId() : ?int
     {
         return $this->invoiceId;
     }
@@ -401,11 +408,11 @@ class Consumer_Plan_Order_Request
      * @Type("integer")
      */
     protected $planId;
-    public function setPlanId($planId)
+    public function setPlanId(?int $planId)
     {
         $this->planId = $planId;
     }
-    public function getPlanId()
+    public function getPlanId() : ?int
     {
         return $this->planId;
     }
@@ -431,27 +438,27 @@ class Consumer_Plan_Contract_Collection
      * @Items(@Ref("PSX\Generation\Consumer_Plan_Contract"))
      */
     protected $entry;
-    public function setTotalResults($totalResults)
+    public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
-    public function getTotalResults()
+    public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setEntry($entry)
+    public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
-    public function getEntry()
+    public function getEntry() : ?array
     {
         return $this->entry;
     }
@@ -476,27 +483,27 @@ class Endpoint
      * @Ref("PSX\Generation\Consumer_Plan_Order_Response")
      */
     protected $Consumer_Plan_Order_Response;
-    public function setConsumer_Plan_Contract_Collection($Consumer_Plan_Contract_Collection)
+    public function setConsumer_Plan_Contract_Collection(?Consumer_Plan_Contract_Collection $Consumer_Plan_Contract_Collection)
     {
         $this->Consumer_Plan_Contract_Collection = $Consumer_Plan_Contract_Collection;
     }
-    public function getConsumer_Plan_Contract_Collection()
+    public function getConsumer_Plan_Contract_Collection() : ?Consumer_Plan_Contract_Collection
     {
         return $this->Consumer_Plan_Contract_Collection;
     }
-    public function setConsumer_Plan_Order_Request($Consumer_Plan_Order_Request)
+    public function setConsumer_Plan_Order_Request(?Consumer_Plan_Order_Request $Consumer_Plan_Order_Request)
     {
         $this->Consumer_Plan_Order_Request = $Consumer_Plan_Order_Request;
     }
-    public function getConsumer_Plan_Order_Request()
+    public function getConsumer_Plan_Order_Request() : ?Consumer_Plan_Order_Request
     {
         return $this->Consumer_Plan_Order_Request;
     }
-    public function setConsumer_Plan_Order_Response($Consumer_Plan_Order_Response)
+    public function setConsumer_Plan_Order_Response(?Consumer_Plan_Order_Response $Consumer_Plan_Order_Response)
     {
         $this->Consumer_Plan_Order_Response = $Consumer_Plan_Order_Response;
     }
-    public function getConsumer_Plan_Order_Response()
+    public function getConsumer_Plan_Order_Response() : ?Consumer_Plan_Order_Response
     {
         return $this->Consumer_Plan_Order_Response;
     }

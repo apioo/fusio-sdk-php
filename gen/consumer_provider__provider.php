@@ -45,6 +45,10 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @param Consumer_User_Provider $data
+     * @return Consumer_User_JWT
+     */
     public function post(Consumer_User_Provider $data): Consumer_User_JWT
     {
         $options = [
@@ -88,11 +92,11 @@ class Consumer_User_JWT
      * @Type("string")
      */
     protected $token;
-    public function setToken($token)
+    public function setToken(?string $token)
     {
         $this->token = $token;
     }
-    public function getToken()
+    public function getToken() : ?string
     {
         return $this->token;
     }
@@ -118,27 +122,27 @@ class Consumer_User_Provider extends \ArrayObject
      * @Type("string")
      */
     protected $redirectUri;
-    public function setCode($code)
+    public function setCode(?string $code)
     {
         $this->code = $code;
     }
-    public function getCode()
+    public function getCode() : ?string
     {
         return $this->code;
     }
-    public function setClientId($clientId)
+    public function setClientId(?string $clientId)
     {
         $this->clientId = $clientId;
     }
-    public function getClientId()
+    public function getClientId() : ?string
     {
         return $this->clientId;
     }
-    public function setRedirectUri($redirectUri)
+    public function setRedirectUri(?string $redirectUri)
     {
         $this->redirectUri = $redirectUri;
     }
-    public function getRedirectUri()
+    public function getRedirectUri() : ?string
     {
         return $this->redirectUri;
     }
@@ -158,19 +162,19 @@ class Endpoint
      * @Ref("PSX\Generation\Consumer_User_JWT")
      */
     protected $Consumer_User_JWT;
-    public function setConsumer_User_Provider($Consumer_User_Provider)
+    public function setConsumer_User_Provider(?Consumer_User_Provider $Consumer_User_Provider)
     {
         $this->Consumer_User_Provider = $Consumer_User_Provider;
     }
-    public function getConsumer_User_Provider()
+    public function getConsumer_User_Provider() : ?Consumer_User_Provider
     {
         return $this->Consumer_User_Provider;
     }
-    public function setConsumer_User_JWT($Consumer_User_JWT)
+    public function setConsumer_User_JWT(?Consumer_User_JWT $Consumer_User_JWT)
     {
         $this->Consumer_User_JWT = $Consumer_User_JWT;
     }
-    public function getConsumer_User_JWT()
+    public function getConsumer_User_JWT() : ?Consumer_User_JWT
     {
         return $this->Consumer_User_JWT;
     }

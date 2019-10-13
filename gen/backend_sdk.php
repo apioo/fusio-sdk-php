@@ -1,6 +1,6 @@
 <?php
 
-namespace BackendAccountChange_password;
+namespace BackendSdk;
 
 use GuzzleHttp\Client;
 use PSX\Schema\Parser\Popo\Dumper;
@@ -33,17 +33,34 @@ class Resource
     public function __construct(string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
 
-        $this->url = $baseUrl . '/backend/account/change_password';
+        $this->url = $baseUrl . '/backend/sdk';
         $this->token = $token;
         $this->httpClient = $httpClient ? $httpClient : new Client();
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
     /**
-     * @param Account_Credentials $data
+     * @return Sdk_Types
+     */
+    public function get(): Sdk_Types
+    {
+        $options = [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $this->token
+            ],
+        ];
+
+        $response = $this->httpClient->request('GET', $this->url, $options);
+        $data     = (string) $response->getBody();
+
+        return $this->convertToObject($data, Sdk_Types::class);
+    }
+
+    /**
+     * @param Sdk_Generate $data
      * @return Message
      */
-    public function put(Account_Credentials $data): Message
+    public function post(Sdk_Generate $data): Message
     {
         $options = [
             'headers' => [
@@ -52,7 +69,7 @@ class Resource
             'json' => $this->convertToArray($data)
         ];
 
-        $response = $this->httpClient->request('PUT', $this->url, $options);
+        $response = $this->httpClient->request('POST', $this->url, $options);
         $data     = (string) $response->getBody();
 
         return $this->convertToObject($data, Message::class);
@@ -112,56 +129,43 @@ class Message
     }
 }
 /**
- * @Title("Account Credentials")
- * @Required({"oldPassword", "newPassword", "verifyPassword"})
+ * @Title("Sdk Generate")
  */
-class Account_Credentials
+class Sdk_Generate
 {
     /**
-     * @Key("oldPassword")
+     * @Key("format")
      * @Type("string")
-     * @MaxLength(128)
-     * @MinLength(8)
      */
-    protected $oldPassword;
+    protected $format;
     /**
-     * @Key("newPassword")
+     * @Key("config")
      * @Type("string")
-     * @MaxLength(128)
-     * @MinLength(8)
      */
-    protected $newPassword;
-    /**
-     * @Key("verifyPassword")
-     * @Type("string")
-     * @MaxLength(128)
-     * @MinLength(8)
-     */
-    protected $verifyPassword;
-    public function setOldPassword(?string $oldPassword)
+    protected $config;
+    public function setFormat(?string $format)
     {
-        $this->oldPassword = $oldPassword;
+        $this->format = $format;
     }
-    public function getOldPassword() : ?string
+    public function getFormat() : ?string
     {
-        return $this->oldPassword;
+        return $this->format;
     }
-    public function setNewPassword(?string $newPassword)
+    public function setConfig(?string $config)
     {
-        $this->newPassword = $newPassword;
+        $this->config = $config;
     }
-    public function getNewPassword() : ?string
+    public function getConfig() : ?string
     {
-        return $this->newPassword;
+        return $this->config;
     }
-    public function setVerifyPassword(?string $verifyPassword)
-    {
-        $this->verifyPassword = $verifyPassword;
-    }
-    public function getVerifyPassword() : ?string
-    {
-        return $this->verifyPassword;
-    }
+}
+/**
+ * @Title("Sdk Types")
+ * @AdditionalProperties(@Schema(type="string"))
+ */
+class Sdk_Types extends \ArrayObject
+{
 }
 /**
  * @Title("Endpoint")
@@ -169,22 +173,35 @@ class Account_Credentials
 class Endpoint
 {
     /**
-     * @Key("Account_Credentials")
-     * @Ref("PSX\Generation\Account_Credentials")
+     * @Key("Sdk_Types")
+     * @Ref("PSX\Generation\Sdk_Types")
      */
-    protected $Account_Credentials;
+    protected $Sdk_Types;
+    /**
+     * @Key("Sdk_Generate")
+     * @Ref("PSX\Generation\Sdk_Generate")
+     */
+    protected $Sdk_Generate;
     /**
      * @Key("Message")
      * @Ref("PSX\Generation\Message")
      */
     protected $Message;
-    public function setAccount_Credentials(?Account_Credentials $Account_Credentials)
+    public function setSdk_Types(?Sdk_Types $Sdk_Types)
     {
-        $this->Account_Credentials = $Account_Credentials;
+        $this->Sdk_Types = $Sdk_Types;
     }
-    public function getAccount_Credentials() : ?Account_Credentials
+    public function getSdk_Types() : ?Sdk_Types
     {
-        return $this->Account_Credentials;
+        return $this->Sdk_Types;
+    }
+    public function setSdk_Generate(?Sdk_Generate $Sdk_Generate)
+    {
+        $this->Sdk_Generate = $Sdk_Generate;
+    }
+    public function getSdk_Generate() : ?Sdk_Generate
+    {
+        return $this->Sdk_Generate;
     }
     public function setMessage(?Message $Message)
     {

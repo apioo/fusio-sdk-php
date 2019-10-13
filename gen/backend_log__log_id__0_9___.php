@@ -45,6 +45,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Log
+     */
     public function get(): Log
     {
         $options = [
@@ -105,35 +108,35 @@ class Log_Error
      * @Type("integer")
      */
     protected $line;
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
-    public function setTrace($trace)
+    public function setTrace(?string $trace)
     {
         $this->trace = $trace;
     }
-    public function getTrace()
+    public function getTrace() : ?string
     {
         return $this->trace;
     }
-    public function setFile($file)
+    public function setFile(?string $file)
     {
         $this->file = $file;
     }
-    public function getFile()
+    public function getFile() : ?string
     {
         return $this->file;
     }
-    public function setLine($line)
+    public function setLine(?int $line)
     {
         $this->line = $line;
     }
-    public function getLine()
+    public function getLine() : ?int
     {
         return $this->line;
     }
@@ -190,75 +193,75 @@ class Log
      * @Items(@Ref("PSX\Generation\Log_Error"))
      */
     protected $errors;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setIp($ip)
+    public function setIp(?string $ip)
     {
         $this->ip = $ip;
     }
-    public function getIp()
+    public function getIp() : ?string
     {
         return $this->ip;
     }
-    public function setUserAgent($userAgent)
+    public function setUserAgent(?string $userAgent)
     {
         $this->userAgent = $userAgent;
     }
-    public function getUserAgent()
+    public function getUserAgent() : ?string
     {
         return $this->userAgent;
     }
-    public function setMethod($method)
+    public function setMethod(?string $method)
     {
         $this->method = $method;
     }
-    public function getMethod()
+    public function getMethod() : ?string
     {
         return $this->method;
     }
-    public function setPath($path)
+    public function setPath(?string $path)
     {
         $this->path = $path;
     }
-    public function getPath()
+    public function getPath() : ?string
     {
         return $this->path;
     }
-    public function setHeader($header)
+    public function setHeader(?string $header)
     {
         $this->header = $header;
     }
-    public function getHeader()
+    public function getHeader() : ?string
     {
         return $this->header;
     }
-    public function setBody($body)
+    public function setBody(?string $body)
     {
         $this->body = $body;
     }
-    public function getBody()
+    public function getBody() : ?string
     {
         return $this->body;
     }
-    public function setDate($date)
+    public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
-    public function getDate()
+    public function getDate() : ?\DateTime
     {
         return $this->date;
     }
-    public function setErrors($errors)
+    public function setErrors(?array $errors)
     {
         $this->errors = $errors;
     }
-    public function getErrors()
+    public function getErrors() : ?array
     {
         return $this->errors;
     }
@@ -273,11 +276,11 @@ class Endpoint
      * @Ref("PSX\Generation\Log")
      */
     protected $Log;
-    public function setLog($Log)
+    public function setLog(?Log $Log)
     {
         $this->Log = $Log;
     }
-    public function getLog()
+    public function getLog() : ?Log
     {
         return $this->Log;
     }

@@ -39,6 +39,10 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @param GetQuery $query
+     * @return Statistic_Chart
+     */
     public function get(GetQuery $query): Statistic_Chart
     {
         $options = [
@@ -98,27 +102,27 @@ class Statistic_Chart
      * @Items(@Schema(type="string"))
      */
     protected $series;
-    public function setLabels($labels)
+    public function setLabels(?array $labels)
     {
         $this->labels = $labels;
     }
-    public function getLabels()
+    public function getLabels() : ?array
     {
         return $this->labels;
     }
-    public function setData($data)
+    public function setData(?array $data)
     {
         $this->data = $data;
     }
-    public function getData()
+    public function getData() : ?array
     {
         return $this->data;
     }
-    public function setSeries($series)
+    public function setSeries(?array $series)
     {
         $this->series = $series;
     }
-    public function getSeries()
+    public function getSeries() : ?array
     {
         return $this->series;
     }
@@ -190,99 +194,99 @@ class GetQuery
      * @Type("string")
      */
     protected $search;
-    public function setFrom($from)
+    public function setFrom(?\DateTime $from)
     {
         $this->from = $from;
     }
-    public function getFrom()
+    public function getFrom() : ?\DateTime
     {
         return $this->from;
     }
-    public function setTo($to)
+    public function setTo(?\DateTime $to)
     {
         $this->to = $to;
     }
-    public function getTo()
+    public function getTo() : ?\DateTime
     {
         return $this->to;
     }
-    public function setRouteId($routeId)
+    public function setRouteId(?int $routeId)
     {
         $this->routeId = $routeId;
     }
-    public function getRouteId()
+    public function getRouteId() : ?int
     {
         return $this->routeId;
     }
-    public function setAppId($appId)
+    public function setAppId(?int $appId)
     {
         $this->appId = $appId;
     }
-    public function getAppId()
+    public function getAppId() : ?int
     {
         return $this->appId;
     }
-    public function setUserId($userId)
+    public function setUserId(?int $userId)
     {
         $this->userId = $userId;
     }
-    public function getUserId()
+    public function getUserId() : ?int
     {
         return $this->userId;
     }
-    public function setIp($ip)
+    public function setIp(?string $ip)
     {
         $this->ip = $ip;
     }
-    public function getIp()
+    public function getIp() : ?string
     {
         return $this->ip;
     }
-    public function setUserAgent($userAgent)
+    public function setUserAgent(?string $userAgent)
     {
         $this->userAgent = $userAgent;
     }
-    public function getUserAgent()
+    public function getUserAgent() : ?string
     {
         return $this->userAgent;
     }
-    public function setMethod($method)
+    public function setMethod(?string $method)
     {
         $this->method = $method;
     }
-    public function getMethod()
+    public function getMethod() : ?string
     {
         return $this->method;
     }
-    public function setPath($path)
+    public function setPath(?string $path)
     {
         $this->path = $path;
     }
-    public function getPath()
+    public function getPath() : ?string
     {
         return $this->path;
     }
-    public function setHeader($header)
+    public function setHeader(?string $header)
     {
         $this->header = $header;
     }
-    public function getHeader()
+    public function getHeader() : ?string
     {
         return $this->header;
     }
-    public function setBody($body)
+    public function setBody(?string $body)
     {
         $this->body = $body;
     }
-    public function getBody()
+    public function getBody() : ?string
     {
         return $this->body;
     }
-    public function setSearch($search)
+    public function setSearch(?string $search)
     {
         $this->search = $search;
     }
-    public function getSearch()
+    public function getSearch() : ?string
     {
         return $this->search;
     }
@@ -302,19 +306,19 @@ class Endpoint
      * @Ref("PSX\Generation\Statistic_Chart")
      */
     protected $Statistic_Chart;
-    public function setGetQuery($GetQuery)
+    public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
-    public function getGetQuery()
+    public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
-    public function setStatistic_Chart($Statistic_Chart)
+    public function setStatistic_Chart(?Statistic_Chart $Statistic_Chart)
     {
         $this->Statistic_Chart = $Statistic_Chart;
     }
-    public function getStatistic_Chart()
+    public function getStatistic_Chart() : ?Statistic_Chart
     {
         return $this->Statistic_Chart;
     }

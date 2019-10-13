@@ -39,6 +39,10 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @param GetQuery $query
+     * @return Transaction_Collection
+     */
     public function get(GetQuery $query): Transaction_Collection
     {
         $options = [
@@ -112,51 +116,51 @@ class Transaction
      * @Format("date-time")
      */
     protected $insertDate;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setTransactionId($transactionId)
+    public function setTransactionId(?string $transactionId)
     {
         $this->transactionId = $transactionId;
     }
-    public function getTransactionId()
+    public function getTransactionId() : ?string
     {
         return $this->transactionId;
     }
-    public function setAmount($amount)
+    public function setAmount(?float $amount)
     {
         $this->amount = $amount;
     }
-    public function getAmount()
+    public function getAmount() : ?float
     {
         return $this->amount;
     }
-    public function setUpdateDate($updateDate)
+    public function setUpdateDate(?\DateTime $updateDate)
     {
         $this->updateDate = $updateDate;
     }
-    public function getUpdateDate()
+    public function getUpdateDate() : ?\DateTime
     {
         return $this->updateDate;
     }
-    public function setInsertDate($insertDate)
+    public function setInsertDate(?\DateTime $insertDate)
     {
         $this->insertDate = $insertDate;
     }
-    public function getInsertDate()
+    public function getInsertDate() : ?\DateTime
     {
         return $this->insertDate;
     }
@@ -182,27 +186,27 @@ class Transaction_Collection
      * @Items(@Ref("PSX\Generation\Transaction"))
      */
     protected $entry;
-    public function setTotalResults($totalResults)
+    public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
-    public function getTotalResults()
+    public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setEntry($entry)
+    public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
-    public function getEntry()
+    public function getEntry() : ?array
     {
         return $this->entry;
     }
@@ -264,83 +268,83 @@ class GetQuery
      * @Type("string")
      */
     protected $search;
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setCount($count)
+    public function setCount(?int $count)
     {
         $this->count = $count;
     }
-    public function getCount()
+    public function getCount() : ?int
     {
         return $this->count;
     }
-    public function setFrom($from)
+    public function setFrom(?\DateTime $from)
     {
         $this->from = $from;
     }
-    public function getFrom()
+    public function getFrom() : ?\DateTime
     {
         return $this->from;
     }
-    public function setTo($to)
+    public function setTo(?\DateTime $to)
     {
         $this->to = $to;
     }
-    public function getTo()
+    public function getTo() : ?\DateTime
     {
         return $this->to;
     }
-    public function setPlanId($planId)
+    public function setPlanId(?int $planId)
     {
         $this->planId = $planId;
     }
-    public function getPlanId()
+    public function getPlanId() : ?int
     {
         return $this->planId;
     }
-    public function setUserId($userId)
+    public function setUserId(?int $userId)
     {
         $this->userId = $userId;
     }
-    public function getUserId()
+    public function getUserId() : ?int
     {
         return $this->userId;
     }
-    public function setAppId($appId)
+    public function setAppId(?int $appId)
     {
         $this->appId = $appId;
     }
-    public function getAppId()
+    public function getAppId() : ?int
     {
         return $this->appId;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setProvider($provider)
+    public function setProvider(?string $provider)
     {
         $this->provider = $provider;
     }
-    public function getProvider()
+    public function getProvider() : ?string
     {
         return $this->provider;
     }
-    public function setSearch($search)
+    public function setSearch(?string $search)
     {
         $this->search = $search;
     }
-    public function getSearch()
+    public function getSearch() : ?string
     {
         return $this->search;
     }
@@ -360,19 +364,19 @@ class Endpoint
      * @Ref("PSX\Generation\Transaction_Collection")
      */
     protected $Transaction_Collection;
-    public function setGetQuery($GetQuery)
+    public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
-    public function getGetQuery()
+    public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
-    public function setTransaction_Collection($Transaction_Collection)
+    public function setTransaction_Collection(?Transaction_Collection $Transaction_Collection)
     {
         $this->Transaction_Collection = $Transaction_Collection;
     }
-    public function getTransaction_Collection()
+    public function getTransaction_Collection() : ?Transaction_Collection
     {
         return $this->Transaction_Collection;
     }

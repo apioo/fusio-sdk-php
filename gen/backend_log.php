@@ -39,6 +39,10 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @param GetQuery $query
+     * @return Log_Collection
+     */
     public function get(GetQuery $query): Log_Collection
     {
         $options = [
@@ -100,35 +104,35 @@ class Log_Error
      * @Type("integer")
      */
     protected $line;
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
-    public function setTrace($trace)
+    public function setTrace(?string $trace)
     {
         $this->trace = $trace;
     }
-    public function getTrace()
+    public function getTrace() : ?string
     {
         return $this->trace;
     }
-    public function setFile($file)
+    public function setFile(?string $file)
     {
         $this->file = $file;
     }
-    public function getFile()
+    public function getFile() : ?string
     {
         return $this->file;
     }
-    public function setLine($line)
+    public function setLine(?int $line)
     {
         $this->line = $line;
     }
-    public function getLine()
+    public function getLine() : ?int
     {
         return $this->line;
     }
@@ -185,75 +189,75 @@ class Log
      * @Items(@Ref("PSX\Generation\Log_Error"))
      */
     protected $errors;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setIp($ip)
+    public function setIp(?string $ip)
     {
         $this->ip = $ip;
     }
-    public function getIp()
+    public function getIp() : ?string
     {
         return $this->ip;
     }
-    public function setUserAgent($userAgent)
+    public function setUserAgent(?string $userAgent)
     {
         $this->userAgent = $userAgent;
     }
-    public function getUserAgent()
+    public function getUserAgent() : ?string
     {
         return $this->userAgent;
     }
-    public function setMethod($method)
+    public function setMethod(?string $method)
     {
         $this->method = $method;
     }
-    public function getMethod()
+    public function getMethod() : ?string
     {
         return $this->method;
     }
-    public function setPath($path)
+    public function setPath(?string $path)
     {
         $this->path = $path;
     }
-    public function getPath()
+    public function getPath() : ?string
     {
         return $this->path;
     }
-    public function setHeader($header)
+    public function setHeader(?string $header)
     {
         $this->header = $header;
     }
-    public function getHeader()
+    public function getHeader() : ?string
     {
         return $this->header;
     }
-    public function setBody($body)
+    public function setBody(?string $body)
     {
         $this->body = $body;
     }
-    public function getBody()
+    public function getBody() : ?string
     {
         return $this->body;
     }
-    public function setDate($date)
+    public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
-    public function getDate()
+    public function getDate() : ?\DateTime
     {
         return $this->date;
     }
-    public function setErrors($errors)
+    public function setErrors(?array $errors)
     {
         $this->errors = $errors;
     }
-    public function getErrors()
+    public function getErrors() : ?array
     {
         return $this->errors;
     }
@@ -279,27 +283,27 @@ class Log_Collection
      * @Items(@Ref("PSX\Generation\Log"))
      */
     protected $entry;
-    public function setTotalResults($totalResults)
+    public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
-    public function getTotalResults()
+    public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setEntry($entry)
+    public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
-    public function getEntry()
+    public function getEntry() : ?array
     {
         return $this->entry;
     }
@@ -381,115 +385,115 @@ class GetQuery
      * @Type("string")
      */
     protected $search;
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setCount($count)
+    public function setCount(?int $count)
     {
         $this->count = $count;
     }
-    public function getCount()
+    public function getCount() : ?int
     {
         return $this->count;
     }
-    public function setFrom($from)
+    public function setFrom(?\DateTime $from)
     {
         $this->from = $from;
     }
-    public function getFrom()
+    public function getFrom() : ?\DateTime
     {
         return $this->from;
     }
-    public function setTo($to)
+    public function setTo(?\DateTime $to)
     {
         $this->to = $to;
     }
-    public function getTo()
+    public function getTo() : ?\DateTime
     {
         return $this->to;
     }
-    public function setRouteId($routeId)
+    public function setRouteId(?int $routeId)
     {
         $this->routeId = $routeId;
     }
-    public function getRouteId()
+    public function getRouteId() : ?int
     {
         return $this->routeId;
     }
-    public function setAppId($appId)
+    public function setAppId(?int $appId)
     {
         $this->appId = $appId;
     }
-    public function getAppId()
+    public function getAppId() : ?int
     {
         return $this->appId;
     }
-    public function setUserId($userId)
+    public function setUserId(?int $userId)
     {
         $this->userId = $userId;
     }
-    public function getUserId()
+    public function getUserId() : ?int
     {
         return $this->userId;
     }
-    public function setIp($ip)
+    public function setIp(?string $ip)
     {
         $this->ip = $ip;
     }
-    public function getIp()
+    public function getIp() : ?string
     {
         return $this->ip;
     }
-    public function setUserAgent($userAgent)
+    public function setUserAgent(?string $userAgent)
     {
         $this->userAgent = $userAgent;
     }
-    public function getUserAgent()
+    public function getUserAgent() : ?string
     {
         return $this->userAgent;
     }
-    public function setMethod($method)
+    public function setMethod(?string $method)
     {
         $this->method = $method;
     }
-    public function getMethod()
+    public function getMethod() : ?string
     {
         return $this->method;
     }
-    public function setPath($path)
+    public function setPath(?string $path)
     {
         $this->path = $path;
     }
-    public function getPath()
+    public function getPath() : ?string
     {
         return $this->path;
     }
-    public function setHeader($header)
+    public function setHeader(?string $header)
     {
         $this->header = $header;
     }
-    public function getHeader()
+    public function getHeader() : ?string
     {
         return $this->header;
     }
-    public function setBody($body)
+    public function setBody(?string $body)
     {
         $this->body = $body;
     }
-    public function getBody()
+    public function getBody() : ?string
     {
         return $this->body;
     }
-    public function setSearch($search)
+    public function setSearch(?string $search)
     {
         $this->search = $search;
     }
-    public function getSearch()
+    public function getSearch() : ?string
     {
         return $this->search;
     }
@@ -509,19 +513,19 @@ class Endpoint
      * @Ref("PSX\Generation\Log_Collection")
      */
     protected $Log_Collection;
-    public function setGetQuery($GetQuery)
+    public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
-    public function getGetQuery()
+    public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
-    public function setLog_Collection($Log_Collection)
+    public function setLog_Collection(?Log_Collection $Log_Collection)
     {
         $this->Log_Collection = $Log_Collection;
     }
-    public function getLog_Collection()
+    public function getLog_Collection() : ?Log_Collection
     {
         return $this->Log_Collection;
     }

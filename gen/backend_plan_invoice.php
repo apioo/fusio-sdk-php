@@ -39,6 +39,10 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @param GetQuery $query
+     * @return Plan_Invoice_Collection
+     */
     public function get(GetQuery $query): Plan_Invoice_Collection
     {
         $options = [
@@ -54,6 +58,10 @@ class Resource
         return $this->convertToObject($data, Plan_Invoice_Collection::class);
     }
 
+    /**
+     * @param Plan_Invoice_Create $data
+     * @return Message
+     */
     public function post(Plan_Invoice_Create $data): Message
     {
         $options = [
@@ -102,19 +110,19 @@ class Plan_User
      * @Type("string")
      */
     protected $name;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
@@ -193,107 +201,107 @@ class Plan_Invoice
      * @Format("date-time")
      */
     protected $insertDate;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setContractId($contractId)
+    public function setContractId(?int $contractId)
     {
         $this->contractId = $contractId;
     }
-    public function getContractId()
+    public function getContractId() : ?int
     {
         return $this->contractId;
     }
-    public function setUser($user)
+    public function setUser(?Plan_User $user)
     {
         $this->user = $user;
     }
-    public function getUser()
+    public function getUser() : ?Plan_User
     {
         return $this->user;
     }
-    public function setTransactionId($transactionId)
+    public function setTransactionId(?int $transactionId)
     {
         $this->transactionId = $transactionId;
     }
-    public function getTransactionId()
+    public function getTransactionId() : ?int
     {
         return $this->transactionId;
     }
-    public function setPrevId($prevId)
+    public function setPrevId(?int $prevId)
     {
         $this->prevId = $prevId;
     }
-    public function getPrevId()
+    public function getPrevId() : ?int
     {
         return $this->prevId;
     }
-    public function setDisplayId($displayId)
+    public function setDisplayId(?string $displayId)
     {
         $this->displayId = $displayId;
     }
-    public function getDisplayId()
+    public function getDisplayId() : ?string
     {
         return $this->displayId;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setAmount($amount)
+    public function setAmount(?float $amount)
     {
         $this->amount = $amount;
     }
-    public function getAmount()
+    public function getAmount() : ?float
     {
         return $this->amount;
     }
-    public function setPoints($points)
+    public function setPoints(?int $points)
     {
         $this->points = $points;
     }
-    public function getPoints()
+    public function getPoints() : ?int
     {
         return $this->points;
     }
-    public function setFromDate($fromDate)
+    public function setFromDate(?\DateTime $fromDate)
     {
         $this->fromDate = $fromDate;
     }
-    public function getFromDate()
+    public function getFromDate() : ?\DateTime
     {
         return $this->fromDate;
     }
-    public function setToDate($toDate)
+    public function setToDate(?\DateTime $toDate)
     {
         $this->toDate = $toDate;
     }
-    public function getToDate()
+    public function getToDate() : ?\DateTime
     {
         return $this->toDate;
     }
-    public function setPayDate($payDate)
+    public function setPayDate(?\DateTime $payDate)
     {
         $this->payDate = $payDate;
     }
-    public function getPayDate()
+    public function getPayDate() : ?\DateTime
     {
         return $this->payDate;
     }
-    public function setInsertDate($insertDate)
+    public function setInsertDate(?\DateTime $insertDate)
     {
         $this->insertDate = $insertDate;
     }
-    public function getInsertDate()
+    public function getInsertDate() : ?\DateTime
     {
         return $this->insertDate;
     }
@@ -313,19 +321,19 @@ class Message
      * @Type("string")
      */
     protected $message;
-    public function setSuccess($success)
+    public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
-    public function getSuccess()
+    public function getSuccess() : ?bool
     {
         return $this->success;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
@@ -347,19 +355,19 @@ class Plan_Invoice_Create
      * @Format("date-time")
      */
     protected $startDate;
-    public function setContractId($contractId)
+    public function setContractId(?int $contractId)
     {
         $this->contractId = $contractId;
     }
-    public function getContractId()
+    public function getContractId() : ?int
     {
         return $this->contractId;
     }
-    public function setStartDate($startDate)
+    public function setStartDate(?\DateTime $startDate)
     {
         $this->startDate = $startDate;
     }
-    public function getStartDate()
+    public function getStartDate() : ?\DateTime
     {
         return $this->startDate;
     }
@@ -385,27 +393,27 @@ class Plan_Invoice_Collection
      * @Items(@Ref("PSX\Generation\Plan_Invoice"))
      */
     protected $entry;
-    public function setTotalResults($totalResults)
+    public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
-    public function getTotalResults()
+    public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setEntry($entry)
+    public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
-    public function getEntry()
+    public function getEntry() : ?array
     {
         return $this->entry;
     }
@@ -430,27 +438,27 @@ class GetQuery
      * @Type("string")
      */
     protected $search;
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setCount($count)
+    public function setCount(?int $count)
     {
         $this->count = $count;
     }
-    public function getCount()
+    public function getCount() : ?int
     {
         return $this->count;
     }
-    public function setSearch($search)
+    public function setSearch(?string $search)
     {
         $this->search = $search;
     }
-    public function getSearch()
+    public function getSearch() : ?string
     {
         return $this->search;
     }
@@ -480,35 +488,35 @@ class Endpoint
      * @Ref("PSX\Generation\Message")
      */
     protected $Message;
-    public function setGetQuery($GetQuery)
+    public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
-    public function getGetQuery()
+    public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
-    public function setPlan_Invoice_Collection($Plan_Invoice_Collection)
+    public function setPlan_Invoice_Collection(?Plan_Invoice_Collection $Plan_Invoice_Collection)
     {
         $this->Plan_Invoice_Collection = $Plan_Invoice_Collection;
     }
-    public function getPlan_Invoice_Collection()
+    public function getPlan_Invoice_Collection() : ?Plan_Invoice_Collection
     {
         return $this->Plan_Invoice_Collection;
     }
-    public function setPlan_Invoice_Create($Plan_Invoice_Create)
+    public function setPlan_Invoice_Create(?Plan_Invoice_Create $Plan_Invoice_Create)
     {
         $this->Plan_Invoice_Create = $Plan_Invoice_Create;
     }
-    public function getPlan_Invoice_Create()
+    public function getPlan_Invoice_Create() : ?Plan_Invoice_Create
     {
         return $this->Plan_Invoice_Create;
     }
-    public function setMessage($Message)
+    public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
-    public function getMessage()
+    public function getMessage() : ?Message
     {
         return $this->Message;
     }

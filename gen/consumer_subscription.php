@@ -39,6 +39,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Consumer_Subscription_Collection
+     */
     public function get(): Consumer_Subscription_Collection
     {
         $options = [
@@ -53,6 +56,10 @@ class Resource
         return $this->convertToObject($data, Consumer_Subscription_Collection::class);
     }
 
+    /**
+     * @param Consumer_Subscription $data
+     * @return Consumer_Message
+     */
     public function post(Consumer_Subscription $data): Consumer_Message
     {
         $options = [
@@ -114,35 +121,35 @@ class Consumer_Subscription_Response
      * @Type("string")
      */
     protected $executeDate;
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setCode($code)
+    public function setCode(?int $code)
     {
         $this->code = $code;
     }
-    public function getCode()
+    public function getCode() : ?int
     {
         return $this->code;
     }
-    public function setAttempts($attempts)
+    public function setAttempts(?int $attempts)
     {
         $this->attempts = $attempts;
     }
-    public function getAttempts()
+    public function getAttempts() : ?int
     {
         return $this->attempts;
     }
-    public function setExecuteDate($executeDate)
+    public function setExecuteDate(?string $executeDate)
     {
         $this->executeDate = $executeDate;
     }
-    public function getExecuteDate()
+    public function getExecuteDate() : ?string
     {
         return $this->executeDate;
     }
@@ -162,19 +169,19 @@ class Consumer_Message
      * @Type("string")
      */
     protected $message;
-    public function setSuccess($success)
+    public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
-    public function getSuccess()
+    public function getSuccess() : ?bool
     {
         return $this->success;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
@@ -213,43 +220,43 @@ class Consumer_Subscription
      * @Items(@Ref("PSX\Generation\Consumer_Subscription_Response"))
      */
     protected $responses;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setEvent($event)
+    public function setEvent(?string $event)
     {
         $this->event = $event;
     }
-    public function getEvent()
+    public function getEvent() : ?string
     {
         return $this->event;
     }
-    public function setEndpoint($endpoint)
+    public function setEndpoint(?string $endpoint)
     {
         $this->endpoint = $endpoint;
     }
-    public function getEndpoint()
+    public function getEndpoint() : ?string
     {
         return $this->endpoint;
     }
-    public function setResponses($responses)
+    public function setResponses(?array $responses)
     {
         $this->responses = $responses;
     }
-    public function getResponses()
+    public function getResponses() : ?array
     {
         return $this->responses;
     }
@@ -275,27 +282,27 @@ class Consumer_Subscription_Collection
      * @Items(@Ref("PSX\Generation\Consumer_Subscription"))
      */
     protected $entry;
-    public function setTotalResults($totalResults)
+    public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
-    public function getTotalResults()
+    public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setEntry($entry)
+    public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
-    public function getEntry()
+    public function getEntry() : ?array
     {
         return $this->entry;
     }
@@ -320,27 +327,27 @@ class Endpoint
      * @Ref("PSX\Generation\Consumer_Message")
      */
     protected $Consumer_Message;
-    public function setConsumer_Subscription_Collection($Consumer_Subscription_Collection)
+    public function setConsumer_Subscription_Collection(?Consumer_Subscription_Collection $Consumer_Subscription_Collection)
     {
         $this->Consumer_Subscription_Collection = $Consumer_Subscription_Collection;
     }
-    public function getConsumer_Subscription_Collection()
+    public function getConsumer_Subscription_Collection() : ?Consumer_Subscription_Collection
     {
         return $this->Consumer_Subscription_Collection;
     }
-    public function setConsumer_Subscription($Consumer_Subscription)
+    public function setConsumer_Subscription(?Consumer_Subscription $Consumer_Subscription)
     {
         $this->Consumer_Subscription = $Consumer_Subscription;
     }
-    public function getConsumer_Subscription()
+    public function getConsumer_Subscription() : ?Consumer_Subscription
     {
         return $this->Consumer_Subscription;
     }
-    public function setConsumer_Message($Consumer_Message)
+    public function setConsumer_Message(?Consumer_Message $Consumer_Message)
     {
         $this->Consumer_Message = $Consumer_Message;
     }
-    public function getConsumer_Message()
+    public function getConsumer_Message() : ?Consumer_Message
     {
         return $this->Consumer_Message;
     }

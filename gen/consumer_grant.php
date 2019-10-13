@@ -39,6 +39,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Consumer_Grant_Collection
+     */
     public function get(): Consumer_Grant_Collection
     {
         $options = [
@@ -128,75 +131,75 @@ class Consumer_App
      * @Items(@Schema(type="string"))
      */
     protected $scopes;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setUserId($userId)
+    public function setUserId(?int $userId)
     {
         $this->userId = $userId;
     }
-    public function getUserId()
+    public function getUserId() : ?int
     {
         return $this->userId;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setUrl($url)
+    public function setUrl(?string $url)
     {
         $this->url = $url;
     }
-    public function getUrl()
+    public function getUrl() : ?string
     {
         return $this->url;
     }
-    public function setAppKey($appKey)
+    public function setAppKey(?string $appKey)
     {
         $this->appKey = $appKey;
     }
-    public function getAppKey()
+    public function getAppKey() : ?string
     {
         return $this->appKey;
     }
-    public function setAppSecret($appSecret)
+    public function setAppSecret(?string $appSecret)
     {
         $this->appSecret = $appSecret;
     }
-    public function getAppSecret()
+    public function getAppSecret() : ?string
     {
         return $this->appSecret;
     }
-    public function setDate($date)
+    public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
-    public function getDate()
+    public function getDate() : ?\DateTime
     {
         return $this->date;
     }
-    public function setScopes($scopes)
+    public function setScopes(?array $scopes)
     {
         $this->scopes = $scopes;
     }
-    public function getScopes()
+    public function getScopes() : ?array
     {
         return $this->scopes;
     }
@@ -222,27 +225,27 @@ class Consumer_App_Grant
      * @Format("date-time")
      */
     protected $createDate;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setApp($app)
+    public function setApp(?Consumer_App $app)
     {
         $this->app = $app;
     }
-    public function getApp()
+    public function getApp() : ?Consumer_App
     {
         return $this->app;
     }
-    public function setCreateDate($createDate)
+    public function setCreateDate(?\DateTime $createDate)
     {
         $this->createDate = $createDate;
     }
-    public function getCreateDate()
+    public function getCreateDate() : ?\DateTime
     {
         return $this->createDate;
     }
@@ -258,11 +261,11 @@ class Consumer_Grant_Collection
      * @Items(@Ref("PSX\Generation\Consumer_App_Grant"))
      */
     protected $entry;
-    public function setEntry($entry)
+    public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
-    public function getEntry()
+    public function getEntry() : ?array
     {
         return $this->entry;
     }
@@ -277,11 +280,11 @@ class Endpoint
      * @Ref("PSX\Generation\Consumer_Grant_Collection")
      */
     protected $Consumer_Grant_Collection;
-    public function setConsumer_Grant_Collection($Consumer_Grant_Collection)
+    public function setConsumer_Grant_Collection(?Consumer_Grant_Collection $Consumer_Grant_Collection)
     {
         $this->Consumer_Grant_Collection = $Consumer_Grant_Collection;
     }
-    public function getConsumer_Grant_Collection()
+    public function getConsumer_Grant_Collection() : ?Consumer_Grant_Collection
     {
         return $this->Consumer_Grant_Collection;
     }

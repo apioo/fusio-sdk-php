@@ -45,6 +45,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return App_Token
+     */
     public function get(): App_Token
     {
         $options = [
@@ -117,51 +120,51 @@ class App_Token
      * @Format("date-time")
      */
     protected $date;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setToken($token)
+    public function setToken(?string $token)
     {
         $this->token = $token;
     }
-    public function getToken()
+    public function getToken() : ?string
     {
         return $this->token;
     }
-    public function setScope($scope)
+    public function setScope(?string $scope)
     {
         $this->scope = $scope;
     }
-    public function getScope()
+    public function getScope() : ?string
     {
         return $this->scope;
     }
-    public function setIp($ip)
+    public function setIp(?string $ip)
     {
         $this->ip = $ip;
     }
-    public function getIp()
+    public function getIp() : ?string
     {
         return $this->ip;
     }
-    public function setExpire($expire)
+    public function setExpire(?\DateTime $expire)
     {
         $this->expire = $expire;
     }
-    public function getExpire()
+    public function getExpire() : ?\DateTime
     {
         return $this->expire;
     }
-    public function setDate($date)
+    public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
-    public function getDate()
+    public function getDate() : ?\DateTime
     {
         return $this->date;
     }
@@ -176,11 +179,11 @@ class Endpoint
      * @Ref("PSX\Generation\App_Token")
      */
     protected $App_Token;
-    public function setApp_Token($App_Token)
+    public function setApp_Token(?App_Token $App_Token)
     {
         $this->App_Token = $App_Token;
     }
-    public function getApp_Token()
+    public function getApp_Token() : ?App_Token
     {
         return $this->App_Token;
     }

@@ -45,6 +45,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Export_Schema
+     */
     public function get(): Export_Schema
     {
         $options = [
@@ -106,19 +109,19 @@ class Export_Schema
      * @Ref("PSX\Generation\Export_Schema_Form")
      */
     protected $form;
-    public function setSchema($schema)
+    public function setSchema(?Export_Schema_JsonSchema $schema)
     {
         $this->schema = $schema;
     }
-    public function getSchema()
+    public function getSchema() : ?Export_Schema_JsonSchema
     {
         return $this->schema;
     }
-    public function setForm($form)
+    public function setForm(?Export_Schema_Form $form)
     {
         $this->form = $form;
     }
-    public function getForm()
+    public function getForm() : ?Export_Schema_Form
     {
         return $this->form;
     }
@@ -133,11 +136,11 @@ class Endpoint
      * @Ref("PSX\Generation\Export_Schema")
      */
     protected $Export_Schema;
-    public function setExport_Schema($Export_Schema)
+    public function setExport_Schema(?Export_Schema $Export_Schema)
     {
         $this->Export_Schema = $Export_Schema;
     }
-    public function getExport_Schema()
+    public function getExport_Schema() : ?Export_Schema
     {
         return $this->Export_Schema;
     }

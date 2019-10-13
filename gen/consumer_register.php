@@ -39,6 +39,10 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @param Consumer_User_Register $data
+     * @return Consumer_Message
+     */
     public function post(Consumer_User_Register $data): Consumer_Message
     {
         $options = [
@@ -87,19 +91,19 @@ class Consumer_Message
      * @Type("string")
      */
     protected $message;
-    public function setSuccess($success)
+    public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
-    public function getSuccess()
+    public function getSuccess() : ?bool
     {
         return $this->success;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
@@ -130,35 +134,35 @@ class Consumer_User_Register
      * @Type("string")
      */
     protected $captcha;
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setEmail($email)
+    public function setEmail(?string $email)
     {
         $this->email = $email;
     }
-    public function getEmail()
+    public function getEmail() : ?string
     {
         return $this->email;
     }
-    public function setPassword($password)
+    public function setPassword(?string $password)
     {
         $this->password = $password;
     }
-    public function getPassword()
+    public function getPassword() : ?string
     {
         return $this->password;
     }
-    public function setCaptcha($captcha)
+    public function setCaptcha(?string $captcha)
     {
         $this->captcha = $captcha;
     }
-    public function getCaptcha()
+    public function getCaptcha() : ?string
     {
         return $this->captcha;
     }
@@ -178,19 +182,19 @@ class Endpoint
      * @Ref("PSX\Generation\Consumer_Message")
      */
     protected $Consumer_Message;
-    public function setConsumer_User_Register($Consumer_User_Register)
+    public function setConsumer_User_Register(?Consumer_User_Register $Consumer_User_Register)
     {
         $this->Consumer_User_Register = $Consumer_User_Register;
     }
-    public function getConsumer_User_Register()
+    public function getConsumer_User_Register() : ?Consumer_User_Register
     {
         return $this->Consumer_User_Register;
     }
-    public function setConsumer_Message($Consumer_Message)
+    public function setConsumer_Message(?Consumer_Message $Consumer_Message)
     {
         $this->Consumer_Message = $Consumer_Message;
     }
-    public function getConsumer_Message()
+    public function getConsumer_Message() : ?Consumer_Message
     {
         return $this->Consumer_Message;
     }

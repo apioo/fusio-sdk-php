@@ -39,6 +39,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Action_Index
+     */
     public function get(): Action_Index
     {
         $options = [
@@ -89,19 +92,19 @@ class Action_Action
      * @Type("string")
      */
     protected $class;
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setClass($class)
+    public function setClass(?string $class)
     {
         $this->class = $class;
     }
-    public function getClass()
+    public function getClass() : ?string
     {
         return $this->class;
     }
@@ -117,11 +120,11 @@ class Action_Index
      * @Items(@Ref("PSX\Generation\Action_Action"))
      */
     protected $actions;
-    public function setActions($actions)
+    public function setActions(?array $actions)
     {
         $this->actions = $actions;
     }
-    public function getActions()
+    public function getActions() : ?array
     {
         return $this->actions;
     }
@@ -136,11 +139,11 @@ class Endpoint
      * @Ref("PSX\Generation\Action_Index")
      */
     protected $Action_Index;
-    public function setAction_Index($Action_Index)
+    public function setAction_Index(?Action_Index $Action_Index)
     {
         $this->Action_Index = $Action_Index;
     }
-    public function getAction_Index()
+    public function getAction_Index() : ?Action_Index
     {
         return $this->Action_Index;
     }

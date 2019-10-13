@@ -39,6 +39,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Consumer_Transaction_Collection
+     */
     public function get(): Consumer_Transaction_Collection
     {
         $options = [
@@ -111,51 +114,51 @@ class Consumer_Transaction
      * @Format("date-time")
      */
     protected $insertDate;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setTransactionId($transactionId)
+    public function setTransactionId(?string $transactionId)
     {
         $this->transactionId = $transactionId;
     }
-    public function getTransactionId()
+    public function getTransactionId() : ?string
     {
         return $this->transactionId;
     }
-    public function setAmount($amount)
+    public function setAmount(?float $amount)
     {
         $this->amount = $amount;
     }
-    public function getAmount()
+    public function getAmount() : ?float
     {
         return $this->amount;
     }
-    public function setUpdateDate($updateDate)
+    public function setUpdateDate(?\DateTime $updateDate)
     {
         $this->updateDate = $updateDate;
     }
-    public function getUpdateDate()
+    public function getUpdateDate() : ?\DateTime
     {
         return $this->updateDate;
     }
-    public function setInsertDate($insertDate)
+    public function setInsertDate(?\DateTime $insertDate)
     {
         $this->insertDate = $insertDate;
     }
-    public function getInsertDate()
+    public function getInsertDate() : ?\DateTime
     {
         return $this->insertDate;
     }
@@ -181,27 +184,27 @@ class Consumer_Transaction_Collection
      * @Items(@Ref("PSX\Generation\Consumer_Transaction"))
      */
     protected $entry;
-    public function setTotalResults($totalResults)
+    public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
-    public function getTotalResults()
+    public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setEntry($entry)
+    public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
-    public function getEntry()
+    public function getEntry() : ?array
     {
         return $this->entry;
     }
@@ -216,11 +219,11 @@ class Endpoint
      * @Ref("PSX\Generation\Consumer_Transaction_Collection")
      */
     protected $Consumer_Transaction_Collection;
-    public function setConsumer_Transaction_Collection($Consumer_Transaction_Collection)
+    public function setConsumer_Transaction_Collection(?Consumer_Transaction_Collection $Consumer_Transaction_Collection)
     {
         $this->Consumer_Transaction_Collection = $Consumer_Transaction_Collection;
     }
-    public function getConsumer_Transaction_Collection()
+    public function getConsumer_Transaction_Collection() : ?Consumer_Transaction_Collection
     {
         return $this->Consumer_Transaction_Collection;
     }

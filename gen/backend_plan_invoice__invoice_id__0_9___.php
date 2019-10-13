@@ -45,6 +45,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Plan_Invoice
+     */
     public function get(): Plan_Invoice
     {
         $options = [
@@ -59,6 +62,10 @@ class Resource
         return $this->convertToObject($data, Plan_Invoice::class);
     }
 
+    /**
+     * @param Plan_Invoice $data
+     * @return Message
+     */
     public function put(Plan_Invoice $data): Message
     {
         $options = [
@@ -74,6 +81,9 @@ class Resource
         return $this->convertToObject($data, Message::class);
     }
 
+    /**
+     * @return Message
+     */
     public function delete(): Message
     {
         $options = [
@@ -124,19 +134,19 @@ class Plan_User
      * @Type("string")
      */
     protected $name;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
@@ -156,19 +166,19 @@ class Message
      * @Type("string")
      */
     protected $message;
-    public function setSuccess($success)
+    public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
-    public function getSuccess()
+    public function getSuccess() : ?bool
     {
         return $this->success;
     }
-    public function setMessage($message)
+    public function setMessage(?string $message)
     {
         $this->message = $message;
     }
-    public function getMessage()
+    public function getMessage() : ?string
     {
         return $this->message;
     }
@@ -247,107 +257,107 @@ class Plan_Invoice
      * @Format("date-time")
      */
     protected $insertDate;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setContractId($contractId)
+    public function setContractId(?int $contractId)
     {
         $this->contractId = $contractId;
     }
-    public function getContractId()
+    public function getContractId() : ?int
     {
         return $this->contractId;
     }
-    public function setUser($user)
+    public function setUser(?Plan_User $user)
     {
         $this->user = $user;
     }
-    public function getUser()
+    public function getUser() : ?Plan_User
     {
         return $this->user;
     }
-    public function setTransactionId($transactionId)
+    public function setTransactionId(?int $transactionId)
     {
         $this->transactionId = $transactionId;
     }
-    public function getTransactionId()
+    public function getTransactionId() : ?int
     {
         return $this->transactionId;
     }
-    public function setPrevId($prevId)
+    public function setPrevId(?int $prevId)
     {
         $this->prevId = $prevId;
     }
-    public function getPrevId()
+    public function getPrevId() : ?int
     {
         return $this->prevId;
     }
-    public function setDisplayId($displayId)
+    public function setDisplayId(?string $displayId)
     {
         $this->displayId = $displayId;
     }
-    public function getDisplayId()
+    public function getDisplayId() : ?string
     {
         return $this->displayId;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setAmount($amount)
+    public function setAmount(?float $amount)
     {
         $this->amount = $amount;
     }
-    public function getAmount()
+    public function getAmount() : ?float
     {
         return $this->amount;
     }
-    public function setPoints($points)
+    public function setPoints(?int $points)
     {
         $this->points = $points;
     }
-    public function getPoints()
+    public function getPoints() : ?int
     {
         return $this->points;
     }
-    public function setFromDate($fromDate)
+    public function setFromDate(?\DateTime $fromDate)
     {
         $this->fromDate = $fromDate;
     }
-    public function getFromDate()
+    public function getFromDate() : ?\DateTime
     {
         return $this->fromDate;
     }
-    public function setToDate($toDate)
+    public function setToDate(?\DateTime $toDate)
     {
         $this->toDate = $toDate;
     }
-    public function getToDate()
+    public function getToDate() : ?\DateTime
     {
         return $this->toDate;
     }
-    public function setPayDate($payDate)
+    public function setPayDate(?\DateTime $payDate)
     {
         $this->payDate = $payDate;
     }
-    public function getPayDate()
+    public function getPayDate() : ?\DateTime
     {
         return $this->payDate;
     }
-    public function setInsertDate($insertDate)
+    public function setInsertDate(?\DateTime $insertDate)
     {
         $this->insertDate = $insertDate;
     }
-    public function getInsertDate()
+    public function getInsertDate() : ?\DateTime
     {
         return $this->insertDate;
     }
@@ -367,19 +377,19 @@ class Endpoint
      * @Ref("PSX\Generation\Message")
      */
     protected $Message;
-    public function setPlan_Invoice($Plan_Invoice)
+    public function setPlan_Invoice(?Plan_Invoice $Plan_Invoice)
     {
         $this->Plan_Invoice = $Plan_Invoice;
     }
-    public function getPlan_Invoice()
+    public function getPlan_Invoice() : ?Plan_Invoice
     {
         return $this->Plan_Invoice;
     }
-    public function setMessage($Message)
+    public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
-    public function getMessage()
+    public function getMessage() : ?Message
     {
         return $this->Message;
     }

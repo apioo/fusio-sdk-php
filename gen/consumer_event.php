@@ -39,6 +39,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Consumer_Event_Collection
+     */
     public function get(): Consumer_Event_Collection
     {
         $options = [
@@ -95,27 +98,27 @@ class Consumer_Event
      * @Type("string")
      */
     protected $description;
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
     }
-    public function getId()
+    public function getId() : ?int
     {
         return $this->id;
     }
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
-    public function setDescription($description)
+    public function setDescription(?string $description)
     {
         $this->description = $description;
     }
-    public function getDescription()
+    public function getDescription() : ?string
     {
         return $this->description;
     }
@@ -141,27 +144,27 @@ class Consumer_Event_Collection
      * @Items(@Ref("PSX\Generation\Consumer_Event"))
      */
     protected $entry;
-    public function setTotalResults($totalResults)
+    public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
-    public function getTotalResults()
+    public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
-    public function setStartIndex($startIndex)
+    public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex()
+    public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
-    public function setEntry($entry)
+    public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
-    public function getEntry()
+    public function getEntry() : ?array
     {
         return $this->entry;
     }
@@ -176,11 +179,11 @@ class Endpoint
      * @Ref("PSX\Generation\Consumer_Event_Collection")
      */
     protected $Consumer_Event_Collection;
-    public function setConsumer_Event_Collection($Consumer_Event_Collection)
+    public function setConsumer_Event_Collection(?Consumer_Event_Collection $Consumer_Event_Collection)
     {
         $this->Consumer_Event_Collection = $Consumer_Event_Collection;
     }
-    public function getConsumer_Event_Collection()
+    public function getConsumer_Event_Collection() : ?Consumer_Event_Collection
     {
         return $this->Consumer_Event_Collection;
     }

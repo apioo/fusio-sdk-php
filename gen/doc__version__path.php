@@ -51,6 +51,9 @@ class Resource
         $this->schemaManager = $schemaManager ? $schemaManager : new SchemaManager();
     }
 
+    /**
+     * @return Documentation_Detail
+     */
     public function get(): Documentation_Detail
     {
         $options = [
@@ -91,6 +94,38 @@ class Documentation_Method_Responses extends \ArrayObject
 {
 }
 /**
+ * @Title("Discovery Link")
+ */
+class Discovery_Link
+{
+    /**
+     * @Key("rel")
+     * @Type("string")
+     */
+    protected $rel;
+    /**
+     * @Key("href")
+     * @Type("string")
+     */
+    protected $href;
+    public function setRel(?string $rel)
+    {
+        $this->rel = $rel;
+    }
+    public function getRel() : ?string
+    {
+        return $this->rel;
+    }
+    public function setHref(?string $href)
+    {
+        $this->href = $href;
+    }
+    public function getHref() : ?string
+    {
+        return $this->href;
+    }
+}
+/**
  * @Title("Documentation Method")
  */
 class Documentation_Method
@@ -115,69 +150,37 @@ class Documentation_Method
      * @Ref("PSX\Generation\Documentation_Method_Responses")
      */
     protected $responses;
-    public function setDescription($description)
+    public function setDescription(?string $description)
     {
         $this->description = $description;
     }
-    public function getDescription()
+    public function getDescription() : ?string
     {
         return $this->description;
     }
-    public function setQueryParameters($queryParameters)
+    public function setQueryParameters(?string $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }
-    public function getQueryParameters()
+    public function getQueryParameters() : ?string
     {
         return $this->queryParameters;
     }
-    public function setRequest($request)
+    public function setRequest(?string $request)
     {
         $this->request = $request;
     }
-    public function getRequest()
+    public function getRequest() : ?string
     {
         return $this->request;
     }
-    public function setResponses($responses)
+    public function setResponses(?Documentation_Method_Responses $responses)
     {
         $this->responses = $responses;
     }
-    public function getResponses()
+    public function getResponses() : ?Documentation_Method_Responses
     {
         return $this->responses;
-    }
-}
-/**
- * @Title("Discovery Link")
- */
-class Discovery_Link
-{
-    /**
-     * @Key("rel")
-     * @Type("string")
-     */
-    protected $rel;
-    /**
-     * @Key("href")
-     * @Type("string")
-     */
-    protected $href;
-    public function setRel($rel)
-    {
-        $this->rel = $rel;
-    }
-    public function getRel()
-    {
-        return $this->rel;
-    }
-    public function setHref($href)
-    {
-        $this->href = $href;
-    }
-    public function getHref()
-    {
-        return $this->href;
     }
 }
 /**
@@ -240,67 +243,67 @@ class Documentation_Detail
      * @Items(@Ref("PSX\Generation\Discovery_Link"))
      */
     protected $links;
-    public function setPath($path)
+    public function setPath(?string $path)
     {
         $this->path = $path;
     }
-    public function getPath()
+    public function getPath() : ?string
     {
         return $this->path;
     }
-    public function setVersion($version)
+    public function setVersion(?string $version)
     {
         $this->version = $version;
     }
-    public function getVersion()
+    public function getVersion() : ?string
     {
         return $this->version;
     }
-    public function setStatus($status)
+    public function setStatus(?int $status)
     {
         $this->status = $status;
     }
-    public function getStatus()
+    public function getStatus() : ?int
     {
         return $this->status;
     }
-    public function setDescription($description)
+    public function setDescription(?string $description)
     {
         $this->description = $description;
     }
-    public function getDescription()
+    public function getDescription() : ?string
     {
         return $this->description;
     }
-    public function setSchema($schema)
+    public function setSchema(?Documentation_Schema $schema)
     {
         $this->schema = $schema;
     }
-    public function getSchema()
+    public function getSchema() : ?Documentation_Schema
     {
         return $this->schema;
     }
-    public function setPathParameters($pathParameters)
+    public function setPathParameters(?string $pathParameters)
     {
         $this->pathParameters = $pathParameters;
     }
-    public function getPathParameters()
+    public function getPathParameters() : ?string
     {
         return $this->pathParameters;
     }
-    public function setMethods($methods)
+    public function setMethods(?Documentation_Methods $methods)
     {
         $this->methods = $methods;
     }
-    public function getMethods()
+    public function getMethods() : ?Documentation_Methods
     {
         return $this->methods;
     }
-    public function setLinks($links)
+    public function setLinks(?array $links)
     {
         $this->links = $links;
     }
-    public function getLinks()
+    public function getLinks() : ?array
     {
         return $this->links;
     }
@@ -315,11 +318,11 @@ class Endpoint
      * @Ref("PSX\Generation\Documentation_Detail")
      */
     protected $Documentation_Detail;
-    public function setDocumentation_Detail($Documentation_Detail)
+    public function setDocumentation_Detail(?Documentation_Detail $Documentation_Detail)
     {
         $this->Documentation_Detail = $Documentation_Detail;
     }
-    public function getDocumentation_Detail()
+    public function getDocumentation_Detail() : ?Documentation_Detail
     {
         return $this->Documentation_Detail;
     }
