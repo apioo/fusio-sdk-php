@@ -41,12 +41,17 @@ class Resource
 
     /**
      * @param Authorization_code|Password|Client_credentials|Refresh_token $data
+     * @param string $clientId
+     * @param string $clientSecret
      * @return Access_token
      */
-    public function post( $data): Access_token
+    public function post($data, string $clientId, string $clientSecret): Access_token
     {
         $options = [
-            'json' => $this->convertToArray($data)
+            'form_params' => $this->convertToArray($data)->getProperties(),
+            'headers' => [
+                'Authorization' => 'Basic ' . base64_encode($clientId . ':' . $clientSecret)
+            ],
         ];
 
         $response = $this->httpClient->request('POST', $this->url, $options);
