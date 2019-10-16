@@ -3,6 +3,7 @@
 namespace BackendCronjobCronjob_id09;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -144,34 +145,58 @@ class Cronjob_Error
      * @Type("integer")
      */
     protected $line;
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
     }
+    /**
+     * @param string $trace
+     */
     public function setTrace(?string $trace)
     {
         $this->trace = $trace;
     }
+    /**
+     * @return string
+     */
     public function getTrace() : ?string
     {
         return $this->trace;
     }
+    /**
+     * @param string $file
+     */
     public function setFile(?string $file)
     {
         $this->file = $file;
     }
+    /**
+     * @return string
+     */
     public function getFile() : ?string
     {
         return $this->file;
     }
+    /**
+     * @param int $line
+     */
     public function setLine(?int $line)
     {
         $this->line = $line;
     }
+    /**
+     * @return int
+     */
     public function getLine() : ?int
     {
         return $this->line;
@@ -192,18 +217,30 @@ class Message
      * @Type("string")
      */
     protected $message;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
@@ -249,61 +286,103 @@ class Cronjob
     /**
      * @Key("errors")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Cronjob_Error"))
+     * @Items(@Ref("BackendCronjobCronjob_id09\Cronjob_Error"))
      */
     protected $errors;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $cron
+     */
     public function setCron(?string $cron)
     {
         $this->cron = $cron;
     }
+    /**
+     * @return string
+     */
     public function getCron() : ?string
     {
         return $this->cron;
     }
+    /**
+     * @param int $action
+     */
     public function setAction(?int $action)
     {
         $this->action = $action;
     }
+    /**
+     * @return int
+     */
     public function getAction() : ?int
     {
         return $this->action;
     }
+    /**
+     * @param \DateTime $executeDate
+     */
     public function setExecuteDate(?\DateTime $executeDate)
     {
         $this->executeDate = $executeDate;
     }
+    /**
+     * @return \DateTime
+     */
     public function getExecuteDate() : ?\DateTime
     {
         return $this->executeDate;
     }
+    /**
+     * @param int $exitCode
+     */
     public function setExitCode(?int $exitCode)
     {
         $this->exitCode = $exitCode;
     }
+    /**
+     * @return int
+     */
     public function getExitCode() : ?int
     {
         return $this->exitCode;
     }
+    /**
+     * @param array<Cronjob_Error> $errors
+     */
     public function setErrors(?array $errors)
     {
         $this->errors = $errors;
     }
+    /**
+     * @return array<Cronjob_Error>
+     */
     public function getErrors() : ?array
     {
         return $this->errors;
@@ -316,26 +395,38 @@ class Endpoint
 {
     /**
      * @Key("Cronjob")
-     * @Ref("PSX\Generation\Cronjob")
+     * @Ref("BackendCronjobCronjob_id09\Cronjob")
      */
     protected $Cronjob;
     /**
      * @Key("Message")
-     * @Ref("PSX\Generation\Message")
+     * @Ref("BackendCronjobCronjob_id09\Message")
      */
     protected $Message;
+    /**
+     * @param Cronjob $Cronjob
+     */
     public function setCronjob(?Cronjob $Cronjob)
     {
         $this->Cronjob = $Cronjob;
     }
+    /**
+     * @return Cronjob
+     */
     public function getCronjob() : ?Cronjob
     {
         return $this->Cronjob;
     }
+    /**
+     * @param Message $Message
+     */
     public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
+    /**
+     * @return Message
+     */
     public function getMessage() : ?Message
     {
         return $this->Message;

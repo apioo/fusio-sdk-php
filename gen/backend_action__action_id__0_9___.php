@@ -3,6 +3,7 @@
 namespace BackendActionAction_id09;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -142,18 +143,30 @@ class Message
      * @Type("string")
      */
     protected $message;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
@@ -192,53 +205,89 @@ class Action
     protected $engine;
     /**
      * @Key("config")
-     * @Ref("PSX\Generation\Action_Config")
+     * @Ref("BackendActionAction_id09\Action_Config")
      */
     protected $config;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param int $status
+     */
     public function setStatus(?int $status)
     {
         $this->status = $status;
     }
+    /**
+     * @return int
+     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $class
+     */
     public function setClass(?string $class)
     {
         $this->class = $class;
     }
+    /**
+     * @return string
+     */
     public function getClass() : ?string
     {
         return $this->class;
     }
+    /**
+     * @param string $engine
+     */
     public function setEngine(?string $engine)
     {
         $this->engine = $engine;
     }
+    /**
+     * @return string
+     */
     public function getEngine() : ?string
     {
         return $this->engine;
     }
+    /**
+     * @param Action_Config $config
+     */
     public function setConfig(?Action_Config $config)
     {
         $this->config = $config;
     }
+    /**
+     * @return Action_Config
+     */
     public function getConfig() : ?Action_Config
     {
         return $this->config;
@@ -251,26 +300,38 @@ class Endpoint
 {
     /**
      * @Key("Action")
-     * @Ref("PSX\Generation\Action")
+     * @Ref("BackendActionAction_id09\Action")
      */
     protected $Action;
     /**
      * @Key("Message")
-     * @Ref("PSX\Generation\Message")
+     * @Ref("BackendActionAction_id09\Message")
      */
     protected $Message;
+    /**
+     * @param Action $Action
+     */
     public function setAction(?Action $Action)
     {
         $this->Action = $Action;
     }
+    /**
+     * @return Action
+     */
     public function getAction() : ?Action
     {
         return $this->Action;
     }
+    /**
+     * @param Message $Message
+     */
     public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
+    /**
+     * @return Message
+     */
     public function getMessage() : ?Message
     {
         return $this->Message;

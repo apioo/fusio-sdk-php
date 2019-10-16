@@ -3,6 +3,7 @@
 namespace BackendSchemaSchema_id09;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -141,18 +142,30 @@ class Message
      * @Type("string")
      */
     protected $message;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
@@ -181,37 +194,61 @@ class Schema
     protected $name;
     /**
      * @Key("source")
-     * @Ref("PSX\Generation\Schema_Source")
+     * @Ref("BackendSchemaSchema_id09\Schema_Source")
      */
     protected $source;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param int $status
+     */
     public function setStatus(?int $status)
     {
         $this->status = $status;
     }
+    /**
+     * @return int
+     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param Schema_Source $source
+     */
     public function setSource(?Schema_Source $source)
     {
         $this->source = $source;
     }
+    /**
+     * @return Schema_Source
+     */
     public function getSource() : ?Schema_Source
     {
         return $this->source;
@@ -224,26 +261,38 @@ class Endpoint
 {
     /**
      * @Key("Schema")
-     * @Ref("PSX\Generation\Schema")
+     * @Ref("BackendSchemaSchema_id09\Schema")
      */
     protected $Schema;
     /**
      * @Key("Message")
-     * @Ref("PSX\Generation\Message")
+     * @Ref("BackendSchemaSchema_id09\Message")
      */
     protected $Message;
+    /**
+     * @param Schema $Schema
+     */
     public function setSchema(?Schema $Schema)
     {
         $this->Schema = $Schema;
     }
+    /**
+     * @return Schema
+     */
     public function getSchema() : ?Schema
     {
         return $this->Schema;
     }
+    /**
+     * @param Message $Message
+     */
     public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
+    /**
+     * @return Message
+     */
     public function getMessage() : ?Message
     {
         return $this->Message;

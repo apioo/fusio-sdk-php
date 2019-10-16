@@ -3,6 +3,7 @@
 namespace BackendAppToken;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -116,50 +117,86 @@ class App_Token
      * @Format("date-time")
      */
     protected $date;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param string $token
+     */
     public function setToken(?string $token)
     {
         $this->token = $token;
     }
+    /**
+     * @return string
+     */
     public function getToken() : ?string
     {
         return $this->token;
     }
+    /**
+     * @param string $scope
+     */
     public function setScope(?string $scope)
     {
         $this->scope = $scope;
     }
+    /**
+     * @return string
+     */
     public function getScope() : ?string
     {
         return $this->scope;
     }
+    /**
+     * @param string $ip
+     */
     public function setIp(?string $ip)
     {
         $this->ip = $ip;
     }
+    /**
+     * @return string
+     */
     public function getIp() : ?string
     {
         return $this->ip;
     }
+    /**
+     * @param \DateTime $expire
+     */
     public function setExpire(?\DateTime $expire)
     {
         $this->expire = $expire;
     }
+    /**
+     * @return \DateTime
+     */
     public function getExpire() : ?\DateTime
     {
         return $this->expire;
     }
+    /**
+     * @param \DateTime $date
+     */
     public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
+    /**
+     * @return \DateTime
+     */
     public function getDate() : ?\DateTime
     {
         return $this->date;
@@ -183,29 +220,47 @@ class App_Token_Collection
     /**
      * @Key("entry")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\App_Token"))
+     * @Items(@Ref("BackendAppToken\App_Token"))
      */
     protected $entry;
+    /**
+     * @param int $totalResults
+     */
     public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
+    /**
+     * @return int
+     */
     public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
+    /**
+     * @param int $startIndex
+     */
     public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
+    /**
+     * @return int
+     */
     public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
+    /**
+     * @param array<App_Token> $entry
+     */
     public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
+    /**
+     * @return array<App_Token>
+     */
     public function getEntry() : ?array
     {
         return $this->entry;
@@ -268,82 +323,142 @@ class GetQuery
      * @Type("string")
      */
     protected $search;
+    /**
+     * @param int $startIndex
+     */
     public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
+    /**
+     * @return int
+     */
     public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
+    /**
+     * @param int $count
+     */
     public function setCount(?int $count)
     {
         $this->count = $count;
     }
+    /**
+     * @return int
+     */
     public function getCount() : ?int
     {
         return $this->count;
     }
+    /**
+     * @param \DateTime $from
+     */
     public function setFrom(?\DateTime $from)
     {
         $this->from = $from;
     }
+    /**
+     * @return \DateTime
+     */
     public function getFrom() : ?\DateTime
     {
         return $this->from;
     }
+    /**
+     * @param \DateTime $to
+     */
     public function setTo(?\DateTime $to)
     {
         $this->to = $to;
     }
+    /**
+     * @return \DateTime
+     */
     public function getTo() : ?\DateTime
     {
         return $this->to;
     }
+    /**
+     * @param int $appId
+     */
     public function setAppId(?int $appId)
     {
         $this->appId = $appId;
     }
+    /**
+     * @return int
+     */
     public function getAppId() : ?int
     {
         return $this->appId;
     }
+    /**
+     * @param int $userId
+     */
     public function setUserId(?int $userId)
     {
         $this->userId = $userId;
     }
+    /**
+     * @return int
+     */
     public function getUserId() : ?int
     {
         return $this->userId;
     }
+    /**
+     * @param int $status
+     */
     public function setStatus(?int $status)
     {
         $this->status = $status;
     }
+    /**
+     * @return int
+     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
+    /**
+     * @param string $scope
+     */
     public function setScope(?string $scope)
     {
         $this->scope = $scope;
     }
+    /**
+     * @return string
+     */
     public function getScope() : ?string
     {
         return $this->scope;
     }
+    /**
+     * @param string $ip
+     */
     public function setIp(?string $ip)
     {
         $this->ip = $ip;
     }
+    /**
+     * @return string
+     */
     public function getIp() : ?string
     {
         return $this->ip;
     }
+    /**
+     * @param string $search
+     */
     public function setSearch(?string $search)
     {
         $this->search = $search;
     }
+    /**
+     * @return string
+     */
     public function getSearch() : ?string
     {
         return $this->search;
@@ -356,26 +471,38 @@ class Endpoint
 {
     /**
      * @Key("GetQuery")
-     * @Ref("PSX\Generation\GetQuery")
+     * @Ref("BackendAppToken\GetQuery")
      */
     protected $GetQuery;
     /**
      * @Key("App_Token_Collection")
-     * @Ref("PSX\Generation\App_Token_Collection")
+     * @Ref("BackendAppToken\App_Token_Collection")
      */
     protected $App_Token_Collection;
+    /**
+     * @param GetQuery $GetQuery
+     */
     public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
+    /**
+     * @return GetQuery
+     */
     public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
+    /**
+     * @param App_Token_Collection $App_Token_Collection
+     */
     public function setApp_Token_Collection(?App_Token_Collection $App_Token_Collection)
     {
         $this->App_Token_Collection = $App_Token_Collection;
     }
+    /**
+     * @return App_Token_Collection
+     */
     public function getApp_Token_Collection() : ?App_Token_Collection
     {
         return $this->App_Token_Collection;

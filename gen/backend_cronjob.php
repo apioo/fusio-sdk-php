@@ -3,6 +3,7 @@
 namespace BackendCronjob;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -120,34 +121,58 @@ class Cronjob_Error
      * @Type("integer")
      */
     protected $line;
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
     }
+    /**
+     * @param string $trace
+     */
     public function setTrace(?string $trace)
     {
         $this->trace = $trace;
     }
+    /**
+     * @return string
+     */
     public function getTrace() : ?string
     {
         return $this->trace;
     }
+    /**
+     * @param string $file
+     */
     public function setFile(?string $file)
     {
         $this->file = $file;
     }
+    /**
+     * @return string
+     */
     public function getFile() : ?string
     {
         return $this->file;
     }
+    /**
+     * @param int $line
+     */
     public function setLine(?int $line)
     {
         $this->line = $line;
     }
+    /**
+     * @return int
+     */
     public function getLine() : ?int
     {
         return $this->line;
@@ -168,18 +193,30 @@ class Message
      * @Type("string")
      */
     protected $message;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
@@ -226,61 +263,103 @@ class Cronjob
     /**
      * @Key("errors")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Cronjob_Error"))
+     * @Items(@Ref("BackendCronjob\Cronjob_Error"))
      */
     protected $errors;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $cron
+     */
     public function setCron(?string $cron)
     {
         $this->cron = $cron;
     }
+    /**
+     * @return string
+     */
     public function getCron() : ?string
     {
         return $this->cron;
     }
+    /**
+     * @param int $action
+     */
     public function setAction(?int $action)
     {
         $this->action = $action;
     }
+    /**
+     * @return int
+     */
     public function getAction() : ?int
     {
         return $this->action;
     }
+    /**
+     * @param \DateTime $executeDate
+     */
     public function setExecuteDate(?\DateTime $executeDate)
     {
         $this->executeDate = $executeDate;
     }
+    /**
+     * @return \DateTime
+     */
     public function getExecuteDate() : ?\DateTime
     {
         return $this->executeDate;
     }
+    /**
+     * @param int $exitCode
+     */
     public function setExitCode(?int $exitCode)
     {
         $this->exitCode = $exitCode;
     }
+    /**
+     * @return int
+     */
     public function getExitCode() : ?int
     {
         return $this->exitCode;
     }
+    /**
+     * @param array<Cronjob_Error> $errors
+     */
     public function setErrors(?array $errors)
     {
         $this->errors = $errors;
     }
+    /**
+     * @return array<Cronjob_Error>
+     */
     public function getErrors() : ?array
     {
         return $this->errors;
@@ -304,29 +383,47 @@ class Cronjob_Collection
     /**
      * @Key("entry")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Cronjob"))
+     * @Items(@Ref("BackendCronjob\Cronjob"))
      */
     protected $entry;
+    /**
+     * @param int $totalResults
+     */
     public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
+    /**
+     * @return int
+     */
     public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
+    /**
+     * @param int $startIndex
+     */
     public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
+    /**
+     * @return int
+     */
     public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
+    /**
+     * @param array<Cronjob> $entry
+     */
     public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
+    /**
+     * @return array<Cronjob>
+     */
     public function getEntry() : ?array
     {
         return $this->entry;
@@ -352,26 +449,44 @@ class GetQuery
      * @Type("string")
      */
     protected $search;
+    /**
+     * @param int $startIndex
+     */
     public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
+    /**
+     * @return int
+     */
     public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
+    /**
+     * @param int $count
+     */
     public function setCount(?int $count)
     {
         $this->count = $count;
     }
+    /**
+     * @return int
+     */
     public function getCount() : ?int
     {
         return $this->count;
     }
+    /**
+     * @param string $search
+     */
     public function setSearch(?string $search)
     {
         $this->search = $search;
     }
+    /**
+     * @return string
+     */
     public function getSearch() : ?string
     {
         return $this->search;
@@ -384,52 +499,76 @@ class Endpoint
 {
     /**
      * @Key("GetQuery")
-     * @Ref("PSX\Generation\GetQuery")
+     * @Ref("BackendCronjob\GetQuery")
      */
     protected $GetQuery;
     /**
      * @Key("Cronjob_Collection")
-     * @Ref("PSX\Generation\Cronjob_Collection")
+     * @Ref("BackendCronjob\Cronjob_Collection")
      */
     protected $Cronjob_Collection;
     /**
      * @Key("Cronjob")
-     * @Ref("PSX\Generation\Cronjob")
+     * @Ref("BackendCronjob\Cronjob")
      */
     protected $Cronjob;
     /**
      * @Key("Message")
-     * @Ref("PSX\Generation\Message")
+     * @Ref("BackendCronjob\Message")
      */
     protected $Message;
+    /**
+     * @param GetQuery $GetQuery
+     */
     public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
+    /**
+     * @return GetQuery
+     */
     public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
+    /**
+     * @param Cronjob_Collection $Cronjob_Collection
+     */
     public function setCronjob_Collection(?Cronjob_Collection $Cronjob_Collection)
     {
         $this->Cronjob_Collection = $Cronjob_Collection;
     }
+    /**
+     * @return Cronjob_Collection
+     */
     public function getCronjob_Collection() : ?Cronjob_Collection
     {
         return $this->Cronjob_Collection;
     }
+    /**
+     * @param Cronjob $Cronjob
+     */
     public function setCronjob(?Cronjob $Cronjob)
     {
         $this->Cronjob = $Cronjob;
     }
+    /**
+     * @return Cronjob
+     */
     public function getCronjob() : ?Cronjob
     {
         return $this->Cronjob;
     }
+    /**
+     * @param Message $Message
+     */
     public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
+    /**
+     * @return Message
+     */
     public function getMessage() : ?Message
     {
         return $this->Message;

@@ -3,6 +3,7 @@
 namespace ExportJsonrpc;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -40,8 +41,8 @@ class Resource
     }
 
     /**
-     * @param Export_Rpc_Request_Call|array $data
-     * @return |array
+     * @param Export_Rpc_Request_Call|array&lt;Export_Rpc_Request_Call&gt; $data
+     * @return Export_Rpc_Response_Return_Success|Export_Rpc_Response_Return_Error|array&lt;Export_Rpc_Response_Return_Success|Export_Rpc_Response_Return_Error&gt;
      */
     public function post( $data)
     {
@@ -100,26 +101,44 @@ class Export_Rpc_Response_Error
      * @Description("Error data")
      */
     protected $data;
+    /**
+     * @param int $code
+     */
     public function setCode(?int $code)
     {
         $this->code = $code;
     }
+    /**
+     * @return int
+     */
     public function getCode() : ?int
     {
         return $this->code;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
     }
+    /**
+     * @param  $data
+     */
     public function setData($data)
     {
         $this->data = $data;
     }
+    /**
+     * @return 
+     */
     public function getData()
     {
         return $this->data;
@@ -137,7 +156,7 @@ class Export_Rpc_Response_Return_Error
     protected $jsonrpc;
     /**
      * @Key("error")
-     * @Ref("PSX\Generation\Export_Rpc_Response_Error")
+     * @Ref("ExportJsonrpc\Export_Rpc_Response_Error")
      */
     protected $error;
     /**
@@ -145,26 +164,44 @@ class Export_Rpc_Response_Return_Error
      * @Type("integer")
      */
     protected $id;
+    /**
+     * @param string $jsonrpc
+     */
     public function setJsonrpc(?string $jsonrpc)
     {
         $this->jsonrpc = $jsonrpc;
     }
+    /**
+     * @return string
+     */
     public function getJsonrpc() : ?string
     {
         return $this->jsonrpc;
     }
+    /**
+     * @param Export_Rpc_Response_Error $error
+     */
     public function setError(?Export_Rpc_Response_Error $error)
     {
         $this->error = $error;
     }
+    /**
+     * @return Export_Rpc_Response_Error
+     */
     public function getError() : ?Export_Rpc_Response_Error
     {
         return $this->error;
     }
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
@@ -191,26 +228,44 @@ class Export_Rpc_Response_Return_Success
      * @Type("integer")
      */
     protected $id;
+    /**
+     * @param string $jsonrpc
+     */
     public function setJsonrpc(?string $jsonrpc)
     {
         $this->jsonrpc = $jsonrpc;
     }
+    /**
+     * @return string
+     */
     public function getJsonrpc() : ?string
     {
         return $this->jsonrpc;
     }
+    /**
+     * @param  $result
+     */
     public function setResult($result)
     {
         $this->result = $result;
     }
+    /**
+     * @return 
+     */
     public function getResult()
     {
         return $this->result;
     }
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
@@ -242,34 +297,58 @@ class Export_Rpc_Request_Call
      * @Type("integer")
      */
     protected $id;
+    /**
+     * @param string $jsonrpc
+     */
     public function setJsonrpc(?string $jsonrpc)
     {
         $this->jsonrpc = $jsonrpc;
     }
+    /**
+     * @return string
+     */
     public function getJsonrpc() : ?string
     {
         return $this->jsonrpc;
     }
+    /**
+     * @param string $method
+     */
     public function setMethod(?string $method)
     {
         $this->method = $method;
     }
+    /**
+     * @return string
+     */
     public function getMethod() : ?string
     {
         return $this->method;
     }
+    /**
+     * @param  $params
+     */
     public function setParams($params)
     {
         $this->params = $params;
     }
+    /**
+     * @return 
+     */
     public function getParams()
     {
         return $this->params;
     }
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
@@ -283,27 +362,39 @@ class Endpoint
     /**
      * @Key("Export_Rpc_Request")
      * @Title("Export Rpc Request")
-     * @OneOf(@Ref("PSX\Generation\Export_Rpc_Request_Call"), @Schema(type="array", title="Export Rpc Request Batch", items=@Ref("PSX\Generation\Export_Rpc_Request_Call")))
+     * @OneOf(@Ref("ExportJsonrpc\Export_Rpc_Request_Call"), @Schema(type="array", title="Export Rpc Request Batch", items=@Ref("ExportJsonrpc\Export_Rpc_Request_Call")))
      */
     protected $Export_Rpc_Request;
     /**
      * @Key("Export_Rpc_Response")
      * @Title("Export Rpc Response")
-     * @OneOf(@Schema(title="Export Rpc Response Return", oneOf={@Ref("PSX\Generation\Export_Rpc_Response_Return_Success"), @Ref("PSX\Generation\Export_Rpc_Response_Return_Error")}), @Schema(type="array", title="Export Rpc Response Batch", items=@Schema(title="Export Rpc Response Return", oneOf={@Ref("PSX\Generation\Export_Rpc_Response_Return_Success"), @Ref("PSX\Generation\Export_Rpc_Response_Return_Error")})))
+     * @OneOf(@Schema(title="Export Rpc Response Return", oneOf={@Ref("ExportJsonrpc\Export_Rpc_Response_Return_Success"), @Ref("ExportJsonrpc\Export_Rpc_Response_Return_Error")}), @Schema(type="array", title="Export Rpc Response Batch", items=@Schema(title="Export Rpc Response Return", oneOf={@Ref("ExportJsonrpc\Export_Rpc_Response_Return_Success"), @Ref("ExportJsonrpc\Export_Rpc_Response_Return_Error")})))
      */
     protected $Export_Rpc_Response;
+    /**
+     * @param Export_Rpc_Request_Call|array<Export_Rpc_Request_Call> $Export_Rpc_Request
+     */
     public function setExport_Rpc_Request($Export_Rpc_Request)
     {
         $this->Export_Rpc_Request = $Export_Rpc_Request;
     }
+    /**
+     * @return Export_Rpc_Request_Call|array<Export_Rpc_Request_Call>
+     */
     public function getExport_Rpc_Request()
     {
         return $this->Export_Rpc_Request;
     }
+    /**
+     * @param Export_Rpc_Response_Return_Success|Export_Rpc_Response_Return_Error|array<Export_Rpc_Response_Return_Success|Export_Rpc_Response_Return_Error> $Export_Rpc_Response
+     */
     public function setExport_Rpc_Response($Export_Rpc_Response)
     {
         $this->Export_Rpc_Response = $Export_Rpc_Response;
     }
+    /**
+     * @return Export_Rpc_Response_Return_Success|Export_Rpc_Response_Return_Error|array<Export_Rpc_Response_Return_Success|Export_Rpc_Response_Return_Error>
+     */
     public function getExport_Rpc_Response()
     {
         return $this->Export_Rpc_Response;

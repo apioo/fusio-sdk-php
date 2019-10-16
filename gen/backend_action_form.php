@@ -3,6 +3,7 @@
 namespace BackendActionForm;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -94,18 +95,30 @@ class Option
      * @Type("string")
      */
     protected $value;
+    /**
+     * @param string $key
+     */
     public function setKey(?string $key)
     {
         $this->key = $key;
     }
+    /**
+     * @return string
+     */
     public function getKey() : ?string
     {
         return $this->key;
     }
+    /**
+     * @param string $value
+     */
     public function setValue(?string $value)
     {
         $this->value = $value;
     }
+    /**
+     * @return string
+     */
     public function getValue() : ?string
     {
         return $this->value;
@@ -141,42 +154,72 @@ class Textarea
      * @Type("string")
      */
     protected $mode;
+    /**
+     * @param string $element
+     */
     public function setElement(?string $element)
     {
         $this->element = $element;
     }
+    /**
+     * @return string
+     */
     public function getElement() : ?string
     {
         return $this->element;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $title
+     */
     public function setTitle(?string $title)
     {
         $this->title = $title;
     }
+    /**
+     * @return string
+     */
     public function getTitle() : ?string
     {
         return $this->title;
     }
+    /**
+     * @param string $help
+     */
     public function setHelp(?string $help)
     {
         $this->help = $help;
     }
+    /**
+     * @return string
+     */
     public function getHelp() : ?string
     {
         return $this->help;
     }
+    /**
+     * @param string $mode
+     */
     public function setMode(?string $mode)
     {
         $this->mode = $mode;
     }
+    /**
+     * @return string
+     */
     public function getMode() : ?string
     {
         return $this->mode;
@@ -207,34 +250,58 @@ class Tag
      * @Type("string")
      */
     protected $help;
+    /**
+     * @param string $element
+     */
     public function setElement(?string $element)
     {
         $this->element = $element;
     }
+    /**
+     * @return string
+     */
     public function getElement() : ?string
     {
         return $this->element;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $title
+     */
     public function setTitle(?string $title)
     {
         $this->title = $title;
     }
+    /**
+     * @return string
+     */
     public function getTitle() : ?string
     {
         return $this->title;
     }
+    /**
+     * @param string $help
+     */
     public function setHelp(?string $help)
     {
         $this->help = $help;
     }
+    /**
+     * @return string
+     */
     public function getHelp() : ?string
     {
         return $this->help;
@@ -268,45 +335,75 @@ class Select
     /**
      * @Key("options")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Option"))
+     * @Items(@Ref("BackendActionForm\Option"))
      */
     protected $options;
+    /**
+     * @param string $element
+     */
     public function setElement(?string $element)
     {
         $this->element = $element;
     }
+    /**
+     * @return string
+     */
     public function getElement() : ?string
     {
         return $this->element;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $title
+     */
     public function setTitle(?string $title)
     {
         $this->title = $title;
     }
+    /**
+     * @return string
+     */
     public function getTitle() : ?string
     {
         return $this->title;
     }
+    /**
+     * @param string $help
+     */
     public function setHelp(?string $help)
     {
         $this->help = $help;
     }
+    /**
+     * @return string
+     */
     public function getHelp() : ?string
     {
         return $this->help;
     }
+    /**
+     * @param array<Option> $options
+     */
     public function setOptions(?array $options)
     {
         $this->options = $options;
     }
+    /**
+     * @return array<Option>
+     */
     public function getOptions() : ?array
     {
         return $this->options;
@@ -342,42 +439,72 @@ class Input
      * @Type("string")
      */
     protected $type;
+    /**
+     * @param string $element
+     */
     public function setElement(?string $element)
     {
         $this->element = $element;
     }
+    /**
+     * @return string
+     */
     public function getElement() : ?string
     {
         return $this->element;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $title
+     */
     public function setTitle(?string $title)
     {
         $this->title = $title;
     }
+    /**
+     * @return string
+     */
     public function getTitle() : ?string
     {
         return $this->title;
     }
+    /**
+     * @param string $help
+     */
     public function setHelp(?string $help)
     {
         $this->help = $help;
     }
+    /**
+     * @return string
+     */
     public function getHelp() : ?string
     {
         return $this->help;
     }
+    /**
+     * @param string $type
+     */
     public function setType(?string $type)
     {
         $this->type = $type;
     }
+    /**
+     * @return string
+     */
     public function getType() : ?string
     {
         return $this->type;
@@ -391,13 +518,19 @@ class Container
     /**
      * @Key("element")
      * @Type("array")
-     * @Items(@Schema(oneOf={@Ref("PSX\Generation\Input"), @Ref("PSX\Generation\Select"), @Ref("PSX\Generation\Tag"), @Ref("PSX\Generation\Textarea")}))
+     * @Items(@Schema(oneOf={@Ref("BackendActionForm\Input"), @Ref("BackendActionForm\Select"), @Ref("BackendActionForm\Tag"), @Ref("BackendActionForm\Textarea")}))
      */
     protected $element;
+    /**
+     * @param array<Input|Select|Tag|Textarea> $element
+     */
     public function setElement(?array $element)
     {
         $this->element = $element;
     }
+    /**
+     * @return array<Input|Select|Tag|Textarea>
+     */
     public function getElement() : ?array
     {
         return $this->element;
@@ -413,10 +546,16 @@ class GetQuery
      * @Type("string")
      */
     protected $class;
+    /**
+     * @param string $class
+     */
     public function setClass(?string $class)
     {
         $this->class = $class;
     }
+    /**
+     * @return string
+     */
     public function getClass() : ?string
     {
         return $this->class;
@@ -429,26 +568,38 @@ class Endpoint
 {
     /**
      * @Key("GetQuery")
-     * @Ref("PSX\Generation\GetQuery")
+     * @Ref("BackendActionForm\GetQuery")
      */
     protected $GetQuery;
     /**
      * @Key("Container")
-     * @Ref("PSX\Generation\Container")
+     * @Ref("BackendActionForm\Container")
      */
     protected $Container;
+    /**
+     * @param GetQuery $GetQuery
+     */
     public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
+    /**
+     * @return GetQuery
+     */
     public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
+    /**
+     * @param Container $Container
+     */
     public function setContainer(?Container $Container)
     {
         $this->Container = $Container;
     }
+    /**
+     * @return Container
+     */
     public function getContainer() : ?Container
     {
         return $this->Container;

@@ -3,6 +3,7 @@
 namespace BackendPlanInvoiceInvoice_id09;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -134,18 +135,30 @@ class Plan_User
      * @Type("string")
      */
     protected $name;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
@@ -166,18 +179,30 @@ class Message
      * @Type("string")
      */
     protected $message;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
@@ -200,7 +225,7 @@ class Plan_Invoice
     protected $contractId;
     /**
      * @Key("user")
-     * @Ref("PSX\Generation\Plan_User")
+     * @Ref("BackendPlanInvoiceInvoice_id09\Plan_User")
      */
     protected $user;
     /**
@@ -257,106 +282,184 @@ class Plan_Invoice
      * @Format("date-time")
      */
     protected $insertDate;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param int $contractId
+     */
     public function setContractId(?int $contractId)
     {
         $this->contractId = $contractId;
     }
+    /**
+     * @return int
+     */
     public function getContractId() : ?int
     {
         return $this->contractId;
     }
+    /**
+     * @param Plan_User $user
+     */
     public function setUser(?Plan_User $user)
     {
         $this->user = $user;
     }
+    /**
+     * @return Plan_User
+     */
     public function getUser() : ?Plan_User
     {
         return $this->user;
     }
+    /**
+     * @param int $transactionId
+     */
     public function setTransactionId(?int $transactionId)
     {
         $this->transactionId = $transactionId;
     }
+    /**
+     * @return int
+     */
     public function getTransactionId() : ?int
     {
         return $this->transactionId;
     }
+    /**
+     * @param int $prevId
+     */
     public function setPrevId(?int $prevId)
     {
         $this->prevId = $prevId;
     }
+    /**
+     * @return int
+     */
     public function getPrevId() : ?int
     {
         return $this->prevId;
     }
+    /**
+     * @param string $displayId
+     */
     public function setDisplayId(?string $displayId)
     {
         $this->displayId = $displayId;
     }
+    /**
+     * @return string
+     */
     public function getDisplayId() : ?string
     {
         return $this->displayId;
     }
+    /**
+     * @param int $status
+     */
     public function setStatus(?int $status)
     {
         $this->status = $status;
     }
+    /**
+     * @return int
+     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
+    /**
+     * @param float $amount
+     */
     public function setAmount(?float $amount)
     {
         $this->amount = $amount;
     }
+    /**
+     * @return float
+     */
     public function getAmount() : ?float
     {
         return $this->amount;
     }
+    /**
+     * @param int $points
+     */
     public function setPoints(?int $points)
     {
         $this->points = $points;
     }
+    /**
+     * @return int
+     */
     public function getPoints() : ?int
     {
         return $this->points;
     }
+    /**
+     * @param \DateTime $fromDate
+     */
     public function setFromDate(?\DateTime $fromDate)
     {
         $this->fromDate = $fromDate;
     }
+    /**
+     * @return \DateTime
+     */
     public function getFromDate() : ?\DateTime
     {
         return $this->fromDate;
     }
+    /**
+     * @param \DateTime $toDate
+     */
     public function setToDate(?\DateTime $toDate)
     {
         $this->toDate = $toDate;
     }
+    /**
+     * @return \DateTime
+     */
     public function getToDate() : ?\DateTime
     {
         return $this->toDate;
     }
+    /**
+     * @param \DateTime $payDate
+     */
     public function setPayDate(?\DateTime $payDate)
     {
         $this->payDate = $payDate;
     }
+    /**
+     * @return \DateTime
+     */
     public function getPayDate() : ?\DateTime
     {
         return $this->payDate;
     }
+    /**
+     * @param \DateTime $insertDate
+     */
     public function setInsertDate(?\DateTime $insertDate)
     {
         $this->insertDate = $insertDate;
     }
+    /**
+     * @return \DateTime
+     */
     public function getInsertDate() : ?\DateTime
     {
         return $this->insertDate;
@@ -369,26 +472,38 @@ class Endpoint
 {
     /**
      * @Key("Plan_Invoice")
-     * @Ref("PSX\Generation\Plan_Invoice")
+     * @Ref("BackendPlanInvoiceInvoice_id09\Plan_Invoice")
      */
     protected $Plan_Invoice;
     /**
      * @Key("Message")
-     * @Ref("PSX\Generation\Message")
+     * @Ref("BackendPlanInvoiceInvoice_id09\Message")
      */
     protected $Message;
+    /**
+     * @param Plan_Invoice $Plan_Invoice
+     */
     public function setPlan_Invoice(?Plan_Invoice $Plan_Invoice)
     {
         $this->Plan_Invoice = $Plan_Invoice;
     }
+    /**
+     * @return Plan_Invoice
+     */
     public function getPlan_Invoice() : ?Plan_Invoice
     {
         return $this->Plan_Invoice;
     }
+    /**
+     * @param Message $Message
+     */
     public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
+    /**
+     * @return Message
+     */
     public function getMessage() : ?Message
     {
         return $this->Message;

@@ -3,6 +3,7 @@
 namespace BackendRoutesProvider;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -92,18 +93,30 @@ class Routes_Provider
      * @Type("string")
      */
     protected $class;
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $class
+     */
     public function setClass(?string $class)
     {
         $this->class = $class;
     }
+    /**
+     * @return string
+     */
     public function getClass() : ?string
     {
         return $this->class;
@@ -117,13 +130,19 @@ class Routes_Providers
     /**
      * @Key("providers")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Routes_Provider"))
+     * @Items(@Ref("BackendRoutesProvider\Routes_Provider"))
      */
     protected $providers;
+    /**
+     * @param array<Routes_Provider> $providers
+     */
     public function setProviders(?array $providers)
     {
         $this->providers = $providers;
     }
+    /**
+     * @return array<Routes_Provider>
+     */
     public function getProviders() : ?array
     {
         return $this->providers;
@@ -136,13 +155,19 @@ class Endpoint
 {
     /**
      * @Key("Routes_Providers")
-     * @Ref("PSX\Generation\Routes_Providers")
+     * @Ref("BackendRoutesProvider\Routes_Providers")
      */
     protected $Routes_Providers;
+    /**
+     * @param Routes_Providers $Routes_Providers
+     */
     public function setRoutes_Providers(?Routes_Providers $Routes_Providers)
     {
         $this->Routes_Providers = $Routes_Providers;
     }
+    /**
+     * @return Routes_Providers
+     */
     public function getRoutes_Providers() : ?Routes_Providers
     {
         return $this->Routes_Providers;

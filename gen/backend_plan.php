@@ -3,6 +3,7 @@
 namespace BackendPlan;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -110,18 +111,30 @@ class Message
      * @Type("string")
      */
     protected $message;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
@@ -163,50 +176,86 @@ class Plan
      * @Type("integer")
      */
     protected $period;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $description
+     */
     public function setDescription(?string $description)
     {
         $this->description = $description;
     }
+    /**
+     * @return string
+     */
     public function getDescription() : ?string
     {
         return $this->description;
     }
+    /**
+     * @param float $price
+     */
     public function setPrice(?float $price)
     {
         $this->price = $price;
     }
+    /**
+     * @return float
+     */
     public function getPrice() : ?float
     {
         return $this->price;
     }
+    /**
+     * @param int $points
+     */
     public function setPoints(?int $points)
     {
         $this->points = $points;
     }
+    /**
+     * @return int
+     */
     public function getPoints() : ?int
     {
         return $this->points;
     }
+    /**
+     * @param int $period
+     */
     public function setPeriod(?int $period)
     {
         $this->period = $period;
     }
+    /**
+     * @return int
+     */
     public function getPeriod() : ?int
     {
         return $this->period;
@@ -230,29 +279,47 @@ class Plan_Collection
     /**
      * @Key("entry")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Plan"))
+     * @Items(@Ref("BackendPlan\Plan"))
      */
     protected $entry;
+    /**
+     * @param int $totalResults
+     */
     public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
+    /**
+     * @return int
+     */
     public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
+    /**
+     * @param int $startIndex
+     */
     public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
+    /**
+     * @return int
+     */
     public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
+    /**
+     * @param array<Plan> $entry
+     */
     public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
+    /**
+     * @return array<Plan>
+     */
     public function getEntry() : ?array
     {
         return $this->entry;
@@ -278,26 +345,44 @@ class GetQuery
      * @Type("string")
      */
     protected $search;
+    /**
+     * @param int $startIndex
+     */
     public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
+    /**
+     * @return int
+     */
     public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
+    /**
+     * @param int $count
+     */
     public function setCount(?int $count)
     {
         $this->count = $count;
     }
+    /**
+     * @return int
+     */
     public function getCount() : ?int
     {
         return $this->count;
     }
+    /**
+     * @param string $search
+     */
     public function setSearch(?string $search)
     {
         $this->search = $search;
     }
+    /**
+     * @return string
+     */
     public function getSearch() : ?string
     {
         return $this->search;
@@ -310,52 +395,76 @@ class Endpoint
 {
     /**
      * @Key("GetQuery")
-     * @Ref("PSX\Generation\GetQuery")
+     * @Ref("BackendPlan\GetQuery")
      */
     protected $GetQuery;
     /**
      * @Key("Plan_Collection")
-     * @Ref("PSX\Generation\Plan_Collection")
+     * @Ref("BackendPlan\Plan_Collection")
      */
     protected $Plan_Collection;
     /**
      * @Key("Plan")
-     * @Ref("PSX\Generation\Plan")
+     * @Ref("BackendPlan\Plan")
      */
     protected $Plan;
     /**
      * @Key("Message")
-     * @Ref("PSX\Generation\Message")
+     * @Ref("BackendPlan\Message")
      */
     protected $Message;
+    /**
+     * @param GetQuery $GetQuery
+     */
     public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
+    /**
+     * @return GetQuery
+     */
     public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
+    /**
+     * @param Plan_Collection $Plan_Collection
+     */
     public function setPlan_Collection(?Plan_Collection $Plan_Collection)
     {
         $this->Plan_Collection = $Plan_Collection;
     }
+    /**
+     * @return Plan_Collection
+     */
     public function getPlan_Collection() : ?Plan_Collection
     {
         return $this->Plan_Collection;
     }
+    /**
+     * @param Plan $Plan
+     */
     public function setPlan(?Plan $Plan)
     {
         $this->Plan = $Plan;
     }
+    /**
+     * @return Plan
+     */
     public function getPlan() : ?Plan
     {
         return $this->Plan;
     }
+    /**
+     * @param Message $Message
+     */
     public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
+    /**
+     * @return Message
+     */
     public function getMessage() : ?Message
     {
         return $this->Message;

@@ -3,6 +3,7 @@
 namespace ConsumerPlanInvoice;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -114,50 +115,86 @@ class Consumer_Plan_Invoice
      * @Format("date-time")
      */
     protected $insertDate;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param int $status
+     */
     public function setStatus(?int $status)
     {
         $this->status = $status;
     }
+    /**
+     * @return int
+     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
+    /**
+     * @param float $amount
+     */
     public function setAmount(?float $amount)
     {
         $this->amount = $amount;
     }
+    /**
+     * @return float
+     */
     public function getAmount() : ?float
     {
         return $this->amount;
     }
+    /**
+     * @param int $points
+     */
     public function setPoints(?int $points)
     {
         $this->points = $points;
     }
+    /**
+     * @return int
+     */
     public function getPoints() : ?int
     {
         return $this->points;
     }
+    /**
+     * @param \DateTime $payDate
+     */
     public function setPayDate(?\DateTime $payDate)
     {
         $this->payDate = $payDate;
     }
+    /**
+     * @return \DateTime
+     */
     public function getPayDate() : ?\DateTime
     {
         return $this->payDate;
     }
+    /**
+     * @param \DateTime $insertDate
+     */
     public function setInsertDate(?\DateTime $insertDate)
     {
         $this->insertDate = $insertDate;
     }
+    /**
+     * @return \DateTime
+     */
     public function getInsertDate() : ?\DateTime
     {
         return $this->insertDate;
@@ -181,29 +218,47 @@ class Consumer_Plan_Invoice_Collection
     /**
      * @Key("entry")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Consumer_Plan_Invoice"))
+     * @Items(@Ref("ConsumerPlanInvoice\Consumer_Plan_Invoice"))
      */
     protected $entry;
+    /**
+     * @param int $totalResults
+     */
     public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
+    /**
+     * @return int
+     */
     public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
+    /**
+     * @param int $startIndex
+     */
     public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
+    /**
+     * @return int
+     */
     public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
+    /**
+     * @param array<Consumer_Plan_Invoice> $entry
+     */
     public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
+    /**
+     * @return array<Consumer_Plan_Invoice>
+     */
     public function getEntry() : ?array
     {
         return $this->entry;
@@ -216,13 +271,19 @@ class Endpoint
 {
     /**
      * @Key("Consumer_Plan_Invoice_Collection")
-     * @Ref("PSX\Generation\Consumer_Plan_Invoice_Collection")
+     * @Ref("ConsumerPlanInvoice\Consumer_Plan_Invoice_Collection")
      */
     protected $Consumer_Plan_Invoice_Collection;
+    /**
+     * @param Consumer_Plan_Invoice_Collection $Consumer_Plan_Invoice_Collection
+     */
     public function setConsumer_Plan_Invoice_Collection(?Consumer_Plan_Invoice_Collection $Consumer_Plan_Invoice_Collection)
     {
         $this->Consumer_Plan_Invoice_Collection = $Consumer_Plan_Invoice_Collection;
     }
+    /**
+     * @return Consumer_Plan_Invoice_Collection
+     */
     public function getConsumer_Plan_Invoice_Collection() : ?Consumer_Plan_Invoice_Collection
     {
         return $this->Consumer_Plan_Invoice_Collection;

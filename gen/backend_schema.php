@@ -3,6 +3,7 @@
 namespace BackendSchema;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -120,18 +121,30 @@ class Message
      * @Type("string")
      */
     protected $message;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
@@ -161,37 +174,61 @@ class Schema
     protected $name;
     /**
      * @Key("source")
-     * @Ref("PSX\Generation\Schema_Source")
+     * @Ref("BackendSchema\Schema_Source")
      */
     protected $source;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param int $status
+     */
     public function setStatus(?int $status)
     {
         $this->status = $status;
     }
+    /**
+     * @return int
+     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param Schema_Source $source
+     */
     public function setSource(?Schema_Source $source)
     {
         $this->source = $source;
     }
+    /**
+     * @return Schema_Source
+     */
     public function getSource() : ?Schema_Source
     {
         return $this->source;
@@ -215,29 +252,47 @@ class Schema_Collection
     /**
      * @Key("entry")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Schema"))
+     * @Items(@Ref("BackendSchema\Schema"))
      */
     protected $entry;
+    /**
+     * @param int $totalResults
+     */
     public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
+    /**
+     * @return int
+     */
     public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
+    /**
+     * @param int $startIndex
+     */
     public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
+    /**
+     * @return int
+     */
     public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
+    /**
+     * @param array<Schema> $entry
+     */
     public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
+    /**
+     * @return array<Schema>
+     */
     public function getEntry() : ?array
     {
         return $this->entry;
@@ -263,26 +318,44 @@ class GetQuery
      * @Type("string")
      */
     protected $search;
+    /**
+     * @param int $startIndex
+     */
     public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
+    /**
+     * @return int
+     */
     public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
+    /**
+     * @param int $count
+     */
     public function setCount(?int $count)
     {
         $this->count = $count;
     }
+    /**
+     * @return int
+     */
     public function getCount() : ?int
     {
         return $this->count;
     }
+    /**
+     * @param string $search
+     */
     public function setSearch(?string $search)
     {
         $this->search = $search;
     }
+    /**
+     * @return string
+     */
     public function getSearch() : ?string
     {
         return $this->search;
@@ -295,52 +368,76 @@ class Endpoint
 {
     /**
      * @Key("GetQuery")
-     * @Ref("PSX\Generation\GetQuery")
+     * @Ref("BackendSchema\GetQuery")
      */
     protected $GetQuery;
     /**
      * @Key("Schema_Collection")
-     * @Ref("PSX\Generation\Schema_Collection")
+     * @Ref("BackendSchema\Schema_Collection")
      */
     protected $Schema_Collection;
     /**
      * @Key("Schema")
-     * @Ref("PSX\Generation\Schema")
+     * @Ref("BackendSchema\Schema")
      */
     protected $Schema;
     /**
      * @Key("Message")
-     * @Ref("PSX\Generation\Message")
+     * @Ref("BackendSchema\Message")
      */
     protected $Message;
+    /**
+     * @param GetQuery $GetQuery
+     */
     public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
+    /**
+     * @return GetQuery
+     */
     public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
+    /**
+     * @param Schema_Collection $Schema_Collection
+     */
     public function setSchema_Collection(?Schema_Collection $Schema_Collection)
     {
         $this->Schema_Collection = $Schema_Collection;
     }
+    /**
+     * @return Schema_Collection
+     */
     public function getSchema_Collection() : ?Schema_Collection
     {
         return $this->Schema_Collection;
     }
+    /**
+     * @param Schema $Schema
+     */
     public function setSchema(?Schema $Schema)
     {
         $this->Schema = $Schema;
     }
+    /**
+     * @return Schema
+     */
     public function getSchema() : ?Schema
     {
         return $this->Schema;
     }
+    /**
+     * @param Message $Message
+     */
     public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
+    /**
+     * @return Message
+     */
     public function getMessage() : ?Message
     {
         return $this->Message;

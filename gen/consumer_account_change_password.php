@@ -3,6 +3,7 @@
 namespace ConsumerAccountChange_password;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -94,18 +95,30 @@ class Consumer_Message
      * @Type("string")
      */
     protected $message;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
@@ -131,26 +144,44 @@ class Consumer_User_Credentials
      * @Type("string")
      */
     protected $verifyPassword;
+    /**
+     * @param string $oldPassword
+     */
     public function setOldPassword(?string $oldPassword)
     {
         $this->oldPassword = $oldPassword;
     }
+    /**
+     * @return string
+     */
     public function getOldPassword() : ?string
     {
         return $this->oldPassword;
     }
+    /**
+     * @param string $newPassword
+     */
     public function setNewPassword(?string $newPassword)
     {
         $this->newPassword = $newPassword;
     }
+    /**
+     * @return string
+     */
     public function getNewPassword() : ?string
     {
         return $this->newPassword;
     }
+    /**
+     * @param string $verifyPassword
+     */
     public function setVerifyPassword(?string $verifyPassword)
     {
         $this->verifyPassword = $verifyPassword;
     }
+    /**
+     * @return string
+     */
     public function getVerifyPassword() : ?string
     {
         return $this->verifyPassword;
@@ -163,26 +194,38 @@ class Endpoint
 {
     /**
      * @Key("Consumer_User_Credentials")
-     * @Ref("PSX\Generation\Consumer_User_Credentials")
+     * @Ref("ConsumerAccountChange_password\Consumer_User_Credentials")
      */
     protected $Consumer_User_Credentials;
     /**
      * @Key("Consumer_Message")
-     * @Ref("PSX\Generation\Consumer_Message")
+     * @Ref("ConsumerAccountChange_password\Consumer_Message")
      */
     protected $Consumer_Message;
+    /**
+     * @param Consumer_User_Credentials $Consumer_User_Credentials
+     */
     public function setConsumer_User_Credentials(?Consumer_User_Credentials $Consumer_User_Credentials)
     {
         $this->Consumer_User_Credentials = $Consumer_User_Credentials;
     }
+    /**
+     * @return Consumer_User_Credentials
+     */
     public function getConsumer_User_Credentials() : ?Consumer_User_Credentials
     {
         return $this->Consumer_User_Credentials;
     }
+    /**
+     * @param Consumer_Message $Consumer_Message
+     */
     public function setConsumer_Message(?Consumer_Message $Consumer_Message)
     {
         $this->Consumer_Message = $Consumer_Message;
     }
+    /**
+     * @return Consumer_Message
+     */
     public function getConsumer_Message() : ?Consumer_Message
     {
         return $this->Consumer_Message;

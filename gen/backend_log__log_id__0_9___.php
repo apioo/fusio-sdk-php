@@ -3,6 +3,7 @@
 namespace BackendLogLog_id09;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -108,34 +109,58 @@ class Log_Error
      * @Type("integer")
      */
     protected $line;
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
     }
+    /**
+     * @param string $trace
+     */
     public function setTrace(?string $trace)
     {
         $this->trace = $trace;
     }
+    /**
+     * @return string
+     */
     public function getTrace() : ?string
     {
         return $this->trace;
     }
+    /**
+     * @param string $file
+     */
     public function setFile(?string $file)
     {
         $this->file = $file;
     }
+    /**
+     * @return string
+     */
     public function getFile() : ?string
     {
         return $this->file;
     }
+    /**
+     * @param int $line
+     */
     public function setLine(?int $line)
     {
         $this->line = $line;
     }
+    /**
+     * @return int
+     */
     public function getLine() : ?int
     {
         return $this->line;
@@ -190,77 +215,131 @@ class Log
     /**
      * @Key("errors")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Log_Error"))
+     * @Items(@Ref("BackendLogLog_id09\Log_Error"))
      */
     protected $errors;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param string $ip
+     */
     public function setIp(?string $ip)
     {
         $this->ip = $ip;
     }
+    /**
+     * @return string
+     */
     public function getIp() : ?string
     {
         return $this->ip;
     }
+    /**
+     * @param string $userAgent
+     */
     public function setUserAgent(?string $userAgent)
     {
         $this->userAgent = $userAgent;
     }
+    /**
+     * @return string
+     */
     public function getUserAgent() : ?string
     {
         return $this->userAgent;
     }
+    /**
+     * @param string $method
+     */
     public function setMethod(?string $method)
     {
         $this->method = $method;
     }
+    /**
+     * @return string
+     */
     public function getMethod() : ?string
     {
         return $this->method;
     }
+    /**
+     * @param string $path
+     */
     public function setPath(?string $path)
     {
         $this->path = $path;
     }
+    /**
+     * @return string
+     */
     public function getPath() : ?string
     {
         return $this->path;
     }
+    /**
+     * @param string $header
+     */
     public function setHeader(?string $header)
     {
         $this->header = $header;
     }
+    /**
+     * @return string
+     */
     public function getHeader() : ?string
     {
         return $this->header;
     }
+    /**
+     * @param string $body
+     */
     public function setBody(?string $body)
     {
         $this->body = $body;
     }
+    /**
+     * @return string
+     */
     public function getBody() : ?string
     {
         return $this->body;
     }
+    /**
+     * @param \DateTime $date
+     */
     public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
+    /**
+     * @return \DateTime
+     */
     public function getDate() : ?\DateTime
     {
         return $this->date;
     }
+    /**
+     * @param array<Log_Error> $errors
+     */
     public function setErrors(?array $errors)
     {
         $this->errors = $errors;
     }
+    /**
+     * @return array<Log_Error>
+     */
     public function getErrors() : ?array
     {
         return $this->errors;
@@ -273,13 +352,19 @@ class Endpoint
 {
     /**
      * @Key("Log")
-     * @Ref("PSX\Generation\Log")
+     * @Ref("BackendLogLog_id09\Log")
      */
     protected $Log;
+    /**
+     * @param Log $Log
+     */
     public function setLog(?Log $Log)
     {
         $this->Log = $Log;
     }
+    /**
+     * @return Log
+     */
     public function getLog() : ?Log
     {
         return $this->Log;

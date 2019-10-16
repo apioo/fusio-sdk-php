@@ -3,6 +3,7 @@
 namespace ConsumerLogin;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -86,10 +87,16 @@ class Consumer_User_JWT
      * @Type("string")
      */
     protected $token;
+    /**
+     * @param string $token
+     */
     public function setToken(?string $token)
     {
         $this->token = $token;
     }
+    /**
+     * @return string
+     */
     public function getToken() : ?string
     {
         return $this->token;
@@ -116,26 +123,44 @@ class Consumer_User_Login
      * @Items(@Schema(type="string"))
      */
     protected $scopes;
+    /**
+     * @param string $username
+     */
     public function setUsername(?string $username)
     {
         $this->username = $username;
     }
+    /**
+     * @return string
+     */
     public function getUsername() : ?string
     {
         return $this->username;
     }
+    /**
+     * @param string $password
+     */
     public function setPassword(?string $password)
     {
         $this->password = $password;
     }
+    /**
+     * @return string
+     */
     public function getPassword() : ?string
     {
         return $this->password;
     }
+    /**
+     * @param array<string> $scopes
+     */
     public function setScopes(?array $scopes)
     {
         $this->scopes = $scopes;
     }
+    /**
+     * @return array<string>
+     */
     public function getScopes() : ?array
     {
         return $this->scopes;
@@ -148,26 +173,38 @@ class Endpoint
 {
     /**
      * @Key("Consumer_User_Login")
-     * @Ref("PSX\Generation\Consumer_User_Login")
+     * @Ref("ConsumerLogin\Consumer_User_Login")
      */
     protected $Consumer_User_Login;
     /**
      * @Key("Consumer_User_JWT")
-     * @Ref("PSX\Generation\Consumer_User_JWT")
+     * @Ref("ConsumerLogin\Consumer_User_JWT")
      */
     protected $Consumer_User_JWT;
+    /**
+     * @param Consumer_User_Login $Consumer_User_Login
+     */
     public function setConsumer_User_Login(?Consumer_User_Login $Consumer_User_Login)
     {
         $this->Consumer_User_Login = $Consumer_User_Login;
     }
+    /**
+     * @return Consumer_User_Login
+     */
     public function getConsumer_User_Login() : ?Consumer_User_Login
     {
         return $this->Consumer_User_Login;
     }
+    /**
+     * @param Consumer_User_JWT $Consumer_User_JWT
+     */
     public function setConsumer_User_JWT(?Consumer_User_JWT $Consumer_User_JWT)
     {
         $this->Consumer_User_JWT = $Consumer_User_JWT;
     }
+    /**
+     * @return Consumer_User_JWT
+     */
     public function getConsumer_User_JWT() : ?Consumer_User_JWT
     {
         return $this->Consumer_User_JWT;

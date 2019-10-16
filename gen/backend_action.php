@@ -3,6 +3,7 @@
 namespace BackendAction;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -121,18 +122,30 @@ class Message
      * @Type("string")
      */
     protected $message;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
@@ -172,53 +185,89 @@ class Action
     protected $engine;
     /**
      * @Key("config")
-     * @Ref("PSX\Generation\Action_Config")
+     * @Ref("BackendAction\Action_Config")
      */
     protected $config;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param int $status
+     */
     public function setStatus(?int $status)
     {
         $this->status = $status;
     }
+    /**
+     * @return int
+     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $class
+     */
     public function setClass(?string $class)
     {
         $this->class = $class;
     }
+    /**
+     * @return string
+     */
     public function getClass() : ?string
     {
         return $this->class;
     }
+    /**
+     * @param string $engine
+     */
     public function setEngine(?string $engine)
     {
         $this->engine = $engine;
     }
+    /**
+     * @return string
+     */
     public function getEngine() : ?string
     {
         return $this->engine;
     }
+    /**
+     * @param Action_Config $config
+     */
     public function setConfig(?Action_Config $config)
     {
         $this->config = $config;
     }
+    /**
+     * @return Action_Config
+     */
     public function getConfig() : ?Action_Config
     {
         return $this->config;
@@ -242,29 +291,47 @@ class Action_Collection
     /**
      * @Key("entry")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Action"))
+     * @Items(@Ref("BackendAction\Action"))
      */
     protected $entry;
+    /**
+     * @param int $totalResults
+     */
     public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
+    /**
+     * @return int
+     */
     public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
+    /**
+     * @param int $startIndex
+     */
     public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
+    /**
+     * @return int
+     */
     public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
+    /**
+     * @param array<Action> $entry
+     */
     public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
+    /**
+     * @return array<Action>
+     */
     public function getEntry() : ?array
     {
         return $this->entry;
@@ -290,26 +357,44 @@ class GetQuery
      * @Type("string")
      */
     protected $search;
+    /**
+     * @param int $startIndex
+     */
     public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
+    /**
+     * @return int
+     */
     public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
+    /**
+     * @param int $count
+     */
     public function setCount(?int $count)
     {
         $this->count = $count;
     }
+    /**
+     * @return int
+     */
     public function getCount() : ?int
     {
         return $this->count;
     }
+    /**
+     * @param string $search
+     */
     public function setSearch(?string $search)
     {
         $this->search = $search;
     }
+    /**
+     * @return string
+     */
     public function getSearch() : ?string
     {
         return $this->search;
@@ -322,52 +407,76 @@ class Endpoint
 {
     /**
      * @Key("GetQuery")
-     * @Ref("PSX\Generation\GetQuery")
+     * @Ref("BackendAction\GetQuery")
      */
     protected $GetQuery;
     /**
      * @Key("Action_Collection")
-     * @Ref("PSX\Generation\Action_Collection")
+     * @Ref("BackendAction\Action_Collection")
      */
     protected $Action_Collection;
     /**
      * @Key("Action")
-     * @Ref("PSX\Generation\Action")
+     * @Ref("BackendAction\Action")
      */
     protected $Action;
     /**
      * @Key("Message")
-     * @Ref("PSX\Generation\Message")
+     * @Ref("BackendAction\Message")
      */
     protected $Message;
+    /**
+     * @param GetQuery $GetQuery
+     */
     public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
+    /**
+     * @return GetQuery
+     */
     public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
+    /**
+     * @param Action_Collection $Action_Collection
+     */
     public function setAction_Collection(?Action_Collection $Action_Collection)
     {
         $this->Action_Collection = $Action_Collection;
     }
+    /**
+     * @return Action_Collection
+     */
     public function getAction_Collection() : ?Action_Collection
     {
         return $this->Action_Collection;
     }
+    /**
+     * @param Action $Action
+     */
     public function setAction(?Action $Action)
     {
         $this->Action = $Action;
     }
+    /**
+     * @return Action
+     */
     public function getAction() : ?Action
     {
         return $this->Action;
     }
+    /**
+     * @param Message $Message
+     */
     public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
+    /**
+     * @return Message
+     */
     public function getMessage() : ?Message
     {
         return $this->Message;

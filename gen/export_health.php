@@ -3,6 +3,7 @@
 namespace ExportHealth;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -89,18 +90,30 @@ class Export_Health_Check
      * @Type("string")
      */
     protected $error;
+    /**
+     * @param bool $healthy
+     */
     public function setHealthy(?bool $healthy)
     {
         $this->healthy = $healthy;
     }
+    /**
+     * @return bool
+     */
     public function getHealthy() : ?bool
     {
         return $this->healthy;
     }
+    /**
+     * @param string $error
+     */
     public function setError(?string $error)
     {
         $this->error = $error;
     }
+    /**
+     * @return string
+     */
     public function getError() : ?string
     {
         return $this->error;
@@ -108,7 +121,7 @@ class Export_Health_Check
 }
 /**
  * @Title("Export Health Checks")
- * @AdditionalProperties(@Ref("PSX\Generation\Export_Health_Check"))
+ * @AdditionalProperties(@Ref("ExportHealth\Export_Health_Check"))
  */
 class Export_Health_Checks extends \ArrayObject
 {
@@ -125,21 +138,33 @@ class Export_Health
     protected $healthy;
     /**
      * @Key("checks")
-     * @Ref("PSX\Generation\Export_Health_Checks")
+     * @Ref("ExportHealth\Export_Health_Checks")
      */
     protected $checks;
+    /**
+     * @param bool $healthy
+     */
     public function setHealthy(?bool $healthy)
     {
         $this->healthy = $healthy;
     }
+    /**
+     * @return bool
+     */
     public function getHealthy() : ?bool
     {
         return $this->healthy;
     }
+    /**
+     * @param Export_Health_Checks $checks
+     */
     public function setChecks(?Export_Health_Checks $checks)
     {
         $this->checks = $checks;
     }
+    /**
+     * @return Export_Health_Checks
+     */
     public function getChecks() : ?Export_Health_Checks
     {
         return $this->checks;
@@ -152,13 +177,19 @@ class Endpoint
 {
     /**
      * @Key("Export_Health")
-     * @Ref("PSX\Generation\Export_Health")
+     * @Ref("ExportHealth\Export_Health")
      */
     protected $Export_Health;
+    /**
+     * @param Export_Health $Export_Health
+     */
     public function setExport_Health(?Export_Health $Export_Health)
     {
         $this->Export_Health = $Export_Health;
     }
+    /**
+     * @return Export_Health
+     */
     public function getExport_Health() : ?Export_Health
     {
         return $this->Export_Health;

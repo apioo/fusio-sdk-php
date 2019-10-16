@@ -3,6 +3,7 @@
 namespace ConsumerAppApp_id09;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -134,18 +135,30 @@ class Consumer_Message
      * @Type("string")
      */
     protected $message;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
@@ -206,74 +219,128 @@ class Consumer_App
      * @Items(@Schema(type="string"))
      */
     protected $scopes;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param int $userId
+     */
     public function setUserId(?int $userId)
     {
         $this->userId = $userId;
     }
+    /**
+     * @return int
+     */
     public function getUserId() : ?int
     {
         return $this->userId;
     }
+    /**
+     * @param int $status
+     */
     public function setStatus(?int $status)
     {
         $this->status = $status;
     }
+    /**
+     * @return int
+     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $url
+     */
     public function setUrl(?string $url)
     {
         $this->url = $url;
     }
+    /**
+     * @return string
+     */
     public function getUrl() : ?string
     {
         return $this->url;
     }
+    /**
+     * @param string $appKey
+     */
     public function setAppKey(?string $appKey)
     {
         $this->appKey = $appKey;
     }
+    /**
+     * @return string
+     */
     public function getAppKey() : ?string
     {
         return $this->appKey;
     }
+    /**
+     * @param string $appSecret
+     */
     public function setAppSecret(?string $appSecret)
     {
         $this->appSecret = $appSecret;
     }
+    /**
+     * @return string
+     */
     public function getAppSecret() : ?string
     {
         return $this->appSecret;
     }
+    /**
+     * @param \DateTime $date
+     */
     public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
+    /**
+     * @return \DateTime
+     */
     public function getDate() : ?\DateTime
     {
         return $this->date;
     }
+    /**
+     * @param array<string> $scopes
+     */
     public function setScopes(?array $scopes)
     {
         $this->scopes = $scopes;
     }
+    /**
+     * @return array<string>
+     */
     public function getScopes() : ?array
     {
         return $this->scopes;
@@ -286,26 +353,38 @@ class Endpoint
 {
     /**
      * @Key("Consumer_App")
-     * @Ref("PSX\Generation\Consumer_App")
+     * @Ref("ConsumerAppApp_id09\Consumer_App")
      */
     protected $Consumer_App;
     /**
      * @Key("Consumer_Message")
-     * @Ref("PSX\Generation\Consumer_Message")
+     * @Ref("ConsumerAppApp_id09\Consumer_Message")
      */
     protected $Consumer_Message;
+    /**
+     * @param Consumer_App $Consumer_App
+     */
     public function setConsumer_App(?Consumer_App $Consumer_App)
     {
         $this->Consumer_App = $Consumer_App;
     }
+    /**
+     * @return Consumer_App
+     */
     public function getConsumer_App() : ?Consumer_App
     {
         return $this->Consumer_App;
     }
+    /**
+     * @param Consumer_Message $Consumer_Message
+     */
     public function setConsumer_Message(?Consumer_Message $Consumer_Message)
     {
         $this->Consumer_Message = $Consumer_Message;
     }
+    /**
+     * @return Consumer_Message
+     */
     public function getConsumer_Message() : ?Consumer_Message
     {
         return $this->Consumer_Message;

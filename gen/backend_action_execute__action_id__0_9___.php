@@ -3,6 +3,7 @@
 namespace BackendActionExecuteAction_id09;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -118,34 +119,52 @@ class Action_Response
     protected $statusCode;
     /**
      * @Key("headers")
-     * @Ref("PSX\Generation\Action_Response_Headers")
+     * @Ref("BackendActionExecuteAction_id09\Action_Response_Headers")
      */
     protected $headers;
     /**
      * @Key("body")
-     * @Ref("PSX\Generation\Action_Response_Body")
+     * @Ref("BackendActionExecuteAction_id09\Action_Response_Body")
      */
     protected $body;
+    /**
+     * @param int $statusCode
+     */
     public function setStatusCode(?int $statusCode)
     {
         $this->statusCode = $statusCode;
     }
+    /**
+     * @return int
+     */
     public function getStatusCode() : ?int
     {
         return $this->statusCode;
     }
+    /**
+     * @param Action_Response_Headers $headers
+     */
     public function setHeaders(?Action_Response_Headers $headers)
     {
         $this->headers = $headers;
     }
+    /**
+     * @return Action_Response_Headers
+     */
     public function getHeaders() : ?Action_Response_Headers
     {
         return $this->headers;
     }
+    /**
+     * @param Action_Response_Body $body
+     */
     public function setBody(?Action_Response_Body $body)
     {
         $this->body = $body;
     }
+    /**
+     * @return Action_Response_Body
+     */
     public function getBody() : ?Action_Response_Body
     {
         return $this->body;
@@ -180,45 +199,75 @@ class Action_Request
     protected $headers;
     /**
      * @Key("body")
-     * @Ref("PSX\Generation\Action_Request_Body")
+     * @Ref("BackendActionExecuteAction_id09\Action_Request_Body")
      */
     protected $body;
+    /**
+     * @param string $method
+     */
     public function setMethod(?string $method)
     {
         $this->method = $method;
     }
+    /**
+     * @return string
+     */
     public function getMethod() : ?string
     {
         return $this->method;
     }
+    /**
+     * @param string $uriFragments
+     */
     public function setUriFragments(?string $uriFragments)
     {
         $this->uriFragments = $uriFragments;
     }
+    /**
+     * @return string
+     */
     public function getUriFragments() : ?string
     {
         return $this->uriFragments;
     }
+    /**
+     * @param string $parameters
+     */
     public function setParameters(?string $parameters)
     {
         $this->parameters = $parameters;
     }
+    /**
+     * @return string
+     */
     public function getParameters() : ?string
     {
         return $this->parameters;
     }
+    /**
+     * @param string $headers
+     */
     public function setHeaders(?string $headers)
     {
         $this->headers = $headers;
     }
+    /**
+     * @return string
+     */
     public function getHeaders() : ?string
     {
         return $this->headers;
     }
+    /**
+     * @param Action_Request_Body $body
+     */
     public function setBody(?Action_Request_Body $body)
     {
         $this->body = $body;
     }
+    /**
+     * @return Action_Request_Body
+     */
     public function getBody() : ?Action_Request_Body
     {
         return $this->body;
@@ -231,26 +280,38 @@ class Endpoint
 {
     /**
      * @Key("Action_Request")
-     * @Ref("PSX\Generation\Action_Request")
+     * @Ref("BackendActionExecuteAction_id09\Action_Request")
      */
     protected $Action_Request;
     /**
      * @Key("Action_Response")
-     * @Ref("PSX\Generation\Action_Response")
+     * @Ref("BackendActionExecuteAction_id09\Action_Response")
      */
     protected $Action_Response;
+    /**
+     * @param Action_Request $Action_Request
+     */
     public function setAction_Request(?Action_Request $Action_Request)
     {
         $this->Action_Request = $Action_Request;
     }
+    /**
+     * @return Action_Request
+     */
     public function getAction_Request() : ?Action_Request
     {
         return $this->Action_Request;
     }
+    /**
+     * @param Action_Response $Action_Response
+     */
     public function setAction_Response(?Action_Response $Action_Response)
     {
         $this->Action_Response = $Action_Response;
     }
+    /**
+     * @return Action_Response
+     */
     public function getAction_Response() : ?Action_Response
     {
         return $this->Action_Response;

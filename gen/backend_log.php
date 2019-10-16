@@ -3,6 +3,7 @@
 namespace BackendLog;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -104,34 +105,58 @@ class Log_Error
      * @Type("integer")
      */
     protected $line;
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
     }
+    /**
+     * @param string $trace
+     */
     public function setTrace(?string $trace)
     {
         $this->trace = $trace;
     }
+    /**
+     * @return string
+     */
     public function getTrace() : ?string
     {
         return $this->trace;
     }
+    /**
+     * @param string $file
+     */
     public function setFile(?string $file)
     {
         $this->file = $file;
     }
+    /**
+     * @return string
+     */
     public function getFile() : ?string
     {
         return $this->file;
     }
+    /**
+     * @param int $line
+     */
     public function setLine(?int $line)
     {
         $this->line = $line;
     }
+    /**
+     * @return int
+     */
     public function getLine() : ?int
     {
         return $this->line;
@@ -186,77 +211,131 @@ class Log
     /**
      * @Key("errors")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Log_Error"))
+     * @Items(@Ref("BackendLog\Log_Error"))
      */
     protected $errors;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param string $ip
+     */
     public function setIp(?string $ip)
     {
         $this->ip = $ip;
     }
+    /**
+     * @return string
+     */
     public function getIp() : ?string
     {
         return $this->ip;
     }
+    /**
+     * @param string $userAgent
+     */
     public function setUserAgent(?string $userAgent)
     {
         $this->userAgent = $userAgent;
     }
+    /**
+     * @return string
+     */
     public function getUserAgent() : ?string
     {
         return $this->userAgent;
     }
+    /**
+     * @param string $method
+     */
     public function setMethod(?string $method)
     {
         $this->method = $method;
     }
+    /**
+     * @return string
+     */
     public function getMethod() : ?string
     {
         return $this->method;
     }
+    /**
+     * @param string $path
+     */
     public function setPath(?string $path)
     {
         $this->path = $path;
     }
+    /**
+     * @return string
+     */
     public function getPath() : ?string
     {
         return $this->path;
     }
+    /**
+     * @param string $header
+     */
     public function setHeader(?string $header)
     {
         $this->header = $header;
     }
+    /**
+     * @return string
+     */
     public function getHeader() : ?string
     {
         return $this->header;
     }
+    /**
+     * @param string $body
+     */
     public function setBody(?string $body)
     {
         $this->body = $body;
     }
+    /**
+     * @return string
+     */
     public function getBody() : ?string
     {
         return $this->body;
     }
+    /**
+     * @param \DateTime $date
+     */
     public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
+    /**
+     * @return \DateTime
+     */
     public function getDate() : ?\DateTime
     {
         return $this->date;
     }
+    /**
+     * @param array<Log_Error> $errors
+     */
     public function setErrors(?array $errors)
     {
         $this->errors = $errors;
     }
+    /**
+     * @return array<Log_Error>
+     */
     public function getErrors() : ?array
     {
         return $this->errors;
@@ -280,29 +359,47 @@ class Log_Collection
     /**
      * @Key("entry")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Log"))
+     * @Items(@Ref("BackendLog\Log"))
      */
     protected $entry;
+    /**
+     * @param int $totalResults
+     */
     public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
+    /**
+     * @return int
+     */
     public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
+    /**
+     * @param int $startIndex
+     */
     public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
+    /**
+     * @return int
+     */
     public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
+    /**
+     * @param array<Log> $entry
+     */
     public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
+    /**
+     * @return array<Log>
+     */
     public function getEntry() : ?array
     {
         return $this->entry;
@@ -385,114 +482,198 @@ class GetQuery
      * @Type("string")
      */
     protected $search;
+    /**
+     * @param int $startIndex
+     */
     public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
+    /**
+     * @return int
+     */
     public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
+    /**
+     * @param int $count
+     */
     public function setCount(?int $count)
     {
         $this->count = $count;
     }
+    /**
+     * @return int
+     */
     public function getCount() : ?int
     {
         return $this->count;
     }
+    /**
+     * @param \DateTime $from
+     */
     public function setFrom(?\DateTime $from)
     {
         $this->from = $from;
     }
+    /**
+     * @return \DateTime
+     */
     public function getFrom() : ?\DateTime
     {
         return $this->from;
     }
+    /**
+     * @param \DateTime $to
+     */
     public function setTo(?\DateTime $to)
     {
         $this->to = $to;
     }
+    /**
+     * @return \DateTime
+     */
     public function getTo() : ?\DateTime
     {
         return $this->to;
     }
+    /**
+     * @param int $routeId
+     */
     public function setRouteId(?int $routeId)
     {
         $this->routeId = $routeId;
     }
+    /**
+     * @return int
+     */
     public function getRouteId() : ?int
     {
         return $this->routeId;
     }
+    /**
+     * @param int $appId
+     */
     public function setAppId(?int $appId)
     {
         $this->appId = $appId;
     }
+    /**
+     * @return int
+     */
     public function getAppId() : ?int
     {
         return $this->appId;
     }
+    /**
+     * @param int $userId
+     */
     public function setUserId(?int $userId)
     {
         $this->userId = $userId;
     }
+    /**
+     * @return int
+     */
     public function getUserId() : ?int
     {
         return $this->userId;
     }
+    /**
+     * @param string $ip
+     */
     public function setIp(?string $ip)
     {
         $this->ip = $ip;
     }
+    /**
+     * @return string
+     */
     public function getIp() : ?string
     {
         return $this->ip;
     }
+    /**
+     * @param string $userAgent
+     */
     public function setUserAgent(?string $userAgent)
     {
         $this->userAgent = $userAgent;
     }
+    /**
+     * @return string
+     */
     public function getUserAgent() : ?string
     {
         return $this->userAgent;
     }
+    /**
+     * @param string $method
+     */
     public function setMethod(?string $method)
     {
         $this->method = $method;
     }
+    /**
+     * @return string
+     */
     public function getMethod() : ?string
     {
         return $this->method;
     }
+    /**
+     * @param string $path
+     */
     public function setPath(?string $path)
     {
         $this->path = $path;
     }
+    /**
+     * @return string
+     */
     public function getPath() : ?string
     {
         return $this->path;
     }
+    /**
+     * @param string $header
+     */
     public function setHeader(?string $header)
     {
         $this->header = $header;
     }
+    /**
+     * @return string
+     */
     public function getHeader() : ?string
     {
         return $this->header;
     }
+    /**
+     * @param string $body
+     */
     public function setBody(?string $body)
     {
         $this->body = $body;
     }
+    /**
+     * @return string
+     */
     public function getBody() : ?string
     {
         return $this->body;
     }
+    /**
+     * @param string $search
+     */
     public function setSearch(?string $search)
     {
         $this->search = $search;
     }
+    /**
+     * @return string
+     */
     public function getSearch() : ?string
     {
         return $this->search;
@@ -505,26 +686,38 @@ class Endpoint
 {
     /**
      * @Key("GetQuery")
-     * @Ref("PSX\Generation\GetQuery")
+     * @Ref("BackendLog\GetQuery")
      */
     protected $GetQuery;
     /**
      * @Key("Log_Collection")
-     * @Ref("PSX\Generation\Log_Collection")
+     * @Ref("BackendLog\Log_Collection")
      */
     protected $Log_Collection;
+    /**
+     * @param GetQuery $GetQuery
+     */
     public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
+    /**
+     * @return GetQuery
+     */
     public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
+    /**
+     * @param Log_Collection $Log_Collection
+     */
     public function setLog_Collection(?Log_Collection $Log_Collection)
     {
         $this->Log_Collection = $Log_Collection;
     }
+    /**
+     * @return Log_Collection
+     */
     public function getLog_Collection() : ?Log_Collection
     {
         return $this->Log_Collection;

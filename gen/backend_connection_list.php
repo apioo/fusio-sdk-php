@@ -3,6 +3,7 @@
 namespace BackendConnectionList;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -92,18 +93,30 @@ class Connection_Connection
      * @Type("string")
      */
     protected $class;
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $class
+     */
     public function setClass(?string $class)
     {
         $this->class = $class;
     }
+    /**
+     * @return string
+     */
     public function getClass() : ?string
     {
         return $this->class;
@@ -117,13 +130,19 @@ class Connection_Index
     /**
      * @Key("connections")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Connection_Connection"))
+     * @Items(@Ref("BackendConnectionList\Connection_Connection"))
      */
     protected $connections;
+    /**
+     * @param array<Connection_Connection> $connections
+     */
     public function setConnections(?array $connections)
     {
         $this->connections = $connections;
     }
+    /**
+     * @return array<Connection_Connection>
+     */
     public function getConnections() : ?array
     {
         return $this->connections;
@@ -136,13 +155,19 @@ class Endpoint
 {
     /**
      * @Key("Connection_Index")
-     * @Ref("PSX\Generation\Connection_Index")
+     * @Ref("BackendConnectionList\Connection_Index")
      */
     protected $Connection_Index;
+    /**
+     * @param Connection_Index $Connection_Index
+     */
     public function setConnection_Index(?Connection_Index $Connection_Index)
     {
         $this->Connection_Index = $Connection_Index;
     }
+    /**
+     * @return Connection_Index
+     */
     public function getConnection_Index() : ?Connection_Index
     {
         return $this->Connection_Index;

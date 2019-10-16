@@ -3,6 +3,7 @@
 namespace BackendScopeScope_id09;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -139,26 +140,44 @@ class Scope_Route
      * @Type("string")
      */
     protected $methods;
+    /**
+     * @param int $routeId
+     */
     public function setRouteId(?int $routeId)
     {
         $this->routeId = $routeId;
     }
+    /**
+     * @return int
+     */
     public function getRouteId() : ?int
     {
         return $this->routeId;
     }
+    /**
+     * @param bool $allow
+     */
     public function setAllow(?bool $allow)
     {
         $this->allow = $allow;
     }
+    /**
+     * @return bool
+     */
     public function getAllow() : ?bool
     {
         return $this->allow;
     }
+    /**
+     * @param string $methods
+     */
     public function setMethods(?string $methods)
     {
         $this->methods = $methods;
     }
+    /**
+     * @return string
+     */
     public function getMethods() : ?string
     {
         return $this->methods;
@@ -179,18 +198,30 @@ class Message
      * @Type("string")
      */
     protected $message;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
@@ -220,37 +251,61 @@ class Scope
     /**
      * @Key("routes")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Scope_Route"))
+     * @Items(@Ref("BackendScopeScope_id09\Scope_Route"))
      */
     protected $routes;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $description
+     */
     public function setDescription(?string $description)
     {
         $this->description = $description;
     }
+    /**
+     * @return string
+     */
     public function getDescription() : ?string
     {
         return $this->description;
     }
+    /**
+     * @param array<Scope_Route> $routes
+     */
     public function setRoutes(?array $routes)
     {
         $this->routes = $routes;
     }
+    /**
+     * @return array<Scope_Route>
+     */
     public function getRoutes() : ?array
     {
         return $this->routes;
@@ -263,26 +318,38 @@ class Endpoint
 {
     /**
      * @Key("Scope")
-     * @Ref("PSX\Generation\Scope")
+     * @Ref("BackendScopeScope_id09\Scope")
      */
     protected $Scope;
     /**
      * @Key("Message")
-     * @Ref("PSX\Generation\Message")
+     * @Ref("BackendScopeScope_id09\Message")
      */
     protected $Message;
+    /**
+     * @param Scope $Scope
+     */
     public function setScope(?Scope $Scope)
     {
         $this->Scope = $Scope;
     }
+    /**
+     * @return Scope
+     */
     public function getScope() : ?Scope
     {
         return $this->Scope;
     }
+    /**
+     * @param Message $Message
+     */
     public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
+    /**
+     * @return Message
+     */
     public function getMessage() : ?Message
     {
         return $this->Message;

@@ -3,6 +3,7 @@
 namespace BackendSchemaFormSchema_id09;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -100,18 +101,30 @@ class Message
      * @Type("string")
      */
     protected $message;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
@@ -132,26 +145,38 @@ class Endpoint
 {
     /**
      * @Key("Schema_Form")
-     * @Ref("PSX\Generation\Schema_Form")
+     * @Ref("BackendSchemaFormSchema_id09\Schema_Form")
      */
     protected $Schema_Form;
     /**
      * @Key("Message")
-     * @Ref("PSX\Generation\Message")
+     * @Ref("BackendSchemaFormSchema_id09\Message")
      */
     protected $Message;
+    /**
+     * @param Schema_Form $Schema_Form
+     */
     public function setSchema_Form(?Schema_Form $Schema_Form)
     {
         $this->Schema_Form = $Schema_Form;
     }
+    /**
+     * @return Schema_Form
+     */
     public function getSchema_Form() : ?Schema_Form
     {
         return $this->Schema_Form;
     }
+    /**
+     * @param Message $Message
+     */
     public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
+    /**
+     * @return Message
+     */
     public function getMessage() : ?Message
     {
         return $this->Message;

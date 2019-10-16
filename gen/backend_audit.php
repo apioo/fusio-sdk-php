@@ -3,6 +3,7 @@
 namespace BackendAudit;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -106,26 +107,44 @@ class Audit_User
      * @Type("string")
      */
     protected $name;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param int $status
+     */
     public function setStatus(?int $status)
     {
         $this->status = $status;
     }
+    /**
+     * @return int
+     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
@@ -151,26 +170,44 @@ class Audit_App
      * @Type("string")
      */
     protected $name;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param int $status
+     */
     public function setStatus(?int $status)
     {
         $this->status = $status;
     }
+    /**
+     * @return int
+     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
@@ -188,12 +225,12 @@ class Audit
     protected $id;
     /**
      * @Key("app")
-     * @Ref("PSX\Generation\Audit_App")
+     * @Ref("BackendAudit\Audit_App")
      */
     protected $app;
     /**
      * @Key("user")
-     * @Ref("PSX\Generation\Audit_User")
+     * @Ref("BackendAudit\Audit_User")
      */
     protected $user;
     /**
@@ -213,7 +250,7 @@ class Audit
     protected $message;
     /**
      * @Key("content")
-     * @Ref("PSX\Generation\Audit_Object")
+     * @Ref("BackendAudit\Audit_Object")
      */
     protected $content;
     /**
@@ -222,66 +259,114 @@ class Audit
      * @Format("date-time")
      */
     protected $date;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param Audit_App $app
+     */
     public function setApp(?Audit_App $app)
     {
         $this->app = $app;
     }
+    /**
+     * @return Audit_App
+     */
     public function getApp() : ?Audit_App
     {
         return $this->app;
     }
+    /**
+     * @param Audit_User $user
+     */
     public function setUser(?Audit_User $user)
     {
         $this->user = $user;
     }
+    /**
+     * @return Audit_User
+     */
     public function getUser() : ?Audit_User
     {
         return $this->user;
     }
+    /**
+     * @param string $event
+     */
     public function setEvent(?string $event)
     {
         $this->event = $event;
     }
+    /**
+     * @return string
+     */
     public function getEvent() : ?string
     {
         return $this->event;
     }
+    /**
+     * @param string $ip
+     */
     public function setIp(?string $ip)
     {
         $this->ip = $ip;
     }
+    /**
+     * @return string
+     */
     public function getIp() : ?string
     {
         return $this->ip;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
     }
+    /**
+     * @param Audit_Object $content
+     */
     public function setContent(?Audit_Object $content)
     {
         $this->content = $content;
     }
+    /**
+     * @return Audit_Object
+     */
     public function getContent() : ?Audit_Object
     {
         return $this->content;
     }
+    /**
+     * @param \DateTime $date
+     */
     public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
+    /**
+     * @return \DateTime
+     */
     public function getDate() : ?\DateTime
     {
         return $this->date;
@@ -305,29 +390,47 @@ class Audit_Collection
     /**
      * @Key("entry")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Audit"))
+     * @Items(@Ref("BackendAudit\Audit"))
      */
     protected $entry;
+    /**
+     * @param int $totalResults
+     */
     public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
+    /**
+     * @return int
+     */
     public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
+    /**
+     * @param int $startIndex
+     */
     public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
+    /**
+     * @return int
+     */
     public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
+    /**
+     * @param array<Audit> $entry
+     */
     public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
+    /**
+     * @return array<Audit>
+     */
     public function getEntry() : ?array
     {
         return $this->entry;
@@ -390,82 +493,142 @@ class GetQuery
      * @Type("string")
      */
     protected $search;
+    /**
+     * @param int $startIndex
+     */
     public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
+    /**
+     * @return int
+     */
     public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
+    /**
+     * @param int $count
+     */
     public function setCount(?int $count)
     {
         $this->count = $count;
     }
+    /**
+     * @return int
+     */
     public function getCount() : ?int
     {
         return $this->count;
     }
+    /**
+     * @param \DateTime $from
+     */
     public function setFrom(?\DateTime $from)
     {
         $this->from = $from;
     }
+    /**
+     * @return \DateTime
+     */
     public function getFrom() : ?\DateTime
     {
         return $this->from;
     }
+    /**
+     * @param \DateTime $to
+     */
     public function setTo(?\DateTime $to)
     {
         $this->to = $to;
     }
+    /**
+     * @return \DateTime
+     */
     public function getTo() : ?\DateTime
     {
         return $this->to;
     }
+    /**
+     * @param int $appId
+     */
     public function setAppId(?int $appId)
     {
         $this->appId = $appId;
     }
+    /**
+     * @return int
+     */
     public function getAppId() : ?int
     {
         return $this->appId;
     }
+    /**
+     * @param int $userId
+     */
     public function setUserId(?int $userId)
     {
         $this->userId = $userId;
     }
+    /**
+     * @return int
+     */
     public function getUserId() : ?int
     {
         return $this->userId;
     }
+    /**
+     * @param string $event
+     */
     public function setEvent(?string $event)
     {
         $this->event = $event;
     }
+    /**
+     * @return string
+     */
     public function getEvent() : ?string
     {
         return $this->event;
     }
+    /**
+     * @param string $ip
+     */
     public function setIp(?string $ip)
     {
         $this->ip = $ip;
     }
+    /**
+     * @return string
+     */
     public function getIp() : ?string
     {
         return $this->ip;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
     }
+    /**
+     * @param string $search
+     */
     public function setSearch(?string $search)
     {
         $this->search = $search;
     }
+    /**
+     * @return string
+     */
     public function getSearch() : ?string
     {
         return $this->search;
@@ -478,26 +641,38 @@ class Endpoint
 {
     /**
      * @Key("GetQuery")
-     * @Ref("PSX\Generation\GetQuery")
+     * @Ref("BackendAudit\GetQuery")
      */
     protected $GetQuery;
     /**
      * @Key("Audit_Collection")
-     * @Ref("PSX\Generation\Audit_Collection")
+     * @Ref("BackendAudit\Audit_Collection")
      */
     protected $Audit_Collection;
+    /**
+     * @param GetQuery $GetQuery
+     */
     public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
+    /**
+     * @return GetQuery
+     */
     public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
+    /**
+     * @param Audit_Collection $Audit_Collection
+     */
     public function setAudit_Collection(?Audit_Collection $Audit_Collection)
     {
         $this->Audit_Collection = $Audit_Collection;
     }
+    /**
+     * @return Audit_Collection
+     */
     public function getAudit_Collection() : ?Audit_Collection
     {
         return $this->Audit_Collection;

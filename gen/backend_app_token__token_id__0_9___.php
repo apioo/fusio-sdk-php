@@ -3,6 +3,7 @@
 namespace BackendAppTokenToken_id09;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -120,50 +121,86 @@ class App_Token
      * @Format("date-time")
      */
     protected $date;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param string $token
+     */
     public function setToken(?string $token)
     {
         $this->token = $token;
     }
+    /**
+     * @return string
+     */
     public function getToken() : ?string
     {
         return $this->token;
     }
+    /**
+     * @param string $scope
+     */
     public function setScope(?string $scope)
     {
         $this->scope = $scope;
     }
+    /**
+     * @return string
+     */
     public function getScope() : ?string
     {
         return $this->scope;
     }
+    /**
+     * @param string $ip
+     */
     public function setIp(?string $ip)
     {
         $this->ip = $ip;
     }
+    /**
+     * @return string
+     */
     public function getIp() : ?string
     {
         return $this->ip;
     }
+    /**
+     * @param \DateTime $expire
+     */
     public function setExpire(?\DateTime $expire)
     {
         $this->expire = $expire;
     }
+    /**
+     * @return \DateTime
+     */
     public function getExpire() : ?\DateTime
     {
         return $this->expire;
     }
+    /**
+     * @param \DateTime $date
+     */
     public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
+    /**
+     * @return \DateTime
+     */
     public function getDate() : ?\DateTime
     {
         return $this->date;
@@ -176,13 +213,19 @@ class Endpoint
 {
     /**
      * @Key("App_Token")
-     * @Ref("PSX\Generation\App_Token")
+     * @Ref("BackendAppTokenToken_id09\App_Token")
      */
     protected $App_Token;
+    /**
+     * @param App_Token $App_Token
+     */
     public function setApp_Token(?App_Token $App_Token)
     {
         $this->App_Token = $App_Token;
     }
+    /**
+     * @return App_Token
+     */
     public function getApp_Token() : ?App_Token
     {
         return $this->App_Token;

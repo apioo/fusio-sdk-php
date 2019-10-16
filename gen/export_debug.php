@@ -3,6 +3,7 @@
 namespace ExportDebug;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -173,47 +174,71 @@ class Export_Debug
     protected $method;
     /**
      * @Key("headers")
-     * @Ref("PSX\Generation\Export_Debug_Headers")
+     * @Ref("ExportDebug\Export_Debug_Headers")
      */
     protected $headers;
     /**
      * @Key("parameters")
-     * @Ref("PSX\Generation\Export_Debug_Parameters")
+     * @Ref("ExportDebug\Export_Debug_Parameters")
      */
     protected $parameters;
     /**
      * @Key("body")
-     * @Ref("PSX\Generation\Export_Debug_Request")
+     * @Ref("ExportDebug\Export_Debug_Request")
      */
     protected $body;
+    /**
+     * @param string $method
+     */
     public function setMethod(?string $method)
     {
         $this->method = $method;
     }
+    /**
+     * @return string
+     */
     public function getMethod() : ?string
     {
         return $this->method;
     }
+    /**
+     * @param Export_Debug_Headers $headers
+     */
     public function setHeaders(?Export_Debug_Headers $headers)
     {
         $this->headers = $headers;
     }
+    /**
+     * @return Export_Debug_Headers
+     */
     public function getHeaders() : ?Export_Debug_Headers
     {
         return $this->headers;
     }
+    /**
+     * @param Export_Debug_Parameters $parameters
+     */
     public function setParameters(?Export_Debug_Parameters $parameters)
     {
         $this->parameters = $parameters;
     }
+    /**
+     * @return Export_Debug_Parameters
+     */
     public function getParameters() : ?Export_Debug_Parameters
     {
         return $this->parameters;
     }
+    /**
+     * @param Export_Debug_Request $body
+     */
     public function setBody(?Export_Debug_Request $body)
     {
         $this->body = $body;
     }
+    /**
+     * @return Export_Debug_Request
+     */
     public function getBody() : ?Export_Debug_Request
     {
         return $this->body;
@@ -226,26 +251,38 @@ class Endpoint
 {
     /**
      * @Key("Export_Debug")
-     * @Ref("PSX\Generation\Export_Debug")
+     * @Ref("ExportDebug\Export_Debug")
      */
     protected $Export_Debug;
     /**
      * @Key("Passthru")
-     * @Ref("PSX\Generation\Passthru")
+     * @Ref("ExportDebug\Passthru")
      */
     protected $Passthru;
+    /**
+     * @param Export_Debug $Export_Debug
+     */
     public function setExport_Debug(?Export_Debug $Export_Debug)
     {
         $this->Export_Debug = $Export_Debug;
     }
+    /**
+     * @return Export_Debug
+     */
     public function getExport_Debug() : ?Export_Debug
     {
         return $this->Export_Debug;
     }
+    /**
+     * @param Passthru $Passthru
+     */
     public function setPassthru(?Passthru $Passthru)
     {
         $this->Passthru = $Passthru;
     }
+    /**
+     * @return Passthru
+     */
     public function getPassthru() : ?Passthru
     {
         return $this->Passthru;

@@ -3,6 +3,7 @@
 namespace BackendActionList;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -92,18 +93,30 @@ class Action_Action
      * @Type("string")
      */
     protected $class;
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $class
+     */
     public function setClass(?string $class)
     {
         $this->class = $class;
     }
+    /**
+     * @return string
+     */
     public function getClass() : ?string
     {
         return $this->class;
@@ -117,13 +130,19 @@ class Action_Index
     /**
      * @Key("actions")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Action_Action"))
+     * @Items(@Ref("BackendActionList\Action_Action"))
      */
     protected $actions;
+    /**
+     * @param array<Action_Action> $actions
+     */
     public function setActions(?array $actions)
     {
         $this->actions = $actions;
     }
+    /**
+     * @return array<Action_Action>
+     */
     public function getActions() : ?array
     {
         return $this->actions;
@@ -136,13 +155,19 @@ class Endpoint
 {
     /**
      * @Key("Action_Index")
-     * @Ref("PSX\Generation\Action_Index")
+     * @Ref("BackendActionList\Action_Index")
      */
     protected $Action_Index;
+    /**
+     * @param Action_Index $Action_Index
+     */
     public function setAction_Index(?Action_Index $Action_Index)
     {
         $this->Action_Index = $Action_Index;
     }
+    /**
+     * @return Action_Index
+     */
     public function getAction_Index() : ?Action_Index
     {
         return $this->Action_Index;

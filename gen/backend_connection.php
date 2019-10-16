@@ -3,6 +3,7 @@
 namespace BackendConnection;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -121,18 +122,30 @@ class Message
      * @Type("string")
      */
     protected $message;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
@@ -162,37 +175,61 @@ class Connection
     protected $class;
     /**
      * @Key("config")
-     * @Ref("PSX\Generation\Connection_Config")
+     * @Ref("BackendConnection\Connection_Config")
      */
     protected $config;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $class
+     */
     public function setClass(?string $class)
     {
         $this->class = $class;
     }
+    /**
+     * @return string
+     */
     public function getClass() : ?string
     {
         return $this->class;
     }
+    /**
+     * @param Connection_Config $config
+     */
     public function setConfig(?Connection_Config $config)
     {
         $this->config = $config;
     }
+    /**
+     * @return Connection_Config
+     */
     public function getConfig() : ?Connection_Config
     {
         return $this->config;
@@ -216,29 +253,47 @@ class Connection_Collection
     /**
      * @Key("entry")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Connection"))
+     * @Items(@Ref("BackendConnection\Connection"))
      */
     protected $entry;
+    /**
+     * @param int $totalResults
+     */
     public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
+    /**
+     * @return int
+     */
     public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
+    /**
+     * @param int $startIndex
+     */
     public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
+    /**
+     * @return int
+     */
     public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
+    /**
+     * @param array<Connection> $entry
+     */
     public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
+    /**
+     * @return array<Connection>
+     */
     public function getEntry() : ?array
     {
         return $this->entry;
@@ -264,26 +319,44 @@ class GetQuery
      * @Type("string")
      */
     protected $search;
+    /**
+     * @param int $startIndex
+     */
     public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
+    /**
+     * @return int
+     */
     public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
+    /**
+     * @param int $count
+     */
     public function setCount(?int $count)
     {
         $this->count = $count;
     }
+    /**
+     * @return int
+     */
     public function getCount() : ?int
     {
         return $this->count;
     }
+    /**
+     * @param string $search
+     */
     public function setSearch(?string $search)
     {
         $this->search = $search;
     }
+    /**
+     * @return string
+     */
     public function getSearch() : ?string
     {
         return $this->search;
@@ -296,52 +369,76 @@ class Endpoint
 {
     /**
      * @Key("GetQuery")
-     * @Ref("PSX\Generation\GetQuery")
+     * @Ref("BackendConnection\GetQuery")
      */
     protected $GetQuery;
     /**
      * @Key("Connection_Collection")
-     * @Ref("PSX\Generation\Connection_Collection")
+     * @Ref("BackendConnection\Connection_Collection")
      */
     protected $Connection_Collection;
     /**
      * @Key("Connection")
-     * @Ref("PSX\Generation\Connection")
+     * @Ref("BackendConnection\Connection")
      */
     protected $Connection;
     /**
      * @Key("Message")
-     * @Ref("PSX\Generation\Message")
+     * @Ref("BackendConnection\Message")
      */
     protected $Message;
+    /**
+     * @param GetQuery $GetQuery
+     */
     public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
+    /**
+     * @return GetQuery
+     */
     public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
+    /**
+     * @param Connection_Collection $Connection_Collection
+     */
     public function setConnection_Collection(?Connection_Collection $Connection_Collection)
     {
         $this->Connection_Collection = $Connection_Collection;
     }
+    /**
+     * @return Connection_Collection
+     */
     public function getConnection_Collection() : ?Connection_Collection
     {
         return $this->Connection_Collection;
     }
+    /**
+     * @param Connection $Connection
+     */
     public function setConnection(?Connection $Connection)
     {
         $this->Connection = $Connection;
     }
+    /**
+     * @return Connection
+     */
     public function getConnection() : ?Connection
     {
         return $this->Connection;
     }
+    /**
+     * @param Message $Message
+     */
     public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
+    /**
+     * @return Message
+     */
     public function getMessage() : ?Message
     {
         return $this->Message;

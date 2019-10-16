@@ -107,34 +107,58 @@ class Access_token
      * @Type("string")
      */
     protected $refresh_token;
+    /**
+     * @param string $access_token
+     */
     public function setAccess_token(?string $access_token)
     {
         $this->access_token = $access_token;
     }
+    /**
+     * @return string
+     */
     public function getAccess_token() : ?string
     {
         return $this->access_token;
     }
+    /**
+     * @param string $token_type
+     */
     public function setToken_type(?string $token_type)
     {
         $this->token_type = $token_type;
     }
+    /**
+     * @return string
+     */
     public function getToken_type() : ?string
     {
         return $this->token_type;
     }
+    /**
+     * @param string $expires_in
+     */
     public function setExpires_in(?string $expires_in)
     {
         $this->expires_in = $expires_in;
     }
+    /**
+     * @return string
+     */
     public function getExpires_in() : ?string
     {
         return $this->expires_in;
     }
+    /**
+     * @param string $refresh_token
+     */
     public function setRefresh_token(?string $refresh_token)
     {
         $this->refresh_token = $refresh_token;
     }
+    /**
+     * @return string
+     */
     public function getRefresh_token() : ?string
     {
         return $this->refresh_token;
@@ -161,26 +185,44 @@ class Refresh_token
      * @Type("string")
      */
     protected $scope;
+    /**
+     * @param string $grant_type
+     */
     public function setGrant_type(?string $grant_type)
     {
         $this->grant_type = $grant_type;
     }
+    /**
+     * @return string
+     */
     public function getGrant_type() : ?string
     {
         return $this->grant_type;
     }
+    /**
+     * @param string $refresh_token
+     */
     public function setRefresh_token(?string $refresh_token)
     {
         $this->refresh_token = $refresh_token;
     }
+    /**
+     * @return string
+     */
     public function getRefresh_token() : ?string
     {
         return $this->refresh_token;
     }
+    /**
+     * @param string $scope
+     */
     public function setScope(?string $scope)
     {
         $this->scope = $scope;
     }
+    /**
+     * @return string
+     */
     public function getScope() : ?string
     {
         return $this->scope;
@@ -202,18 +244,30 @@ class Client_credentials
      * @Type("string")
      */
     protected $scope;
+    /**
+     * @param string $grant_type
+     */
     public function setGrant_type(?string $grant_type)
     {
         $this->grant_type = $grant_type;
     }
+    /**
+     * @return string
+     */
     public function getGrant_type() : ?string
     {
         return $this->grant_type;
     }
+    /**
+     * @param string $scope
+     */
     public function setScope(?string $scope)
     {
         $this->scope = $scope;
     }
+    /**
+     * @return string
+     */
     public function getScope() : ?string
     {
         return $this->scope;
@@ -245,34 +299,58 @@ class Password
      * @Type("string")
      */
     protected $scope;
+    /**
+     * @param string $grant_type
+     */
     public function setGrant_type(?string $grant_type)
     {
         $this->grant_type = $grant_type;
     }
+    /**
+     * @return string
+     */
     public function getGrant_type() : ?string
     {
         return $this->grant_type;
     }
+    /**
+     * @param string $username
+     */
     public function setUsername(?string $username)
     {
         $this->username = $username;
     }
+    /**
+     * @return string
+     */
     public function getUsername() : ?string
     {
         return $this->username;
     }
+    /**
+     * @param string $password
+     */
     public function setPassword(?string $password)
     {
         $this->password = $password;
     }
+    /**
+     * @return string
+     */
     public function getPassword() : ?string
     {
         return $this->password;
     }
+    /**
+     * @param string $scope
+     */
     public function setScope(?string $scope)
     {
         $this->scope = $scope;
     }
+    /**
+     * @return string
+     */
     public function getScope() : ?string
     {
         return $this->scope;
@@ -304,34 +382,58 @@ class Authorization_code
      * @Type("string")
      */
     protected $client_id;
+    /**
+     * @param string $grant_type
+     */
     public function setGrant_type(?string $grant_type)
     {
         $this->grant_type = $grant_type;
     }
+    /**
+     * @return string
+     */
     public function getGrant_type() : ?string
     {
         return $this->grant_type;
     }
+    /**
+     * @param string $code
+     */
     public function setCode(?string $code)
     {
         $this->code = $code;
     }
+    /**
+     * @return string
+     */
     public function getCode() : ?string
     {
         return $this->code;
     }
+    /**
+     * @param string $redirect_uri
+     */
     public function setRedirect_uri(?string $redirect_uri)
     {
         $this->redirect_uri = $redirect_uri;
     }
+    /**
+     * @return string
+     */
     public function getRedirect_uri() : ?string
     {
         return $this->redirect_uri;
     }
+    /**
+     * @param string $client_id
+     */
     public function setClient_id(?string $client_id)
     {
         $this->client_id = $client_id;
     }
+    /**
+     * @return string
+     */
     public function getClient_id() : ?string
     {
         return $this->client_id;
@@ -345,26 +447,38 @@ class Endpoint
     /**
      * @Key("Authorization")
      * @Title("authorization")
-     * @OneOf(@Ref("PSX\Generation\Authorization_code"), @Ref("PSX\Generation\Password"), @Ref("PSX\Generation\Client_credentials"), @Ref("PSX\Generation\Refresh_token"))
+     * @OneOf(@Ref("BackendToken\Authorization_code"), @Ref("BackendToken\Password"), @Ref("BackendToken\Client_credentials"), @Ref("BackendToken\Refresh_token"))
      */
     protected $Authorization;
     /**
      * @Key("Access_token")
-     * @Ref("PSX\Generation\Access_token")
+     * @Ref("BackendToken\Access_token")
      */
     protected $Access_token;
+    /**
+     * @param Authorization_code|Password|Client_credentials|Refresh_token $Authorization
+     */
     public function setAuthorization($Authorization)
     {
         $this->Authorization = $Authorization;
     }
+    /**
+     * @return Authorization_code|Password|Client_credentials|Refresh_token
+     */
     public function getAuthorization()
     {
         return $this->Authorization;
     }
+    /**
+     * @param Access_token $Access_token
+     */
     public function setAccess_token(?Access_token $Access_token)
     {
         $this->Access_token = $Access_token;
     }
+    /**
+     * @return Access_token
+     */
     public function getAccess_token() : ?Access_token
     {
         return $this->Access_token;

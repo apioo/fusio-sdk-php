@@ -3,6 +3,7 @@
 namespace ConsumerEvent;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -98,26 +99,44 @@ class Consumer_Event
      * @Type("string")
      */
     protected $description;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $description
+     */
     public function setDescription(?string $description)
     {
         $this->description = $description;
     }
+    /**
+     * @return string
+     */
     public function getDescription() : ?string
     {
         return $this->description;
@@ -141,29 +160,47 @@ class Consumer_Event_Collection
     /**
      * @Key("entry")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Consumer_Event"))
+     * @Items(@Ref("ConsumerEvent\Consumer_Event"))
      */
     protected $entry;
+    /**
+     * @param int $totalResults
+     */
     public function setTotalResults(?int $totalResults)
     {
         $this->totalResults = $totalResults;
     }
+    /**
+     * @return int
+     */
     public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
+    /**
+     * @param int $startIndex
+     */
     public function setStartIndex(?int $startIndex)
     {
         $this->startIndex = $startIndex;
     }
+    /**
+     * @return int
+     */
     public function getStartIndex() : ?int
     {
         return $this->startIndex;
     }
+    /**
+     * @param array<Consumer_Event> $entry
+     */
     public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
+    /**
+     * @return array<Consumer_Event>
+     */
     public function getEntry() : ?array
     {
         return $this->entry;
@@ -176,13 +213,19 @@ class Endpoint
 {
     /**
      * @Key("Consumer_Event_Collection")
-     * @Ref("PSX\Generation\Consumer_Event_Collection")
+     * @Ref("ConsumerEvent\Consumer_Event_Collection")
      */
     protected $Consumer_Event_Collection;
+    /**
+     * @param Consumer_Event_Collection $Consumer_Event_Collection
+     */
     public function setConsumer_Event_Collection(?Consumer_Event_Collection $Consumer_Event_Collection)
     {
         $this->Consumer_Event_Collection = $Consumer_Event_Collection;
     }
+    /**
+     * @return Consumer_Event_Collection
+     */
     public function getConsumer_Event_Collection() : ?Consumer_Event_Collection
     {
         return $this->Consumer_Event_Collection;

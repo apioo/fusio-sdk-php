@@ -3,6 +3,7 @@
 namespace ConsumerPlanInvoiceInvoice_id09;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -120,50 +121,86 @@ class Consumer_Plan_Invoice
      * @Format("date-time")
      */
     protected $insertDate;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param int $status
+     */
     public function setStatus(?int $status)
     {
         $this->status = $status;
     }
+    /**
+     * @return int
+     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
+    /**
+     * @param float $amount
+     */
     public function setAmount(?float $amount)
     {
         $this->amount = $amount;
     }
+    /**
+     * @return float
+     */
     public function getAmount() : ?float
     {
         return $this->amount;
     }
+    /**
+     * @param int $points
+     */
     public function setPoints(?int $points)
     {
         $this->points = $points;
     }
+    /**
+     * @return int
+     */
     public function getPoints() : ?int
     {
         return $this->points;
     }
+    /**
+     * @param \DateTime $payDate
+     */
     public function setPayDate(?\DateTime $payDate)
     {
         $this->payDate = $payDate;
     }
+    /**
+     * @return \DateTime
+     */
     public function getPayDate() : ?\DateTime
     {
         return $this->payDate;
     }
+    /**
+     * @param \DateTime $insertDate
+     */
     public function setInsertDate(?\DateTime $insertDate)
     {
         $this->insertDate = $insertDate;
     }
+    /**
+     * @return \DateTime
+     */
     public function getInsertDate() : ?\DateTime
     {
         return $this->insertDate;
@@ -176,13 +213,19 @@ class Endpoint
 {
     /**
      * @Key("Consumer_Plan_Invoice")
-     * @Ref("PSX\Generation\Consumer_Plan_Invoice")
+     * @Ref("ConsumerPlanInvoiceInvoice_id09\Consumer_Plan_Invoice")
      */
     protected $Consumer_Plan_Invoice;
+    /**
+     * @param Consumer_Plan_Invoice $Consumer_Plan_Invoice
+     */
     public function setConsumer_Plan_Invoice(?Consumer_Plan_Invoice $Consumer_Plan_Invoice)
     {
         $this->Consumer_Plan_Invoice = $Consumer_Plan_Invoice;
     }
+    /**
+     * @return Consumer_Plan_Invoice
+     */
     public function getConsumer_Plan_Invoice() : ?Consumer_Plan_Invoice
     {
         return $this->Consumer_Plan_Invoice;

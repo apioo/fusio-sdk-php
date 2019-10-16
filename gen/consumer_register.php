@@ -3,6 +3,7 @@
 namespace ConsumerRegister;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -91,18 +92,30 @@ class Consumer_Message
      * @Type("string")
      */
     protected $message;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
@@ -134,34 +147,58 @@ class Consumer_User_Register
      * @Type("string")
      */
     protected $captcha;
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $email
+     */
     public function setEmail(?string $email)
     {
         $this->email = $email;
     }
+    /**
+     * @return string
+     */
     public function getEmail() : ?string
     {
         return $this->email;
     }
+    /**
+     * @param string $password
+     */
     public function setPassword(?string $password)
     {
         $this->password = $password;
     }
+    /**
+     * @return string
+     */
     public function getPassword() : ?string
     {
         return $this->password;
     }
+    /**
+     * @param string $captcha
+     */
     public function setCaptcha(?string $captcha)
     {
         $this->captcha = $captcha;
     }
+    /**
+     * @return string
+     */
     public function getCaptcha() : ?string
     {
         return $this->captcha;
@@ -174,26 +211,38 @@ class Endpoint
 {
     /**
      * @Key("Consumer_User_Register")
-     * @Ref("PSX\Generation\Consumer_User_Register")
+     * @Ref("ConsumerRegister\Consumer_User_Register")
      */
     protected $Consumer_User_Register;
     /**
      * @Key("Consumer_Message")
-     * @Ref("PSX\Generation\Consumer_Message")
+     * @Ref("ConsumerRegister\Consumer_Message")
      */
     protected $Consumer_Message;
+    /**
+     * @param Consumer_User_Register $Consumer_User_Register
+     */
     public function setConsumer_User_Register(?Consumer_User_Register $Consumer_User_Register)
     {
         $this->Consumer_User_Register = $Consumer_User_Register;
     }
+    /**
+     * @return Consumer_User_Register
+     */
     public function getConsumer_User_Register() : ?Consumer_User_Register
     {
         return $this->Consumer_User_Register;
     }
+    /**
+     * @param Consumer_Message $Consumer_Message
+     */
     public function setConsumer_Message(?Consumer_Message $Consumer_Message)
     {
         $this->Consumer_Message = $Consumer_Message;
     }
+    /**
+     * @return Consumer_Message
+     */
     public function getConsumer_Message() : ?Consumer_Message
     {
         return $this->Consumer_Message;

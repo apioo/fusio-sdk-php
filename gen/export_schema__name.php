@@ -3,6 +3,7 @@
 namespace ExportSchemaName;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -101,26 +102,38 @@ class Export_Schema
 {
     /**
      * @Key("schema")
-     * @Ref("PSX\Generation\Export_Schema_JsonSchema")
+     * @Ref("ExportSchemaName\Export_Schema_JsonSchema")
      */
     protected $schema;
     /**
      * @Key("form")
-     * @Ref("PSX\Generation\Export_Schema_Form")
+     * @Ref("ExportSchemaName\Export_Schema_Form")
      */
     protected $form;
+    /**
+     * @param Export_Schema_JsonSchema $schema
+     */
     public function setSchema(?Export_Schema_JsonSchema $schema)
     {
         $this->schema = $schema;
     }
+    /**
+     * @return Export_Schema_JsonSchema
+     */
     public function getSchema() : ?Export_Schema_JsonSchema
     {
         return $this->schema;
     }
+    /**
+     * @param Export_Schema_Form $form
+     */
     public function setForm(?Export_Schema_Form $form)
     {
         $this->form = $form;
     }
+    /**
+     * @return Export_Schema_Form
+     */
     public function getForm() : ?Export_Schema_Form
     {
         return $this->form;
@@ -133,13 +146,19 @@ class Endpoint
 {
     /**
      * @Key("Export_Schema")
-     * @Ref("PSX\Generation\Export_Schema")
+     * @Ref("ExportSchemaName\Export_Schema")
      */
     protected $Export_Schema;
+    /**
+     * @param Export_Schema $Export_Schema
+     */
     public function setExport_Schema(?Export_Schema $Export_Schema)
     {
         $this->Export_Schema = $Export_Schema;
     }
+    /**
+     * @return Export_Schema
+     */
     public function getExport_Schema() : ?Export_Schema
     {
         return $this->Export_Schema;

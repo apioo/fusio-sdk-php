@@ -3,6 +3,7 @@
 namespace BackendPlanPlan_id09;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -134,18 +135,30 @@ class Message
      * @Type("string")
      */
     protected $message;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
@@ -186,50 +199,86 @@ class Plan
      * @Type("integer")
      */
     protected $period;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $description
+     */
     public function setDescription(?string $description)
     {
         $this->description = $description;
     }
+    /**
+     * @return string
+     */
     public function getDescription() : ?string
     {
         return $this->description;
     }
+    /**
+     * @param float $price
+     */
     public function setPrice(?float $price)
     {
         $this->price = $price;
     }
+    /**
+     * @return float
+     */
     public function getPrice() : ?float
     {
         return $this->price;
     }
+    /**
+     * @param int $points
+     */
     public function setPoints(?int $points)
     {
         $this->points = $points;
     }
+    /**
+     * @return int
+     */
     public function getPoints() : ?int
     {
         return $this->points;
     }
+    /**
+     * @param int $period
+     */
     public function setPeriod(?int $period)
     {
         $this->period = $period;
     }
+    /**
+     * @return int
+     */
     public function getPeriod() : ?int
     {
         return $this->period;
@@ -242,26 +291,38 @@ class Endpoint
 {
     /**
      * @Key("Plan")
-     * @Ref("PSX\Generation\Plan")
+     * @Ref("BackendPlanPlan_id09\Plan")
      */
     protected $Plan;
     /**
      * @Key("Message")
-     * @Ref("PSX\Generation\Message")
+     * @Ref("BackendPlanPlan_id09\Message")
      */
     protected $Message;
+    /**
+     * @param Plan $Plan
+     */
     public function setPlan(?Plan $Plan)
     {
         $this->Plan = $Plan;
     }
+    /**
+     * @return Plan
+     */
     public function getPlan() : ?Plan
     {
         return $this->Plan;
     }
+    /**
+     * @param Message $Message
+     */
     public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
+    /**
+     * @return Message
+     */
     public function getMessage() : ?Message
     {
         return $this->Message;

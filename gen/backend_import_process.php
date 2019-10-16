@@ -3,6 +3,7 @@
 namespace BackendImportProcess;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -143,7 +144,7 @@ class Routes_Method
     protected $response;
     /**
      * @Key("responses")
-     * @Ref("PSX\Generation\Routes_Method_Responses")
+     * @Ref("BackendImportProcess\Routes_Method_Responses")
      */
     protected $responses;
     /**
@@ -156,106 +157,184 @@ class Routes_Method
      * @Type("integer")
      */
     protected $costs;
+    /**
+     * @param string $method
+     */
     public function setMethod(?string $method)
     {
         $this->method = $method;
     }
+    /**
+     * @return string
+     */
     public function getMethod() : ?string
     {
         return $this->method;
     }
+    /**
+     * @param int $version
+     */
     public function setVersion(?int $version)
     {
         $this->version = $version;
     }
+    /**
+     * @return int
+     */
     public function getVersion() : ?int
     {
         return $this->version;
     }
+    /**
+     * @param int $status
+     */
     public function setStatus(?int $status)
     {
         $this->status = $status;
     }
+    /**
+     * @return int
+     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
+    /**
+     * @param bool $active
+     */
     public function setActive(?bool $active)
     {
         $this->active = $active;
     }
+    /**
+     * @return bool
+     */
     public function getActive() : ?bool
     {
         return $this->active;
     }
+    /**
+     * @param bool $public
+     */
     public function setPublic(?bool $public)
     {
         $this->public = $public;
     }
+    /**
+     * @return bool
+     */
     public function getPublic() : ?bool
     {
         return $this->public;
     }
+    /**
+     * @param string $description
+     */
     public function setDescription(?string $description)
     {
         $this->description = $description;
     }
+    /**
+     * @return string
+     */
     public function getDescription() : ?string
     {
         return $this->description;
     }
+    /**
+     * @param string $operationId
+     */
     public function setOperationId(?string $operationId)
     {
         $this->operationId = $operationId;
     }
+    /**
+     * @return string
+     */
     public function getOperationId() : ?string
     {
         return $this->operationId;
     }
+    /**
+     * @param string $parameters
+     */
     public function setParameters(?string $parameters)
     {
         $this->parameters = $parameters;
     }
+    /**
+     * @return string
+     */
     public function getParameters() : ?string
     {
         return $this->parameters;
     }
+    /**
+     * @param string $request
+     */
     public function setRequest(?string $request)
     {
         $this->request = $request;
     }
+    /**
+     * @return string
+     */
     public function getRequest() : ?string
     {
         return $this->request;
     }
+    /**
+     * @param string $response
+     */
     public function setResponse(?string $response)
     {
         $this->response = $response;
     }
+    /**
+     * @return string
+     */
     public function getResponse() : ?string
     {
         return $this->response;
     }
+    /**
+     * @param Routes_Method_Responses $responses
+     */
     public function setResponses(?Routes_Method_Responses $responses)
     {
         $this->responses = $responses;
     }
+    /**
+     * @return Routes_Method_Responses
+     */
     public function getResponses() : ?Routes_Method_Responses
     {
         return $this->responses;
     }
+    /**
+     * @param string $action
+     */
     public function setAction(?string $action)
     {
         $this->action = $action;
     }
+    /**
+     * @return string
+     */
     public function getAction() : ?string
     {
         return $this->action;
     }
+    /**
+     * @param int $costs
+     */
     public function setCosts(?int $costs)
     {
         $this->costs = $costs;
     }
+    /**
+     * @return int
+     */
     public function getCosts() : ?int
     {
         return $this->costs;
@@ -263,7 +342,7 @@ class Routes_Method
 }
 /**
  * @Title("Routes Methods")
- * @PatternProperties(pattern="^(GET|POST|PUT|PATCH|DELETE)$", property=@Ref("PSX\Generation\Routes_Method"))
+ * @PatternProperties(pattern="^(GET|POST|PUT|PATCH|DELETE)$", property=@Ref("BackendImportProcess\Routes_Method"))
  */
 class Routes_Methods extends \ArrayObject
 {
@@ -308,29 +387,47 @@ class Routes_Version
     protected $status;
     /**
      * @Key("methods")
-     * @Ref("PSX\Generation\Routes_Methods")
+     * @Ref("BackendImportProcess\Routes_Methods")
      */
     protected $methods;
+    /**
+     * @param int $version
+     */
     public function setVersion(?int $version)
     {
         $this->version = $version;
     }
+    /**
+     * @return int
+     */
     public function getVersion() : ?int
     {
         return $this->version;
     }
+    /**
+     * @param int $status
+     */
     public function setStatus(?int $status)
     {
         $this->status = $status;
     }
+    /**
+     * @return int
+     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
+    /**
+     * @param Routes_Methods $methods
+     */
     public function setMethods(?Routes_Methods $methods)
     {
         $this->methods = $methods;
     }
+    /**
+     * @return Routes_Methods
+     */
     public function getMethods() : ?Routes_Methods
     {
         return $this->methods;
@@ -359,37 +456,61 @@ class Connection
     protected $class;
     /**
      * @Key("config")
-     * @Ref("PSX\Generation\Connection_Config")
+     * @Ref("BackendImportProcess\Connection_Config")
      */
     protected $config;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $class
+     */
     public function setClass(?string $class)
     {
         $this->class = $class;
     }
+    /**
+     * @return string
+     */
     public function getClass() : ?string
     {
         return $this->class;
     }
+    /**
+     * @param Connection_Config $config
+     */
     public function setConfig(?Connection_Config $config)
     {
         $this->config = $config;
     }
+    /**
+     * @return Connection_Config
+     */
     public function getConfig() : ?Connection_Config
     {
         return $this->config;
@@ -418,37 +539,61 @@ class Schema
     protected $name;
     /**
      * @Key("source")
-     * @Ref("PSX\Generation\Schema_Source")
+     * @Ref("BackendImportProcess\Schema_Source")
      */
     protected $source;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param int $status
+     */
     public function setStatus(?int $status)
     {
         $this->status = $status;
     }
+    /**
+     * @return int
+     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param Schema_Source $source
+     */
     public function setSource(?Schema_Source $source)
     {
         $this->source = $source;
     }
+    /**
+     * @return Schema_Source
+     */
     public function getSource() : ?Schema_Source
     {
         return $this->source;
@@ -487,53 +632,89 @@ class Action
     protected $engine;
     /**
      * @Key("config")
-     * @Ref("PSX\Generation\Action_Config")
+     * @Ref("BackendImportProcess\Action_Config")
      */
     protected $config;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param int $status
+     */
     public function setStatus(?int $status)
     {
         $this->status = $status;
     }
+    /**
+     * @return int
+     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $class
+     */
     public function setClass(?string $class)
     {
         $this->class = $class;
     }
+    /**
+     * @return string
+     */
     public function getClass() : ?string
     {
         return $this->class;
     }
+    /**
+     * @param string $engine
+     */
     public function setEngine(?string $engine)
     {
         $this->engine = $engine;
     }
+    /**
+     * @return string
+     */
     public function getEngine() : ?string
     {
         return $this->engine;
     }
+    /**
+     * @param Action_Config $config
+     */
     public function setConfig(?Action_Config $config)
     {
         $this->config = $config;
     }
+    /**
+     * @return Action_Config
+     */
     public function getConfig() : ?Action_Config
     {
         return $this->config;
@@ -573,53 +754,89 @@ class Routes
     /**
      * @Key("config")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Routes_Version"))
+     * @Items(@Ref("BackendImportProcess\Routes_Version"))
      */
     protected $config;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param int $priority
+     */
     public function setPriority(?int $priority)
     {
         $this->priority = $priority;
     }
+    /**
+     * @return int
+     */
     public function getPriority() : ?int
     {
         return $this->priority;
     }
+    /**
+     * @param string $path
+     */
     public function setPath(?string $path)
     {
         $this->path = $path;
     }
+    /**
+     * @return string
+     */
     public function getPath() : ?string
     {
         return $this->path;
     }
+    /**
+     * @param string $controller
+     */
     public function setController(?string $controller)
     {
         $this->controller = $controller;
     }
+    /**
+     * @return string
+     */
     public function getController() : ?string
     {
         return $this->controller;
     }
+    /**
+     * @param array<string> $scopes
+     */
     public function setScopes(?array $scopes)
     {
         $this->scopes = $scopes;
     }
+    /**
+     * @return array<string>
+     */
     public function getScopes() : ?array
     {
         return $this->scopes;
     }
+    /**
+     * @param array<Routes_Version> $config
+     */
     public function setConfig(?array $config)
     {
         $this->config = $config;
     }
+    /**
+     * @return array<Routes_Version>
+     */
     public function getConfig() : ?array
     {
         return $this->config;
@@ -646,26 +863,44 @@ class Import_Response
      * @Items(@Schema(type="string"))
      */
     protected $result;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
     }
+    /**
+     * @param array<string> $result
+     */
     public function setResult(?array $result)
     {
         $this->result = $result;
     }
+    /**
+     * @return array<string>
+     */
     public function getResult() : ?array
     {
         return $this->result;
@@ -691,71 +926,107 @@ class Adapter
     /**
      * @Key("routes")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Routes"))
+     * @Items(@Ref("BackendImportProcess\Routes"))
      */
     protected $routes;
     /**
      * @Key("action")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Action"))
+     * @Items(@Ref("BackendImportProcess\Action"))
      */
     protected $action;
     /**
      * @Key("schema")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Schema"))
+     * @Items(@Ref("BackendImportProcess\Schema"))
      */
     protected $schema;
     /**
      * @Key("connection")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Connection"))
+     * @Items(@Ref("BackendImportProcess\Connection"))
      */
     protected $connection;
+    /**
+     * @param array<string> $actionClass
+     */
     public function setActionClass(?array $actionClass)
     {
         $this->actionClass = $actionClass;
     }
+    /**
+     * @return array<string>
+     */
     public function getActionClass() : ?array
     {
         return $this->actionClass;
     }
+    /**
+     * @param array<string> $connectionClass
+     */
     public function setConnectionClass(?array $connectionClass)
     {
         $this->connectionClass = $connectionClass;
     }
+    /**
+     * @return array<string>
+     */
     public function getConnectionClass() : ?array
     {
         return $this->connectionClass;
     }
+    /**
+     * @param array<Routes> $routes
+     */
     public function setRoutes(?array $routes)
     {
         $this->routes = $routes;
     }
+    /**
+     * @return array<Routes>
+     */
     public function getRoutes() : ?array
     {
         return $this->routes;
     }
+    /**
+     * @param array<Action> $action
+     */
     public function setAction(?array $action)
     {
         $this->action = $action;
     }
+    /**
+     * @return array<Action>
+     */
     public function getAction() : ?array
     {
         return $this->action;
     }
+    /**
+     * @param array<Schema> $schema
+     */
     public function setSchema(?array $schema)
     {
         $this->schema = $schema;
     }
+    /**
+     * @return array<Schema>
+     */
     public function getSchema() : ?array
     {
         return $this->schema;
     }
+    /**
+     * @param array<Connection> $connection
+     */
     public function setConnection(?array $connection)
     {
         $this->connection = $connection;
     }
+    /**
+     * @return array<Connection>
+     */
     public function getConnection() : ?array
     {
         return $this->connection;
@@ -768,26 +1039,38 @@ class Endpoint
 {
     /**
      * @Key("Adapter")
-     * @Ref("PSX\Generation\Adapter")
+     * @Ref("BackendImportProcess\Adapter")
      */
     protected $Adapter;
     /**
      * @Key("Import_Response")
-     * @Ref("PSX\Generation\Import_Response")
+     * @Ref("BackendImportProcess\Import_Response")
      */
     protected $Import_Response;
+    /**
+     * @param Adapter $Adapter
+     */
     public function setAdapter(?Adapter $Adapter)
     {
         $this->Adapter = $Adapter;
     }
+    /**
+     * @return Adapter
+     */
     public function getAdapter() : ?Adapter
     {
         return $this->Adapter;
     }
+    /**
+     * @param Import_Response $Import_Response
+     */
     public function setImport_Response(?Import_Response $Import_Response)
     {
         $this->Import_Response = $Import_Response;
     }
+    /**
+     * @return Import_Response
+     */
     public function getImport_Response() : ?Import_Response
     {
         return $this->Import_Response;

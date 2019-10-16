@@ -3,6 +3,7 @@
 namespace BackendSdk;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -111,18 +112,30 @@ class Message
      * @Type("string")
      */
     protected $message;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
@@ -143,18 +156,30 @@ class Sdk_Generate
      * @Type("string")
      */
     protected $config;
+    /**
+     * @param string $format
+     */
     public function setFormat(?string $format)
     {
         $this->format = $format;
     }
+    /**
+     * @return string
+     */
     public function getFormat() : ?string
     {
         return $this->format;
     }
+    /**
+     * @param string $config
+     */
     public function setConfig(?string $config)
     {
         $this->config = $config;
     }
+    /**
+     * @return string
+     */
     public function getConfig() : ?string
     {
         return $this->config;
@@ -174,39 +199,57 @@ class Endpoint
 {
     /**
      * @Key("Sdk_Types")
-     * @Ref("PSX\Generation\Sdk_Types")
+     * @Ref("BackendSdk\Sdk_Types")
      */
     protected $Sdk_Types;
     /**
      * @Key("Sdk_Generate")
-     * @Ref("PSX\Generation\Sdk_Generate")
+     * @Ref("BackendSdk\Sdk_Generate")
      */
     protected $Sdk_Generate;
     /**
      * @Key("Message")
-     * @Ref("PSX\Generation\Message")
+     * @Ref("BackendSdk\Message")
      */
     protected $Message;
+    /**
+     * @param Sdk_Types $Sdk_Types
+     */
     public function setSdk_Types(?Sdk_Types $Sdk_Types)
     {
         $this->Sdk_Types = $Sdk_Types;
     }
+    /**
+     * @return Sdk_Types
+     */
     public function getSdk_Types() : ?Sdk_Types
     {
         return $this->Sdk_Types;
     }
+    /**
+     * @param Sdk_Generate $Sdk_Generate
+     */
     public function setSdk_Generate(?Sdk_Generate $Sdk_Generate)
     {
         $this->Sdk_Generate = $Sdk_Generate;
     }
+    /**
+     * @return Sdk_Generate
+     */
     public function getSdk_Generate() : ?Sdk_Generate
     {
         return $this->Sdk_Generate;
     }
+    /**
+     * @param Message $Message
+     */
     public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
+    /**
+     * @return Message
+     */
     public function getMessage() : ?Message
     {
         return $this->Message;

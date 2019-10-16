@@ -3,6 +3,7 @@
 namespace Doc;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -89,18 +90,30 @@ class Discovery_Link
      * @Type("string")
      */
     protected $href;
+    /**
+     * @param string $rel
+     */
     public function setRel(?string $rel)
     {
         $this->rel = $rel;
     }
+    /**
+     * @return string
+     */
     public function getRel() : ?string
     {
         return $this->rel;
     }
+    /**
+     * @param string $href
+     */
     public function setHref(?string $href)
     {
         $this->href = $href;
     }
+    /**
+     * @return string
+     */
     public function getHref() : ?string
     {
         return $this->href;
@@ -127,26 +140,44 @@ class Documentation_Route
      * @Type("string")
      */
     protected $version;
+    /**
+     * @param string $path
+     */
     public function setPath(?string $path)
     {
         $this->path = $path;
     }
+    /**
+     * @return string
+     */
     public function getPath() : ?string
     {
         return $this->path;
     }
+    /**
+     * @param array<string> $methods
+     */
     public function setMethods(?array $methods)
     {
         $this->methods = $methods;
     }
+    /**
+     * @return array<string>
+     */
     public function getMethods() : ?array
     {
         return $this->methods;
     }
+    /**
+     * @param string $version
+     */
     public function setVersion(?string $version)
     {
         $this->version = $version;
     }
+    /**
+     * @return string
+     */
     public function getVersion() : ?string
     {
         return $this->version;
@@ -160,27 +191,39 @@ class Documentation_Index
     /**
      * @Key("routings")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Documentation_Route"))
+     * @Items(@Ref("Doc\Documentation_Route"))
      */
     protected $routings;
     /**
      * @Key("links")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Discovery_Link"))
+     * @Items(@Ref("Doc\Discovery_Link"))
      */
     protected $links;
+    /**
+     * @param array<Documentation_Route> $routings
+     */
     public function setRoutings(?array $routings)
     {
         $this->routings = $routings;
     }
+    /**
+     * @return array<Documentation_Route>
+     */
     public function getRoutings() : ?array
     {
         return $this->routings;
     }
+    /**
+     * @param array<Discovery_Link> $links
+     */
     public function setLinks(?array $links)
     {
         $this->links = $links;
     }
+    /**
+     * @return array<Discovery_Link>
+     */
     public function getLinks() : ?array
     {
         return $this->links;
@@ -193,13 +236,19 @@ class Endpoint
 {
     /**
      * @Key("Documentation_Index")
-     * @Ref("PSX\Generation\Documentation_Index")
+     * @Ref("Doc\Documentation_Index")
      */
     protected $Documentation_Index;
+    /**
+     * @param Documentation_Index $Documentation_Index
+     */
     public function setDocumentation_Index(?Documentation_Index $Documentation_Index)
     {
         $this->Documentation_Index = $Documentation_Index;
     }
+    /**
+     * @return Documentation_Index
+     */
     public function getDocumentation_Index() : ?Documentation_Index
     {
         return $this->Documentation_Index;

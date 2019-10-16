@@ -3,6 +3,7 @@
 namespace BackendUserUser_id09;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -156,50 +157,86 @@ class App_Token
      * @Format("date-time")
      */
     protected $date;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param string $token
+     */
     public function setToken(?string $token)
     {
         $this->token = $token;
     }
+    /**
+     * @return string
+     */
     public function getToken() : ?string
     {
         return $this->token;
     }
+    /**
+     * @param string $scope
+     */
     public function setScope(?string $scope)
     {
         $this->scope = $scope;
     }
+    /**
+     * @return string
+     */
     public function getScope() : ?string
     {
         return $this->scope;
     }
+    /**
+     * @param string $ip
+     */
     public function setIp(?string $ip)
     {
         $this->ip = $ip;
     }
+    /**
+     * @return string
+     */
     public function getIp() : ?string
     {
         return $this->ip;
     }
+    /**
+     * @param \DateTime $expire
+     */
     public function setExpire(?\DateTime $expire)
     {
         $this->expire = $expire;
     }
+    /**
+     * @return \DateTime
+     */
     public function getExpire() : ?\DateTime
     {
         return $this->expire;
     }
+    /**
+     * @param \DateTime $date
+     */
     public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
+    /**
+     * @return \DateTime
+     */
     public function getDate() : ?\DateTime
     {
         return $this->date;
@@ -273,93 +310,159 @@ class App
     /**
      * @Key("tokens")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\App_Token"))
+     * @Items(@Ref("BackendUserUser_id09\App_Token"))
      */
     protected $tokens;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param int $userId
+     */
     public function setUserId(?int $userId)
     {
         $this->userId = $userId;
     }
+    /**
+     * @return int
+     */
     public function getUserId() : ?int
     {
         return $this->userId;
     }
+    /**
+     * @param int $status
+     */
     public function setStatus(?int $status)
     {
         $this->status = $status;
     }
+    /**
+     * @return int
+     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $url
+     */
     public function setUrl(?string $url)
     {
         $this->url = $url;
     }
+    /**
+     * @return string
+     */
     public function getUrl() : ?string
     {
         return $this->url;
     }
+    /**
+     * @param string $parameters
+     */
     public function setParameters(?string $parameters)
     {
         $this->parameters = $parameters;
     }
+    /**
+     * @return string
+     */
     public function getParameters() : ?string
     {
         return $this->parameters;
     }
+    /**
+     * @param string $appKey
+     */
     public function setAppKey(?string $appKey)
     {
         $this->appKey = $appKey;
     }
+    /**
+     * @return string
+     */
     public function getAppKey() : ?string
     {
         return $this->appKey;
     }
+    /**
+     * @param string $appSecret
+     */
     public function setAppSecret(?string $appSecret)
     {
         $this->appSecret = $appSecret;
     }
+    /**
+     * @return string
+     */
     public function getAppSecret() : ?string
     {
         return $this->appSecret;
     }
+    /**
+     * @param \DateTime $date
+     */
     public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
+    /**
+     * @return \DateTime
+     */
     public function getDate() : ?\DateTime
     {
         return $this->date;
     }
+    /**
+     * @param array<string> $scopes
+     */
     public function setScopes(?array $scopes)
     {
         $this->scopes = $scopes;
     }
+    /**
+     * @return array<string>
+     */
     public function getScopes() : ?array
     {
         return $this->scopes;
     }
+    /**
+     * @param array<App_Token> $tokens
+     */
     public function setTokens(?array $tokens)
     {
         $this->tokens = $tokens;
     }
+    /**
+     * @return array<App_Token>
+     */
     public function getTokens() : ?array
     {
         return $this->tokens;
@@ -380,18 +483,30 @@ class Message
      * @Type("string")
      */
     protected $message;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
@@ -437,12 +552,12 @@ class User
     /**
      * @Key("apps")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\App"))
+     * @Items(@Ref("BackendUserUser_id09\App"))
      */
     protected $apps;
     /**
      * @Key("attributes")
-     * @Ref("PSX\Generation\User_Attributes")
+     * @Ref("BackendUserUser_id09\User_Attributes")
      */
     protected $attributes;
     /**
@@ -451,74 +566,128 @@ class User
      * @Format("date-time")
      */
     protected $date;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param int $status
+     */
     public function setStatus(?int $status)
     {
         $this->status = $status;
     }
+    /**
+     * @return int
+     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $email
+     */
     public function setEmail(?string $email)
     {
         $this->email = $email;
     }
+    /**
+     * @return string
+     */
     public function getEmail() : ?string
     {
         return $this->email;
     }
+    /**
+     * @param int $points
+     */
     public function setPoints(?int $points)
     {
         $this->points = $points;
     }
+    /**
+     * @return int
+     */
     public function getPoints() : ?int
     {
         return $this->points;
     }
+    /**
+     * @param array<string> $scopes
+     */
     public function setScopes(?array $scopes)
     {
         $this->scopes = $scopes;
     }
+    /**
+     * @return array<string>
+     */
     public function getScopes() : ?array
     {
         return $this->scopes;
     }
+    /**
+     * @param array<App> $apps
+     */
     public function setApps(?array $apps)
     {
         $this->apps = $apps;
     }
+    /**
+     * @return array<App>
+     */
     public function getApps() : ?array
     {
         return $this->apps;
     }
+    /**
+     * @param User_Attributes $attributes
+     */
     public function setAttributes(?User_Attributes $attributes)
     {
         $this->attributes = $attributes;
     }
+    /**
+     * @return User_Attributes
+     */
     public function getAttributes() : ?User_Attributes
     {
         return $this->attributes;
     }
+    /**
+     * @param \DateTime $date
+     */
     public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
+    /**
+     * @return \DateTime
+     */
     public function getDate() : ?\DateTime
     {
         return $this->date;
@@ -531,26 +700,38 @@ class Endpoint
 {
     /**
      * @Key("User")
-     * @Ref("PSX\Generation\User")
+     * @Ref("BackendUserUser_id09\User")
      */
     protected $User;
     /**
      * @Key("Message")
-     * @Ref("PSX\Generation\Message")
+     * @Ref("BackendUserUser_id09\Message")
      */
     protected $Message;
+    /**
+     * @param User $User
+     */
     public function setUser(?User $User)
     {
         $this->User = $User;
     }
+    /**
+     * @return User
+     */
     public function getUser() : ?User
     {
         return $this->User;
     }
+    /**
+     * @param Message $Message
+     */
     public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
+    /**
+     * @return Message
+     */
     public function getMessage() : ?Message
     {
         return $this->Message;

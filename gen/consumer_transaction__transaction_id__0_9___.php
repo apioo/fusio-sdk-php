@@ -3,6 +3,7 @@
 namespace ConsumerTransactionTransaction_id09;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -120,50 +121,86 @@ class Consumer_Transaction
      * @Format("date-time")
      */
     protected $insertDate;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param int $status
+     */
     public function setStatus(?int $status)
     {
         $this->status = $status;
     }
+    /**
+     * @return int
+     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
+    /**
+     * @param string $transactionId
+     */
     public function setTransactionId(?string $transactionId)
     {
         $this->transactionId = $transactionId;
     }
+    /**
+     * @return string
+     */
     public function getTransactionId() : ?string
     {
         return $this->transactionId;
     }
+    /**
+     * @param float $amount
+     */
     public function setAmount(?float $amount)
     {
         $this->amount = $amount;
     }
+    /**
+     * @return float
+     */
     public function getAmount() : ?float
     {
         return $this->amount;
     }
+    /**
+     * @param \DateTime $updateDate
+     */
     public function setUpdateDate(?\DateTime $updateDate)
     {
         $this->updateDate = $updateDate;
     }
+    /**
+     * @return \DateTime
+     */
     public function getUpdateDate() : ?\DateTime
     {
         return $this->updateDate;
     }
+    /**
+     * @param \DateTime $insertDate
+     */
     public function setInsertDate(?\DateTime $insertDate)
     {
         $this->insertDate = $insertDate;
     }
+    /**
+     * @return \DateTime
+     */
     public function getInsertDate() : ?\DateTime
     {
         return $this->insertDate;
@@ -176,13 +213,19 @@ class Endpoint
 {
     /**
      * @Key("Consumer_Transaction")
-     * @Ref("PSX\Generation\Consumer_Transaction")
+     * @Ref("ConsumerTransactionTransaction_id09\Consumer_Transaction")
      */
     protected $Consumer_Transaction;
+    /**
+     * @param Consumer_Transaction $Consumer_Transaction
+     */
     public function setConsumer_Transaction(?Consumer_Transaction $Consumer_Transaction)
     {
         $this->Consumer_Transaction = $Consumer_Transaction;
     }
+    /**
+     * @return Consumer_Transaction
+     */
     public function getConsumer_Transaction() : ?Consumer_Transaction
     {
         return $this->Consumer_Transaction;

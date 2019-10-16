@@ -3,6 +3,7 @@
 namespace BackendConfigConfig_id09;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -117,18 +118,30 @@ class Message
      * @Type("string")
      */
     protected $message;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
@@ -164,42 +177,72 @@ class Config
      * @OneOf(@Schema(type="string"), @Schema(type="number"), @Schema(type="boolean"), @Schema(type="null"))
      */
     protected $value;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param int $type
+     */
     public function setType(?int $type)
     {
         $this->type = $type;
     }
+    /**
+     * @return int
+     */
     public function getType() : ?int
     {
         return $this->type;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $description
+     */
     public function setDescription(?string $description)
     {
         $this->description = $description;
     }
+    /**
+     * @return string
+     */
     public function getDescription() : ?string
     {
         return $this->description;
     }
+    /**
+     * @param string|float|bool| $value
+     */
     public function setValue($value)
     {
         $this->value = $value;
     }
+    /**
+     * @return string|float|bool|
+     */
     public function getValue()
     {
         return $this->value;
@@ -212,26 +255,38 @@ class Endpoint
 {
     /**
      * @Key("Config")
-     * @Ref("PSX\Generation\Config")
+     * @Ref("BackendConfigConfig_id09\Config")
      */
     protected $Config;
     /**
      * @Key("Message")
-     * @Ref("PSX\Generation\Message")
+     * @Ref("BackendConfigConfig_id09\Message")
      */
     protected $Message;
+    /**
+     * @param Config $Config
+     */
     public function setConfig(?Config $Config)
     {
         $this->Config = $Config;
     }
+    /**
+     * @return Config
+     */
     public function getConfig() : ?Config
     {
         return $this->Config;
     }
+    /**
+     * @param Message $Message
+     */
     public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
+    /**
+     * @return Message
+     */
     public function getMessage() : ?Message
     {
         return $this->Message;

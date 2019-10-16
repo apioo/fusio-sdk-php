@@ -3,6 +3,7 @@
 namespace ConsumerTransactionPrepareProvider;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -95,10 +96,16 @@ class Consumer_Transaction_Prepare_Response
      * @Type("string")
      */
     protected $approvalUrl;
+    /**
+     * @param string $approvalUrl
+     */
     public function setApprovalUrl(?string $approvalUrl)
     {
         $this->approvalUrl = $approvalUrl;
     }
+    /**
+     * @return string
+     */
     public function getApprovalUrl() : ?string
     {
         return $this->approvalUrl;
@@ -120,18 +127,30 @@ class Consumer_Transaction_Prepare_Request
      * @Type("string")
      */
     protected $returnUrl;
+    /**
+     * @param int $invoiceId
+     */
     public function setInvoiceId(?int $invoiceId)
     {
         $this->invoiceId = $invoiceId;
     }
+    /**
+     * @return int
+     */
     public function getInvoiceId() : ?int
     {
         return $this->invoiceId;
     }
+    /**
+     * @param string $returnUrl
+     */
     public function setReturnUrl(?string $returnUrl)
     {
         $this->returnUrl = $returnUrl;
     }
+    /**
+     * @return string
+     */
     public function getReturnUrl() : ?string
     {
         return $this->returnUrl;
@@ -144,26 +163,38 @@ class Endpoint
 {
     /**
      * @Key("Consumer_Transaction_Prepare_Request")
-     * @Ref("PSX\Generation\Consumer_Transaction_Prepare_Request")
+     * @Ref("ConsumerTransactionPrepareProvider\Consumer_Transaction_Prepare_Request")
      */
     protected $Consumer_Transaction_Prepare_Request;
     /**
      * @Key("Consumer_Transaction_Prepare_Response")
-     * @Ref("PSX\Generation\Consumer_Transaction_Prepare_Response")
+     * @Ref("ConsumerTransactionPrepareProvider\Consumer_Transaction_Prepare_Response")
      */
     protected $Consumer_Transaction_Prepare_Response;
+    /**
+     * @param Consumer_Transaction_Prepare_Request $Consumer_Transaction_Prepare_Request
+     */
     public function setConsumer_Transaction_Prepare_Request(?Consumer_Transaction_Prepare_Request $Consumer_Transaction_Prepare_Request)
     {
         $this->Consumer_Transaction_Prepare_Request = $Consumer_Transaction_Prepare_Request;
     }
+    /**
+     * @return Consumer_Transaction_Prepare_Request
+     */
     public function getConsumer_Transaction_Prepare_Request() : ?Consumer_Transaction_Prepare_Request
     {
         return $this->Consumer_Transaction_Prepare_Request;
     }
+    /**
+     * @param Consumer_Transaction_Prepare_Response $Consumer_Transaction_Prepare_Response
+     */
     public function setConsumer_Transaction_Prepare_Response(?Consumer_Transaction_Prepare_Response $Consumer_Transaction_Prepare_Response)
     {
         $this->Consumer_Transaction_Prepare_Response = $Consumer_Transaction_Prepare_Response;
     }
+    /**
+     * @return Consumer_Transaction_Prepare_Response
+     */
     public function getConsumer_Transaction_Prepare_Response() : ?Consumer_Transaction_Prepare_Response
     {
         return $this->Consumer_Transaction_Prepare_Response;

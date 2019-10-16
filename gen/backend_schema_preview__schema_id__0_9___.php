@@ -3,6 +3,7 @@
 namespace BackendSchemaPreviewSchema_id09;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -93,10 +94,16 @@ class Schema_Preview_Response
      * @Type("string")
      */
     protected $preview;
+    /**
+     * @param string $preview
+     */
     public function setPreview(?string $preview)
     {
         $this->preview = $preview;
     }
+    /**
+     * @return string
+     */
     public function getPreview() : ?string
     {
         return $this->preview;
@@ -109,13 +116,19 @@ class Endpoint
 {
     /**
      * @Key("Schema_Preview_Response")
-     * @Ref("PSX\Generation\Schema_Preview_Response")
+     * @Ref("BackendSchemaPreviewSchema_id09\Schema_Preview_Response")
      */
     protected $Schema_Preview_Response;
+    /**
+     * @param Schema_Preview_Response $Schema_Preview_Response
+     */
     public function setSchema_Preview_Response(?Schema_Preview_Response $Schema_Preview_Response)
     {
         $this->Schema_Preview_Response = $Schema_Preview_Response;
     }
+    /**
+     * @return Schema_Preview_Response
+     */
     public function getSchema_Preview_Response() : ?Schema_Preview_Response
     {
         return $this->Schema_Preview_Response;

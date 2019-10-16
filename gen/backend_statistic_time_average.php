@@ -3,6 +3,7 @@
 namespace BackendStatisticTime_average;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -102,26 +103,44 @@ class Statistic_Chart
      * @Items(@Schema(type="string"))
      */
     protected $series;
+    /**
+     * @param array<string> $labels
+     */
     public function setLabels(?array $labels)
     {
         $this->labels = $labels;
     }
+    /**
+     * @return array<string>
+     */
     public function getLabels() : ?array
     {
         return $this->labels;
     }
+    /**
+     * @param array<array<float>> $data
+     */
     public function setData(?array $data)
     {
         $this->data = $data;
     }
+    /**
+     * @return array<array<float>>
+     */
     public function getData() : ?array
     {
         return $this->data;
     }
+    /**
+     * @param array<string> $series
+     */
     public function setSeries(?array $series)
     {
         $this->series = $series;
     }
+    /**
+     * @return array<string>
+     */
     public function getSeries() : ?array
     {
         return $this->series;
@@ -194,98 +213,170 @@ class GetQuery
      * @Type("string")
      */
     protected $search;
+    /**
+     * @param \DateTime $from
+     */
     public function setFrom(?\DateTime $from)
     {
         $this->from = $from;
     }
+    /**
+     * @return \DateTime
+     */
     public function getFrom() : ?\DateTime
     {
         return $this->from;
     }
+    /**
+     * @param \DateTime $to
+     */
     public function setTo(?\DateTime $to)
     {
         $this->to = $to;
     }
+    /**
+     * @return \DateTime
+     */
     public function getTo() : ?\DateTime
     {
         return $this->to;
     }
+    /**
+     * @param int $routeId
+     */
     public function setRouteId(?int $routeId)
     {
         $this->routeId = $routeId;
     }
+    /**
+     * @return int
+     */
     public function getRouteId() : ?int
     {
         return $this->routeId;
     }
+    /**
+     * @param int $appId
+     */
     public function setAppId(?int $appId)
     {
         $this->appId = $appId;
     }
+    /**
+     * @return int
+     */
     public function getAppId() : ?int
     {
         return $this->appId;
     }
+    /**
+     * @param int $userId
+     */
     public function setUserId(?int $userId)
     {
         $this->userId = $userId;
     }
+    /**
+     * @return int
+     */
     public function getUserId() : ?int
     {
         return $this->userId;
     }
+    /**
+     * @param string $ip
+     */
     public function setIp(?string $ip)
     {
         $this->ip = $ip;
     }
+    /**
+     * @return string
+     */
     public function getIp() : ?string
     {
         return $this->ip;
     }
+    /**
+     * @param string $userAgent
+     */
     public function setUserAgent(?string $userAgent)
     {
         $this->userAgent = $userAgent;
     }
+    /**
+     * @return string
+     */
     public function getUserAgent() : ?string
     {
         return $this->userAgent;
     }
+    /**
+     * @param string $method
+     */
     public function setMethod(?string $method)
     {
         $this->method = $method;
     }
+    /**
+     * @return string
+     */
     public function getMethod() : ?string
     {
         return $this->method;
     }
+    /**
+     * @param string $path
+     */
     public function setPath(?string $path)
     {
         $this->path = $path;
     }
+    /**
+     * @return string
+     */
     public function getPath() : ?string
     {
         return $this->path;
     }
+    /**
+     * @param string $header
+     */
     public function setHeader(?string $header)
     {
         $this->header = $header;
     }
+    /**
+     * @return string
+     */
     public function getHeader() : ?string
     {
         return $this->header;
     }
+    /**
+     * @param string $body
+     */
     public function setBody(?string $body)
     {
         $this->body = $body;
     }
+    /**
+     * @return string
+     */
     public function getBody() : ?string
     {
         return $this->body;
     }
+    /**
+     * @param string $search
+     */
     public function setSearch(?string $search)
     {
         $this->search = $search;
     }
+    /**
+     * @return string
+     */
     public function getSearch() : ?string
     {
         return $this->search;
@@ -298,26 +389,38 @@ class Endpoint
 {
     /**
      * @Key("GetQuery")
-     * @Ref("PSX\Generation\GetQuery")
+     * @Ref("BackendStatisticTime_average\GetQuery")
      */
     protected $GetQuery;
     /**
      * @Key("Statistic_Chart")
-     * @Ref("PSX\Generation\Statistic_Chart")
+     * @Ref("BackendStatisticTime_average\Statistic_Chart")
      */
     protected $Statistic_Chart;
+    /**
+     * @param GetQuery $GetQuery
+     */
     public function setGetQuery(?GetQuery $GetQuery)
     {
         $this->GetQuery = $GetQuery;
     }
+    /**
+     * @return GetQuery
+     */
     public function getGetQuery() : ?GetQuery
     {
         return $this->GetQuery;
     }
+    /**
+     * @param Statistic_Chart $Statistic_Chart
+     */
     public function setStatistic_Chart(?Statistic_Chart $Statistic_Chart)
     {
         $this->Statistic_Chart = $Statistic_Chart;
     }
+    /**
+     * @return Statistic_Chart
+     */
     public function getStatistic_Chart() : ?Statistic_Chart
     {
         return $this->Statistic_Chart;

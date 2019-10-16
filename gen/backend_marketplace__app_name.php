@@ -3,6 +3,7 @@
 namespace BackendMarketplaceApp_name;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -152,50 +153,86 @@ class Marketplace_App
      * @Type("string")
      */
     protected $sha1Hash;
+    /**
+     * @param string $version
+     */
     public function setVersion(?string $version)
     {
         $this->version = $version;
     }
+    /**
+     * @return string
+     */
     public function getVersion() : ?string
     {
         return $this->version;
     }
+    /**
+     * @param string $description
+     */
     public function setDescription(?string $description)
     {
         $this->description = $description;
     }
+    /**
+     * @return string
+     */
     public function getDescription() : ?string
     {
         return $this->description;
     }
+    /**
+     * @param string $screenshot
+     */
     public function setScreenshot(?string $screenshot)
     {
         $this->screenshot = $screenshot;
     }
+    /**
+     * @return string
+     */
     public function getScreenshot() : ?string
     {
         return $this->screenshot;
     }
+    /**
+     * @param string $website
+     */
     public function setWebsite(?string $website)
     {
         $this->website = $website;
     }
+    /**
+     * @return string
+     */
     public function getWebsite() : ?string
     {
         return $this->website;
     }
+    /**
+     * @param string $downloadUrl
+     */
     public function setDownloadUrl(?string $downloadUrl)
     {
         $this->downloadUrl = $downloadUrl;
     }
+    /**
+     * @return string
+     */
     public function getDownloadUrl() : ?string
     {
         return $this->downloadUrl;
     }
+    /**
+     * @param string $sha1Hash
+     */
     public function setSha1Hash(?string $sha1Hash)
     {
         $this->sha1Hash = $sha1Hash;
     }
+    /**
+     * @return string
+     */
     public function getSha1Hash() : ?string
     {
         return $this->sha1Hash;
@@ -216,18 +253,30 @@ class Message
      * @Type("string")
      */
     protected $message;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
@@ -270,61 +319,103 @@ class Marketplace_App_Local
     protected $sha1Hash;
     /**
      * @Key("remote")
-     * @Ref("PSX\Generation\Marketplace_App")
+     * @Ref("BackendMarketplaceApp_name\Marketplace_App")
      */
     protected $remote;
+    /**
+     * @param string $version
+     */
     public function setVersion(?string $version)
     {
         $this->version = $version;
     }
+    /**
+     * @return string
+     */
     public function getVersion() : ?string
     {
         return $this->version;
     }
+    /**
+     * @param string $description
+     */
     public function setDescription(?string $description)
     {
         $this->description = $description;
     }
+    /**
+     * @return string
+     */
     public function getDescription() : ?string
     {
         return $this->description;
     }
+    /**
+     * @param string $screenshot
+     */
     public function setScreenshot(?string $screenshot)
     {
         $this->screenshot = $screenshot;
     }
+    /**
+     * @return string
+     */
     public function getScreenshot() : ?string
     {
         return $this->screenshot;
     }
+    /**
+     * @param string $website
+     */
     public function setWebsite(?string $website)
     {
         $this->website = $website;
     }
+    /**
+     * @return string
+     */
     public function getWebsite() : ?string
     {
         return $this->website;
     }
+    /**
+     * @param string $downloadUrl
+     */
     public function setDownloadUrl(?string $downloadUrl)
     {
         $this->downloadUrl = $downloadUrl;
     }
+    /**
+     * @return string
+     */
     public function getDownloadUrl() : ?string
     {
         return $this->downloadUrl;
     }
+    /**
+     * @param string $sha1Hash
+     */
     public function setSha1Hash(?string $sha1Hash)
     {
         $this->sha1Hash = $sha1Hash;
     }
+    /**
+     * @return string
+     */
     public function getSha1Hash() : ?string
     {
         return $this->sha1Hash;
     }
+    /**
+     * @param Marketplace_App $remote
+     */
     public function setRemote(?Marketplace_App $remote)
     {
         $this->remote = $remote;
     }
+    /**
+     * @return Marketplace_App
+     */
     public function getRemote() : ?Marketplace_App
     {
         return $this->remote;
@@ -337,26 +428,38 @@ class Endpoint
 {
     /**
      * @Key("Marketplace_App_Local")
-     * @Ref("PSX\Generation\Marketplace_App_Local")
+     * @Ref("BackendMarketplaceApp_name\Marketplace_App_Local")
      */
     protected $Marketplace_App_Local;
     /**
      * @Key("Message")
-     * @Ref("PSX\Generation\Message")
+     * @Ref("BackendMarketplaceApp_name\Message")
      */
     protected $Message;
+    /**
+     * @param Marketplace_App_Local $Marketplace_App_Local
+     */
     public function setMarketplace_App_Local(?Marketplace_App_Local $Marketplace_App_Local)
     {
         $this->Marketplace_App_Local = $Marketplace_App_Local;
     }
+    /**
+     * @return Marketplace_App_Local
+     */
     public function getMarketplace_App_Local() : ?Marketplace_App_Local
     {
         return $this->Marketplace_App_Local;
     }
+    /**
+     * @param Message $Message
+     */
     public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
+    /**
+     * @return Message
+     */
     public function getMessage() : ?Message
     {
         return $this->Message;

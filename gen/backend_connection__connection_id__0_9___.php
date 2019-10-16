@@ -3,6 +3,7 @@
 namespace BackendConnectionConnection_id09;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -142,18 +143,30 @@ class Message
      * @Type("string")
      */
     protected $message;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
@@ -182,37 +195,61 @@ class Connection
     protected $class;
     /**
      * @Key("config")
-     * @Ref("PSX\Generation\Connection_Config")
+     * @Ref("BackendConnectionConnection_id09\Connection_Config")
      */
     protected $config;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $class
+     */
     public function setClass(?string $class)
     {
         $this->class = $class;
     }
+    /**
+     * @return string
+     */
     public function getClass() : ?string
     {
         return $this->class;
     }
+    /**
+     * @param Connection_Config $config
+     */
     public function setConfig(?Connection_Config $config)
     {
         $this->config = $config;
     }
+    /**
+     * @return Connection_Config
+     */
     public function getConfig() : ?Connection_Config
     {
         return $this->config;
@@ -225,26 +262,38 @@ class Endpoint
 {
     /**
      * @Key("Connection")
-     * @Ref("PSX\Generation\Connection")
+     * @Ref("BackendConnectionConnection_id09\Connection")
      */
     protected $Connection;
     /**
      * @Key("Message")
-     * @Ref("PSX\Generation\Message")
+     * @Ref("BackendConnectionConnection_id09\Message")
      */
     protected $Message;
+    /**
+     * @param Connection $Connection
+     */
     public function setConnection(?Connection $Connection)
     {
         $this->Connection = $Connection;
     }
+    /**
+     * @return Connection
+     */
     public function getConnection() : ?Connection
     {
         return $this->Connection;
     }
+    /**
+     * @param Message $Message
+     */
     public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
+    /**
+     * @return Message
+     */
     public function getMessage() : ?Message
     {
         return $this->Message;

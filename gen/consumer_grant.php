@@ -3,6 +3,7 @@
 namespace ConsumerGrant;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -131,74 +132,128 @@ class Consumer_App
      * @Items(@Schema(type="string"))
      */
     protected $scopes;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param int $userId
+     */
     public function setUserId(?int $userId)
     {
         $this->userId = $userId;
     }
+    /**
+     * @return int
+     */
     public function getUserId() : ?int
     {
         return $this->userId;
     }
+    /**
+     * @param int $status
+     */
     public function setStatus(?int $status)
     {
         $this->status = $status;
     }
+    /**
+     * @return int
+     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
+    /**
+     * @param string $name
+     */
     public function setName(?string $name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName() : ?string
     {
         return $this->name;
     }
+    /**
+     * @param string $url
+     */
     public function setUrl(?string $url)
     {
         $this->url = $url;
     }
+    /**
+     * @return string
+     */
     public function getUrl() : ?string
     {
         return $this->url;
     }
+    /**
+     * @param string $appKey
+     */
     public function setAppKey(?string $appKey)
     {
         $this->appKey = $appKey;
     }
+    /**
+     * @return string
+     */
     public function getAppKey() : ?string
     {
         return $this->appKey;
     }
+    /**
+     * @param string $appSecret
+     */
     public function setAppSecret(?string $appSecret)
     {
         $this->appSecret = $appSecret;
     }
+    /**
+     * @return string
+     */
     public function getAppSecret() : ?string
     {
         return $this->appSecret;
     }
+    /**
+     * @param \DateTime $date
+     */
     public function setDate(?\DateTime $date)
     {
         $this->date = $date;
     }
+    /**
+     * @return \DateTime
+     */
     public function getDate() : ?\DateTime
     {
         return $this->date;
     }
+    /**
+     * @param array<string> $scopes
+     */
     public function setScopes(?array $scopes)
     {
         $this->scopes = $scopes;
     }
+    /**
+     * @return array<string>
+     */
     public function getScopes() : ?array
     {
         return $this->scopes;
@@ -216,7 +271,7 @@ class Consumer_App_Grant
     protected $id;
     /**
      * @Key("app")
-     * @Ref("PSX\Generation\Consumer_App")
+     * @Ref("ConsumerGrant\Consumer_App")
      */
     protected $app;
     /**
@@ -225,26 +280,44 @@ class Consumer_App_Grant
      * @Format("date-time")
      */
     protected $createDate;
+    /**
+     * @param int $id
+     */
     public function setId(?int $id)
     {
         $this->id = $id;
     }
+    /**
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
     }
+    /**
+     * @param Consumer_App $app
+     */
     public function setApp(?Consumer_App $app)
     {
         $this->app = $app;
     }
+    /**
+     * @return Consumer_App
+     */
     public function getApp() : ?Consumer_App
     {
         return $this->app;
     }
+    /**
+     * @param \DateTime $createDate
+     */
     public function setCreateDate(?\DateTime $createDate)
     {
         $this->createDate = $createDate;
     }
+    /**
+     * @return \DateTime
+     */
     public function getCreateDate() : ?\DateTime
     {
         return $this->createDate;
@@ -258,13 +331,19 @@ class Consumer_Grant_Collection
     /**
      * @Key("entry")
      * @Type("array")
-     * @Items(@Ref("PSX\Generation\Consumer_App_Grant"))
+     * @Items(@Ref("ConsumerGrant\Consumer_App_Grant"))
      */
     protected $entry;
+    /**
+     * @param array<Consumer_App_Grant> $entry
+     */
     public function setEntry(?array $entry)
     {
         $this->entry = $entry;
     }
+    /**
+     * @return array<Consumer_App_Grant>
+     */
     public function getEntry() : ?array
     {
         return $this->entry;
@@ -277,13 +356,19 @@ class Endpoint
 {
     /**
      * @Key("Consumer_Grant_Collection")
-     * @Ref("PSX\Generation\Consumer_Grant_Collection")
+     * @Ref("ConsumerGrant\Consumer_Grant_Collection")
      */
     protected $Consumer_Grant_Collection;
+    /**
+     * @param Consumer_Grant_Collection $Consumer_Grant_Collection
+     */
     public function setConsumer_Grant_Collection(?Consumer_Grant_Collection $Consumer_Grant_Collection)
     {
         $this->Consumer_Grant_Collection = $Consumer_Grant_Collection;
     }
+    /**
+     * @return Consumer_Grant_Collection
+     */
     public function getConsumer_Grant_Collection() : ?Consumer_Grant_Collection
     {
         return $this->Consumer_Grant_Collection;

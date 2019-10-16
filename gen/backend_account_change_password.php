@@ -3,6 +3,7 @@
 namespace BackendAccountChange_password;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -94,18 +95,30 @@ class Message
      * @Type("string")
      */
     protected $message;
+    /**
+     * @param bool $success
+     */
     public function setSuccess(?bool $success)
     {
         $this->success = $success;
     }
+    /**
+     * @return bool
+     */
     public function getSuccess() : ?bool
     {
         return $this->success;
     }
+    /**
+     * @param string $message
+     */
     public function setMessage(?string $message)
     {
         $this->message = $message;
     }
+    /**
+     * @return string
+     */
     public function getMessage() : ?string
     {
         return $this->message;
@@ -138,26 +151,44 @@ class Account_Credentials
      * @MinLength(8)
      */
     protected $verifyPassword;
+    /**
+     * @param string $oldPassword
+     */
     public function setOldPassword(?string $oldPassword)
     {
         $this->oldPassword = $oldPassword;
     }
+    /**
+     * @return string
+     */
     public function getOldPassword() : ?string
     {
         return $this->oldPassword;
     }
+    /**
+     * @param string $newPassword
+     */
     public function setNewPassword(?string $newPassword)
     {
         $this->newPassword = $newPassword;
     }
+    /**
+     * @return string
+     */
     public function getNewPassword() : ?string
     {
         return $this->newPassword;
     }
+    /**
+     * @param string $verifyPassword
+     */
     public function setVerifyPassword(?string $verifyPassword)
     {
         $this->verifyPassword = $verifyPassword;
     }
+    /**
+     * @return string
+     */
     public function getVerifyPassword() : ?string
     {
         return $this->verifyPassword;
@@ -170,26 +201,38 @@ class Endpoint
 {
     /**
      * @Key("Account_Credentials")
-     * @Ref("PSX\Generation\Account_Credentials")
+     * @Ref("BackendAccountChange_password\Account_Credentials")
      */
     protected $Account_Credentials;
     /**
      * @Key("Message")
-     * @Ref("PSX\Generation\Message")
+     * @Ref("BackendAccountChange_password\Message")
      */
     protected $Message;
+    /**
+     * @param Account_Credentials $Account_Credentials
+     */
     public function setAccount_Credentials(?Account_Credentials $Account_Credentials)
     {
         $this->Account_Credentials = $Account_Credentials;
     }
+    /**
+     * @return Account_Credentials
+     */
     public function getAccount_Credentials() : ?Account_Credentials
     {
         return $this->Account_Credentials;
     }
+    /**
+     * @param Message $Message
+     */
     public function setMessage(?Message $Message)
     {
         $this->Message = $Message;
     }
+    /**
+     * @return Message
+     */
     public function getMessage() : ?Message
     {
         return $this->Message;

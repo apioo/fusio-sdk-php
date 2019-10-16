@@ -3,6 +3,7 @@
 namespace ExportRoutes;
 
 use GuzzleHttp\Client;
+use PSX\Json\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 use PSX\Schema\SchemaManager;
 use PSX\Schema\SchemaTraverser;
@@ -83,7 +84,7 @@ class Export_Routes_Methods extends \ArrayObject
 }
 /**
  * @Title("Export Routes Paths")
- * @AdditionalProperties(@Ref("PSX\Generation\Export_Routes_Methods"))
+ * @AdditionalProperties(@Ref("ExportRoutes\Export_Routes_Methods"))
  */
 class Export_Routes_Paths extends \ArrayObject
 {
@@ -95,13 +96,19 @@ class Export_Routes
 {
     /**
      * @Key("routes")
-     * @Ref("PSX\Generation\Export_Routes_Paths")
+     * @Ref("ExportRoutes\Export_Routes_Paths")
      */
     protected $routes;
+    /**
+     * @param Export_Routes_Paths $routes
+     */
     public function setRoutes(?Export_Routes_Paths $routes)
     {
         $this->routes = $routes;
     }
+    /**
+     * @return Export_Routes_Paths
+     */
     public function getRoutes() : ?Export_Routes_Paths
     {
         return $this->routes;
@@ -114,13 +121,19 @@ class Endpoint
 {
     /**
      * @Key("Export_Routes")
-     * @Ref("PSX\Generation\Export_Routes")
+     * @Ref("ExportRoutes\Export_Routes")
      */
     protected $Export_Routes;
+    /**
+     * @param Export_Routes $Export_Routes
+     */
     public function setExport_Routes(?Export_Routes $Export_Routes)
     {
         $this->Export_Routes = $Export_Routes;
     }
+    /**
+     * @return Export_Routes
+     */
     public function getExport_Routes() : ?Export_Routes
     {
         return $this->Export_Routes;
