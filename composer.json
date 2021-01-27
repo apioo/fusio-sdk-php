@@ -12,14 +12,12 @@
   ],
   "require": {
     "guzzlehttp/guzzle": "^6.3",
-    "psx/schema": "^2.4"
+    "psx/api": "^3.0",
+    "psx/schema": "^3.0"
   },
   "autoload": {
     "psr-4": {
       "Fusio\\Sdk\\": "src/"
-    },
-    "files": [
-      "gen/"
-    ]
+    }
   }
 }
