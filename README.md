@@ -21,17 +21,11 @@ to use an OAuth2 endpoint
 
 ```php
 <?php
+// @TODO set correct base uri
+$baseUri = 'https://myapi.com';
 
-$client = new \Fusio\Sdk\Client('https://myapi.com', '');
-
-$login = new \ConsumerLogin\Consumer_User_Login();
-$login->setUsername('username');
-$login->setPassword('password');
-
-$jwt = $client->consumer()->login()->do()->post($login);
-
-// contains the JWT access token
-$jwt->getToken();
+$authenticator = new \Fusio\Sdk\Authenticator($baseUri);
+$token = $authenticator->requestAccessToken('test', 'test1234');
 
 ```
 
@@ -42,13 +36,11 @@ $jwt->getToken();
 ```php
 <?php
 
-$client = new \Fusio\Sdk\Client('https://myapi.com', '[token]');
+$client = new \Fusio\Sdk\Backend\Client('https://myapi.com', '[token]');
+$entries = $client->getBackendRoutes()->backendActionRouteGetAll(null)->getEntry();
 
-// output all configured backend routes
-$collection = $client->backend()->routes()->collection()->get(new \BackendRoutes\GetQuery());
-foreach ($collection->getEntry() as $route) {
-    /** @var \BackendRoutes\Routes $route */
-    echo $route->getPath() . "\n";
+foreach ($entries as $entry) {
+    echo $entry->getPath() . "\n";
 }
 
 ```
@@ -58,18 +50,15 @@ foreach ($collection->getEntry() as $route) {
 ```php
 <?php
 
-$client = new \Fusio\Sdk\Client('https://myapi.com', '[token]');
+$changePassword = new \Fusio\Sdk\Consumer\Account_ChangePassword();
+$changePassword->setOldPassword('test1234');
+$changePassword->setNewPassword('test1234!');
+$changePassword->setVerifyPassword('test1234!');
 
-// exchange the password of the authenticated user
-$credentials = new \ConsumerAccountChange_password\Consumer_User_Credentials();
-$credentials->setNewPassword('new pw');
-$credentials->setOldPassword('old pw');
-$credentials->setVerifyPassword('new pw');
+$client = new \Fusio\Sdk\Consumer\Client('https://myapi.com', '[token]');
+$response = $client->getConsumerAccountChangePassword()->consumerActionUserChangePassword($changePassword);
 
-$result = $client->consumer()->account()->changePassword()->put($credentials);
+echo $response->getMessage() . "\n";
 
-if ($result->getSuccess()) {
-    echo $result->getMessage() . "\n";
-}
 
 ```

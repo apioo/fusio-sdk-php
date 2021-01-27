@@ -14,7 +14,7 @@ $token = $authenticator->requestAccessToken('test', 'test1234');
 echo 'Obtained token: ' . $token . "\n";
 
 
-// create new backend client with the token and get all backend routes
+// create a new action which can be used at a route
 $client = new \Fusio\Sdk\Backend\Client($baseUri, $token);
 
 $config = new \Fusio\Sdk\Backend\Action_Config();
