@@ -52,9 +52,9 @@ class Authenticator
      * @param string $username
      * @param string $password
      * @param array|null $scopes
-     * @return string
+     * @return AccessToken
      */
-    public function requestAccessToken(string $username, string $password, ?array $scopes = null): string
+    public function requestAccessToken(string $username, string $password, ?array $scopes = null): AccessToken
     {
         $params = ['grant_type' => 'client_credentials'];
         if ($scopes !== null) {
@@ -77,7 +77,7 @@ class Authenticator
             throw new \RuntimeException('Could not find access token in body');
         }
 
-        return $data['access_token'];
+        return AccessToken::fromArray($data);
     }
 
     public function removeAccessToken(string $accessToken): void
