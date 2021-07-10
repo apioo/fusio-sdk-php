@@ -13,7 +13,7 @@ use Fusio\Sdk\AccessToken;
  */
 class MemoryTokenStore implements TokenStoreInterface
 {
-    private ?AccessToken $token = null;
+    private $token = null;
 
     public function get(): ?AccessToken
     {
