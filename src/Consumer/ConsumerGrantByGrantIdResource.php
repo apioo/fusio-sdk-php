@@ -44,7 +44,7 @@ class ConsumerGrantByGrantIdResource extends ResourceAbstract
         $response = $this->httpClient->request('DELETE', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, null);
+        $this->parse($data, null);
     }
 
 }

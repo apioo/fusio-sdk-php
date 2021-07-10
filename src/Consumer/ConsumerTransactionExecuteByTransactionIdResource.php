@@ -44,7 +44,7 @@ class ConsumerTransactionExecuteByTransactionIdResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, null);
+        $this->parse($data, null);
     }
 
 }
