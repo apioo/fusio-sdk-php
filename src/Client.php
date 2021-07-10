@@ -21,6 +21,8 @@
 
 namespace Fusio\Sdk;
 
+use Fusio\Sdk\TokenStore\MemoryTokenStore;
+use Fusio\Sdk\TokenStore\TokenStoreInterface;
 use GuzzleHttp\Client as HttpClient;
 use PSX\Schema\SchemaManager;
 
@@ -41,17 +43,22 @@ class Client
     /**
      * @var string
      */
-    private $username;
+    private $appKey;
 
     /**
      * @var string
      */
-    private $password;
+    private $appSecret;
 
     /**
      * @var string[]|null
      */
     private $scopes;
+
+    /**
+     * @var TokenStoreInterface
+     */
+    private $tokenStore;
 
     /**
      * @var HttpClient|null
@@ -64,38 +71,37 @@ class Client
     private $schemaManager;
 
     /**
-     * @var AccessToken|null
-     */
-    private $token;
-
-    /**
      * @param string $baseUri
-     * @param string $username
-     * @param string $password
+     * @param string $appKey
+     * @param string $appSecret
      * @param array|null $scopes
      * @param HttpClient|null $httpClient
      * @param SchemaManager|null $schemaManager
      */
-    public function __construct(string $baseUri, string $username, string $password, ?array $scopes = null, ?HttpClient $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $baseUri, string $appKey, string $appSecret, ?array $scopes = null, ?TokenStoreInterface $tokenStore = null, ?HttpClient $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         $this->baseUri = $baseUri;
-        $this->username = $username;
-        $this->password = $password;
+        $this->appKey = $appKey;
+        $this->appSecret = $appSecret;
         $this->scopes = $scopes;
+        $this->tokenStore = $tokenStore ?? new MemoryTokenStore();
         $this->httpClient = $httpClient;
         $this->schemaManager = $schemaManager;
     }
 
     public function authenticate(): AccessToken
     {
-        if ($this->token && $this->token->getExpiresIn() > time()) {
-            return $this->token;
+        $token = $this->tokenStore->get();
+        if ($token && $token->getExpiresIn() > time()) {
+            return $token;
         }
 
         $authenticator = new Authenticator($this->baseUri, $this->httpClient);
-        $token = $authenticator->requestAccessToken($this->username, $this->password, $this->scopes);
+        $token = $authenticator->requestAccessToken($this->appKey, $this->appSecret, $this->scopes);
 
-        return $this->token = $token;
+        $this->tokenStore->persist($token);
+
+        return $token;
     }
 
     public function backend(): Backend\Client

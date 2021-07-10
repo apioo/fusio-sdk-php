@@ -111,18 +111,41 @@ class AccessToken
         return $this->scope;
     }
 
+    public function toArray(): array
+    {
+        return [
+            'access_token' => $this->accessToken,
+            'token_type' => $this->tokenType,
+            'expires_in' => $this->expiresIn,
+            'refresh_token' => $this->refreshToken,
+            'scope' => $this->scope,
+        ];
+    }
+
     /**
      * @param array $data
      * @return static
      */
     public static function fromArray(array $data): self
     {
+        if (!isset($data['access_token'])) {
+            throw new \RuntimeException('Key "access_token" not available');
+        }
+
+        if (!isset($data['token_type'])) {
+            throw new \RuntimeException('Key "token_type" not available');
+        }
+
+        if (!isset($data['expires_in'])) {
+            throw new \RuntimeException('Key "expires_in" not available');
+        }
+
         return new self(
             $data['access_token'],
             $data['token_type'],
             (int) $data['expires_in'],
-            $data['refresh_token'],
-            $data['scope']
+            $data['refresh_token'] ?? '',
+            $data['scope'] ?? ''
         );
     }
 }
