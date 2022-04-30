@@ -1,7 +1,6 @@
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../src/bootstrap.php';
 
 // @TODO set correct client credentials
 $client = new \Fusio\Sdk\Client(
@@ -18,6 +17,6 @@ $action->setName('my-new-action');
 $action->setClass('Fusio\Adapter\Util\Action\UtilStaticResponse');
 $action->setConfig($config);
 
-$response = $client->backend()->getBackendAction()->backendActionActionCreate($action);
+$response = $client->backend()->backendAction()->getBackendAction()->backendActionActionCreate($action);
 
 echo $response->getMessage() . "\n";

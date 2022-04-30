@@ -1,7 +1,6 @@
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../src/bootstrap.php';
 
 // @TODO set correct client credentials
 $client = new \Fusio\Sdk\Client(
@@ -31,6 +30,6 @@ $route->setPath('/new/path');
 $route->setController('Fusio\Impl\Controller\SchemaApiController');
 $route->setConfig([$version]);
 
-$response = $client->backend()->getBackendRoutes()->backendActionRouteCreate($route);
+$response = $client->backend()->backendRoute()->getBackendRoutes()->backendActionRouteCreate($route);
 
 echo $response->getMessage() . "\n";

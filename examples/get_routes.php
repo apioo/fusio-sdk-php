@@ -1,7 +1,6 @@
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../src/bootstrap.php';
 
 // @TODO set correct client credentials
 $client = new \Fusio\Sdk\Client(
@@ -10,7 +9,7 @@ $client = new \Fusio\Sdk\Client(
     'test1234'
 );
 
-$entries = $client->backend()->getBackendRoutes()->backendActionRouteGetAll(null)->getEntry();
+$entries = $client->backend()->backendRoute()->getBackendRoutes()->backendActionRouteGetAll(null)->getEntry();
 
 foreach ($entries as $entry) {
     echo $entry->getPath() . "\n";
