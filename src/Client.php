@@ -21,10 +21,10 @@
 
 namespace Fusio\Sdk;
 
-use Fusio\Sdk\TokenStore\MemoryTokenStore;
-use Fusio\Sdk\TokenStore\TokenStoreInterface;
-use GuzzleHttp\Client as HttpClient;
-use PSX\Schema\SchemaManager;
+use Sdkgen\Client\Credentials\ClientCredentials;
+use Sdkgen\Client\CredentialsInterface;
+use Sdkgen\Client\TokenStore\MemoryTokenStore;
+use Sdkgen\Client\TokenStoreInterface;
 
 /**
  * Client
@@ -35,84 +35,42 @@ use PSX\Schema\SchemaManager;
  */
 class Client
 {
-    /**
-     * @var string
-     */
-    private $baseUri;
+    private string $baseUrl;
+    private CredentialsInterface $credentials;
+    private ?array $scopes;
+    private TokenStoreInterface $tokenStore;
 
-    /**
-     * @var string
-     */
-    private $appKey;
-
-    /**
-     * @var string
-     */
-    private $appSecret;
-
-    /**
-     * @var string[]|null
-     */
-    private $scopes;
-
-    /**
-     * @var TokenStoreInterface
-     */
-    private $tokenStore;
-
-    /**
-     * @var HttpClient|null
-     */
-    private $httpClient;
-
-    /**
-     * @var SchemaManager|null
-     */
-    private $schemaManager;
-
-    /**
-     * @param string $baseUri
-     * @param string $appKey
-     * @param string $appSecret
-     * @param array|null $scopes
-     * @param HttpClient|null $httpClient
-     * @param SchemaManager|null $schemaManager
-     */
-    public function __construct(string $baseUri, string $appKey, string $appSecret, ?array $scopes = null, ?TokenStoreInterface $tokenStore = null, ?HttpClient $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $baseUrl, string $clientId, string $clientSecret, ?array $scopes = null, ?TokenStoreInterface $tokenStore = null)
     {
-        $this->baseUri = $baseUri;
-        $this->appKey = $appKey;
-        $this->appSecret = $appSecret;
+        $this->baseUrl = $baseUrl;
+        $this->credentials = $this->newCredentials($clientId, $clientSecret);
         $this->scopes = $scopes;
         $this->tokenStore = $tokenStore ?? new MemoryTokenStore();
-        $this->httpClient = $httpClient;
-        $this->schemaManager = $schemaManager;
-    }
-
-    public function authenticate(): AccessToken
-    {
-        $token = $this->tokenStore->get();
-        if ($token && $token->getExpiresIn() > time()) {
-            return $token;
-        }
-
-        $authenticator = new Authenticator($this->baseUri, $this->httpClient);
-        $token = $authenticator->requestAccessToken($this->appKey, $this->appSecret, $this->scopes);
-
-        $this->tokenStore->persist($token);
-
-        return $token;
     }
 
     public function backend(): Backend\Client
     {
-        $token = $this->authenticate();
-        return new Backend\Client($this->baseUri, $token->getAccessToken(), $this->httpClient, $this->schemaManager);
+        return new Backend\Client($this->baseUrl, $this->credentials, $this->tokenStore, $this->scopes);
     }
 
     public function consumer(): Consumer\Client
     {
-        $token = $this->authenticate();
-        return new Consumer\Client($this->baseUri, $token->getAccessToken(), $this->httpClient, $this->schemaManager);
+        return new Consumer\Client($this->baseUrl, $this->credentials, $this->tokenStore, $this->scopes);
+    }
+
+    public function getTokenStore(): TokenStoreInterface
+    {
+        return $this->tokenStore;
+    }
+
+    private function newCredentials(string $clientId, string $clientSecret): CredentialsInterface
+    {
+        return new ClientCredentials(
+            $clientId,
+            $clientSecret,
+            $this->baseUrl . '/authorization/token',
+            '',
+            $this->baseUrl . '/authorization/refresh'
+        );
     }
 }
