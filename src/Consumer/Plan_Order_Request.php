@@ -1,35 +1,24 @@
-<?php 
+<?php
 /**
- * Plan_Order_Request generated on 2021-01-27
- * @see https://github.com/apioo
+ * Plan_Order_Request generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Consumer;
+use PSX\Schema\Attribute\Required;
 
-/**
- * @Required({"planId"})
- */
+#[Required(array('planId'))]
 class Plan_Order_Request implements \JsonSerializable
 {
-    /**
-     * @var int|null
-     */
-    protected $planId;
-    /**
-     * @param int|null $planId
-     */
+    protected ?int $planId = null;
     public function setPlanId(?int $planId) : void
     {
         $this->planId = $planId;
     }
-    /**
-     * @return int|null
-     */
     public function getPlanId() : ?int
     {
         return $this->planId;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('planId' => $this->planId), static function ($value) : bool {
             return $value !== null;

@@ -1,51 +1,30 @@
-<?php 
+<?php
 /**
- * Form_Element_Select_Option generated on 2021-01-27
- * @see https://github.com/apioo
+ * Form_Element_Select_Option generated on 2022-04-30
+ * @see https://sdkgen.app
  */
-
-namespace Fusio\Sdk\Backend;
-
 
 class Form_Element_Select_Option implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $key;
-    /**
-     * @var string|null
-     */
-    protected $value;
-    /**
-     * @param string|null $key
-     */
+    protected ?string $key = null;
+    protected ?string $value = null;
     public function setKey(?string $key) : void
     {
         $this->key = $key;
     }
-    /**
-     * @return string|null
-     */
     public function getKey() : ?string
     {
         return $this->key;
     }
-    /**
-     * @param string|null $value
-     */
     public function setValue(?string $value) : void
     {
         $this->value = $value;
     }
-    /**
-     * @return string|null
-     */
     public function getValue() : ?string
     {
         return $this->value;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('key' => $this->key, 'value' => $this->value), static function ($value) : bool {
             return $value !== null;

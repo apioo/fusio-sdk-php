@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendConnectionResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendConnectionResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendConnectionResource extends ResourceAbstract
 {
@@ -17,9 +16,9 @@ class BackendConnectionResource extends ResourceAbstract
      */
     private $url;
 
-    public function __construct(string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->url = $this->baseUrl . '/backend/connection';
     }
@@ -28,7 +27,7 @@ class BackendConnectionResource extends ResourceAbstract
      * @param Collection_Query $query
      * @return Connection_Collection
      */
-    public function backendActionConnectionGetAll(?Collection_Query $query): Connection_Collection
+    public function backendActionConnectionGetAll(?Collection_Query $query = null): Connection_Collection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -47,7 +46,7 @@ class BackendConnectionResource extends ResourceAbstract
      * @param Connection_Create $data
      * @return Message
      */
-    public function backendActionConnectionCreate(?Connection_Create $data): Message
+    public function backendActionConnectionCreate(?Connection_Create $data = null): Message
     {
         $options = [
             'headers' => [

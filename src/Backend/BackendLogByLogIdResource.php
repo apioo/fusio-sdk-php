@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendLogByLogIdResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendLogByLogIdResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendLogByLogIdResource extends ResourceAbstract
 {
@@ -22,9 +21,9 @@ class BackendLogByLogIdResource extends ResourceAbstract
      */
     private $log_id;
 
-    public function __construct(string $log_id, string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $log_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->log_id = $log_id;
         $this->url = $this->baseUrl . '/backend/log/' . $log_id . '';

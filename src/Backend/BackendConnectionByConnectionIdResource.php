@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendConnectionByConnectionIdResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendConnectionByConnectionIdResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendConnectionByConnectionIdResource extends ResourceAbstract
 {
@@ -22,9 +21,9 @@ class BackendConnectionByConnectionIdResource extends ResourceAbstract
      */
     private $connection_id;
 
-    public function __construct(string $connection_id, string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $connection_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->connection_id = $connection_id;
         $this->url = $this->baseUrl . '/backend/connection/' . $connection_id . '';
@@ -51,7 +50,7 @@ class BackendConnectionByConnectionIdResource extends ResourceAbstract
      * @param Connection_Update $data
      * @return Message
      */
-    public function backendActionConnectionUpdate(?Connection_Update $data): Message
+    public function backendActionConnectionUpdate(?Connection_Update $data = null): Message
     {
         $options = [
             'headers' => [

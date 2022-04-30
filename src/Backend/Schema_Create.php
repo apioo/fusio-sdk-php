@@ -1,14 +1,12 @@
-<?php 
+<?php
 /**
- * Schema_Create generated on 2021-01-27
- * @see https://github.com/apioo
+ * Schema_Create generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
+use PSX\Schema\Attribute\Required;
 
-/**
- * @Required({"name"})
- */
+#[Required(array('name'))]
 class Schema_Create extends Schema implements \JsonSerializable
 {
 }

@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendAppResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendAppResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendAppResource extends ResourceAbstract
 {
@@ -17,9 +16,9 @@ class BackendAppResource extends ResourceAbstract
      */
     private $url;
 
-    public function __construct(string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->url = $this->baseUrl . '/backend/app';
     }
@@ -28,7 +27,7 @@ class BackendAppResource extends ResourceAbstract
      * @param Collection_Query $query
      * @return App_Collection
      */
-    public function backendActionAppGetAll(?Collection_Query $query): App_Collection
+    public function backendActionAppGetAll(?Collection_Query $query = null): App_Collection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -47,7 +46,7 @@ class BackendAppResource extends ResourceAbstract
      * @param App_Create $data
      * @return Message
      */
-    public function backendActionAppCreate(?App_Create $data): Message
+    public function backendActionAppCreate(?App_Create $data = null): Message
     {
         $options = [
             'headers' => [

@@ -1,11 +1,8 @@
-<?php 
+<?php
 /**
- * Config_Update generated on 2021-01-27
- * @see https://github.com/apioo
+ * Config_Update generated on 2022-04-30
+ * @see https://sdkgen.app
  */
-
-namespace Fusio\Sdk\Backend;
-
 
 class Config_Update extends Config implements \JsonSerializable
 {

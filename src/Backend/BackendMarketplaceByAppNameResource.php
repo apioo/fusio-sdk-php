@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendMarketplaceByAppNameResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendMarketplaceByAppNameResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendMarketplaceByAppNameResource extends ResourceAbstract
 {
@@ -22,9 +21,9 @@ class BackendMarketplaceByAppNameResource extends ResourceAbstract
      */
     private $app_name;
 
-    public function __construct(string $app_name, string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $app_name, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->app_name = $app_name;
         $this->url = $this->baseUrl . '/backend/marketplace/' . $app_name . '';

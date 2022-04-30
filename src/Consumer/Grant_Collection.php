@@ -1,10 +1,8 @@
-<?php 
+<?php
 /**
- * Grant_Collection generated on 2021-01-27
- * @see https://github.com/apioo
+ * Grant_Collection generated on 2022-04-30
+ * @see https://sdkgen.app
  */
-
-namespace Fusio\Sdk\Consumer;
 
 /**
  * @extends Collection<Grant>

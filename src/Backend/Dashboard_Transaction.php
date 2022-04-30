@@ -1,105 +1,57 @@
-<?php 
+<?php
 /**
- * Dashboard_Transaction generated on 2021-01-27
- * @see https://github.com/apioo
+ * Dashboard_Transaction generated on 2022-04-30
+ * @see https://sdkgen.app
  */
-
-namespace Fusio\Sdk\Backend;
-
 
 class Dashboard_Transaction implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $status;
-    /**
-     * @var string|null
-     */
-    protected $provider;
-    /**
-     * @var string|null
-     */
-    protected $transactionId;
-    /**
-     * @var float|null
-     */
-    protected $amount;
-    /**
-     * @var \DateTime|null
-     */
-    protected $date;
-    /**
-     * @param string|null $status
-     */
+    protected ?string $status = null;
+    protected ?string $provider = null;
+    protected ?string $transactionId = null;
+    protected ?float $amount = null;
+    protected ?\DateTime $date = null;
     public function setStatus(?string $status) : void
     {
         $this->status = $status;
     }
-    /**
-     * @return string|null
-     */
     public function getStatus() : ?string
     {
         return $this->status;
     }
-    /**
-     * @param string|null $provider
-     */
     public function setProvider(?string $provider) : void
     {
         $this->provider = $provider;
     }
-    /**
-     * @return string|null
-     */
     public function getProvider() : ?string
     {
         return $this->provider;
     }
-    /**
-     * @param string|null $transactionId
-     */
     public function setTransactionId(?string $transactionId) : void
     {
         $this->transactionId = $transactionId;
     }
-    /**
-     * @return string|null
-     */
     public function getTransactionId() : ?string
     {
         return $this->transactionId;
     }
-    /**
-     * @param float|null $amount
-     */
     public function setAmount(?float $amount) : void
     {
         $this->amount = $amount;
     }
-    /**
-     * @return float|null
-     */
     public function getAmount() : ?float
     {
         return $this->amount;
     }
-    /**
-     * @param \DateTime|null $date
-     */
     public function setDate(?\DateTime $date) : void
     {
         $this->date = $date;
     }
-    /**
-     * @return \DateTime|null
-     */
     public function getDate() : ?\DateTime
     {
         return $this->date;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('status' => $this->status, 'provider' => $this->provider, 'transactionId' => $this->transactionId, 'amount' => $this->amount, 'date' => $this->date), static function ($value) : bool {
             return $value !== null;

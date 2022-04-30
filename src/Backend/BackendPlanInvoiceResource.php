@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendPlanInvoiceResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendPlanInvoiceResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendPlanInvoiceResource extends ResourceAbstract
 {
@@ -17,9 +16,9 @@ class BackendPlanInvoiceResource extends ResourceAbstract
      */
     private $url;
 
-    public function __construct(string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->url = $this->baseUrl . '/backend/plan/invoice';
     }
@@ -28,7 +27,7 @@ class BackendPlanInvoiceResource extends ResourceAbstract
      * @param Collection_Query $query
      * @return Plan_Invoice_Collection
      */
-    public function backendActionPlanInvoiceGetAll(?Collection_Query $query): Plan_Invoice_Collection
+    public function backendActionPlanInvoiceGetAll(?Collection_Query $query = null): Plan_Invoice_Collection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -47,7 +46,7 @@ class BackendPlanInvoiceResource extends ResourceAbstract
      * @param Plan_Invoice_Create $data
      * @return Message
      */
-    public function backendActionPlanInvoiceCreate(?Plan_Invoice_Create $data): Message
+    public function backendActionPlanInvoiceCreate(?Plan_Invoice_Create $data = null): Message
     {
         $options = [
             'headers' => [

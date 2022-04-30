@@ -1,33 +1,21 @@
-<?php 
+<?php
 /**
- * BackendConfigConfig_idPath generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendConfigConfig_idPath generated on 2022-04-30
+ * @see https://sdkgen.app
  */
-
-namespace Fusio\Sdk\Backend;
-
 
 class BackendConfigConfig_idPath implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $config_id;
-    /**
-     * @param string|null $config_id
-     */
+    protected ?string $config_id = null;
     public function setConfig_id(?string $config_id) : void
     {
         $this->config_id = $config_id;
     }
-    /**
-     * @return string|null
-     */
     public function getConfig_id() : ?string
     {
         return $this->config_id;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('config_id' => $this->config_id), static function ($value) : bool {
             return $value !== null;

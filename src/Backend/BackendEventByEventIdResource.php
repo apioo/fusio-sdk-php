@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendEventByEventIdResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendEventByEventIdResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendEventByEventIdResource extends ResourceAbstract
 {
@@ -22,9 +21,9 @@ class BackendEventByEventIdResource extends ResourceAbstract
      */
     private $event_id;
 
-    public function __construct(string $event_id, string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $event_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->event_id = $event_id;
         $this->url = $this->baseUrl . '/backend/event/' . $event_id . '';
@@ -51,7 +50,7 @@ class BackendEventByEventIdResource extends ResourceAbstract
      * @param Event_Update $data
      * @return Message
      */
-    public function backendActionEventUpdate(?Event_Update $data): Message
+    public function backendActionEventUpdate(?Event_Update $data = null): Message
     {
         $options = [
             'headers' => [

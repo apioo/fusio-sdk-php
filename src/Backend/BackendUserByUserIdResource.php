@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendUserByUserIdResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendUserByUserIdResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendUserByUserIdResource extends ResourceAbstract
 {
@@ -22,9 +21,9 @@ class BackendUserByUserIdResource extends ResourceAbstract
      */
     private $user_id;
 
-    public function __construct(string $user_id, string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $user_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->user_id = $user_id;
         $this->url = $this->baseUrl . '/backend/user/' . $user_id . '';
@@ -51,7 +50,7 @@ class BackendUserByUserIdResource extends ResourceAbstract
      * @param User_Update $data
      * @return Message
      */
-    public function backendActionUserUpdate(?User_Update $data): Message
+    public function backendActionUserUpdate(?User_Update $data = null): Message
     {
         $options = [
             'headers' => [

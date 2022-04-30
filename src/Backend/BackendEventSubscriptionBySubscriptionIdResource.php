@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendEventSubscriptionBySubscriptionIdResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendEventSubscriptionBySubscriptionIdResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendEventSubscriptionBySubscriptionIdResource extends ResourceAbstract
 {
@@ -22,9 +21,9 @@ class BackendEventSubscriptionBySubscriptionIdResource extends ResourceAbstract
      */
     private $subscription_id;
 
-    public function __construct(string $subscription_id, string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $subscription_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->subscription_id = $subscription_id;
         $this->url = $this->baseUrl . '/backend/event/subscription/' . $subscription_id . '';
@@ -51,7 +50,7 @@ class BackendEventSubscriptionBySubscriptionIdResource extends ResourceAbstract
      * @param Event_Subscription_Update $data
      * @return Message
      */
-    public function backendActionEventSubscriptionUpdate(?Event_Subscription_Update $data): Message
+    public function backendActionEventSubscriptionUpdate(?Event_Subscription_Update $data = null): Message
     {
         $options = [
             'headers' => [

@@ -1,69 +1,39 @@
-<?php 
+<?php
 /**
- * Dashboard_User generated on 2021-01-27
- * @see https://github.com/apioo
+ * Dashboard_User generated on 2022-04-30
+ * @see https://sdkgen.app
  */
-
-namespace Fusio\Sdk\Backend;
-
 
 class Dashboard_User implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $status;
-    /**
-     * @var string|null
-     */
-    protected $name;
-    /**
-     * @var \DateTime|null
-     */
-    protected $date;
-    /**
-     * @param string|null $status
-     */
+    protected ?string $status = null;
+    protected ?string $name = null;
+    protected ?\DateTime $date = null;
     public function setStatus(?string $status) : void
     {
         $this->status = $status;
     }
-    /**
-     * @return string|null
-     */
     public function getStatus() : ?string
     {
         return $this->status;
     }
-    /**
-     * @param string|null $name
-     */
     public function setName(?string $name) : void
     {
         $this->name = $name;
     }
-    /**
-     * @return string|null
-     */
     public function getName() : ?string
     {
         return $this->name;
     }
-    /**
-     * @param \DateTime|null $date
-     */
     public function setDate(?\DateTime $date) : void
     {
         $this->date = $date;
     }
-    /**
-     * @return \DateTime|null
-     */
     public function getDate() : ?\DateTime
     {
         return $this->date;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('status' => $this->status, 'name' => $this->name, 'date' => $this->date), static function ($value) : bool {
             return $value !== null;

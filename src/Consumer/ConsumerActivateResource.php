@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * ConsumerActivateResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * ConsumerActivateResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Consumer;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class ConsumerActivateResource extends ResourceAbstract
 {
@@ -17,9 +16,9 @@ class ConsumerActivateResource extends ResourceAbstract
      */
     private $url;
 
-    public function __construct(string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->url = $this->baseUrl . '/consumer/activate';
     }
@@ -28,7 +27,7 @@ class ConsumerActivateResource extends ResourceAbstract
      * @param User_Activate $data
      * @return Message
      */
-    public function consumerActionUserActivate(?User_Activate $data): Message
+    public function consumerActionUserActivate(?User_Activate $data = null): Message
     {
         $options = [
             'json' => $data

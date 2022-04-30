@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * ConsumerSubscriptionResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * ConsumerSubscriptionResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Consumer;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class ConsumerSubscriptionResource extends ResourceAbstract
 {
@@ -17,9 +16,9 @@ class ConsumerSubscriptionResource extends ResourceAbstract
      */
     private $url;
 
-    public function __construct(string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->url = $this->baseUrl . '/consumer/subscription';
     }
@@ -28,7 +27,7 @@ class ConsumerSubscriptionResource extends ResourceAbstract
      * @param Collection_Query $query
      * @return Event_Subscription_Collection
      */
-    public function consumerActionEventSubscriptionGetAll(?Collection_Query $query): Event_Subscription_Collection
+    public function consumerActionEventSubscriptionGetAll(?Collection_Query $query = null): Event_Subscription_Collection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -47,7 +46,7 @@ class ConsumerSubscriptionResource extends ResourceAbstract
      * @param Event_Subscription_Create $data
      * @return Message
      */
-    public function consumerActionEventSubscriptionCreate(?Event_Subscription_Create $data): Message
+    public function consumerActionEventSubscriptionCreate(?Event_Subscription_Create $data = null): Message
     {
         $options = [
             'headers' => [

@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * ConsumerPlanContractResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * ConsumerPlanContractResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Consumer;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class ConsumerPlanContractResource extends ResourceAbstract
 {
@@ -17,9 +16,9 @@ class ConsumerPlanContractResource extends ResourceAbstract
      */
     private $url;
 
-    public function __construct(string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->url = $this->baseUrl . '/consumer/plan/contract';
     }
@@ -28,7 +27,7 @@ class ConsumerPlanContractResource extends ResourceAbstract
      * @param Collection_Query $query
      * @return Plan_Contract_Collection
      */
-    public function consumerActionPlanContractGetAll(?Collection_Query $query): Plan_Contract_Collection
+    public function consumerActionPlanContractGetAll(?Collection_Query $query = null): Plan_Contract_Collection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -47,7 +46,7 @@ class ConsumerPlanContractResource extends ResourceAbstract
      * @param Plan_Order_Request $data
      * @return Plan_Order_Response
      */
-    public function consumerActionPlanContractCreate(?Plan_Order_Request $data): Plan_Order_Response
+    public function consumerActionPlanContractCreate(?Plan_Order_Request $data = null): Plan_Order_Response
     {
         $options = [
             'headers' => [

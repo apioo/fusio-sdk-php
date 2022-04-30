@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendAccountChangePasswordResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendAccountChangePasswordResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendAccountChangePasswordResource extends ResourceAbstract
 {
@@ -17,9 +16,9 @@ class BackendAccountChangePasswordResource extends ResourceAbstract
      */
     private $url;
 
-    public function __construct(string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->url = $this->baseUrl . '/backend/account/change_password';
     }
@@ -28,7 +27,7 @@ class BackendAccountChangePasswordResource extends ResourceAbstract
      * @param Account_ChangePassword $data
      * @return Message
      */
-    public function backendActionAccountChangePassword(?Account_ChangePassword $data): Message
+    public function backendActionAccountChangePassword(?Account_ChangePassword $data = null): Message
     {
         $options = [
             'headers' => [

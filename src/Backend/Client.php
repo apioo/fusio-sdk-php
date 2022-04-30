@@ -1,1105 +1,339 @@
-<?php 
+<?php
 /**
- * Client generated on 2021-01-27
- * @see https://github.com/apioo
+ * Client generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
+use Sdkgen\Client\ClientAbstract;
+use Sdkgen\Client\Credentials;
+use Sdkgen\Client\TokenStoreInterface;
 
-class Client extends ResourceAbstract
+class Client extends ClientAbstract
 {
-    /**
-     * Endpoint: /backend/user/$user_id<[0-9]+>
-     *
-     * @return BackendUserByUserIdResource
-     */
-    public function getBackendUserByUserId(?string $user_id): BackendUserByUserIdResource
-    {
-        return new BackendUserByUserIdResource(
-            $user_id,
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/user
-     *
-     * @return BackendUserResource
-     */
-    public function getBackendUser(): BackendUserResource
-    {
-        return new BackendUserResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/transaction/$transaction_id<[0-9]+>
-     *
-     * @return BackendTransactionByTransactionIdResource
-     */
-    public function getBackendTransactionByTransactionId(?string $transaction_id): BackendTransactionByTransactionIdResource
-    {
-        return new BackendTransactionByTransactionIdResource(
-            $transaction_id,
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/transaction
-     *
-     * @return BackendTransactionResource
-     */
-    public function getBackendTransaction(): BackendTransactionResource
-    {
-        return new BackendTransactionResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/statistic/used_points
-     *
-     * @return BackendStatisticUsedPointsResource
-     */
-    public function getBackendStatisticUsedPoints(): BackendStatisticUsedPointsResource
-    {
-        return new BackendStatisticUsedPointsResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/statistic/time_per_route
-     *
-     * @return BackendStatisticTimePerRouteResource
-     */
-    public function getBackendStatisticTimePerRoute(): BackendStatisticTimePerRouteResource
-    {
-        return new BackendStatisticTimePerRouteResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/statistic/time_average
-     *
-     * @return BackendStatisticTimeAverageResource
-     */
-    public function getBackendStatisticTimeAverage(): BackendStatisticTimeAverageResource
-    {
-        return new BackendStatisticTimeAverageResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/statistic/most_used_routes
-     *
-     * @return BackendStatisticMostUsedRoutesResource
-     */
-    public function getBackendStatisticMostUsedRoutes(): BackendStatisticMostUsedRoutesResource
-    {
-        return new BackendStatisticMostUsedRoutesResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/statistic/most_used_apps
-     *
-     * @return BackendStatisticMostUsedAppsResource
-     */
-    public function getBackendStatisticMostUsedApps(): BackendStatisticMostUsedAppsResource
-    {
-        return new BackendStatisticMostUsedAppsResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/statistic/issued_tokens
-     *
-     * @return BackendStatisticIssuedTokensResource
-     */
-    public function getBackendStatisticIssuedTokens(): BackendStatisticIssuedTokensResource
-    {
-        return new BackendStatisticIssuedTokensResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/statistic/incoming_transactions
-     *
-     * @return BackendStatisticIncomingTransactionsResource
-     */
-    public function getBackendStatisticIncomingTransactions(): BackendStatisticIncomingTransactionsResource
-    {
-        return new BackendStatisticIncomingTransactionsResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/statistic/incoming_requests
-     *
-     * @return BackendStatisticIncomingRequestsResource
-     */
-    public function getBackendStatisticIncomingRequests(): BackendStatisticIncomingRequestsResource
-    {
-        return new BackendStatisticIncomingRequestsResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/statistic/errors_per_route
-     *
-     * @return BackendStatisticErrorsPerRouteResource
-     */
-    public function getBackendStatisticErrorsPerRoute(): BackendStatisticErrorsPerRouteResource
-    {
-        return new BackendStatisticErrorsPerRouteResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/statistic/count_requests
-     *
-     * @return BackendStatisticCountRequestsResource
-     */
-    public function getBackendStatisticCountRequests(): BackendStatisticCountRequestsResource
-    {
-        return new BackendStatisticCountRequestsResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/sdk
-     *
-     * @return BackendSdkResource
-     */
-    public function getBackendSdk(): BackendSdkResource
-    {
-        return new BackendSdkResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/scope/$scope_id<[0-9]+|^~>
-     *
-     * @return BackendScopeByScopeIdResource
-     */
-    public function getBackendScopeByScopeId(?string $scope_id): BackendScopeByScopeIdResource
-    {
-        return new BackendScopeByScopeIdResource(
-            $scope_id,
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/scope/categories
-     *
-     * @return BackendScopeCategoriesResource
-     */
-    public function getBackendScopeCategories(): BackendScopeCategoriesResource
-    {
-        return new BackendScopeCategoriesResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/scope
-     *
-     * @return BackendScopeResource
-     */
-    public function getBackendScope(): BackendScopeResource
-    {
-        return new BackendScopeResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/schema/$schema_id<[0-9]+|^~>
-     *
-     * @return BackendSchemaBySchemaIdResource
-     */
-    public function getBackendSchemaBySchemaId(?string $schema_id): BackendSchemaBySchemaIdResource
-    {
-        return new BackendSchemaBySchemaIdResource(
-            $schema_id,
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/schema/form/$schema_id<[0-9]+>
-     *
-     * @return BackendSchemaFormBySchemaIdResource
-     */
-    public function getBackendSchemaFormBySchemaId(?string $schema_id): BackendSchemaFormBySchemaIdResource
-    {
-        return new BackendSchemaFormBySchemaIdResource(
-            $schema_id,
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/schema/preview/:schema_id
-     *
-     * @return BackendSchemaPreviewBySchemaIdResource
-     */
-    public function getBackendSchemaPreviewBySchemaId(?string $schema_id): BackendSchemaPreviewBySchemaIdResource
-    {
-        return new BackendSchemaPreviewBySchemaIdResource(
-            $schema_id,
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/schema
-     *
-     * @return BackendSchemaResource
-     */
-    public function getBackendSchema(): BackendSchemaResource
-    {
-        return new BackendSchemaResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/routes/$route_id<[0-9]+>
-     *
-     * @return BackendRoutesByRouteIdResource
-     */
-    public function getBackendRoutesByRouteId(?string $route_id): BackendRoutesByRouteIdResource
-    {
-        return new BackendRoutesByRouteIdResource(
-            $route_id,
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/routes/provider/:provider
-     *
-     * @return BackendRoutesProviderByProviderResource
-     */
-    public function getBackendRoutesProviderByProvider(?string $provider): BackendRoutesProviderByProviderResource
-    {
-        return new BackendRoutesProviderByProviderResource(
-            $provider,
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/routes/provider
-     *
-     * @return BackendRoutesProviderResource
-     */
-    public function getBackendRoutesProvider(): BackendRoutesProviderResource
-    {
-        return new BackendRoutesProviderResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/routes
-     *
-     * @return BackendRoutesResource
-     */
-    public function getBackendRoutes(): BackendRoutesResource
-    {
-        return new BackendRoutesResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/role/$role_id<[0-9]+|^~>
-     *
-     * @return BackendRoleByRoleIdResource
-     */
-    public function getBackendRoleByRoleId(?string $role_id): BackendRoleByRoleIdResource
-    {
-        return new BackendRoleByRoleIdResource(
-            $role_id,
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/role
-     *
-     * @return BackendRoleResource
-     */
-    public function getBackendRole(): BackendRoleResource
-    {
-        return new BackendRoleResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/rate/$rate_id<[0-9]+|^~>
-     *
-     * @return BackendRateByRateIdResource
-     */
-    public function getBackendRateByRateId(?string $rate_id): BackendRateByRateIdResource
-    {
-        return new BackendRateByRateIdResource(
-            $rate_id,
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/rate
-     *
-     * @return BackendRateResource
-     */
-    public function getBackendRate(): BackendRateResource
-    {
-        return new BackendRateResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/plan/$plan_id<[0-9]+|^~>
-     *
-     * @return BackendPlanByPlanIdResource
-     */
-    public function getBackendPlanByPlanId(?string $plan_id): BackendPlanByPlanIdResource
-    {
-        return new BackendPlanByPlanIdResource(
-            $plan_id,
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/plan
-     *
-     * @return BackendPlanResource
-     */
-    public function getBackendPlan(): BackendPlanResource
-    {
-        return new BackendPlanResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/plan/invoice/$invoice_id<[0-9]+>
-     *
-     * @return BackendPlanInvoiceByInvoiceIdResource
-     */
-    public function getBackendPlanInvoiceByInvoiceId(?string $invoice_id): BackendPlanInvoiceByInvoiceIdResource
-    {
-        return new BackendPlanInvoiceByInvoiceIdResource(
-            $invoice_id,
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/plan/invoice
-     *
-     * @return BackendPlanInvoiceResource
-     */
-    public function getBackendPlanInvoice(): BackendPlanInvoiceResource
-    {
-        return new BackendPlanInvoiceResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/plan/contract/$contract_id<[0-9]+>
-     *
-     * @return BackendPlanContractByContractIdResource
-     */
-    public function getBackendPlanContractByContractId(?string $contract_id): BackendPlanContractByContractIdResource
-    {
-        return new BackendPlanContractByContractIdResource(
-            $contract_id,
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/plan/contract
-     *
-     * @return BackendPlanContractResource
-     */
-    public function getBackendPlanContract(): BackendPlanContractResource
-    {
-        return new BackendPlanContractResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/marketplace/:app_name
-     *
-     * @return BackendMarketplaceByAppNameResource
-     */
-    public function getBackendMarketplaceByAppName(?string $app_name): BackendMarketplaceByAppNameResource
-    {
-        return new BackendMarketplaceByAppNameResource(
-            $app_name,
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/marketplace
-     *
-     * @return BackendMarketplaceResource
-     */
-    public function getBackendMarketplace(): BackendMarketplaceResource
-    {
-        return new BackendMarketplaceResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/log/$log_id<[0-9]+>
-     *
-     * @return BackendLogByLogIdResource
-     */
-    public function getBackendLogByLogId(?string $log_id): BackendLogByLogIdResource
-    {
-        return new BackendLogByLogIdResource(
-            $log_id,
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/log
-     *
-     * @return BackendLogResource
-     */
-    public function getBackendLog(): BackendLogResource
-    {
-        return new BackendLogResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/log/error/$error_id<[0-9]+>
-     *
-     * @return BackendLogErrorByErrorIdResource
-     */
-    public function getBackendLogErrorByErrorId(?string $error_id): BackendLogErrorByErrorIdResource
-    {
-        return new BackendLogErrorByErrorIdResource(
-            $error_id,
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/log/error
-     *
-     * @return BackendLogErrorResource
-     */
-    public function getBackendLogError(): BackendLogErrorResource
-    {
-        return new BackendLogErrorResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/event/$event_id<[0-9]+|^~>
-     *
-     * @return BackendEventByEventIdResource
-     */
-    public function getBackendEventByEventId(?string $event_id): BackendEventByEventIdResource
-    {
-        return new BackendEventByEventIdResource(
-            $event_id,
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/event
-     *
-     * @return BackendEventResource
-     */
-    public function getBackendEvent(): BackendEventResource
-    {
-        return new BackendEventResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/event/subscription/$subscription_id<[0-9]+>
-     *
-     * @return BackendEventSubscriptionBySubscriptionIdResource
-     */
-    public function getBackendEventSubscriptionBySubscriptionId(?string $subscription_id): BackendEventSubscriptionBySubscriptionIdResource
-    {
-        return new BackendEventSubscriptionBySubscriptionIdResource(
-            $subscription_id,
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/event/subscription
-     *
-     * @return BackendEventSubscriptionResource
-     */
-    public function getBackendEventSubscription(): BackendEventSubscriptionResource
-    {
-        return new BackendEventSubscriptionResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/dashboard
-     *
-     * @return BackendDashboardResource
-     */
-    public function getBackendDashboard(): BackendDashboardResource
-    {
-        return new BackendDashboardResource(
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /backend/cronjob/$cronjob_id<[0-9]+|^~>
-     *
-     * @return BackendCronjobByCronjobIdResource
-     */
-    public function getBackendCronjobByCronjobId(?string $cronjob_id): BackendCronjobByCronjobIdResource
+    public function __construct(string $baseUrl, ?TokenStoreInterface $tokenStore = null)
     {
-        return new BackendCronjobByCronjobIdResource(
-            $cronjob_id,
-            $this->baseUrl,
-            $this->token,
-            $this->httpClient,
-            $this->schemaManager
-        );
+        parent::__construct($baseUrl, null, $tokenStore);
     }
 
     /**
-     * Endpoint: /backend/cronjob
+     * Tag: backend.user
      *
-     * @return BackendCronjobResource
+     * @return BackendUserGroup
      */
-    public function getBackendCronjob(): BackendCronjobResource
+    public function backendUser(): BackendUserGroup
     {
-        return new BackendCronjobResource(
+        return new BackendUserGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/connection/$connection_id<[0-9]+|^~>
+     * Tag: backend.transaction
      *
-     * @return BackendConnectionByConnectionIdResource
+     * @return BackendTransactionGroup
      */
-    public function getBackendConnectionByConnectionId(?string $connection_id): BackendConnectionByConnectionIdResource
+    public function backendTransaction(): BackendTransactionGroup
     {
-        return new BackendConnectionByConnectionIdResource(
-            $connection_id,
+        return new BackendTransactionGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/connection/form
+     * Tag: backend.statistic
      *
-     * @return BackendConnectionFormResource
+     * @return BackendStatisticGroup
      */
-    public function getBackendConnectionForm(): BackendConnectionFormResource
+    public function backendStatistic(): BackendStatisticGroup
     {
-        return new BackendConnectionFormResource(
+        return new BackendStatisticGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/connection/list
+     * Tag: backend.sdk
      *
-     * @return BackendConnectionListResource
+     * @return BackendSdkGroup
      */
-    public function getBackendConnectionList(): BackendConnectionListResource
+    public function backendSdk(): BackendSdkGroup
     {
-        return new BackendConnectionListResource(
+        return new BackendSdkGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/connection
+     * Tag: backend.scope
      *
-     * @return BackendConnectionResource
+     * @return BackendScopeGroup
      */
-    public function getBackendConnection(): BackendConnectionResource
+    public function backendScope(): BackendScopeGroup
     {
-        return new BackendConnectionResource(
+        return new BackendScopeGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/config/$config_id<[0-9]+|^~>
+     * Tag: backend.schema
      *
-     * @return BackendConfigByConfigIdResource
+     * @return BackendSchemaGroup
      */
-    public function getBackendConfigByConfigId(?string $config_id): BackendConfigByConfigIdResource
+    public function backendSchema(): BackendSchemaGroup
     {
-        return new BackendConfigByConfigIdResource(
-            $config_id,
+        return new BackendSchemaGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/config
+     * Tag: backend.route
      *
-     * @return BackendConfigResource
+     * @return BackendRouteGroup
      */
-    public function getBackendConfig(): BackendConfigResource
+    public function backendRoute(): BackendRouteGroup
     {
-        return new BackendConfigResource(
+        return new BackendRouteGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/category/$category_id<[0-9]+|^~>
+     * Tag: backend.role
      *
-     * @return BackendCategoryByCategoryIdResource
+     * @return BackendRoleGroup
      */
-    public function getBackendCategoryByCategoryId(?string $category_id): BackendCategoryByCategoryIdResource
+    public function backendRole(): BackendRoleGroup
     {
-        return new BackendCategoryByCategoryIdResource(
-            $category_id,
+        return new BackendRoleGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/category
+     * Tag: backend.rate
      *
-     * @return BackendCategoryResource
+     * @return BackendRateGroup
      */
-    public function getBackendCategory(): BackendCategoryResource
+    public function backendRate(): BackendRateGroup
     {
-        return new BackendCategoryResource(
+        return new BackendRateGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/audit/$audit_id<[0-9]+>
+     * Tag: backend.plan
      *
-     * @return BackendAuditByAuditIdResource
+     * @return BackendPlanGroup
      */
-    public function getBackendAuditByAuditId(?string $audit_id): BackendAuditByAuditIdResource
+    public function backendPlan(): BackendPlanGroup
     {
-        return new BackendAuditByAuditIdResource(
-            $audit_id,
+        return new BackendPlanGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/audit
+     * Tag: backend.page
      *
-     * @return BackendAuditResource
+     * @return BackendPageGroup
      */
-    public function getBackendAudit(): BackendAuditResource
+    public function backendPage(): BackendPageGroup
     {
-        return new BackendAuditResource(
+        return new BackendPageGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/app/$app_id<[0-9]+>/token/:token_id
+     * Tag: backend.marketplace
      *
-     * @return BackendAppByAppIdTokenAndTokenIdResource
+     * @return BackendMarketplaceGroup
      */
-    public function getBackendAppByAppIdTokenAndTokenId(?string $app_id, ?string $token_id): BackendAppByAppIdTokenAndTokenIdResource
+    public function backendMarketplace(): BackendMarketplaceGroup
     {
-        return new BackendAppByAppIdTokenAndTokenIdResource(
-            $app_id,
-            $token_id,
+        return new BackendMarketplaceGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/app/$app_id<[0-9]+>
+     * Tag: backend.log
      *
-     * @return BackendAppByAppIdResource
+     * @return BackendLogGroup
      */
-    public function getBackendAppByAppId(?string $app_id): BackendAppByAppIdResource
+    public function backendLog(): BackendLogGroup
     {
-        return new BackendAppByAppIdResource(
-            $app_id,
+        return new BackendLogGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/app
+     * Tag: backend.event
      *
-     * @return BackendAppResource
+     * @return BackendEventGroup
      */
-    public function getBackendApp(): BackendAppResource
+    public function backendEvent(): BackendEventGroup
     {
-        return new BackendAppResource(
+        return new BackendEventGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/app/token/$token_id<[0-9]+>
+     * Tag: backend.dashboard
      *
-     * @return BackendAppTokenByTokenIdResource
+     * @return BackendDashboardGroup
      */
-    public function getBackendAppTokenByTokenId(?string $token_id): BackendAppTokenByTokenIdResource
+    public function backendDashboard(): BackendDashboardGroup
     {
-        return new BackendAppTokenByTokenIdResource(
-            $token_id,
+        return new BackendDashboardGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/app/token
+     * Tag: backend.cronjob
      *
-     * @return BackendAppTokenResource
+     * @return BackendCronjobGroup
      */
-    public function getBackendAppToken(): BackendAppTokenResource
+    public function backendCronjob(): BackendCronjobGroup
     {
-        return new BackendAppTokenResource(
+        return new BackendCronjobGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/action/$action_id<[0-9]+|^~>
+     * Tag: backend.connection
      *
-     * @return BackendActionByActionIdResource
+     * @return BackendConnectionGroup
      */
-    public function getBackendActionByActionId(?string $action_id): BackendActionByActionIdResource
+    public function backendConnection(): BackendConnectionGroup
     {
-        return new BackendActionByActionIdResource(
-            $action_id,
+        return new BackendConnectionGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/action/execute/:action_id
+     * Tag: backend.config
      *
-     * @return BackendActionExecuteByActionIdResource
+     * @return BackendConfigGroup
      */
-    public function getBackendActionExecuteByActionId(?string $action_id): BackendActionExecuteByActionIdResource
+    public function backendConfig(): BackendConfigGroup
     {
-        return new BackendActionExecuteByActionIdResource(
-            $action_id,
+        return new BackendConfigGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/action/form
+     * Tag: backend.category
      *
-     * @return BackendActionFormResource
+     * @return BackendCategoryGroup
      */
-    public function getBackendActionForm(): BackendActionFormResource
+    public function backendCategory(): BackendCategoryGroup
     {
-        return new BackendActionFormResource(
+        return new BackendCategoryGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/action/list
+     * Tag: backend.audit
      *
-     * @return BackendActionListResource
+     * @return BackendAuditGroup
      */
-    public function getBackendActionList(): BackendActionListResource
+    public function backendAudit(): BackendAuditGroup
     {
-        return new BackendActionListResource(
+        return new BackendAuditGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/action
+     * Tag: backend.app
      *
-     * @return BackendActionResource
+     * @return BackendAppGroup
      */
-    public function getBackendAction(): BackendActionResource
+    public function backendApp(): BackendAppGroup
     {
-        return new BackendActionResource(
+        return new BackendAppGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/account/change_password
+     * Tag: backend.action
      *
-     * @return BackendAccountChangePasswordResource
+     * @return BackendActionGroup
      */
-    public function getBackendAccountChangePassword(): BackendAccountChangePasswordResource
+    public function backendAction(): BackendActionGroup
     {
-        return new BackendAccountChangePasswordResource(
+        return new BackendActionGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }
 
     /**
-     * Endpoint: /backend/account
+     * Tag: backend.account
      *
-     * @return BackendAccountResource
+     * @return BackendAccountGroup
      */
-    public function getBackendAccount(): BackendAccountResource
+    public function backendAccount(): BackendAccountGroup
     {
-        return new BackendAccountResource(
+        return new BackendAccountGroup(
             $this->baseUrl,
-            $this->token,
-            $this->httpClient,
+            $this->newHttpClient(),
             $this->schemaManager
         );
     }

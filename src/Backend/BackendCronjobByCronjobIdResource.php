@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendCronjobByCronjobIdResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendCronjobByCronjobIdResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendCronjobByCronjobIdResource extends ResourceAbstract
 {
@@ -22,9 +21,9 @@ class BackendCronjobByCronjobIdResource extends ResourceAbstract
      */
     private $cronjob_id;
 
-    public function __construct(string $cronjob_id, string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $cronjob_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->cronjob_id = $cronjob_id;
         $this->url = $this->baseUrl . '/backend/cronjob/' . $cronjob_id . '';
@@ -51,7 +50,7 @@ class BackendCronjobByCronjobIdResource extends ResourceAbstract
      * @param Cronjob_Update $data
      * @return Message
      */
-    public function backendActionCronjobUpdate(?Cronjob_Update $data): Message
+    public function backendActionCronjobUpdate(?Cronjob_Update $data = null): Message
     {
         $options = [
             'headers' => [

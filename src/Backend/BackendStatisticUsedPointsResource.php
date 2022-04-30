@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendStatisticUsedPointsResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendStatisticUsedPointsResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendStatisticUsedPointsResource extends ResourceAbstract
 {
@@ -17,9 +16,9 @@ class BackendStatisticUsedPointsResource extends ResourceAbstract
      */
     private $url;
 
-    public function __construct(string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->url = $this->baseUrl . '/backend/statistic/used_points';
     }
@@ -28,7 +27,7 @@ class BackendStatisticUsedPointsResource extends ResourceAbstract
      * @param Backend_Plan_Usage_Collection_Query $query
      * @return Statistic_Count
      */
-    public function backendActionStatisticGetUsedPoints(?Backend_Plan_Usage_Collection_Query $query): Statistic_Count
+    public function backendActionStatisticGetUsedPoints(?Backend_Plan_Usage_Collection_Query $query = null): Statistic_Count
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],

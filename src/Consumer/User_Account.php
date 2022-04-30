@@ -1,112 +1,58 @@
-<?php 
+<?php
 /**
- * User_Account generated on 2021-01-27
- * @see https://github.com/apioo
+ * User_Account generated on 2022-04-30
+ * @see https://sdkgen.app
  */
-
-namespace Fusio\Sdk\Consumer;
-
 
 class User_Account implements \JsonSerializable
 {
-    /**
-     * @var int|null
-     */
-    protected $id;
-    /**
-     * @var int|null
-     */
-    protected $status;
-    /**
-     * @var string|null
-     */
-    protected $name;
-    /**
-     * @var string|null
-     */
-    protected $email;
-    /**
-     * @var int|null
-     */
-    protected $points;
+    protected ?int $id = null;
+    protected ?int $status = null;
+    protected ?string $name = null;
+    protected ?string $email = null;
+    protected ?int $points = null;
     /**
      * @var array<string>|null
      */
-    protected $scopes;
-    /**
-     * @var User_Attributes|null
-     */
-    protected $attributes;
-    /**
-     * @var \DateTime|null
-     */
-    protected $date;
-    /**
-     * @param int|null $id
-     */
+    protected ?array $scopes = null;
+    protected ?User_Attributes $attributes = null;
+    protected ?\DateTime $date = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
     }
-    /**
-     * @return int|null
-     */
     public function getId() : ?int
     {
         return $this->id;
     }
-    /**
-     * @param int|null $status
-     */
     public function setStatus(?int $status) : void
     {
         $this->status = $status;
     }
-    /**
-     * @return int|null
-     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
-    /**
-     * @param string|null $name
-     */
     public function setName(?string $name) : void
     {
         $this->name = $name;
     }
-    /**
-     * @return string|null
-     */
     public function getName() : ?string
     {
         return $this->name;
     }
-    /**
-     * @param string|null $email
-     */
     public function setEmail(?string $email) : void
     {
         $this->email = $email;
     }
-    /**
-     * @return string|null
-     */
     public function getEmail() : ?string
     {
         return $this->email;
     }
-    /**
-     * @param int|null $points
-     */
     public function setPoints(?int $points) : void
     {
         $this->points = $points;
     }
-    /**
-     * @return int|null
-     */
     public function getPoints() : ?int
     {
         return $this->points;
@@ -118,42 +64,27 @@ class User_Account implements \JsonSerializable
     {
         $this->scopes = $scopes;
     }
-    /**
-     * @return array<string>|null
-     */
     public function getScopes() : ?array
     {
         return $this->scopes;
     }
-    /**
-     * @param User_Attributes|null $attributes
-     */
     public function setAttributes(?User_Attributes $attributes) : void
     {
         $this->attributes = $attributes;
     }
-    /**
-     * @return User_Attributes|null
-     */
     public function getAttributes() : ?User_Attributes
     {
         return $this->attributes;
     }
-    /**
-     * @param \DateTime|null $date
-     */
     public function setDate(?\DateTime $date) : void
     {
         $this->date = $date;
     }
-    /**
-     * @return \DateTime|null
-     */
     public function getDate() : ?\DateTime
     {
         return $this->date;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('id' => $this->id, 'status' => $this->status, 'name' => $this->name, 'email' => $this->email, 'points' => $this->points, 'scopes' => $this->scopes, 'attributes' => $this->attributes, 'date' => $this->date), static function ($value) : bool {
             return $value !== null;

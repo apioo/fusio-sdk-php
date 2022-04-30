@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendPlanByPlanIdResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendPlanByPlanIdResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendPlanByPlanIdResource extends ResourceAbstract
 {
@@ -22,9 +21,9 @@ class BackendPlanByPlanIdResource extends ResourceAbstract
      */
     private $plan_id;
 
-    public function __construct(string $plan_id, string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $plan_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->plan_id = $plan_id;
         $this->url = $this->baseUrl . '/backend/plan/' . $plan_id . '';
@@ -51,7 +50,7 @@ class BackendPlanByPlanIdResource extends ResourceAbstract
      * @param Plan_Update $data
      * @return Message
      */
-    public function backendActionPlanUpdate(?Plan_Update $data): Message
+    public function backendActionPlanUpdate(?Plan_Update $data = null): Message
     {
         $options = [
             'headers' => [

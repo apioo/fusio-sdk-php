@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * ConsumerAppByAppIdResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * ConsumerAppByAppIdResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Consumer;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class ConsumerAppByAppIdResource extends ResourceAbstract
 {
@@ -22,9 +21,9 @@ class ConsumerAppByAppIdResource extends ResourceAbstract
      */
     private $app_id;
 
-    public function __construct(string $app_id, string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $app_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->app_id = $app_id;
         $this->url = $this->baseUrl . '/consumer/app/' . $app_id . '';
@@ -51,7 +50,7 @@ class ConsumerAppByAppIdResource extends ResourceAbstract
      * @param App_Update $data
      * @return Message
      */
-    public function consumerActionAppUpdate(?App_Update $data): Message
+    public function consumerActionAppUpdate(?App_Update $data = null): Message
     {
         $options = [
             'headers' => [

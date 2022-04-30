@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendPlanInvoiceByInvoiceIdResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendPlanInvoiceByInvoiceIdResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendPlanInvoiceByInvoiceIdResource extends ResourceAbstract
 {
@@ -22,9 +21,9 @@ class BackendPlanInvoiceByInvoiceIdResource extends ResourceAbstract
      */
     private $invoice_id;
 
-    public function __construct(string $invoice_id, string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $invoice_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->invoice_id = $invoice_id;
         $this->url = $this->baseUrl . '/backend/plan/invoice/' . $invoice_id . '';
@@ -51,7 +50,7 @@ class BackendPlanInvoiceByInvoiceIdResource extends ResourceAbstract
      * @param Plan_Invoice_Update $data
      * @return Message
      */
-    public function backendActionPlanInvoiceUpdate(?Plan_Invoice_Update $data): Message
+    public function backendActionPlanInvoiceUpdate(?Plan_Invoice_Update $data = null): Message
     {
         $options = [
             'headers' => [

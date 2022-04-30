@@ -1,75 +1,48 @@
-<?php 
+<?php
 /**
- * Account_ChangePassword generated on 2021-01-27
- * @see https://github.com/apioo
+ * Account_ChangePassword generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Consumer;
-
+use PSX\Schema\Attribute\MaxLength;
+use PSX\Schema\Attribute\MinLength;
 
 class Account_ChangePassword implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     * @MinLength(8)
-     * @MaxLength(128)
-     */
-    protected $oldPassword;
-    /**
-     * @var string|null
-     * @MinLength(8)
-     * @MaxLength(128)
-     */
-    protected $newPassword;
-    /**
-     * @var string|null
-     * @MinLength(8)
-     * @MaxLength(128)
-     */
-    protected $verifyPassword;
-    /**
-     * @param string|null $oldPassword
-     */
+    #[MinLength(8)]
+    #[MaxLength(128)]
+    protected ?string $oldPassword = null;
+    #[MinLength(8)]
+    #[MaxLength(128)]
+    protected ?string $newPassword = null;
+    #[MinLength(8)]
+    #[MaxLength(128)]
+    protected ?string $verifyPassword = null;
     public function setOldPassword(?string $oldPassword) : void
     {
         $this->oldPassword = $oldPassword;
     }
-    /**
-     * @return string|null
-     */
     public function getOldPassword() : ?string
     {
         return $this->oldPassword;
     }
-    /**
-     * @param string|null $newPassword
-     */
     public function setNewPassword(?string $newPassword) : void
     {
         $this->newPassword = $newPassword;
     }
-    /**
-     * @return string|null
-     */
     public function getNewPassword() : ?string
     {
         return $this->newPassword;
     }
-    /**
-     * @param string|null $verifyPassword
-     */
     public function setVerifyPassword(?string $verifyPassword) : void
     {
         $this->verifyPassword = $verifyPassword;
     }
-    /**
-     * @return string|null
-     */
     public function getVerifyPassword() : ?string
     {
         return $this->verifyPassword;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('oldPassword' => $this->oldPassword, 'newPassword' => $this->newPassword, 'verifyPassword' => $this->verifyPassword), static function ($value) : bool {
             return $value !== null;

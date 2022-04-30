@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * ConsumerAuthorizeResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * ConsumerAuthorizeResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Consumer;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class ConsumerAuthorizeResource extends ResourceAbstract
 {
@@ -17,9 +16,9 @@ class ConsumerAuthorizeResource extends ResourceAbstract
      */
     private $url;
 
-    public function __construct(string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->url = $this->baseUrl . '/consumer/authorize';
     }
@@ -42,7 +41,7 @@ class ConsumerAuthorizeResource extends ResourceAbstract
      * @param Authorize_Request $data
      * @return Authorize_Response
      */
-    public function consumerActionUserAuthorize(?Authorize_Request $data): Authorize_Response
+    public function consumerActionUserAuthorize(?Authorize_Request $data = null): Authorize_Response
     {
         $options = [
             'json' => $data

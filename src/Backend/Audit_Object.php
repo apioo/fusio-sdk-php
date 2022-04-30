@@ -1,15 +1,14 @@
-<?php 
+<?php
 /**
- * Audit_Object generated on 2021-01-27
- * @see https://github.com/apioo
+ * Audit_Object generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
-
+use PSX\Schema\Attribute\Description;
 /**
  * @extends \PSX\Record\Record<mixed>
- * @Description("A key value object containing the changes")
  */
+#[Description('A key value object containing the changes')]
 class Audit_Object extends \PSX\Record\Record
 {
 }

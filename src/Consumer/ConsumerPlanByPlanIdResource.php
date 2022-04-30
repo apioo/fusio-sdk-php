@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * ConsumerPlanByPlanIdResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * ConsumerPlanByPlanIdResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Consumer;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class ConsumerPlanByPlanIdResource extends ResourceAbstract
 {
@@ -22,9 +21,9 @@ class ConsumerPlanByPlanIdResource extends ResourceAbstract
      */
     private $plan_id;
 
-    public function __construct(string $plan_id, string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $plan_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->plan_id = $plan_id;
         $this->url = $this->baseUrl . '/consumer/plan/' . $plan_id . '';

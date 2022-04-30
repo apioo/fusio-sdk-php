@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendScopeByScopeIdResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendScopeByScopeIdResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendScopeByScopeIdResource extends ResourceAbstract
 {
@@ -22,9 +21,9 @@ class BackendScopeByScopeIdResource extends ResourceAbstract
      */
     private $scope_id;
 
-    public function __construct(string $scope_id, string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $scope_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->scope_id = $scope_id;
         $this->url = $this->baseUrl . '/backend/scope/' . $scope_id . '';
@@ -51,7 +50,7 @@ class BackendScopeByScopeIdResource extends ResourceAbstract
      * @param Scope_Update $data
      * @return Message
      */
-    public function backendActionScopeUpdate(?Scope_Update $data): Message
+    public function backendActionScopeUpdate(?Scope_Update $data = null): Message
     {
         $options = [
             'headers' => [

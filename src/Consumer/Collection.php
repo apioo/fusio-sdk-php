@@ -1,52 +1,32 @@
-<?php 
+<?php
 /**
- * Collection generated on 2021-01-27
- * @see https://github.com/apioo
+ * Collection generated on 2022-04-30
+ * @see https://sdkgen.app
  */
-
-namespace Fusio\Sdk\Consumer;
 
 /**
  * @template T
  */
 class Collection implements \JsonSerializable
 {
-    /**
-     * @var int|null
-     */
-    protected $totalResults;
-    /**
-     * @var int|null
-     */
-    protected $startIndex;
+    protected ?int $totalResults = null;
+    protected ?int $startIndex = null;
     /**
      * @var array<T>|null
      */
-    protected $entry;
-    /**
-     * @param int|null $totalResults
-     */
+    protected ?array $entry = null;
     public function setTotalResults(?int $totalResults) : void
     {
         $this->totalResults = $totalResults;
     }
-    /**
-     * @return int|null
-     */
     public function getTotalResults() : ?int
     {
         return $this->totalResults;
     }
-    /**
-     * @param int|null $startIndex
-     */
     public function setStartIndex(?int $startIndex) : void
     {
         $this->startIndex = $startIndex;
     }
-    /**
-     * @return int|null
-     */
     public function getStartIndex() : ?int
     {
         return $this->startIndex;
@@ -58,14 +38,11 @@ class Collection implements \JsonSerializable
     {
         $this->entry = $entry;
     }
-    /**
-     * @return array<T>|null
-     */
     public function getEntry() : ?array
     {
         return $this->entry;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('totalResults' => $this->totalResults, 'startIndex' => $this->startIndex, 'entry' => $this->entry), static function ($value) : bool {
             return $value !== null;

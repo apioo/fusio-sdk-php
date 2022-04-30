@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * ConsumerTransactionPrepareByProviderResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * ConsumerTransactionPrepareByProviderResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Consumer;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class ConsumerTransactionPrepareByProviderResource extends ResourceAbstract
 {
@@ -22,9 +21,9 @@ class ConsumerTransactionPrepareByProviderResource extends ResourceAbstract
      */
     private $provider;
 
-    public function __construct(string $provider, string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $provider, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->provider = $provider;
         $this->url = $this->baseUrl . '/consumer/transaction/prepare/' . $provider . '';
@@ -34,7 +33,7 @@ class ConsumerTransactionPrepareByProviderResource extends ResourceAbstract
      * @param Transaction_Prepare_Request $data
      * @return Transaction_Prepare_Response
      */
-    public function consumerActionTransactionPrepare(?Transaction_Prepare_Request $data): Transaction_Prepare_Response
+    public function consumerActionTransactionPrepare(?Transaction_Prepare_Request $data = null): Transaction_Prepare_Response
     {
         $options = [
             'headers' => [

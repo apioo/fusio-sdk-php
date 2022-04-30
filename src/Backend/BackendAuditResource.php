@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendAuditResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendAuditResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendAuditResource extends ResourceAbstract
 {
@@ -17,9 +16,9 @@ class BackendAuditResource extends ResourceAbstract
      */
     private $url;
 
-    public function __construct(string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->url = $this->baseUrl . '/backend/audit';
     }
@@ -28,7 +27,7 @@ class BackendAuditResource extends ResourceAbstract
      * @param Backend_Audit_Collection_Query $query
      * @return Audit_Collection
      */
-    public function backendActionAuditGetAll(?Backend_Audit_Collection_Query $query): Audit_Collection
+    public function backendActionAuditGetAll(?Backend_Audit_Collection_Query $query = null): Audit_Collection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],

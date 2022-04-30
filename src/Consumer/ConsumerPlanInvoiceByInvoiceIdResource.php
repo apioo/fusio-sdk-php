@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * ConsumerPlanInvoiceByInvoiceIdResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * ConsumerPlanInvoiceByInvoiceIdResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Consumer;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class ConsumerPlanInvoiceByInvoiceIdResource extends ResourceAbstract
 {
@@ -22,9 +21,9 @@ class ConsumerPlanInvoiceByInvoiceIdResource extends ResourceAbstract
      */
     private $invoice_id;
 
-    public function __construct(string $invoice_id, string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $invoice_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->invoice_id = $invoice_id;
         $this->url = $this->baseUrl . '/consumer/plan/invoice/' . $invoice_id . '';

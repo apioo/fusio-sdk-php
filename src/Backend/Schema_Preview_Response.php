@@ -1,33 +1,21 @@
-<?php 
+<?php
 /**
- * Schema_Preview_Response generated on 2021-01-27
- * @see https://github.com/apioo
+ * Schema_Preview_Response generated on 2022-04-30
+ * @see https://sdkgen.app
  */
-
-namespace Fusio\Sdk\Backend;
-
 
 class Schema_Preview_Response implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $preview;
-    /**
-     * @param string|null $preview
-     */
+    protected ?string $preview = null;
     public function setPreview(?string $preview) : void
     {
         $this->preview = $preview;
     }
-    /**
-     * @return string|null
-     */
     public function getPreview() : ?string
     {
         return $this->preview;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('preview' => $this->preview), static function ($value) : bool {
             return $value !== null;

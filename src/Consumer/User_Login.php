@@ -1,50 +1,29 @@
-<?php 
+<?php
 /**
- * User_Login generated on 2021-01-27
- * @see https://github.com/apioo
+ * User_Login generated on 2022-04-30
+ * @see https://sdkgen.app
  */
-
-namespace Fusio\Sdk\Consumer;
-
 
 class User_Login implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $username;
-    /**
-     * @var string|null
-     */
-    protected $password;
+    protected ?string $username = null;
+    protected ?string $password = null;
     /**
      * @var array<string>|null
      */
-    protected $scopes;
-    /**
-     * @param string|null $username
-     */
+    protected ?array $scopes = null;
     public function setUsername(?string $username) : void
     {
         $this->username = $username;
     }
-    /**
-     * @return string|null
-     */
     public function getUsername() : ?string
     {
         return $this->username;
     }
-    /**
-     * @param string|null $password
-     */
     public function setPassword(?string $password) : void
     {
         $this->password = $password;
     }
-    /**
-     * @return string|null
-     */
     public function getPassword() : ?string
     {
         return $this->password;
@@ -56,14 +35,11 @@ class User_Login implements \JsonSerializable
     {
         $this->scopes = $scopes;
     }
-    /**
-     * @return array<string>|null
-     */
     public function getScopes() : ?array
     {
         return $this->scopes;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('username' => $this->username, 'password' => $this->password, 'scopes' => $this->scopes), static function ($value) : bool {
             return $value !== null;

@@ -1,18 +1,15 @@
-<?php 
+<?php
 /**
- * Action_Index generated on 2021-01-27
- * @see https://github.com/apioo
+ * Action_Index generated on 2022-04-30
+ * @see https://sdkgen.app
  */
-
-namespace Fusio\Sdk\Backend;
-
 
 class Action_Index implements \JsonSerializable
 {
     /**
      * @var array<Action_Index_Entry>|null
      */
-    protected $actions;
+    protected ?array $actions = null;
     /**
      * @param array<Action_Index_Entry>|null $actions
      */
@@ -20,14 +17,11 @@ class Action_Index implements \JsonSerializable
     {
         $this->actions = $actions;
     }
-    /**
-     * @return array<Action_Index_Entry>|null
-     */
     public function getActions() : ?array
     {
         return $this->actions;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('actions' => $this->actions), static function ($value) : bool {
             return $value !== null;

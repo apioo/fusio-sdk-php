@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendEventSubscriptionResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendEventSubscriptionResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendEventSubscriptionResource extends ResourceAbstract
 {
@@ -17,9 +16,9 @@ class BackendEventSubscriptionResource extends ResourceAbstract
      */
     private $url;
 
-    public function __construct(string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->url = $this->baseUrl . '/backend/event/subscription';
     }
@@ -28,7 +27,7 @@ class BackendEventSubscriptionResource extends ResourceAbstract
      * @param Collection_Query $query
      * @return Event_Subscription_Collection
      */
-    public function backendActionEventSubscriptionGetAll(?Collection_Query $query): Event_Subscription_Collection
+    public function backendActionEventSubscriptionGetAll(?Collection_Query $query = null): Event_Subscription_Collection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -47,7 +46,7 @@ class BackendEventSubscriptionResource extends ResourceAbstract
      * @param Event_Subscription_Create $data
      * @return Message
      */
-    public function backendActionEventSubscriptionCreate(?Event_Subscription_Create $data): Message
+    public function backendActionEventSubscriptionCreate(?Event_Subscription_Create $data = null): Message
     {
         $options = [
             'headers' => [

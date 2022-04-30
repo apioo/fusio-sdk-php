@@ -1,69 +1,41 @@
-<?php 
+<?php
 /**
- * Role generated on 2021-01-27
- * @see https://github.com/apioo
+ * Role generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
-
+use PSX\Schema\Attribute\Pattern;
 
 class Role implements \JsonSerializable
 {
-    /**
-     * @var int|null
-     */
-    protected $id;
-    /**
-     * @var int|null
-     */
-    protected $categoryId;
-    /**
-     * @var string|null
-     * @Pattern("^[a-zA-Z0-9\-\_]{3,64}$")
-     */
-    protected $name;
+    protected ?int $id = null;
+    protected ?int $categoryId = null;
+    #[Pattern('^[a-zA-Z0-9\\-\\_]{3,64}$')]
+    protected ?string $name = null;
     /**
      * @var array<string>|null
      */
-    protected $scopes;
-    /**
-     * @param int|null $id
-     */
+    protected ?array $scopes = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
     }
-    /**
-     * @return int|null
-     */
     public function getId() : ?int
     {
         return $this->id;
     }
-    /**
-     * @param int|null $categoryId
-     */
     public function setCategoryId(?int $categoryId) : void
     {
         $this->categoryId = $categoryId;
     }
-    /**
-     * @return int|null
-     */
     public function getCategoryId() : ?int
     {
         return $this->categoryId;
     }
-    /**
-     * @param string|null $name
-     */
     public function setName(?string $name) : void
     {
         $this->name = $name;
     }
-    /**
-     * @return string|null
-     */
     public function getName() : ?string
     {
         return $this->name;
@@ -75,14 +47,11 @@ class Role implements \JsonSerializable
     {
         $this->scopes = $scopes;
     }
-    /**
-     * @return array<string>|null
-     */
     public function getScopes() : ?array
     {
         return $this->scopes;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('id' => $this->id, 'categoryId' => $this->categoryId, 'name' => $this->name, 'scopes' => $this->scopes), static function ($value) : bool {
             return $value !== null;

@@ -1,54 +1,36 @@
-<?php 
+<?php
 /**
- * App_Create generated on 2021-01-27
- * @see https://github.com/apioo
+ * App_Create generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Consumer;
+use PSX\Schema\Attribute\MinLength;
+use PSX\Schema\Attribute\Pattern;
+use PSX\Schema\Attribute\Required;
 
-/**
- * @Required({"name", "url", "scopes"})
- */
+#[Required(array('name', 'url', 'scopes'))]
 class App_Create implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     * @Pattern("^[A-z0-9\-\_]{3,64}$")
-     */
-    protected $name;
-    /**
-     * @var string|null
-     * @MinLength(8)
-     */
-    protected $url;
+    #[Pattern('^[A-z0-9\\-\\_]{3,64}$')]
+    protected ?string $name = null;
+    #[MinLength(8)]
+    protected ?string $url = null;
     /**
      * @var array<string>|null
      */
-    protected $scopes;
-    /**
-     * @param string|null $name
-     */
+    protected ?array $scopes = null;
     public function setName(?string $name) : void
     {
         $this->name = $name;
     }
-    /**
-     * @return string|null
-     */
     public function getName() : ?string
     {
         return $this->name;
     }
-    /**
-     * @param string|null $url
-     */
     public function setUrl(?string $url) : void
     {
         $this->url = $url;
     }
-    /**
-     * @return string|null
-     */
     public function getUrl() : ?string
     {
         return $this->url;
@@ -60,14 +42,11 @@ class App_Create implements \JsonSerializable
     {
         $this->scopes = $scopes;
     }
-    /**
-     * @return array<string>|null
-     */
     public function getScopes() : ?array
     {
         return $this->scopes;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('name' => $this->name, 'url' => $this->url, 'scopes' => $this->scopes), static function ($value) : bool {
             return $value !== null;

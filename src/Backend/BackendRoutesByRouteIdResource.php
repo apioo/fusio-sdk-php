@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendRoutesByRouteIdResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendRoutesByRouteIdResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendRoutesByRouteIdResource extends ResourceAbstract
 {
@@ -22,9 +21,9 @@ class BackendRoutesByRouteIdResource extends ResourceAbstract
      */
     private $route_id;
 
-    public function __construct(string $route_id, string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $route_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->route_id = $route_id;
         $this->url = $this->baseUrl . '/backend/routes/' . $route_id . '';
@@ -51,7 +50,7 @@ class BackendRoutesByRouteIdResource extends ResourceAbstract
      * @param Route_Update $data
      * @return Message
      */
-    public function backendActionRouteUpdate(?Route_Update $data): Message
+    public function backendActionRouteUpdate(?Route_Update $data = null): Message
     {
         $options = [
             'headers' => [

@@ -1,10 +1,8 @@
-<?php 
+<?php
 /**
- * Action_Execute_Response_Body generated on 2021-01-27
- * @see https://github.com/apioo
+ * Action_Execute_Response_Body generated on 2022-04-30
+ * @see https://sdkgen.app
  */
-
-namespace Fusio\Sdk\Backend;
 
 /**
  * @extends \PSX\Record\Record<mixed>

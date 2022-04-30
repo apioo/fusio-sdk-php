@@ -1,18 +1,15 @@
-<?php 
+<?php
 /**
- * Connection_Index generated on 2021-01-27
- * @see https://github.com/apioo
+ * Connection_Index generated on 2022-04-30
+ * @see https://sdkgen.app
  */
-
-namespace Fusio\Sdk\Backend;
-
 
 class Connection_Index implements \JsonSerializable
 {
     /**
      * @var array<Connection_Index_Entry>|null
      */
-    protected $connections;
+    protected ?array $connections = null;
     /**
      * @param array<Connection_Index_Entry>|null $connections
      */
@@ -20,14 +17,11 @@ class Connection_Index implements \JsonSerializable
     {
         $this->connections = $connections;
     }
-    /**
-     * @return array<Connection_Index_Entry>|null
-     */
     public function getConnections() : ?array
     {
         return $this->connections;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('connections' => $this->connections), static function ($value) : bool {
             return $value !== null;

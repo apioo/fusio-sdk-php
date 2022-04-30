@@ -1,53 +1,33 @@
-<?php 
+<?php
 /**
- * Transaction_Prepare_Request generated on 2021-01-27
- * @see https://github.com/apioo
+ * Transaction_Prepare_Request generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Consumer;
+use PSX\Schema\Attribute\Required;
 
-/**
- * @Required({"invoiceId", "returnUrl"})
- */
+#[Required(array('invoiceId', 'returnUrl'))]
 class Transaction_Prepare_Request implements \JsonSerializable
 {
-    /**
-     * @var int|null
-     */
-    protected $invoiceId;
-    /**
-     * @var string|null
-     */
-    protected $returnUrl;
-    /**
-     * @param int|null $invoiceId
-     */
+    protected ?int $invoiceId = null;
+    protected ?string $returnUrl = null;
     public function setInvoiceId(?int $invoiceId) : void
     {
         $this->invoiceId = $invoiceId;
     }
-    /**
-     * @return int|null
-     */
     public function getInvoiceId() : ?int
     {
         return $this->invoiceId;
     }
-    /**
-     * @param string|null $returnUrl
-     */
     public function setReturnUrl(?string $returnUrl) : void
     {
         $this->returnUrl = $returnUrl;
     }
-    /**
-     * @return string|null
-     */
     public function getReturnUrl() : ?string
     {
         return $this->returnUrl;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('invoiceId' => $this->invoiceId, 'returnUrl' => $this->returnUrl), static function ($value) : bool {
             return $value !== null;

@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendSchemaFormBySchemaIdResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendSchemaFormBySchemaIdResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendSchemaFormBySchemaIdResource extends ResourceAbstract
 {
@@ -22,9 +21,9 @@ class BackendSchemaFormBySchemaIdResource extends ResourceAbstract
      */
     private $schema_id;
 
-    public function __construct(string $schema_id, string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $schema_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->schema_id = $schema_id;
         $this->url = $this->baseUrl . '/backend/schema/form/' . $schema_id . '';
@@ -34,7 +33,7 @@ class BackendSchemaFormBySchemaIdResource extends ResourceAbstract
      * @param Schema_Form $data
      * @return Message
      */
-    public function backendActionSchemaForm(?Schema_Form $data): Message
+    public function backendActionSchemaForm(?Schema_Form $data = null): Message
     {
         $options = [
             'headers' => [

@@ -1,18 +1,15 @@
-<?php 
+<?php
 /**
- * Form_Container generated on 2021-01-27
- * @see https://github.com/apioo
+ * Form_Container generated on 2022-04-30
+ * @see https://sdkgen.app
  */
-
-namespace Fusio\Sdk\Backend;
-
 
 class Form_Container implements \JsonSerializable
 {
     /**
      * @var array<Form_Element_Input|Form_Element_Select|Form_Element_Tag|Form_Element_TextArea>|null
      */
-    protected $element;
+    protected ?array $element = null;
     /**
      * @param array<Form_Element_Input|Form_Element_Select|Form_Element_Tag|Form_Element_TextArea>|null $element
      */
@@ -20,14 +17,11 @@ class Form_Container implements \JsonSerializable
     {
         $this->element = $element;
     }
-    /**
-     * @return array<Form_Element_Input|Form_Element_Select|Form_Element_Tag|Form_Element_TextArea>|null
-     */
     public function getElement() : ?array
     {
         return $this->element;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('element' => $this->element), static function ($value) : bool {
             return $value !== null;

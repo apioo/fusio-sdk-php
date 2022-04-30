@@ -1,87 +1,48 @@
-<?php 
+<?php
 /**
- * Event_Subscription_Response generated on 2021-01-27
- * @see https://github.com/apioo
+ * Event_Subscription_Response generated on 2022-04-30
+ * @see https://sdkgen.app
  */
-
-namespace Fusio\Sdk\Consumer;
-
 
 class Event_Subscription_Response implements \JsonSerializable
 {
-    /**
-     * @var int|null
-     */
-    protected $status;
-    /**
-     * @var int|null
-     */
-    protected $code;
-    /**
-     * @var string|null
-     */
-    protected $attempts;
-    /**
-     * @var string|null
-     */
-    protected $executeDate;
-    /**
-     * @param int|null $status
-     */
+    protected ?int $status = null;
+    protected ?int $code = null;
+    protected ?string $attempts = null;
+    protected ?string $executeDate = null;
     public function setStatus(?int $status) : void
     {
         $this->status = $status;
     }
-    /**
-     * @return int|null
-     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
-    /**
-     * @param int|null $code
-     */
     public function setCode(?int $code) : void
     {
         $this->code = $code;
     }
-    /**
-     * @return int|null
-     */
     public function getCode() : ?int
     {
         return $this->code;
     }
-    /**
-     * @param string|null $attempts
-     */
     public function setAttempts(?string $attempts) : void
     {
         $this->attempts = $attempts;
     }
-    /**
-     * @return string|null
-     */
     public function getAttempts() : ?string
     {
         return $this->attempts;
     }
-    /**
-     * @param string|null $executeDate
-     */
     public function setExecuteDate(?string $executeDate) : void
     {
         $this->executeDate = $executeDate;
     }
-    /**
-     * @return string|null
-     */
     public function getExecuteDate() : ?string
     {
         return $this->executeDate;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('status' => $this->status, 'code' => $this->code, 'attempts' => $this->attempts, 'executeDate' => $this->executeDate), static function ($value) : bool {
             return $value !== null;

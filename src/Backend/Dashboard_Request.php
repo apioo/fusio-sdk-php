@@ -1,69 +1,39 @@
-<?php 
+<?php
 /**
- * Dashboard_Request generated on 2021-01-27
- * @see https://github.com/apioo
+ * Dashboard_Request generated on 2022-04-30
+ * @see https://sdkgen.app
  */
-
-namespace Fusio\Sdk\Backend;
-
 
 class Dashboard_Request implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $path;
-    /**
-     * @var string|null
-     */
-    protected $ip;
-    /**
-     * @var \DateTime|null
-     */
-    protected $date;
-    /**
-     * @param string|null $path
-     */
+    protected ?string $path = null;
+    protected ?string $ip = null;
+    protected ?\DateTime $date = null;
     public function setPath(?string $path) : void
     {
         $this->path = $path;
     }
-    /**
-     * @return string|null
-     */
     public function getPath() : ?string
     {
         return $this->path;
     }
-    /**
-     * @param string|null $ip
-     */
     public function setIp(?string $ip) : void
     {
         $this->ip = $ip;
     }
-    /**
-     * @return string|null
-     */
     public function getIp() : ?string
     {
         return $this->ip;
     }
-    /**
-     * @param \DateTime|null $date
-     */
     public function setDate(?\DateTime $date) : void
     {
         $this->date = $date;
     }
-    /**
-     * @return \DateTime|null
-     */
     public function getDate() : ?\DateTime
     {
         return $this->date;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('path' => $this->path, 'ip' => $this->ip, 'date' => $this->date), static function ($value) : bool {
             return $value !== null;

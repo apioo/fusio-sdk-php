@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * ConsumerGrantResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * ConsumerGrantResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Consumer;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class ConsumerGrantResource extends ResourceAbstract
 {
@@ -17,9 +16,9 @@ class ConsumerGrantResource extends ResourceAbstract
      */
     private $url;
 
-    public function __construct(string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->url = $this->baseUrl . '/consumer/grant';
     }
@@ -28,7 +27,7 @@ class ConsumerGrantResource extends ResourceAbstract
      * @param Collection_Query $query
      * @return Grant_Collection
      */
-    public function consumerActionGrantGetAll(?Collection_Query $query): Grant_Collection
+    public function consumerActionGrantGetAll(?Collection_Query $query = null): Grant_Collection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],

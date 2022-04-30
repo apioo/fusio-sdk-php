@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendPlanContractByContractIdResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendPlanContractByContractIdResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendPlanContractByContractIdResource extends ResourceAbstract
 {
@@ -22,9 +21,9 @@ class BackendPlanContractByContractIdResource extends ResourceAbstract
      */
     private $contract_id;
 
-    public function __construct(string $contract_id, string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $contract_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->contract_id = $contract_id;
         $this->url = $this->baseUrl . '/backend/plan/contract/' . $contract_id . '';
@@ -51,7 +50,7 @@ class BackendPlanContractByContractIdResource extends ResourceAbstract
      * @param Plan_Contract_Update $data
      * @return Message
      */
-    public function backendActionPlanContractUpdate(?Plan_Contract_Update $data): Message
+    public function backendActionPlanContractUpdate(?Plan_Contract_Update $data = null): Message
     {
         $options = [
             'headers' => [

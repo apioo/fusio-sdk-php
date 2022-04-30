@@ -1,53 +1,33 @@
-<?php 
+<?php
 /**
- * Event_Subscription_Create generated on 2021-01-27
- * @see https://github.com/apioo
+ * Event_Subscription_Create generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Consumer;
+use PSX\Schema\Attribute\Required;
 
-/**
- * @Required({"event", "endpoint"})
- */
+#[Required(array('event', 'endpoint'))]
 class Event_Subscription_Create implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $event;
-    /**
-     * @var string|null
-     */
-    protected $endpoint;
-    /**
-     * @param string|null $event
-     */
+    protected ?string $event = null;
+    protected ?string $endpoint = null;
     public function setEvent(?string $event) : void
     {
         $this->event = $event;
     }
-    /**
-     * @return string|null
-     */
     public function getEvent() : ?string
     {
         return $this->event;
     }
-    /**
-     * @param string|null $endpoint
-     */
     public function setEndpoint(?string $endpoint) : void
     {
         $this->endpoint = $endpoint;
     }
-    /**
-     * @return string|null
-     */
     public function getEndpoint() : ?string
     {
         return $this->endpoint;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('event' => $this->event, 'endpoint' => $this->endpoint), static function ($value) : bool {
             return $value !== null;

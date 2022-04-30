@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendSchemaResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendSchemaResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendSchemaResource extends ResourceAbstract
 {
@@ -17,9 +16,9 @@ class BackendSchemaResource extends ResourceAbstract
      */
     private $url;
 
-    public function __construct(string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->url = $this->baseUrl . '/backend/schema';
     }
@@ -28,7 +27,7 @@ class BackendSchemaResource extends ResourceAbstract
      * @param Collection_Category_Query $query
      * @return Schema_Collection
      */
-    public function backendActionSchemaGetAll(?Collection_Category_Query $query): Schema_Collection
+    public function backendActionSchemaGetAll(?Collection_Category_Query $query = null): Schema_Collection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -47,7 +46,7 @@ class BackendSchemaResource extends ResourceAbstract
      * @param Schema_Create $data
      * @return Message
      */
-    public function backendActionSchemaCreate(?Schema_Create $data): Message
+    public function backendActionSchemaCreate(?Schema_Create $data = null): Message
     {
         $options = [
             'headers' => [

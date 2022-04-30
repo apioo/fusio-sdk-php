@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendRoutesProviderByProviderResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendRoutesProviderByProviderResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendRoutesProviderByProviderResource extends ResourceAbstract
 {
@@ -22,9 +21,9 @@ class BackendRoutesProviderByProviderResource extends ResourceAbstract
      */
     private $provider;
 
-    public function __construct(string $provider, string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $provider, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->provider = $provider;
         $this->url = $this->baseUrl . '/backend/routes/provider/' . $provider . '';
@@ -51,7 +50,7 @@ class BackendRoutesProviderByProviderResource extends ResourceAbstract
      * @param Route_Provider $data
      * @return Message
      */
-    public function backendActionRouteProviderCreate(?Route_Provider $data): Message
+    public function backendActionRouteProviderCreate(?Route_Provider $data = null): Message
     {
         $options = [
             'headers' => [
@@ -70,7 +69,7 @@ class BackendRoutesProviderByProviderResource extends ResourceAbstract
      * @param Route_Provider_Config $data
      * @return Route_Provider_Changelog
      */
-    public function backendActionRouteProviderChangelog(?Route_Provider_Config $data): Route_Provider_Changelog
+    public function backendActionRouteProviderChangelog(?Route_Provider_Config $data = null): Route_Provider_Changelog
     {
         $options = [
             'headers' => [

@@ -1,10 +1,8 @@
-<?php 
+<?php
 /**
- * Plan_Invoice_Collection generated on 2021-01-27
- * @see https://github.com/apioo
+ * Plan_Invoice_Collection generated on 2022-04-30
+ * @see https://sdkgen.app
  */
-
-namespace Fusio\Sdk\Consumer;
 
 /**
  * @extends Collection<Plan_Invoice>

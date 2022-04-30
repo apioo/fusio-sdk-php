@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
- * BackendRateByRateIdResource generated on 2021-01-27
- * @see https://github.com/apioo
+ * BackendRateByRateIdResource generated on 2022-04-30
+ * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Api\Generator\Client\Php\ResourceAbstract;
 use PSX\Schema\SchemaManager;
+use Sdkgen\Client\ResourceAbstract;
 
 class BackendRateByRateIdResource extends ResourceAbstract
 {
@@ -22,9 +21,9 @@ class BackendRateByRateIdResource extends ResourceAbstract
      */
     private $rate_id;
 
-    public function __construct(string $rate_id, string $baseUrl, string $token, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $rate_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
-        parent::__construct($baseUrl, $token, $httpClient, $schemaManager);
+        parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->rate_id = $rate_id;
         $this->url = $this->baseUrl . '/backend/rate/' . $rate_id . '';
@@ -51,7 +50,7 @@ class BackendRateByRateIdResource extends ResourceAbstract
      * @param Rate_Update $data
      * @return Message
      */
-    public function backendActionRateUpdate(?Rate_Update $data): Message
+    public function backendActionRateUpdate(?Rate_Update $data = null): Message
     {
         $options = [
             'headers' => [

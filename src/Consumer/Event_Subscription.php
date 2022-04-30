@@ -1,86 +1,47 @@
-<?php 
+<?php
 /**
- * Event_Subscription generated on 2021-01-27
- * @see https://github.com/apioo
+ * Event_Subscription generated on 2022-04-30
+ * @see https://sdkgen.app
  */
-
-namespace Fusio\Sdk\Consumer;
-
 
 class Event_Subscription implements \JsonSerializable
 {
-    /**
-     * @var int|null
-     */
-    protected $id;
-    /**
-     * @var int|null
-     */
-    protected $status;
-    /**
-     * @var string|null
-     */
-    protected $event;
-    /**
-     * @var string|null
-     */
-    protected $endpoint;
+    protected ?int $id = null;
+    protected ?int $status = null;
+    protected ?string $event = null;
+    protected ?string $endpoint = null;
     /**
      * @var array<Event_Subscription_Response>|null
      */
-    protected $responses;
-    /**
-     * @param int|null $id
-     */
+    protected ?array $responses = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
     }
-    /**
-     * @return int|null
-     */
     public function getId() : ?int
     {
         return $this->id;
     }
-    /**
-     * @param int|null $status
-     */
     public function setStatus(?int $status) : void
     {
         $this->status = $status;
     }
-    /**
-     * @return int|null
-     */
     public function getStatus() : ?int
     {
         return $this->status;
     }
-    /**
-     * @param string|null $event
-     */
     public function setEvent(?string $event) : void
     {
         $this->event = $event;
     }
-    /**
-     * @return string|null
-     */
     public function getEvent() : ?string
     {
         return $this->event;
     }
-    /**
-     * @param string|null $endpoint
-     */
     public function setEndpoint(?string $endpoint) : void
     {
         $this->endpoint = $endpoint;
     }
-    /**
-     * @return string|null
-     */
     public function getEndpoint() : ?string
     {
         return $this->endpoint;
@@ -92,14 +53,11 @@ class Event_Subscription implements \JsonSerializable
     {
         $this->responses = $responses;
     }
-    /**
-     * @return array<Event_Subscription_Response>|null
-     */
     public function getResponses() : ?array
     {
         return $this->responses;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('id' => $this->id, 'status' => $this->status, 'event' => $this->event, 'endpoint' => $this->endpoint, 'responses' => $this->responses), static function ($value) : bool {
             return $value !== null;

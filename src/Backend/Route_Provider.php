@@ -1,36 +1,21 @@
-<?php 
+<?php
 /**
- * Route_Provider generated on 2021-01-27
- * @see https://github.com/apioo
+ * Route_Provider generated on 2022-04-30
+ * @see https://sdkgen.app
  */
-
-namespace Fusio\Sdk\Backend;
-
 
 class Route_Provider implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $path;
+    protected ?string $path = null;
     /**
      * @var array<string>|null
      */
-    protected $scopes;
-    /**
-     * @var Route_Provider_Config|null
-     */
-    protected $config;
-    /**
-     * @param string|null $path
-     */
+    protected ?array $scopes = null;
+    protected ?Route_Provider_Config $config = null;
     public function setPath(?string $path) : void
     {
         $this->path = $path;
     }
-    /**
-     * @return string|null
-     */
     public function getPath() : ?string
     {
         return $this->path;
@@ -42,28 +27,19 @@ class Route_Provider implements \JsonSerializable
     {
         $this->scopes = $scopes;
     }
-    /**
-     * @return array<string>|null
-     */
     public function getScopes() : ?array
     {
         return $this->scopes;
     }
-    /**
-     * @param Route_Provider_Config|null $config
-     */
     public function setConfig(?Route_Provider_Config $config) : void
     {
         $this->config = $config;
     }
-    /**
-     * @return Route_Provider_Config|null
-     */
     public function getConfig() : ?Route_Provider_Config
     {
         return $this->config;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('path' => $this->path, 'scopes' => $this->scopes, 'config' => $this->config), static function ($value) : bool {
             return $value !== null;
