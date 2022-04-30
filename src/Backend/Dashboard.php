@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Dashboard implements \JsonSerializable
 {
     protected ?Statistic_Chart $errorsPerRoute = null;

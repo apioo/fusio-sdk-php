@@ -4,6 +4,7 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Consumer;
 
 use GuzzleHttp\Client;
 use PSX\Schema\SchemaManager;
@@ -30,9 +31,6 @@ class ConsumerAccountChangePasswordResource extends ResourceAbstract
     public function consumerActionUserChangePassword(?Account_ChangePassword $data = null): Message
     {
         $options = [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->token
-            ],
             'json' => $data
         ];
 

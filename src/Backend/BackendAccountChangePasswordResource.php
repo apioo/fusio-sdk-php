@@ -4,6 +4,7 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
 use PSX\Schema\SchemaManager;
@@ -30,9 +31,6 @@ class BackendAccountChangePasswordResource extends ResourceAbstract
     public function backendActionAccountChangePassword(?Account_ChangePassword $data = null): Message
     {
         $options = [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->token
-            ],
             'json' => $data
         ];
 

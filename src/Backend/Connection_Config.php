@@ -4,6 +4,8 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
 use PSX\Schema\Attribute\MaxProperties;
 /**
  * @extends \PSX\Record\Record<mixed>

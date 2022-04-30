@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Backend_Marketplace_Local_App extends Marketplace_Local_App
 {
 }

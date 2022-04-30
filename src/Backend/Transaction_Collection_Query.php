@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Transaction_Collection_Query extends Collection_Query implements \JsonSerializable
 {
     protected ?\DateTime $from = null;

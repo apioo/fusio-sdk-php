@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Backend_Event_Subscription_Collection extends Event_Subscription_Collection
 {
 }

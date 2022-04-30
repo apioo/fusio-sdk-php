@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class BackendEventSubscriptionSubscription_idPath implements \JsonSerializable
 {
     protected ?string $subscription_id = null;

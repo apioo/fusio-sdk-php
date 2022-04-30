@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class BackendCronjobCronjob_idPath implements \JsonSerializable
 {
     protected ?string $cronjob_id = null;

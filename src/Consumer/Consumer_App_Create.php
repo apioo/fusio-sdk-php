@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Consumer;
+
+
 class Consumer_App_Create extends App_Create
 {
 }

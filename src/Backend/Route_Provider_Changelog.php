@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Route_Provider_Changelog implements \JsonSerializable
 {
     /**

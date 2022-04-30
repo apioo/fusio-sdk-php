@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Consumer;
+
+
 class ConsumerAppApp_idPath implements \JsonSerializable
 {
     protected ?string $app_id = null;

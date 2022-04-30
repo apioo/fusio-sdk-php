@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class BackendAuditAudit_idPath implements \JsonSerializable
 {
     protected ?string $audit_id = null;

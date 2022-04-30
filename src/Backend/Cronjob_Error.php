@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Cronjob_Error implements \JsonSerializable
 {
     protected ?string $message = null;

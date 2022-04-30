@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Action_Index_Entry implements \JsonSerializable
 {
     protected ?string $name = null;

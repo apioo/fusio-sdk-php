@@ -4,6 +4,7 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
 use PSX\Schema\SchemaManager;
@@ -36,9 +37,6 @@ class BackendActionExecuteByActionIdResource extends ResourceAbstract
     public function backendActionActionExecute(?Action_Execute_Request $data = null): Action_Execute_Response
     {
         $options = [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->token
-            ],
             'json' => $data
         ];
 

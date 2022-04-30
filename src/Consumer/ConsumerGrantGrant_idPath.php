@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Consumer;
+
+
 class ConsumerGrantGrant_idPath implements \JsonSerializable
 {
     protected ?string $grant_id = null;

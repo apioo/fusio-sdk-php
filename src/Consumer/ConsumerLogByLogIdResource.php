@@ -4,6 +4,7 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Consumer;
 
 use GuzzleHttp\Client;
 use PSX\Schema\SchemaManager;
@@ -37,9 +38,6 @@ class ConsumerLogByLogIdResource extends ResourceAbstract
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->token
-            ],
         ];
 
         $response = $this->httpClient->request('GET', $this->url, $options);

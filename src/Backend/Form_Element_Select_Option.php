@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Form_Element_Select_Option implements \JsonSerializable
 {
     protected ?string $key = null;

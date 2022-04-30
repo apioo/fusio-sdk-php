@@ -4,6 +4,7 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Consumer;
 
 use GuzzleHttp\Client;
 use PSX\Schema\SchemaManager;
@@ -29,9 +30,6 @@ class ConsumerAccountResource extends ResourceAbstract
     public function consumerActionUserGet(): User_Account
     {
         $options = [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->token
-            ],
         ];
 
         $response = $this->httpClient->request('GET', $this->url, $options);
@@ -47,9 +45,6 @@ class ConsumerAccountResource extends ResourceAbstract
     public function consumerActionUserUpdate(?User_Account $data = null): Message
     {
         $options = [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->token
-            ],
             'json' => $data
         ];
 

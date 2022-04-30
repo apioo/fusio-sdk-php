@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class BackendConnectionConnection_idPath implements \JsonSerializable
 {
     protected ?string $connection_id = null;

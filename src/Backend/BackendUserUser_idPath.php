@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class BackendUserUser_idPath implements \JsonSerializable
 {
     protected ?string $user_id = null;

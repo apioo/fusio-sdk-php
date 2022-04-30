@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class BackendLogLog_idPath implements \JsonSerializable
 {
     protected ?string $log_id = null;

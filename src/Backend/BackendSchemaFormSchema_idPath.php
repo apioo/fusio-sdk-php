@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class BackendSchemaFormSchema_idPath implements \JsonSerializable
 {
     protected ?string $schema_id = null;

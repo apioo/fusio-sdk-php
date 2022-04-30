@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class BackendPagePage_idPath implements \JsonSerializable
 {
     protected ?string $page_id = null;

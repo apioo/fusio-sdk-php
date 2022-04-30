@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Marketplace_Remote_App extends Marketplace_App implements \JsonSerializable
 {
     protected ?Marketplace_App $local = null;

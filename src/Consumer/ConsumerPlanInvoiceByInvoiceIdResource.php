@@ -4,6 +4,7 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Consumer;
 
 use GuzzleHttp\Client;
 use PSX\Schema\SchemaManager;
@@ -35,9 +36,6 @@ class ConsumerPlanInvoiceByInvoiceIdResource extends ResourceAbstract
     public function consumerActionPlanInvoiceGet(): Plan_Invoice
     {
         $options = [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->token
-            ],
         ];
 
         $response = $this->httpClient->request('GET', $this->url, $options);

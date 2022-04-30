@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Scope_Update extends Scope implements \JsonSerializable
 {
 }

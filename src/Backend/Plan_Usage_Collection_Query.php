@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Plan_Usage_Collection_Query extends Collection_Query implements \JsonSerializable
 {
     protected ?\DateTime $from = null;

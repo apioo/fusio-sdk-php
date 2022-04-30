@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Consumer;
+
+
 class Event_Subscription_Response implements \JsonSerializable
 {
     protected ?int $status = null;

@@ -4,6 +4,7 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
 use PSX\Schema\SchemaManager;
@@ -29,9 +30,6 @@ class BackendRoutesProviderResource extends ResourceAbstract
     public function backendActionRouteProviderIndex(): Route_Index_Providers
     {
         $options = [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->token
-            ],
         ];
 
         $response = $this->httpClient->request('GET', $this->url, $options);

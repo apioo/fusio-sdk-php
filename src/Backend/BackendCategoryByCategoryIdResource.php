@@ -4,6 +4,7 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
 use PSX\Schema\SchemaManager;
@@ -35,9 +36,6 @@ class BackendCategoryByCategoryIdResource extends ResourceAbstract
     public function backendActionCategoryGet(): Category
     {
         $options = [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->token
-            ],
         ];
 
         $response = $this->httpClient->request('GET', $this->url, $options);
@@ -53,9 +51,6 @@ class BackendCategoryByCategoryIdResource extends ResourceAbstract
     public function backendActionCategoryUpdate(?Category_Update $data = null): Message
     {
         $options = [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->token
-            ],
             'json' => $data
         ];
 
@@ -71,9 +66,6 @@ class BackendCategoryByCategoryIdResource extends ResourceAbstract
     public function backendActionCategoryDelete(): Message
     {
         $options = [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->token
-            ],
         ];
 
         $response = $this->httpClient->request('DELETE', $this->url, $options);

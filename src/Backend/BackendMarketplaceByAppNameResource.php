@@ -4,6 +4,7 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
 use PSX\Schema\SchemaManager;
@@ -35,9 +36,6 @@ class BackendMarketplaceByAppNameResource extends ResourceAbstract
     public function backendActionMarketplaceGet(): Marketplace_Local_App
     {
         $options = [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->token
-            ],
         ];
 
         $response = $this->httpClient->request('GET', $this->url, $options);
@@ -52,9 +50,6 @@ class BackendMarketplaceByAppNameResource extends ResourceAbstract
     public function backendActionMarketplaceUpdate(): Message
     {
         $options = [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->token
-            ],
         ];
 
         $response = $this->httpClient->request('PUT', $this->url, $options);
@@ -69,9 +64,6 @@ class BackendMarketplaceByAppNameResource extends ResourceAbstract
     public function backendActionMarketplaceRemove(): Message
     {
         $options = [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->token
-            ],
         ];
 
         $response = $this->httpClient->request('DELETE', $this->url, $options);

@@ -4,6 +4,7 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
 use PSX\Schema\SchemaManager;
@@ -35,9 +36,6 @@ class BackendConfigByConfigIdResource extends ResourceAbstract
     public function backendActionConfigGet(): Config
     {
         $options = [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->token
-            ],
         ];
 
         $response = $this->httpClient->request('GET', $this->url, $options);
@@ -53,9 +51,6 @@ class BackendConfigByConfigIdResource extends ResourceAbstract
     public function backendActionConfigUpdate(?Config_Update $data = null): Message
     {
         $options = [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->token
-            ],
             'json' => $data
         ];
 

@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Consumer;
+
+
 class ConsumerSubscriptionSubscription_idPath implements \JsonSerializable
 {
     protected ?string $subscription_id = null;

@@ -4,6 +4,8 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Consumer;
+
 use PSX\Schema\Attribute\MinLength;
 use PSX\Schema\Attribute\Pattern;
 

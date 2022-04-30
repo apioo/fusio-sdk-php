@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Collection_Query implements \JsonSerializable
 {
     protected ?int $startIndex = null;

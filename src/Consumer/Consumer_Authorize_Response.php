@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Consumer;
+
+
 class Consumer_Authorize_Response extends Authorize_Response
 {
 }

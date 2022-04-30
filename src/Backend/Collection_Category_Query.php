@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Collection_Category_Query extends Collection_Query implements \JsonSerializable
 {
     protected ?int $categoryId = null;

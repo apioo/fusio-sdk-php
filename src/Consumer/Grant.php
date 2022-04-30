@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Consumer;
+
+
 class Grant implements \JsonSerializable
 {
     protected ?int $id = null;

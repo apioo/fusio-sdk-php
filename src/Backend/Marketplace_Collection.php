@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Marketplace_Collection implements \JsonSerializable
 {
     protected ?Marketplace_Collection_Apps $apps = null;

@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Consumer;
+
+
 class User_JWT implements \JsonSerializable
 {
     protected ?string $token = null;

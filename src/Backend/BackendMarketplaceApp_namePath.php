@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class BackendMarketplaceApp_namePath implements \JsonSerializable
 {
     protected ?string $app_name = null;

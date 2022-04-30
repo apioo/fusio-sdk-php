@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Plan_Update extends Plan implements \JsonSerializable
 {
 }

@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Backend_Plan_Invoice_Update extends Plan_Invoice_Update
 {
 }

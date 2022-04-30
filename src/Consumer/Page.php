@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Consumer;
+
+
 class Page implements \JsonSerializable
 {
     protected ?int $id = null;

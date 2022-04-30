@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Schema_Preview_Response implements \JsonSerializable
 {
     protected ?string $preview = null;

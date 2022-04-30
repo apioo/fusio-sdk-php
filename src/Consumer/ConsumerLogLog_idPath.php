@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Consumer;
+
+
 class ConsumerLogLog_idPath implements \JsonSerializable
 {
     protected ?string $log_id = null;

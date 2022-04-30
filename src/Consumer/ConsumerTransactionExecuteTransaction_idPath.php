@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Consumer;
+
+
 class ConsumerTransactionExecuteTransaction_idPath implements \JsonSerializable
 {
     protected ?string $transaction_id = null;

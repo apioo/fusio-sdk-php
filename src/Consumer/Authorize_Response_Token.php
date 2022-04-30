@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Consumer;
+
+
 class Authorize_Response_Token implements \JsonSerializable
 {
     protected ?string $access_token = null;

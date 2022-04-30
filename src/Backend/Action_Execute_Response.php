@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Action_Execute_Response implements \JsonSerializable
 {
     protected ?int $statusCode = null;

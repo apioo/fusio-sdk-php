@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Route_Provider implements \JsonSerializable
 {
     protected ?string $path = null;

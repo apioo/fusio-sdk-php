@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Plan_Contract implements \JsonSerializable
 {
     protected ?int $id = null;

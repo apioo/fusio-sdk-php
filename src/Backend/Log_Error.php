@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Log_Error implements \JsonSerializable
 {
     protected ?int $message = null;

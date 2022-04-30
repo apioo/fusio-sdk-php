@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Consumer;
+
+
 class User_Refresh implements \JsonSerializable
 {
     protected ?string $refresh_token = null;

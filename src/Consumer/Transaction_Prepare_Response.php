@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Consumer;
+
+
 class Transaction_Prepare_Response implements \JsonSerializable
 {
     protected ?string $approvalUrl = null;

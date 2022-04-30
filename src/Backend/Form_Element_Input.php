@@ -4,6 +4,9 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
+
+
 class Form_Element_Input extends Form_Element implements \JsonSerializable
 {
     protected ?string $type = null;

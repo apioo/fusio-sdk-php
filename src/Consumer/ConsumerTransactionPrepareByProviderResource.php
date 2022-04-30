@@ -4,6 +4,7 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Consumer;
 
 use GuzzleHttp\Client;
 use PSX\Schema\SchemaManager;
@@ -36,9 +37,6 @@ class ConsumerTransactionPrepareByProviderResource extends ResourceAbstract
     public function consumerActionTransactionPrepare(?Transaction_Prepare_Request $data = null): Transaction_Prepare_Response
     {
         $options = [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->token
-            ],
             'json' => $data
         ];
 

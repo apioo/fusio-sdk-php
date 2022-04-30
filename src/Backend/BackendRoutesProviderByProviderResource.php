@@ -4,6 +4,7 @@
  * @see https://sdkgen.app
  */
 
+namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
 use PSX\Schema\SchemaManager;
@@ -35,9 +36,6 @@ class BackendRoutesProviderByProviderResource extends ResourceAbstract
     public function backendActionRouteProviderForm(): Form_Container
     {
         $options = [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->token
-            ],
         ];
 
         $response = $this->httpClient->request('GET', $this->url, $options);
@@ -53,9 +51,6 @@ class BackendRoutesProviderByProviderResource extends ResourceAbstract
     public function backendActionRouteProviderCreate(?Route_Provider $data = null): Message
     {
         $options = [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->token
-            ],
             'json' => $data
         ];
 
@@ -72,9 +67,6 @@ class BackendRoutesProviderByProviderResource extends ResourceAbstract
     public function backendActionRouteProviderChangelog(?Route_Provider_Config $data = null): Route_Provider_Changelog
     {
         $options = [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->token
-            ],
             'json' => $data
         ];
 
