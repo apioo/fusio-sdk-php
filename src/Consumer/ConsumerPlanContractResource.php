@@ -1,6 +1,6 @@
 <?php
 /**
- * ConsumerPlanContractResource generated on 2022-04-30
+ * ConsumerPlanContractResource generated on 2022-05-06
  * @see https://sdkgen.app
  */
 

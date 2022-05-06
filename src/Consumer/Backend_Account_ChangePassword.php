@@ -1,6 +1,6 @@
 <?php
 /**
- * Backend_Account_ChangePassword generated on 2022-04-30
+ * Backend_Account_ChangePassword generated on 2022-05-06
  * @see https://sdkgen.app
  */
 

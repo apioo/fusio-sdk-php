@@ -1,6 +1,6 @@
 <?php
 /**
- * Backend_Log_Collection_Query generated on 2022-04-30
+ * Backend_Log_Collection_Query generated on 2022-05-06
  * @see https://sdkgen.app
  */
 

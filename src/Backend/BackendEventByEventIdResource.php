@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendEventByEventIdResource generated on 2022-04-30
+ * BackendEventByEventIdResource generated on 2022-05-06
  * @see https://sdkgen.app
  */
 
