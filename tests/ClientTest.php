@@ -21,13 +21,8 @@
 
 namespace Fusio\Sdk\Tests;
 
-use Fusio\Sdk\Backend\Action;
+use Fusio\Sdk;
 use Fusio\Sdk\Client;
-use Fusio\Sdk\TokenStore\MemoryTokenStore;
-use GuzzleHttp\Client as HttpClient;
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -41,21 +36,9 @@ class ClientTest extends TestCase
 {
     public function testClient()
     {
-        $mock = new MockHandler([
-            new Response(200, ['Content-Type' => 'application/json'], json_encode(['token_type' => 'bearer', 'access_token' => 'mytoken', 'expires_in' => time() + 3600, 'refresh_token' => 'refreshtoken', 'scope' => 'foo,bar'])),
-            new Response(200, ['Content-Type' => 'application/json'], json_encode(['id' => 1, 'name' => 'foo'])),
-        ]);
+        $client = new Client('https://my-fusio.app', 'test', 'test1234', ['foo', 'bar']);
 
-        $handlerStack = HandlerStack::create($mock);
-        $httpClient = new HttpClient(['handler' => $handlerStack]);
-        $tokenStore = new MemoryTokenStore();
-
-        $client = new Client('https://my-fusio.app', 'test', 'test1234', ['foo', 'bar'], $tokenStore, $httpClient);
-
-        $action = $client->backend()->getBackendActionByActionId(1)->backendActionActionGet();
-
-        $this->assertInstanceOf(Action::class, $action);
-        $this->assertEquals(1, $action->getId());
-        $this->assertEquals('foo', $action->getName());
+        $this->assertInstanceOf(Sdk\Backend\Client::class, $client->backend());
+        $this->assertInstanceOf(Sdk\Consumer\Client::class, $client->consumer());
     }
 }
