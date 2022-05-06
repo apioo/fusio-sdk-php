@@ -9,7 +9,7 @@ $client = new \Fusio\Sdk\Client(
     'test1234'
 );
 
-$entries = $client->backend()->backendRoute()->getBackendRoutes()->backendActionRouteGetAll(null)->getEntry();
+$entries = $client->backend()->backendRoute()->getBackendRoutes()->backendActionRouteGetAll()->getEntry();
 
 foreach ($entries as $entry) {
     echo $entry->getPath() . "\n";
