@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendCategoryGroup generated on 2022-05-06
+ * BackendCategoryGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,10 +12,8 @@ class BackendCategoryGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /backend/category/$category_id<[0-9]+|^~>
-     *
-     * @return BackendCategoryByCategoryIdResource
      */
-    public function getBackendCategoryByCategoryId(?string $category_id): BackendCategoryByCategoryIdResource
+    public function getBackendCategoryByCategoryId(string $category_id): BackendCategoryByCategoryIdResource
     {
         return new BackendCategoryByCategoryIdResource(
             $category_id,
@@ -27,8 +25,6 @@ class BackendCategoryGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/category
-     *
-     * @return BackendCategoryResource
      */
     public function getBackendCategory(): BackendCategoryResource
     {

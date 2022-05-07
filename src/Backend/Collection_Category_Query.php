@@ -1,6 +1,6 @@
 <?php
 /**
- * Collection_Category_Query generated on 2022-05-06
+ * Collection_Category_Query generated on 2022-05-07
  * @see https://sdkgen.app
  */
 

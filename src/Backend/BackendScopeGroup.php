@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendScopeGroup generated on 2022-05-06
+ * BackendScopeGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,10 +12,8 @@ class BackendScopeGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /backend/scope/$scope_id<[0-9]+|^~>
-     *
-     * @return BackendScopeByScopeIdResource
      */
-    public function getBackendScopeByScopeId(?string $scope_id): BackendScopeByScopeIdResource
+    public function getBackendScopeByScopeId(string $scope_id): BackendScopeByScopeIdResource
     {
         return new BackendScopeByScopeIdResource(
             $scope_id,
@@ -27,8 +25,6 @@ class BackendScopeGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/scope/categories
-     *
-     * @return BackendScopeCategoriesResource
      */
     public function getBackendScopeCategories(): BackendScopeCategoriesResource
     {
@@ -41,8 +37,6 @@ class BackendScopeGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/scope
-     *
-     * @return BackendScopeResource
      */
     public function getBackendScope(): BackendScopeResource
     {

@@ -1,6 +1,6 @@
 <?php
 /**
- * ConsumerUserGroup generated on 2022-05-06
+ * ConsumerUserGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,8 +12,6 @@ class ConsumerUserGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /consumer/password_reset
-     *
-     * @return ConsumerPasswordResetResource
      */
     public function getConsumerPasswordReset(): ConsumerPasswordResetResource
     {
@@ -26,8 +24,6 @@ class ConsumerUserGroup extends ResourceAbstract
 
     /**
      * Endpoint: /consumer/register
-     *
-     * @return ConsumerRegisterResource
      */
     public function getConsumerRegister(): ConsumerRegisterResource
     {
@@ -40,10 +36,8 @@ class ConsumerUserGroup extends ResourceAbstract
 
     /**
      * Endpoint: /consumer/provider/:provider
-     *
-     * @return ConsumerProviderByProviderResource
      */
-    public function getConsumerProviderByProvider(?string $provider): ConsumerProviderByProviderResource
+    public function getConsumerProviderByProvider(string $provider): ConsumerProviderByProviderResource
     {
         return new ConsumerProviderByProviderResource(
             $provider,
@@ -55,8 +49,6 @@ class ConsumerUserGroup extends ResourceAbstract
 
     /**
      * Endpoint: /consumer/login
-     *
-     * @return ConsumerLoginResource
      */
     public function getConsumerLogin(): ConsumerLoginResource
     {
@@ -69,8 +61,6 @@ class ConsumerUserGroup extends ResourceAbstract
 
     /**
      * Endpoint: /consumer/authorize
-     *
-     * @return ConsumerAuthorizeResource
      */
     public function getConsumerAuthorize(): ConsumerAuthorizeResource
     {
@@ -83,8 +73,6 @@ class ConsumerUserGroup extends ResourceAbstract
 
     /**
      * Endpoint: /consumer/activate
-     *
-     * @return ConsumerActivateResource
      */
     public function getConsumerActivate(): ConsumerActivateResource
     {
@@ -97,8 +85,6 @@ class ConsumerUserGroup extends ResourceAbstract
 
     /**
      * Endpoint: /consumer/account/change_password
-     *
-     * @return ConsumerAccountChangePasswordResource
      */
     public function getConsumerAccountChangePassword(): ConsumerAccountChangePasswordResource
     {
@@ -111,8 +97,6 @@ class ConsumerUserGroup extends ResourceAbstract
 
     /**
      * Endpoint: /consumer/account
-     *
-     * @return ConsumerAccountResource
      */
     public function getConsumerAccount(): ConsumerAccountResource
     {

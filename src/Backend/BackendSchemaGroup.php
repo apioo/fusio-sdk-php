@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendSchemaGroup generated on 2022-05-06
+ * BackendSchemaGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,10 +12,8 @@ class BackendSchemaGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /backend/schema/$schema_id<[0-9]+|^~>
-     *
-     * @return BackendSchemaBySchemaIdResource
      */
-    public function getBackendSchemaBySchemaId(?string $schema_id): BackendSchemaBySchemaIdResource
+    public function getBackendSchemaBySchemaId(string $schema_id): BackendSchemaBySchemaIdResource
     {
         return new BackendSchemaBySchemaIdResource(
             $schema_id,
@@ -27,10 +25,8 @@ class BackendSchemaGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/schema/form/$schema_id<[0-9]+>
-     *
-     * @return BackendSchemaFormBySchemaIdResource
      */
-    public function getBackendSchemaFormBySchemaId(?string $schema_id): BackendSchemaFormBySchemaIdResource
+    public function getBackendSchemaFormBySchemaId(string $schema_id): BackendSchemaFormBySchemaIdResource
     {
         return new BackendSchemaFormBySchemaIdResource(
             $schema_id,
@@ -42,10 +38,8 @@ class BackendSchemaGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/schema/preview/:schema_id
-     *
-     * @return BackendSchemaPreviewBySchemaIdResource
      */
-    public function getBackendSchemaPreviewBySchemaId(?string $schema_id): BackendSchemaPreviewBySchemaIdResource
+    public function getBackendSchemaPreviewBySchemaId(string $schema_id): BackendSchemaPreviewBySchemaIdResource
     {
         return new BackendSchemaPreviewBySchemaIdResource(
             $schema_id,
@@ -57,8 +51,6 @@ class BackendSchemaGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/schema
-     *
-     * @return BackendSchemaResource
      */
     public function getBackendSchema(): BackendSchemaResource
     {

@@ -1,6 +1,6 @@
 <?php
 /**
- * Client generated on 2022-05-06
+ * Client generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -20,8 +20,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.user
-     *
-     * @return BackendUserGroup
      */
     public function backendUser(): BackendUserGroup
     {
@@ -34,8 +32,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.transaction
-     *
-     * @return BackendTransactionGroup
      */
     public function backendTransaction(): BackendTransactionGroup
     {
@@ -48,8 +44,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.statistic
-     *
-     * @return BackendStatisticGroup
      */
     public function backendStatistic(): BackendStatisticGroup
     {
@@ -62,8 +56,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.sdk
-     *
-     * @return BackendSdkGroup
      */
     public function backendSdk(): BackendSdkGroup
     {
@@ -76,8 +68,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.scope
-     *
-     * @return BackendScopeGroup
      */
     public function backendScope(): BackendScopeGroup
     {
@@ -90,8 +80,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.schema
-     *
-     * @return BackendSchemaGroup
      */
     public function backendSchema(): BackendSchemaGroup
     {
@@ -104,8 +92,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.route
-     *
-     * @return BackendRouteGroup
      */
     public function backendRoute(): BackendRouteGroup
     {
@@ -118,8 +104,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.role
-     *
-     * @return BackendRoleGroup
      */
     public function backendRole(): BackendRoleGroup
     {
@@ -132,8 +116,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.rate
-     *
-     * @return BackendRateGroup
      */
     public function backendRate(): BackendRateGroup
     {
@@ -146,8 +128,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.plan
-     *
-     * @return BackendPlanGroup
      */
     public function backendPlan(): BackendPlanGroup
     {
@@ -160,8 +140,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.page
-     *
-     * @return BackendPageGroup
      */
     public function backendPage(): BackendPageGroup
     {
@@ -174,8 +152,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.marketplace
-     *
-     * @return BackendMarketplaceGroup
      */
     public function backendMarketplace(): BackendMarketplaceGroup
     {
@@ -188,8 +164,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.log
-     *
-     * @return BackendLogGroup
      */
     public function backendLog(): BackendLogGroup
     {
@@ -202,8 +176,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.event
-     *
-     * @return BackendEventGroup
      */
     public function backendEvent(): BackendEventGroup
     {
@@ -216,8 +188,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.dashboard
-     *
-     * @return BackendDashboardGroup
      */
     public function backendDashboard(): BackendDashboardGroup
     {
@@ -230,8 +200,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.cronjob
-     *
-     * @return BackendCronjobGroup
      */
     public function backendCronjob(): BackendCronjobGroup
     {
@@ -244,8 +212,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.connection
-     *
-     * @return BackendConnectionGroup
      */
     public function backendConnection(): BackendConnectionGroup
     {
@@ -258,8 +224,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.config
-     *
-     * @return BackendConfigGroup
      */
     public function backendConfig(): BackendConfigGroup
     {
@@ -272,8 +236,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.category
-     *
-     * @return BackendCategoryGroup
      */
     public function backendCategory(): BackendCategoryGroup
     {
@@ -286,8 +248,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.audit
-     *
-     * @return BackendAuditGroup
      */
     public function backendAudit(): BackendAuditGroup
     {
@@ -300,8 +260,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.app
-     *
-     * @return BackendAppGroup
      */
     public function backendApp(): BackendAppGroup
     {
@@ -314,8 +272,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.action
-     *
-     * @return BackendActionGroup
      */
     public function backendAction(): BackendActionGroup
     {
@@ -328,8 +284,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: backend.account
-     *
-     * @return BackendAccountGroup
      */
     public function backendAccount(): BackendAccountGroup
     {

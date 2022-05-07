@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendAuditGroup generated on 2022-05-06
+ * BackendAuditGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,10 +12,8 @@ class BackendAuditGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /backend/audit/$audit_id<[0-9]+>
-     *
-     * @return BackendAuditByAuditIdResource
      */
-    public function getBackendAuditByAuditId(?string $audit_id): BackendAuditByAuditIdResource
+    public function getBackendAuditByAuditId(string $audit_id): BackendAuditByAuditIdResource
     {
         return new BackendAuditByAuditIdResource(
             $audit_id,
@@ -27,8 +25,6 @@ class BackendAuditGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/audit
-     *
-     * @return BackendAuditResource
      */
     public function getBackendAudit(): BackendAuditResource
     {

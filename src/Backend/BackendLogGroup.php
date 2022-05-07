@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendLogGroup generated on 2022-05-06
+ * BackendLogGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,10 +12,8 @@ class BackendLogGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /backend/log/$log_id<[0-9]+>
-     *
-     * @return BackendLogByLogIdResource
      */
-    public function getBackendLogByLogId(?string $log_id): BackendLogByLogIdResource
+    public function getBackendLogByLogId(string $log_id): BackendLogByLogIdResource
     {
         return new BackendLogByLogIdResource(
             $log_id,
@@ -27,8 +25,6 @@ class BackendLogGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/log
-     *
-     * @return BackendLogResource
      */
     public function getBackendLog(): BackendLogResource
     {
@@ -41,10 +37,8 @@ class BackendLogGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/log/error/$error_id<[0-9]+>
-     *
-     * @return BackendLogErrorByErrorIdResource
      */
-    public function getBackendLogErrorByErrorId(?string $error_id): BackendLogErrorByErrorIdResource
+    public function getBackendLogErrorByErrorId(string $error_id): BackendLogErrorByErrorIdResource
     {
         return new BackendLogErrorByErrorIdResource(
             $error_id,
@@ -56,8 +50,6 @@ class BackendLogGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/log/error
-     *
-     * @return BackendLogErrorResource
      */
     public function getBackendLogError(): BackendLogErrorResource
     {

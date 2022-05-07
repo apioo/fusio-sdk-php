@@ -1,26 +1,21 @@
 <?php
 /**
- * ConsumerPlanByPlanIdResource generated on 2022-05-06
+ * ConsumerPlanByPlanIdResource generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
 namespace Fusio\Sdk\Consumer;
 
 use GuzzleHttp\Client;
+use PSX\Http\Exception\StatusCodeException;
 use PSX\Schema\SchemaManager;
 use Sdkgen\Client\ResourceAbstract;
 
 class ConsumerPlanByPlanIdResource extends ResourceAbstract
 {
-    /**
-     * @var string
-     */
-    private $url;
+    private string $url;
 
-    /**
-     * @var string
-     */
-    private $plan_id;
+    private string $plan_id;
 
     public function __construct(string $plan_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
@@ -32,6 +27,7 @@ class ConsumerPlanByPlanIdResource extends ResourceAbstract
 
     /**
      * @return Plan
+     * @throws \PSX\Http\Exception\StatusCodeException
      */
     public function consumerActionPlanGet(): Plan
     {
@@ -40,6 +36,14 @@ class ConsumerPlanByPlanIdResource extends ResourceAbstract
 
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
+
+        if ($response->getStatusCode() >= 300 && $response->getStatusCode() < 400) {
+            StatusCodeException::throwOnRedirection($response);
+        } elseif ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
+            StatusCodeException::throwOnClientError($response);
+        } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
+            StatusCodeException::throwOnServerError($response);
+        }
 
         return $this->parse($data, Plan::class);
     }

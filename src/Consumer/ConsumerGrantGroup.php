@@ -1,6 +1,6 @@
 <?php
 /**
- * ConsumerGrantGroup generated on 2022-05-06
+ * ConsumerGrantGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,10 +12,8 @@ class ConsumerGrantGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /consumer/grant/$grant_id<[0-9]+>
-     *
-     * @return ConsumerGrantByGrantIdResource
      */
-    public function getConsumerGrantByGrantId(?string $grant_id): ConsumerGrantByGrantIdResource
+    public function getConsumerGrantByGrantId(string $grant_id): ConsumerGrantByGrantIdResource
     {
         return new ConsumerGrantByGrantIdResource(
             $grant_id,
@@ -27,8 +25,6 @@ class ConsumerGrantGroup extends ResourceAbstract
 
     /**
      * Endpoint: /consumer/grant
-     *
-     * @return ConsumerGrantResource
      */
     public function getConsumerGrant(): ConsumerGrantResource
     {

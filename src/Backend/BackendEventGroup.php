@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendEventGroup generated on 2022-05-06
+ * BackendEventGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,10 +12,8 @@ class BackendEventGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /backend/event/$event_id<[0-9]+|^~>
-     *
-     * @return BackendEventByEventIdResource
      */
-    public function getBackendEventByEventId(?string $event_id): BackendEventByEventIdResource
+    public function getBackendEventByEventId(string $event_id): BackendEventByEventIdResource
     {
         return new BackendEventByEventIdResource(
             $event_id,
@@ -27,8 +25,6 @@ class BackendEventGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/event
-     *
-     * @return BackendEventResource
      */
     public function getBackendEvent(): BackendEventResource
     {
@@ -41,10 +37,8 @@ class BackendEventGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/event/subscription/$subscription_id<[0-9]+>
-     *
-     * @return BackendEventSubscriptionBySubscriptionIdResource
      */
-    public function getBackendEventSubscriptionBySubscriptionId(?string $subscription_id): BackendEventSubscriptionBySubscriptionIdResource
+    public function getBackendEventSubscriptionBySubscriptionId(string $subscription_id): BackendEventSubscriptionBySubscriptionIdResource
     {
         return new BackendEventSubscriptionBySubscriptionIdResource(
             $subscription_id,
@@ -56,8 +50,6 @@ class BackendEventGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/event/subscription
-     *
-     * @return BackendEventSubscriptionResource
      */
     public function getBackendEventSubscription(): BackendEventSubscriptionResource
     {

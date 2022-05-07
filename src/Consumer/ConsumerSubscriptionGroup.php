@@ -1,6 +1,6 @@
 <?php
 /**
- * ConsumerSubscriptionGroup generated on 2022-05-06
+ * ConsumerSubscriptionGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,10 +12,8 @@ class ConsumerSubscriptionGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /consumer/subscription/$subscription_id<[0-9]+>
-     *
-     * @return ConsumerSubscriptionBySubscriptionIdResource
      */
-    public function getConsumerSubscriptionBySubscriptionId(?string $subscription_id): ConsumerSubscriptionBySubscriptionIdResource
+    public function getConsumerSubscriptionBySubscriptionId(string $subscription_id): ConsumerSubscriptionBySubscriptionIdResource
     {
         return new ConsumerSubscriptionBySubscriptionIdResource(
             $subscription_id,
@@ -27,8 +25,6 @@ class ConsumerSubscriptionGroup extends ResourceAbstract
 
     /**
      * Endpoint: /consumer/subscription
-     *
-     * @return ConsumerSubscriptionResource
      */
     public function getConsumerSubscription(): ConsumerSubscriptionResource
     {

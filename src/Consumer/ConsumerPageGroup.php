@@ -1,6 +1,6 @@
 <?php
 /**
- * ConsumerPageGroup generated on 2022-05-06
+ * ConsumerPageGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,10 +12,8 @@ class ConsumerPageGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /consumer/page/:page_id
-     *
-     * @return ConsumerPageByPageIdResource
      */
-    public function getConsumerPageByPageId(?string $page_id): ConsumerPageByPageIdResource
+    public function getConsumerPageByPageId(string $page_id): ConsumerPageByPageIdResource
     {
         return new ConsumerPageByPageIdResource(
             $page_id,
@@ -27,8 +25,6 @@ class ConsumerPageGroup extends ResourceAbstract
 
     /**
      * Endpoint: /consumer/page
-     *
-     * @return ConsumerPageResource
      */
     public function getConsumerPage(): ConsumerPageResource
     {

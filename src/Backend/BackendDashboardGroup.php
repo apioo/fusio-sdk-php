@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendDashboardGroup generated on 2022-05-06
+ * BackendDashboardGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,8 +12,6 @@ class BackendDashboardGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /backend/dashboard
-     *
-     * @return BackendDashboardResource
      */
     public function getBackendDashboard(): BackendDashboardResource
     {

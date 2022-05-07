@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendUserGroup generated on 2022-05-06
+ * BackendUserGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,10 +12,8 @@ class BackendUserGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /backend/user/$user_id<[0-9]+>
-     *
-     * @return BackendUserByUserIdResource
      */
-    public function getBackendUserByUserId(?string $user_id): BackendUserByUserIdResource
+    public function getBackendUserByUserId(string $user_id): BackendUserByUserIdResource
     {
         return new BackendUserByUserIdResource(
             $user_id,
@@ -27,8 +25,6 @@ class BackendUserGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/user
-     *
-     * @return BackendUserResource
      */
     public function getBackendUser(): BackendUserResource
     {

@@ -1,6 +1,6 @@
 <?php
 /**
- * ConsumerLogGroup generated on 2022-05-06
+ * ConsumerLogGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,10 +12,8 @@ class ConsumerLogGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /consumer/log/$log_id<[0-9]+>
-     *
-     * @return ConsumerLogByLogIdResource
      */
-    public function getConsumerLogByLogId(?string $log_id): ConsumerLogByLogIdResource
+    public function getConsumerLogByLogId(string $log_id): ConsumerLogByLogIdResource
     {
         return new ConsumerLogByLogIdResource(
             $log_id,
@@ -27,8 +25,6 @@ class ConsumerLogGroup extends ResourceAbstract
 
     /**
      * Endpoint: /consumer/log
-     *
-     * @return ConsumerLogResource
      */
     public function getConsumerLog(): ConsumerLogResource
     {

@@ -1,6 +1,6 @@
 <?php
 /**
- * Scope_Categories generated on 2022-05-06
+ * Scope_Categories generated on 2022-05-07
  * @see https://sdkgen.app
  */
 

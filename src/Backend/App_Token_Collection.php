@@ -1,6 +1,6 @@
 <?php
 /**
- * App_Token_Collection generated on 2022-05-06
+ * App_Token_Collection generated on 2022-05-07
  * @see https://sdkgen.app
  */
 

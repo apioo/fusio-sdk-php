@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendConfigGroup generated on 2022-05-06
+ * BackendConfigGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,10 +12,8 @@ class BackendConfigGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /backend/config/$config_id<[0-9]+|^~>
-     *
-     * @return BackendConfigByConfigIdResource
      */
-    public function getBackendConfigByConfigId(?string $config_id): BackendConfigByConfigIdResource
+    public function getBackendConfigByConfigId(string $config_id): BackendConfigByConfigIdResource
     {
         return new BackendConfigByConfigIdResource(
             $config_id,
@@ -27,8 +25,6 @@ class BackendConfigGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/config
-     *
-     * @return BackendConfigResource
      */
     public function getBackendConfig(): BackendConfigResource
     {

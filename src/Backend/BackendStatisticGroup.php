@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendStatisticGroup generated on 2022-05-06
+ * BackendStatisticGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,8 +12,6 @@ class BackendStatisticGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /backend/statistic/used_points
-     *
-     * @return BackendStatisticUsedPointsResource
      */
     public function getBackendStatisticUsedPoints(): BackendStatisticUsedPointsResource
     {
@@ -26,8 +24,6 @@ class BackendStatisticGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/statistic/time_per_route
-     *
-     * @return BackendStatisticTimePerRouteResource
      */
     public function getBackendStatisticTimePerRoute(): BackendStatisticTimePerRouteResource
     {
@@ -40,8 +36,6 @@ class BackendStatisticGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/statistic/time_average
-     *
-     * @return BackendStatisticTimeAverageResource
      */
     public function getBackendStatisticTimeAverage(): BackendStatisticTimeAverageResource
     {
@@ -54,8 +48,6 @@ class BackendStatisticGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/statistic/most_used_routes
-     *
-     * @return BackendStatisticMostUsedRoutesResource
      */
     public function getBackendStatisticMostUsedRoutes(): BackendStatisticMostUsedRoutesResource
     {
@@ -68,8 +60,6 @@ class BackendStatisticGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/statistic/most_used_apps
-     *
-     * @return BackendStatisticMostUsedAppsResource
      */
     public function getBackendStatisticMostUsedApps(): BackendStatisticMostUsedAppsResource
     {
@@ -82,8 +72,6 @@ class BackendStatisticGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/statistic/issued_tokens
-     *
-     * @return BackendStatisticIssuedTokensResource
      */
     public function getBackendStatisticIssuedTokens(): BackendStatisticIssuedTokensResource
     {
@@ -96,8 +84,6 @@ class BackendStatisticGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/statistic/incoming_transactions
-     *
-     * @return BackendStatisticIncomingTransactionsResource
      */
     public function getBackendStatisticIncomingTransactions(): BackendStatisticIncomingTransactionsResource
     {
@@ -110,8 +96,6 @@ class BackendStatisticGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/statistic/incoming_requests
-     *
-     * @return BackendStatisticIncomingRequestsResource
      */
     public function getBackendStatisticIncomingRequests(): BackendStatisticIncomingRequestsResource
     {
@@ -124,8 +108,6 @@ class BackendStatisticGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/statistic/errors_per_route
-     *
-     * @return BackendStatisticErrorsPerRouteResource
      */
     public function getBackendStatisticErrorsPerRoute(): BackendStatisticErrorsPerRouteResource
     {
@@ -138,8 +120,6 @@ class BackendStatisticGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/statistic/count_requests
-     *
-     * @return BackendStatisticCountRequestsResource
      */
     public function getBackendStatisticCountRequests(): BackendStatisticCountRequestsResource
     {

@@ -1,21 +1,20 @@
 <?php
 /**
- * BackendTransactionResource generated on 2022-05-06
+ * BackendTransactionResource generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
 namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
+use PSX\Http\Exception\StatusCodeException;
 use PSX\Schema\SchemaManager;
 use Sdkgen\Client\ResourceAbstract;
 
 class BackendTransactionResource extends ResourceAbstract
 {
-    /**
-     * @var string
-     */
-    private $url;
+    private string $url;
+
 
     public function __construct(string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
@@ -25,8 +24,9 @@ class BackendTransactionResource extends ResourceAbstract
     }
 
     /**
-     * @param Backend_Transaction_Collection_Query $query
+     * @param Backend_Transaction_Collection_Query|null $query
      * @return Transaction_Collection
+     * @throws \PSX\Http\Exception\StatusCodeException
      */
     public function backendActionTransactionGetAll(?Backend_Transaction_Collection_Query $query = null): Transaction_Collection
     {
@@ -36,6 +36,14 @@ class BackendTransactionResource extends ResourceAbstract
 
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
+
+        if ($response->getStatusCode() >= 300 && $response->getStatusCode() < 400) {
+            StatusCodeException::throwOnRedirection($response);
+        } elseif ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
+            StatusCodeException::throwOnClientError($response);
+        } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
+            StatusCodeException::throwOnServerError($response);
+        }
 
         return $this->parse($data, Transaction_Collection::class);
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendPageGroup generated on 2022-05-06
+ * BackendPageGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,10 +12,8 @@ class BackendPageGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /backend/page/$page_id<[0-9]+|^~>
-     *
-     * @return BackendPageByPageIdResource
      */
-    public function getBackendPageByPageId(?string $page_id): BackendPageByPageIdResource
+    public function getBackendPageByPageId(string $page_id): BackendPageByPageIdResource
     {
         return new BackendPageByPageIdResource(
             $page_id,
@@ -27,8 +25,6 @@ class BackendPageGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/page
-     *
-     * @return BackendPageResource
      */
     public function getBackendPage(): BackendPageResource
     {

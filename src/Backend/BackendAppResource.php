@@ -1,21 +1,20 @@
 <?php
 /**
- * BackendAppResource generated on 2022-05-06
+ * BackendAppResource generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
 namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
+use PSX\Http\Exception\StatusCodeException;
 use PSX\Schema\SchemaManager;
 use Sdkgen\Client\ResourceAbstract;
 
 class BackendAppResource extends ResourceAbstract
 {
-    /**
-     * @var string
-     */
-    private $url;
+    private string $url;
+
 
     public function __construct(string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
@@ -25,8 +24,9 @@ class BackendAppResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Query $query
+     * @param Collection_Query|null $query
      * @return App_Collection
+     * @throws \PSX\Http\Exception\StatusCodeException
      */
     public function backendActionAppGetAll(?Collection_Query $query = null): App_Collection
     {
@@ -37,14 +37,23 @@ class BackendAppResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
+        if ($response->getStatusCode() >= 300 && $response->getStatusCode() < 400) {
+            StatusCodeException::throwOnRedirection($response);
+        } elseif ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
+            StatusCodeException::throwOnClientError($response);
+        } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
+            StatusCodeException::throwOnServerError($response);
+        }
+
         return $this->parse($data, App_Collection::class);
     }
 
     /**
      * @param App_Create $data
      * @return Message
+     * @throws \PSX\Http\Exception\StatusCodeException
      */
-    public function backendActionAppCreate(?App_Create $data = null): Message
+    public function backendActionAppCreate(App_Create $data): Message
     {
         $options = [
             'json' => $data
@@ -52,6 +61,14 @@ class BackendAppResource extends ResourceAbstract
 
         $response = $this->httpClient->request('POST', $this->url, $options);
         $data     = (string) $response->getBody();
+
+        if ($response->getStatusCode() >= 300 && $response->getStatusCode() < 400) {
+            StatusCodeException::throwOnRedirection($response);
+        } elseif ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
+            StatusCodeException::throwOnClientError($response);
+        } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
+            StatusCodeException::throwOnServerError($response);
+        }
 
         return $this->parse($data, Message::class);
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendAccountGroup generated on 2022-05-06
+ * BackendAccountGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,8 +12,6 @@ class BackendAccountGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /backend/account/change_password
-     *
-     * @return BackendAccountChangePasswordResource
      */
     public function getBackendAccountChangePassword(): BackendAccountChangePasswordResource
     {
@@ -26,8 +24,6 @@ class BackendAccountGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/account
-     *
-     * @return BackendAccountResource
      */
     public function getBackendAccount(): BackendAccountResource
     {

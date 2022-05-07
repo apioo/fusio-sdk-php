@@ -1,6 +1,6 @@
 <?php
 /**
- * Sdk_Types generated on 2022-05-06
+ * Sdk_Types generated on 2022-05-07
  * @see https://sdkgen.app
  */
 

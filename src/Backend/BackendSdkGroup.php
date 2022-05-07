@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendSdkGroup generated on 2022-05-06
+ * BackendSdkGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,8 +12,6 @@ class BackendSdkGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /backend/sdk
-     *
-     * @return BackendSdkResource
      */
     public function getBackendSdk(): BackendSdkResource
     {

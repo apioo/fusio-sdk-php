@@ -1,26 +1,21 @@
 <?php
 /**
- * BackendAppByAppIdResource generated on 2022-05-06
+ * BackendAppByAppIdResource generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
 namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
+use PSX\Http\Exception\StatusCodeException;
 use PSX\Schema\SchemaManager;
 use Sdkgen\Client\ResourceAbstract;
 
 class BackendAppByAppIdResource extends ResourceAbstract
 {
-    /**
-     * @var string
-     */
-    private $url;
+    private string $url;
 
-    /**
-     * @var string
-     */
-    private $app_id;
+    private string $app_id;
 
     public function __construct(string $app_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
@@ -32,6 +27,7 @@ class BackendAppByAppIdResource extends ResourceAbstract
 
     /**
      * @return App
+     * @throws \PSX\Http\Exception\StatusCodeException
      */
     public function backendActionAppGet(): App
     {
@@ -41,14 +37,23 @@ class BackendAppByAppIdResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
+        if ($response->getStatusCode() >= 300 && $response->getStatusCode() < 400) {
+            StatusCodeException::throwOnRedirection($response);
+        } elseif ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
+            StatusCodeException::throwOnClientError($response);
+        } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
+            StatusCodeException::throwOnServerError($response);
+        }
+
         return $this->parse($data, App::class);
     }
 
     /**
      * @param App_Update $data
      * @return Message
+     * @throws \PSX\Http\Exception\StatusCodeException
      */
-    public function backendActionAppUpdate(?App_Update $data = null): Message
+    public function backendActionAppUpdate(App_Update $data): Message
     {
         $options = [
             'json' => $data
@@ -57,11 +62,20 @@ class BackendAppByAppIdResource extends ResourceAbstract
         $response = $this->httpClient->request('PUT', $this->url, $options);
         $data     = (string) $response->getBody();
 
+        if ($response->getStatusCode() >= 300 && $response->getStatusCode() < 400) {
+            StatusCodeException::throwOnRedirection($response);
+        } elseif ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
+            StatusCodeException::throwOnClientError($response);
+        } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
+            StatusCodeException::throwOnServerError($response);
+        }
+
         return $this->parse($data, Message::class);
     }
 
     /**
      * @return Message
+     * @throws \PSX\Http\Exception\StatusCodeException
      */
     public function backendActionAppDelete(): Message
     {
@@ -70,6 +84,14 @@ class BackendAppByAppIdResource extends ResourceAbstract
 
         $response = $this->httpClient->request('DELETE', $this->url, $options);
         $data     = (string) $response->getBody();
+
+        if ($response->getStatusCode() >= 300 && $response->getStatusCode() < 400) {
+            StatusCodeException::throwOnRedirection($response);
+        } elseif ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
+            StatusCodeException::throwOnClientError($response);
+        } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
+            StatusCodeException::throwOnServerError($response);
+        }
 
         return $this->parse($data, Message::class);
     }

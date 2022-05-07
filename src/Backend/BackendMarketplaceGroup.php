@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendMarketplaceGroup generated on 2022-05-06
+ * BackendMarketplaceGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,10 +12,8 @@ class BackendMarketplaceGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /backend/marketplace/:app_name
-     *
-     * @return BackendMarketplaceByAppNameResource
      */
-    public function getBackendMarketplaceByAppName(?string $app_name): BackendMarketplaceByAppNameResource
+    public function getBackendMarketplaceByAppName(string $app_name): BackendMarketplaceByAppNameResource
     {
         return new BackendMarketplaceByAppNameResource(
             $app_name,
@@ -27,8 +25,6 @@ class BackendMarketplaceGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/marketplace
-     *
-     * @return BackendMarketplaceResource
      */
     public function getBackendMarketplace(): BackendMarketplaceResource
     {

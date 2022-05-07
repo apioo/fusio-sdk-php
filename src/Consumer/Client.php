@@ -1,6 +1,6 @@
 <?php
 /**
- * Client generated on 2022-05-06
+ * Client generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -20,8 +20,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: consumer.user
-     *
-     * @return ConsumerUserGroup
      */
     public function consumerUser(): ConsumerUserGroup
     {
@@ -34,8 +32,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: consumer.transaction
-     *
-     * @return ConsumerTransactionGroup
      */
     public function consumerTransaction(): ConsumerTransactionGroup
     {
@@ -48,8 +44,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: consumer.subscription
-     *
-     * @return ConsumerSubscriptionGroup
      */
     public function consumerSubscription(): ConsumerSubscriptionGroup
     {
@@ -62,8 +56,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: consumer.scope
-     *
-     * @return ConsumerScopeGroup
      */
     public function consumerScope(): ConsumerScopeGroup
     {
@@ -76,8 +68,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: consumer.plan
-     *
-     * @return ConsumerPlanGroup
      */
     public function consumerPlan(): ConsumerPlanGroup
     {
@@ -90,8 +80,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: consumer.page
-     *
-     * @return ConsumerPageGroup
      */
     public function consumerPage(): ConsumerPageGroup
     {
@@ -104,8 +92,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: consumer.log
-     *
-     * @return ConsumerLogGroup
      */
     public function consumerLog(): ConsumerLogGroup
     {
@@ -118,8 +104,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: consumer.grant
-     *
-     * @return ConsumerGrantGroup
      */
     public function consumerGrant(): ConsumerGrantGroup
     {
@@ -132,8 +116,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: consumer.event
-     *
-     * @return ConsumerEventGroup
      */
     public function consumerEvent(): ConsumerEventGroup
     {
@@ -146,8 +128,6 @@ class Client extends ClientAbstract
 
     /**
      * Tag: consumer.app
-     *
-     * @return ConsumerAppGroup
      */
     public function consumerApp(): ConsumerAppGroup
     {

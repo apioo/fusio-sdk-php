@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendPlanGroup generated on 2022-05-06
+ * BackendPlanGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,10 +12,8 @@ class BackendPlanGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /backend/plan/$plan_id<[0-9]+|^~>
-     *
-     * @return BackendPlanByPlanIdResource
      */
-    public function getBackendPlanByPlanId(?string $plan_id): BackendPlanByPlanIdResource
+    public function getBackendPlanByPlanId(string $plan_id): BackendPlanByPlanIdResource
     {
         return new BackendPlanByPlanIdResource(
             $plan_id,
@@ -27,8 +25,6 @@ class BackendPlanGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/plan
-     *
-     * @return BackendPlanResource
      */
     public function getBackendPlan(): BackendPlanResource
     {
@@ -41,10 +37,8 @@ class BackendPlanGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/plan/invoice/$invoice_id<[0-9]+>
-     *
-     * @return BackendPlanInvoiceByInvoiceIdResource
      */
-    public function getBackendPlanInvoiceByInvoiceId(?string $invoice_id): BackendPlanInvoiceByInvoiceIdResource
+    public function getBackendPlanInvoiceByInvoiceId(string $invoice_id): BackendPlanInvoiceByInvoiceIdResource
     {
         return new BackendPlanInvoiceByInvoiceIdResource(
             $invoice_id,
@@ -56,8 +50,6 @@ class BackendPlanGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/plan/invoice
-     *
-     * @return BackendPlanInvoiceResource
      */
     public function getBackendPlanInvoice(): BackendPlanInvoiceResource
     {
@@ -70,10 +62,8 @@ class BackendPlanGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/plan/contract/$contract_id<[0-9]+>
-     *
-     * @return BackendPlanContractByContractIdResource
      */
-    public function getBackendPlanContractByContractId(?string $contract_id): BackendPlanContractByContractIdResource
+    public function getBackendPlanContractByContractId(string $contract_id): BackendPlanContractByContractIdResource
     {
         return new BackendPlanContractByContractIdResource(
             $contract_id,
@@ -85,8 +75,6 @@ class BackendPlanGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/plan/contract
-     *
-     * @return BackendPlanContractResource
      */
     public function getBackendPlanContract(): BackendPlanContractResource
     {

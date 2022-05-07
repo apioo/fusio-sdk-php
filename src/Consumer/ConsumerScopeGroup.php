@@ -1,6 +1,6 @@
 <?php
 /**
- * ConsumerScopeGroup generated on 2022-05-06
+ * ConsumerScopeGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,8 +12,6 @@ class ConsumerScopeGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /consumer/scope
-     *
-     * @return ConsumerScopeResource
      */
     public function getConsumerScope(): ConsumerScopeResource
     {

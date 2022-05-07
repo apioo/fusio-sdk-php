@@ -1,6 +1,6 @@
 <?php
 /**
- * ConsumerAppGroup generated on 2022-05-06
+ * ConsumerAppGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,10 +12,8 @@ class ConsumerAppGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /consumer/app/$app_id<[0-9]+>
-     *
-     * @return ConsumerAppByAppIdResource
      */
-    public function getConsumerAppByAppId(?string $app_id): ConsumerAppByAppIdResource
+    public function getConsumerAppByAppId(string $app_id): ConsumerAppByAppIdResource
     {
         return new ConsumerAppByAppIdResource(
             $app_id,
@@ -27,8 +25,6 @@ class ConsumerAppGroup extends ResourceAbstract
 
     /**
      * Endpoint: /consumer/app
-     *
-     * @return ConsumerAppResource
      */
     public function getConsumerApp(): ConsumerAppResource
     {

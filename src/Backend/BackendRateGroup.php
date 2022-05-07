@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendRateGroup generated on 2022-05-06
+ * BackendRateGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,10 +12,8 @@ class BackendRateGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /backend/rate/$rate_id<[0-9]+|^~>
-     *
-     * @return BackendRateByRateIdResource
      */
-    public function getBackendRateByRateId(?string $rate_id): BackendRateByRateIdResource
+    public function getBackendRateByRateId(string $rate_id): BackendRateByRateIdResource
     {
         return new BackendRateByRateIdResource(
             $rate_id,
@@ -27,8 +25,6 @@ class BackendRateGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/rate
-     *
-     * @return BackendRateResource
      */
     public function getBackendRate(): BackendRateResource
     {

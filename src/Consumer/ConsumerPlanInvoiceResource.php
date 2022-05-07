@@ -1,21 +1,20 @@
 <?php
 /**
- * ConsumerPlanInvoiceResource generated on 2022-05-06
+ * ConsumerPlanInvoiceResource generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
 namespace Fusio\Sdk\Consumer;
 
 use GuzzleHttp\Client;
+use PSX\Http\Exception\StatusCodeException;
 use PSX\Schema\SchemaManager;
 use Sdkgen\Client\ResourceAbstract;
 
 class ConsumerPlanInvoiceResource extends ResourceAbstract
 {
-    /**
-     * @var string
-     */
-    private $url;
+    private string $url;
+
 
     public function __construct(string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
@@ -25,8 +24,9 @@ class ConsumerPlanInvoiceResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Query $query
+     * @param Collection_Query|null $query
      * @return Plan_Invoice_Collection
+     * @throws \PSX\Http\Exception\StatusCodeException
      */
     public function consumerActionPlanInvoiceGetAll(?Collection_Query $query = null): Plan_Invoice_Collection
     {
@@ -36,6 +36,14 @@ class ConsumerPlanInvoiceResource extends ResourceAbstract
 
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
+
+        if ($response->getStatusCode() >= 300 && $response->getStatusCode() < 400) {
+            StatusCodeException::throwOnRedirection($response);
+        } elseif ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
+            StatusCodeException::throwOnClientError($response);
+        } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
+            StatusCodeException::throwOnServerError($response);
+        }
 
         return $this->parse($data, Plan_Invoice_Collection::class);
     }

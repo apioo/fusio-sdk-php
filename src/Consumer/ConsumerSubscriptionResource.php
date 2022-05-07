@@ -1,21 +1,20 @@
 <?php
 /**
- * ConsumerSubscriptionResource generated on 2022-05-06
+ * ConsumerSubscriptionResource generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
 namespace Fusio\Sdk\Consumer;
 
 use GuzzleHttp\Client;
+use PSX\Http\Exception\StatusCodeException;
 use PSX\Schema\SchemaManager;
 use Sdkgen\Client\ResourceAbstract;
 
 class ConsumerSubscriptionResource extends ResourceAbstract
 {
-    /**
-     * @var string
-     */
-    private $url;
+    private string $url;
+
 
     public function __construct(string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
@@ -25,8 +24,9 @@ class ConsumerSubscriptionResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Query $query
+     * @param Collection_Query|null $query
      * @return Event_Subscription_Collection
+     * @throws \PSX\Http\Exception\StatusCodeException
      */
     public function consumerActionEventSubscriptionGetAll(?Collection_Query $query = null): Event_Subscription_Collection
     {
@@ -37,14 +37,23 @@ class ConsumerSubscriptionResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
+        if ($response->getStatusCode() >= 300 && $response->getStatusCode() < 400) {
+            StatusCodeException::throwOnRedirection($response);
+        } elseif ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
+            StatusCodeException::throwOnClientError($response);
+        } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
+            StatusCodeException::throwOnServerError($response);
+        }
+
         return $this->parse($data, Event_Subscription_Collection::class);
     }
 
     /**
      * @param Event_Subscription_Create $data
      * @return Message
+     * @throws \PSX\Http\Exception\StatusCodeException
      */
-    public function consumerActionEventSubscriptionCreate(?Event_Subscription_Create $data = null): Message
+    public function consumerActionEventSubscriptionCreate(Event_Subscription_Create $data): Message
     {
         $options = [
             'json' => $data
@@ -52,6 +61,14 @@ class ConsumerSubscriptionResource extends ResourceAbstract
 
         $response = $this->httpClient->request('POST', $this->url, $options);
         $data     = (string) $response->getBody();
+
+        if ($response->getStatusCode() >= 300 && $response->getStatusCode() < 400) {
+            StatusCodeException::throwOnRedirection($response);
+        } elseif ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
+            StatusCodeException::throwOnClientError($response);
+        } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
+            StatusCodeException::throwOnServerError($response);
+        }
 
         return $this->parse($data, Message::class);
     }

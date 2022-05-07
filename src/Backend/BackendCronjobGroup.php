@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendCronjobGroup generated on 2022-05-06
+ * BackendCronjobGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,10 +12,8 @@ class BackendCronjobGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /backend/cronjob/$cronjob_id<[0-9]+|^~>
-     *
-     * @return BackendCronjobByCronjobIdResource
      */
-    public function getBackendCronjobByCronjobId(?string $cronjob_id): BackendCronjobByCronjobIdResource
+    public function getBackendCronjobByCronjobId(string $cronjob_id): BackendCronjobByCronjobIdResource
     {
         return new BackendCronjobByCronjobIdResource(
             $cronjob_id,
@@ -27,8 +25,6 @@ class BackendCronjobGroup extends ResourceAbstract
 
     /**
      * Endpoint: /backend/cronjob
-     *
-     * @return BackendCronjobResource
      */
     public function getBackendCronjob(): BackendCronjobResource
     {

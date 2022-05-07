@@ -1,6 +1,6 @@
 <?php
 /**
- * ConsumerEventGroup generated on 2022-05-06
+ * ConsumerEventGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,8 +12,6 @@ class ConsumerEventGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /consumer/event
-     *
-     * @return ConsumerEventResource
      */
     public function getConsumerEvent(): ConsumerEventResource
     {

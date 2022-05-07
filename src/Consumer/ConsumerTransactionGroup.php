@@ -1,6 +1,6 @@
 <?php
 /**
- * ConsumerTransactionGroup generated on 2022-05-06
+ * ConsumerTransactionGroup generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
@@ -12,10 +12,8 @@ class ConsumerTransactionGroup extends ResourceAbstract
 {
     /**
      * Endpoint: /consumer/transaction/$transaction_id<[0-9]+>
-     *
-     * @return ConsumerTransactionByTransactionIdResource
      */
-    public function getConsumerTransactionByTransactionId(?string $transaction_id): ConsumerTransactionByTransactionIdResource
+    public function getConsumerTransactionByTransactionId(string $transaction_id): ConsumerTransactionByTransactionIdResource
     {
         return new ConsumerTransactionByTransactionIdResource(
             $transaction_id,
@@ -27,10 +25,8 @@ class ConsumerTransactionGroup extends ResourceAbstract
 
     /**
      * Endpoint: /consumer/transaction/prepare/:provider
-     *
-     * @return ConsumerTransactionPrepareByProviderResource
      */
-    public function getConsumerTransactionPrepareByProvider(?string $provider): ConsumerTransactionPrepareByProviderResource
+    public function getConsumerTransactionPrepareByProvider(string $provider): ConsumerTransactionPrepareByProviderResource
     {
         return new ConsumerTransactionPrepareByProviderResource(
             $provider,
@@ -42,10 +38,8 @@ class ConsumerTransactionGroup extends ResourceAbstract
 
     /**
      * Endpoint: /consumer/transaction/execute/:transaction_id
-     *
-     * @return ConsumerTransactionExecuteByTransactionIdResource
      */
-    public function getConsumerTransactionExecuteByTransactionId(?string $transaction_id): ConsumerTransactionExecuteByTransactionIdResource
+    public function getConsumerTransactionExecuteByTransactionId(string $transaction_id): ConsumerTransactionExecuteByTransactionIdResource
     {
         return new ConsumerTransactionExecuteByTransactionIdResource(
             $transaction_id,
@@ -57,8 +51,6 @@ class ConsumerTransactionGroup extends ResourceAbstract
 
     /**
      * Endpoint: /consumer/transaction
-     *
-     * @return ConsumerTransactionResource
      */
     public function getConsumerTransaction(): ConsumerTransactionResource
     {

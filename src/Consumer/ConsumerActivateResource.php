@@ -1,21 +1,20 @@
 <?php
 /**
- * ConsumerActivateResource generated on 2022-05-06
+ * ConsumerActivateResource generated on 2022-05-07
  * @see https://sdkgen.app
  */
 
 namespace Fusio\Sdk\Consumer;
 
 use GuzzleHttp\Client;
+use PSX\Http\Exception\StatusCodeException;
 use PSX\Schema\SchemaManager;
 use Sdkgen\Client\ResourceAbstract;
 
 class ConsumerActivateResource extends ResourceAbstract
 {
-    /**
-     * @var string
-     */
-    private $url;
+    private string $url;
+
 
     public function __construct(string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
@@ -27,8 +26,9 @@ class ConsumerActivateResource extends ResourceAbstract
     /**
      * @param User_Activate $data
      * @return Message
+     * @throws \PSX\Http\Exception\StatusCodeException
      */
-    public function consumerActionUserActivate(?User_Activate $data = null): Message
+    public function consumerActionUserActivate(User_Activate $data): Message
     {
         $options = [
             'json' => $data
@@ -36,6 +36,14 @@ class ConsumerActivateResource extends ResourceAbstract
 
         $response = $this->httpClient->request('POST', $this->url, $options);
         $data     = (string) $response->getBody();
+
+        if ($response->getStatusCode() >= 300 && $response->getStatusCode() < 400) {
+            StatusCodeException::throwOnRedirection($response);
+        } elseif ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
+            StatusCodeException::throwOnClientError($response);
+        } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
+            StatusCodeException::throwOnServerError($response);
+        }
 
         return $this->parse($data, Message::class);
     }
