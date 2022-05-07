@@ -7,7 +7,6 @@
 namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Http\Exception\StatusCodeException;
 use PSX\Schema\SchemaManager;
 use Sdkgen\Client\ResourceAbstract;
 
@@ -27,7 +26,7 @@ class BackendCategoryByCategoryIdResource extends ResourceAbstract
 
     /**
      * @return Category
-     * @throws \PSX\Http\Exception\StatusCodeException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function backendActionCategoryGet(): Category
     {
@@ -37,21 +36,13 @@ class BackendCategoryByCategoryIdResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        if ($response->getStatusCode() >= 300 && $response->getStatusCode() < 400) {
-            StatusCodeException::throwOnRedirection($response);
-        } elseif ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
-            StatusCodeException::throwOnClientError($response);
-        } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
-            StatusCodeException::throwOnServerError($response);
-        }
-
         return $this->parse($data, Category::class);
     }
 
     /**
      * @param Category_Update $data
      * @return Message
-     * @throws \PSX\Http\Exception\StatusCodeException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function backendActionCategoryUpdate(Category_Update $data): Message
     {
@@ -62,20 +53,12 @@ class BackendCategoryByCategoryIdResource extends ResourceAbstract
         $response = $this->httpClient->request('PUT', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        if ($response->getStatusCode() >= 300 && $response->getStatusCode() < 400) {
-            StatusCodeException::throwOnRedirection($response);
-        } elseif ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
-            StatusCodeException::throwOnClientError($response);
-        } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
-            StatusCodeException::throwOnServerError($response);
-        }
-
         return $this->parse($data, Message::class);
     }
 
     /**
      * @return Message
-     * @throws \PSX\Http\Exception\StatusCodeException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function backendActionCategoryDelete(): Message
     {
@@ -84,14 +67,6 @@ class BackendCategoryByCategoryIdResource extends ResourceAbstract
 
         $response = $this->httpClient->request('DELETE', $this->url, $options);
         $data     = (string) $response->getBody();
-
-        if ($response->getStatusCode() >= 300 && $response->getStatusCode() < 400) {
-            StatusCodeException::throwOnRedirection($response);
-        } elseif ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
-            StatusCodeException::throwOnClientError($response);
-        } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
-            StatusCodeException::throwOnServerError($response);
-        }
 
         return $this->parse($data, Message::class);
     }

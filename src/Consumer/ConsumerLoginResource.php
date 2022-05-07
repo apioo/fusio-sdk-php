@@ -7,7 +7,6 @@
 namespace Fusio\Sdk\Consumer;
 
 use GuzzleHttp\Client;
-use PSX\Http\Exception\StatusCodeException;
 use PSX\Schema\SchemaManager;
 use Sdkgen\Client\ResourceAbstract;
 
@@ -26,7 +25,7 @@ class ConsumerLoginResource extends ResourceAbstract
     /**
      * @param User_Login $data
      * @return User_JWT
-     * @throws \PSX\Http\Exception\StatusCodeException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function consumerActionUserLogin(User_Login $data): User_JWT
     {
@@ -37,21 +36,13 @@ class ConsumerLoginResource extends ResourceAbstract
         $response = $this->httpClient->request('POST', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        if ($response->getStatusCode() >= 300 && $response->getStatusCode() < 400) {
-            StatusCodeException::throwOnRedirection($response);
-        } elseif ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
-            StatusCodeException::throwOnClientError($response);
-        } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
-            StatusCodeException::throwOnServerError($response);
-        }
-
         return $this->parse($data, User_JWT::class);
     }
 
     /**
      * @param User_Refresh $data
      * @return User_JWT
-     * @throws \PSX\Http\Exception\StatusCodeException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function consumerActionUserRefresh(User_Refresh $data): User_JWT
     {
@@ -61,14 +52,6 @@ class ConsumerLoginResource extends ResourceAbstract
 
         $response = $this->httpClient->request('PUT', $this->url, $options);
         $data     = (string) $response->getBody();
-
-        if ($response->getStatusCode() >= 300 && $response->getStatusCode() < 400) {
-            StatusCodeException::throwOnRedirection($response);
-        } elseif ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
-            StatusCodeException::throwOnClientError($response);
-        } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
-            StatusCodeException::throwOnServerError($response);
-        }
 
         return $this->parse($data, User_JWT::class);
     }

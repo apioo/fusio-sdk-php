@@ -7,7 +7,6 @@
 namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Http\Exception\StatusCodeException;
 use PSX\Schema\SchemaManager;
 use Sdkgen\Client\ResourceAbstract;
 
@@ -25,7 +24,7 @@ class BackendConnectionFormResource extends ResourceAbstract
 
     /**
      * @return Form_Container
-     * @throws \PSX\Http\Exception\StatusCodeException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function backendActionConnectionGetForm(): Form_Container
     {
@@ -34,14 +33,6 @@ class BackendConnectionFormResource extends ResourceAbstract
 
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
-
-        if ($response->getStatusCode() >= 300 && $response->getStatusCode() < 400) {
-            StatusCodeException::throwOnRedirection($response);
-        } elseif ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
-            StatusCodeException::throwOnClientError($response);
-        } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
-            StatusCodeException::throwOnServerError($response);
-        }
 
         return $this->parse($data, Form_Container::class);
     }

@@ -7,7 +7,6 @@
 namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
-use PSX\Http\Exception\StatusCodeException;
 use PSX\Schema\SchemaManager;
 use Sdkgen\Client\ResourceAbstract;
 
@@ -26,7 +25,7 @@ class BackendCategoryResource extends ResourceAbstract
     /**
      * @param Collection_Query|null $query
      * @return Category_Collection
-     * @throws \PSX\Http\Exception\StatusCodeException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function backendActionCategoryGetAll(?Collection_Query $query = null): Category_Collection
     {
@@ -37,21 +36,13 @@ class BackendCategoryResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        if ($response->getStatusCode() >= 300 && $response->getStatusCode() < 400) {
-            StatusCodeException::throwOnRedirection($response);
-        } elseif ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
-            StatusCodeException::throwOnClientError($response);
-        } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
-            StatusCodeException::throwOnServerError($response);
-        }
-
         return $this->parse($data, Category_Collection::class);
     }
 
     /**
      * @param Category_Create $data
      * @return Message
-     * @throws \PSX\Http\Exception\StatusCodeException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function backendActionCategoryCreate(Category_Create $data): Message
     {
@@ -61,14 +52,6 @@ class BackendCategoryResource extends ResourceAbstract
 
         $response = $this->httpClient->request('POST', $this->url, $options);
         $data     = (string) $response->getBody();
-
-        if ($response->getStatusCode() >= 300 && $response->getStatusCode() < 400) {
-            StatusCodeException::throwOnRedirection($response);
-        } elseif ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
-            StatusCodeException::throwOnClientError($response);
-        } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
-            StatusCodeException::throwOnServerError($response);
-        }
 
         return $this->parse($data, Message::class);
     }
