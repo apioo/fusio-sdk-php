@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendRoleResource generated on 2022-05-07
+ * BackendRoleResource generated on 2022-06-05
  * @see https://sdkgen.app
  */
 

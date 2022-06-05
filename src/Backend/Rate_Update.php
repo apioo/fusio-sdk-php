@@ -1,6 +1,6 @@
 <?php
 /**
- * Rate_Update generated on 2022-05-07
+ * Rate_Update generated on 2022-06-05
  * @see https://sdkgen.app
  */
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * ConsumerTransactionGroup generated on 2022-05-07
+ * ConsumerTransactionGroup generated on 2022-06-05
  * @see https://sdkgen.app
  */
 
@@ -16,32 +16,6 @@ class ConsumerTransactionGroup extends ResourceAbstract
     public function getConsumerTransactionByTransactionId(string $transaction_id): ConsumerTransactionByTransactionIdResource
     {
         return new ConsumerTransactionByTransactionIdResource(
-            $transaction_id,
-            $this->baseUrl,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /consumer/transaction/prepare/:provider
-     */
-    public function getConsumerTransactionPrepareByProvider(string $provider): ConsumerTransactionPrepareByProviderResource
-    {
-        return new ConsumerTransactionPrepareByProviderResource(
-            $provider,
-            $this->baseUrl,
-            $this->httpClient,
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /consumer/transaction/execute/:transaction_id
-     */
-    public function getConsumerTransactionExecuteByTransactionId(string $transaction_id): ConsumerTransactionExecuteByTransactionIdResource
-    {
-        return new ConsumerTransactionExecuteByTransactionIdResource(
             $transaction_id,
             $this->baseUrl,
             $this->httpClient,

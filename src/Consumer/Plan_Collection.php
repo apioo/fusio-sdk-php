@@ -1,6 +1,6 @@
 <?php
 /**
- * Plan_Collection generated on 2022-05-07
+ * Plan_Collection generated on 2022-06-05
  * @see https://sdkgen.app
  */
 

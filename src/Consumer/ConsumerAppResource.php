@@ -1,6 +1,6 @@
 <?php
 /**
- * ConsumerAppResource generated on 2022-05-07
+ * ConsumerAppResource generated on 2022-06-05
  * @see https://sdkgen.app
  */
 

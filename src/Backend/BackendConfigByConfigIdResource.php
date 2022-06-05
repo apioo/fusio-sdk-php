@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendConfigByConfigIdResource generated on 2022-05-07
+ * BackendConfigByConfigIdResource generated on 2022-06-05
  * @see https://sdkgen.app
  */
 

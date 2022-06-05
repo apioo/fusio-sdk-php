@@ -1,6 +1,6 @@
 <?php
 /**
- * User_Account generated on 2022-05-07
+ * User_Account generated on 2022-06-05
  * @see https://sdkgen.app
  */
 
@@ -10,6 +10,7 @@ namespace Fusio\Sdk\Consumer;
 class User_Account implements \JsonSerializable
 {
     protected ?int $id = null;
+    protected ?int $planId = null;
     protected ?int $status = null;
     protected ?string $name = null;
     protected ?string $email = null;
@@ -27,6 +28,14 @@ class User_Account implements \JsonSerializable
     public function getId() : ?int
     {
         return $this->id;
+    }
+    public function setPlanId(?int $planId) : void
+    {
+        $this->planId = $planId;
+    }
+    public function getPlanId() : ?int
+    {
+        return $this->planId;
     }
     public function setStatus(?int $status) : void
     {
@@ -89,7 +98,7 @@ class User_Account implements \JsonSerializable
     }
     public function jsonSerialize() : \stdClass
     {
-        return (object) array_filter(array('id' => $this->id, 'status' => $this->status, 'name' => $this->name, 'email' => $this->email, 'points' => $this->points, 'scopes' => $this->scopes, 'attributes' => $this->attributes, 'date' => $this->date), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'planId' => $this->planId, 'status' => $this->status, 'name' => $this->name, 'email' => $this->email, 'points' => $this->points, 'scopes' => $this->scopes, 'attributes' => $this->attributes, 'date' => $this->date), static function ($value) : bool {
             return $value !== null;
         });
     }

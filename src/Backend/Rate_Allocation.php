@@ -1,6 +1,6 @@
 <?php
 /**
- * Rate_Allocation generated on 2022-05-07
+ * Rate_Allocation generated on 2022-06-05
  * @see https://sdkgen.app
  */
 
@@ -11,9 +11,10 @@ class Rate_Allocation implements \JsonSerializable
 {
     protected ?int $id = null;
     protected ?int $routeId = null;
+    protected ?int $userId = null;
+    protected ?int $planId = null;
     protected ?int $appId = null;
     protected ?bool $authenticated = null;
-    protected ?string $parameters = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -29,6 +30,22 @@ class Rate_Allocation implements \JsonSerializable
     public function getRouteId() : ?int
     {
         return $this->routeId;
+    }
+    public function setUserId(?int $userId) : void
+    {
+        $this->userId = $userId;
+    }
+    public function getUserId() : ?int
+    {
+        return $this->userId;
+    }
+    public function setPlanId(?int $planId) : void
+    {
+        $this->planId = $planId;
+    }
+    public function getPlanId() : ?int
+    {
+        return $this->planId;
     }
     public function setAppId(?int $appId) : void
     {
@@ -46,17 +63,9 @@ class Rate_Allocation implements \JsonSerializable
     {
         return $this->authenticated;
     }
-    public function setParameters(?string $parameters) : void
-    {
-        $this->parameters = $parameters;
-    }
-    public function getParameters() : ?string
-    {
-        return $this->parameters;
-    }
     public function jsonSerialize() : \stdClass
     {
-        return (object) array_filter(array('id' => $this->id, 'routeId' => $this->routeId, 'appId' => $this->appId, 'authenticated' => $this->authenticated, 'parameters' => $this->parameters), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'routeId' => $this->routeId, 'userId' => $this->userId, 'planId' => $this->planId, 'appId' => $this->appId, 'authenticated' => $this->authenticated), static function ($value) : bool {
             return $value !== null;
         });
     }

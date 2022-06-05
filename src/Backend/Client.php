@@ -1,6 +1,6 @@
 <?php
 /**
- * Client generated on 2022-05-07
+ * Client generated on 2022-06-05
  * @see https://sdkgen.app
  */
 
@@ -24,6 +24,18 @@ class Client extends ClientAbstract
     public function backendUser(): BackendUserGroup
     {
         return new BackendUserGroup(
+            $this->baseUrl,
+            $this->newHttpClient(),
+            $this->schemaManager
+        );
+    }
+
+    /**
+     * Tag: backend.trash
+     */
+    public function backendTrash(): BackendTrashGroup
+    {
+        return new BackendTrashGroup(
             $this->baseUrl,
             $this->newHttpClient(),
             $this->schemaManager

@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendCategoryByCategoryIdResource generated on 2022-05-07
+ * BackendCategoryByCategoryIdResource generated on 2022-06-05
  * @see https://sdkgen.app
  */
 

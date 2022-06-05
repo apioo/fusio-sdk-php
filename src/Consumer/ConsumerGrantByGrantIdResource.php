@@ -1,6 +1,6 @@
 <?php
 /**
- * ConsumerGrantByGrantIdResource generated on 2022-05-07
+ * ConsumerGrantByGrantIdResource generated on 2022-06-05
  * @see https://sdkgen.app
  */
 

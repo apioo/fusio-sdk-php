@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendAppTokenByTokenIdResource generated on 2022-05-07
+ * BackendAppTokenByTokenIdResource generated on 2022-06-05
  * @see https://sdkgen.app
  */
 

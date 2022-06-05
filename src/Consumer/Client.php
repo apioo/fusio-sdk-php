@@ -1,6 +1,6 @@
 <?php
 /**
- * Client generated on 2022-05-07
+ * Client generated on 2022-06-05
  * @see https://sdkgen.app
  */
 
@@ -72,6 +72,18 @@ class Client extends ClientAbstract
     public function consumerPlan(): ConsumerPlanGroup
     {
         return new ConsumerPlanGroup(
+            $this->baseUrl,
+            $this->newHttpClient(),
+            $this->schemaManager
+        );
+    }
+
+    /**
+     * Tag: consumer.payment
+     */
+    public function consumerPayment(): ConsumerPaymentGroup
+    {
+        return new ConsumerPaymentGroup(
             $this->baseUrl,
             $this->newHttpClient(),
             $this->schemaManager

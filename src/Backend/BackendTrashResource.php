@@ -1,16 +1,16 @@
 <?php
 /**
- * ConsumerPlanInvoiceResource generated on 2022-05-07
+ * BackendTrashResource generated on 2022-06-05
  * @see https://sdkgen.app
  */
 
-namespace Fusio\Sdk\Consumer;
+namespace Fusio\Sdk\Backend;
 
 use GuzzleHttp\Client;
 use PSX\Schema\SchemaManager;
 use Sdkgen\Client\ResourceAbstract;
 
-class ConsumerPlanInvoiceResource extends ResourceAbstract
+class BackendTrashResource extends ResourceAbstract
 {
     private string $url;
 
@@ -19,24 +19,22 @@ class ConsumerPlanInvoiceResource extends ResourceAbstract
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->url = $this->baseUrl . '/consumer/plan/invoice';
+        $this->url = $this->baseUrl . '/backend/trash';
     }
 
     /**
-     * @param Collection_Query|null $query
-     * @return Plan_Invoice_Collection
+     * @return Trash_Types
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionPlanInvoiceGetAll(?Collection_Query $query = null): Plan_Invoice_Collection
+    public function backendActionTrashGetTypes(): Trash_Types
     {
         $options = [
-            'query' => $query !== null ? (array) $query->jsonSerialize() : [],
         ];
 
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Plan_Invoice_Collection::class);
+        return $this->parse($data, Trash_Types::class);
     }
 
 }

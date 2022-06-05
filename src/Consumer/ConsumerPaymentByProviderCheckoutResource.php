@@ -1,6 +1,6 @@
 <?php
 /**
- * ConsumerTransactionPrepareByProviderResource generated on 2022-05-07
+ * ConsumerPaymentByProviderCheckoutResource generated on 2022-06-05
  * @see https://sdkgen.app
  */
 
@@ -10,7 +10,7 @@ use GuzzleHttp\Client;
 use PSX\Schema\SchemaManager;
 use Sdkgen\Client\ResourceAbstract;
 
-class ConsumerTransactionPrepareByProviderResource extends ResourceAbstract
+class ConsumerPaymentByProviderCheckoutResource extends ResourceAbstract
 {
     private string $url;
 
@@ -21,15 +21,15 @@ class ConsumerTransactionPrepareByProviderResource extends ResourceAbstract
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
         $this->provider = $provider;
-        $this->url = $this->baseUrl . '/consumer/transaction/prepare/' . $provider . '';
+        $this->url = $this->baseUrl . '/consumer/payment/' . $provider . '/checkout';
     }
 
     /**
-     * @param Transaction_Prepare_Request $data
-     * @return Transaction_Prepare_Response
+     * @param Payment_Checkout_Request $data
+     * @return Payment_Checkout_Response
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionTransactionPrepare(Transaction_Prepare_Request $data): Transaction_Prepare_Response
+    public function consumerActionPaymentCheckout(Payment_Checkout_Request $data): Payment_Checkout_Response
     {
         $options = [
             'json' => $data
@@ -38,7 +38,7 @@ class ConsumerTransactionPrepareByProviderResource extends ResourceAbstract
         $response = $this->httpClient->request('POST', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Transaction_Prepare_Response::class);
+        return $this->parse($data, Payment_Checkout_Response::class);
     }
 
 }

@@ -1,13 +1,13 @@
 <?php
 /**
- * ConsumerTransactionPrepareProviderPath generated on 2022-05-07
+ * ConsumerPaymentProviderPortalPath generated on 2022-06-05
  * @see https://sdkgen.app
  */
 
 namespace Fusio\Sdk\Consumer;
 
 
-class ConsumerTransactionPrepareProviderPath implements \JsonSerializable
+class ConsumerPaymentProviderPortalPath implements \JsonSerializable
 {
     protected ?string $provider = null;
     public function setProvider(?string $provider) : void

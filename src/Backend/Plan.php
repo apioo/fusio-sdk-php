@@ -1,6 +1,6 @@
 <?php
 /**
- * Plan generated on 2022-05-07
+ * Plan generated on 2022-06-05
  * @see https://sdkgen.app
  */
 
@@ -15,6 +15,11 @@ class Plan implements \JsonSerializable
     protected ?float $price = null;
     protected ?int $points = null;
     protected ?int $period = null;
+    protected ?string $externalId = null;
+    /**
+     * @var array<string>|null
+     */
+    protected ?array $scopes = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -63,9 +68,28 @@ class Plan implements \JsonSerializable
     {
         return $this->period;
     }
+    public function setExternalId(?string $externalId) : void
+    {
+        $this->externalId = $externalId;
+    }
+    public function getExternalId() : ?string
+    {
+        return $this->externalId;
+    }
+    /**
+     * @param array<string>|null $scopes
+     */
+    public function setScopes(?array $scopes) : void
+    {
+        $this->scopes = $scopes;
+    }
+    public function getScopes() : ?array
+    {
+        return $this->scopes;
+    }
     public function jsonSerialize() : \stdClass
     {
-        return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'description' => $this->description, 'price' => $this->price, 'points' => $this->points, 'period' => $this->period), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'description' => $this->description, 'price' => $this->price, 'points' => $this->points, 'period' => $this->period, 'externalId' => $this->externalId, 'scopes' => $this->scopes), static function ($value) : bool {
             return $value !== null;
         });
     }

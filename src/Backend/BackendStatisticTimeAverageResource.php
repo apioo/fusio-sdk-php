@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendStatisticTimeAverageResource generated on 2022-05-07
+ * BackendStatisticTimeAverageResource generated on 2022-06-05
  * @see https://sdkgen.app
  */
 

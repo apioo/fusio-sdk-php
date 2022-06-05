@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendConnectionByConnectionIdResource generated on 2022-05-07
+ * BackendConnectionByConnectionIdResource generated on 2022-06-05
  * @see https://sdkgen.app
  */
 

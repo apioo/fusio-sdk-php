@@ -1,6 +1,6 @@
 <?php
 /**
- * BackendCronjobResource generated on 2022-05-07
+ * BackendCronjobResource generated on 2022-06-05
  * @see https://sdkgen.app
  */
 

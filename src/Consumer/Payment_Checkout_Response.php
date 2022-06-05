@@ -1,13 +1,13 @@
 <?php
 /**
- * Transaction_Prepare_Response generated on 2022-05-07
+ * Payment_Checkout_Response generated on 2022-06-05
  * @see https://sdkgen.app
  */
 
 namespace Fusio\Sdk\Consumer;
 
 
-class Transaction_Prepare_Response implements \JsonSerializable
+class Payment_Checkout_Response implements \JsonSerializable
 {
     protected ?string $approvalUrl = null;
     public function setApprovalUrl(?string $approvalUrl) : void

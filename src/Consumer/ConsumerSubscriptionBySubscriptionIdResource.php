@@ -1,6 +1,6 @@
 <?php
 /**
- * ConsumerSubscriptionBySubscriptionIdResource generated on 2022-05-07
+ * ConsumerSubscriptionBySubscriptionIdResource generated on 2022-06-05
  * @see https://sdkgen.app
  */
 
