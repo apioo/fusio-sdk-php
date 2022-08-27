@@ -10,8 +10,9 @@ namespace Fusio\Sdk\Consumer;
 class User_JWT implements \JsonSerializable
 {
     protected ?string $token = null;
-    protected ?string $expires_in = null;
+    protected ?int $expires_in = null;
     protected ?string $refresh_token = null;
+    protected ?string $scope = null;
     public function setToken(?string $token) : void
     {
         $this->token = $token;
@@ -20,11 +21,11 @@ class User_JWT implements \JsonSerializable
     {
         return $this->token;
     }
-    public function setExpires_in(?string $expires_in) : void
+    public function setExpires_in(?int $expires_in) : void
     {
         $this->expires_in = $expires_in;
     }
-    public function getExpires_in() : ?string
+    public function getExpires_in() : ?int
     {
         return $this->expires_in;
     }
@@ -36,9 +37,17 @@ class User_JWT implements \JsonSerializable
     {
         return $this->refresh_token;
     }
+    public function setScope(?string $scope) : void
+    {
+        $this->scope = $scope;
+    }
+    public function getScope() : ?string
+    {
+        return $this->scope;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('token' => $this->token, 'expires_in' => $this->expires_in, 'refresh_token' => $this->refresh_token), static function ($value) : bool {
+        return (object) array_filter(array('token' => $this->token, 'expires_in' => $this->expires_in, 'refresh_token' => $this->refresh_token, 'scope' => $this->scope), static function ($value) : bool {
             return $value !== null;
         });
     }

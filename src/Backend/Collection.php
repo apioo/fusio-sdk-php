@@ -13,6 +13,7 @@ class Collection implements \JsonSerializable
 {
     protected ?int $totalResults = null;
     protected ?int $startIndex = null;
+    protected ?int $itemsPerPage = null;
     /**
      * @var array<T>|null
      */
@@ -33,6 +34,14 @@ class Collection implements \JsonSerializable
     {
         return $this->startIndex;
     }
+    public function setItemsPerPage(?int $itemsPerPage) : void
+    {
+        $this->itemsPerPage = $itemsPerPage;
+    }
+    public function getItemsPerPage() : ?int
+    {
+        return $this->itemsPerPage;
+    }
     /**
      * @param array<T>|null $entry
      */
@@ -46,7 +55,7 @@ class Collection implements \JsonSerializable
     }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('totalResults' => $this->totalResults, 'startIndex' => $this->startIndex, 'entry' => $this->entry), static function ($value) : bool {
+        return (object) array_filter(array('totalResults' => $this->totalResults, 'startIndex' => $this->startIndex, 'itemsPerPage' => $this->itemsPerPage, 'entry' => $this->entry), static function ($value) : bool {
             return $value !== null;
         });
     }

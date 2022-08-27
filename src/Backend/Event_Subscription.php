@@ -13,6 +13,10 @@ class Event_Subscription implements \JsonSerializable
     protected ?int $eventId = null;
     protected ?int $userId = null;
     protected ?string $endpoint = null;
+    /**
+     * @var array<Event_Subscription_Response>|null
+     */
+    protected ?array $responses = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -45,9 +49,20 @@ class Event_Subscription implements \JsonSerializable
     {
         return $this->endpoint;
     }
+    /**
+     * @param array<Event_Subscription_Response>|null $responses
+     */
+    public function setResponses(?array $responses) : void
+    {
+        $this->responses = $responses;
+    }
+    public function getResponses() : ?array
+    {
+        return $this->responses;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'eventId' => $this->eventId, 'userId' => $this->userId, 'endpoint' => $this->endpoint), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'eventId' => $this->eventId, 'userId' => $this->userId, 'endpoint' => $this->endpoint, 'responses' => $this->responses), static function ($value) : bool {
             return $value !== null;
         });
     }

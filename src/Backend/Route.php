@@ -10,6 +10,7 @@ namespace Fusio\Sdk\Backend;
 class Route implements \JsonSerializable
 {
     protected ?int $id = null;
+    protected ?int $status = null;
     protected ?int $priority = null;
     protected ?string $path = null;
     protected ?string $controller = null;
@@ -28,6 +29,14 @@ class Route implements \JsonSerializable
     public function getId() : ?int
     {
         return $this->id;
+    }
+    public function setStatus(?int $status) : void
+    {
+        $this->status = $status;
+    }
+    public function getStatus() : ?int
+    {
+        return $this->status;
     }
     public function setPriority(?int $priority) : void
     {
@@ -77,7 +86,7 @@ class Route implements \JsonSerializable
     }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'priority' => $this->priority, 'path' => $this->path, 'controller' => $this->controller, 'scopes' => $this->scopes, 'config' => $this->config), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'status' => $this->status, 'priority' => $this->priority, 'path' => $this->path, 'controller' => $this->controller, 'scopes' => $this->scopes, 'config' => $this->config), static function ($value) : bool {
             return $value !== null;
         });
     }
