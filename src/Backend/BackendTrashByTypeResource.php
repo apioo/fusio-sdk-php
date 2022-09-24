@@ -25,11 +25,11 @@ class BackendTrashByTypeResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Query|null $query
-     * @return Trash_Data_Collection
+     * @param CollectionQuery|null $query
+     * @return TrashDataCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionTrashGetAll(?Collection_Query $query = null): Trash_Data_Collection
+    public function backendActionTrashGetAll(?CollectionQuery $query = null): TrashDataCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -38,15 +38,15 @@ class BackendTrashByTypeResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Trash_Data_Collection::class);
+        return $this->parse($data, TrashDataCollection::class);
     }
 
     /**
-     * @param Trash_Restore $data
+     * @param TrashRestore $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionTrashRestore(Trash_Restore $data): Message
+    public function backendActionTrashRestore(TrashRestore $data): Message
     {
         $options = [
             'json' => $data

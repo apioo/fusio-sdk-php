@@ -23,11 +23,11 @@ class BackendPageResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Query|null $query
-     * @return Page_Collection
+     * @param CollectionQuery|null $query
+     * @return PageCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionPageGetAll(?Collection_Query $query = null): Page_Collection
+    public function backendActionPageGetAll(?CollectionQuery $query = null): PageCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,15 +36,15 @@ class BackendPageResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Page_Collection::class);
+        return $this->parse($data, PageCollection::class);
     }
 
     /**
-     * @param Page_Create $data
+     * @param PageCreate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionPageCreate(Page_Create $data): Message
+    public function backendActionPageCreate(PageCreate $data): Message
     {
         $options = [
             'json' => $data

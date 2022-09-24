@@ -23,11 +23,11 @@ class BackendAppTokenResource extends ResourceAbstract
     }
 
     /**
-     * @param Backend_App_Token_Collection_Query|null $query
-     * @return App_Token_Collection
+     * @param BackendAppTokenCollectionQuery|null $query
+     * @return AppTokenCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionAppTokenGetAll(?Backend_App_Token_Collection_Query $query = null): App_Token_Collection
+    public function backendActionAppTokenGetAll(?BackendAppTokenCollectionQuery $query = null): AppTokenCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,7 +36,7 @@ class BackendAppTokenResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, App_Token_Collection::class);
+        return $this->parse($data, AppTokenCollection::class);
     }
 
 }

@@ -14,14 +14,14 @@ class BackendAuditByAuditIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $audit_id;
+    private string $auditId;
 
-    public function __construct(string $audit_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $auditId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->audit_id = $audit_id;
-        $this->url = $this->baseUrl . '/backend/audit/' . $audit_id . '';
+        $this->auditId = $auditId;
+        $this->url = $this->baseUrl . '/backend/audit/' . $auditId . '';
     }
 
     /**

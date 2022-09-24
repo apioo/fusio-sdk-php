@@ -23,11 +23,11 @@ class BackendRoleResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Query|null $query
-     * @return Role_Collection
+     * @param CollectionQuery|null $query
+     * @return RoleCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionRoleGetAll(?Collection_Query $query = null): Role_Collection
+    public function backendActionRoleGetAll(?CollectionQuery $query = null): RoleCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,15 +36,15 @@ class BackendRoleResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Role_Collection::class);
+        return $this->parse($data, RoleCollection::class);
     }
 
     /**
-     * @param Role_Create $data
+     * @param RoleCreate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionRoleCreate(Role_Create $data): Message
+    public function backendActionRoleCreate(RoleCreate $data): Message
     {
         $options = [
             'json' => $data

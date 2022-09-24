@@ -14,14 +14,14 @@ class BackendPlanByPlanIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $plan_id;
+    private string $planId;
 
-    public function __construct(string $plan_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $planId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->plan_id = $plan_id;
-        $this->url = $this->baseUrl . '/backend/plan/' . $plan_id . '';
+        $this->planId = $planId;
+        $this->url = $this->baseUrl . '/backend/plan/' . $planId . '';
     }
 
     /**
@@ -40,11 +40,11 @@ class BackendPlanByPlanIdResource extends ResourceAbstract
     }
 
     /**
-     * @param Plan_Update $data
+     * @param PlanUpdate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionPlanUpdate(Plan_Update $data): Message
+    public function backendActionPlanUpdate(PlanUpdate $data): Message
     {
         $options = [
             'json' => $data

@@ -23,11 +23,11 @@ class BackendCronjobResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Category_Query|null $query
-     * @return Cronjob_Collection
+     * @param CollectionCategoryQuery|null $query
+     * @return CronjobCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionCronjobGetAll(?Collection_Category_Query $query = null): Cronjob_Collection
+    public function backendActionCronjobGetAll(?CollectionCategoryQuery $query = null): CronjobCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,15 +36,15 @@ class BackendCronjobResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Cronjob_Collection::class);
+        return $this->parse($data, CronjobCollection::class);
     }
 
     /**
-     * @param Cronjob_Create $data
+     * @param CronjobCreate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionCronjobCreate(Cronjob_Create $data): Message
+    public function backendActionCronjobCreate(CronjobCreate $data): Message
     {
         $options = [
             'json' => $data

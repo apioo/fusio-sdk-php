@@ -23,11 +23,11 @@ class ConsumerPasswordResetResource extends ResourceAbstract
     }
 
     /**
-     * @param User_Email $data
+     * @param UserEmail $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionUserResetPasswordRequest(User_Email $data): Message
+    public function consumerActionUserResetPasswordRequest(UserEmail $data): Message
     {
         $options = [
             'json' => $data
@@ -40,11 +40,11 @@ class ConsumerPasswordResetResource extends ResourceAbstract
     }
 
     /**
-     * @param User_PasswordReset $data
+     * @param UserPasswordReset $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionUserResetPasswordExecute(User_PasswordReset $data): Message
+    public function consumerActionUserResetPasswordExecute(UserPasswordReset $data): Message
     {
         $options = [
             'json' => $data

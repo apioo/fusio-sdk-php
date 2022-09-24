@@ -14,16 +14,16 @@ class BackendAppByAppIdTokenAndTokenIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $app_id;
-    private string $token_id;
+    private string $appId;
+    private string $tokenId;
 
-    public function __construct(string $app_id, string $token_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $appId, string $tokenId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->app_id = $app_id;
-        $this->token_id = $token_id;
-        $this->url = $this->baseUrl . '/backend/app/' . $app_id . '/token/' . $token_id . '';
+        $this->appId = $appId;
+        $this->tokenId = $tokenId;
+        $this->url = $this->baseUrl . '/backend/app/' . $appId . '/token/' . $tokenId . '';
     }
 
     /**

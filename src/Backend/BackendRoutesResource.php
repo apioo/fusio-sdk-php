@@ -23,11 +23,11 @@ class BackendRoutesResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Category_Query|null $query
-     * @return Route_Collection
+     * @param CollectionCategoryQuery|null $query
+     * @return RouteCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionRouteGetAll(?Collection_Category_Query $query = null): Route_Collection
+    public function backendActionRouteGetAll(?CollectionCategoryQuery $query = null): RouteCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,15 +36,15 @@ class BackendRoutesResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Route_Collection::class);
+        return $this->parse($data, RouteCollection::class);
     }
 
     /**
-     * @param Route_Create $data
+     * @param RouteCreate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionRouteCreate(Route_Create $data): Message
+    public function backendActionRouteCreate(RouteCreate $data): Message
     {
         $options = [
             'json' => $data

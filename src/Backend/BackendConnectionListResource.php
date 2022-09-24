@@ -23,10 +23,10 @@ class BackendConnectionListResource extends ResourceAbstract
     }
 
     /**
-     * @return Connection_Index
+     * @return ConnectionIndex
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionConnectionGetIndex(): Connection_Index
+    public function backendActionConnectionGetIndex(): ConnectionIndex
     {
         $options = [
         ];
@@ -34,7 +34,7 @@ class BackendConnectionListResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Connection_Index::class);
+        return $this->parse($data, ConnectionIndex::class);
     }
 
 }

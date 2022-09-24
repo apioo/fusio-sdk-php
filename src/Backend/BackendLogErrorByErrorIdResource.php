@@ -14,21 +14,21 @@ class BackendLogErrorByErrorIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $error_id;
+    private string $errorId;
 
-    public function __construct(string $error_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $errorId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->error_id = $error_id;
-        $this->url = $this->baseUrl . '/backend/log/error/' . $error_id . '';
+        $this->errorId = $errorId;
+        $this->url = $this->baseUrl . '/backend/log/error/' . $errorId . '';
     }
 
     /**
-     * @return Log_Error
+     * @return LogError
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionLogErrorGet(): Log_Error
+    public function backendActionLogErrorGet(): LogError
     {
         $options = [
         ];
@@ -36,7 +36,7 @@ class BackendLogErrorByErrorIdResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Log_Error::class);
+        return $this->parse($data, LogError::class);
     }
 
 }

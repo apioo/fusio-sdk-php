@@ -23,11 +23,11 @@ class BackendLogErrorResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Query|null $query
-     * @return Log_Error_Collection
+     * @param CollectionQuery|null $query
+     * @return LogErrorCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionLogErrorGetAll(?Collection_Query $query = null): Log_Error_Collection
+    public function backendActionLogErrorGetAll(?CollectionQuery $query = null): LogErrorCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,7 +36,7 @@ class BackendLogErrorResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Log_Error_Collection::class);
+        return $this->parse($data, LogErrorCollection::class);
     }
 
 }

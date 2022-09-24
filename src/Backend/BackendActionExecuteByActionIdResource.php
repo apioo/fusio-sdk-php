@@ -14,22 +14,22 @@ class BackendActionExecuteByActionIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $action_id;
+    private string $actionId;
 
-    public function __construct(string $action_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $actionId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->action_id = $action_id;
-        $this->url = $this->baseUrl . '/backend/action/execute/' . $action_id . '';
+        $this->actionId = $actionId;
+        $this->url = $this->baseUrl . '/backend/action/execute/' . $actionId . '';
     }
 
     /**
-     * @param Action_Execute_Request $data
-     * @return Action_Execute_Response
+     * @param ActionExecuteRequest $data
+     * @return ActionExecuteResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionActionExecute(Action_Execute_Request $data): Action_Execute_Response
+    public function backendActionActionExecute(ActionExecuteRequest $data): ActionExecuteResponse
     {
         $options = [
             'json' => $data
@@ -38,7 +38,7 @@ class BackendActionExecuteByActionIdResource extends ResourceAbstract
         $response = $this->httpClient->request('POST', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Action_Execute_Response::class);
+        return $this->parse($data, ActionExecuteResponse::class);
     }
 
 }

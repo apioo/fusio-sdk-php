@@ -14,23 +14,23 @@ class BackendConnectionByConnectionIdIntrospectionAndEntityResource extends Reso
 {
     private string $url;
 
-    private string $connection_id;
+    private string $connectionId;
     private string $entity;
 
-    public function __construct(string $connection_id, string $entity, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $connectionId, string $entity, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->connection_id = $connection_id;
+        $this->connectionId = $connectionId;
         $this->entity = $entity;
-        $this->url = $this->baseUrl . '/backend/connection/' . $connection_id . '/introspection/' . $entity . '';
+        $this->url = $this->baseUrl . '/backend/connection/' . $connectionId . '/introspection/' . $entity . '';
     }
 
     /**
-     * @return Connection_Introspection_Entity
+     * @return ConnectionIntrospectionEntity
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionConnectionIntrospectionGetEntity(): Connection_Introspection_Entity
+    public function backendActionConnectionIntrospectionGetEntity(): ConnectionIntrospectionEntity
     {
         $options = [
         ];
@@ -38,7 +38,7 @@ class BackendConnectionByConnectionIdIntrospectionAndEntityResource extends Reso
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Connection_Introspection_Entity::class);
+        return $this->parse($data, ConnectionIntrospectionEntity::class);
     }
 
 }

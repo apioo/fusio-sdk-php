@@ -23,11 +23,11 @@ class ConsumerScopeResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Query|null $query
-     * @return Scope_Collection
+     * @param CollectionQuery|null $query
+     * @return ScopeCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionScopeGetAll(?Collection_Query $query = null): Scope_Collection
+    public function consumerActionScopeGetAll(?CollectionQuery $query = null): ScopeCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,7 +36,7 @@ class ConsumerScopeResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Scope_Collection::class);
+        return $this->parse($data, ScopeCollection::class);
     }
 
 }

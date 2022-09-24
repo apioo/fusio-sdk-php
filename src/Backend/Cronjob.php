@@ -18,7 +18,7 @@ class Cronjob implements \JsonSerializable
     protected ?\DateTime $executeDate = null;
     protected ?int $exitCode = null;
     /**
-     * @var array<Cronjob_Error>|null
+     * @var array<CronjobError>|null
      */
     protected ?array $errors = null;
     public function setId(?int $id) : void
@@ -70,7 +70,7 @@ class Cronjob implements \JsonSerializable
         return $this->exitCode;
     }
     /**
-     * @param array<Cronjob_Error>|null $errors
+     * @param array<CronjobError>|null $errors
      */
     public function setErrors(?array $errors) : void
     {

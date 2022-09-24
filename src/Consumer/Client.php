@@ -19,11 +19,13 @@ class Client extends ClientAbstract
     }
 
     /**
-     * Tag: consumer.user
+     * Endpoint: /consumer/password_reset
+     *
+     * 
      */
-    public function consumerUser(): ConsumerUserGroup
+    public function getConsumerPasswordReset(): ConsumerPasswordResetResource
     {
-        return new ConsumerUserGroup(
+        return new ConsumerPasswordResetResource(
             $this->baseUrl,
             $this->newHttpClient(),
             $this->schemaManager
@@ -31,11 +33,13 @@ class Client extends ClientAbstract
     }
 
     /**
-     * Tag: consumer.transaction
+     * Endpoint: /consumer/register
+     *
+     * 
      */
-    public function consumerTransaction(): ConsumerTransactionGroup
+    public function getConsumerRegister(): ConsumerRegisterResource
     {
-        return new ConsumerTransactionGroup(
+        return new ConsumerRegisterResource(
             $this->baseUrl,
             $this->newHttpClient(),
             $this->schemaManager
@@ -43,11 +47,14 @@ class Client extends ClientAbstract
     }
 
     /**
-     * Tag: consumer.subscription
+     * Endpoint: /consumer/provider/:provider
+     *
+     * 
      */
-    public function consumerSubscription(): ConsumerSubscriptionGroup
+    public function getConsumerProviderByProvider(string $provider): ConsumerProviderByProviderResource
     {
-        return new ConsumerSubscriptionGroup(
+        return new ConsumerProviderByProviderResource(
+            $provider,
             $this->baseUrl,
             $this->newHttpClient(),
             $this->schemaManager
@@ -55,11 +62,13 @@ class Client extends ClientAbstract
     }
 
     /**
-     * Tag: consumer.scope
+     * Endpoint: /consumer/login
+     *
+     * 
      */
-    public function consumerScope(): ConsumerScopeGroup
+    public function getConsumerLogin(): ConsumerLoginResource
     {
-        return new ConsumerScopeGroup(
+        return new ConsumerLoginResource(
             $this->baseUrl,
             $this->newHttpClient(),
             $this->schemaManager
@@ -67,11 +76,13 @@ class Client extends ClientAbstract
     }
 
     /**
-     * Tag: consumer.plan
+     * Endpoint: /consumer/authorize
+     *
+     * 
      */
-    public function consumerPlan(): ConsumerPlanGroup
+    public function getConsumerAuthorize(): ConsumerAuthorizeResource
     {
-        return new ConsumerPlanGroup(
+        return new ConsumerAuthorizeResource(
             $this->baseUrl,
             $this->newHttpClient(),
             $this->schemaManager
@@ -79,11 +90,13 @@ class Client extends ClientAbstract
     }
 
     /**
-     * Tag: consumer.payment
+     * Endpoint: /consumer/activate
+     *
+     * 
      */
-    public function consumerPayment(): ConsumerPaymentGroup
+    public function getConsumerActivate(): ConsumerActivateResource
     {
-        return new ConsumerPaymentGroup(
+        return new ConsumerActivateResource(
             $this->baseUrl,
             $this->newHttpClient(),
             $this->schemaManager
@@ -91,11 +104,13 @@ class Client extends ClientAbstract
     }
 
     /**
-     * Tag: consumer.page
+     * Endpoint: /consumer/account/change_password
+     *
+     * 
      */
-    public function consumerPage(): ConsumerPageGroup
+    public function getConsumerAccountChangePassword(): ConsumerAccountChangePasswordResource
     {
-        return new ConsumerPageGroup(
+        return new ConsumerAccountChangePasswordResource(
             $this->baseUrl,
             $this->newHttpClient(),
             $this->schemaManager
@@ -103,11 +118,13 @@ class Client extends ClientAbstract
     }
 
     /**
-     * Tag: consumer.log
+     * Endpoint: /consumer/account
+     *
+     * 
      */
-    public function consumerLog(): ConsumerLogGroup
+    public function getConsumerAccount(): ConsumerAccountResource
     {
-        return new ConsumerLogGroup(
+        return new ConsumerAccountResource(
             $this->baseUrl,
             $this->newHttpClient(),
             $this->schemaManager
@@ -115,11 +132,14 @@ class Client extends ClientAbstract
     }
 
     /**
-     * Tag: consumer.grant
+     * Endpoint: /consumer/transaction/$transaction_id<[0-9]+>
+     *
+     * 
      */
-    public function consumerGrant(): ConsumerGrantGroup
+    public function getConsumerTransactionByTransactionId(string $transactionId): ConsumerTransactionByTransactionIdResource
     {
-        return new ConsumerGrantGroup(
+        return new ConsumerTransactionByTransactionIdResource(
+            $transactionId,
             $this->baseUrl,
             $this->newHttpClient(),
             $this->schemaManager
@@ -127,11 +147,13 @@ class Client extends ClientAbstract
     }
 
     /**
-     * Tag: consumer.event
+     * Endpoint: /consumer/transaction
+     *
+     * 
      */
-    public function consumerEvent(): ConsumerEventGroup
+    public function getConsumerTransaction(): ConsumerTransactionResource
     {
-        return new ConsumerEventGroup(
+        return new ConsumerTransactionResource(
             $this->baseUrl,
             $this->newHttpClient(),
             $this->schemaManager
@@ -139,11 +161,231 @@ class Client extends ClientAbstract
     }
 
     /**
-     * Tag: consumer.app
+     * Endpoint: /consumer/subscription/$subscription_id<[0-9]+>
+     *
+     * 
      */
-    public function consumerApp(): ConsumerAppGroup
+    public function getConsumerSubscriptionBySubscriptionId(string $subscriptionId): ConsumerSubscriptionBySubscriptionIdResource
     {
-        return new ConsumerAppGroup(
+        return new ConsumerSubscriptionBySubscriptionIdResource(
+            $subscriptionId,
+            $this->baseUrl,
+            $this->newHttpClient(),
+            $this->schemaManager
+        );
+    }
+
+    /**
+     * Endpoint: /consumer/subscription
+     *
+     * 
+     */
+    public function getConsumerSubscription(): ConsumerSubscriptionResource
+    {
+        return new ConsumerSubscriptionResource(
+            $this->baseUrl,
+            $this->newHttpClient(),
+            $this->schemaManager
+        );
+    }
+
+    /**
+     * Endpoint: /consumer/scope
+     *
+     * 
+     */
+    public function getConsumerScope(): ConsumerScopeResource
+    {
+        return new ConsumerScopeResource(
+            $this->baseUrl,
+            $this->newHttpClient(),
+            $this->schemaManager
+        );
+    }
+
+    /**
+     * Endpoint: /consumer/plan/$plan_id<[0-9]+>
+     *
+     * 
+     */
+    public function getConsumerPlanByPlanId(string $planId): ConsumerPlanByPlanIdResource
+    {
+        return new ConsumerPlanByPlanIdResource(
+            $planId,
+            $this->baseUrl,
+            $this->newHttpClient(),
+            $this->schemaManager
+        );
+    }
+
+    /**
+     * Endpoint: /consumer/plan
+     *
+     * 
+     */
+    public function getConsumerPlan(): ConsumerPlanResource
+    {
+        return new ConsumerPlanResource(
+            $this->baseUrl,
+            $this->newHttpClient(),
+            $this->schemaManager
+        );
+    }
+
+    /**
+     * Endpoint: /consumer/payment/:provider/checkout
+     *
+     * 
+     */
+    public function getConsumerPaymentByProviderCheckout(string $provider): ConsumerPaymentByProviderCheckoutResource
+    {
+        return new ConsumerPaymentByProviderCheckoutResource(
+            $provider,
+            $this->baseUrl,
+            $this->newHttpClient(),
+            $this->schemaManager
+        );
+    }
+
+    /**
+     * Endpoint: /consumer/payment/:provider/portal
+     *
+     * 
+     */
+    public function getConsumerPaymentByProviderPortal(string $provider): ConsumerPaymentByProviderPortalResource
+    {
+        return new ConsumerPaymentByProviderPortalResource(
+            $provider,
+            $this->baseUrl,
+            $this->newHttpClient(),
+            $this->schemaManager
+        );
+    }
+
+    /**
+     * Endpoint: /consumer/page/:page_id
+     *
+     * 
+     */
+    public function getConsumerPageByPageId(string $pageId): ConsumerPageByPageIdResource
+    {
+        return new ConsumerPageByPageIdResource(
+            $pageId,
+            $this->baseUrl,
+            $this->newHttpClient(),
+            $this->schemaManager
+        );
+    }
+
+    /**
+     * Endpoint: /consumer/page
+     *
+     * 
+     */
+    public function getConsumerPage(): ConsumerPageResource
+    {
+        return new ConsumerPageResource(
+            $this->baseUrl,
+            $this->newHttpClient(),
+            $this->schemaManager
+        );
+    }
+
+    /**
+     * Endpoint: /consumer/log/$log_id<[0-9]+>
+     *
+     * 
+     */
+    public function getConsumerLogByLogId(string $logId): ConsumerLogByLogIdResource
+    {
+        return new ConsumerLogByLogIdResource(
+            $logId,
+            $this->baseUrl,
+            $this->newHttpClient(),
+            $this->schemaManager
+        );
+    }
+
+    /**
+     * Endpoint: /consumer/log
+     *
+     * 
+     */
+    public function getConsumerLog(): ConsumerLogResource
+    {
+        return new ConsumerLogResource(
+            $this->baseUrl,
+            $this->newHttpClient(),
+            $this->schemaManager
+        );
+    }
+
+    /**
+     * Endpoint: /consumer/grant/$grant_id<[0-9]+>
+     *
+     * 
+     */
+    public function getConsumerGrantByGrantId(string $grantId): ConsumerGrantByGrantIdResource
+    {
+        return new ConsumerGrantByGrantIdResource(
+            $grantId,
+            $this->baseUrl,
+            $this->newHttpClient(),
+            $this->schemaManager
+        );
+    }
+
+    /**
+     * Endpoint: /consumer/grant
+     *
+     * 
+     */
+    public function getConsumerGrant(): ConsumerGrantResource
+    {
+        return new ConsumerGrantResource(
+            $this->baseUrl,
+            $this->newHttpClient(),
+            $this->schemaManager
+        );
+    }
+
+    /**
+     * Endpoint: /consumer/event
+     *
+     * 
+     */
+    public function getConsumerEvent(): ConsumerEventResource
+    {
+        return new ConsumerEventResource(
+            $this->baseUrl,
+            $this->newHttpClient(),
+            $this->schemaManager
+        );
+    }
+
+    /**
+     * Endpoint: /consumer/app/$app_id<[0-9]+>
+     *
+     * 
+     */
+    public function getConsumerAppByAppId(string $appId): ConsumerAppByAppIdResource
+    {
+        return new ConsumerAppByAppIdResource(
+            $appId,
+            $this->baseUrl,
+            $this->newHttpClient(),
+            $this->schemaManager
+        );
+    }
+
+    /**
+     * Endpoint: /consumer/app
+     *
+     * 
+     */
+    public function getConsumerApp(): ConsumerAppResource
+    {
+        return new ConsumerAppResource(
             $this->baseUrl,
             $this->newHttpClient(),
             $this->schemaManager

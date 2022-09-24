@@ -23,11 +23,11 @@ class BackendEventSubscriptionResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Query|null $query
-     * @return Event_Subscription_Collection
+     * @param CollectionQuery|null $query
+     * @return EventSubscriptionCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionEventSubscriptionGetAll(?Collection_Query $query = null): Event_Subscription_Collection
+    public function backendActionEventSubscriptionGetAll(?CollectionQuery $query = null): EventSubscriptionCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,15 +36,15 @@ class BackendEventSubscriptionResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Event_Subscription_Collection::class);
+        return $this->parse($data, EventSubscriptionCollection::class);
     }
 
     /**
-     * @param Event_Subscription_Create $data
+     * @param EventSubscriptionCreate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionEventSubscriptionCreate(Event_Subscription_Create $data): Message
+    public function backendActionEventSubscriptionCreate(EventSubscriptionCreate $data): Message
     {
         $options = [
             'json' => $data

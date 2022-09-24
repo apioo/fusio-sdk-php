@@ -23,11 +23,11 @@ class ConsumerEventResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Query|null $query
-     * @return Event_Collection
+     * @param CollectionQuery|null $query
+     * @return EventCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionEventGetAll(?Collection_Query $query = null): Event_Collection
+    public function consumerActionEventGetAll(?CollectionQuery $query = null): EventCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,7 +36,7 @@ class ConsumerEventResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Event_Collection::class);
+        return $this->parse($data, EventCollection::class);
     }
 
 }

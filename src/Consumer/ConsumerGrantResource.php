@@ -23,11 +23,11 @@ class ConsumerGrantResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Query|null $query
-     * @return Grant_Collection
+     * @param CollectionQuery|null $query
+     * @return GrantCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionGrantGetAll(?Collection_Query $query = null): Grant_Collection
+    public function consumerActionGrantGetAll(?CollectionQuery $query = null): GrantCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,7 +36,7 @@ class ConsumerGrantResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Grant_Collection::class);
+        return $this->parse($data, GrantCollection::class);
     }
 
 }

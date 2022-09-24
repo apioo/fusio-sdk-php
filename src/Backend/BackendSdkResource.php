@@ -23,10 +23,10 @@ class BackendSdkResource extends ResourceAbstract
     }
 
     /**
-     * @return Sdk_Response
+     * @return SdkResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionSdkGetAll(): Sdk_Response
+    public function backendActionSdkGetAll(): SdkResponse
     {
         $options = [
         ];
@@ -34,15 +34,15 @@ class BackendSdkResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Sdk_Response::class);
+        return $this->parse($data, SdkResponse::class);
     }
 
     /**
-     * @param Sdk_Generate $data
+     * @param SdkGenerate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionSdkGenerate(Sdk_Generate $data): Message
+    public function backendActionSdkGenerate(SdkGenerate $data): Message
     {
         $options = [
             'json' => $data

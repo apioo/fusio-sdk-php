@@ -14,21 +14,21 @@ class BackendSchemaPreviewBySchemaIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $schema_id;
+    private string $schemaId;
 
-    public function __construct(string $schema_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $schemaId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->schema_id = $schema_id;
-        $this->url = $this->baseUrl . '/backend/schema/preview/' . $schema_id . '';
+        $this->schemaId = $schemaId;
+        $this->url = $this->baseUrl . '/backend/schema/preview/' . $schemaId . '';
     }
 
     /**
-     * @return Schema_Preview_Response
+     * @return SchemaPreviewResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionSchemaGetPreview(): Schema_Preview_Response
+    public function backendActionSchemaGetPreview(): SchemaPreviewResponse
     {
         $options = [
         ];
@@ -36,7 +36,7 @@ class BackendSchemaPreviewBySchemaIdResource extends ResourceAbstract
         $response = $this->httpClient->request('POST', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Schema_Preview_Response::class);
+        return $this->parse($data, SchemaPreviewResponse::class);
     }
 
 }

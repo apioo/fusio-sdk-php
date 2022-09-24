@@ -23,11 +23,11 @@ class BackendStatisticIssuedTokensResource extends ResourceAbstract
     }
 
     /**
-     * @param Backend_App_Token_Collection_Query|null $query
-     * @return Statistic_Chart
+     * @param BackendAppTokenCollectionQuery|null $query
+     * @return StatisticChart
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionStatisticGetIssuedTokens(?Backend_App_Token_Collection_Query $query = null): Statistic_Chart
+    public function backendActionStatisticGetIssuedTokens(?BackendAppTokenCollectionQuery $query = null): StatisticChart
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,7 +36,7 @@ class BackendStatisticIssuedTokensResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Statistic_Chart::class);
+        return $this->parse($data, StatisticChart::class);
     }
 
 }

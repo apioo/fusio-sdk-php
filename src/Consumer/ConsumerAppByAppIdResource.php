@@ -14,14 +14,14 @@ class ConsumerAppByAppIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $app_id;
+    private string $appId;
 
-    public function __construct(string $app_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $appId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->app_id = $app_id;
-        $this->url = $this->baseUrl . '/consumer/app/' . $app_id . '';
+        $this->appId = $appId;
+        $this->url = $this->baseUrl . '/consumer/app/' . $appId . '';
     }
 
     /**
@@ -40,11 +40,11 @@ class ConsumerAppByAppIdResource extends ResourceAbstract
     }
 
     /**
-     * @param App_Update $data
+     * @param AppUpdate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionAppUpdate(App_Update $data): Message
+    public function consumerActionAppUpdate(AppUpdate $data): Message
     {
         $options = [
             'json' => $data

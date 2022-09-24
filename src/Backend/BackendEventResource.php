@@ -23,11 +23,11 @@ class BackendEventResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Category_Query|null $query
-     * @return Event_Collection
+     * @param CollectionCategoryQuery|null $query
+     * @return EventCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionEventGetAll(?Collection_Category_Query $query = null): Event_Collection
+    public function backendActionEventGetAll(?CollectionCategoryQuery $query = null): EventCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,15 +36,15 @@ class BackendEventResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Event_Collection::class);
+        return $this->parse($data, EventCollection::class);
     }
 
     /**
-     * @param Event_Create $data
+     * @param EventCreate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionEventCreate(Event_Create $data): Message
+    public function backendActionEventCreate(EventCreate $data): Message
     {
         $options = [
             'json' => $data

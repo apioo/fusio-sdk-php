@@ -23,10 +23,10 @@ class ConsumerAccountResource extends ResourceAbstract
     }
 
     /**
-     * @return User_Account
+     * @return UserAccount
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionUserGet(): User_Account
+    public function consumerActionUserGet(): UserAccount
     {
         $options = [
         ];
@@ -34,15 +34,15 @@ class ConsumerAccountResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, User_Account::class);
+        return $this->parse($data, UserAccount::class);
     }
 
     /**
-     * @param User_Account $data
+     * @param UserAccount $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionUserUpdate(User_Account $data): Message
+    public function consumerActionUserUpdate(UserAccount $data): Message
     {
         $options = [
             'json' => $data

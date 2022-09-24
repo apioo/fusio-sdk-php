@@ -14,14 +14,14 @@ class ConsumerGrantByGrantIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $grant_id;
+    private string $grantId;
 
-    public function __construct(string $grant_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $grantId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->grant_id = $grant_id;
-        $this->url = $this->baseUrl . '/consumer/grant/' . $grant_id . '';
+        $this->grantId = $grantId;
+        $this->url = $this->baseUrl . '/consumer/grant/' . $grantId . '';
     }
 
     /**

@@ -14,14 +14,14 @@ class BackendRoutesByRouteIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $route_id;
+    private string $routeId;
 
-    public function __construct(string $route_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $routeId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->route_id = $route_id;
-        $this->url = $this->baseUrl . '/backend/routes/' . $route_id . '';
+        $this->routeId = $routeId;
+        $this->url = $this->baseUrl . '/backend/routes/' . $routeId . '';
     }
 
     /**
@@ -40,11 +40,11 @@ class BackendRoutesByRouteIdResource extends ResourceAbstract
     }
 
     /**
-     * @param Route_Update $data
+     * @param RouteUpdate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionRouteUpdate(Route_Update $data): Message
+    public function backendActionRouteUpdate(RouteUpdate $data): Message
     {
         $options = [
             'json' => $data

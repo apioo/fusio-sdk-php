@@ -23,11 +23,11 @@ class ConsumerPageResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Query|null $query
-     * @return Page_Collection
+     * @param CollectionQuery|null $query
+     * @return PageCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionPageGetAll(?Collection_Query $query = null): Page_Collection
+    public function consumerActionPageGetAll(?CollectionQuery $query = null): PageCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,7 +36,7 @@ class ConsumerPageResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Page_Collection::class);
+        return $this->parse($data, PageCollection::class);
     }
 
 }

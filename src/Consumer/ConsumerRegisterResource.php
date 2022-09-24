@@ -23,11 +23,11 @@ class ConsumerRegisterResource extends ResourceAbstract
     }
 
     /**
-     * @param User_Register $data
+     * @param UserRegister $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionUserRegister(User_Register $data): Message
+    public function consumerActionUserRegister(UserRegister $data): Message
     {
         $options = [
             'json' => $data

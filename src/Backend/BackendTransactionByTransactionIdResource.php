@@ -14,14 +14,14 @@ class BackendTransactionByTransactionIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $transaction_id;
+    private string $transactionId;
 
-    public function __construct(string $transaction_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $transactionId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->transaction_id = $transaction_id;
-        $this->url = $this->baseUrl . '/backend/transaction/' . $transaction_id . '';
+        $this->transactionId = $transactionId;
+        $this->url = $this->baseUrl . '/backend/transaction/' . $transactionId . '';
     }
 
     /**

@@ -14,22 +14,22 @@ class ConsumerLogByLogIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $log_id;
+    private string $logId;
 
-    public function __construct(string $log_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $logId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->log_id = $log_id;
-        $this->url = $this->baseUrl . '/consumer/log/' . $log_id . '';
+        $this->logId = $logId;
+        $this->url = $this->baseUrl . '/consumer/log/' . $logId . '';
     }
 
     /**
-     * @param Collection_Query|null $query
+     * @param CollectionQuery|null $query
      * @return Log
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionLogGet(?Collection_Query $query = null): Log
+    public function consumerActionLogGet(?CollectionQuery $query = null): Log
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],

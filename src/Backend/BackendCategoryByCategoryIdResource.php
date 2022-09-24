@@ -14,14 +14,14 @@ class BackendCategoryByCategoryIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $category_id;
+    private string $categoryId;
 
-    public function __construct(string $category_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $categoryId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->category_id = $category_id;
-        $this->url = $this->baseUrl . '/backend/category/' . $category_id . '';
+        $this->categoryId = $categoryId;
+        $this->url = $this->baseUrl . '/backend/category/' . $categoryId . '';
     }
 
     /**
@@ -40,11 +40,11 @@ class BackendCategoryByCategoryIdResource extends ResourceAbstract
     }
 
     /**
-     * @param Category_Update $data
+     * @param CategoryUpdate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionCategoryUpdate(Category_Update $data): Message
+    public function backendActionCategoryUpdate(CategoryUpdate $data): Message
     {
         $options = [
             'json' => $data

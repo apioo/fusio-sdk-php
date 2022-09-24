@@ -23,11 +23,11 @@ class BackendRateResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Query|null $query
-     * @return Rate_Collection
+     * @param CollectionQuery|null $query
+     * @return RateCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionRateGetAll(?Collection_Query $query = null): Rate_Collection
+    public function backendActionRateGetAll(?CollectionQuery $query = null): RateCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,15 +36,15 @@ class BackendRateResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Rate_Collection::class);
+        return $this->parse($data, RateCollection::class);
     }
 
     /**
-     * @param Rate_Create $data
+     * @param RateCreate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionRateCreate(Rate_Create $data): Message
+    public function backendActionRateCreate(RateCreate $data): Message
     {
         $options = [
             'json' => $data

@@ -15,7 +15,7 @@ class Audit implements \JsonSerializable
     protected ?string $event = null;
     protected ?string $ip = null;
     protected ?string $message = null;
-    protected ?Audit_Object $content = null;
+    protected ?AuditObject $content = null;
     protected ?\DateTime $date = null;
     public function setId(?int $id) : void
     {
@@ -65,11 +65,11 @@ class Audit implements \JsonSerializable
     {
         return $this->message;
     }
-    public function setContent(?Audit_Object $content) : void
+    public function setContent(?AuditObject $content) : void
     {
         $this->content = $content;
     }
-    public function getContent() : ?Audit_Object
+    public function getContent() : ?AuditObject
     {
         return $this->content;
     }

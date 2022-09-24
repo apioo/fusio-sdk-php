@@ -23,11 +23,11 @@ class BackendUserResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Query|null $query
-     * @return User_Collection
+     * @param CollectionQuery|null $query
+     * @return UserCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionUserGetAll(?Collection_Query $query = null): User_Collection
+    public function backendActionUserGetAll(?CollectionQuery $query = null): UserCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,15 +36,15 @@ class BackendUserResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, User_Collection::class);
+        return $this->parse($data, UserCollection::class);
     }
 
     /**
-     * @param User_Create $data
+     * @param UserCreate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionUserCreate(User_Create $data): Message
+    public function backendActionUserCreate(UserCreate $data): Message
     {
         $options = [
             'json' => $data

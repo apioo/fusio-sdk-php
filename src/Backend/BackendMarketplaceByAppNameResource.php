@@ -14,21 +14,21 @@ class BackendMarketplaceByAppNameResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $app_name;
+    private string $appName;
 
-    public function __construct(string $app_name, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $appName, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->app_name = $app_name;
-        $this->url = $this->baseUrl . '/backend/marketplace/' . $app_name . '';
+        $this->appName = $appName;
+        $this->url = $this->baseUrl . '/backend/marketplace/' . $appName . '';
     }
 
     /**
-     * @return Marketplace_Local_App
+     * @return MarketplaceLocalApp
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionMarketplaceGet(): Marketplace_Local_App
+    public function backendActionMarketplaceGet(): MarketplaceLocalApp
     {
         $options = [
         ];
@@ -36,7 +36,7 @@ class BackendMarketplaceByAppNameResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Marketplace_Local_App::class);
+        return $this->parse($data, MarketplaceLocalApp::class);
     }
 
     /**

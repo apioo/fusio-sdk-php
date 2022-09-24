@@ -14,14 +14,14 @@ class ConsumerPlanByPlanIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $plan_id;
+    private string $planId;
 
-    public function __construct(string $plan_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $planId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->plan_id = $plan_id;
-        $this->url = $this->baseUrl . '/consumer/plan/' . $plan_id . '';
+        $this->planId = $planId;
+        $this->url = $this->baseUrl . '/consumer/plan/' . $planId . '';
     }
 
     /**

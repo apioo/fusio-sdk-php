@@ -23,11 +23,11 @@ class BackendScopeResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Category_Query|null $query
-     * @return Scope_Collection
+     * @param CollectionCategoryQuery|null $query
+     * @return ScopeCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionScopeGetAll(?Collection_Category_Query $query = null): Scope_Collection
+    public function backendActionScopeGetAll(?CollectionCategoryQuery $query = null): ScopeCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,15 +36,15 @@ class BackendScopeResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Scope_Collection::class);
+        return $this->parse($data, ScopeCollection::class);
     }
 
     /**
-     * @param Scope_Create $data
+     * @param ScopeCreate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionScopeCreate(Scope_Create $data): Message
+    public function backendActionScopeCreate(ScopeCreate $data): Message
     {
         $options = [
             'json' => $data

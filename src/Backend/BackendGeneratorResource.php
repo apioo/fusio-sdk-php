@@ -23,10 +23,10 @@ class BackendGeneratorResource extends ResourceAbstract
     }
 
     /**
-     * @return Generator_Index_Providers
+     * @return GeneratorIndexProviders
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionGeneratorIndex(): Generator_Index_Providers
+    public function backendActionGeneratorIndex(): GeneratorIndexProviders
     {
         $options = [
         ];
@@ -34,7 +34,7 @@ class BackendGeneratorResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Generator_Index_Providers::class);
+        return $this->parse($data, GeneratorIndexProviders::class);
     }
 
 }

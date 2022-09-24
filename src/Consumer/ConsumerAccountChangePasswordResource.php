@@ -23,11 +23,11 @@ class ConsumerAccountChangePasswordResource extends ResourceAbstract
     }
 
     /**
-     * @param Account_ChangePassword $data
+     * @param AccountChangePassword $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionUserChangePassword(Account_ChangePassword $data): Message
+    public function consumerActionUserChangePassword(AccountChangePassword $data): Message
     {
         $options = [
             'json' => $data

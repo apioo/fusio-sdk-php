@@ -23,11 +23,11 @@ class BackendPlanResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Query|null $query
-     * @return Plan_Collection
+     * @param CollectionQuery|null $query
+     * @return PlanCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionPlanGetAll(?Collection_Query $query = null): Plan_Collection
+    public function backendActionPlanGetAll(?CollectionQuery $query = null): PlanCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,15 +36,15 @@ class BackendPlanResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Plan_Collection::class);
+        return $this->parse($data, PlanCollection::class);
     }
 
     /**
-     * @param Plan_Create $data
+     * @param PlanCreate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionPlanCreate(Plan_Create $data): Message
+    public function backendActionPlanCreate(PlanCreate $data): Message
     {
         $options = [
             'json' => $data

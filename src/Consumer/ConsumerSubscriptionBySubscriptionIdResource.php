@@ -14,21 +14,21 @@ class ConsumerSubscriptionBySubscriptionIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $subscription_id;
+    private string $subscriptionId;
 
-    public function __construct(string $subscription_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $subscriptionId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->subscription_id = $subscription_id;
-        $this->url = $this->baseUrl . '/consumer/subscription/' . $subscription_id . '';
+        $this->subscriptionId = $subscriptionId;
+        $this->url = $this->baseUrl . '/consumer/subscription/' . $subscriptionId . '';
     }
 
     /**
-     * @return Event_Subscription
+     * @return EventSubscription
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionEventSubscriptionGet(): Event_Subscription
+    public function consumerActionEventSubscriptionGet(): EventSubscription
     {
         $options = [
         ];
@@ -36,15 +36,15 @@ class ConsumerSubscriptionBySubscriptionIdResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Event_Subscription::class);
+        return $this->parse($data, EventSubscription::class);
     }
 
     /**
-     * @param Event_Subscription_Update $data
+     * @param EventSubscriptionUpdate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionEventSubscriptionUpdate(Event_Subscription_Update $data): Message
+    public function consumerActionEventSubscriptionUpdate(EventSubscriptionUpdate $data): Message
     {
         $options = [
             'json' => $data

@@ -14,14 +14,14 @@ class BackendSchemaBySchemaIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $schema_id;
+    private string $schemaId;
 
-    public function __construct(string $schema_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $schemaId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->schema_id = $schema_id;
-        $this->url = $this->baseUrl . '/backend/schema/' . $schema_id . '';
+        $this->schemaId = $schemaId;
+        $this->url = $this->baseUrl . '/backend/schema/' . $schemaId . '';
     }
 
     /**
@@ -40,11 +40,11 @@ class BackendSchemaBySchemaIdResource extends ResourceAbstract
     }
 
     /**
-     * @param Schema_Update $data
+     * @param SchemaUpdate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionSchemaUpdate(Schema_Update $data): Message
+    public function backendActionSchemaUpdate(SchemaUpdate $data): Message
     {
         $options = [
             'json' => $data

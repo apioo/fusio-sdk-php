@@ -23,11 +23,11 @@ class ConsumerLoginResource extends ResourceAbstract
     }
 
     /**
-     * @param User_Login $data
-     * @return User_JWT
+     * @param UserLogin $data
+     * @return UserJWT
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionUserLogin(User_Login $data): User_JWT
+    public function consumerActionUserLogin(UserLogin $data): UserJWT
     {
         $options = [
             'json' => $data
@@ -36,15 +36,15 @@ class ConsumerLoginResource extends ResourceAbstract
         $response = $this->httpClient->request('POST', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, User_JWT::class);
+        return $this->parse($data, UserJWT::class);
     }
 
     /**
-     * @param User_Refresh $data
-     * @return User_JWT
+     * @param UserRefresh $data
+     * @return UserJWT
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionUserRefresh(User_Refresh $data): User_JWT
+    public function consumerActionUserRefresh(UserRefresh $data): UserJWT
     {
         $options = [
             'json' => $data
@@ -53,7 +53,7 @@ class ConsumerLoginResource extends ResourceAbstract
         $response = $this->httpClient->request('PUT', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, User_JWT::class);
+        return $this->parse($data, UserJWT::class);
     }
 
 }

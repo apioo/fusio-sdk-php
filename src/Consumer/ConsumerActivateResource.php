@@ -23,11 +23,11 @@ class ConsumerActivateResource extends ResourceAbstract
     }
 
     /**
-     * @param User_Activate $data
+     * @param UserActivate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionUserActivate(User_Activate $data): Message
+    public function consumerActionUserActivate(UserActivate $data): Message
     {
         $options = [
             'json' => $data

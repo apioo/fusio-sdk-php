@@ -14,22 +14,22 @@ class BackendSchemaFormBySchemaIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $schema_id;
+    private string $schemaId;
 
-    public function __construct(string $schema_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $schemaId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->schema_id = $schema_id;
-        $this->url = $this->baseUrl . '/backend/schema/form/' . $schema_id . '';
+        $this->schemaId = $schemaId;
+        $this->url = $this->baseUrl . '/backend/schema/form/' . $schemaId . '';
     }
 
     /**
-     * @param Schema_Form $data
+     * @param SchemaForm $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionSchemaForm(Schema_Form $data): Message
+    public function backendActionSchemaForm(SchemaForm $data): Message
     {
         $options = [
             'json' => $data

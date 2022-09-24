@@ -14,21 +14,21 @@ class BackendAppTokenByTokenIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $token_id;
+    private string $tokenId;
 
-    public function __construct(string $token_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $tokenId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->token_id = $token_id;
-        $this->url = $this->baseUrl . '/backend/app/token/' . $token_id . '';
+        $this->tokenId = $tokenId;
+        $this->url = $this->baseUrl . '/backend/app/token/' . $tokenId . '';
     }
 
     /**
-     * @return App_Token
+     * @return AppToken
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionAppTokenGet(): App_Token
+    public function backendActionAppTokenGet(): AppToken
     {
         $options = [
         ];
@@ -36,7 +36,7 @@ class BackendAppTokenByTokenIdResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, App_Token::class);
+        return $this->parse($data, AppToken::class);
     }
 
 }

@@ -14,14 +14,14 @@ class BackendActionByActionIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $action_id;
+    private string $actionId;
 
-    public function __construct(string $action_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $actionId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->action_id = $action_id;
-        $this->url = $this->baseUrl . '/backend/action/' . $action_id . '';
+        $this->actionId = $actionId;
+        $this->url = $this->baseUrl . '/backend/action/' . $actionId . '';
     }
 
     /**
@@ -40,11 +40,11 @@ class BackendActionByActionIdResource extends ResourceAbstract
     }
 
     /**
-     * @param Action_Update $data
+     * @param ActionUpdate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionActionUpdate(Action_Update $data): Message
+    public function backendActionActionUpdate(ActionUpdate $data): Message
     {
         $options = [
             'json' => $data

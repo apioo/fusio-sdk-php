@@ -23,10 +23,10 @@ class ConsumerAuthorizeResource extends ResourceAbstract
     }
 
     /**
-     * @return Authorize_Meta
+     * @return AuthorizeMeta
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionUserGetApp(): Authorize_Meta
+    public function consumerActionUserGetApp(): AuthorizeMeta
     {
         $options = [
         ];
@@ -34,15 +34,15 @@ class ConsumerAuthorizeResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Authorize_Meta::class);
+        return $this->parse($data, AuthorizeMeta::class);
     }
 
     /**
-     * @param Authorize_Request $data
-     * @return Authorize_Response
+     * @param AuthorizeRequest $data
+     * @return AuthorizeResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionUserAuthorize(Authorize_Request $data): Authorize_Response
+    public function consumerActionUserAuthorize(AuthorizeRequest $data): AuthorizeResponse
     {
         $options = [
             'json' => $data
@@ -51,7 +51,7 @@ class ConsumerAuthorizeResource extends ResourceAbstract
         $response = $this->httpClient->request('POST', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Authorize_Response::class);
+        return $this->parse($data, AuthorizeResponse::class);
     }
 
 }

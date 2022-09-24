@@ -23,11 +23,11 @@ class BackendCategoryResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Query|null $query
-     * @return Category_Collection
+     * @param CollectionQuery|null $query
+     * @return CategoryCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionCategoryGetAll(?Collection_Query $query = null): Category_Collection
+    public function backendActionCategoryGetAll(?CollectionQuery $query = null): CategoryCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,15 +36,15 @@ class BackendCategoryResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Category_Collection::class);
+        return $this->parse($data, CategoryCollection::class);
     }
 
     /**
-     * @param Category_Create $data
+     * @param CategoryCreate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionCategoryCreate(Category_Create $data): Message
+    public function backendActionCategoryCreate(CategoryCreate $data): Message
     {
         $options = [
             'json' => $data

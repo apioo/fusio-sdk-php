@@ -14,14 +14,14 @@ class BackendConfigByConfigIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $config_id;
+    private string $configId;
 
-    public function __construct(string $config_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $configId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->config_id = $config_id;
-        $this->url = $this->baseUrl . '/backend/config/' . $config_id . '';
+        $this->configId = $configId;
+        $this->url = $this->baseUrl . '/backend/config/' . $configId . '';
     }
 
     /**
@@ -40,11 +40,11 @@ class BackendConfigByConfigIdResource extends ResourceAbstract
     }
 
     /**
-     * @param Config_Update $data
+     * @param ConfigUpdate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionConfigUpdate(Config_Update $data): Message
+    public function backendActionConfigUpdate(ConfigUpdate $data): Message
     {
         $options = [
             'json' => $data

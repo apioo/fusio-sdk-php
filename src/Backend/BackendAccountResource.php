@@ -38,11 +38,11 @@ class BackendAccountResource extends ResourceAbstract
     }
 
     /**
-     * @param User_Update $data
+     * @param UserUpdate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionAccountUpdate(User_Update $data): Message
+    public function backendActionAccountUpdate(UserUpdate $data): Message
     {
         $options = [
             'json' => $data

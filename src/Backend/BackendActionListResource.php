@@ -23,10 +23,10 @@ class BackendActionListResource extends ResourceAbstract
     }
 
     /**
-     * @return Action_Index
+     * @return ActionIndex
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionActionGetIndex(): Action_Index
+    public function backendActionActionGetIndex(): ActionIndex
     {
         $options = [
         ];
@@ -34,7 +34,7 @@ class BackendActionListResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Action_Index::class);
+        return $this->parse($data, ActionIndex::class);
     }
 
 }

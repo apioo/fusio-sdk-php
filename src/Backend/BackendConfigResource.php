@@ -23,11 +23,11 @@ class BackendConfigResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Query|null $query
-     * @return Config_Collection
+     * @param CollectionQuery|null $query
+     * @return ConfigCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionConfigGetAll(?Collection_Query $query = null): Config_Collection
+    public function backendActionConfigGetAll(?CollectionQuery $query = null): ConfigCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,7 +36,7 @@ class BackendConfigResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Config_Collection::class);
+        return $this->parse($data, ConfigCollection::class);
     }
 
 }

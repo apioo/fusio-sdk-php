@@ -14,14 +14,14 @@ class BackendCronjobByCronjobIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $cronjob_id;
+    private string $cronjobId;
 
-    public function __construct(string $cronjob_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $cronjobId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->cronjob_id = $cronjob_id;
-        $this->url = $this->baseUrl . '/backend/cronjob/' . $cronjob_id . '';
+        $this->cronjobId = $cronjobId;
+        $this->url = $this->baseUrl . '/backend/cronjob/' . $cronjobId . '';
     }
 
     /**
@@ -40,11 +40,11 @@ class BackendCronjobByCronjobIdResource extends ResourceAbstract
     }
 
     /**
-     * @param Cronjob_Update $data
+     * @param CronjobUpdate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionCronjobUpdate(Cronjob_Update $data): Message
+    public function backendActionCronjobUpdate(CronjobUpdate $data): Message
     {
         $options = [
             'json' => $data

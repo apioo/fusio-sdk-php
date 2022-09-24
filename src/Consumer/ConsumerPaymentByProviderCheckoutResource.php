@@ -25,11 +25,11 @@ class ConsumerPaymentByProviderCheckoutResource extends ResourceAbstract
     }
 
     /**
-     * @param Payment_Checkout_Request $data
-     * @return Payment_Checkout_Response
+     * @param PaymentCheckoutRequest $data
+     * @return PaymentCheckoutResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionPaymentCheckout(Payment_Checkout_Request $data): Payment_Checkout_Response
+    public function consumerActionPaymentCheckout(PaymentCheckoutRequest $data): PaymentCheckoutResponse
     {
         $options = [
             'json' => $data
@@ -38,7 +38,7 @@ class ConsumerPaymentByProviderCheckoutResource extends ResourceAbstract
         $response = $this->httpClient->request('POST', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Payment_Checkout_Response::class);
+        return $this->parse($data, PaymentCheckoutResponse::class);
     }
 
 }

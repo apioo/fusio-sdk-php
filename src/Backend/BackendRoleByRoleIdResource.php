@@ -14,14 +14,14 @@ class BackendRoleByRoleIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $role_id;
+    private string $roleId;
 
-    public function __construct(string $role_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $roleId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->role_id = $role_id;
-        $this->url = $this->baseUrl . '/backend/role/' . $role_id . '';
+        $this->roleId = $roleId;
+        $this->url = $this->baseUrl . '/backend/role/' . $roleId . '';
     }
 
     /**
@@ -40,11 +40,11 @@ class BackendRoleByRoleIdResource extends ResourceAbstract
     }
 
     /**
-     * @param Role_Update $data
+     * @param RoleUpdate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionRoleUpdate(Role_Update $data): Message
+    public function backendActionRoleUpdate(RoleUpdate $data): Message
     {
         $options = [
             'json' => $data

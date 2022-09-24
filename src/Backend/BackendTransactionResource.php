@@ -23,11 +23,11 @@ class BackendTransactionResource extends ResourceAbstract
     }
 
     /**
-     * @param Backend_Transaction_Collection_Query|null $query
-     * @return Transaction_Collection
+     * @param BackendTransactionCollectionQuery|null $query
+     * @return TransactionCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionTransactionGetAll(?Backend_Transaction_Collection_Query $query = null): Transaction_Collection
+    public function backendActionTransactionGetAll(?BackendTransactionCollectionQuery $query = null): TransactionCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,7 +36,7 @@ class BackendTransactionResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Transaction_Collection::class);
+        return $this->parse($data, TransactionCollection::class);
     }
 
 }

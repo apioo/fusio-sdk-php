@@ -14,14 +14,14 @@ class BackendRateByRateIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $rate_id;
+    private string $rateId;
 
-    public function __construct(string $rate_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $rateId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->rate_id = $rate_id;
-        $this->url = $this->baseUrl . '/backend/rate/' . $rate_id . '';
+        $this->rateId = $rateId;
+        $this->url = $this->baseUrl . '/backend/rate/' . $rateId . '';
     }
 
     /**
@@ -40,11 +40,11 @@ class BackendRateByRateIdResource extends ResourceAbstract
     }
 
     /**
-     * @param Rate_Update $data
+     * @param RateUpdate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionRateUpdate(Rate_Update $data): Message
+    public function backendActionRateUpdate(RateUpdate $data): Message
     {
         $options = [
             'json' => $data

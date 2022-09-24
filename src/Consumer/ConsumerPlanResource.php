@@ -23,11 +23,11 @@ class ConsumerPlanResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Query|null $query
-     * @return Plan_Collection
+     * @param CollectionQuery|null $query
+     * @return PlanCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionPlanGetAll(?Collection_Query $query = null): Plan_Collection
+    public function consumerActionPlanGetAll(?CollectionQuery $query = null): PlanCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,7 +36,7 @@ class ConsumerPlanResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Plan_Collection::class);
+        return $this->parse($data, PlanCollection::class);
     }
 
 }

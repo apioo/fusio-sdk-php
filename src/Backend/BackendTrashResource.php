@@ -23,10 +23,10 @@ class BackendTrashResource extends ResourceAbstract
     }
 
     /**
-     * @return Trash_Types
+     * @return TrashTypes
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionTrashGetTypes(): Trash_Types
+    public function backendActionTrashGetTypes(): TrashTypes
     {
         $options = [
         ];
@@ -34,7 +34,7 @@ class BackendTrashResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Trash_Types::class);
+        return $this->parse($data, TrashTypes::class);
     }
 
 }

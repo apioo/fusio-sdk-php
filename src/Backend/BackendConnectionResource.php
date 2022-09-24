@@ -23,11 +23,11 @@ class BackendConnectionResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Query|null $query
-     * @return Connection_Collection
+     * @param CollectionQuery|null $query
+     * @return ConnectionCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionConnectionGetAll(?Collection_Query $query = null): Connection_Collection
+    public function backendActionConnectionGetAll(?CollectionQuery $query = null): ConnectionCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,15 +36,15 @@ class BackendConnectionResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Connection_Collection::class);
+        return $this->parse($data, ConnectionCollection::class);
     }
 
     /**
-     * @param Connection_Create $data
+     * @param ConnectionCreate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionConnectionCreate(Connection_Create $data): Message
+    public function backendActionConnectionCreate(ConnectionCreate $data): Message
     {
         $options = [
             'json' => $data

@@ -25,11 +25,11 @@ class ConsumerProviderByProviderResource extends ResourceAbstract
     }
 
     /**
-     * @param User_Provider $data
-     * @return User_JWT
+     * @param UserProvider $data
+     * @return UserJWT
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionUserProvider(User_Provider $data): User_JWT
+    public function consumerActionUserProvider(UserProvider $data): UserJWT
     {
         $options = [
             'json' => $data
@@ -38,7 +38,7 @@ class ConsumerProviderByProviderResource extends ResourceAbstract
         $response = $this->httpClient->request('POST', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, User_JWT::class);
+        return $this->parse($data, UserJWT::class);
     }
 
 }

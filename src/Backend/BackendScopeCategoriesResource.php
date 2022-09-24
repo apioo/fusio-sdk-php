@@ -23,10 +23,10 @@ class BackendScopeCategoriesResource extends ResourceAbstract
     }
 
     /**
-     * @return Scope_Categories
+     * @return ScopeCategories
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionScopeGetCategories(): Scope_Categories
+    public function backendActionScopeGetCategories(): ScopeCategories
     {
         $options = [
         ];
@@ -34,7 +34,7 @@ class BackendScopeCategoriesResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Scope_Categories::class);
+        return $this->parse($data, ScopeCategories::class);
     }
 
 }

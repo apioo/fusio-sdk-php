@@ -14,14 +14,14 @@ class BackendEventByEventIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $event_id;
+    private string $eventId;
 
-    public function __construct(string $event_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $eventId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->event_id = $event_id;
-        $this->url = $this->baseUrl . '/backend/event/' . $event_id . '';
+        $this->eventId = $eventId;
+        $this->url = $this->baseUrl . '/backend/event/' . $eventId . '';
     }
 
     /**
@@ -40,11 +40,11 @@ class BackendEventByEventIdResource extends ResourceAbstract
     }
 
     /**
-     * @param Event_Update $data
+     * @param EventUpdate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionEventUpdate(Event_Update $data): Message
+    public function backendActionEventUpdate(EventUpdate $data): Message
     {
         $options = [
             'json' => $data

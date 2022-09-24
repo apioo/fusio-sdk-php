@@ -23,11 +23,11 @@ class BackendStatisticIncomingTransactionsResource extends ResourceAbstract
     }
 
     /**
-     * @param Backend_Transaction_Collection_Query|null $query
-     * @return Statistic_Chart
+     * @param BackendTransactionCollectionQuery|null $query
+     * @return StatisticChart
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionStatisticGetIncomingTransactions(?Backend_Transaction_Collection_Query $query = null): Statistic_Chart
+    public function backendActionStatisticGetIncomingTransactions(?BackendTransactionCollectionQuery $query = null): StatisticChart
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,7 +36,7 @@ class BackendStatisticIncomingTransactionsResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Statistic_Chart::class);
+        return $this->parse($data, StatisticChart::class);
     }
 
 }

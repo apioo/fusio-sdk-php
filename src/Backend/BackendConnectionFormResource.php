@@ -23,11 +23,11 @@ class BackendConnectionFormResource extends ResourceAbstract
     }
 
     /**
-     * @param Form_Query|null $query
-     * @return Form_Container
+     * @param FormQuery|null $query
+     * @return FormContainer
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionConnectionGetForm(?Form_Query $query = null): Form_Container
+    public function backendActionConnectionGetForm(?FormQuery $query = null): FormContainer
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,7 +36,7 @@ class BackendConnectionFormResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Form_Container::class);
+        return $this->parse($data, FormContainer::class);
     }
 
 }

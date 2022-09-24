@@ -20,7 +20,7 @@ class Rate implements \JsonSerializable
     protected ?int $rateLimit = null;
     protected ?\DateInterval $timespan = null;
     /**
-     * @var array<Rate_Allocation>|null
+     * @var array<RateAllocation>|null
      */
     protected ?array $allocation = null;
     public function setId(?int $id) : void
@@ -64,7 +64,7 @@ class Rate implements \JsonSerializable
         return $this->timespan;
     }
     /**
-     * @param array<Rate_Allocation>|null $allocation
+     * @param array<RateAllocation>|null $allocation
      */
     public function setAllocation(?array $allocation) : void
     {

@@ -14,14 +14,14 @@ class ConsumerPageByPageIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $page_id;
+    private string $pageId;
 
-    public function __construct(string $page_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $pageId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->page_id = $page_id;
-        $this->url = $this->baseUrl . '/consumer/page/' . $page_id . '';
+        $this->pageId = $pageId;
+        $this->url = $this->baseUrl . '/consumer/page/' . $pageId . '';
     }
 
     /**

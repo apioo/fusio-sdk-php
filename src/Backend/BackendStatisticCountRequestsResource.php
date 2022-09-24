@@ -23,11 +23,11 @@ class BackendStatisticCountRequestsResource extends ResourceAbstract
     }
 
     /**
-     * @param Backend_Log_Collection_Query|null $query
-     * @return Statistic_Count
+     * @param BackendLogCollectionQuery|null $query
+     * @return StatisticCount
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionStatisticGetCountRequests(?Backend_Log_Collection_Query $query = null): Statistic_Count
+    public function backendActionStatisticGetCountRequests(?BackendLogCollectionQuery $query = null): StatisticCount
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,7 +36,7 @@ class BackendStatisticCountRequestsResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Statistic_Count::class);
+        return $this->parse($data, StatisticCount::class);
     }
 
 }

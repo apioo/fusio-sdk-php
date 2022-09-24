@@ -23,11 +23,11 @@ class BackendSchemaResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Category_Query|null $query
-     * @return Schema_Collection
+     * @param CollectionCategoryQuery|null $query
+     * @return SchemaCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionSchemaGetAll(?Collection_Category_Query $query = null): Schema_Collection
+    public function backendActionSchemaGetAll(?CollectionCategoryQuery $query = null): SchemaCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,15 +36,15 @@ class BackendSchemaResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Schema_Collection::class);
+        return $this->parse($data, SchemaCollection::class);
     }
 
     /**
-     * @param Schema_Create $data
+     * @param SchemaCreate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionSchemaCreate(Schema_Create $data): Message
+    public function backendActionSchemaCreate(SchemaCreate $data): Message
     {
         $options = [
             'json' => $data

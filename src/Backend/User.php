@@ -26,7 +26,7 @@ class User implements \JsonSerializable
      * @var array<App>|null
      */
     protected ?array $apps = null;
-    protected ?User_Attributes $attributes = null;
+    protected ?UserAttributes $attributes = null;
     protected ?\DateTime $date = null;
     public function setId(?int $id) : void
     {
@@ -106,11 +106,11 @@ class User implements \JsonSerializable
     {
         return $this->apps;
     }
-    public function setAttributes(?User_Attributes $attributes) : void
+    public function setAttributes(?UserAttributes $attributes) : void
     {
         $this->attributes = $attributes;
     }
-    public function getAttributes() : ?User_Attributes
+    public function getAttributes() : ?UserAttributes
     {
         return $this->attributes;
     }

@@ -14,14 +14,14 @@ class BackendScopeByScopeIdResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $scope_id;
+    private string $scopeId;
 
-    public function __construct(string $scope_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $scopeId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->scope_id = $scope_id;
-        $this->url = $this->baseUrl . '/backend/scope/' . $scope_id . '';
+        $this->scopeId = $scopeId;
+        $this->url = $this->baseUrl . '/backend/scope/' . $scopeId . '';
     }
 
     /**
@@ -40,11 +40,11 @@ class BackendScopeByScopeIdResource extends ResourceAbstract
     }
 
     /**
-     * @param Scope_Update $data
+     * @param ScopeUpdate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionScopeUpdate(Scope_Update $data): Message
+    public function backendActionScopeUpdate(ScopeUpdate $data): Message
     {
         $options = [
             'json' => $data

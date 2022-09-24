@@ -23,11 +23,11 @@ class ConsumerSubscriptionResource extends ResourceAbstract
     }
 
     /**
-     * @param Collection_Query|null $query
-     * @return Event_Subscription_Collection
+     * @param CollectionQuery|null $query
+     * @return EventSubscriptionCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionEventSubscriptionGetAll(?Collection_Query $query = null): Event_Subscription_Collection
+    public function consumerActionEventSubscriptionGetAll(?CollectionQuery $query = null): EventSubscriptionCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,15 +36,15 @@ class ConsumerSubscriptionResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Event_Subscription_Collection::class);
+        return $this->parse($data, EventSubscriptionCollection::class);
     }
 
     /**
-     * @param Event_Subscription_Create $data
+     * @param EventSubscriptionCreate $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionEventSubscriptionCreate(Event_Subscription_Create $data): Message
+    public function consumerActionEventSubscriptionCreate(EventSubscriptionCreate $data): Message
     {
         $options = [
             'json' => $data

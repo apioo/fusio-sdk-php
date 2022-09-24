@@ -25,18 +25,20 @@ class ConsumerPaymentByProviderPortalResource extends ResourceAbstract
     }
 
     /**
-     * @return Payment_Portal_Response
+     * @param PaymentPortalRequest $data
+     * @return PaymentPortalResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consumerActionPaymentPortal(): Payment_Portal_Response
+    public function consumerActionPaymentPortal(PaymentPortalRequest $data): PaymentPortalResponse
     {
         $options = [
+            'json' => $data
         ];
 
         $response = $this->httpClient->request('POST', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Payment_Portal_Response::class);
+        return $this->parse($data, PaymentPortalResponse::class);
     }
 
 }

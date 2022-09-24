@@ -14,14 +14,14 @@ class BackendConnectionByConnectionIdRedirectResource extends ResourceAbstract
 {
     private string $url;
 
-    private string $connection_id;
+    private string $connectionId;
 
-    public function __construct(string $connection_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $connectionId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->connection_id = $connection_id;
-        $this->url = $this->baseUrl . '/backend/connection/' . $connection_id . '/redirect';
+        $this->connectionId = $connectionId;
+        $this->url = $this->baseUrl . '/backend/connection/' . $connectionId . '/redirect';
     }
 
     /**

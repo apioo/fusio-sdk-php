@@ -17,7 +17,7 @@ class Action implements \JsonSerializable
     protected ?string $class = null;
     protected ?bool $async = null;
     protected ?string $engine = null;
-    protected ?Action_Config $config = null;
+    protected ?ActionConfig $config = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -66,11 +66,11 @@ class Action implements \JsonSerializable
     {
         return $this->engine;
     }
-    public function setConfig(?Action_Config $config) : void
+    public function setConfig(?ActionConfig $config) : void
     {
         $this->config = $config;
     }
-    public function getConfig() : ?Action_Config
+    public function getConfig() : ?ActionConfig
     {
         return $this->config;
     }

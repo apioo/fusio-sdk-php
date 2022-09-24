@@ -14,21 +14,21 @@ class BackendConnectionByConnectionIdIntrospectionResource extends ResourceAbstr
 {
     private string $url;
 
-    private string $connection_id;
+    private string $connectionId;
 
-    public function __construct(string $connection_id, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
+    public function __construct(string $connectionId, string $baseUrl, ?Client $httpClient = null, ?SchemaManager $schemaManager = null)
     {
         parent::__construct($baseUrl, $httpClient, $schemaManager);
 
-        $this->connection_id = $connection_id;
-        $this->url = $this->baseUrl . '/backend/connection/' . $connection_id . '/introspection';
+        $this->connectionId = $connectionId;
+        $this->url = $this->baseUrl . '/backend/connection/' . $connectionId . '/introspection';
     }
 
     /**
-     * @return Connection_Introspection_Entities
+     * @return ConnectionIntrospectionEntities
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionConnectionIntrospectionGetEntities(): Connection_Introspection_Entities
+    public function backendActionConnectionIntrospectionGetEntities(): ConnectionIntrospectionEntities
     {
         $options = [
         ];
@@ -36,7 +36,7 @@ class BackendConnectionByConnectionIdIntrospectionResource extends ResourceAbstr
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Connection_Introspection_Entities::class);
+        return $this->parse($data, ConnectionIntrospectionEntities::class);
     }
 
 }

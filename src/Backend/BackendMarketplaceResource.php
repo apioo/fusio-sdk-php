@@ -23,10 +23,10 @@ class BackendMarketplaceResource extends ResourceAbstract
     }
 
     /**
-     * @return Marketplace_Collection
+     * @return MarketplaceCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionMarketplaceGetAll(): Marketplace_Collection
+    public function backendActionMarketplaceGetAll(): MarketplaceCollection
     {
         $options = [
         ];
@@ -34,15 +34,15 @@ class BackendMarketplaceResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Marketplace_Collection::class);
+        return $this->parse($data, MarketplaceCollection::class);
     }
 
     /**
-     * @param Marketplace_Install $data
+     * @param MarketplaceInstall $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionMarketplaceInstall(Marketplace_Install $data): Message
+    public function backendActionMarketplaceInstall(MarketplaceInstall $data): Message
     {
         $options = [
             'json' => $data

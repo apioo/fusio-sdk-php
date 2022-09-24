@@ -9,84 +9,84 @@ namespace Fusio\Sdk\Backend;
 
 class Dashboard implements \JsonSerializable
 {
-    protected ?Statistic_Chart $errorsPerRoute = null;
-    protected ?Statistic_Chart $incomingRequests = null;
-    protected ?Statistic_Chart $incomingTransactions = null;
-    protected ?Statistic_Chart $mostUsedRoutes = null;
-    protected ?Statistic_Chart $timePerRoute = null;
-    protected ?Dashboard_Apps $latestApps = null;
-    protected ?Dashboard_Requests $latestRequests = null;
-    protected ?Dashboard_Users $latestUsers = null;
-    protected ?Dashboard_Transactions $latestTransactions = null;
-    public function setErrorsPerRoute(?Statistic_Chart $errorsPerRoute) : void
+    protected ?StatisticChart $errorsPerRoute = null;
+    protected ?StatisticChart $incomingRequests = null;
+    protected ?StatisticChart $incomingTransactions = null;
+    protected ?StatisticChart $mostUsedRoutes = null;
+    protected ?StatisticChart $timePerRoute = null;
+    protected ?DashboardApps $latestApps = null;
+    protected ?DashboardRequests $latestRequests = null;
+    protected ?DashboardUsers $latestUsers = null;
+    protected ?DashboardTransactions $latestTransactions = null;
+    public function setErrorsPerRoute(?StatisticChart $errorsPerRoute) : void
     {
         $this->errorsPerRoute = $errorsPerRoute;
     }
-    public function getErrorsPerRoute() : ?Statistic_Chart
+    public function getErrorsPerRoute() : ?StatisticChart
     {
         return $this->errorsPerRoute;
     }
-    public function setIncomingRequests(?Statistic_Chart $incomingRequests) : void
+    public function setIncomingRequests(?StatisticChart $incomingRequests) : void
     {
         $this->incomingRequests = $incomingRequests;
     }
-    public function getIncomingRequests() : ?Statistic_Chart
+    public function getIncomingRequests() : ?StatisticChart
     {
         return $this->incomingRequests;
     }
-    public function setIncomingTransactions(?Statistic_Chart $incomingTransactions) : void
+    public function setIncomingTransactions(?StatisticChart $incomingTransactions) : void
     {
         $this->incomingTransactions = $incomingTransactions;
     }
-    public function getIncomingTransactions() : ?Statistic_Chart
+    public function getIncomingTransactions() : ?StatisticChart
     {
         return $this->incomingTransactions;
     }
-    public function setMostUsedRoutes(?Statistic_Chart $mostUsedRoutes) : void
+    public function setMostUsedRoutes(?StatisticChart $mostUsedRoutes) : void
     {
         $this->mostUsedRoutes = $mostUsedRoutes;
     }
-    public function getMostUsedRoutes() : ?Statistic_Chart
+    public function getMostUsedRoutes() : ?StatisticChart
     {
         return $this->mostUsedRoutes;
     }
-    public function setTimePerRoute(?Statistic_Chart $timePerRoute) : void
+    public function setTimePerRoute(?StatisticChart $timePerRoute) : void
     {
         $this->timePerRoute = $timePerRoute;
     }
-    public function getTimePerRoute() : ?Statistic_Chart
+    public function getTimePerRoute() : ?StatisticChart
     {
         return $this->timePerRoute;
     }
-    public function setLatestApps(?Dashboard_Apps $latestApps) : void
+    public function setLatestApps(?DashboardApps $latestApps) : void
     {
         $this->latestApps = $latestApps;
     }
-    public function getLatestApps() : ?Dashboard_Apps
+    public function getLatestApps() : ?DashboardApps
     {
         return $this->latestApps;
     }
-    public function setLatestRequests(?Dashboard_Requests $latestRequests) : void
+    public function setLatestRequests(?DashboardRequests $latestRequests) : void
     {
         $this->latestRequests = $latestRequests;
     }
-    public function getLatestRequests() : ?Dashboard_Requests
+    public function getLatestRequests() : ?DashboardRequests
     {
         return $this->latestRequests;
     }
-    public function setLatestUsers(?Dashboard_Users $latestUsers) : void
+    public function setLatestUsers(?DashboardUsers $latestUsers) : void
     {
         $this->latestUsers = $latestUsers;
     }
-    public function getLatestUsers() : ?Dashboard_Users
+    public function getLatestUsers() : ?DashboardUsers
     {
         return $this->latestUsers;
     }
-    public function setLatestTransactions(?Dashboard_Transactions $latestTransactions) : void
+    public function setLatestTransactions(?DashboardTransactions $latestTransactions) : void
     {
         $this->latestTransactions = $latestTransactions;
     }
-    public function getLatestTransactions() : ?Dashboard_Transactions
+    public function getLatestTransactions() : ?DashboardTransactions
     {
         return $this->latestTransactions;
     }

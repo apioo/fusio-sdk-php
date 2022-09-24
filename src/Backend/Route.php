@@ -19,7 +19,7 @@ class Route implements \JsonSerializable
      */
     protected ?array $scopes = null;
     /**
-     * @var array<Route_Version>|null
+     * @var array<RouteVersion>|null
      */
     protected ?array $config = null;
     public function setId(?int $id) : void
@@ -74,7 +74,7 @@ class Route implements \JsonSerializable
         return $this->scopes;
     }
     /**
-     * @param array<Route_Version>|null $config
+     * @param array<RouteVersion>|null $config
      */
     public function setConfig(?array $config) : void
     {

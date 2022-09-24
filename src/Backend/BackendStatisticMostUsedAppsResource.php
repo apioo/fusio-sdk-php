@@ -23,11 +23,11 @@ class BackendStatisticMostUsedAppsResource extends ResourceAbstract
     }
 
     /**
-     * @param Backend_Log_Collection_Query|null $query
-     * @return Statistic_Chart
+     * @param BackendLogCollectionQuery|null $query
+     * @return StatisticChart
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionStatisticGetMostUsedApps(?Backend_Log_Collection_Query $query = null): Statistic_Chart
+    public function backendActionStatisticGetMostUsedApps(?BackendLogCollectionQuery $query = null): StatisticChart
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,7 +36,7 @@ class BackendStatisticMostUsedAppsResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Statistic_Chart::class);
+        return $this->parse($data, StatisticChart::class);
     }
 
 }

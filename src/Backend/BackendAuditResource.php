@@ -23,11 +23,11 @@ class BackendAuditResource extends ResourceAbstract
     }
 
     /**
-     * @param Backend_Audit_Collection_Query|null $query
-     * @return Audit_Collection
+     * @param BackendAuditCollectionQuery|null $query
+     * @return AuditCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionAuditGetAll(?Backend_Audit_Collection_Query $query = null): Audit_Collection
+    public function backendActionAuditGetAll(?BackendAuditCollectionQuery $query = null): AuditCollection
     {
         $options = [
             'query' => $query !== null ? (array) $query->jsonSerialize() : [],
@@ -36,7 +36,7 @@ class BackendAuditResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Audit_Collection::class);
+        return $this->parse($data, AuditCollection::class);
     }
 
 }

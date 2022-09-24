@@ -25,10 +25,10 @@ class BackendGeneratorByProviderResource extends ResourceAbstract
     }
 
     /**
-     * @return Form_Container
+     * @return FormContainer
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionGeneratorForm(): Form_Container
+    public function backendActionGeneratorForm(): FormContainer
     {
         $options = [
         ];
@@ -36,15 +36,15 @@ class BackendGeneratorByProviderResource extends ResourceAbstract
         $response = $this->httpClient->request('GET', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Form_Container::class);
+        return $this->parse($data, FormContainer::class);
     }
 
     /**
-     * @param Generator_Provider $data
+     * @param GeneratorProvider $data
      * @return Message
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionGeneratorCreate(Generator_Provider $data): Message
+    public function backendActionGeneratorCreate(GeneratorProvider $data): Message
     {
         $options = [
             'json' => $data
@@ -57,11 +57,11 @@ class BackendGeneratorByProviderResource extends ResourceAbstract
     }
 
     /**
-     * @param Generator_Provider_Config $data
-     * @return Generator_Provider_Changelog
+     * @param GeneratorProviderConfig $data
+     * @return GeneratorProviderChangelog
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function backendActionGeneratorChangelog(Generator_Provider_Config $data): Generator_Provider_Changelog
+    public function backendActionGeneratorChangelog(GeneratorProviderConfig $data): GeneratorProviderChangelog
     {
         $options = [
             'json' => $data
@@ -70,7 +70,7 @@ class BackendGeneratorByProviderResource extends ResourceAbstract
         $response = $this->httpClient->request('PUT', $this->url, $options);
         $data     = (string) $response->getBody();
 
-        return $this->parse($data, Generator_Provider_Changelog::class);
+        return $this->parse($data, GeneratorProviderChangelog::class);
     }
 
 }
