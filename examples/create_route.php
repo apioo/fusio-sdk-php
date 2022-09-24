@@ -9,7 +9,7 @@ $client = new \Fusio\Sdk\Client(
     'test1234'
 );
 
-$get = new \Fusio\Sdk\Backend\Route_Method();
+$get = new \Fusio\Sdk\Backend\RouteMethod();
 $get->setActive(true);
 $get->setPublic(true);
 $get->setDescription('My GET description');
@@ -17,19 +17,19 @@ $get->setOperationId('my_get_operation_id');
 $get->setResponse('My_Response_Schema');
 $get->setAction('My_Action');
 
-$methods = new \Fusio\Sdk\Backend\Route_Methods();
+$methods = new \Fusio\Sdk\Backend\RouteMethods();
 $methods['GET'] = $get;
 
-$version = new \Fusio\Sdk\Backend\Route_Version();
+$version = new \Fusio\Sdk\Backend\RouteVersion();
 $version->setVersion(1);
 $version->setStatus(1);
 $version->setMethods($methods);
 
-$route = new \Fusio\Sdk\Backend\Route_Create();
+$route = new \Fusio\Sdk\Backend\RouteCreate();
 $route->setPath('/new/path');
 $route->setController('Fusio\Impl\Controller\SchemaApiController');
 $route->setConfig([$version]);
 
-$response = $client->backend()->backendRoute()->getBackendRoutes()->backendActionRouteCreate($route);
+$response = $client->backend()->getBackendRoutes()->backendActionRouteCreate($route);
 
 echo $response->getMessage() . "\n";

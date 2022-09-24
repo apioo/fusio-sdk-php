@@ -10,11 +10,11 @@ $client = new \Fusio\Sdk\Client(
 );
 
 // changes the password of the user assigned to the token
-$changePassword = new \Fusio\Sdk\Consumer\Account_ChangePassword();
+$changePassword = new \Fusio\Sdk\Consumer\AccountChangePassword();
 $changePassword->setOldPassword('test1234');
 $changePassword->setNewPassword('test1234!');
 $changePassword->setVerifyPassword('test1234!');
 
-$response = $client->consumer()->consumerUser()->getConsumerAccountChangePassword()->consumerActionUserChangePassword($changePassword);
+$response = $client->consumer()->getConsumerAccountChangePassword()->consumerActionUserChangePassword($changePassword);
 
 echo $response->getMessage() . "\n";

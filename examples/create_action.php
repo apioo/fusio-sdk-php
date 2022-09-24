@@ -9,14 +9,14 @@ $client = new \Fusio\Sdk\Client(
     'test1234'
 );
 
-$config = new \Fusio\Sdk\Backend\Action_Config();
+$config = new \Fusio\Sdk\Backend\ActionConfig();
 $config['response'] = \json_encode(['hello' => 'world']);
 
-$action = new \Fusio\Sdk\Backend\Action_Create();
+$action = new \Fusio\Sdk\Backend\ActionCreate();
 $action->setName('my-new-action');
 $action->setClass('Fusio\Adapter\Util\Action\UtilStaticResponse');
 $action->setConfig($config);
 
-$response = $client->backend()->backendAction()->getBackendAction()->backendActionActionCreate($action);
+$response = $client->backend()->getBackendAction()->backendActionActionCreate($action);
 
 echo $response->getMessage() . "\n";

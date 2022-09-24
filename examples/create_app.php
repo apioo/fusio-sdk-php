@@ -9,13 +9,13 @@ $client = new \Fusio\Sdk\Client(
     'test1234'
 );
 
-$app = new \Fusio\Sdk\Backend\App_Create();
+$app = new \Fusio\Sdk\Backend\AppCreate();
 $app->setStatus(1);
 $app->setUserId(1);
 $app->setName('my-new-action');
 $app->setUrl('https://myapp.com');
 $app->setScopes(['foo', 'bar']);
 
-$response = $client->backend()->backendApp()->getBackendApp()->backendActionAppCreate($app);
+$response = $client->backend()->getBackendApp()->backendActionAppCreate($app);
 
 echo $response->getMessage() . "\n";
