@@ -19,7 +19,7 @@ class UserAccount implements \JsonSerializable
      * @var array<string>|null
      */
     protected ?array $scopes = null;
-    protected ?UserAttributes $attributes = null;
+    protected ?Metadata $metadata = null;
     protected ?\DateTime $date = null;
     public function setId(?int $id) : void
     {
@@ -80,13 +80,13 @@ class UserAccount implements \JsonSerializable
     {
         return $this->scopes;
     }
-    public function setAttributes(?UserAttributes $attributes) : void
+    public function setMetadata(?Metadata $metadata) : void
     {
-        $this->attributes = $attributes;
+        $this->metadata = $metadata;
     }
-    public function getAttributes() : ?UserAttributes
+    public function getMetadata() : ?Metadata
     {
-        return $this->attributes;
+        return $this->metadata;
     }
     public function setDate(?\DateTime $date) : void
     {
@@ -98,7 +98,7 @@ class UserAccount implements \JsonSerializable
     }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'planId' => $this->planId, 'status' => $this->status, 'name' => $this->name, 'email' => $this->email, 'points' => $this->points, 'scopes' => $this->scopes, 'attributes' => $this->attributes, 'date' => $this->date), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'planId' => $this->planId, 'status' => $this->status, 'name' => $this->name, 'email' => $this->email, 'points' => $this->points, 'scopes' => $this->scopes, 'metadata' => $this->metadata, 'date' => $this->date), static function ($value) : bool {
             return $value !== null;
         });
     }

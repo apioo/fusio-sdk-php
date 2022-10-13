@@ -23,6 +23,7 @@ class Rate implements \JsonSerializable
      * @var array<RateAllocation>|null
      */
     protected ?array $allocation = null;
+    protected ?Metadata $metadata = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -74,9 +75,17 @@ class Rate implements \JsonSerializable
     {
         return $this->allocation;
     }
+    public function setMetadata(?Metadata $metadata) : void
+    {
+        $this->metadata = $metadata;
+    }
+    public function getMetadata() : ?Metadata
+    {
+        return $this->metadata;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'priority' => $this->priority, 'name' => $this->name, 'rateLimit' => $this->rateLimit, 'timespan' => $this->timespan, 'allocation' => $this->allocation), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'priority' => $this->priority, 'name' => $this->name, 'rateLimit' => $this->rateLimit, 'timespan' => $this->timespan, 'allocation' => $this->allocation, 'metadata' => $this->metadata), static function ($value) : bool {
             return $value !== null;
         });
     }

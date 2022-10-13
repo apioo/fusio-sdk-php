@@ -14,6 +14,7 @@ class Plan implements \JsonSerializable
     protected ?string $description = null;
     protected ?float $price = null;
     protected ?int $points = null;
+    protected ?Metadata $metadata = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -54,9 +55,17 @@ class Plan implements \JsonSerializable
     {
         return $this->points;
     }
+    public function setMetadata(?Metadata $metadata) : void
+    {
+        $this->metadata = $metadata;
+    }
+    public function getMetadata() : ?Metadata
+    {
+        return $this->metadata;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'description' => $this->description, 'price' => $this->price, 'points' => $this->points), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'description' => $this->description, 'price' => $this->price, 'points' => $this->points, 'metadata' => $this->metadata), static function ($value) : bool {
             return $value !== null;
         });
     }

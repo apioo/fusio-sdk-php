@@ -25,6 +25,7 @@ class App implements \JsonSerializable
      * @var array<string>|null
      */
     protected ?array $scopes = null;
+    protected ?Metadata $metadata = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -100,9 +101,17 @@ class App implements \JsonSerializable
     {
         return $this->scopes;
     }
+    public function setMetadata(?Metadata $metadata) : void
+    {
+        $this->metadata = $metadata;
+    }
+    public function getMetadata() : ?Metadata
+    {
+        return $this->metadata;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'userId' => $this->userId, 'status' => $this->status, 'name' => $this->name, 'url' => $this->url, 'appKey' => $this->appKey, 'appSecret' => $this->appSecret, 'date' => $this->date, 'scopes' => $this->scopes), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'userId' => $this->userId, 'status' => $this->status, 'name' => $this->name, 'url' => $this->url, 'appKey' => $this->appKey, 'appSecret' => $this->appSecret, 'date' => $this->date, 'scopes' => $this->scopes, 'metadata' => $this->metadata), static function ($value) : bool {
             return $value !== null;
         });
     }

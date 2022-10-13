@@ -12,6 +12,7 @@ class Event implements \JsonSerializable
     protected ?int $id = null;
     protected ?string $name = null;
     protected ?string $description = null;
+    protected ?Metadata $metadata = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -36,9 +37,17 @@ class Event implements \JsonSerializable
     {
         return $this->description;
     }
+    public function setMetadata(?Metadata $metadata) : void
+    {
+        $this->metadata = $metadata;
+    }
+    public function getMetadata() : ?Metadata
+    {
+        return $this->metadata;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'description' => $this->description), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'description' => $this->description, 'metadata' => $this->metadata), static function ($value) : bool {
             return $value !== null;
         });
     }

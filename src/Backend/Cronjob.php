@@ -17,6 +17,7 @@ class Cronjob implements \JsonSerializable
     protected ?string $action = null;
     protected ?\DateTime $executeDate = null;
     protected ?int $exitCode = null;
+    protected ?Metadata $metadata = null;
     /**
      * @var array<CronjobError>|null
      */
@@ -69,6 +70,14 @@ class Cronjob implements \JsonSerializable
     {
         return $this->exitCode;
     }
+    public function setMetadata(?Metadata $metadata) : void
+    {
+        $this->metadata = $metadata;
+    }
+    public function getMetadata() : ?Metadata
+    {
+        return $this->metadata;
+    }
     /**
      * @param array<CronjobError>|null $errors
      */
@@ -82,7 +91,7 @@ class Cronjob implements \JsonSerializable
     }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'cron' => $this->cron, 'action' => $this->action, 'executeDate' => $this->executeDate, 'exitCode' => $this->exitCode, 'errors' => $this->errors), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'cron' => $this->cron, 'action' => $this->action, 'executeDate' => $this->executeDate, 'exitCode' => $this->exitCode, 'metadata' => $this->metadata, 'errors' => $this->errors), static function ($value) : bool {
             return $value !== null;
         });
     }

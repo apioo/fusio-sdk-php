@@ -10,11 +10,15 @@ namespace Fusio\Sdk\Consumer;
 class Transaction implements \JsonSerializable
 {
     protected ?int $id = null;
-    protected ?int $status = null;
+    protected ?int $userId = null;
+    protected ?int $planId = null;
+    protected ?Plan $plan = null;
     protected ?string $transactionId = null;
     protected ?float $amount = null;
-    protected ?int $updateDate = null;
-    protected ?int $insertDate = null;
+    protected ?float $points = null;
+    protected ?\DateTime $periodStart = null;
+    protected ?\DateTime $periodEnd = null;
+    protected ?\DateTime $insertDate = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -23,13 +27,29 @@ class Transaction implements \JsonSerializable
     {
         return $this->id;
     }
-    public function setStatus(?int $status) : void
+    public function setUserId(?int $userId) : void
     {
-        $this->status = $status;
+        $this->userId = $userId;
     }
-    public function getStatus() : ?int
+    public function getUserId() : ?int
     {
-        return $this->status;
+        return $this->userId;
+    }
+    public function setPlanId(?int $planId) : void
+    {
+        $this->planId = $planId;
+    }
+    public function getPlanId() : ?int
+    {
+        return $this->planId;
+    }
+    public function setPlan(?Plan $plan) : void
+    {
+        $this->plan = $plan;
+    }
+    public function getPlan() : ?Plan
+    {
+        return $this->plan;
     }
     public function setTransactionId(?string $transactionId) : void
     {
@@ -47,25 +67,41 @@ class Transaction implements \JsonSerializable
     {
         return $this->amount;
     }
-    public function setUpdateDate(?int $updateDate) : void
+    public function setPoints(?float $points) : void
     {
-        $this->updateDate = $updateDate;
+        $this->points = $points;
     }
-    public function getUpdateDate() : ?int
+    public function getPoints() : ?float
     {
-        return $this->updateDate;
+        return $this->points;
     }
-    public function setInsertDate(?int $insertDate) : void
+    public function setPeriodStart(?\DateTime $periodStart) : void
+    {
+        $this->periodStart = $periodStart;
+    }
+    public function getPeriodStart() : ?\DateTime
+    {
+        return $this->periodStart;
+    }
+    public function setPeriodEnd(?\DateTime $periodEnd) : void
+    {
+        $this->periodEnd = $periodEnd;
+    }
+    public function getPeriodEnd() : ?\DateTime
+    {
+        return $this->periodEnd;
+    }
+    public function setInsertDate(?\DateTime $insertDate) : void
     {
         $this->insertDate = $insertDate;
     }
-    public function getInsertDate() : ?int
+    public function getInsertDate() : ?\DateTime
     {
         return $this->insertDate;
     }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'status' => $this->status, 'transactionId' => $this->transactionId, 'amount' => $this->amount, 'updateDate' => $this->updateDate, 'insertDate' => $this->insertDate), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'userId' => $this->userId, 'planId' => $this->planId, 'plan' => $this->plan, 'transactionId' => $this->transactionId, 'amount' => $this->amount, 'points' => $this->points, 'periodStart' => $this->periodStart, 'periodEnd' => $this->periodEnd, 'insertDate' => $this->insertDate), static function ($value) : bool {
             return $value !== null;
         });
     }

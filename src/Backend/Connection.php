@@ -15,6 +15,7 @@ class Connection implements \JsonSerializable
     protected ?string $name = null;
     protected ?string $class = null;
     protected ?ConnectionConfig $config = null;
+    protected ?Metadata $metadata = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -47,9 +48,17 @@ class Connection implements \JsonSerializable
     {
         return $this->config;
     }
+    public function setMetadata(?Metadata $metadata) : void
+    {
+        $this->metadata = $metadata;
+    }
+    public function getMetadata() : ?Metadata
+    {
+        return $this->metadata;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'class' => $this->class, 'config' => $this->config), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'class' => $this->class, 'config' => $this->config, 'metadata' => $this->metadata), static function ($value) : bool {
             return $value !== null;
         });
     }

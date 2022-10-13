@@ -22,6 +22,7 @@ class Route implements \JsonSerializable
      * @var array<RouteVersion>|null
      */
     protected ?array $config = null;
+    protected ?Metadata $metadata = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -84,9 +85,17 @@ class Route implements \JsonSerializable
     {
         return $this->config;
     }
+    public function setMetadata(?Metadata $metadata) : void
+    {
+        $this->metadata = $metadata;
+    }
+    public function getMetadata() : ?Metadata
+    {
+        return $this->metadata;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'status' => $this->status, 'priority' => $this->priority, 'path' => $this->path, 'controller' => $this->controller, 'scopes' => $this->scopes, 'config' => $this->config), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'status' => $this->status, 'priority' => $this->priority, 'path' => $this->path, 'controller' => $this->controller, 'scopes' => $this->scopes, 'config' => $this->config, 'metadata' => $this->metadata), static function ($value) : bool {
             return $value !== null;
         });
     }

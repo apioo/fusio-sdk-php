@@ -15,6 +15,8 @@ class Transaction implements \JsonSerializable
     protected ?string $transactionId = null;
     protected ?float $amount = null;
     protected ?float $points = null;
+    protected ?\DateTime $periodStart = null;
+    protected ?\DateTime $periodEnd = null;
     protected ?\DateTime $insertDate = null;
     public function setId(?int $id) : void
     {
@@ -64,6 +66,22 @@ class Transaction implements \JsonSerializable
     {
         return $this->points;
     }
+    public function setPeriodStart(?\DateTime $periodStart) : void
+    {
+        $this->periodStart = $periodStart;
+    }
+    public function getPeriodStart() : ?\DateTime
+    {
+        return $this->periodStart;
+    }
+    public function setPeriodEnd(?\DateTime $periodEnd) : void
+    {
+        $this->periodEnd = $periodEnd;
+    }
+    public function getPeriodEnd() : ?\DateTime
+    {
+        return $this->periodEnd;
+    }
     public function setInsertDate(?\DateTime $insertDate) : void
     {
         $this->insertDate = $insertDate;
@@ -74,7 +92,7 @@ class Transaction implements \JsonSerializable
     }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'userId' => $this->userId, 'planId' => $this->planId, 'transactionId' => $this->transactionId, 'amount' => $this->amount, 'points' => $this->points, 'insertDate' => $this->insertDate), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'userId' => $this->userId, 'planId' => $this->planId, 'transactionId' => $this->transactionId, 'amount' => $this->amount, 'points' => $this->points, 'periodStart' => $this->periodStart, 'periodEnd' => $this->periodEnd, 'insertDate' => $this->insertDate), static function ($value) : bool {
             return $value !== null;
         });
     }
