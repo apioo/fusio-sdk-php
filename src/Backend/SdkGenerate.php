@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Backend;
 
 
-class SdkGenerate implements \JsonSerializable
+class SdkGenerate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $format = null;
     protected ?string $config = null;
@@ -27,10 +27,16 @@ class SdkGenerate implements \JsonSerializable
     {
         return $this->config;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('format', $this->format);
+        $record->put('config', $this->config);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('format' => $this->format, 'config' => $this->config), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

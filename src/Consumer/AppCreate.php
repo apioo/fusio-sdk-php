@@ -11,7 +11,7 @@ use PSX\Schema\Attribute\Pattern;
 use PSX\Schema\Attribute\Required;
 
 #[Required(array('name', 'url', 'scopes'))]
-class AppCreate implements \JsonSerializable
+class AppCreate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Pattern('^[A-z0-9\\-\\_]{3,64}$')]
     protected ?string $name = null;
@@ -48,10 +48,17 @@ class AppCreate implements \JsonSerializable
     {
         return $this->scopes;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('name', $this->name);
+        $record->put('url', $this->url);
+        $record->put('scopes', $this->scopes);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('name' => $this->name, 'url' => $this->url, 'scopes' => $this->scopes), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

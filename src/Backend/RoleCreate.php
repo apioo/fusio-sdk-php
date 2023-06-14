@@ -9,6 +9,6 @@ namespace Fusio\Sdk\Backend;
 use PSX\Schema\Attribute\Required;
 
 #[Required(array('categoryId', 'name'))]
-class RoleCreate extends Role implements \JsonSerializable
+class RoleCreate extends Role implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

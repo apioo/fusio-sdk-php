@@ -7,6 +7,6 @@
 namespace Fusio\Sdk\Backend;
 
 
-class FormElementTag extends FormElement implements \JsonSerializable
+class FormElementTag extends FormElement implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

@@ -7,24 +7,24 @@
 namespace Fusio\Sdk\Backend;
 
 
-class Dashboard implements \JsonSerializable
+class Dashboard implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
-    protected ?StatisticChart $errorsPerRoute = null;
+    protected ?StatisticChart $errorsPerOperation = null;
     protected ?StatisticChart $incomingRequests = null;
     protected ?StatisticChart $incomingTransactions = null;
-    protected ?StatisticChart $mostUsedRoutes = null;
-    protected ?StatisticChart $timePerRoute = null;
+    protected ?StatisticChart $mostUsedOperations = null;
+    protected ?StatisticChart $timePerOperation = null;
     protected ?DashboardApps $latestApps = null;
     protected ?DashboardRequests $latestRequests = null;
     protected ?DashboardUsers $latestUsers = null;
     protected ?DashboardTransactions $latestTransactions = null;
-    public function setErrorsPerRoute(?StatisticChart $errorsPerRoute) : void
+    public function setErrorsPerOperation(?StatisticChart $errorsPerOperation) : void
     {
-        $this->errorsPerRoute = $errorsPerRoute;
+        $this->errorsPerOperation = $errorsPerOperation;
     }
-    public function getErrorsPerRoute() : ?StatisticChart
+    public function getErrorsPerOperation() : ?StatisticChart
     {
-        return $this->errorsPerRoute;
+        return $this->errorsPerOperation;
     }
     public function setIncomingRequests(?StatisticChart $incomingRequests) : void
     {
@@ -42,21 +42,21 @@ class Dashboard implements \JsonSerializable
     {
         return $this->incomingTransactions;
     }
-    public function setMostUsedRoutes(?StatisticChart $mostUsedRoutes) : void
+    public function setMostUsedOperations(?StatisticChart $mostUsedOperations) : void
     {
-        $this->mostUsedRoutes = $mostUsedRoutes;
+        $this->mostUsedOperations = $mostUsedOperations;
     }
-    public function getMostUsedRoutes() : ?StatisticChart
+    public function getMostUsedOperations() : ?StatisticChart
     {
-        return $this->mostUsedRoutes;
+        return $this->mostUsedOperations;
     }
-    public function setTimePerRoute(?StatisticChart $timePerRoute) : void
+    public function setTimePerOperation(?StatisticChart $timePerOperation) : void
     {
-        $this->timePerRoute = $timePerRoute;
+        $this->timePerOperation = $timePerOperation;
     }
-    public function getTimePerRoute() : ?StatisticChart
+    public function getTimePerOperation() : ?StatisticChart
     {
-        return $this->timePerRoute;
+        return $this->timePerOperation;
     }
     public function setLatestApps(?DashboardApps $latestApps) : void
     {
@@ -90,10 +90,23 @@ class Dashboard implements \JsonSerializable
     {
         return $this->latestTransactions;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('errorsPerOperation', $this->errorsPerOperation);
+        $record->put('incomingRequests', $this->incomingRequests);
+        $record->put('incomingTransactions', $this->incomingTransactions);
+        $record->put('mostUsedOperations', $this->mostUsedOperations);
+        $record->put('timePerOperation', $this->timePerOperation);
+        $record->put('latestApps', $this->latestApps);
+        $record->put('latestRequests', $this->latestRequests);
+        $record->put('latestUsers', $this->latestUsers);
+        $record->put('latestTransactions', $this->latestTransactions);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('errorsPerRoute' => $this->errorsPerRoute, 'incomingRequests' => $this->incomingRequests, 'incomingTransactions' => $this->incomingTransactions, 'mostUsedRoutes' => $this->mostUsedRoutes, 'timePerRoute' => $this->timePerRoute, 'latestApps' => $this->latestApps, 'latestRequests' => $this->latestRequests, 'latestUsers' => $this->latestUsers, 'latestTransactions' => $this->latestTransactions), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

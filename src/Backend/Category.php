@@ -8,7 +8,7 @@ namespace Fusio\Sdk\Backend;
 
 use PSX\Schema\Attribute\Pattern;
 
-class Category implements \JsonSerializable
+class Category implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     #[Pattern('^[a-zA-Z0-9\\-\\_]{3,64}$')]
@@ -29,10 +29,16 @@ class Category implements \JsonSerializable
     {
         return $this->name;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        $record->put('name', $this->name);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'name' => $this->name), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

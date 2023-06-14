@@ -7,6 +7,6 @@
 namespace Fusio\Sdk\Backend;
 
 
-class AppUpdate extends App implements \JsonSerializable
+class AppUpdate extends App implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

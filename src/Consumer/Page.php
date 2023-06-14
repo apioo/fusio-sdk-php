@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Consumer;
 
 
-class Page implements \JsonSerializable
+class Page implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?string $title = null;
@@ -54,10 +54,19 @@ class Page implements \JsonSerializable
     {
         return $this->metadata;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        $record->put('title', $this->title);
+        $record->put('slug', $this->slug);
+        $record->put('content', $this->content);
+        $record->put('metadata', $this->metadata);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'title' => $this->title, 'slug' => $this->slug, 'content' => $this->content, 'metadata' => $this->metadata), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

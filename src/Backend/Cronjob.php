@@ -8,14 +8,14 @@ namespace Fusio\Sdk\Backend;
 
 use PSX\Schema\Attribute\Pattern;
 
-class Cronjob implements \JsonSerializable
+class Cronjob implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     #[Pattern('^[a-zA-Z0-9\\-\\_]{3,64}$')]
     protected ?string $name = null;
     protected ?string $cron = null;
     protected ?string $action = null;
-    protected ?\DateTime $executeDate = null;
+    protected ?\PSX\DateTime\LocalDateTime $executeDate = null;
     protected ?int $exitCode = null;
     protected ?Metadata $metadata = null;
     /**
@@ -54,11 +54,11 @@ class Cronjob implements \JsonSerializable
     {
         return $this->action;
     }
-    public function setExecuteDate(?\DateTime $executeDate) : void
+    public function setExecuteDate(?\PSX\DateTime\LocalDateTime $executeDate) : void
     {
         $this->executeDate = $executeDate;
     }
-    public function getExecuteDate() : ?\DateTime
+    public function getExecuteDate() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->executeDate;
     }
@@ -89,10 +89,22 @@ class Cronjob implements \JsonSerializable
     {
         return $this->errors;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        $record->put('name', $this->name);
+        $record->put('cron', $this->cron);
+        $record->put('action', $this->action);
+        $record->put('executeDate', $this->executeDate);
+        $record->put('exitCode', $this->exitCode);
+        $record->put('metadata', $this->metadata);
+        $record->put('errors', $this->errors);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'cron' => $this->cron, 'action' => $this->action, 'executeDate' => $this->executeDate, 'exitCode' => $this->exitCode, 'metadata' => $this->metadata, 'errors' => $this->errors), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

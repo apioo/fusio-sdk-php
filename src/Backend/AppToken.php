@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Backend;
 
 
-class AppToken implements \JsonSerializable
+class AppToken implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?int $status = null;
@@ -17,8 +17,8 @@ class AppToken implements \JsonSerializable
      */
     protected ?array $scope = null;
     protected ?string $ip = null;
-    protected ?\DateTime $expire = null;
-    protected ?\DateTime $date = null;
+    protected ?\PSX\DateTime\LocalDateTime $expire = null;
+    protected ?\PSX\DateTime\LocalDateTime $date = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -62,26 +62,37 @@ class AppToken implements \JsonSerializable
     {
         return $this->ip;
     }
-    public function setExpire(?\DateTime $expire) : void
+    public function setExpire(?\PSX\DateTime\LocalDateTime $expire) : void
     {
         $this->expire = $expire;
     }
-    public function getExpire() : ?\DateTime
+    public function getExpire() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->expire;
     }
-    public function setDate(?\DateTime $date) : void
+    public function setDate(?\PSX\DateTime\LocalDateTime $date) : void
     {
         $this->date = $date;
     }
-    public function getDate() : ?\DateTime
+    public function getDate() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->date;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        $record->put('status', $this->status);
+        $record->put('token', $this->token);
+        $record->put('scope', $this->scope);
+        $record->put('ip', $this->ip);
+        $record->put('expire', $this->expire);
+        $record->put('date', $this->date);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'status' => $this->status, 'token' => $this->token, 'scope' => $this->scope, 'ip' => $this->ip, 'expire' => $this->expire, 'date' => $this->date), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

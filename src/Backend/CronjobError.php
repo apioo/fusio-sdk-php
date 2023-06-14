@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Backend;
 
 
-class CronjobError implements \JsonSerializable
+class CronjobError implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $message = null;
     protected ?string $trace = null;
@@ -45,10 +45,18 @@ class CronjobError implements \JsonSerializable
     {
         return $this->line;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('message', $this->message);
+        $record->put('trace', $this->trace);
+        $record->put('file', $this->file);
+        $record->put('line', $this->line);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('message' => $this->message, 'trace' => $this->trace, 'file' => $this->file, 'line' => $this->line), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

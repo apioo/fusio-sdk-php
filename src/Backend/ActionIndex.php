@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Backend;
 
 
-class ActionIndex implements \JsonSerializable
+class ActionIndex implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<ActionIndexEntry>|null
@@ -24,10 +24,15 @@ class ActionIndex implements \JsonSerializable
     {
         return $this->actions;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('actions', $this->actions);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('actions' => $this->actions), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

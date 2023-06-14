@@ -9,6 +9,6 @@ namespace Fusio\Sdk\Backend;
 use PSX\Schema\Attribute\Required;
 
 #[Required(array('name'))]
-class EventCreate extends Event implements \JsonSerializable
+class EventCreate extends Event implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

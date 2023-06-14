@@ -9,6 +9,6 @@ namespace Fusio\Sdk\Backend;
 use PSX\Schema\Attribute\Required;
 
 #[Required(array('name', 'price'))]
-class PlanCreate extends Plan implements \JsonSerializable
+class PlanCreate extends Plan implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

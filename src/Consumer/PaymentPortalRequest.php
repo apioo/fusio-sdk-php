@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Consumer;
 
 
-class PaymentPortalRequest implements \JsonSerializable
+class PaymentPortalRequest implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $returnUrl = null;
     public function setReturnUrl(?string $returnUrl) : void
@@ -18,10 +18,15 @@ class PaymentPortalRequest implements \JsonSerializable
     {
         return $this->returnUrl;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('returnUrl', $this->returnUrl);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('returnUrl' => $this->returnUrl), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Consumer;
 
 
-class Log implements \JsonSerializable
+class Log implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?int $appId = null;
@@ -17,7 +17,7 @@ class Log implements \JsonSerializable
     protected ?string $path = null;
     protected ?string $header = null;
     protected ?string $body = null;
-    protected ?\DateTime $date = null;
+    protected ?\PSX\DateTime\LocalDateTime $date = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -82,18 +82,31 @@ class Log implements \JsonSerializable
     {
         return $this->body;
     }
-    public function setDate(?\DateTime $date) : void
+    public function setDate(?\PSX\DateTime\LocalDateTime $date) : void
     {
         $this->date = $date;
     }
-    public function getDate() : ?\DateTime
+    public function getDate() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->date;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        $record->put('appId', $this->appId);
+        $record->put('ip', $this->ip);
+        $record->put('userAgent', $this->userAgent);
+        $record->put('method', $this->method);
+        $record->put('path', $this->path);
+        $record->put('header', $this->header);
+        $record->put('body', $this->body);
+        $record->put('date', $this->date);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'appId' => $this->appId, 'ip' => $this->ip, 'userAgent' => $this->userAgent, 'method' => $this->method, 'path' => $this->path, 'header' => $this->header, 'body' => $this->body, 'date' => $this->date), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

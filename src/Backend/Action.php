@@ -8,7 +8,7 @@ namespace Fusio\Sdk\Backend;
 
 use PSX\Schema\Attribute\Pattern;
 
-class Action implements \JsonSerializable
+class Action implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?int $status = null;
@@ -83,10 +83,22 @@ class Action implements \JsonSerializable
     {
         return $this->metadata;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        $record->put('status', $this->status);
+        $record->put('name', $this->name);
+        $record->put('class', $this->class);
+        $record->put('async', $this->async);
+        $record->put('engine', $this->engine);
+        $record->put('config', $this->config);
+        $record->put('metadata', $this->metadata);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'status' => $this->status, 'name' => $this->name, 'class' => $this->class, 'async' => $this->async, 'engine' => $this->engine, 'config' => $this->config, 'metadata' => $this->metadata), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

@@ -9,7 +9,7 @@ namespace Fusio\Sdk\Consumer;
 use PSX\Schema\Attribute\Required;
 
 #[Required(array('event', 'endpoint'))]
-class EventSubscriptionCreate implements \JsonSerializable
+class EventSubscriptionCreate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $event = null;
     protected ?string $endpoint = null;
@@ -29,10 +29,16 @@ class EventSubscriptionCreate implements \JsonSerializable
     {
         return $this->endpoint;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('event', $this->event);
+        $record->put('endpoint', $this->endpoint);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('event' => $this->event, 'endpoint' => $this->endpoint), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

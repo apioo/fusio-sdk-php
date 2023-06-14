@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Consumer;
 
 
-class Transaction implements \JsonSerializable
+class Transaction implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?int $userId = null;
@@ -16,9 +16,9 @@ class Transaction implements \JsonSerializable
     protected ?string $transactionId = null;
     protected ?float $amount = null;
     protected ?float $points = null;
-    protected ?\DateTime $periodStart = null;
-    protected ?\DateTime $periodEnd = null;
-    protected ?\DateTime $insertDate = null;
+    protected ?\PSX\DateTime\LocalDateTime $periodStart = null;
+    protected ?\PSX\DateTime\LocalDateTime $periodEnd = null;
+    protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -75,34 +75,48 @@ class Transaction implements \JsonSerializable
     {
         return $this->points;
     }
-    public function setPeriodStart(?\DateTime $periodStart) : void
+    public function setPeriodStart(?\PSX\DateTime\LocalDateTime $periodStart) : void
     {
         $this->periodStart = $periodStart;
     }
-    public function getPeriodStart() : ?\DateTime
+    public function getPeriodStart() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->periodStart;
     }
-    public function setPeriodEnd(?\DateTime $periodEnd) : void
+    public function setPeriodEnd(?\PSX\DateTime\LocalDateTime $periodEnd) : void
     {
         $this->periodEnd = $periodEnd;
     }
-    public function getPeriodEnd() : ?\DateTime
+    public function getPeriodEnd() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->periodEnd;
     }
-    public function setInsertDate(?\DateTime $insertDate) : void
+    public function setInsertDate(?\PSX\DateTime\LocalDateTime $insertDate) : void
     {
         $this->insertDate = $insertDate;
     }
-    public function getInsertDate() : ?\DateTime
+    public function getInsertDate() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->insertDate;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        $record->put('userId', $this->userId);
+        $record->put('planId', $this->planId);
+        $record->put('plan', $this->plan);
+        $record->put('transactionId', $this->transactionId);
+        $record->put('amount', $this->amount);
+        $record->put('points', $this->points);
+        $record->put('periodStart', $this->periodStart);
+        $record->put('periodEnd', $this->periodEnd);
+        $record->put('insertDate', $this->insertDate);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'userId' => $this->userId, 'planId' => $this->planId, 'plan' => $this->plan, 'transactionId' => $this->transactionId, 'amount' => $this->amount, 'points' => $this->points, 'periodStart' => $this->periodStart, 'periodEnd' => $this->periodEnd, 'insertDate' => $this->insertDate), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

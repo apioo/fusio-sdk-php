@@ -7,6 +7,6 @@
 namespace Fusio\Sdk\Backend;
 
 
-class PlanUpdate extends Plan implements \JsonSerializable
+class PlanUpdate extends Plan implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

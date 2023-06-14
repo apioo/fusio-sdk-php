@@ -7,6 +7,6 @@
 namespace Fusio\Sdk\Backend;
 
 
-class EventSubscriptionUpdate extends EventSubscription implements \JsonSerializable
+class EventSubscriptionUpdate extends EventSubscription implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

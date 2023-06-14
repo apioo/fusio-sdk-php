@@ -7,6 +7,6 @@
 namespace Fusio\Sdk\Backend;
 
 
-class RoleUpdate extends Role implements \JsonSerializable
+class RoleUpdate extends Role implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

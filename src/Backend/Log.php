@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Backend;
 
 
-class Log implements \JsonSerializable
+class Log implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?string $ip = null;
@@ -16,7 +16,7 @@ class Log implements \JsonSerializable
     protected ?string $path = null;
     protected ?string $header = null;
     protected ?string $body = null;
-    protected ?\DateTime $date = null;
+    protected ?\PSX\DateTime\LocalDateTime $date = null;
     /**
      * @var array<LogError>|null
      */
@@ -77,11 +77,11 @@ class Log implements \JsonSerializable
     {
         return $this->body;
     }
-    public function setDate(?\DateTime $date) : void
+    public function setDate(?\PSX\DateTime\LocalDateTime $date) : void
     {
         $this->date = $date;
     }
-    public function getDate() : ?\DateTime
+    public function getDate() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->date;
     }
@@ -96,10 +96,23 @@ class Log implements \JsonSerializable
     {
         return $this->errors;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        $record->put('ip', $this->ip);
+        $record->put('userAgent', $this->userAgent);
+        $record->put('method', $this->method);
+        $record->put('path', $this->path);
+        $record->put('header', $this->header);
+        $record->put('body', $this->body);
+        $record->put('date', $this->date);
+        $record->put('errors', $this->errors);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'ip' => $this->ip, 'userAgent' => $this->userAgent, 'method' => $this->method, 'path' => $this->path, 'header' => $this->header, 'body' => $this->body, 'date' => $this->date, 'errors' => $this->errors), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

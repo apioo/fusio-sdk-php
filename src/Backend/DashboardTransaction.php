@@ -7,14 +7,14 @@
 namespace Fusio\Sdk\Backend;
 
 
-class DashboardTransaction implements \JsonSerializable
+class DashboardTransaction implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?string $status = null;
     protected ?string $provider = null;
     protected ?string $transactionId = null;
     protected ?float $amount = null;
-    protected ?\DateTime $date = null;
+    protected ?\PSX\DateTime\LocalDateTime $date = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -55,18 +55,28 @@ class DashboardTransaction implements \JsonSerializable
     {
         return $this->amount;
     }
-    public function setDate(?\DateTime $date) : void
+    public function setDate(?\PSX\DateTime\LocalDateTime $date) : void
     {
         $this->date = $date;
     }
-    public function getDate() : ?\DateTime
+    public function getDate() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->date;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        $record->put('status', $this->status);
+        $record->put('provider', $this->provider);
+        $record->put('transactionId', $this->transactionId);
+        $record->put('amount', $this->amount);
+        $record->put('date', $this->date);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'status' => $this->status, 'provider' => $this->provider, 'transactionId' => $this->transactionId, 'amount' => $this->amount, 'date' => $this->date), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

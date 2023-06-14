@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Consumer;
 
 
-class Plan implements \JsonSerializable
+class Plan implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?string $name = null;
@@ -63,10 +63,20 @@ class Plan implements \JsonSerializable
     {
         return $this->metadata;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        $record->put('name', $this->name);
+        $record->put('description', $this->description);
+        $record->put('price', $this->price);
+        $record->put('points', $this->points);
+        $record->put('metadata', $this->metadata);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'description' => $this->description, 'price' => $this->price, 'points' => $this->points, 'metadata' => $this->metadata), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

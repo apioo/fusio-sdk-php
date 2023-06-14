@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Backend;
 
 
-class ScopeCategories implements \JsonSerializable
+class ScopeCategories implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<ScopeCategory>|null
@@ -24,10 +24,15 @@ class ScopeCategories implements \JsonSerializable
     {
         return $this->categories;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('categories', $this->categories);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('categories' => $this->categories), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Consumer;
 
 
-class AuthorizeResponse implements \JsonSerializable
+class AuthorizeResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $type = null;
     protected ?AuthorizeResponseToken $token = null;
@@ -45,10 +45,18 @@ class AuthorizeResponse implements \JsonSerializable
     {
         return $this->redirectUri;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('type', $this->type);
+        $record->put('token', $this->token);
+        $record->put('code', $this->code);
+        $record->put('redirectUri', $this->redirectUri);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('type' => $this->type, 'token' => $this->token, 'code' => $this->code, 'redirectUri' => $this->redirectUri), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

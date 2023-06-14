@@ -7,6 +7,6 @@
 namespace Fusio\Sdk\Backend;
 
 
-class UserUpdate extends User implements \JsonSerializable
+class UserUpdate extends User implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

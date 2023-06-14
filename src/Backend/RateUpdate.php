@@ -7,6 +7,6 @@
 namespace Fusio\Sdk\Backend;
 
 
-class RateUpdate extends Rate implements \JsonSerializable
+class RateUpdate extends Rate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

@@ -9,7 +9,7 @@ namespace Fusio\Sdk\Consumer;
 use PSX\Schema\Attribute\Required;
 
 #[Required(array('responseType', 'clientId', 'scope', 'allow'))]
-class AuthorizeRequest implements \JsonSerializable
+class AuthorizeRequest implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $responseType = null;
     protected ?string $clientId = null;
@@ -65,10 +65,20 @@ class AuthorizeRequest implements \JsonSerializable
     {
         return $this->allow;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('responseType', $this->responseType);
+        $record->put('clientId', $this->clientId);
+        $record->put('redirectUri', $this->redirectUri);
+        $record->put('scope', $this->scope);
+        $record->put('state', $this->state);
+        $record->put('allow', $this->allow);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('responseType' => $this->responseType, 'clientId' => $this->clientId, 'redirectUri' => $this->redirectUri, 'scope' => $this->scope, 'state' => $this->state, 'allow' => $this->allow), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

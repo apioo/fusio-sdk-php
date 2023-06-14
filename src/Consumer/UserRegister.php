@@ -9,7 +9,7 @@ namespace Fusio\Sdk\Consumer;
 use PSX\Schema\Attribute\Required;
 
 #[Required(array('name', 'email', 'password'))]
-class UserRegister implements \JsonSerializable
+class UserRegister implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $name = null;
     protected ?string $email = null;
@@ -47,10 +47,18 @@ class UserRegister implements \JsonSerializable
     {
         return $this->captcha;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('name', $this->name);
+        $record->put('email', $this->email);
+        $record->put('password', $this->password);
+        $record->put('captcha', $this->captcha);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('name' => $this->name, 'email' => $this->email, 'password' => $this->password, 'captcha' => $this->captcha), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

@@ -7,6 +7,6 @@
 namespace Fusio\Sdk\Backend;
 
 
-class ScopeUpdate extends Scope implements \JsonSerializable
+class ScopeUpdate extends Scope implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

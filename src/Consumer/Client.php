@@ -6,390 +6,102 @@
 
 namespace Fusio\Sdk\Consumer;
 
+use GuzzleHttp\Exception\BadResponseException;
 use Sdkgen\Client\ClientAbstract;
 use Sdkgen\Client\Credentials;
-use Sdkgen\Client\CredentialsInterface;
-use Sdkgen\Client\TokenStoreInterface;
+use Sdkgen\Client\Exception\ClientException;
+use Sdkgen\Client\Exception\UnknownStatusCodeException;
 
 class Client extends ClientAbstract
 {
-    public function __construct(string $baseUrl, ?CredentialsInterface $credentials = null, ?TokenStoreInterface $tokenStore = null, ?array $scopes = null)
+    public function consumerAccount(): ConsumerAccountTag
     {
-        parent::__construct($baseUrl, $credentials, $tokenStore, $scopes);
-    }
-
-    /**
-     * Endpoint: /consumer/password_reset
-     *
-     * 
-     */
-    public function getConsumerPasswordReset(): ConsumerPasswordResetResource
-    {
-        return new ConsumerPasswordResetResource(
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
+        return new ConsumerAccountTag(
+            $this->httpClient,
+            $this->parser
         );
     }
 
-    /**
-     * Endpoint: /consumer/register
-     *
-     * 
-     */
-    public function getConsumerRegister(): ConsumerRegisterResource
+    public function consumerTransaction(): ConsumerTransactionTag
     {
-        return new ConsumerRegisterResource(
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
+        return new ConsumerTransactionTag(
+            $this->httpClient,
+            $this->parser
         );
     }
 
-    /**
-     * Endpoint: /consumer/provider/:provider
-     *
-     * 
-     */
-    public function getConsumerProviderByProvider(string $provider): ConsumerProviderByProviderResource
+    public function consumerSubscription(): ConsumerSubscriptionTag
     {
-        return new ConsumerProviderByProviderResource(
-            $provider,
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
+        return new ConsumerSubscriptionTag(
+            $this->httpClient,
+            $this->parser
         );
     }
 
-    /**
-     * Endpoint: /consumer/login
-     *
-     * 
-     */
-    public function getConsumerLogin(): ConsumerLoginResource
+    public function consumerScope(): ConsumerScopeTag
     {
-        return new ConsumerLoginResource(
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
+        return new ConsumerScopeTag(
+            $this->httpClient,
+            $this->parser
         );
     }
 
-    /**
-     * Endpoint: /consumer/authorize
-     *
-     * 
-     */
-    public function getConsumerAuthorize(): ConsumerAuthorizeResource
+    public function consumerPlan(): ConsumerPlanTag
     {
-        return new ConsumerAuthorizeResource(
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
+        return new ConsumerPlanTag(
+            $this->httpClient,
+            $this->parser
         );
     }
 
-    /**
-     * Endpoint: /consumer/activate
-     *
-     * 
-     */
-    public function getConsumerActivate(): ConsumerActivateResource
+    public function consumerPayment(): ConsumerPaymentTag
     {
-        return new ConsumerActivateResource(
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
+        return new ConsumerPaymentTag(
+            $this->httpClient,
+            $this->parser
         );
     }
 
-    /**
-     * Endpoint: /consumer/account/change_password
-     *
-     * 
-     */
-    public function getConsumerAccountChangePassword(): ConsumerAccountChangePasswordResource
+    public function consumerPage(): ConsumerPageTag
     {
-        return new ConsumerAccountChangePasswordResource(
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
+        return new ConsumerPageTag(
+            $this->httpClient,
+            $this->parser
         );
     }
 
-    /**
-     * Endpoint: /consumer/account
-     *
-     * 
-     */
-    public function getConsumerAccount(): ConsumerAccountResource
+    public function consumerLog(): ConsumerLogTag
     {
-        return new ConsumerAccountResource(
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
+        return new ConsumerLogTag(
+            $this->httpClient,
+            $this->parser
         );
     }
 
-    /**
-     * Endpoint: /consumer/transaction/$transaction_id<[0-9]+>
-     *
-     * 
-     */
-    public function getConsumerTransactionByTransactionId(string $transactionId): ConsumerTransactionByTransactionIdResource
+    public function consumerGrant(): ConsumerGrantTag
     {
-        return new ConsumerTransactionByTransactionIdResource(
-            $transactionId,
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
+        return new ConsumerGrantTag(
+            $this->httpClient,
+            $this->parser
         );
     }
 
-    /**
-     * Endpoint: /consumer/transaction
-     *
-     * 
-     */
-    public function getConsumerTransaction(): ConsumerTransactionResource
+    public function consumerEvent(): ConsumerEventTag
     {
-        return new ConsumerTransactionResource(
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
+        return new ConsumerEventTag(
+            $this->httpClient,
+            $this->parser
         );
     }
 
-    /**
-     * Endpoint: /consumer/subscription/$subscription_id<[0-9]+>
-     *
-     * 
-     */
-    public function getConsumerSubscriptionBySubscriptionId(string $subscriptionId): ConsumerSubscriptionBySubscriptionIdResource
+    public function consumerApp(): ConsumerAppTag
     {
-        return new ConsumerSubscriptionBySubscriptionIdResource(
-            $subscriptionId,
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
+        return new ConsumerAppTag(
+            $this->httpClient,
+            $this->parser
         );
     }
 
-    /**
-     * Endpoint: /consumer/subscription
-     *
-     * 
-     */
-    public function getConsumerSubscription(): ConsumerSubscriptionResource
-    {
-        return new ConsumerSubscriptionResource(
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
-        );
-    }
 
-    /**
-     * Endpoint: /consumer/scope
-     *
-     * 
-     */
-    public function getConsumerScope(): ConsumerScopeResource
-    {
-        return new ConsumerScopeResource(
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /consumer/plan/$plan_id<[0-9]+>
-     *
-     * 
-     */
-    public function getConsumerPlanByPlanId(string $planId): ConsumerPlanByPlanIdResource
-    {
-        return new ConsumerPlanByPlanIdResource(
-            $planId,
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /consumer/plan
-     *
-     * 
-     */
-    public function getConsumerPlan(): ConsumerPlanResource
-    {
-        return new ConsumerPlanResource(
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /consumer/payment/:provider/checkout
-     *
-     * 
-     */
-    public function getConsumerPaymentByProviderCheckout(string $provider): ConsumerPaymentByProviderCheckoutResource
-    {
-        return new ConsumerPaymentByProviderCheckoutResource(
-            $provider,
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /consumer/payment/:provider/portal
-     *
-     * 
-     */
-    public function getConsumerPaymentByProviderPortal(string $provider): ConsumerPaymentByProviderPortalResource
-    {
-        return new ConsumerPaymentByProviderPortalResource(
-            $provider,
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /consumer/page/:page_id
-     *
-     * 
-     */
-    public function getConsumerPageByPageId(string $pageId): ConsumerPageByPageIdResource
-    {
-        return new ConsumerPageByPageIdResource(
-            $pageId,
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /consumer/page
-     *
-     * 
-     */
-    public function getConsumerPage(): ConsumerPageResource
-    {
-        return new ConsumerPageResource(
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /consumer/log/$log_id<[0-9]+>
-     *
-     * 
-     */
-    public function getConsumerLogByLogId(string $logId): ConsumerLogByLogIdResource
-    {
-        return new ConsumerLogByLogIdResource(
-            $logId,
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /consumer/log
-     *
-     * 
-     */
-    public function getConsumerLog(): ConsumerLogResource
-    {
-        return new ConsumerLogResource(
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /consumer/grant/$grant_id<[0-9]+>
-     *
-     * 
-     */
-    public function getConsumerGrantByGrantId(string $grantId): ConsumerGrantByGrantIdResource
-    {
-        return new ConsumerGrantByGrantIdResource(
-            $grantId,
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /consumer/grant
-     *
-     * 
-     */
-    public function getConsumerGrant(): ConsumerGrantResource
-    {
-        return new ConsumerGrantResource(
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /consumer/event
-     *
-     * 
-     */
-    public function getConsumerEvent(): ConsumerEventResource
-    {
-        return new ConsumerEventResource(
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /consumer/app/$app_id<[0-9]+>
-     *
-     * 
-     */
-    public function getConsumerAppByAppId(string $appId): ConsumerAppByAppIdResource
-    {
-        return new ConsumerAppByAppIdResource(
-            $appId,
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
-        );
-    }
-
-    /**
-     * Endpoint: /consumer/app
-     *
-     * 
-     */
-    public function getConsumerApp(): ConsumerAppResource
-    {
-        return new ConsumerAppResource(
-            $this->baseUrl,
-            $this->newHttpClient(),
-            $this->schemaManager
-        );
-    }
 
 }

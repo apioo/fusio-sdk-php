@@ -9,7 +9,7 @@ namespace Fusio\Sdk\Backend;
 use PSX\Schema\Attribute\Minimum;
 use PSX\Schema\Attribute\Pattern;
 
-class Rate implements \JsonSerializable
+class Rate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     #[Minimum(0)]
@@ -18,7 +18,7 @@ class Rate implements \JsonSerializable
     protected ?string $name = null;
     #[Minimum(0)]
     protected ?int $rateLimit = null;
-    protected ?\DateInterval $timespan = null;
+    protected ?\PSX\DateTime\Duration $timespan = null;
     /**
      * @var array<RateAllocation>|null
      */
@@ -56,11 +56,11 @@ class Rate implements \JsonSerializable
     {
         return $this->rateLimit;
     }
-    public function setTimespan(?\DateInterval $timespan) : void
+    public function setTimespan(?\PSX\DateTime\Duration $timespan) : void
     {
         $this->timespan = $timespan;
     }
-    public function getTimespan() : ?\DateInterval
+    public function getTimespan() : ?\PSX\DateTime\Duration
     {
         return $this->timespan;
     }
@@ -83,10 +83,21 @@ class Rate implements \JsonSerializable
     {
         return $this->metadata;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        $record->put('priority', $this->priority);
+        $record->put('name', $this->name);
+        $record->put('rateLimit', $this->rateLimit);
+        $record->put('timespan', $this->timespan);
+        $record->put('allocation', $this->allocation);
+        $record->put('metadata', $this->metadata);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'priority' => $this->priority, 'name' => $this->name, 'rateLimit' => $this->rateLimit, 'timespan' => $this->timespan, 'allocation' => $this->allocation, 'metadata' => $this->metadata), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

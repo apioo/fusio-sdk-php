@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Backend;
 
 
-class SdkResponse implements \JsonSerializable
+class SdkResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?SdkTypes $types = null;
     public function setTypes(?SdkTypes $types) : void
@@ -18,10 +18,15 @@ class SdkResponse implements \JsonSerializable
     {
         return $this->types;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('types', $this->types);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('types' => $this->types), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

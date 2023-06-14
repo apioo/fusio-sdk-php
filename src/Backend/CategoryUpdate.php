@@ -7,6 +7,6 @@
 namespace Fusio\Sdk\Backend;
 
 
-class CategoryUpdate extends Category implements \JsonSerializable
+class CategoryUpdate extends Category implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

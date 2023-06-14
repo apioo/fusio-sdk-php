@@ -9,7 +9,7 @@ namespace Fusio\Sdk\Consumer;
 use PSX\Schema\Attribute\MinLength;
 use PSX\Schema\Attribute\Pattern;
 
-class App implements \JsonSerializable
+class App implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?int $userId = null;
@@ -109,10 +109,24 @@ class App implements \JsonSerializable
     {
         return $this->metadata;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        $record->put('userId', $this->userId);
+        $record->put('status', $this->status);
+        $record->put('name', $this->name);
+        $record->put('url', $this->url);
+        $record->put('appKey', $this->appKey);
+        $record->put('appSecret', $this->appSecret);
+        $record->put('date', $this->date);
+        $record->put('scopes', $this->scopes);
+        $record->put('metadata', $this->metadata);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'userId' => $this->userId, 'status' => $this->status, 'name' => $this->name, 'url' => $this->url, 'appKey' => $this->appKey, 'appSecret' => $this->appSecret, 'date' => $this->date, 'scopes' => $this->scopes, 'metadata' => $this->metadata), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

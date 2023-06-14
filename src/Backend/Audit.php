@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Backend;
 
 
-class Audit implements \JsonSerializable
+class Audit implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?App $app = null;
@@ -16,7 +16,7 @@ class Audit implements \JsonSerializable
     protected ?string $ip = null;
     protected ?string $message = null;
     protected ?AuditObject $content = null;
-    protected ?\DateTime $date = null;
+    protected ?\PSX\DateTime\LocalDateTime $date = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -73,18 +73,30 @@ class Audit implements \JsonSerializable
     {
         return $this->content;
     }
-    public function setDate(?\DateTime $date) : void
+    public function setDate(?\PSX\DateTime\LocalDateTime $date) : void
     {
         $this->date = $date;
     }
-    public function getDate() : ?\DateTime
+    public function getDate() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->date;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        $record->put('app', $this->app);
+        $record->put('user', $this->user);
+        $record->put('event', $this->event);
+        $record->put('ip', $this->ip);
+        $record->put('message', $this->message);
+        $record->put('content', $this->content);
+        $record->put('date', $this->date);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'app' => $this->app, 'user' => $this->user, 'event' => $this->event, 'ip' => $this->ip, 'message' => $this->message, 'content' => $this->content, 'date' => $this->date), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

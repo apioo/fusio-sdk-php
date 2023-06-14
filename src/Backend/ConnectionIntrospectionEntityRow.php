@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Backend;
 
 
-class ConnectionIntrospectionEntityRow implements \JsonSerializable
+class ConnectionIntrospectionEntityRow implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<string>|null
@@ -24,10 +24,15 @@ class ConnectionIntrospectionEntityRow implements \JsonSerializable
     {
         return $this->values;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('values', $this->values);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('values' => $this->values), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

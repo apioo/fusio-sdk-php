@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Backend;
 
 
-class EventSubscription implements \JsonSerializable
+class EventSubscription implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?int $eventId = null;
@@ -60,10 +60,19 @@ class EventSubscription implements \JsonSerializable
     {
         return $this->responses;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        $record->put('eventId', $this->eventId);
+        $record->put('userId', $this->userId);
+        $record->put('endpoint', $this->endpoint);
+        $record->put('responses', $this->responses);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'eventId' => $this->eventId, 'userId' => $this->userId, 'endpoint' => $this->endpoint, 'responses' => $this->responses), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Consumer;
 
 
-class PaymentCheckoutRequest implements \JsonSerializable
+class PaymentCheckoutRequest implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $planId = null;
     protected ?string $returnUrl = null;
@@ -27,10 +27,16 @@ class PaymentCheckoutRequest implements \JsonSerializable
     {
         return $this->returnUrl;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('planId', $this->planId);
+        $record->put('returnUrl', $this->returnUrl);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('planId' => $this->planId, 'returnUrl' => $this->returnUrl), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

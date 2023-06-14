@@ -8,7 +8,7 @@ namespace Fusio\Sdk\Consumer;
 
 use PSX\Schema\Attribute\Key;
 
-class UserJWT implements \JsonSerializable
+class UserJWT implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $token = null;
     #[Key('expires_in')]
@@ -48,10 +48,18 @@ class UserJWT implements \JsonSerializable
     {
         return $this->scope;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('token', $this->token);
+        $record->put('expires_in', $this->expiresIn);
+        $record->put('refresh_token', $this->refreshToken);
+        $record->put('scope', $this->scope);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('token' => $this->token, 'expires_in' => $this->expiresIn, 'refresh_token' => $this->refreshToken, 'scope' => $this->scope), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

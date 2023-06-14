@@ -7,11 +7,11 @@
 namespace Fusio\Sdk\Consumer;
 
 
-class Grant implements \JsonSerializable
+class Grant implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?App $app = null;
-    protected ?\DateTime $createDate = null;
+    protected ?\PSX\DateTime\LocalDateTime $createDate = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -28,18 +28,25 @@ class Grant implements \JsonSerializable
     {
         return $this->app;
     }
-    public function setCreateDate(?\DateTime $createDate) : void
+    public function setCreateDate(?\PSX\DateTime\LocalDateTime $createDate) : void
     {
         $this->createDate = $createDate;
     }
-    public function getCreateDate() : ?\DateTime
+    public function getCreateDate() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->createDate;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        $record->put('app', $this->app);
+        $record->put('createDate', $this->createDate);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'app' => $this->app, 'createDate' => $this->createDate), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

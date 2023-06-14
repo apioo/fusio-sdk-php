@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Backend;
 
 
-class FormElementInput extends FormElement implements \JsonSerializable
+class FormElementInput extends FormElement implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $type = null;
     public function setType(?string $type) : void
@@ -18,10 +18,15 @@ class FormElementInput extends FormElement implements \JsonSerializable
     {
         return $this->type;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = parent::toRecord();
+        $record->put('type', $this->type);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('type' => $this->type), static function ($value) : bool {
-            return $value !== null;
-        }));
+        return (object) $this->toRecord()->getAll();
     }
 }

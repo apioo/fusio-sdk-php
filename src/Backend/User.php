@@ -8,7 +8,7 @@ namespace Fusio\Sdk\Backend;
 
 use PSX\Schema\Attribute\Pattern;
 
-class User implements \JsonSerializable
+class User implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?int $roleId = null;
@@ -27,7 +27,7 @@ class User implements \JsonSerializable
      */
     protected ?array $apps = null;
     protected ?Metadata $metadata = null;
-    protected ?\DateTime $date = null;
+    protected ?\PSX\DateTime\LocalDateTime $date = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -114,18 +114,33 @@ class User implements \JsonSerializable
     {
         return $this->metadata;
     }
-    public function setDate(?\DateTime $date) : void
+    public function setDate(?\PSX\DateTime\LocalDateTime $date) : void
     {
         $this->date = $date;
     }
-    public function getDate() : ?\DateTime
+    public function getDate() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->date;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        $record->put('roleId', $this->roleId);
+        $record->put('planId', $this->planId);
+        $record->put('status', $this->status);
+        $record->put('name', $this->name);
+        $record->put('email', $this->email);
+        $record->put('points', $this->points);
+        $record->put('scopes', $this->scopes);
+        $record->put('apps', $this->apps);
+        $record->put('metadata', $this->metadata);
+        $record->put('date', $this->date);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'roleId' => $this->roleId, 'planId' => $this->planId, 'status' => $this->status, 'name' => $this->name, 'email' => $this->email, 'points' => $this->points, 'scopes' => $this->scopes, 'apps' => $this->apps, 'metadata' => $this->metadata, 'date' => $this->date), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

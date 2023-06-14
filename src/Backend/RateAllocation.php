@@ -7,10 +7,10 @@
 namespace Fusio\Sdk\Backend;
 
 
-class RateAllocation implements \JsonSerializable
+class RateAllocation implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
-    protected ?int $routeId = null;
+    protected ?int $operationId = null;
     protected ?int $userId = null;
     protected ?int $planId = null;
     protected ?int $appId = null;
@@ -23,13 +23,13 @@ class RateAllocation implements \JsonSerializable
     {
         return $this->id;
     }
-    public function setRouteId(?int $routeId) : void
+    public function setOperationId(?int $operationId) : void
     {
-        $this->routeId = $routeId;
+        $this->operationId = $operationId;
     }
-    public function getRouteId() : ?int
+    public function getOperationId() : ?int
     {
-        return $this->routeId;
+        return $this->operationId;
     }
     public function setUserId(?int $userId) : void
     {
@@ -63,10 +63,20 @@ class RateAllocation implements \JsonSerializable
     {
         return $this->authenticated;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        $record->put('operationId', $this->operationId);
+        $record->put('userId', $this->userId);
+        $record->put('planId', $this->planId);
+        $record->put('appId', $this->appId);
+        $record->put('authenticated', $this->authenticated);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'routeId' => $this->routeId, 'userId' => $this->userId, 'planId' => $this->planId, 'appId' => $this->appId, 'authenticated' => $this->authenticated), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

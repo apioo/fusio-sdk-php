@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Backend;
 
 
-class FormElementSelect extends FormElement implements \JsonSerializable
+class FormElementSelect extends FormElement implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<FormElementSelectOption>|null
@@ -24,10 +24,15 @@ class FormElementSelect extends FormElement implements \JsonSerializable
     {
         return $this->options;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = parent::toRecord();
+        $record->put('options', $this->options);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('options' => $this->options), static function ($value) : bool {
-            return $value !== null;
-        }));
+        return (object) $this->toRecord()->getAll();
     }
 }

@@ -9,6 +9,6 @@ namespace Fusio\Sdk\Backend;
 use PSX\Schema\Attribute\Required;
 
 #[Required(array('name', 'cron', 'action'))]
-class CronjobCreate extends Cronjob implements \JsonSerializable
+class CronjobCreate extends Cronjob implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

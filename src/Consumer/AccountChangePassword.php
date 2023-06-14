@@ -9,7 +9,7 @@ namespace Fusio\Sdk\Consumer;
 use PSX\Schema\Attribute\MaxLength;
 use PSX\Schema\Attribute\MinLength;
 
-class AccountChangePassword implements \JsonSerializable
+class AccountChangePassword implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[MinLength(8)]
     #[MaxLength(128)]
@@ -44,10 +44,17 @@ class AccountChangePassword implements \JsonSerializable
     {
         return $this->verifyPassword;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('oldPassword', $this->oldPassword);
+        $record->put('newPassword', $this->newPassword);
+        $record->put('verifyPassword', $this->verifyPassword);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('oldPassword' => $this->oldPassword, 'newPassword' => $this->newPassword, 'verifyPassword' => $this->verifyPassword), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

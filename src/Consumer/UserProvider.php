@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Consumer;
 
 
-class UserProvider implements \JsonSerializable
+class UserProvider implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $code = null;
     protected ?string $clientId = null;
@@ -36,10 +36,17 @@ class UserProvider implements \JsonSerializable
     {
         return $this->redirectUri;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('code', $this->code);
+        $record->put('clientId', $this->clientId);
+        $record->put('redirectUri', $this->redirectUri);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('code' => $this->code, 'clientId' => $this->clientId, 'redirectUri' => $this->redirectUri), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

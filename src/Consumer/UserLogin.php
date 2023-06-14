@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Consumer;
 
 
-class UserLogin implements \JsonSerializable
+class UserLogin implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $username = null;
     protected ?string $password = null;
@@ -42,10 +42,17 @@ class UserLogin implements \JsonSerializable
     {
         return $this->scopes;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('username', $this->username);
+        $record->put('password', $this->password);
+        $record->put('scopes', $this->scopes);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('username' => $this->username, 'password' => $this->password, 'scopes' => $this->scopes), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

@@ -9,7 +9,7 @@ namespace Fusio\Sdk\Backend;
 /**
  * @template T
  */
-class Collection implements \JsonSerializable
+class Collection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $totalResults = null;
     protected ?int $startIndex = null;
@@ -53,10 +53,18 @@ class Collection implements \JsonSerializable
     {
         return $this->entry;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('totalResults', $this->totalResults);
+        $record->put('startIndex', $this->startIndex);
+        $record->put('itemsPerPage', $this->itemsPerPage);
+        $record->put('entry', $this->entry);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('totalResults' => $this->totalResults, 'startIndex' => $this->startIndex, 'itemsPerPage' => $this->itemsPerPage, 'entry' => $this->entry), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

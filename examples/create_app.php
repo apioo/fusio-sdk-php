@@ -16,6 +16,6 @@ $app->setName('my-new-action');
 $app->setUrl('https://myapp.com');
 $app->setScopes(['foo', 'bar']);
 
-$response = $client->backend()->getBackendApp()->backendActionAppCreate($app);
+$response = $client->backend()->backendApp()->create($app);
 
 echo $response->getMessage() . "\n";

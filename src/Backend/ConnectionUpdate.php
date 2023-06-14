@@ -7,6 +7,6 @@
 namespace Fusio\Sdk\Backend;
 
 
-class ConnectionUpdate extends Connection implements \JsonSerializable
+class ConnectionUpdate extends Connection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

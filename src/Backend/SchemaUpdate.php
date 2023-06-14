@@ -7,6 +7,6 @@
 namespace Fusio\Sdk\Backend;
 
 
-class SchemaUpdate extends Schema implements \JsonSerializable
+class SchemaUpdate extends Schema implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

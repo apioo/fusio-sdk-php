@@ -7,6 +7,6 @@
 namespace Fusio\Sdk\Backend;
 
 
-class ConfigUpdate extends Config implements \JsonSerializable
+class ConfigUpdate extends Config implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

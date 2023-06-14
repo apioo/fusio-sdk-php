@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Backend;
 
 
-class GeneratorProviderChangelog implements \JsonSerializable
+class GeneratorProviderChangelog implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<Schema>|null
@@ -18,9 +18,9 @@ class GeneratorProviderChangelog implements \JsonSerializable
      */
     protected ?array $actions = null;
     /**
-     * @var array<Route>|null
+     * @var array<Operation>|null
      */
-    protected ?array $routes = null;
+    protected ?array $operations = null;
     /**
      * @param array<Schema>|null $schemas
      */
@@ -44,20 +44,27 @@ class GeneratorProviderChangelog implements \JsonSerializable
         return $this->actions;
     }
     /**
-     * @param array<Route>|null $routes
+     * @param array<Operation>|null $operations
      */
-    public function setRoutes(?array $routes) : void
+    public function setOperations(?array $operations) : void
     {
-        $this->routes = $routes;
+        $this->operations = $operations;
     }
-    public function getRoutes() : ?array
+    public function getOperations() : ?array
     {
-        return $this->routes;
+        return $this->operations;
+    }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('schemas', $this->schemas);
+        $record->put('actions', $this->actions);
+        $record->put('operations', $this->operations);
+        return $record;
     }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('schemas' => $this->schemas, 'actions' => $this->actions, 'routes' => $this->routes), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

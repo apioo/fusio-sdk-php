@@ -8,16 +8,16 @@ namespace Fusio\Sdk\Backend;
 
 use PSX\Schema\Attribute\Pattern;
 
-class Scope implements \JsonSerializable
+class Scope implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     #[Pattern('^[a-zA-Z0-9\\-\\_\\.]{3,64}$')]
     protected ?string $name = null;
     protected ?string $description = null;
     /**
-     * @var array<ScopeRoute>|null
+     * @var array<ScopeOperation>|null
      */
-    protected ?array $routes = null;
+    protected ?array $operations = null;
     protected ?Metadata $metadata = null;
     public function setId(?int $id) : void
     {
@@ -44,15 +44,15 @@ class Scope implements \JsonSerializable
         return $this->description;
     }
     /**
-     * @param array<ScopeRoute>|null $routes
+     * @param array<ScopeOperation>|null $operations
      */
-    public function setRoutes(?array $routes) : void
+    public function setOperations(?array $operations) : void
     {
-        $this->routes = $routes;
+        $this->operations = $operations;
     }
-    public function getRoutes() : ?array
+    public function getOperations() : ?array
     {
-        return $this->routes;
+        return $this->operations;
     }
     public function setMetadata(?Metadata $metadata) : void
     {
@@ -62,10 +62,19 @@ class Scope implements \JsonSerializable
     {
         return $this->metadata;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        $record->put('name', $this->name);
+        $record->put('description', $this->description);
+        $record->put('operations', $this->operations);
+        $record->put('metadata', $this->metadata);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'description' => $this->description, 'routes' => $this->routes, 'metadata' => $this->metadata), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

@@ -10,7 +10,7 @@ use PSX\Schema\Attribute\Pattern;
 use PSX\Schema\Attribute\Required;
 
 #[Required(array('method'))]
-class ActionExecuteRequest implements \JsonSerializable
+class ActionExecuteRequest implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Pattern('GET|POST|PUT|PATCH|DELETE')]
     protected ?string $method = null;
@@ -58,10 +58,19 @@ class ActionExecuteRequest implements \JsonSerializable
     {
         return $this->body;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('method', $this->method);
+        $record->put('uriFragments', $this->uriFragments);
+        $record->put('parameters', $this->parameters);
+        $record->put('headers', $this->headers);
+        $record->put('body', $this->body);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('method' => $this->method, 'uriFragments' => $this->uriFragments, 'parameters' => $this->parameters, 'headers' => $this->headers, 'body' => $this->body), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

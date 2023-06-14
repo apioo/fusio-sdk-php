@@ -9,7 +9,7 @@ namespace Fusio\Sdk\Consumer;
 use PSX\Schema\Attribute\Required;
 
 #[Required(array('token', 'newPassword'))]
-class UserPasswordReset implements \JsonSerializable
+class UserPasswordReset implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $token = null;
     protected ?string $newPassword = null;
@@ -29,10 +29,16 @@ class UserPasswordReset implements \JsonSerializable
     {
         return $this->newPassword;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('token', $this->token);
+        $record->put('newPassword', $this->newPassword);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('token' => $this->token, 'newPassword' => $this->newPassword), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

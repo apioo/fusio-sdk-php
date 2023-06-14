@@ -7,7 +7,7 @@
 namespace Fusio\Sdk\Backend;
 
 
-class StatisticChart implements \JsonSerializable
+class StatisticChart implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<string>|null
@@ -54,10 +54,17 @@ class StatisticChart implements \JsonSerializable
     {
         return $this->series;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('labels', $this->labels);
+        $record->put('data', $this->data);
+        $record->put('series', $this->series);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('labels' => $this->labels, 'data' => $this->data, 'series' => $this->series), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }

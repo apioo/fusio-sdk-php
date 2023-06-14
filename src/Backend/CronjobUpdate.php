@@ -7,6 +7,6 @@
 namespace Fusio\Sdk\Backend;
 
 
-class CronjobUpdate extends Cronjob implements \JsonSerializable
+class CronjobUpdate extends Cronjob implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }
