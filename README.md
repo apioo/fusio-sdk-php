@@ -20,11 +20,11 @@ $scopes = ['backend'];
 
 $client = new \Fusio\Sdk\Client('https://demo.fusio-project.org', 'test', 'FRsNh1zKCXlB', $scopes, $tokenStore);
 
-$collection = $client->backend()->getBackendRoutes()->backendActionRouteGetAll();
+$collection = $client->backend()->backendOperation()->getAll();
 
-echo 'Routes:' . "\n";
+echo 'Operations:' . "\n";
 foreach ($collection->getEntry() as $route) {
-    echo '* ' . $route->getPath() . "\n";
+    echo '* ' . $route->getName() . "\n";
 }
 
 ```
