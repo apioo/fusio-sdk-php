@@ -47,16 +47,22 @@ class TransactionTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return TransactionCollection
      * @throws ClientException
      */
-    public function getAll(): TransactionCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): TransactionCollection
     {
         $url = $this->parser->url('/consumer/transaction', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 

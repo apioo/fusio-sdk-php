@@ -148,16 +148,22 @@ class PlanTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return PlanCollection
      * @throws ClientException
      */
-    public function getAll(): PlanCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): PlanCollection
     {
         $url = $this->parser->url('/backend/plan', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 

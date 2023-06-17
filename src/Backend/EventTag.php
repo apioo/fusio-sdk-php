@@ -148,16 +148,24 @@ class EventTag extends TagAbstract
     }
 
     /**
+     * @param int|null $categoryId
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return EventCollection
      * @throws ClientException
      */
-    public function getAll(): EventCollection
+    public function getAll(?int $categoryId = null, ?int $startIndex = null, ?int $count = null, ?string $search = null): EventCollection
     {
         $url = $this->parser->url('/backend/event', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'categoryId' => $categoryId,
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 
@@ -313,16 +321,22 @@ class EventTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return EventSubscriptionCollection
      * @throws ClientException
      */
-    public function getAllSubscriptions(): EventSubscriptionCollection
+    public function getAllSubscriptions(?int $startIndex = null, ?int $count = null, ?string $search = null): EventSubscriptionCollection
     {
         $url = $this->parser->url('/backend/event/subscription', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 

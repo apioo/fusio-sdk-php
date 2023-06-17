@@ -14,16 +14,22 @@ use Sdkgen\Client\TagAbstract;
 class ScopeTag extends TagAbstract
 {
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return ScopeCollection
      * @throws ClientException
      */
-    public function getAll(): ScopeCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): ScopeCollection
     {
         $url = $this->parser->url('/consumer/scope', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 

@@ -82,16 +82,22 @@ class ConfigTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return ConfigCollection
      * @throws ClientException
      */
-    public function getAll(): ConfigCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): ConfigCollection
     {
         $url = $this->parser->url('/backend/config', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 

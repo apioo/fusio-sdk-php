@@ -47,16 +47,36 @@ class TransactionTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param \PSX\DateTime\LocalDateTime|null $from
+     * @param \PSX\DateTime\LocalDateTime|null $to
+     * @param int|null $planId
+     * @param int|null $userId
+     * @param int|null $appId
+     * @param string|null $status
+     * @param string|null $provider
      * @return TransactionCollection
      * @throws ClientException
      */
-    public function getAll(): TransactionCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $planId = null, ?int $userId = null, ?int $appId = null, ?string $status = null, ?string $provider = null): TransactionCollection
     {
         $url = $this->parser->url('/backend/transaction', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'planId' => $planId,
+                'userId' => $userId,
+                'appId' => $appId,
+                'status' => $status,
+                'provider' => $provider,
             ]),
         ];
 

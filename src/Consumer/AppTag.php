@@ -148,16 +148,22 @@ class AppTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return AppCollection
      * @throws ClientException
      */
-    public function getAll(): AppCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): AppCollection
     {
         $url = $this->parser->url('/consumer/app', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 

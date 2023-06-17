@@ -150,16 +150,18 @@ class ActionTag extends TagAbstract
     }
 
     /**
+     * @param string|null $class
      * @return FormContainer
      * @throws ClientException
      */
-    public function getForm(): FormContainer
+    public function getForm(?string $class = null): FormContainer
     {
         $url = $this->parser->url('/backend/action/form', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'class' => $class,
             ]),
         ];
 
@@ -245,16 +247,22 @@ class ActionTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param int|null $categoryId
      * @return ActionCollection
      * @throws ClientException
      */
-    public function getAll(): ActionCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?int $categoryId = null): ActionCollection
     {
         $url = $this->parser->url('/backend/action', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'categoryId' => $categoryId,
             ]),
         ];
 

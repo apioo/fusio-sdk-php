@@ -148,16 +148,22 @@ class UserTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return UserCollection
      * @throws ClientException
      */
-    public function getAll(): UserCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): UserCollection
     {
         $url = $this->parser->url('/backend/user', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 

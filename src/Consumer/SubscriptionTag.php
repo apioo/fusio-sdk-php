@@ -148,16 +148,22 @@ class SubscriptionTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return EventSubscriptionCollection
      * @throws ClientException
      */
-    public function getAll(): EventSubscriptionCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): EventSubscriptionCollection
     {
         $url = $this->parser->url('/consumer/subscription', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 

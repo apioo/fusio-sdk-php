@@ -216,16 +216,18 @@ class ConnectionTag extends TagAbstract
     }
 
     /**
+     * @param string|null $class
      * @return FormContainer
      * @throws ClientException
      */
-    public function getForm(): FormContainer
+    public function getForm(?string $class = null): FormContainer
     {
         $url = $this->parser->url('/backend/connection/form', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'class' => $class,
             ]),
         ];
 
@@ -311,16 +313,22 @@ class ConnectionTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return ConnectionCollection
      * @throws ClientException
      */
-    public function getAll(): ConnectionCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): ConnectionCollection
     {
         $url = $this->parser->url('/backend/connection', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 

@@ -148,16 +148,22 @@ class RateTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return RateCollection
      * @throws ClientException
      */
-    public function getAll(): RateCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): RateCollection
     {
         $url = $this->parser->url('/backend/rate', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 

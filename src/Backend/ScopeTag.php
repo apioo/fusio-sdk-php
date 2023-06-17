@@ -179,16 +179,24 @@ class ScopeTag extends TagAbstract
     }
 
     /**
+     * @param int|null $categoryId
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return ScopeCollection
      * @throws ClientException
      */
-    public function getAll(): ScopeCollection
+    public function getAll(?int $categoryId = null, ?int $startIndex = null, ?int $count = null, ?string $search = null): ScopeCollection
     {
         $url = $this->parser->url('/backend/scope', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'categoryId' => $categoryId,
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 

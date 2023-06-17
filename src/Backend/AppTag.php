@@ -183,16 +183,22 @@ class AppTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return AppCollection
      * @throws ClientException
      */
-    public function getAll(): AppCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): AppCollection
     {
         $url = $this->parser->url('/backend/app', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 
@@ -247,16 +253,36 @@ class AppTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param \PSX\DateTime\LocalDateTime|null $from
+     * @param \PSX\DateTime\LocalDateTime|null $to
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param int|null $status
+     * @param string|null $scope
+     * @param string|null $ip
      * @return AppTokenCollection
      * @throws ClientException
      */
-    public function getAllTokens(): AppTokenCollection
+    public function getAllTokens(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $appId = null, ?int $userId = null, ?int $status = null, ?string $scope = null, ?string $ip = null): AppTokenCollection
     {
         $url = $this->parser->url('/backend/app/token', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'appId' => $appId,
+                'userId' => $userId,
+                'status' => $status,
+                'scope' => $scope,
+                'ip' => $ip,
             ]),
         ];
 

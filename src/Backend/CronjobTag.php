@@ -148,16 +148,22 @@ class CronjobTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return CronjobCollection
      * @throws ClientException
      */
-    public function getAll(): CronjobCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): CronjobCollection
     {
         $url = $this->parser->url('/backend/cronjob', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 

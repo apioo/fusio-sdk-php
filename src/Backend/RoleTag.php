@@ -148,16 +148,22 @@ class RoleTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return RoleCollection
      * @throws ClientException
      */
-    public function getAll(): RoleCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): RoleCollection
     {
         $url = $this->parser->url('/backend/role', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 

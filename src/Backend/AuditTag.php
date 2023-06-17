@@ -47,16 +47,36 @@ class AuditTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param \PSX\DateTime\LocalDateTime|null $from
+     * @param \PSX\DateTime\LocalDateTime|null $to
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $event
+     * @param string|null $ip
+     * @param string|null $message
      * @return AuditCollection
      * @throws ClientException
      */
-    public function getAll(): AuditCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $appId = null, ?int $userId = null, ?string $event = null, ?string $ip = null, ?string $message = null): AuditCollection
     {
         $url = $this->parser->url('/backend/audit', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'appId' => $appId,
+                'userId' => $userId,
+                'event' => $event,
+                'ip' => $ip,
+                'message' => $message,
             ]),
         ];
 

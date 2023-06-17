@@ -14,16 +14,44 @@ use Sdkgen\Client\TagAbstract;
 class StatisticTag extends TagAbstract
 {
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param \PSX\DateTime\LocalDateTime|null $from
+     * @param \PSX\DateTime\LocalDateTime|null $to
+     * @param int|null $routeId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
      * @return StatisticChart
      * @throws ClientException
      */
-    public function getUsedPoints(): StatisticChart
+    public function getUsedPoints(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): StatisticChart
     {
         $url = $this->parser->url('/backend/statistic/used_points', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'routeId' => $routeId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
             ]),
         ];
 
@@ -45,16 +73,44 @@ class StatisticTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param \PSX\DateTime\LocalDateTime|null $from
+     * @param \PSX\DateTime\LocalDateTime|null $to
+     * @param int|null $routeId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
      * @return StatisticChart
      * @throws ClientException
      */
-    public function getTimePerRoute(): StatisticChart
+    public function getTimePerRoute(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): StatisticChart
     {
         $url = $this->parser->url('/backend/statistic/time_per_route', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'routeId' => $routeId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
             ]),
         ];
 
@@ -76,16 +132,44 @@ class StatisticTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param \PSX\DateTime\LocalDateTime|null $from
+     * @param \PSX\DateTime\LocalDateTime|null $to
+     * @param int|null $routeId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
      * @return StatisticChart
      * @throws ClientException
      */
-    public function getTimeAverage(): StatisticChart
+    public function getTimeAverage(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): StatisticChart
     {
         $url = $this->parser->url('/backend/statistic/time_average', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'routeId' => $routeId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
             ]),
         ];
 
@@ -107,16 +191,44 @@ class StatisticTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param \PSX\DateTime\LocalDateTime|null $from
+     * @param \PSX\DateTime\LocalDateTime|null $to
+     * @param int|null $routeId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
      * @return StatisticChart
      * @throws ClientException
      */
-    public function getMostUsedRoutes(): StatisticChart
+    public function getMostUsedRoutes(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): StatisticChart
     {
         $url = $this->parser->url('/backend/statistic/most_used_routes', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'routeId' => $routeId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
             ]),
         ];
 
@@ -138,16 +250,44 @@ class StatisticTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param \PSX\DateTime\LocalDateTime|null $from
+     * @param \PSX\DateTime\LocalDateTime|null $to
+     * @param int|null $routeId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
      * @return StatisticChart
      * @throws ClientException
      */
-    public function getMostUsedApps(): StatisticChart
+    public function getMostUsedApps(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): StatisticChart
     {
         $url = $this->parser->url('/backend/statistic/most_used_apps', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'routeId' => $routeId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
             ]),
         ];
 
@@ -169,16 +309,44 @@ class StatisticTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param \PSX\DateTime\LocalDateTime|null $from
+     * @param \PSX\DateTime\LocalDateTime|null $to
+     * @param int|null $routeId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
      * @return StatisticChart
      * @throws ClientException
      */
-    public function getIssuedTokens(): StatisticChart
+    public function getIssuedTokens(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): StatisticChart
     {
         $url = $this->parser->url('/backend/statistic/issued_tokens', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'routeId' => $routeId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
             ]),
         ];
 
@@ -200,16 +368,44 @@ class StatisticTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param \PSX\DateTime\LocalDateTime|null $from
+     * @param \PSX\DateTime\LocalDateTime|null $to
+     * @param int|null $routeId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
      * @return StatisticChart
      * @throws ClientException
      */
-    public function getIncomingTransactions(): StatisticChart
+    public function getIncomingTransactions(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): StatisticChart
     {
         $url = $this->parser->url('/backend/statistic/incoming_transactions', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'routeId' => $routeId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
             ]),
         ];
 
@@ -231,16 +427,44 @@ class StatisticTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param \PSX\DateTime\LocalDateTime|null $from
+     * @param \PSX\DateTime\LocalDateTime|null $to
+     * @param int|null $routeId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
      * @return StatisticChart
      * @throws ClientException
      */
-    public function getIncomingRequests(): StatisticChart
+    public function getIncomingRequests(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): StatisticChart
     {
         $url = $this->parser->url('/backend/statistic/incoming_requests', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'routeId' => $routeId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
             ]),
         ];
 
@@ -262,16 +486,44 @@ class StatisticTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param \PSX\DateTime\LocalDateTime|null $from
+     * @param \PSX\DateTime\LocalDateTime|null $to
+     * @param int|null $routeId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
      * @return StatisticChart
      * @throws ClientException
      */
-    public function getErrorsPerRoute(): StatisticChart
+    public function getErrorsPerRoute(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): StatisticChart
     {
         $url = $this->parser->url('/backend/statistic/errors_per_route', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'routeId' => $routeId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
             ]),
         ];
 
@@ -293,16 +545,44 @@ class StatisticTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param \PSX\DateTime\LocalDateTime|null $from
+     * @param \PSX\DateTime\LocalDateTime|null $to
+     * @param int|null $routeId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
      * @return StatisticCount
      * @throws ClientException
      */
-    public function getCountRequests(): StatisticCount
+    public function getCountRequests(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): StatisticCount
     {
         $url = $this->parser->url('/backend/statistic/count_requests', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'routeId' => $routeId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
             ]),
         ];
 

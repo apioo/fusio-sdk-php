@@ -148,16 +148,24 @@ class OperationTag extends TagAbstract
     }
 
     /**
+     * @param int|null $categoryId
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return OperationCollection
      * @throws ClientException
      */
-    public function getAll(): OperationCollection
+    public function getAll(?int $categoryId = null, ?int $startIndex = null, ?int $count = null, ?string $search = null): OperationCollection
     {
         $url = $this->parser->url('/backend/operation', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'categoryId' => $categoryId,
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 

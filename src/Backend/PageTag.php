@@ -148,16 +148,22 @@ class PageTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return PageCollection
      * @throws ClientException
      */
-    public function getAll(): PageCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): PageCollection
     {
         $url = $this->parser->url('/backend/page', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 

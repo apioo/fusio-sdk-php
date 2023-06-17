@@ -148,16 +148,22 @@ class CategoryTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return CategoryCollection
      * @throws ClientException
      */
-    public function getAll(): CategoryCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): CategoryCollection
     {
         $url = $this->parser->url('/backend/category', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 

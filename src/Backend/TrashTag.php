@@ -50,10 +50,13 @@ class TrashTag extends TagAbstract
 
     /**
      * @param string $type
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return TrashDataCollection
      * @throws ClientException
      */
-    public function getAllByType(string $type): TrashDataCollection
+    public function getAllByType(string $type, ?int $startIndex = null, ?int $count = null, ?string $search = null): TrashDataCollection
     {
         $url = $this->parser->url('/backend/trash/:type', [
             'type' => $type,
@@ -61,6 +64,9 @@ class TrashTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 

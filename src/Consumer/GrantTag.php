@@ -47,16 +47,22 @@ class GrantTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return GrantCollection
      * @throws ClientException
      */
-    public function getAll(): GrantCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): GrantCollection
     {
         $url = $this->parser->url('/consumer/grant', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 

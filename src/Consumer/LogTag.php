@@ -47,16 +47,22 @@ class LogTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return LogCollection
      * @throws ClientException
      */
-    public function getAll(): LogCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): LogCollection
     {
         $url = $this->parser->url('/consumer/log', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 

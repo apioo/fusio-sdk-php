@@ -47,16 +47,44 @@ class LogTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param \PSX\DateTime\LocalDateTime|null $from
+     * @param \PSX\DateTime\LocalDateTime|null $to
+     * @param int|null $routeId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
      * @return LogCollection
      * @throws ClientException
      */
-    public function getAll(): LogCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): LogCollection
     {
         $url = $this->parser->url('/backend/log', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'routeId' => $routeId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
             ]),
         ];
 
@@ -111,16 +139,22 @@ class LogTag extends TagAbstract
     }
 
     /**
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
      * @return LogErrorCollection
      * @throws ClientException
      */
-    public function getAllErrors(): LogErrorCollection
+    public function getAllErrors(?int $startIndex = null, ?int $count = null, ?string $search = null): LogErrorCollection
     {
         $url = $this->parser->url('/backend/log/error', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
             ]),
         ];
 
