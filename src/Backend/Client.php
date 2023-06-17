@@ -14,201 +14,201 @@ use Sdkgen\Client\Exception\UnknownStatusCodeException;
 
 class Client extends ClientAbstract
 {
-    public function backendUser(): BackendUserTag
+    public function user(): UserTag
     {
-        return new BackendUserTag(
+        return new UserTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendTrash(): BackendTrashTag
+    public function trash(): TrashTag
     {
-        return new BackendTrashTag(
+        return new TrashTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendTransaction(): BackendTransactionTag
+    public function transaction(): TransactionTag
     {
-        return new BackendTransactionTag(
+        return new TransactionTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendStatistic(): BackendStatisticTag
+    public function statistic(): StatisticTag
     {
-        return new BackendStatisticTag(
+        return new StatisticTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendSdk(): BackendSdkTag
+    public function sdk(): SdkTag
     {
-        return new BackendSdkTag(
+        return new SdkTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendScope(): BackendScopeTag
+    public function scope(): ScopeTag
     {
-        return new BackendScopeTag(
+        return new ScopeTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendSchema(): BackendSchemaTag
+    public function schema(): SchemaTag
     {
-        return new BackendSchemaTag(
+        return new SchemaTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendOperation(): BackendOperationTag
+    public function operation(): OperationTag
     {
-        return new BackendOperationTag(
+        return new OperationTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendRole(): BackendRoleTag
+    public function role(): RoleTag
     {
-        return new BackendRoleTag(
+        return new RoleTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendRate(): BackendRateTag
+    public function rate(): RateTag
     {
-        return new BackendRateTag(
+        return new RateTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendPlan(): BackendPlanTag
+    public function plan(): PlanTag
     {
-        return new BackendPlanTag(
+        return new PlanTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendPage(): BackendPageTag
+    public function page(): PageTag
     {
-        return new BackendPageTag(
+        return new PageTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendMarketplace(): BackendMarketplaceTag
+    public function marketplace(): MarketplaceTag
     {
-        return new BackendMarketplaceTag(
+        return new MarketplaceTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendLog(): BackendLogTag
+    public function log(): LogTag
     {
-        return new BackendLogTag(
+        return new LogTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendGenerator(): BackendGeneratorTag
+    public function generator(): GeneratorTag
     {
-        return new BackendGeneratorTag(
+        return new GeneratorTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendEvent(): BackendEventTag
+    public function event(): EventTag
     {
-        return new BackendEventTag(
+        return new EventTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendDashboard(): BackendDashboardTag
+    public function dashboard(): DashboardTag
     {
-        return new BackendDashboardTag(
+        return new DashboardTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendCronjob(): BackendCronjobTag
+    public function cronjob(): CronjobTag
     {
-        return new BackendCronjobTag(
+        return new CronjobTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendConnection(): BackendConnectionTag
+    public function connection(): ConnectionTag
     {
-        return new BackendConnectionTag(
+        return new ConnectionTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendConfig(): BackendConfigTag
+    public function config(): ConfigTag
     {
-        return new BackendConfigTag(
+        return new ConfigTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendCategory(): BackendCategoryTag
+    public function category(): CategoryTag
     {
-        return new BackendCategoryTag(
+        return new CategoryTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendAudit(): BackendAuditTag
+    public function audit(): AuditTag
     {
-        return new BackendAuditTag(
+        return new AuditTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendApp(): BackendAppTag
+    public function app(): AppTag
     {
-        return new BackendAppTag(
+        return new AppTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendAction(): BackendActionTag
+    public function action(): ActionTag
     {
-        return new BackendActionTag(
+        return new ActionTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function backendAccount(): BackendAccountTag
+    public function account(): AccountTag
     {
-        return new BackendAccountTag(
+        return new AccountTag(
             $this->httpClient,
             $this->parser
         );

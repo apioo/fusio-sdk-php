@@ -14,89 +14,89 @@ use Sdkgen\Client\Exception\UnknownStatusCodeException;
 
 class Client extends ClientAbstract
 {
-    public function consumerAccount(): ConsumerAccountTag
+    public function account(): AccountTag
     {
-        return new ConsumerAccountTag(
+        return new AccountTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function consumerTransaction(): ConsumerTransactionTag
+    public function transaction(): TransactionTag
     {
-        return new ConsumerTransactionTag(
+        return new TransactionTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function consumerSubscription(): ConsumerSubscriptionTag
+    public function subscription(): SubscriptionTag
     {
-        return new ConsumerSubscriptionTag(
+        return new SubscriptionTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function consumerScope(): ConsumerScopeTag
+    public function scope(): ScopeTag
     {
-        return new ConsumerScopeTag(
+        return new ScopeTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function consumerPlan(): ConsumerPlanTag
+    public function plan(): PlanTag
     {
-        return new ConsumerPlanTag(
+        return new PlanTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function consumerPayment(): ConsumerPaymentTag
+    public function payment(): PaymentTag
     {
-        return new ConsumerPaymentTag(
+        return new PaymentTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function consumerPage(): ConsumerPageTag
+    public function page(): PageTag
     {
-        return new ConsumerPageTag(
+        return new PageTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function consumerLog(): ConsumerLogTag
+    public function log(): LogTag
     {
-        return new ConsumerLogTag(
+        return new LogTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function consumerGrant(): ConsumerGrantTag
+    public function grant(): GrantTag
     {
-        return new ConsumerGrantTag(
+        return new GrantTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function consumerEvent(): ConsumerEventTag
+    public function event(): EventTag
     {
-        return new ConsumerEventTag(
+        return new EventTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function consumerApp(): ConsumerAppTag
+    public function app(): AppTag
     {
-        return new ConsumerAppTag(
+        return new AppTag(
             $this->httpClient,
             $this->parser
         );
