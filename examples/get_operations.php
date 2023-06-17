@@ -9,7 +9,7 @@ $client = new \Fusio\Sdk\Client(
     'test1234'
 );
 
-$entries = $client->backend()->backendOperation()->getAll()->getEntry();
+$entries = $client->backend()->operation()->getAll()->getEntry();
 
 foreach ($entries as $entry) {
     echo $entry->getName() . "\n";

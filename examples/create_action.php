@@ -17,6 +17,6 @@ $action->setName('my-new-action');
 $action->setClass('Fusio\Adapter\Util\Action\UtilStaticResponse');
 $action->setConfig($config);
 
-$response = $client->backend()->backendAction()->create($action);
+$response = $client->backend()->action()->create($action);
 
 echo $response->getMessage() . "\n";

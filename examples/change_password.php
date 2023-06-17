@@ -15,6 +15,6 @@ $changePassword->setOldPassword('test1234');
 $changePassword->setNewPassword('test1234!');
 $changePassword->setVerifyPassword('test1234!');
 
-$response = $client->consumer()->consumerAccount()->changePassword($changePassword);
+$response = $client->consumer()->account()->changePassword($changePassword);
 
 echo $response->getMessage() . "\n";

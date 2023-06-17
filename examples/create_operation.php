@@ -18,6 +18,6 @@ $operation->setDescription('My GET description');
 $operation->setOutgoing('My_Response_Schema');
 $operation->setAction('My_Action');
 
-$response = $client->backend()->backendOperation()->create($operation);
+$response = $client->backend()->operation()->create($operation);
 
 echo $response->getMessage() . "\n";
