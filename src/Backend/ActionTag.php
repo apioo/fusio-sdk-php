@@ -16,6 +16,7 @@ class ActionTag extends TagAbstract
     /**
      * @param string $actionId
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function delete(string $actionId): Message
@@ -38,6 +39,14 @@ class ActionTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -50,6 +59,7 @@ class ActionTag extends TagAbstract
      * @param string $actionId
      * @param ActionUpdate $payload
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function update(string $actionId, ActionUpdate $payload): Message
@@ -73,6 +83,16 @@ class ActionTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -84,6 +104,7 @@ class ActionTag extends TagAbstract
     /**
      * @param string $actionId
      * @return Action
+     * @throws MessageException
      * @throws ClientException
      */
     public function get(string $actionId): Action
@@ -106,6 +127,14 @@ class ActionTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -118,6 +147,7 @@ class ActionTag extends TagAbstract
      * @param string $actionId
      * @param ActionExecuteRequest $payload
      * @return ActionExecuteResponse
+     * @throws MessageException
      * @throws ClientException
      */
     public function execute(string $actionId, ActionExecuteRequest $payload): ActionExecuteResponse
@@ -141,6 +171,10 @@ class ActionTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -152,6 +186,7 @@ class ActionTag extends TagAbstract
     /**
      * @param string|null $class
      * @return FormContainer
+     * @throws MessageException
      * @throws ClientException
      */
     public function getForm(?string $class = null): FormContainer
@@ -174,6 +209,10 @@ class ActionTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -184,6 +223,7 @@ class ActionTag extends TagAbstract
 
     /**
      * @return ActionIndex
+     * @throws MessageException
      * @throws ClientException
      */
     public function getClasses(): ActionIndex
@@ -205,6 +245,10 @@ class ActionTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -216,6 +260,7 @@ class ActionTag extends TagAbstract
     /**
      * @param ActionCreate $payload
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function create(ActionCreate $payload): Message
@@ -238,6 +283,12 @@ class ActionTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -251,6 +302,7 @@ class ActionTag extends TagAbstract
      * @param int|null $count
      * @param int|null $categoryId
      * @return ActionCollection
+     * @throws MessageException
      * @throws ClientException
      */
     public function getAll(?int $startIndex = null, ?int $count = null, ?int $categoryId = null): ActionCollection
@@ -275,6 +327,10 @@ class ActionTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }

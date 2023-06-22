@@ -29,6 +29,7 @@ class StatisticTag extends TagAbstract
      * @param string|null $header
      * @param string|null $body
      * @return StatisticChart
+     * @throws MessageException
      * @throws ClientException
      */
     public function getUsedPoints(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): StatisticChart
@@ -64,6 +65,10 @@ class StatisticTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -88,6 +93,7 @@ class StatisticTag extends TagAbstract
      * @param string|null $header
      * @param string|null $body
      * @return StatisticChart
+     * @throws MessageException
      * @throws ClientException
      */
     public function getTimePerRoute(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): StatisticChart
@@ -123,6 +129,10 @@ class StatisticTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -147,6 +157,7 @@ class StatisticTag extends TagAbstract
      * @param string|null $header
      * @param string|null $body
      * @return StatisticChart
+     * @throws MessageException
      * @throws ClientException
      */
     public function getTimeAverage(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): StatisticChart
@@ -182,6 +193,10 @@ class StatisticTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -206,6 +221,7 @@ class StatisticTag extends TagAbstract
      * @param string|null $header
      * @param string|null $body
      * @return StatisticChart
+     * @throws MessageException
      * @throws ClientException
      */
     public function getMostUsedRoutes(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): StatisticChart
@@ -241,6 +257,10 @@ class StatisticTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -265,6 +285,7 @@ class StatisticTag extends TagAbstract
      * @param string|null $header
      * @param string|null $body
      * @return StatisticChart
+     * @throws MessageException
      * @throws ClientException
      */
     public function getMostUsedApps(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): StatisticChart
@@ -300,6 +321,10 @@ class StatisticTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -324,6 +349,7 @@ class StatisticTag extends TagAbstract
      * @param string|null $header
      * @param string|null $body
      * @return StatisticChart
+     * @throws MessageException
      * @throws ClientException
      */
     public function getIssuedTokens(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): StatisticChart
@@ -359,6 +385,10 @@ class StatisticTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -383,6 +413,7 @@ class StatisticTag extends TagAbstract
      * @param string|null $header
      * @param string|null $body
      * @return StatisticChart
+     * @throws MessageException
      * @throws ClientException
      */
     public function getIncomingTransactions(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): StatisticChart
@@ -418,6 +449,10 @@ class StatisticTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -442,6 +477,7 @@ class StatisticTag extends TagAbstract
      * @param string|null $header
      * @param string|null $body
      * @return StatisticChart
+     * @throws MessageException
      * @throws ClientException
      */
     public function getIncomingRequests(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): StatisticChart
@@ -477,6 +513,10 @@ class StatisticTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -501,6 +541,7 @@ class StatisticTag extends TagAbstract
      * @param string|null $header
      * @param string|null $body
      * @return StatisticChart
+     * @throws MessageException
      * @throws ClientException
      */
     public function getErrorsPerRoute(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): StatisticChart
@@ -536,6 +577,10 @@ class StatisticTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -560,6 +605,7 @@ class StatisticTag extends TagAbstract
      * @param string|null $header
      * @param string|null $body
      * @return StatisticCount
+     * @throws MessageException
      * @throws ClientException
      */
     public function getCountRequests(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): StatisticCount
@@ -595,6 +641,10 @@ class StatisticTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }

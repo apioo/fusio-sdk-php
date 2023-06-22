@@ -17,6 +17,7 @@ class ConnectionTag extends TagAbstract
      * @param string $connectionId
      * @param string $entity
      * @return ConnectionIntrospectionEntity
+     * @throws MessageException
      * @throws ClientException
      */
     public function getIntrospectionForEntity(string $connectionId, string $entity): ConnectionIntrospectionEntity
@@ -40,6 +41,12 @@ class ConnectionTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -51,6 +58,7 @@ class ConnectionTag extends TagAbstract
     /**
      * @param string $connectionId
      * @return ConnectionIntrospectionEntities
+     * @throws MessageException
      * @throws ClientException
      */
     public function getIntrospection(string $connectionId): ConnectionIntrospectionEntities
@@ -73,6 +81,12 @@ class ConnectionTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -84,6 +98,7 @@ class ConnectionTag extends TagAbstract
     /**
      * @param string $connectionId
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function getRedirect(string $connectionId): Message
@@ -106,6 +121,10 @@ class ConnectionTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -117,6 +136,7 @@ class ConnectionTag extends TagAbstract
     /**
      * @param string $connectionId
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function delete(string $connectionId): Message
@@ -139,6 +159,14 @@ class ConnectionTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -151,6 +179,7 @@ class ConnectionTag extends TagAbstract
      * @param string $connectionId
      * @param ConnectionUpdate $payload
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function update(string $connectionId, ConnectionUpdate $payload): Message
@@ -174,6 +203,16 @@ class ConnectionTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -185,6 +224,7 @@ class ConnectionTag extends TagAbstract
     /**
      * @param string $connectionId
      * @return Connection
+     * @throws MessageException
      * @throws ClientException
      */
     public function get(string $connectionId): Connection
@@ -207,6 +247,14 @@ class ConnectionTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -218,6 +266,7 @@ class ConnectionTag extends TagAbstract
     /**
      * @param string|null $class
      * @return FormContainer
+     * @throws MessageException
      * @throws ClientException
      */
     public function getForm(?string $class = null): FormContainer
@@ -240,6 +289,10 @@ class ConnectionTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -250,6 +303,7 @@ class ConnectionTag extends TagAbstract
 
     /**
      * @return ConnectionIndex
+     * @throws MessageException
      * @throws ClientException
      */
     public function getClasses(): ConnectionIndex
@@ -271,6 +325,10 @@ class ConnectionTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -281,10 +339,11 @@ class ConnectionTag extends TagAbstract
 
     /**
      * @param ConnectionCreate $payload
-     * @return ConnectionCollection
+     * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
-    public function create(ConnectionCreate $payload): ConnectionCollection
+    public function create(ConnectionCreate $payload): Message
     {
         $url = $this->parser->url('/backend/connection', [
         ]);
@@ -299,11 +358,17 @@ class ConnectionTag extends TagAbstract
             $response = $this->httpClient->request('POST', $url, $options);
             $data = (string) $response->getBody();
 
-            return $this->parser->parse($data, ConnectionCollection::class);
+            return $this->parser->parse($data, Message::class);
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -317,6 +382,7 @@ class ConnectionTag extends TagAbstract
      * @param int|null $count
      * @param string|null $search
      * @return ConnectionCollection
+     * @throws MessageException
      * @throws ClientException
      */
     public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): ConnectionCollection
@@ -341,6 +407,10 @@ class ConnectionTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }

@@ -18,6 +18,7 @@ class ScopeTag extends TagAbstract
      * @param int|null $count
      * @param string|null $search
      * @return ScopeCollection
+     * @throws MessageException
      * @throws ClientException
      */
     public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): ScopeCollection
@@ -42,6 +43,10 @@ class ScopeTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }

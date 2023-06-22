@@ -16,6 +16,7 @@ class AccountTag extends TagAbstract
     /**
      * @param AccountChangePassword $payload
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function changePassword(AccountChangePassword $payload): Message
@@ -38,6 +39,12 @@ class AccountTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -49,6 +56,7 @@ class AccountTag extends TagAbstract
     /**
      * @param UserUpdate $payload
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function update(UserUpdate $payload): Message
@@ -71,6 +79,12 @@ class AccountTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -81,6 +95,7 @@ class AccountTag extends TagAbstract
 
     /**
      * @return User
+     * @throws MessageException
      * @throws ClientException
      */
     public function get(): User
@@ -102,6 +117,10 @@ class AccountTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }

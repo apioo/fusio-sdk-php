@@ -16,6 +16,7 @@ class TransactionTag extends TagAbstract
     /**
      * @param string $transactionId
      * @return Transaction
+     * @throws MessageException
      * @throws ClientException
      */
     public function get(string $transactionId): Transaction
@@ -38,6 +39,14 @@ class TransactionTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -58,6 +67,7 @@ class TransactionTag extends TagAbstract
      * @param string|null $status
      * @param string|null $provider
      * @return TransactionCollection
+     * @throws MessageException
      * @throws ClientException
      */
     public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $planId = null, ?int $userId = null, ?int $appId = null, ?string $status = null, ?string $provider = null): TransactionCollection
@@ -89,6 +99,10 @@ class TransactionTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }

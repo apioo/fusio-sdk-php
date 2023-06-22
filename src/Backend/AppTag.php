@@ -17,6 +17,7 @@ class AppTag extends TagAbstract
      * @param string $appId
      * @param string $tokenId
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function deleteToken(string $appId, string $tokenId): Message
@@ -40,6 +41,14 @@ class AppTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -51,6 +60,7 @@ class AppTag extends TagAbstract
     /**
      * @param string $appId
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function delete(string $appId): Message
@@ -73,6 +83,14 @@ class AppTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -85,6 +103,7 @@ class AppTag extends TagAbstract
      * @param string $appId
      * @param AppUpdate $payload
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function update(string $appId, AppUpdate $payload): Message
@@ -108,6 +127,16 @@ class AppTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -119,6 +148,7 @@ class AppTag extends TagAbstract
     /**
      * @param string $appId
      * @return App
+     * @throws MessageException
      * @throws ClientException
      */
     public function get(string $appId): App
@@ -141,6 +171,14 @@ class AppTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -152,6 +190,7 @@ class AppTag extends TagAbstract
     /**
      * @param AppCreate $payload
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function create(AppCreate $payload): Message
@@ -174,6 +213,12 @@ class AppTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -187,6 +232,7 @@ class AppTag extends TagAbstract
      * @param int|null $count
      * @param string|null $search
      * @return AppCollection
+     * @throws MessageException
      * @throws ClientException
      */
     public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): AppCollection
@@ -211,6 +257,10 @@ class AppTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -222,6 +272,7 @@ class AppTag extends TagAbstract
     /**
      * @param string $tokenId
      * @return AppToken
+     * @throws MessageException
      * @throws ClientException
      */
     public function getToken(string $tokenId): AppToken
@@ -244,6 +295,12 @@ class AppTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -264,6 +321,7 @@ class AppTag extends TagAbstract
      * @param string|null $scope
      * @param string|null $ip
      * @return AppTokenCollection
+     * @throws MessageException
      * @throws ClientException
      */
     public function getAllTokens(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $appId = null, ?int $userId = null, ?int $status = null, ?string $scope = null, ?string $ip = null): AppTokenCollection
@@ -295,6 +353,10 @@ class AppTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }

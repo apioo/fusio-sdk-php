@@ -16,6 +16,7 @@ class EventTag extends TagAbstract
     /**
      * @param string $eventId
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function delete(string $eventId): Message
@@ -38,6 +39,14 @@ class EventTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -50,6 +59,7 @@ class EventTag extends TagAbstract
      * @param string $eventId
      * @param EventUpdate $payload
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function update(string $eventId, EventUpdate $payload): Message
@@ -73,6 +83,16 @@ class EventTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -84,6 +104,7 @@ class EventTag extends TagAbstract
     /**
      * @param string $eventId
      * @return Event
+     * @throws MessageException
      * @throws ClientException
      */
     public function get(string $eventId): Event
@@ -106,6 +127,14 @@ class EventTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -117,6 +146,7 @@ class EventTag extends TagAbstract
     /**
      * @param EventCreate $payload
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function create(EventCreate $payload): Message
@@ -139,6 +169,12 @@ class EventTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -153,6 +189,7 @@ class EventTag extends TagAbstract
      * @param int|null $count
      * @param string|null $search
      * @return EventCollection
+     * @throws MessageException
      * @throws ClientException
      */
     public function getAll(?int $categoryId = null, ?int $startIndex = null, ?int $count = null, ?string $search = null): EventCollection
@@ -178,6 +215,10 @@ class EventTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -189,6 +230,7 @@ class EventTag extends TagAbstract
     /**
      * @param string $subscriptionId
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function deleteSubscription(string $subscriptionId): Message
@@ -211,6 +253,14 @@ class EventTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -223,6 +273,7 @@ class EventTag extends TagAbstract
      * @param string $subscriptionId
      * @param EventSubscriptionUpdate $payload
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function updateSubscription(string $subscriptionId, EventSubscriptionUpdate $payload): Message
@@ -246,6 +297,16 @@ class EventTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -257,6 +318,7 @@ class EventTag extends TagAbstract
     /**
      * @param string $subscriptionId
      * @return EventSubscription
+     * @throws MessageException
      * @throws ClientException
      */
     public function getSubscription(string $subscriptionId): EventSubscription
@@ -279,6 +341,12 @@ class EventTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -290,6 +358,7 @@ class EventTag extends TagAbstract
     /**
      * @param EventSubscriptionCreate $payload
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function createSubscription(EventSubscriptionCreate $payload): Message
@@ -312,6 +381,12 @@ class EventTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -325,6 +400,7 @@ class EventTag extends TagAbstract
      * @param int|null $count
      * @param string|null $search
      * @return EventSubscriptionCollection
+     * @throws MessageException
      * @throws ClientException
      */
     public function getAllSubscriptions(?int $startIndex = null, ?int $count = null, ?string $search = null): EventSubscriptionCollection
@@ -349,6 +425,10 @@ class EventTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }

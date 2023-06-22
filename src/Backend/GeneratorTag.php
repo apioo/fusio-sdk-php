@@ -17,6 +17,7 @@ class GeneratorTag extends TagAbstract
      * @param string $provider
      * @param GeneratorProviderConfig $payload
      * @return GeneratorProviderChangelog
+     * @throws MessageException
      * @throws ClientException
      */
     public function getChangelog(string $provider, GeneratorProviderConfig $payload): GeneratorProviderChangelog
@@ -40,6 +41,10 @@ class GeneratorTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -52,6 +57,7 @@ class GeneratorTag extends TagAbstract
      * @param string $provider
      * @param GeneratorProvider $payload
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function executeProvider(string $provider, GeneratorProvider $payload): Message
@@ -75,6 +81,10 @@ class GeneratorTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -86,6 +96,7 @@ class GeneratorTag extends TagAbstract
     /**
      * @param string $provider
      * @return FormContainer
+     * @throws MessageException
      * @throws ClientException
      */
     public function getProviderForm(string $provider): FormContainer
@@ -108,6 +119,10 @@ class GeneratorTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -118,6 +133,7 @@ class GeneratorTag extends TagAbstract
 
     /**
      * @return GeneratorIndexProviders
+     * @throws MessageException
      * @throws ClientException
      */
     public function getProviders(): GeneratorIndexProviders
@@ -139,6 +155,10 @@ class GeneratorTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }

@@ -16,6 +16,7 @@ class MarketplaceTag extends TagAbstract
     /**
      * @param string $appName
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function remove(string $appName): Message
@@ -38,6 +39,12 @@ class MarketplaceTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -49,6 +56,7 @@ class MarketplaceTag extends TagAbstract
     /**
      * @param string $appName
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function update(string $appName): Message
@@ -71,6 +79,16 @@ class MarketplaceTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -82,6 +100,7 @@ class MarketplaceTag extends TagAbstract
     /**
      * @param string $appName
      * @return MarketplaceLocalApp
+     * @throws MessageException
      * @throws ClientException
      */
     public function get(string $appName): MarketplaceLocalApp
@@ -104,6 +123,14 @@ class MarketplaceTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -115,6 +142,7 @@ class MarketplaceTag extends TagAbstract
     /**
      * @param MarketplaceInstall $payload
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function install(MarketplaceInstall $payload): Message
@@ -137,6 +165,12 @@ class MarketplaceTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -147,6 +181,7 @@ class MarketplaceTag extends TagAbstract
 
     /**
      * @return MarketplaceCollection
+     * @throws MessageException
      * @throws ClientException
      */
     public function getAll(): MarketplaceCollection
@@ -168,6 +203,10 @@ class MarketplaceTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }

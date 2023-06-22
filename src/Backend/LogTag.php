@@ -16,6 +16,7 @@ class LogTag extends TagAbstract
     /**
      * @param string $logId
      * @return Log
+     * @throws MessageException
      * @throws ClientException
      */
     public function get(string $logId): Log
@@ -38,6 +39,14 @@ class LogTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -62,6 +71,7 @@ class LogTag extends TagAbstract
      * @param string|null $header
      * @param string|null $body
      * @return LogCollection
+     * @throws MessageException
      * @throws ClientException
      */
     public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): LogCollection
@@ -97,6 +107,10 @@ class LogTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -108,6 +122,7 @@ class LogTag extends TagAbstract
     /**
      * @param string $errorId
      * @return LogError
+     * @throws MessageException
      * @throws ClientException
      */
     public function getError(string $errorId): LogError
@@ -130,6 +145,10 @@ class LogTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -143,6 +162,7 @@ class LogTag extends TagAbstract
      * @param int|null $count
      * @param string|null $search
      * @return LogErrorCollection
+     * @throws MessageException
      * @throws ClientException
      */
     public function getAllErrors(?int $startIndex = null, ?int $count = null, ?string $search = null): LogErrorCollection
@@ -167,6 +187,10 @@ class LogTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }

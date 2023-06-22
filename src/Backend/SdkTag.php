@@ -16,6 +16,7 @@ class SdkTag extends TagAbstract
     /**
      * @param SdkGenerate $payload
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function generate(SdkGenerate $payload): Message
@@ -38,6 +39,10 @@ class SdkTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -48,6 +53,7 @@ class SdkTag extends TagAbstract
 
     /**
      * @return SdkResponse
+     * @throws MessageException
      * @throws ClientException
      */
     public function getAll(): SdkResponse
@@ -69,6 +75,10 @@ class SdkTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }

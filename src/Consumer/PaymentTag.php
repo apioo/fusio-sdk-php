@@ -17,6 +17,7 @@ class PaymentTag extends TagAbstract
      * @param string $provider
      * @param PaymentCheckoutRequest $payload
      * @return PaymentCheckoutResponse
+     * @throws MessageException
      * @throws ClientException
      */
     public function checkout(string $provider, PaymentCheckoutRequest $payload): PaymentCheckoutResponse
@@ -40,6 +41,10 @@ class PaymentTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -52,6 +57,7 @@ class PaymentTag extends TagAbstract
      * @param string $provider
      * @param PaymentPortalRequest $payload
      * @return PaymentPortalResponse
+     * @throws MessageException
      * @throws ClientException
      */
     public function portal(string $provider, PaymentPortalRequest $payload): PaymentPortalResponse
@@ -75,6 +81,10 @@ class PaymentTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }

@@ -16,6 +16,7 @@ class SchemaTag extends TagAbstract
     /**
      * @param string $schemaId
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function delete(string $schemaId): Message
@@ -38,6 +39,14 @@ class SchemaTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -50,6 +59,7 @@ class SchemaTag extends TagAbstract
      * @param string $schemaId
      * @param SchemaUpdate $payload
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function update(string $schemaId, SchemaUpdate $payload): Message
@@ -73,6 +83,16 @@ class SchemaTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -84,6 +104,7 @@ class SchemaTag extends TagAbstract
     /**
      * @param string $schemaId
      * @return Schema
+     * @throws MessageException
      * @throws ClientException
      */
     public function get(string $schemaId): Schema
@@ -106,6 +127,14 @@ class SchemaTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -118,6 +147,7 @@ class SchemaTag extends TagAbstract
      * @param string $schemaId
      * @param SchemaForm $payload
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function updateForm(string $schemaId, SchemaForm $payload): Message
@@ -141,6 +171,16 @@ class SchemaTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -152,6 +192,7 @@ class SchemaTag extends TagAbstract
     /**
      * @param string $schemaId
      * @return SchemaPreviewResponse
+     * @throws MessageException
      * @throws ClientException
      */
     public function getPreview(string $schemaId): SchemaPreviewResponse
@@ -174,6 +215,10 @@ class SchemaTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -185,6 +230,7 @@ class SchemaTag extends TagAbstract
     /**
      * @param SchemaCreate $payload
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function create(SchemaCreate $payload): Message
@@ -207,6 +253,12 @@ class SchemaTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -221,6 +273,7 @@ class SchemaTag extends TagAbstract
      * @param int|null $count
      * @param string|null $search
      * @return SchemaCollection
+     * @throws MessageException
      * @throws ClientException
      */
     public function getAll(?int $categoryId = null, ?int $startIndex = null, ?int $count = null, ?string $search = null): SchemaCollection
@@ -246,6 +299,10 @@ class SchemaTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }

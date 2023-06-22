@@ -16,6 +16,7 @@ class ScopeTag extends TagAbstract
     /**
      * @param string $scopeId
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function delete(string $scopeId): Message
@@ -38,6 +39,14 @@ class ScopeTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -50,6 +59,7 @@ class ScopeTag extends TagAbstract
      * @param string $scopeId
      * @param ScopeUpdate $payload
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function update(string $scopeId, ScopeUpdate $payload): Message
@@ -73,6 +83,16 @@ class ScopeTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -84,6 +104,7 @@ class ScopeTag extends TagAbstract
     /**
      * @param string $scopeId
      * @return Scope
+     * @throws MessageException
      * @throws ClientException
      */
     public function get(string $scopeId): Scope
@@ -106,6 +127,14 @@ class ScopeTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 410:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -116,6 +145,7 @@ class ScopeTag extends TagAbstract
 
     /**
      * @return ScopeCategories
+     * @throws MessageException
      * @throws ClientException
      */
     public function getCategories(): ScopeCategories
@@ -137,6 +167,10 @@ class ScopeTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -148,6 +182,7 @@ class ScopeTag extends TagAbstract
     /**
      * @param ScopeCreate $payload
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function create(ScopeCreate $payload): Message
@@ -170,6 +205,12 @@ class ScopeTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -184,6 +225,7 @@ class ScopeTag extends TagAbstract
      * @param int|null $count
      * @param string|null $search
      * @return ScopeCollection
+     * @throws MessageException
      * @throws ClientException
      */
     public function getAll(?int $categoryId = null, ?int $startIndex = null, ?int $count = null, ?string $search = null): ScopeCollection
@@ -209,6 +251,10 @@ class ScopeTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }

@@ -15,6 +15,7 @@ class DashboardTag extends TagAbstract
 {
     /**
      * @return Dashboard
+     * @throws MessageException
      * @throws ClientException
      */
     public function getAll(): Dashboard
@@ -36,6 +37,10 @@ class DashboardTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }

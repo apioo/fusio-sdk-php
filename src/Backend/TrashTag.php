@@ -17,6 +17,7 @@ class TrashTag extends TagAbstract
      * @param string $type
      * @param TrashRestore $payload
      * @return Message
+     * @throws MessageException
      * @throws ClientException
      */
     public function restore(string $type, TrashRestore $payload): Message
@@ -40,6 +41,12 @@ class TrashTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -54,6 +61,7 @@ class TrashTag extends TagAbstract
      * @param int|null $count
      * @param string|null $search
      * @return TrashDataCollection
+     * @throws MessageException
      * @throws ClientException
      */
     public function getAllByType(string $type, ?int $startIndex = null, ?int $count = null, ?string $search = null): TrashDataCollection
@@ -79,6 +87,10 @@ class TrashTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -89,6 +101,7 @@ class TrashTag extends TagAbstract
 
     /**
      * @return TrashTypes
+     * @throws MessageException
      * @throws ClientException
      */
     public function getTypes(): TrashTypes
@@ -110,6 +123,10 @@ class TrashTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
