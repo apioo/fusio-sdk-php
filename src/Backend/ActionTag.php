@@ -300,12 +300,12 @@ class ActionTag extends TagAbstract
     /**
      * @param int|null $startIndex
      * @param int|null $count
-     * @param int|null $categoryId
+     * @param string|null $search
      * @return ActionCollection
      * @throws MessageException
      * @throws ClientException
      */
-    public function getAll(?int $startIndex = null, ?int $count = null, ?int $categoryId = null): ActionCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): ActionCollection
     {
         $url = $this->parser->url('/backend/action', [
         ]);
@@ -314,7 +314,7 @@ class ActionTag extends TagAbstract
             'query' => $this->parser->query([
                 'startIndex' => $startIndex,
                 'count' => $count,
-                'categoryId' => $categoryId,
+                'search' => $search,
             ]),
         ];
 

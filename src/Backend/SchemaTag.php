@@ -268,7 +268,6 @@ class SchemaTag extends TagAbstract
     }
 
     /**
-     * @param int|null $categoryId
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -276,14 +275,13 @@ class SchemaTag extends TagAbstract
      * @throws MessageException
      * @throws ClientException
      */
-    public function getAll(?int $categoryId = null, ?int $startIndex = null, ?int $count = null, ?string $search = null): SchemaCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): SchemaCollection
     {
         $url = $this->parser->url('/backend/schema', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
-                'categoryId' => $categoryId,
                 'startIndex' => $startIndex,
                 'count' => $count,
                 'search' => $search,

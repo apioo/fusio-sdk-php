@@ -11,7 +11,6 @@ class ScopeOperation implements \JsonSerializable, \PSX\Record\RecordableInterfa
 {
     protected ?int $operationId = null;
     protected ?bool $allow = null;
-    protected ?string $methods = null;
     public function setOperationId(?int $operationId) : void
     {
         $this->operationId = $operationId;
@@ -28,21 +27,12 @@ class ScopeOperation implements \JsonSerializable, \PSX\Record\RecordableInterfa
     {
         return $this->allow;
     }
-    public function setMethods(?string $methods) : void
-    {
-        $this->methods = $methods;
-    }
-    public function getMethods() : ?string
-    {
-        return $this->methods;
-    }
     public function toRecord() : \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('operationId', $this->operationId);
         $record->put('allow', $this->allow);
-        $record->put('methods', $this->methods);
         return $record;
     }
     public function jsonSerialize() : object

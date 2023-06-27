@@ -39,6 +39,8 @@ class ScopeTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 case 401:
                     throw new MessageException($this->parser->parse($data, Message::class));
                 case 404:
@@ -220,7 +222,6 @@ class ScopeTag extends TagAbstract
     }
 
     /**
-     * @param int|null $categoryId
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -228,14 +229,13 @@ class ScopeTag extends TagAbstract
      * @throws MessageException
      * @throws ClientException
      */
-    public function getAll(?int $categoryId = null, ?int $startIndex = null, ?int $count = null, ?string $search = null): ScopeCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): ScopeCollection
     {
         $url = $this->parser->url('/backend/scope', [
         ]);
 
         $options = [
             'query' => $this->parser->query([
-                'categoryId' => $categoryId,
                 'startIndex' => $startIndex,
                 'count' => $count,
                 'search' => $search,
