@@ -149,7 +149,7 @@ class CategoryTag extends TagAbstract
      * @throws MessageException
      * @throws ClientException
      */
-    public function insert(CategoryCreate $payload): Message
+    public function create(CategoryCreate $payload): Message
     {
         $url = $this->parser->url('/backend/category', [
         ]);
