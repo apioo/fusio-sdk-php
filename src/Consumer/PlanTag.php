@@ -35,6 +35,8 @@ class PlanTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Plan::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -81,6 +83,8 @@ class PlanTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, PlanCollection::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 

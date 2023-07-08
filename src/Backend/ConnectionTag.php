@@ -37,6 +37,8 @@ class ConnectionTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, ConnectionIntrospectionEntity::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -77,6 +79,8 @@ class ConnectionTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, ConnectionIntrospectionEntities::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -117,6 +121,8 @@ class ConnectionTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -155,6 +161,8 @@ class ConnectionTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -199,6 +207,8 @@ class ConnectionTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -243,6 +253,8 @@ class ConnectionTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Connection::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -285,6 +297,8 @@ class ConnectionTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, FormContainer::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -321,6 +335,8 @@ class ConnectionTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, ConnectionIndex::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -359,6 +375,8 @@ class ConnectionTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -403,6 +421,8 @@ class ConnectionTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, ConnectionCollection::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 

@@ -35,6 +35,8 @@ class PageTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Page::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -81,6 +83,8 @@ class PageTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, PageCollection::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 

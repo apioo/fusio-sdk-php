@@ -35,6 +35,8 @@ class EventTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -79,6 +81,8 @@ class EventTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -123,6 +127,8 @@ class EventTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Event::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -165,6 +171,8 @@ class EventTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -209,6 +217,8 @@ class EventTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, EventCollection::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -247,6 +257,8 @@ class EventTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -291,6 +303,8 @@ class EventTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -335,6 +349,8 @@ class EventTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, EventSubscription::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -375,6 +391,8 @@ class EventTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -419,6 +437,8 @@ class EventTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, EventSubscriptionCollection::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 

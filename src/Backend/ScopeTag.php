@@ -35,6 +35,8 @@ class ScopeTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -81,6 +83,8 @@ class ScopeTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -125,6 +129,8 @@ class ScopeTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Scope::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -165,6 +171,8 @@ class ScopeTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, ScopeCategories::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -203,6 +211,8 @@ class ScopeTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -247,6 +257,8 @@ class ScopeTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, ScopeCollection::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 

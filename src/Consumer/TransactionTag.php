@@ -35,6 +35,8 @@ class TransactionTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Transaction::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -81,6 +83,8 @@ class TransactionTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, TransactionCollection::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 

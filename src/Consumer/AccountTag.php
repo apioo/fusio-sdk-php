@@ -35,6 +35,8 @@ class AccountTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -73,6 +75,8 @@ class AccountTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -111,6 +115,8 @@ class AccountTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -151,6 +157,8 @@ class AccountTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, UserJWT::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -189,6 +197,8 @@ class AccountTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, UserJWT::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -227,6 +237,8 @@ class AccountTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, UserJWT::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -267,6 +279,8 @@ class AccountTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, AuthorizeResponse::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -305,6 +319,8 @@ class AccountTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, AuthorizeMeta::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -345,6 +361,8 @@ class AccountTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -383,6 +401,8 @@ class AccountTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -423,6 +443,8 @@ class AccountTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -465,6 +487,8 @@ class AccountTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, UserAccount::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 

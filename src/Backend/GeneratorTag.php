@@ -37,6 +37,8 @@ class GeneratorTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, GeneratorProviderChangelog::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -77,6 +79,8 @@ class GeneratorTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -115,6 +119,8 @@ class GeneratorTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, FormContainer::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -151,6 +157,8 @@ class GeneratorTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, GeneratorIndexProviders::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 

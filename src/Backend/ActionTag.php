@@ -35,6 +35,8 @@ class ActionTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -79,6 +81,8 @@ class ActionTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -123,6 +127,8 @@ class ActionTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Action::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -167,6 +173,8 @@ class ActionTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, ActionExecuteResponse::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -205,6 +213,8 @@ class ActionTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, FormContainer::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -241,6 +251,8 @@ class ActionTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, ActionIndex::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -279,6 +291,8 @@ class ActionTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -323,6 +337,8 @@ class ActionTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, ActionCollection::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 

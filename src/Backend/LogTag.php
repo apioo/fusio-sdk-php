@@ -35,6 +35,8 @@ class LogTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Log::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -103,6 +105,8 @@ class LogTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, LogCollection::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -141,6 +145,8 @@ class LogTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, LogError::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -183,6 +189,8 @@ class LogTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, LogErrorCollection::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 

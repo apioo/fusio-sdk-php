@@ -35,6 +35,8 @@ class AuditTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Audit::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -95,6 +97,8 @@ class AuditTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, AuditCollection::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 

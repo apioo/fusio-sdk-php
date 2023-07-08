@@ -37,6 +37,8 @@ class TrashTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -83,6 +85,8 @@ class TrashTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, TrashDataCollection::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -119,6 +123,8 @@ class TrashTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, TrashTypes::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 

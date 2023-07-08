@@ -35,6 +35,8 @@ class SdkTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, Message::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
@@ -71,6 +73,8 @@ class SdkTag extends TagAbstract
             $data = (string) $response->getBody();
 
             return $this->parser->parse($data, SdkResponse::class);
+        } catch (ClientException $e) {
+            throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
