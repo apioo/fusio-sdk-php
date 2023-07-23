@@ -126,6 +126,14 @@ class Client extends ClientAbstract
         );
     }
 
+    public function identity(): IdentityTag
+    {
+        return new IdentityTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function generator(): GeneratorTag
     {
         return new GeneratorTag(

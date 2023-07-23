@@ -14,6 +14,14 @@ use Sdkgen\Client\Exception\UnknownStatusCodeException;
 
 class Client extends ClientAbstract
 {
+    public function identity(): IdentityTag
+    {
+        return new IdentityTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function account(): AccountTag
     {
         return new AccountTag(
