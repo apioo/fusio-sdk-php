@@ -15,11 +15,11 @@ class IdentityTag extends TagAbstract
 {
     /**
      * @param string $identity
-     * @return UserJWT
+     * @return Passthru
      * @throws MessageException
      * @throws ClientException
      */
-    public function redirect(string $identity): UserJWT
+    public function redirect(string $identity): Passthru
     {
         $url = $this->parser->url('/consumer/identity/:identity/redirect', [
             'identity' => $identity,
@@ -34,7 +34,7 @@ class IdentityTag extends TagAbstract
             $response = $this->httpClient->request('GET', $url, $options);
             $data = (string) $response->getBody();
 
-            return $this->parser->parse($data, UserJWT::class);
+            return $this->parser->parse($data, Passthru::class);
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
@@ -55,11 +55,11 @@ class IdentityTag extends TagAbstract
 
     /**
      * @param string $identity
-     * @return UserJWT
+     * @return Passthru
      * @throws MessageException
      * @throws ClientException
      */
-    public function exchange(string $identity): UserJWT
+    public function exchange(string $identity): Passthru
     {
         $url = $this->parser->url('/consumer/identity/:identity/exchange', [
             'identity' => $identity,
@@ -74,7 +74,7 @@ class IdentityTag extends TagAbstract
             $response = $this->httpClient->request('GET', $url, $options);
             $data = (string) $response->getBody();
 
-            return $this->parser->parse($data, UserJWT::class);
+            return $this->parser->parse($data, Passthru::class);
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
@@ -95,11 +95,11 @@ class IdentityTag extends TagAbstract
 
     /**
      * @param int|null $appId
-     * @return UserJWT
+     * @return IdentityCollection
      * @throws MessageException
      * @throws ClientException
      */
-    public function getAll(?int $appId = null): UserJWT
+    public function getAll(?int $appId = null): IdentityCollection
     {
         $url = $this->parser->url('/consumer/identity', [
         ]);
@@ -114,7 +114,7 @@ class IdentityTag extends TagAbstract
             $response = $this->httpClient->request('GET', $url, $options);
             $data = (string) $response->getBody();
 
-            return $this->parser->parse($data, UserJWT::class);
+            return $this->parser->parse($data, IdentityCollection::class);
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {

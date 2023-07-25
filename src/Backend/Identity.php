@@ -17,14 +17,7 @@ class Identity implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $name = null;
     protected ?string $icon = null;
     protected ?string $class = null;
-    protected ?string $clientId = null;
-    protected ?string $clientSecret = null;
-    protected ?string $authorizationUri = null;
-    protected ?string $tokenUri = null;
-    protected ?string $userInfoUri = null;
-    protected ?string $idProperty = null;
-    protected ?string $nameProperty = null;
-    protected ?string $emailProperty = null;
+    protected ?IdentityConfig $config = null;
     protected ?bool $allowCreate = null;
     public function setId(?int $id) : void
     {
@@ -74,69 +67,13 @@ class Identity implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->class;
     }
-    public function setClientId(?string $clientId) : void
+    public function setConfig(?IdentityConfig $config) : void
     {
-        $this->clientId = $clientId;
+        $this->config = $config;
     }
-    public function getClientId() : ?string
+    public function getConfig() : ?IdentityConfig
     {
-        return $this->clientId;
-    }
-    public function setClientSecret(?string $clientSecret) : void
-    {
-        $this->clientSecret = $clientSecret;
-    }
-    public function getClientSecret() : ?string
-    {
-        return $this->clientSecret;
-    }
-    public function setAuthorizationUri(?string $authorizationUri) : void
-    {
-        $this->authorizationUri = $authorizationUri;
-    }
-    public function getAuthorizationUri() : ?string
-    {
-        return $this->authorizationUri;
-    }
-    public function setTokenUri(?string $tokenUri) : void
-    {
-        $this->tokenUri = $tokenUri;
-    }
-    public function getTokenUri() : ?string
-    {
-        return $this->tokenUri;
-    }
-    public function setUserInfoUri(?string $userInfoUri) : void
-    {
-        $this->userInfoUri = $userInfoUri;
-    }
-    public function getUserInfoUri() : ?string
-    {
-        return $this->userInfoUri;
-    }
-    public function setIdProperty(?string $idProperty) : void
-    {
-        $this->idProperty = $idProperty;
-    }
-    public function getIdProperty() : ?string
-    {
-        return $this->idProperty;
-    }
-    public function setNameProperty(?string $nameProperty) : void
-    {
-        $this->nameProperty = $nameProperty;
-    }
-    public function getNameProperty() : ?string
-    {
-        return $this->nameProperty;
-    }
-    public function setEmailProperty(?string $emailProperty) : void
-    {
-        $this->emailProperty = $emailProperty;
-    }
-    public function getEmailProperty() : ?string
-    {
-        return $this->emailProperty;
+        return $this->config;
     }
     public function setAllowCreate(?bool $allowCreate) : void
     {
@@ -156,14 +93,7 @@ class Identity implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('name', $this->name);
         $record->put('icon', $this->icon);
         $record->put('class', $this->class);
-        $record->put('clientId', $this->clientId);
-        $record->put('clientSecret', $this->clientSecret);
-        $record->put('authorizationUri', $this->authorizationUri);
-        $record->put('tokenUri', $this->tokenUri);
-        $record->put('userInfoUri', $this->userInfoUri);
-        $record->put('idProperty', $this->idProperty);
-        $record->put('nameProperty', $this->nameProperty);
-        $record->put('emailProperty', $this->emailProperty);
+        $record->put('config', $this->config);
         $record->put('allowCreate', $this->allowCreate);
         return $record;
     }

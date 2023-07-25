@@ -103,7 +103,7 @@ class GeneratorTag extends TagAbstract
      * @throws MessageException
      * @throws ClientException
      */
-    public function getProviderForm(string $provider): FormContainer
+    public function getForm(string $provider): FormContainer
     {
         $url = $this->parser->url('/backend/generator/:provider', [
             'provider' => $provider,
@@ -142,7 +142,7 @@ class GeneratorTag extends TagAbstract
      * @throws MessageException
      * @throws ClientException
      */
-    public function getProviders(): GeneratorIndexProviders
+    public function getClasses(): GeneratorIndexProviders
     {
         $url = $this->parser->url('/backend/generator', [
         ]);

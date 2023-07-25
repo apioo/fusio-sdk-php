@@ -150,6 +150,84 @@ class IdentityTag extends TagAbstract
     }
 
     /**
+     * @param string|null $class
+     * @return FormContainer
+     * @throws MessageException
+     * @throws ClientException
+     */
+    public function getForm(?string $class = null): FormContainer
+    {
+        $url = $this->parser->url('/backend/identity/form', [
+        ]);
+
+        $options = [
+            'query' => $this->parser->query([
+                'class' => $class,
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $data = (string) $response->getBody();
+
+            return $this->parser->parse($data, FormContainer::class);
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $data = (string) $e->getResponse()->getBody();
+
+            switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                default:
+                    throw new UnknownStatusCodeException('The server returned an unknown status code');
+            }
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * @return IdentityIndex
+     * @throws MessageException
+     * @throws ClientException
+     */
+    public function getClasses(): IdentityIndex
+    {
+        $url = $this->parser->url('/backend/identity/list', [
+        ]);
+
+        $options = [
+            'query' => $this->parser->query([
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $data = (string) $response->getBody();
+
+            return $this->parser->parse($data, IdentityIndex::class);
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $data = (string) $e->getResponse()->getBody();
+
+            switch ($e->getResponse()->getStatusCode()) {
+                case 401:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 500:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                default:
+                    throw new UnknownStatusCodeException('The server returned an unknown status code');
+            }
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
      * @param IdentityCreate $payload
      * @return Message
      * @throws MessageException
