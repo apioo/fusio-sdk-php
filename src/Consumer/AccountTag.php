@@ -43,6 +43,8 @@ class AccountTag extends TagAbstract
             switch ($e->getResponse()->getStatusCode()) {
                 case 400:
                     throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
+                    throw new MessageException($this->parser->parse($data, Message::class));
                 case 500:
                     throw new MessageException($this->parser->parse($data, Message::class));
                 default:
@@ -82,6 +84,8 @@ class AccountTag extends TagAbstract
 
             switch ($e->getResponse()->getStatusCode()) {
                 case 400:
+                    throw new MessageException($this->parser->parse($data, Message::class));
+                case 404:
                     throw new MessageException($this->parser->parse($data, Message::class));
                 case 500:
                     throw new MessageException($this->parser->parse($data, Message::class));
