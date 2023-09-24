@@ -5,6 +5,7 @@ namespace Fusio\Sdk\Tests;
 use Fusio\Sdk;
 use Fusio\Sdk\Client;
 use PHPUnit\Framework\TestCase;
+use Sdkgen\Client\Credentials\OAuth2;
 
 /**
  * ClientTest
@@ -17,9 +18,9 @@ class ClientTest extends TestCase
 {
     public function testClient()
     {
-        $client = new Client('https://my-fusio.app', 'test', 'test1234', ['foo', 'bar']);
+        $client = new Client('https://demo.fusio-project.org/', new OAuth2('test', 'test1234', 'https://demo.fusio-project.org/authorization/token', '', null, ['foo', 'bar']));
 
-        $this->assertInstanceOf(Sdk\Backend\Client::class, $client->backend());
-        $this->assertInstanceOf(Sdk\Consumer\Client::class, $client->consumer());
+        $this->assertInstanceOf(Sdk\BackendTag::class, $client->backend());
+        $this->assertInstanceOf(Sdk\ConsumerTag::class, $client->consumer());
     }
 }
