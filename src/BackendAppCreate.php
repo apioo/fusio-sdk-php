@@ -6,9 +6,7 @@
 
 namespace Fusio\Sdk;
 
-use PSX\Schema\Attribute\Required;
 
-#[Required(array('userId', 'name', 'url', 'scopes'))]
 class BackendAppCreate extends BackendApp implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

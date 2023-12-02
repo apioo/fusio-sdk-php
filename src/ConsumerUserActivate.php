@@ -6,9 +6,7 @@
 
 namespace Fusio\Sdk;
 
-use PSX\Schema\Attribute\Required;
 
-#[Required(array('token'))]
 class ConsumerUserActivate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $token = null;

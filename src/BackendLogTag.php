@@ -61,8 +61,8 @@ class BackendLogTag extends TagAbstract
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
-     * @param \PSX\DateTime\LocalDateTime|null $from
-     * @param \PSX\DateTime\LocalDateTime|null $to
+     * @param string|null $from
+     * @param string|null $to
      * @param int|null $routeId
      * @param int|null $appId
      * @param int|null $userId
@@ -76,7 +76,7 @@ class BackendLogTag extends TagAbstract
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendLogCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $routeId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendLogCollection
     {
         $url = $this->parser->url('/backend/log', [
         ]);

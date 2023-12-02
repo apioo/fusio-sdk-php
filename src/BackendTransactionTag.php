@@ -61,8 +61,8 @@ class BackendTransactionTag extends TagAbstract
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
-     * @param \PSX\DateTime\LocalDateTime|null $from
-     * @param \PSX\DateTime\LocalDateTime|null $to
+     * @param string|null $from
+     * @param string|null $to
      * @param int|null $planId
      * @param int|null $userId
      * @param int|null $appId
@@ -72,7 +72,7 @@ class BackendTransactionTag extends TagAbstract
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $planId = null, ?int $userId = null, ?int $appId = null, ?string $status = null, ?string $provider = null): BackendTransactionCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $planId = null, ?int $userId = null, ?int $appId = null, ?string $status = null, ?string $provider = null): BackendTransactionCollection
     {
         $url = $this->parser->url('/backend/transaction', [
         ]);

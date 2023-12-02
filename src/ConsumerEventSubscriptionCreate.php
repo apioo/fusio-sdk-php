@@ -6,9 +6,7 @@
 
 namespace Fusio\Sdk;
 
-use PSX\Schema\Attribute\Required;
 
-#[Required(array('event', 'endpoint'))]
 class ConsumerEventSubscriptionCreate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $event = null;

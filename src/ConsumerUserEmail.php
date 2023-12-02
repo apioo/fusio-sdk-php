@@ -6,9 +6,7 @@
 
 namespace Fusio\Sdk;
 
-use PSX\Schema\Attribute\Required;
 
-#[Required(array('email'))]
 class ConsumerUserEmail implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $email = null;

@@ -6,11 +6,9 @@
 
 namespace Fusio\Sdk;
 
-use PSX\Schema\Attribute\MaxProperties;
 /**
  * @extends \PSX\Record\Record<mixed>
  */
-#[MaxProperties(16)]
 class BackendConnectionConfig extends \PSX\Record\Record
 {
 }

@@ -327,8 +327,8 @@ class BackendAppTag extends TagAbstract
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
-     * @param \PSX\DateTime\LocalDateTime|null $from
-     * @param \PSX\DateTime\LocalDateTime|null $to
+     * @param string|null $from
+     * @param string|null $to
      * @param int|null $appId
      * @param int|null $userId
      * @param int|null $status
@@ -338,7 +338,7 @@ class BackendAppTag extends TagAbstract
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getAllTokens(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $appId = null, ?int $userId = null, ?int $status = null, ?string $scope = null, ?string $ip = null): BackendAppTokenCollection
+    public function getAllTokens(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $appId = null, ?int $userId = null, ?int $status = null, ?string $scope = null, ?string $ip = null): BackendAppTokenCollection
     {
         $url = $this->parser->url('/backend/app/token', [
         ]);

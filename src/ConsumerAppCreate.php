@@ -8,9 +8,7 @@ namespace Fusio\Sdk;
 
 use PSX\Schema\Attribute\MinLength;
 use PSX\Schema\Attribute\Pattern;
-use PSX\Schema\Attribute\Required;
 
-#[Required(array('name', 'url', 'scopes'))]
 class ConsumerAppCreate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Pattern('^[A-z0-9\\-\\_]{3,64}$')]

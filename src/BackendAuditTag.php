@@ -61,8 +61,8 @@ class BackendAuditTag extends TagAbstract
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
-     * @param \PSX\DateTime\LocalDateTime|null $from
-     * @param \PSX\DateTime\LocalDateTime|null $to
+     * @param string|null $from
+     * @param string|null $to
      * @param int|null $appId
      * @param int|null $userId
      * @param string|null $event
@@ -72,7 +72,7 @@ class BackendAuditTag extends TagAbstract
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null, ?\PSX\DateTime\LocalDateTime $from = null, ?\PSX\DateTime\LocalDateTime $to = null, ?int $appId = null, ?int $userId = null, ?string $event = null, ?string $ip = null, ?string $message = null): BackendAuditCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $appId = null, ?int $userId = null, ?string $event = null, ?string $ip = null, ?string $message = null): BackendAuditCollection
     {
         $url = $this->parser->url('/backend/audit', [
         ]);
