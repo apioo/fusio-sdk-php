@@ -1,0 +1,9 @@
+{
+  "type": "client-php",
+  "require": {
+    "fusio/sdk": {
+      "target": "./src",
+      "namespace": "Fusio\\Sdk"
+    }
+  }
+}
