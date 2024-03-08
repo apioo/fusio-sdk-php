@@ -1,6 +1,16 @@
 name: SDKgen
 on:
-  - workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      typehub_message:
+        description: "The TypeHub commit message on commit"
+        required: false
+      typehub_version:
+        description: "The TypeHub version on tag"
+        required: false
+      typehub_changelog:
+        description: "The TypeHub changelog on tag"
+        required: false
 permissions:
   contents: 'write'
 jobs:
@@ -8,7 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: apioo/sdkgen-generator-action@v0.1.4
+      - uses: apioo/sdkgen-generator-action@v0.2.1
         with:
           client_id: '${{ secrets.SDKGEN_CLIENT_ID }}'
           client_secret: '${{ secrets.SDKGEN_CLIENT_SECRET }}'
+          typehub_message: '${{ inputs.typehub_message }}'
+          typehub_version: '${{ inputs.typehub_version }}'
+          typehub_changelog: '${{ inputs.typehub_changelog }}'
