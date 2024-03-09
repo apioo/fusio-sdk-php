@@ -27,6 +27,7 @@ class ConsumerTransactionTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
@@ -75,6 +76,7 @@ class ConsumerTransactionTag extends TagAbstract
                 'startIndex' => $startIndex,
                 'count' => $count,
                 'search' => $search,
+            ], [
             ]),
         ];
 

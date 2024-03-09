@@ -26,6 +26,7 @@ class SystemConnectionTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 

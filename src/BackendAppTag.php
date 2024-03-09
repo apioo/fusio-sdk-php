@@ -29,6 +29,7 @@ class BackendAppTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
@@ -73,6 +74,7 @@ class BackendAppTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
@@ -118,6 +120,7 @@ class BackendAppTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
             'json' => $payload
         ];
@@ -165,6 +168,7 @@ class BackendAppTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
@@ -208,6 +212,7 @@ class BackendAppTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
             'json' => $payload
         ];
@@ -255,6 +260,7 @@ class BackendAppTag extends TagAbstract
                 'startIndex' => $startIndex,
                 'count' => $count,
                 'search' => $search,
+            ], [
             ]),
         ];
 
@@ -295,6 +301,7 @@ class BackendAppTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
@@ -355,6 +362,7 @@ class BackendAppTag extends TagAbstract
                 'status' => $status,
                 'scope' => $scope,
                 'ip' => $ip,
+            ], [
             ]),
         ];
 

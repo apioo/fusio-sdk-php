@@ -19,6 +19,9 @@ class CommonMessageException extends KnownStatusCodeException
         $this->payload = $payload;
     }
 
+    /**
+     * @return CommonMessage
+     */
     public function getPayload(): CommonMessage
     {
         return $this->payload;

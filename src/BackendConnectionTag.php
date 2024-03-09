@@ -29,6 +29,7 @@ class BackendConnectionTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
@@ -71,6 +72,7 @@ class BackendConnectionTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
@@ -113,6 +115,7 @@ class BackendConnectionTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
@@ -153,6 +156,7 @@ class BackendConnectionTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
@@ -198,6 +202,7 @@ class BackendConnectionTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
             'json' => $payload
         ];
@@ -245,6 +250,7 @@ class BackendConnectionTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
@@ -289,6 +295,7 @@ class BackendConnectionTag extends TagAbstract
         $options = [
             'query' => $this->parser->query([
                 'class' => $class,
+            ], [
             ]),
         ];
 
@@ -327,6 +334,7 @@ class BackendConnectionTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
@@ -366,6 +374,7 @@ class BackendConnectionTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
             'json' => $payload
         ];
@@ -413,6 +422,7 @@ class BackendConnectionTag extends TagAbstract
                 'startIndex' => $startIndex,
                 'count' => $count,
                 'search' => $search,
+            ], [
             ]),
         ];
 

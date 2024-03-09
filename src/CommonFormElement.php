@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Required;
 
+#[Required(array('element'))]
 class CommonFormElement implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $element = null;

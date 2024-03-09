@@ -27,6 +27,7 @@ class BackendTransactionTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
@@ -89,6 +90,7 @@ class BackendTransactionTag extends TagAbstract
                 'appId' => $appId,
                 'status' => $status,
                 'provider' => $provider,
+            ], [
             ]),
         ];
 

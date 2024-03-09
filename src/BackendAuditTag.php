@@ -27,6 +27,7 @@ class BackendAuditTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
@@ -89,6 +90,7 @@ class BackendAuditTag extends TagAbstract
                 'event' => $event,
                 'ip' => $ip,
                 'message' => $message,
+            ], [
             ]),
         ];
 

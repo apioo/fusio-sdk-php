@@ -27,6 +27,7 @@ class BackendLogTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
@@ -97,6 +98,7 @@ class BackendLogTag extends TagAbstract
                 'path' => $path,
                 'header' => $header,
                 'body' => $body,
+            ], [
             ]),
         ];
 
@@ -137,6 +139,7 @@ class BackendLogTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
@@ -181,6 +184,7 @@ class BackendLogTag extends TagAbstract
                 'startIndex' => $startIndex,
                 'count' => $count,
                 'search' => $search,
+            ], [
             ]),
         ];
 

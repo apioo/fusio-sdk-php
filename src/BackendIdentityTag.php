@@ -27,6 +27,7 @@ class BackendIdentityTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
@@ -72,6 +73,7 @@ class BackendIdentityTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
             'json' => $payload
         ];
@@ -119,6 +121,7 @@ class BackendIdentityTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
@@ -163,6 +166,7 @@ class BackendIdentityTag extends TagAbstract
         $options = [
             'query' => $this->parser->query([
                 'class' => $class,
+            ], [
             ]),
         ];
 
@@ -201,6 +205,7 @@ class BackendIdentityTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
@@ -240,6 +245,7 @@ class BackendIdentityTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
             'json' => $payload
         ];
@@ -287,6 +293,7 @@ class BackendIdentityTag extends TagAbstract
                 'startIndex' => $startIndex,
                 'count' => $count,
                 'search' => $search,
+            ], [
             ]),
         ];
 

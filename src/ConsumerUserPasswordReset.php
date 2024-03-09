@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Required;
 
+#[Required(array('token', 'newPassword'))]
 class ConsumerUserPasswordReset implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $token = null;

@@ -9,8 +9,10 @@ namespace Fusio\Sdk;
 use GuzzleHttp\Exception\BadResponseException;
 use Sdkgen\Client\ClientAbstract;
 use Sdkgen\Client\Credentials;
+use Sdkgen\Client\CredentialsInterface;
 use Sdkgen\Client\Exception\ClientException;
 use Sdkgen\Client\Exception\UnknownStatusCodeException;
+use Sdkgen\Client\TokenStoreInterface;
 
 class Client extends ClientAbstract
 {
@@ -48,4 +50,8 @@ class Client extends ClientAbstract
 
 
 
+    public static function build(string $clientId, string $clientSecret, ?TokenStoreInterface $tokenStore = null, ?array $scopes = null): self
+    {
+        return new self('https://api.typehub.cloud/', new Credentials\OAuth2($clientId, $clientSecret, 'https://api.typehub.cloud/authorization/token', '', $tokenStore, $scopes));
+    }
 }

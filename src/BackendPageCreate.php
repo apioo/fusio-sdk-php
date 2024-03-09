@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Required;
 
+#[Required(array('title', 'content'))]
 class BackendPageCreate extends BackendPage implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

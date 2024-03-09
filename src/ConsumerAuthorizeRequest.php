@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Required;
 
+#[Required(array('responseType', 'clientId', 'scope', 'allow'))]
 class ConsumerAuthorizeRequest implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $responseType = null;

@@ -27,6 +27,7 @@ class BackendActionTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
@@ -72,6 +73,7 @@ class BackendActionTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
             'json' => $payload
         ];
@@ -119,6 +121,7 @@ class BackendActionTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
@@ -164,6 +167,7 @@ class BackendActionTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
             'json' => $payload
         ];
@@ -205,6 +209,7 @@ class BackendActionTag extends TagAbstract
         $options = [
             'query' => $this->parser->query([
                 'class' => $class,
+            ], [
             ]),
         ];
 
@@ -243,6 +248,7 @@ class BackendActionTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
@@ -282,6 +288,7 @@ class BackendActionTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
             'json' => $payload
         ];
@@ -329,6 +336,7 @@ class BackendActionTag extends TagAbstract
                 'startIndex' => $startIndex,
                 'count' => $count,
                 'search' => $search,
+            ], [
             ]),
         ];
 

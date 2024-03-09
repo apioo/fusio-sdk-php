@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Required;
 
+#[Required(array('name', 'email', 'password'))]
 class ConsumerUserRegister implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $name = null;

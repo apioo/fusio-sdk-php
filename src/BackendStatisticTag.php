@@ -53,6 +53,7 @@ class BackendStatisticTag extends TagAbstract
                 'path' => $path,
                 'header' => $header,
                 'body' => $body,
+            ], [
             ]),
         ];
 
@@ -119,6 +120,7 @@ class BackendStatisticTag extends TagAbstract
                 'path' => $path,
                 'header' => $header,
                 'body' => $body,
+            ], [
             ]),
         ];
 
@@ -185,6 +187,7 @@ class BackendStatisticTag extends TagAbstract
                 'path' => $path,
                 'header' => $header,
                 'body' => $body,
+            ], [
             ]),
         ];
 
@@ -251,6 +254,7 @@ class BackendStatisticTag extends TagAbstract
                 'path' => $path,
                 'header' => $header,
                 'body' => $body,
+            ], [
             ]),
         ];
 
@@ -317,6 +321,7 @@ class BackendStatisticTag extends TagAbstract
                 'path' => $path,
                 'header' => $header,
                 'body' => $body,
+            ], [
             ]),
         ];
 
@@ -383,6 +388,7 @@ class BackendStatisticTag extends TagAbstract
                 'path' => $path,
                 'header' => $header,
                 'body' => $body,
+            ], [
             ]),
         ];
 
@@ -449,6 +455,7 @@ class BackendStatisticTag extends TagAbstract
                 'path' => $path,
                 'header' => $header,
                 'body' => $body,
+            ], [
             ]),
         ];
 
@@ -515,6 +522,7 @@ class BackendStatisticTag extends TagAbstract
                 'path' => $path,
                 'header' => $header,
                 'body' => $body,
+            ], [
             ]),
         ];
 
@@ -581,6 +589,7 @@ class BackendStatisticTag extends TagAbstract
                 'path' => $path,
                 'header' => $header,
                 'body' => $body,
+            ], [
             ]),
         ];
 
@@ -647,6 +656,7 @@ class BackendStatisticTag extends TagAbstract
                 'path' => $path,
                 'header' => $header,
                 'body' => $body,
+            ], [
             ]),
         ];
 

@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Required;
 
+#[Required(array('roleId', 'status', 'name', 'email', 'password'))]
 class BackendUserCreate extends BackendUser implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $password = null;

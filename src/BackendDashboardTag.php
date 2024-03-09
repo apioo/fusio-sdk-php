@@ -25,6 +25,7 @@ class BackendDashboardTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 

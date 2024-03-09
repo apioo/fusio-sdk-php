@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Required;
 
+#[Required(array('name'))]
 class BackendCategoryCreate extends BackendCategory implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

@@ -27,6 +27,7 @@ class SystemPaymentTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 

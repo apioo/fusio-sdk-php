@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Required;
 
+#[Required(array('httpMethod', 'httpPath', 'httpCode', 'name', 'outgoing', 'action'))]
 class BackendOperationCreate extends BackendOperation implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }
