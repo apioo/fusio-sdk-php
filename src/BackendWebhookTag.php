@@ -21,7 +21,7 @@ class BackendWebhookTag extends TagAbstract
      */
     public function delete(string $webhookId): CommonMessage
     {
-        $url = $this->parser->url('/backend/webhook/$webhook_id<[0-9]+>', [
+        $url = $this->parser->url('/backend/webhook/$webhook_id<[0-9]+|^~>', [
             'webhook_id' => $webhookId,
         ]);
 
@@ -67,7 +67,7 @@ class BackendWebhookTag extends TagAbstract
      */
     public function update(string $webhookId, BackendWebhookUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/webhook/$webhook_id<[0-9]+>', [
+        $url = $this->parser->url('/backend/webhook/$webhook_id<[0-9]+|^~>', [
             'webhook_id' => $webhookId,
         ]);
 
@@ -115,7 +115,7 @@ class BackendWebhookTag extends TagAbstract
      */
     public function get(string $webhookId): BackendWebhook
     {
-        $url = $this->parser->url('/backend/webhook/$webhook_id<[0-9]+>', [
+        $url = $this->parser->url('/backend/webhook/$webhook_id<[0-9]+|^~>', [
             'webhook_id' => $webhookId,
         ]);
 

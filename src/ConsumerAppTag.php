@@ -21,7 +21,7 @@ class ConsumerAppTag extends TagAbstract
      */
     public function delete(string $appId): CommonMessage
     {
-        $url = $this->parser->url('/consumer/app/$app_id<[0-9]+>', [
+        $url = $this->parser->url('/consumer/app/$app_id<[0-9]+|^~>', [
             'app_id' => $appId,
         ]);
 
@@ -67,7 +67,7 @@ class ConsumerAppTag extends TagAbstract
      */
     public function update(string $appId, ConsumerAppUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/consumer/app/$app_id<[0-9]+>', [
+        $url = $this->parser->url('/consumer/app/$app_id<[0-9]+|^~>', [
             'app_id' => $appId,
         ]);
 
@@ -115,7 +115,7 @@ class ConsumerAppTag extends TagAbstract
      */
     public function get(string $appId): ConsumerApp
     {
-        $url = $this->parser->url('/consumer/app/$app_id<[0-9]+>', [
+        $url = $this->parser->url('/consumer/app/$app_id<[0-9]+|^~>', [
             'app_id' => $appId,
         ]);
 

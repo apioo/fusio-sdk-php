@@ -68,7 +68,7 @@ class BackendAppTag extends TagAbstract
      */
     public function delete(string $appId): CommonMessage
     {
-        $url = $this->parser->url('/backend/app/$app_id<[0-9]+>', [
+        $url = $this->parser->url('/backend/app/$app_id<[0-9]+|^~>', [
             'app_id' => $appId,
         ]);
 
@@ -114,7 +114,7 @@ class BackendAppTag extends TagAbstract
      */
     public function update(string $appId, BackendAppUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/app/$app_id<[0-9]+>', [
+        $url = $this->parser->url('/backend/app/$app_id<[0-9]+|^~>', [
             'app_id' => $appId,
         ]);
 
@@ -162,7 +162,7 @@ class BackendAppTag extends TagAbstract
      */
     public function get(string $appId): BackendApp
     {
-        $url = $this->parser->url('/backend/app/$app_id<[0-9]+>', [
+        $url = $this->parser->url('/backend/app/$app_id<[0-9]+|^~>', [
             'app_id' => $appId,
         ]);
 

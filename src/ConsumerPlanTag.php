@@ -21,7 +21,7 @@ class ConsumerPlanTag extends TagAbstract
      */
     public function get(string $planId): ConsumerPlan
     {
-        $url = $this->parser->url('/consumer/plan/$plan_id<[0-9]+>', [
+        $url = $this->parser->url('/consumer/plan/$plan_id<[0-9]+|^~>', [
             'plan_id' => $planId,
         ]);
 

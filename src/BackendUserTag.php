@@ -21,7 +21,7 @@ class BackendUserTag extends TagAbstract
      */
     public function delete(string $userId): CommonMessage
     {
-        $url = $this->parser->url('/backend/user/$user_id<[0-9]+>', [
+        $url = $this->parser->url('/backend/user/$user_id<[0-9]+|^~>', [
             'user_id' => $userId,
         ]);
 
@@ -67,7 +67,7 @@ class BackendUserTag extends TagAbstract
      */
     public function update(string $userId, BackendUserUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/user/$user_id<[0-9]+>', [
+        $url = $this->parser->url('/backend/user/$user_id<[0-9]+|^~>', [
             'user_id' => $userId,
         ]);
 
@@ -115,7 +115,7 @@ class BackendUserTag extends TagAbstract
      */
     public function get(string $userId): BackendUser
     {
-        $url = $this->parser->url('/backend/user/$user_id<[0-9]+>', [
+        $url = $this->parser->url('/backend/user/$user_id<[0-9]+|^~>', [
             'user_id' => $userId,
         ]);
 
