@@ -13,6 +13,14 @@ use Sdkgen\Client\TagAbstract;
 
 class BackendTag extends TagAbstract
 {
+    public function webhook(): BackendWebhookTag
+    {
+        return new BackendWebhookTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function user(): BackendUserTag
     {
         return new BackendUserTag(

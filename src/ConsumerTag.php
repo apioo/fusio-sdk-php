@@ -37,9 +37,9 @@ class ConsumerTag extends TagAbstract
         );
     }
 
-    public function subscription(): ConsumerSubscriptionTag
+    public function webhook(): ConsumerWebhookTag
     {
-        return new ConsumerSubscriptionTag(
+        return new ConsumerWebhookTag(
             $this->httpClient,
             $this->parser
         );
