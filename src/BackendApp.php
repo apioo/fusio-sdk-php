@@ -26,7 +26,7 @@ class BackendApp implements \JsonSerializable, \PSX\Record\RecordableInterface
      */
     protected ?array $scopes = null;
     /**
-     * @var array<BackendAppToken>|null
+     * @var array<BackendToken>|null
      */
     protected ?array $tokens = null;
     public function setId(?int $id) : void
@@ -124,14 +124,14 @@ class BackendApp implements \JsonSerializable, \PSX\Record\RecordableInterface
         return $this->scopes;
     }
     /**
-     * @param array<BackendAppToken>|null $tokens
+     * @param array<BackendToken>|null $tokens
      */
     public function setTokens(?array $tokens) : void
     {
         $this->tokens = $tokens;
     }
     /**
-     * @return array<BackendAppToken>|null
+     * @return array<BackendToken>|null
      */
     public function getTokens() : ?array
     {

@@ -45,6 +45,14 @@ class ConsumerTag extends TagAbstract
         );
     }
 
+    public function token(): ConsumerTokenTag
+    {
+        return new ConsumerTokenTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function scope(): ConsumerScopeTag
     {
         return new ConsumerScopeTag(

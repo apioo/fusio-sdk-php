@@ -45,6 +45,14 @@ class BackendTag extends TagAbstract
         );
     }
 
+    public function token(): BackendTokenTag
+    {
+        return new BackendTokenTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function tenant(): BackendTenantTag
     {
         return new BackendTenantTag(
