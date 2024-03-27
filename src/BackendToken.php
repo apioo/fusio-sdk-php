@@ -15,7 +15,7 @@ class BackendToken implements \JsonSerializable, \PSX\Record\RecordableInterface
     /**
      * @var array<string>|null
      */
-    protected ?array $scope = null;
+    protected ?array $scopes = null;
     protected ?string $ip = null;
     protected ?\PSX\DateTime\LocalDateTime $expire = null;
     protected ?\PSX\DateTime\LocalDateTime $date = null;
@@ -44,18 +44,18 @@ class BackendToken implements \JsonSerializable, \PSX\Record\RecordableInterface
         return $this->name;
     }
     /**
-     * @param array<string>|null $scope
+     * @param array<string>|null $scopes
      */
-    public function setScope(?array $scope) : void
+    public function setScopes(?array $scopes) : void
     {
-        $this->scope = $scope;
+        $this->scopes = $scopes;
     }
     /**
      * @return array<string>|null
      */
-    public function getScope() : ?array
+    public function getScopes() : ?array
     {
-        return $this->scope;
+        return $this->scopes;
     }
     public function setIp(?string $ip) : void
     {
@@ -88,7 +88,7 @@ class BackendToken implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('id', $this->id);
         $record->put('status', $this->status);
         $record->put('name', $this->name);
-        $record->put('scope', $this->scope);
+        $record->put('scopes', $this->scopes);
         $record->put('ip', $this->ip);
         $record->put('expire', $this->expire);
         $record->put('date', $this->date);
