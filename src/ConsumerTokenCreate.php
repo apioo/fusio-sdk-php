@@ -8,14 +8,14 @@ namespace Fusio\Sdk;
 
 use PSX\Schema\Attribute\Required;
 
-#[Required(array('scope', 'expire'))]
+#[Required(array('name', 'scopes', 'expire'))]
 class ConsumerTokenCreate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $name = null;
     /**
      * @var array<string>|null
      */
-    protected ?array $scope = null;
+    protected ?array $scopes = null;
     protected ?\PSX\DateTime\LocalDateTime $expire = null;
     public function setName(?string $name) : void
     {
@@ -26,18 +26,18 @@ class ConsumerTokenCreate implements \JsonSerializable, \PSX\Record\RecordableIn
         return $this->name;
     }
     /**
-     * @param array<string>|null $scope
+     * @param array<string>|null $scopes
      */
-    public function setScope(?array $scope) : void
+    public function setScopes(?array $scopes) : void
     {
-        $this->scope = $scope;
+        $this->scopes = $scopes;
     }
     /**
      * @return array<string>|null
      */
-    public function getScope() : ?array
+    public function getScopes() : ?array
     {
-        return $this->scope;
+        return $this->scopes;
     }
     public function setExpire(?\PSX\DateTime\LocalDateTime $expire) : void
     {
@@ -52,7 +52,7 @@ class ConsumerTokenCreate implements \JsonSerializable, \PSX\Record\RecordableIn
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('name', $this->name);
-        $record->put('scope', $this->scope);
+        $record->put('scopes', $this->scopes);
         $record->put('expire', $this->expire);
         return $record;
     }
