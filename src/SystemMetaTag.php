@@ -91,6 +91,40 @@ class SystemMetaTag extends TagAbstract
     }
 
     /**
+     * @return SystemOAuthConfiguration
+     * @throws ClientException
+     */
+    public function getOAuthConfiguration(): SystemOAuthConfiguration
+    {
+        $url = $this->parser->url('/system/oauth-authorization-server', [
+        ]);
+
+        $options = [
+            'query' => $this->parser->query([
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $data = (string) $response->getBody();
+
+            return $this->parser->parse($data, SystemOAuthConfiguration::class);
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $data = (string) $e->getResponse()->getBody();
+
+            switch ($e->getResponse()->getStatusCode()) {
+                default:
+                    throw new UnknownStatusCodeException('The server returned an unknown status code');
+            }
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
      * @return SystemHealthCheck
      * @throws ClientException
      */
