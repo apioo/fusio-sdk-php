@@ -165,6 +165,14 @@ class BackendTag extends TagAbstract
         );
     }
 
+    public function backup(): BackendBackupTag
+    {
+        return new BackendBackupTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function event(): BackendEventTag
     {
         return new BackendEventTag(
