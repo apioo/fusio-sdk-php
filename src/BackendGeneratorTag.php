@@ -44,6 +44,8 @@ class BackendGeneratorTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 401:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 500:
@@ -87,6 +89,8 @@ class BackendGeneratorTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 401:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 500:
@@ -128,6 +132,8 @@ class BackendGeneratorTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 401:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 500:
