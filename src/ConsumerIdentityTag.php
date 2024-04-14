@@ -97,11 +97,12 @@ class ConsumerIdentityTag extends TagAbstract
 
     /**
      * @param int|null $appId
+     * @param string|null $appKey
      * @return ConsumerIdentityCollection
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getAll(?int $appId = null): ConsumerIdentityCollection
+    public function getAll(?int $appId = null, ?string $appKey = null): ConsumerIdentityCollection
     {
         $url = $this->parser->url('/consumer/identity', [
         ]);
@@ -109,6 +110,7 @@ class ConsumerIdentityTag extends TagAbstract
         $options = [
             'query' => $this->parser->query([
                 'appId' => $appId,
+                'appKey' => $appKey,
             ], [
             ]),
         ];
