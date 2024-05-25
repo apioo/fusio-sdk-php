@@ -50,8 +50,8 @@ class Client extends ClientAbstract
 
 
 
-    public static function build(string $clientId, string $clientSecret, ?TokenStoreInterface $tokenStore = null, ?array $scopes = null): self
+    public static function build(): self
     {
-        return new self('https://api.typehub.cloud/', new Credentials\OAuth2($clientId, $clientSecret, 'https://api.typehub.cloud/authorization/token', '', $tokenStore, $scopes));
+        return new self('https://api.sdkgen.app/', new Credentials\Anonymous());
     }
 }

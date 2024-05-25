@@ -6,6 +6,8 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
+use PSX\Schema\Attribute\Key;
 use PSX\Schema\Attribute\Pattern;
 
 class BackendConnection implements \JsonSerializable, \PSX\Record\RecordableInterface
@@ -14,6 +16,9 @@ class BackendConnection implements \JsonSerializable, \PSX\Record\RecordableInte
     #[Pattern('^[a-zA-Z0-9\\-\\_]{3,255}$')]
     protected ?string $name = null;
     protected ?string $class = null;
+    #[Key('oauth2')]
+    #[Description('Indicates whether it is possible to start an OAuth2 authorization code flow on this connection')]
+    protected ?bool $oauth = null;
     protected ?BackendConnectionConfig $config = null;
     protected ?CommonMetadata $metadata = null;
     public function setId(?int $id) : void
@@ -40,6 +45,14 @@ class BackendConnection implements \JsonSerializable, \PSX\Record\RecordableInte
     {
         return $this->class;
     }
+    public function setOauth(?bool $oauth) : void
+    {
+        $this->oauth = $oauth;
+    }
+    public function getOauth() : ?bool
+    {
+        return $this->oauth;
+    }
     public function setConfig(?BackendConnectionConfig $config) : void
     {
         $this->config = $config;
@@ -63,6 +76,7 @@ class BackendConnection implements \JsonSerializable, \PSX\Record\RecordableInte
         $record->put('id', $this->id);
         $record->put('name', $this->name);
         $record->put('class', $this->class);
+        $record->put('oauth2', $this->oauth);
         $record->put('config', $this->config);
         $record->put('metadata', $this->metadata);
         return $record;
