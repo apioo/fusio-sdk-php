@@ -103,11 +103,11 @@ class BackendConnectionTag extends TagAbstract
 
     /**
      * @param string $connectionId
-     * @return CommonMessage
+     * @return BackendConnectionRedirectResponse
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getRedirect(string $connectionId): CommonMessage
+    public function getRedirect(string $connectionId): BackendConnectionRedirectResponse
     {
         $url = $this->parser->url('/backend/connection/$connection_id<[0-9]+|^~>/redirect', [
             'connection_id' => $connectionId,
@@ -123,7 +123,7 @@ class BackendConnectionTag extends TagAbstract
             $response = $this->httpClient->request('GET', $url, $options);
             $data = (string) $response->getBody();
 
-            return $this->parser->parse($data, CommonMessage::class);
+            return $this->parser->parse($data, BackendConnectionRedirectResponse::class);
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
