@@ -181,6 +181,14 @@ class BackendTag extends TagAbstract
         );
     }
 
+    public function database(): BackendDatabaseTag
+    {
+        return new BackendDatabaseTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function dashboard(): BackendDashboardTag
     {
         return new BackendDashboardTag(
