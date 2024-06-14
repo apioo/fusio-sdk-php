@@ -198,11 +198,19 @@ class BackendDatabaseTag extends TagAbstract
     /**
      * @param string $connectionId
      * @param string $tableName
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $filterBy
+     * @param string|null $filterOp
+     * @param string|null $filterValue
+     * @param string|null $sortBy
+     * @param string|null $sortOrder
+     * @param string|null $columns
      * @return BackendDatabaseRows
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getRows(string $connectionId, string $tableName): BackendDatabaseRows
+    public function getRows(string $connectionId, string $tableName, ?int $startIndex = null, ?int $count = null, ?string $filterBy = null, ?string $filterOp = null, ?string $filterValue = null, ?string $sortBy = null, ?string $sortOrder = null, ?string $columns = null): BackendDatabaseRows
     {
         $url = $this->parser->url('/backend/database/:connection_id/:table_name/rows', [
             'connection_id' => $connectionId,
@@ -211,6 +219,14 @@ class BackendDatabaseTag extends TagAbstract
 
         $options = [
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'filterBy' => $filterBy,
+                'filterOp' => $filterOp,
+                'filterValue' => $filterValue,
+                'sortBy' => $sortBy,
+                'sortOrder' => $sortOrder,
+                'columns' => $columns,
             ], [
             ]),
         ];
