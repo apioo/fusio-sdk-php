@@ -46,7 +46,11 @@ class BackendDatabaseTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 401:
+                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
+                case 404:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 500:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
@@ -93,7 +97,11 @@ class BackendDatabaseTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 401:
+                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
+                case 404:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 500:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
@@ -138,7 +146,11 @@ class BackendDatabaseTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 401:
+                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
+                case 404:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 500:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
@@ -184,6 +196,8 @@ class BackendDatabaseTag extends TagAbstract
 
             switch ($e->getResponse()->getStatusCode()) {
                 case 401:
+                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
+                case 404:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 500:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
@@ -244,6 +258,8 @@ class BackendDatabaseTag extends TagAbstract
             switch ($e->getResponse()->getStatusCode()) {
                 case 401:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
+                case 404:
+                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 500:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 default:
@@ -285,7 +301,11 @@ class BackendDatabaseTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 401:
+                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
+                case 404:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 500:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
@@ -330,7 +350,11 @@ class BackendDatabaseTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 401:
+                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
+                case 404:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 500:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
@@ -373,7 +397,11 @@ class BackendDatabaseTag extends TagAbstract
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 401:
+                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
+                case 404:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 500:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
@@ -418,6 +446,8 @@ class BackendDatabaseTag extends TagAbstract
             switch ($e->getResponse()->getStatusCode()) {
                 case 401:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
+                case 404:
+                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 500:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 default:
@@ -458,6 +488,8 @@ class BackendDatabaseTag extends TagAbstract
 
             switch ($e->getResponse()->getStatusCode()) {
                 case 401:
+                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
+                case 404:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 500:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
