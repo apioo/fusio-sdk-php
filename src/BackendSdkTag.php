@@ -15,11 +15,11 @@ class BackendSdkTag extends TagAbstract
 {
     /**
      * @param BackendSdkGenerate $payload
-     * @return CommonMessage
+     * @return BackendSdkMessage
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function generate(BackendSdkGenerate $payload): CommonMessage
+    public function generate(BackendSdkGenerate $payload): BackendSdkMessage
     {
         $url = $this->parser->url('/backend/sdk', [
         ]);
@@ -35,13 +35,15 @@ class BackendSdkTag extends TagAbstract
             $response = $this->httpClient->request('POST', $url, $options);
             $data = (string) $response->getBody();
 
-            return $this->parser->parse($data, CommonMessage::class);
+            return $this->parser->parse($data, BackendSdkMessage::class);
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
             $data = (string) $e->getResponse()->getBody();
 
             switch ($e->getResponse()->getStatusCode()) {
+                case 400:
+                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 401:
                     throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
                 case 500:
