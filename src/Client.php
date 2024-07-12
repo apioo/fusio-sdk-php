@@ -50,8 +50,8 @@ class Client extends ClientAbstract
 
 
 
-    public static function build(): self
+    public static function build(string $clientId, string $clientSecret, ?TokenStoreInterface $tokenStore = null, ?array $scopes = null): self
     {
-        return new self('https://api.sdkgen.app/', new Credentials\Anonymous());
+        return new self('http://127.0.0.1/', new Credentials\OAuth2($clientId, $clientSecret, 'http://127.0.0.1/authorization/token', '', $tokenStore, $scopes));
     }
 }
