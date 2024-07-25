@@ -53,6 +53,14 @@ class BackendTag extends TagAbstract
         );
     }
 
+    public function test(): BackendTestTag
+    {
+        return new BackendTestTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function tenant(): BackendTenantTag
     {
         return new BackendTenantTag(
