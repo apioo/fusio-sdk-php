@@ -14,10 +14,10 @@ class BackendDashboard implements \JsonSerializable, \PSX\Record\RecordableInter
     protected ?BackendStatisticChart $incomingTransactions = null;
     protected ?BackendStatisticChart $mostUsedOperations = null;
     protected ?BackendStatisticChart $timePerOperation = null;
+    protected ?BackendStatisticChart $testCoverage = null;
     protected ?BackendDashboardApps $latestApps = null;
     protected ?BackendDashboardRequests $latestRequests = null;
     protected ?BackendDashboardUsers $latestUsers = null;
-    protected ?BackendDashboardTransactions $latestTransactions = null;
     public function setErrorsPerOperation(?BackendStatisticChart $errorsPerOperation) : void
     {
         $this->errorsPerOperation = $errorsPerOperation;
@@ -58,6 +58,14 @@ class BackendDashboard implements \JsonSerializable, \PSX\Record\RecordableInter
     {
         return $this->timePerOperation;
     }
+    public function setTestCoverage(?BackendStatisticChart $testCoverage) : void
+    {
+        $this->testCoverage = $testCoverage;
+    }
+    public function getTestCoverage() : ?BackendStatisticChart
+    {
+        return $this->testCoverage;
+    }
     public function setLatestApps(?BackendDashboardApps $latestApps) : void
     {
         $this->latestApps = $latestApps;
@@ -82,14 +90,6 @@ class BackendDashboard implements \JsonSerializable, \PSX\Record\RecordableInter
     {
         return $this->latestUsers;
     }
-    public function setLatestTransactions(?BackendDashboardTransactions $latestTransactions) : void
-    {
-        $this->latestTransactions = $latestTransactions;
-    }
-    public function getLatestTransactions() : ?BackendDashboardTransactions
-    {
-        return $this->latestTransactions;
-    }
     public function toRecord() : \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
@@ -99,10 +99,10 @@ class BackendDashboard implements \JsonSerializable, \PSX\Record\RecordableInter
         $record->put('incomingTransactions', $this->incomingTransactions);
         $record->put('mostUsedOperations', $this->mostUsedOperations);
         $record->put('timePerOperation', $this->timePerOperation);
+        $record->put('testCoverage', $this->testCoverage);
         $record->put('latestApps', $this->latestApps);
         $record->put('latestRequests', $this->latestRequests);
         $record->put('latestUsers', $this->latestUsers);
-        $record->put('latestTransactions', $this->latestTransactions);
         return $record;
     }
     public function jsonSerialize() : object
