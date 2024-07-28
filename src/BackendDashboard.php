@@ -15,9 +15,9 @@ class BackendDashboard implements \JsonSerializable, \PSX\Record\RecordableInter
     protected ?BackendStatisticChart $mostUsedOperations = null;
     protected ?BackendStatisticChart $timePerOperation = null;
     protected ?BackendStatisticChart $testCoverage = null;
-    protected ?BackendDashboardApps $latestApps = null;
-    protected ?BackendDashboardRequests $latestRequests = null;
-    protected ?BackendDashboardUsers $latestUsers = null;
+    protected ?BackendStatisticChart $mostUsedActivities = null;
+    protected ?BackendStatisticChart $activitiesPerUser = null;
+    protected ?BackendStatisticChart $userRegistrations = null;
     public function setErrorsPerOperation(?BackendStatisticChart $errorsPerOperation) : void
     {
         $this->errorsPerOperation = $errorsPerOperation;
@@ -66,29 +66,29 @@ class BackendDashboard implements \JsonSerializable, \PSX\Record\RecordableInter
     {
         return $this->testCoverage;
     }
-    public function setLatestApps(?BackendDashboardApps $latestApps) : void
+    public function setMostUsedActivities(?BackendStatisticChart $mostUsedActivities) : void
     {
-        $this->latestApps = $latestApps;
+        $this->mostUsedActivities = $mostUsedActivities;
     }
-    public function getLatestApps() : ?BackendDashboardApps
+    public function getMostUsedActivities() : ?BackendStatisticChart
     {
-        return $this->latestApps;
+        return $this->mostUsedActivities;
     }
-    public function setLatestRequests(?BackendDashboardRequests $latestRequests) : void
+    public function setActivitiesPerUser(?BackendStatisticChart $activitiesPerUser) : void
     {
-        $this->latestRequests = $latestRequests;
+        $this->activitiesPerUser = $activitiesPerUser;
     }
-    public function getLatestRequests() : ?BackendDashboardRequests
+    public function getActivitiesPerUser() : ?BackendStatisticChart
     {
-        return $this->latestRequests;
+        return $this->activitiesPerUser;
     }
-    public function setLatestUsers(?BackendDashboardUsers $latestUsers) : void
+    public function setUserRegistrations(?BackendStatisticChart $userRegistrations) : void
     {
-        $this->latestUsers = $latestUsers;
+        $this->userRegistrations = $userRegistrations;
     }
-    public function getLatestUsers() : ?BackendDashboardUsers
+    public function getUserRegistrations() : ?BackendStatisticChart
     {
-        return $this->latestUsers;
+        return $this->userRegistrations;
     }
     public function toRecord() : \PSX\Record\RecordInterface
     {
@@ -100,9 +100,9 @@ class BackendDashboard implements \JsonSerializable, \PSX\Record\RecordableInter
         $record->put('mostUsedOperations', $this->mostUsedOperations);
         $record->put('timePerOperation', $this->timePerOperation);
         $record->put('testCoverage', $this->testCoverage);
-        $record->put('latestApps', $this->latestApps);
-        $record->put('latestRequests', $this->latestRequests);
-        $record->put('latestUsers', $this->latestUsers);
+        $record->put('mostUsedActivities', $this->mostUsedActivities);
+        $record->put('activitiesPerUser', $this->activitiesPerUser);
+        $record->put('userRegistrations', $this->userRegistrations);
         return $record;
     }
     public function jsonSerialize() : object
