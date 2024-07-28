@@ -871,11 +871,11 @@ class BackendStatisticTag extends TagAbstract
      * @param string|null $path
      * @param string|null $header
      * @param string|null $body
-     * @return BackendStatisticCount
+     * @return BackendStatisticChart
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getActivitiesPerUser(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticCount
+    public function getActivitiesPerUser(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
     {
         $url = $this->parser->url('/backend/statistic/activities_per_user', [
         ]);
@@ -904,7 +904,7 @@ class BackendStatisticTag extends TagAbstract
             $response = $this->httpClient->request('GET', $url, $options);
             $data = (string) $response->getBody();
 
-            return $this->parser->parse($data, BackendStatisticCount::class);
+            return $this->parser->parse($data, BackendStatisticChart::class);
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
