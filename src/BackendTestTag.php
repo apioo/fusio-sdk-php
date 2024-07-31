@@ -15,12 +15,12 @@ class BackendTestTag extends TagAbstract
 {
     /**
      * @param string $testId
-     * @param BackendTestConfig $payload
+     * @param BackendTest $payload
      * @return CommonMessage
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function update(string $testId, BackendTestConfig $payload): CommonMessage
+    public function update(string $testId, BackendTest $payload): CommonMessage
     {
         $url = $this->parser->url('/backend/test/$test_id<[0-9]+>', [
             'test_id' => $testId,
