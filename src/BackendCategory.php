@@ -6,12 +6,10 @@
 
 namespace Fusio\Sdk;
 
-use PSX\Schema\Attribute\Pattern;
 
 class BackendCategory implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
-    #[Pattern('^[a-zA-Z0-9\\-\\_]{3,64}$')]
     protected ?string $name = null;
     public function setId(?int $id) : void
     {

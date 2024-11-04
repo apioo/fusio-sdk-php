@@ -6,17 +6,13 @@
 
 namespace Fusio\Sdk;
 
-use PSX\Schema\Attribute\MinLength;
-use PSX\Schema\Attribute\Pattern;
 
 class ConsumerApp implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?int $userId = null;
     protected ?int $status = null;
-    #[Pattern('^[A-z0-9\\-\\_]{3,64}$')]
     protected ?string $name = null;
-    #[MinLength(8)]
     protected ?string $url = null;
     protected ?string $appKey = null;
     protected ?string $appSecret = null;

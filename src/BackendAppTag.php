@@ -8,6 +8,7 @@ namespace Fusio\Sdk;
 
 use GuzzleHttp\Exception\BadResponseException;
 use Sdkgen\Client\Exception\ClientException;
+use Sdkgen\Client\Exception\Payload;
 use Sdkgen\Client\Exception\UnknownStatusCodeException;
 use Sdkgen\Client\TagAbstract;
 
@@ -28,6 +29,8 @@ class BackendAppTag extends TagAbstract
         ]);
 
         $options = [
+            'headers' => [
+            ],
             'query' => $this->parser->query([
             ], [
             ]),
@@ -35,26 +38,42 @@ class BackendAppTag extends TagAbstract
 
         try {
             $response = $this->httpClient->request('DELETE', $url, $options);
-            $data = (string) $response->getBody();
+            $body = $response->getBody();
 
-            return $this->parser->parse($data, CommonMessage::class);
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+            return $data;
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
-            $data = (string) $e->getResponse()->getBody();
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
 
-            switch ($e->getResponse()->getStatusCode()) {
-                case 401:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                case 404:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                case 410:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                case 500:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                default:
-                    throw new UnknownStatusCodeException('The server returned an unknown status code');
+            if ($statusCode === 401) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
             }
+
+            if ($statusCode === 404) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            if ($statusCode === 410) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            if ($statusCode === 500) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
         } catch (\Throwable $e) {
             throw new ClientException('An unknown error occurred: ' . $e->getMessage());
         }
@@ -73,6 +92,8 @@ class BackendAppTag extends TagAbstract
         ]);
 
         $options = [
+            'headers' => [
+            ],
             'query' => $this->parser->query([
             ], [
             ]),
@@ -80,26 +101,42 @@ class BackendAppTag extends TagAbstract
 
         try {
             $response = $this->httpClient->request('DELETE', $url, $options);
-            $data = (string) $response->getBody();
+            $body = $response->getBody();
 
-            return $this->parser->parse($data, CommonMessage::class);
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+            return $data;
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
-            $data = (string) $e->getResponse()->getBody();
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
 
-            switch ($e->getResponse()->getStatusCode()) {
-                case 401:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                case 404:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                case 410:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                case 500:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                default:
-                    throw new UnknownStatusCodeException('The server returned an unknown status code');
+            if ($statusCode === 401) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
             }
+
+            if ($statusCode === 404) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            if ($statusCode === 410) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            if ($statusCode === 500) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
         } catch (\Throwable $e) {
             throw new ClientException('An unknown error occurred: ' . $e->getMessage());
         }
@@ -119,36 +156,59 @@ class BackendAppTag extends TagAbstract
         ]);
 
         $options = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
             'query' => $this->parser->query([
             ], [
             ]),
-            'json' => $payload
+            'json' => $payload,
         ];
 
         try {
             $response = $this->httpClient->request('PUT', $url, $options);
-            $data = (string) $response->getBody();
+            $body = $response->getBody();
 
-            return $this->parser->parse($data, CommonMessage::class);
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+            return $data;
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
-            $data = (string) $e->getResponse()->getBody();
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
 
-            switch ($e->getResponse()->getStatusCode()) {
-                case 400:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                case 401:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                case 404:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                case 410:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                case 500:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                default:
-                    throw new UnknownStatusCodeException('The server returned an unknown status code');
+            if ($statusCode === 400) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
             }
+
+            if ($statusCode === 401) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            if ($statusCode === 404) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            if ($statusCode === 410) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            if ($statusCode === 500) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
         } catch (\Throwable $e) {
             throw new ClientException('An unknown error occurred: ' . $e->getMessage());
         }
@@ -167,6 +227,8 @@ class BackendAppTag extends TagAbstract
         ]);
 
         $options = [
+            'headers' => [
+            ],
             'query' => $this->parser->query([
             ], [
             ]),
@@ -174,26 +236,42 @@ class BackendAppTag extends TagAbstract
 
         try {
             $response = $this->httpClient->request('GET', $url, $options);
-            $data = (string) $response->getBody();
+            $body = $response->getBody();
 
-            return $this->parser->parse($data, BackendApp::class);
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendApp::class));
+
+            return $data;
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
-            $data = (string) $e->getResponse()->getBody();
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
 
-            switch ($e->getResponse()->getStatusCode()) {
-                case 404:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                case 401:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                case 410:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                case 500:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                default:
-                    throw new UnknownStatusCodeException('The server returned an unknown status code');
+            if ($statusCode === 404) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
             }
+
+            if ($statusCode === 401) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            if ($statusCode === 410) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            if ($statusCode === 500) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
         } catch (\Throwable $e) {
             throw new ClientException('An unknown error occurred: ' . $e->getMessage());
         }
@@ -211,32 +289,47 @@ class BackendAppTag extends TagAbstract
         ]);
 
         $options = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
             'query' => $this->parser->query([
             ], [
             ]),
-            'json' => $payload
+            'json' => $payload,
         ];
 
         try {
             $response = $this->httpClient->request('POST', $url, $options);
-            $data = (string) $response->getBody();
+            $body = $response->getBody();
 
-            return $this->parser->parse($data, CommonMessage::class);
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+            return $data;
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
-            $data = (string) $e->getResponse()->getBody();
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
 
-            switch ($e->getResponse()->getStatusCode()) {
-                case 400:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                case 401:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                case 500:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                default:
-                    throw new UnknownStatusCodeException('The server returned an unknown status code');
+            if ($statusCode === 400) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
             }
+
+            if ($statusCode === 401) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            if ($statusCode === 500) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
         } catch (\Throwable $e) {
             throw new ClientException('An unknown error occurred: ' . $e->getMessage());
         }
@@ -256,6 +349,8 @@ class BackendAppTag extends TagAbstract
         ]);
 
         $options = [
+            'headers' => [
+            ],
             'query' => $this->parser->query([
                 'startIndex' => $startIndex,
                 'count' => $count,
@@ -266,26 +361,35 @@ class BackendAppTag extends TagAbstract
 
         try {
             $response = $this->httpClient->request('GET', $url, $options);
-            $data = (string) $response->getBody();
+            $body = $response->getBody();
 
-            return $this->parser->parse($data, BackendAppCollection::class);
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendAppCollection::class));
+
+            return $data;
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
-            $data = (string) $e->getResponse()->getBody();
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
 
-            switch ($e->getResponse()->getStatusCode()) {
-                case 401:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                case 500:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                default:
-                    throw new UnknownStatusCodeException('The server returned an unknown status code');
+            if ($statusCode === 401) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
             }
+
+            if ($statusCode === 500) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
         } catch (\Throwable $e) {
             throw new ClientException('An unknown error occurred: ' . $e->getMessage());
         }
     }
+
 
 
 }

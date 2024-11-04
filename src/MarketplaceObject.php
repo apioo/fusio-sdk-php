@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Base class of all objects on the marketplace')]
 class MarketplaceObject implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;

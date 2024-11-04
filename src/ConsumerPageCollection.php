@@ -9,6 +9,6 @@ namespace Fusio\Sdk;
 /**
  * @extends CommonCollection<ConsumerPage>
  */
-class ConsumerPageCollection extends CommonCollection
+class ConsumerPageCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

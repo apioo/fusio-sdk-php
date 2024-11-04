@@ -9,6 +9,6 @@ namespace Fusio\Sdk;
 /**
  * @extends CommonCollection<BackendAction>
  */
-class BackendActionCollection extends CommonCollection
+class BackendActionCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

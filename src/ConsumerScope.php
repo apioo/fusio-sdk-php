@@ -6,12 +6,10 @@
 
 namespace Fusio\Sdk;
 
-use PSX\Schema\Attribute\Pattern;
 
 class ConsumerScope implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
-    #[Pattern('^[A-z0-9\\-\\_]{3,64}$')]
     protected ?string $name = null;
     protected ?string $description = null;
     protected ?CommonMetadata $metadata = null;

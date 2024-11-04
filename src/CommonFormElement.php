@@ -6,15 +6,22 @@
 
 namespace Fusio\Sdk;
 
-use PSX\Schema\Attribute\Required;
 
-#[Required(array('element'))]
 class CommonFormElement implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    protected ?string $type = null;
     protected ?string $element = null;
     protected ?string $name = null;
     protected ?string $title = null;
     protected ?string $help = null;
+    public function setType(?string $type) : void
+    {
+        $this->type = $type;
+    }
+    public function getType() : ?string
+    {
+        return $this->type;
+    }
     public function setElement(?string $element) : void
     {
         $this->element = $element;
@@ -51,6 +58,7 @@ class CommonFormElement implements \JsonSerializable, \PSX\Record\RecordableInte
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('type', $this->type);
         $record->put('element', $this->element);
         $record->put('name', $this->name);
         $record->put('title', $this->title);

@@ -6,9 +6,7 @@
 
 namespace Fusio\Sdk;
 
-use PSX\Schema\Attribute\Required;
 
-#[Required(array('eventId', 'userId', 'name', 'endpoint'))]
 class BackendWebhookCreate extends BackendWebhook implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

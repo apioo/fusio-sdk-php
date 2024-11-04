@@ -6,9 +6,7 @@
 
 namespace Fusio\Sdk;
 
-use PSX\Schema\Attribute\Required;
 
-#[Required(array('name', 'expire'))]
 class ConsumerTokenUpdate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $name = null;

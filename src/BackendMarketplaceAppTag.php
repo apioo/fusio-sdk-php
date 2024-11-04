@@ -8,6 +8,7 @@ namespace Fusio\Sdk;
 
 use GuzzleHttp\Exception\BadResponseException;
 use Sdkgen\Client\Exception\ClientException;
+use Sdkgen\Client\Exception\Payload;
 use Sdkgen\Client\Exception\UnknownStatusCodeException;
 use Sdkgen\Client\TagAbstract;
 
@@ -28,6 +29,8 @@ class BackendMarketplaceAppTag extends TagAbstract
         ]);
 
         $options = [
+            'headers' => [
+            ],
             'query' => $this->parser->query([
             ], [
             ]),
@@ -35,28 +38,48 @@ class BackendMarketplaceAppTag extends TagAbstract
 
         try {
             $response = $this->httpClient->request('PUT', $url, $options);
-            $data = (string) $response->getBody();
+            $body = $response->getBody();
 
-            return $this->parser->parse($data, MarketplaceMessage::class);
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
+
+            return $data;
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
-            $data = (string) $e->getResponse()->getBody();
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
 
-            switch ($e->getResponse()->getStatusCode()) {
-                case 400:
-                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
-                case 401:
-                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
-                case 404:
-                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
-                case 410:
-                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
-                case 500:
-                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
-                default:
-                    throw new UnknownStatusCodeException('The server returned an unknown status code');
+            if ($statusCode === 400) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
+
+                throw new MarketplaceMessageException($data);
             }
+
+            if ($statusCode === 401) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
+
+                throw new MarketplaceMessageException($data);
+            }
+
+            if ($statusCode === 404) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
+
+                throw new MarketplaceMessageException($data);
+            }
+
+            if ($statusCode === 410) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
+
+                throw new MarketplaceMessageException($data);
+            }
+
+            if ($statusCode === 500) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
+
+                throw new MarketplaceMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
         } catch (\Throwable $e) {
             throw new ClientException('An unknown error occurred: ' . $e->getMessage());
         }
@@ -77,6 +100,8 @@ class BackendMarketplaceAppTag extends TagAbstract
         ]);
 
         $options = [
+            'headers' => [
+            ],
             'query' => $this->parser->query([
             ], [
             ]),
@@ -84,26 +109,42 @@ class BackendMarketplaceAppTag extends TagAbstract
 
         try {
             $response = $this->httpClient->request('GET', $url, $options);
-            $data = (string) $response->getBody();
+            $body = $response->getBody();
 
-            return $this->parser->parse($data, MarketplaceApp::class);
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceApp::class));
+
+            return $data;
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
-            $data = (string) $e->getResponse()->getBody();
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
 
-            switch ($e->getResponse()->getStatusCode()) {
-                case 401:
-                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
-                case 404:
-                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
-                case 410:
-                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
-                case 500:
-                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
-                default:
-                    throw new UnknownStatusCodeException('The server returned an unknown status code');
+            if ($statusCode === 401) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
+
+                throw new MarketplaceMessageException($data);
             }
+
+            if ($statusCode === 404) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
+
+                throw new MarketplaceMessageException($data);
+            }
+
+            if ($statusCode === 410) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
+
+                throw new MarketplaceMessageException($data);
+            }
+
+            if ($statusCode === 500) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
+
+                throw new MarketplaceMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
         } catch (\Throwable $e) {
             throw new ClientException('An unknown error occurred: ' . $e->getMessage());
         }
@@ -121,32 +162,47 @@ class BackendMarketplaceAppTag extends TagAbstract
         ]);
 
         $options = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
             'query' => $this->parser->query([
             ], [
             ]),
-            'json' => $payload
+            'json' => $payload,
         ];
 
         try {
             $response = $this->httpClient->request('POST', $url, $options);
-            $data = (string) $response->getBody();
+            $body = $response->getBody();
 
-            return $this->parser->parse($data, MarketplaceMessage::class);
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
+
+            return $data;
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
-            $data = (string) $e->getResponse()->getBody();
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
 
-            switch ($e->getResponse()->getStatusCode()) {
-                case 400:
-                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
-                case 401:
-                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
-                case 500:
-                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
-                default:
-                    throw new UnknownStatusCodeException('The server returned an unknown status code');
+            if ($statusCode === 400) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
+
+                throw new MarketplaceMessageException($data);
             }
+
+            if ($statusCode === 401) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
+
+                throw new MarketplaceMessageException($data);
+            }
+
+            if ($statusCode === 500) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
+
+                throw new MarketplaceMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
         } catch (\Throwable $e) {
             throw new ClientException('An unknown error occurred: ' . $e->getMessage());
         }
@@ -165,6 +221,8 @@ class BackendMarketplaceAppTag extends TagAbstract
         ]);
 
         $options = [
+            'headers' => [
+            ],
             'query' => $this->parser->query([
                 'startIndex' => $startIndex,
                 'query' => $query,
@@ -174,26 +232,35 @@ class BackendMarketplaceAppTag extends TagAbstract
 
         try {
             $response = $this->httpClient->request('GET', $url, $options);
-            $data = (string) $response->getBody();
+            $body = $response->getBody();
 
-            return $this->parser->parse($data, MarketplaceAppCollection::class);
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceAppCollection::class));
+
+            return $data;
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
-            $data = (string) $e->getResponse()->getBody();
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
 
-            switch ($e->getResponse()->getStatusCode()) {
-                case 401:
-                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
-                case 500:
-                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
-                default:
-                    throw new UnknownStatusCodeException('The server returned an unknown status code');
+            if ($statusCode === 401) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
+
+                throw new MarketplaceMessageException($data);
             }
+
+            if ($statusCode === 500) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
+
+                throw new MarketplaceMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
         } catch (\Throwable $e) {
             throw new ClientException('An unknown error occurred: ' . $e->getMessage());
         }
     }
+
 
 
 }

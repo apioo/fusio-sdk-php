@@ -6,9 +6,7 @@
 
 namespace Fusio\Sdk;
 
-/**
- * @extends \PSX\Record\Record<mixed>
- */
-class MarketplaceActionConfig extends \PSX\Record\Record
+
+class MarketplaceActionConfig implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

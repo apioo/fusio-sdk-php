@@ -6,9 +6,7 @@
 
 namespace Fusio\Sdk;
 
-/**
- * @extends \PSX\Record\Record<string>
- */
-class CommonMetadata extends \PSX\Record\Record
+
+class CommonMetadata implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

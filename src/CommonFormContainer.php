@@ -10,18 +10,18 @@ namespace Fusio\Sdk;
 class CommonFormContainer implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
-     * @var array<CommonFormElementInput|CommonFormElementSelect|CommonFormElementTag|CommonFormElementTextArea>|null
+     * @var array<CommonFormElement>|null
      */
     protected ?array $element = null;
     /**
-     * @param array<CommonFormElementInput|CommonFormElementSelect|CommonFormElementTag|CommonFormElementTextArea>|null $element
+     * @param array<CommonFormElement>|null $element
      */
     public function setElement(?array $element) : void
     {
         $this->element = $element;
     }
     /**
-     * @return array<CommonFormElementInput|CommonFormElementSelect|CommonFormElementTag|CommonFormElementTextArea>|null
+     * @return array<CommonFormElement>|null
      */
     public function getElement() : ?array
     {
