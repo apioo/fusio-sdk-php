@@ -7,10 +7,8 @@
 namespace Fusio\Sdk;
 
 use PSX\Schema\Attribute\Description;
-/**
- * @extends \PSX\Record\Record<mixed>
- */
+
 #[Description('Contains the TypeSchema specification')]
-class BackendSchemaSource extends \PSX\Record\Record
+class BackendSchemaSource implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

@@ -6,9 +6,7 @@
 
 namespace Fusio\Sdk;
 
-/**
- * @extends \PSX\Record\Record<string>
- */
-class SystemAboutApps extends \PSX\Record\Record
+
+class SystemAboutApps implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

@@ -6,7 +6,6 @@
 
 namespace Fusio\Sdk;
 
-use PSX\Schema\Attribute\Pattern;
 
 class BackendOperation implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
@@ -19,7 +18,6 @@ class BackendOperation implements \JsonSerializable, \PSX\Record\RecordableInter
     protected ?string $httpMethod = null;
     protected ?string $httpPath = null;
     protected ?int $httpCode = null;
-    #[Pattern('^[a-zA-Z0-9\\_\\.]{3,64}$')]
     protected ?string $name = null;
     protected ?BackendOperationParameters $parameters = null;
     protected ?string $incoming = null;

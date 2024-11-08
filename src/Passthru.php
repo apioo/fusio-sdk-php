@@ -7,10 +7,8 @@
 namespace Fusio\Sdk;
 
 use PSX\Schema\Attribute\Description;
-/**
- * @extends \PSX\Record\Record<mixed>
- */
+
 #[Description('No schema information available')]
-class Passthru extends \PSX\Record\Record
+class Passthru implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

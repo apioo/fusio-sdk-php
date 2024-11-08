@@ -6,14 +6,12 @@
 
 namespace Fusio\Sdk;
 
-use PSX\Schema\Attribute\Pattern;
 
 class BackendApp implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?int $userId = null;
     protected ?int $status = null;
-    #[Pattern('^[a-zA-Z0-9\\-\\_]{3,64}$')]
     protected ?string $name = null;
     protected ?string $url = null;
     protected ?string $parameters = null;
@@ -26,7 +24,7 @@ class BackendApp implements \JsonSerializable, \PSX\Record\RecordableInterface
      */
     protected ?array $scopes = null;
     /**
-     * @var array<BackendAppToken>|null
+     * @var array<BackendToken>|null
      */
     protected ?array $tokens = null;
     public function setId(?int $id) : void
@@ -124,14 +122,14 @@ class BackendApp implements \JsonSerializable, \PSX\Record\RecordableInterface
         return $this->scopes;
     }
     /**
-     * @param array<BackendAppToken>|null $tokens
+     * @param array<BackendToken>|null $tokens
      */
     public function setTokens(?array $tokens) : void
     {
         $this->tokens = $tokens;
     }
     /**
-     * @return array<BackendAppToken>|null
+     * @return array<BackendToken>|null
      */
     public function getTokens() : ?array
     {

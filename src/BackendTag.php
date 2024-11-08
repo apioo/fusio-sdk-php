@@ -8,11 +8,20 @@ namespace Fusio\Sdk;
 
 use GuzzleHttp\Exception\BadResponseException;
 use Sdkgen\Client\Exception\ClientException;
+use Sdkgen\Client\Exception\Payload;
 use Sdkgen\Client\Exception\UnknownStatusCodeException;
 use Sdkgen\Client\TagAbstract;
 
 class BackendTag extends TagAbstract
 {
+    public function webhook(): BackendWebhookTag
+    {
+        return new BackendWebhookTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function user(): BackendUserTag
     {
         return new BackendUserTag(
@@ -32,6 +41,30 @@ class BackendTag extends TagAbstract
     public function transaction(): BackendTransactionTag
     {
         return new BackendTransactionTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function token(): BackendTokenTag
+    {
+        return new BackendTokenTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function test(): BackendTestTag
+    {
+        return new BackendTestTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function tenant(): BackendTenantTag
+    {
+        return new BackendTenantTag(
             $this->httpClient,
             $this->parser
         );
@@ -141,9 +174,25 @@ class BackendTag extends TagAbstract
         );
     }
 
+    public function backup(): BackendBackupTag
+    {
+        return new BackendBackupTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function event(): BackendEventTag
     {
         return new BackendEventTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function database(): BackendDatabaseTag
+    {
+        return new BackendDatabaseTag(
             $this->httpClient,
             $this->parser
         );

@@ -14,6 +14,7 @@ class ConsumerPlan implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $description = null;
     protected ?float $price = null;
     protected ?int $points = null;
+    protected ?int $period = null;
     protected ?CommonMetadata $metadata = null;
     public function setId(?int $id) : void
     {
@@ -55,6 +56,14 @@ class ConsumerPlan implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->points;
     }
+    public function setPeriod(?int $period) : void
+    {
+        $this->period = $period;
+    }
+    public function getPeriod() : ?int
+    {
+        return $this->period;
+    }
     public function setMetadata(?CommonMetadata $metadata) : void
     {
         $this->metadata = $metadata;
@@ -72,6 +81,7 @@ class ConsumerPlan implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('description', $this->description);
         $record->put('price', $this->price);
         $record->put('points', $this->points);
+        $record->put('period', $this->period);
         $record->put('metadata', $this->metadata);
         return $record;
     }

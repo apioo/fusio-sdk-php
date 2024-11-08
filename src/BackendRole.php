@@ -6,13 +6,11 @@
 
 namespace Fusio\Sdk;
 
-use PSX\Schema\Attribute\Pattern;
 
 class BackendRole implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?int $categoryId = null;
-    #[Pattern('^[a-zA-Z0-9\\-\\_]{3,64}$')]
     protected ?string $name = null;
     /**
      * @var array<string>|null

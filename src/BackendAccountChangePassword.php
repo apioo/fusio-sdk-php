@@ -6,19 +6,11 @@
 
 namespace Fusio\Sdk;
 
-use PSX\Schema\Attribute\MaxLength;
-use PSX\Schema\Attribute\MinLength;
 
 class BackendAccountChangePassword implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
-    #[MinLength(8)]
-    #[MaxLength(128)]
     protected ?string $oldPassword = null;
-    #[MinLength(8)]
-    #[MaxLength(128)]
     protected ?string $newPassword = null;
-    #[MinLength(8)]
-    #[MaxLength(128)]
     protected ?string $verifyPassword = null;
     public function setOldPassword(?string $oldPassword) : void
     {

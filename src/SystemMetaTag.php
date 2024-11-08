@@ -8,6 +8,7 @@ namespace Fusio\Sdk;
 
 use GuzzleHttp\Exception\BadResponseException;
 use Sdkgen\Client\Exception\ClientException;
+use Sdkgen\Client\Exception\Payload;
 use Sdkgen\Client\Exception\UnknownStatusCodeException;
 use Sdkgen\Client\TagAbstract;
 
@@ -26,30 +27,45 @@ class SystemMetaTag extends TagAbstract
         ]);
 
         $options = [
+            'headers' => [
+            ],
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
         try {
             $response = $this->httpClient->request('GET', $url, $options);
-            $data = (string) $response->getBody();
+            $body = $response->getBody();
 
-            return $this->parser->parse($data, SystemSchema::class);
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(SystemSchema::class));
+
+            return $data;
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
-            $data = (string) $e->getResponse()->getBody();
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
 
-            switch ($e->getResponse()->getStatusCode()) {
-                case 404:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                case 410:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                case 500:
-                    throw new CommonMessageException($this->parser->parse($data, CommonMessage::class));
-                default:
-                    throw new UnknownStatusCodeException('The server returned an unknown status code');
+            if ($statusCode === 404) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
             }
+
+            if ($statusCode === 410) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            if ($statusCode === 500) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
         } catch (\Throwable $e) {
             throw new ClientException('An unknown error occurred: ' . $e->getMessage());
         }
@@ -65,24 +81,63 @@ class SystemMetaTag extends TagAbstract
         ]);
 
         $options = [
+            'headers' => [
+            ],
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
         try {
             $response = $this->httpClient->request('GET', $url, $options);
-            $data = (string) $response->getBody();
+            $body = $response->getBody();
 
-            return $this->parser->parse($data, SystemRoute::class);
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(SystemRoute::class));
+
+            return $data;
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
-            $data = (string) $e->getResponse()->getBody();
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
 
-            switch ($e->getResponse()->getStatusCode()) {
-                default:
-                    throw new UnknownStatusCodeException('The server returned an unknown status code');
-            }
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * @return SystemOAuthConfiguration
+     * @throws ClientException
+     */
+    public function getOAuthConfiguration(): SystemOAuthConfiguration
+    {
+        $url = $this->parser->url('/system/oauth-authorization-server', [
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(SystemOAuthConfiguration::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
         } catch (\Throwable $e) {
             throw new ClientException('An unknown error occurred: ' . $e->getMessage());
         }
@@ -98,24 +153,27 @@ class SystemMetaTag extends TagAbstract
         ]);
 
         $options = [
+            'headers' => [
+            ],
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
         try {
             $response = $this->httpClient->request('GET', $url, $options);
-            $data = (string) $response->getBody();
+            $body = $response->getBody();
 
-            return $this->parser->parse($data, SystemHealthCheck::class);
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(SystemHealthCheck::class));
+
+            return $data;
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
-            $data = (string) $e->getResponse()->getBody();
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
 
-            switch ($e->getResponse()->getStatusCode()) {
-                default:
-                    throw new UnknownStatusCodeException('The server returned an unknown status code');
-            }
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
         } catch (\Throwable $e) {
             throw new ClientException('An unknown error occurred: ' . $e->getMessage());
         }
@@ -132,25 +190,29 @@ class SystemMetaTag extends TagAbstract
         ]);
 
         $options = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
             'query' => $this->parser->query([
+            ], [
             ]),
-            'json' => $payload
+            'json' => $payload,
         ];
 
         try {
             $response = $this->httpClient->request('POST', $url, $options);
-            $data = (string) $response->getBody();
+            $body = $response->getBody();
 
-            return $this->parser->parse($data, Passthru::class);
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(Passthru::class));
+
+            return $data;
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
-            $data = (string) $e->getResponse()->getBody();
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
 
-            switch ($e->getResponse()->getStatusCode()) {
-                default:
-                    throw new UnknownStatusCodeException('The server returned an unknown status code');
-            }
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
         } catch (\Throwable $e) {
             throw new ClientException('An unknown error occurred: ' . $e->getMessage());
         }
@@ -166,28 +228,32 @@ class SystemMetaTag extends TagAbstract
         ]);
 
         $options = [
+            'headers' => [
+            ],
             'query' => $this->parser->query([
+            ], [
             ]),
         ];
 
         try {
             $response = $this->httpClient->request('GET', $url, $options);
-            $data = (string) $response->getBody();
+            $body = $response->getBody();
 
-            return $this->parser->parse($data, SystemAbout::class);
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(SystemAbout::class));
+
+            return $data;
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
-            $data = (string) $e->getResponse()->getBody();
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
 
-            switch ($e->getResponse()->getStatusCode()) {
-                default:
-                    throw new UnknownStatusCodeException('The server returned an unknown status code');
-            }
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
         } catch (\Throwable $e) {
             throw new ClientException('An unknown error occurred: ' . $e->getMessage());
         }
     }
+
 
 
 }

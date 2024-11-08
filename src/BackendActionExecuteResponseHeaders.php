@@ -6,9 +6,7 @@
 
 namespace Fusio\Sdk;
 
-/**
- * @extends \PSX\Record\Record<string>
- */
-class BackendActionExecuteResponseHeaders extends \PSX\Record\Record
+
+class BackendActionExecuteResponseHeaders implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

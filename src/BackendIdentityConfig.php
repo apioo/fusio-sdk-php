@@ -6,9 +6,7 @@
 
 namespace Fusio\Sdk;
 
-/**
- * @extends \PSX\Record\Record<mixed>
- */
-class BackendIdentityConfig extends \PSX\Record\Record
+
+class BackendIdentityConfig implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

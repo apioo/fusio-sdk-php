@@ -9,6 +9,6 @@ namespace Fusio\Sdk;
 /**
  * @extends CommonCollection<BackendCronjob>
  */
-class BackendCronjobCollection extends CommonCollection
+class BackendCronjobCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

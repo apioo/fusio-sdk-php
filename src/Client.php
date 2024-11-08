@@ -9,8 +9,11 @@ namespace Fusio\Sdk;
 use GuzzleHttp\Exception\BadResponseException;
 use Sdkgen\Client\ClientAbstract;
 use Sdkgen\Client\Credentials;
+use Sdkgen\Client\CredentialsInterface;
 use Sdkgen\Client\Exception\ClientException;
+use Sdkgen\Client\Exception\Payload;
 use Sdkgen\Client\Exception\UnknownStatusCodeException;
+use Sdkgen\Client\TokenStoreInterface;
 
 class Client extends ClientAbstract
 {
@@ -48,4 +51,9 @@ class Client extends ClientAbstract
 
 
 
+
+    public static function buildAnonymous(string $baseUrl): self
+    {
+        return new self($baseUrl, new Credentials\Anonymous());
+    }
 }

@@ -6,9 +6,7 @@
 
 namespace Fusio\Sdk;
 
-/**
- * @extends \PSX\Record\Record<BackendOperationSchema>
- */
-class BackendOperationParameters extends \PSX\Record\Record
+
+class BackendOperationParameters implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

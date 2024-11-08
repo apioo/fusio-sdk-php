@@ -8,6 +8,7 @@ namespace Fusio\Sdk;
 
 use GuzzleHttp\Exception\BadResponseException;
 use Sdkgen\Client\Exception\ClientException;
+use Sdkgen\Client\Exception\Payload;
 use Sdkgen\Client\Exception\UnknownStatusCodeException;
 use Sdkgen\Client\TagAbstract;
 
@@ -37,9 +38,17 @@ class ConsumerTag extends TagAbstract
         );
     }
 
-    public function subscription(): ConsumerSubscriptionTag
+    public function webhook(): ConsumerWebhookTag
     {
-        return new ConsumerSubscriptionTag(
+        return new ConsumerWebhookTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function token(): ConsumerTokenTag
+    {
+        return new ConsumerTokenTag(
             $this->httpClient,
             $this->parser
         );

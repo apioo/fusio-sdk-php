@@ -6,12 +6,10 @@
 
 namespace Fusio\Sdk;
 
-use PSX\Schema\Attribute\Pattern;
 
 class BackendEvent implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
-    #[Pattern('^[a-zA-Z0-9\\-\\_\\.]{3,64}$')]
     protected ?string $name = null;
     protected ?string $description = null;
     protected ?string $schema = null;
