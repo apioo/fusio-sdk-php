@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
-
-class BackendSdkTypes implements \JsonSerializable, \PSX\Record\RecordableInterface
+/**
+ * @extends \PSX\Record\Record<string>
+ */
+class BackendSdkTypes extends \PSX\Record\Record
 {
 }

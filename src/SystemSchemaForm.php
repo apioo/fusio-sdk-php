@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
-
-class SystemSchemaForm implements \JsonSerializable, \PSX\Record\RecordableInterface
+/**
+ * @extends \PSX\Record\Record<mixed>
+ */
+class SystemSchemaForm extends \PSX\Record\Record
 {
 }

@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
-
-class SystemRoutePath implements \JsonSerializable, \PSX\Record\RecordableInterface
+/**
+ * @extends \PSX\Record\Record<SystemRouteMethod>
+ */
+class SystemRoutePath extends \PSX\Record\Record
 {
 }

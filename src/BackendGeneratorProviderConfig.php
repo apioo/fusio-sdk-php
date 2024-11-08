@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
-
-class BackendGeneratorProviderConfig implements \JsonSerializable, \PSX\Record\RecordableInterface
+/**
+ * @extends \PSX\Record\Record<mixed>
+ */
+class BackendGeneratorProviderConfig extends \PSX\Record\Record
 {
 }

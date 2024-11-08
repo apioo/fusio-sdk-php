@@ -7,8 +7,10 @@
 namespace Fusio\Sdk;
 
 use PSX\Schema\Attribute\Description;
-
+/**
+ * @extends \PSX\Record\Record<mixed>
+ */
 #[Description('A key value object containing the changes')]
-class BackendAuditObject implements \JsonSerializable, \PSX\Record\RecordableInterface
+class BackendAuditObject extends \PSX\Record\Record
 {
 }

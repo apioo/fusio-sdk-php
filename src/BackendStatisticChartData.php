@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
-
-class BackendStatisticChartData implements \JsonSerializable, \PSX\Record\RecordableInterface
+/**
+ * @extends \PSX\Record\Record<mixed>
+ */
+class BackendStatisticChartData extends \PSX\Record\Record
 {
 }
