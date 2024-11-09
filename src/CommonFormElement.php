@@ -6,8 +6,15 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\DerivedType;
+use PSX\Schema\Attribute\Discriminator;
 
-class CommonFormElement implements \JsonSerializable, \PSX\Record\RecordableInterface
+#[Discriminator('type')]
+#[DerivedType(CommonFormElementInput::class, 'http://fusio-project.org/ns/2015/form/input')]
+#[DerivedType(CommonFormElementSelect::class, 'http://fusio-project.org/ns/2015/form/select')]
+#[DerivedType(CommonFormElementTag::class, 'http://fusio-project.org/ns/2015/form/tag')]
+#[DerivedType(CommonFormElementTextArea::class, 'http://fusio-project.org/ns/2015/form/textarea')]
+abstract class CommonFormElement implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $type = null;
     protected ?string $element = null;

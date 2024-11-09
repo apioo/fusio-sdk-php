@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Common error message')]
 class CommonMessage implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?bool $success = null;
