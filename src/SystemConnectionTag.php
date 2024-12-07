@@ -17,6 +17,7 @@ class SystemConnectionTag extends TagAbstract
     /**
      * @param string $name
      * @return CommonMessage
+     * @throws CommonMessageException
      * @throws ClientException
      */
     public function callback(string $name): CommonMessage
@@ -45,6 +46,12 @@ class SystemConnectionTag extends TagAbstract
         } catch (BadResponseException $e) {
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
 
             throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
         } catch (\Throwable $e) {

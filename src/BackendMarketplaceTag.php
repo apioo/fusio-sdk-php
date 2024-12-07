@@ -14,17 +14,17 @@ use Sdkgen\Client\TagAbstract;
 
 class BackendMarketplaceTag extends TagAbstract
 {
-    public function app(): BackendMarketplaceAppTag
+    public function action(): BackendMarketplaceActionTag
     {
-        return new BackendMarketplaceAppTag(
+        return new BackendMarketplaceActionTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function action(): BackendMarketplaceActionTag
+    public function app(): BackendMarketplaceAppTag
     {
-        return new BackendMarketplaceActionTag(
+        return new BackendMarketplaceAppTag(
             $this->httpClient,
             $this->parser
         );

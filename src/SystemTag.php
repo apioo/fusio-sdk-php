@@ -14,9 +14,9 @@ use Sdkgen\Client\TagAbstract;
 
 class SystemTag extends TagAbstract
 {
-    public function payment(): SystemPaymentTag
+    public function connection(): SystemConnectionTag
     {
-        return new SystemPaymentTag(
+        return new SystemConnectionTag(
             $this->httpClient,
             $this->parser
         );
@@ -30,9 +30,9 @@ class SystemTag extends TagAbstract
         );
     }
 
-    public function connection(): SystemConnectionTag
+    public function payment(): SystemPaymentTag
     {
-        return new SystemConnectionTag(
+        return new SystemPaymentTag(
             $this->httpClient,
             $this->parser
         );

@@ -14,241 +14,9 @@ use Sdkgen\Client\TagAbstract;
 
 class BackendTag extends TagAbstract
 {
-    public function webhook(): BackendWebhookTag
+    public function account(): BackendAccountTag
     {
-        return new BackendWebhookTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function user(): BackendUserTag
-    {
-        return new BackendUserTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function trash(): BackendTrashTag
-    {
-        return new BackendTrashTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function transaction(): BackendTransactionTag
-    {
-        return new BackendTransactionTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function token(): BackendTokenTag
-    {
-        return new BackendTokenTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function test(): BackendTestTag
-    {
-        return new BackendTestTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function tenant(): BackendTenantTag
-    {
-        return new BackendTenantTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function statistic(): BackendStatisticTag
-    {
-        return new BackendStatisticTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function sdk(): BackendSdkTag
-    {
-        return new BackendSdkTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function scope(): BackendScopeTag
-    {
-        return new BackendScopeTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function schema(): BackendSchemaTag
-    {
-        return new BackendSchemaTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function operation(): BackendOperationTag
-    {
-        return new BackendOperationTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function role(): BackendRoleTag
-    {
-        return new BackendRoleTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function rate(): BackendRateTag
-    {
-        return new BackendRateTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function plan(): BackendPlanTag
-    {
-        return new BackendPlanTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function page(): BackendPageTag
-    {
-        return new BackendPageTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function marketplace(): BackendMarketplaceTag
-    {
-        return new BackendMarketplaceTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function log(): BackendLogTag
-    {
-        return new BackendLogTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function identity(): BackendIdentityTag
-    {
-        return new BackendIdentityTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function generator(): BackendGeneratorTag
-    {
-        return new BackendGeneratorTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function backup(): BackendBackupTag
-    {
-        return new BackendBackupTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function event(): BackendEventTag
-    {
-        return new BackendEventTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function database(): BackendDatabaseTag
-    {
-        return new BackendDatabaseTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function dashboard(): BackendDashboardTag
-    {
-        return new BackendDashboardTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function cronjob(): BackendCronjobTag
-    {
-        return new BackendCronjobTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function connection(): BackendConnectionTag
-    {
-        return new BackendConnectionTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function config(): BackendConfigTag
-    {
-        return new BackendConfigTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function category(): BackendCategoryTag
-    {
-        return new BackendCategoryTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function audit(): BackendAuditTag
-    {
-        return new BackendAuditTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function app(): BackendAppTag
-    {
-        return new BackendAppTag(
+        return new BackendAccountTag(
             $this->httpClient,
             $this->parser
         );
@@ -262,9 +30,241 @@ class BackendTag extends TagAbstract
         );
     }
 
-    public function account(): BackendAccountTag
+    public function app(): BackendAppTag
     {
-        return new BackendAccountTag(
+        return new BackendAppTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function audit(): BackendAuditTag
+    {
+        return new BackendAuditTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function backup(): BackendBackupTag
+    {
+        return new BackendBackupTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function category(): BackendCategoryTag
+    {
+        return new BackendCategoryTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function config(): BackendConfigTag
+    {
+        return new BackendConfigTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function connection(): BackendConnectionTag
+    {
+        return new BackendConnectionTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function cronjob(): BackendCronjobTag
+    {
+        return new BackendCronjobTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function dashboard(): BackendDashboardTag
+    {
+        return new BackendDashboardTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function database(): BackendDatabaseTag
+    {
+        return new BackendDatabaseTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function event(): BackendEventTag
+    {
+        return new BackendEventTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function generator(): BackendGeneratorTag
+    {
+        return new BackendGeneratorTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function identity(): BackendIdentityTag
+    {
+        return new BackendIdentityTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function log(): BackendLogTag
+    {
+        return new BackendLogTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function marketplace(): BackendMarketplaceTag
+    {
+        return new BackendMarketplaceTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function operation(): BackendOperationTag
+    {
+        return new BackendOperationTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function page(): BackendPageTag
+    {
+        return new BackendPageTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function plan(): BackendPlanTag
+    {
+        return new BackendPlanTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function rate(): BackendRateTag
+    {
+        return new BackendRateTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function role(): BackendRoleTag
+    {
+        return new BackendRoleTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function schema(): BackendSchemaTag
+    {
+        return new BackendSchemaTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function scope(): BackendScopeTag
+    {
+        return new BackendScopeTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function sdk(): BackendSdkTag
+    {
+        return new BackendSdkTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function statistic(): BackendStatisticTag
+    {
+        return new BackendStatisticTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function tenant(): BackendTenantTag
+    {
+        return new BackendTenantTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function test(): BackendTestTag
+    {
+        return new BackendTestTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function token(): BackendTokenTag
+    {
+        return new BackendTokenTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function transaction(): BackendTransactionTag
+    {
+        return new BackendTransactionTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function trash(): BackendTrashTag
+    {
+        return new BackendTrashTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function user(): BackendUserTag
+    {
+        return new BackendUserTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function webhook(): BackendWebhookTag
+    {
+        return new BackendWebhookTag(
             $this->httpClient,
             $this->parser
         );
