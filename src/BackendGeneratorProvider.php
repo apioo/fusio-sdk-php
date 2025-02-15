@@ -16,45 +16,45 @@ class BackendGeneratorProvider implements \JsonSerializable, \PSX\Record\Recorda
     protected ?array $scopes = null;
     protected ?bool $public = null;
     protected ?BackendGeneratorProviderConfig $config = null;
-    public function setPath(?string $path) : void
+    public function setPath(?string $path): void
     {
         $this->path = $path;
     }
-    public function getPath() : ?string
+    public function getPath(): ?string
     {
         return $this->path;
     }
     /**
      * @param array<string>|null $scopes
      */
-    public function setScopes(?array $scopes) : void
+    public function setScopes(?array $scopes): void
     {
         $this->scopes = $scopes;
     }
     /**
      * @return array<string>|null
      */
-    public function getScopes() : ?array
+    public function getScopes(): ?array
     {
         return $this->scopes;
     }
-    public function setPublic(?bool $public) : void
+    public function setPublic(?bool $public): void
     {
         $this->public = $public;
     }
-    public function getPublic() : ?bool
+    public function getPublic(): ?bool
     {
         return $this->public;
     }
-    public function setConfig(?BackendGeneratorProviderConfig $config) : void
+    public function setConfig(?BackendGeneratorProviderConfig $config): void
     {
         $this->config = $config;
     }
-    public function getConfig() : ?BackendGeneratorProviderConfig
+    public function getConfig(): ?BackendGeneratorProviderConfig
     {
         return $this->config;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -64,7 +64,7 @@ class BackendGeneratorProvider implements \JsonSerializable, \PSX\Record\Recorda
         $record->put('config', $this->config);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

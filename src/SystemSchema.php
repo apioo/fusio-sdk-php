@@ -11,23 +11,23 @@ class SystemSchema implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?SystemSchemaTypeSchema $schema = null;
     protected ?SystemSchemaForm $form = null;
-    public function setSchema(?SystemSchemaTypeSchema $schema) : void
+    public function setSchema(?SystemSchemaTypeSchema $schema): void
     {
         $this->schema = $schema;
     }
-    public function getSchema() : ?SystemSchemaTypeSchema
+    public function getSchema(): ?SystemSchemaTypeSchema
     {
         return $this->schema;
     }
-    public function setForm(?SystemSchemaForm $form) : void
+    public function setForm(?SystemSchemaForm $form): void
     {
         $this->form = $form;
     }
-    public function getForm() : ?SystemSchemaForm
+    public function getForm(): ?SystemSchemaForm
     {
         return $this->form;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -35,7 +35,7 @@ class SystemSchema implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('form', $this->form);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

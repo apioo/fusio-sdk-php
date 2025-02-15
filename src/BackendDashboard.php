@@ -18,79 +18,79 @@ class BackendDashboard implements \JsonSerializable, \PSX\Record\RecordableInter
     protected ?BackendStatisticChart $mostUsedActivities = null;
     protected ?BackendStatisticChart $activitiesPerUser = null;
     protected ?BackendStatisticChart $userRegistrations = null;
-    public function setErrorsPerOperation(?BackendStatisticChart $errorsPerOperation) : void
+    public function setErrorsPerOperation(?BackendStatisticChart $errorsPerOperation): void
     {
         $this->errorsPerOperation = $errorsPerOperation;
     }
-    public function getErrorsPerOperation() : ?BackendStatisticChart
+    public function getErrorsPerOperation(): ?BackendStatisticChart
     {
         return $this->errorsPerOperation;
     }
-    public function setIncomingRequests(?BackendStatisticChart $incomingRequests) : void
+    public function setIncomingRequests(?BackendStatisticChart $incomingRequests): void
     {
         $this->incomingRequests = $incomingRequests;
     }
-    public function getIncomingRequests() : ?BackendStatisticChart
+    public function getIncomingRequests(): ?BackendStatisticChart
     {
         return $this->incomingRequests;
     }
-    public function setIncomingTransactions(?BackendStatisticChart $incomingTransactions) : void
+    public function setIncomingTransactions(?BackendStatisticChart $incomingTransactions): void
     {
         $this->incomingTransactions = $incomingTransactions;
     }
-    public function getIncomingTransactions() : ?BackendStatisticChart
+    public function getIncomingTransactions(): ?BackendStatisticChart
     {
         return $this->incomingTransactions;
     }
-    public function setMostUsedOperations(?BackendStatisticChart $mostUsedOperations) : void
+    public function setMostUsedOperations(?BackendStatisticChart $mostUsedOperations): void
     {
         $this->mostUsedOperations = $mostUsedOperations;
     }
-    public function getMostUsedOperations() : ?BackendStatisticChart
+    public function getMostUsedOperations(): ?BackendStatisticChart
     {
         return $this->mostUsedOperations;
     }
-    public function setTimePerOperation(?BackendStatisticChart $timePerOperation) : void
+    public function setTimePerOperation(?BackendStatisticChart $timePerOperation): void
     {
         $this->timePerOperation = $timePerOperation;
     }
-    public function getTimePerOperation() : ?BackendStatisticChart
+    public function getTimePerOperation(): ?BackendStatisticChart
     {
         return $this->timePerOperation;
     }
-    public function setTestCoverage(?BackendStatisticChart $testCoverage) : void
+    public function setTestCoverage(?BackendStatisticChart $testCoverage): void
     {
         $this->testCoverage = $testCoverage;
     }
-    public function getTestCoverage() : ?BackendStatisticChart
+    public function getTestCoverage(): ?BackendStatisticChart
     {
         return $this->testCoverage;
     }
-    public function setMostUsedActivities(?BackendStatisticChart $mostUsedActivities) : void
+    public function setMostUsedActivities(?BackendStatisticChart $mostUsedActivities): void
     {
         $this->mostUsedActivities = $mostUsedActivities;
     }
-    public function getMostUsedActivities() : ?BackendStatisticChart
+    public function getMostUsedActivities(): ?BackendStatisticChart
     {
         return $this->mostUsedActivities;
     }
-    public function setActivitiesPerUser(?BackendStatisticChart $activitiesPerUser) : void
+    public function setActivitiesPerUser(?BackendStatisticChart $activitiesPerUser): void
     {
         $this->activitiesPerUser = $activitiesPerUser;
     }
-    public function getActivitiesPerUser() : ?BackendStatisticChart
+    public function getActivitiesPerUser(): ?BackendStatisticChart
     {
         return $this->activitiesPerUser;
     }
-    public function setUserRegistrations(?BackendStatisticChart $userRegistrations) : void
+    public function setUserRegistrations(?BackendStatisticChart $userRegistrations): void
     {
         $this->userRegistrations = $userRegistrations;
     }
-    public function getUserRegistrations() : ?BackendStatisticChart
+    public function getUserRegistrations(): ?BackendStatisticChart
     {
         return $this->userRegistrations;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -105,7 +105,7 @@ class BackendDashboard implements \JsonSerializable, \PSX\Record\RecordableInter
         $record->put('userRegistrations', $this->userRegistrations);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

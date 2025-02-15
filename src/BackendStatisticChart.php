@@ -14,7 +14,7 @@ class BackendStatisticChart implements \JsonSerializable, \PSX\Record\Recordable
      */
     protected ?array $labels = null;
     /**
-     * @var array<BackendStatisticChartData>|null
+     * @var array<Array>|null
      */
     protected ?array $data = null;
     /**
@@ -24,46 +24,46 @@ class BackendStatisticChart implements \JsonSerializable, \PSX\Record\Recordable
     /**
      * @param array<string>|null $labels
      */
-    public function setLabels(?array $labels) : void
+    public function setLabels(?array $labels): void
     {
         $this->labels = $labels;
     }
     /**
      * @return array<string>|null
      */
-    public function getLabels() : ?array
+    public function getLabels(): ?array
     {
         return $this->labels;
     }
     /**
-     * @param array<BackendStatisticChartData>|null $data
+     * @param array<Array>|null $data
      */
-    public function setData(?array $data) : void
+    public function setData(?array $data): void
     {
         $this->data = $data;
     }
     /**
-     * @return array<BackendStatisticChartData>|null
+     * @return array<Array>|null
      */
-    public function getData() : ?array
+    public function getData(): ?array
     {
         return $this->data;
     }
     /**
      * @param array<string>|null $series
      */
-    public function setSeries(?array $series) : void
+    public function setSeries(?array $series): void
     {
         $this->series = $series;
     }
     /**
      * @return array<string>|null
      */
-    public function getSeries() : ?array
+    public function getSeries(): ?array
     {
         return $this->series;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -72,7 +72,7 @@ class BackendStatisticChart implements \JsonSerializable, \PSX\Record\Recordable
         $record->put('series', $this->series);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

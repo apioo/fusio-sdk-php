@@ -15,55 +15,55 @@ class BackendRateAllocation implements \JsonSerializable, \PSX\Record\Recordable
     protected ?int $planId = null;
     protected ?int $appId = null;
     protected ?bool $authenticated = null;
-    public function setId(?int $id) : void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
-    public function setOperationId(?int $operationId) : void
+    public function setOperationId(?int $operationId): void
     {
         $this->operationId = $operationId;
     }
-    public function getOperationId() : ?int
+    public function getOperationId(): ?int
     {
         return $this->operationId;
     }
-    public function setUserId(?int $userId) : void
+    public function setUserId(?int $userId): void
     {
         $this->userId = $userId;
     }
-    public function getUserId() : ?int
+    public function getUserId(): ?int
     {
         return $this->userId;
     }
-    public function setPlanId(?int $planId) : void
+    public function setPlanId(?int $planId): void
     {
         $this->planId = $planId;
     }
-    public function getPlanId() : ?int
+    public function getPlanId(): ?int
     {
         return $this->planId;
     }
-    public function setAppId(?int $appId) : void
+    public function setAppId(?int $appId): void
     {
         $this->appId = $appId;
     }
-    public function getAppId() : ?int
+    public function getAppId(): ?int
     {
         return $this->appId;
     }
-    public function setAuthenticated(?bool $authenticated) : void
+    public function setAuthenticated(?bool $authenticated): void
     {
         $this->authenticated = $authenticated;
     }
-    public function getAuthenticated() : ?bool
+    public function getAuthenticated(): ?bool
     {
         return $this->authenticated;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -75,7 +75,7 @@ class BackendRateAllocation implements \JsonSerializable, \PSX\Record\Recordable
         $record->put('authenticated', $this->authenticated);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

@@ -16,63 +16,63 @@ class BackendAction implements \JsonSerializable, \PSX\Record\RecordableInterfac
     protected ?bool $async = null;
     protected ?BackendActionConfig $config = null;
     protected ?CommonMetadata $metadata = null;
-    public function setId(?int $id) : void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
-    public function setStatus(?int $status) : void
+    public function setStatus(?int $status): void
     {
         $this->status = $status;
     }
-    public function getStatus() : ?int
+    public function getStatus(): ?int
     {
         return $this->status;
     }
-    public function setName(?string $name) : void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
-    public function setClass(?string $class) : void
+    public function setClass(?string $class): void
     {
         $this->class = $class;
     }
-    public function getClass() : ?string
+    public function getClass(): ?string
     {
         return $this->class;
     }
-    public function setAsync(?bool $async) : void
+    public function setAsync(?bool $async): void
     {
         $this->async = $async;
     }
-    public function getAsync() : ?bool
+    public function getAsync(): ?bool
     {
         return $this->async;
     }
-    public function setConfig(?BackendActionConfig $config) : void
+    public function setConfig(?BackendActionConfig $config): void
     {
         $this->config = $config;
     }
-    public function getConfig() : ?BackendActionConfig
+    public function getConfig(): ?BackendActionConfig
     {
         return $this->config;
     }
-    public function setMetadata(?CommonMetadata $metadata) : void
+    public function setMetadata(?CommonMetadata $metadata): void
     {
         $this->metadata = $metadata;
     }
-    public function getMetadata() : ?CommonMetadata
+    public function getMetadata(): ?CommonMetadata
     {
         return $this->metadata;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -85,7 +85,7 @@ class BackendAction implements \JsonSerializable, \PSX\Record\RecordableInterfac
         $record->put('metadata', $this->metadata);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

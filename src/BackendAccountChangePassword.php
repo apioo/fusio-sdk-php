@@ -12,31 +12,31 @@ class BackendAccountChangePassword implements \JsonSerializable, \PSX\Record\Rec
     protected ?string $oldPassword = null;
     protected ?string $newPassword = null;
     protected ?string $verifyPassword = null;
-    public function setOldPassword(?string $oldPassword) : void
+    public function setOldPassword(?string $oldPassword): void
     {
         $this->oldPassword = $oldPassword;
     }
-    public function getOldPassword() : ?string
+    public function getOldPassword(): ?string
     {
         return $this->oldPassword;
     }
-    public function setNewPassword(?string $newPassword) : void
+    public function setNewPassword(?string $newPassword): void
     {
         $this->newPassword = $newPassword;
     }
-    public function getNewPassword() : ?string
+    public function getNewPassword(): ?string
     {
         return $this->newPassword;
     }
-    public function setVerifyPassword(?string $verifyPassword) : void
+    public function setVerifyPassword(?string $verifyPassword): void
     {
         $this->verifyPassword = $verifyPassword;
     }
-    public function getVerifyPassword() : ?string
+    public function getVerifyPassword(): ?string
     {
         return $this->verifyPassword;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -45,7 +45,7 @@ class BackendAccountChangePassword implements \JsonSerializable, \PSX\Record\Rec
         $record->put('verifyPassword', $this->verifyPassword);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

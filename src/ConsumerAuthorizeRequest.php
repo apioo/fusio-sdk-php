@@ -15,55 +15,55 @@ class ConsumerAuthorizeRequest implements \JsonSerializable, \PSX\Record\Recorda
     protected ?string $scope = null;
     protected ?string $state = null;
     protected ?bool $allow = null;
-    public function setResponseType(?string $responseType) : void
+    public function setResponseType(?string $responseType): void
     {
         $this->responseType = $responseType;
     }
-    public function getResponseType() : ?string
+    public function getResponseType(): ?string
     {
         return $this->responseType;
     }
-    public function setClientId(?string $clientId) : void
+    public function setClientId(?string $clientId): void
     {
         $this->clientId = $clientId;
     }
-    public function getClientId() : ?string
+    public function getClientId(): ?string
     {
         return $this->clientId;
     }
-    public function setRedirectUri(?string $redirectUri) : void
+    public function setRedirectUri(?string $redirectUri): void
     {
         $this->redirectUri = $redirectUri;
     }
-    public function getRedirectUri() : ?string
+    public function getRedirectUri(): ?string
     {
         return $this->redirectUri;
     }
-    public function setScope(?string $scope) : void
+    public function setScope(?string $scope): void
     {
         $this->scope = $scope;
     }
-    public function getScope() : ?string
+    public function getScope(): ?string
     {
         return $this->scope;
     }
-    public function setState(?string $state) : void
+    public function setState(?string $state): void
     {
         $this->state = $state;
     }
-    public function getState() : ?string
+    public function getState(): ?string
     {
         return $this->state;
     }
-    public function setAllow(?bool $allow) : void
+    public function setAllow(?bool $allow): void
     {
         $this->allow = $allow;
     }
-    public function getAllow() : ?bool
+    public function getAllow(): ?bool
     {
         return $this->allow;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -75,7 +75,7 @@ class ConsumerAuthorizeRequest implements \JsonSerializable, \PSX\Record\Recorda
         $record->put('allow', $this->allow);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

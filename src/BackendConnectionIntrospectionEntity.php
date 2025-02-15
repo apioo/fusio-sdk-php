@@ -18,43 +18,43 @@ class BackendConnectionIntrospectionEntity implements \JsonSerializable, \PSX\Re
      * @var array<BackendConnectionIntrospectionEntityRow>|null
      */
     protected ?array $rows = null;
-    public function setName(?string $name) : void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
     /**
      * @param array<string>|null $headers
      */
-    public function setHeaders(?array $headers) : void
+    public function setHeaders(?array $headers): void
     {
         $this->headers = $headers;
     }
     /**
      * @return array<string>|null
      */
-    public function getHeaders() : ?array
+    public function getHeaders(): ?array
     {
         return $this->headers;
     }
     /**
      * @param array<BackendConnectionIntrospectionEntityRow>|null $rows
      */
-    public function setRows(?array $rows) : void
+    public function setRows(?array $rows): void
     {
         $this->rows = $rows;
     }
     /**
      * @return array<BackendConnectionIntrospectionEntityRow>|null
      */
-    public function getRows() : ?array
+    public function getRows(): ?array
     {
         return $this->rows;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -63,7 +63,7 @@ class BackendConnectionIntrospectionEntity implements \JsonSerializable, \PSX\Re
         $record->put('rows', $this->rows);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

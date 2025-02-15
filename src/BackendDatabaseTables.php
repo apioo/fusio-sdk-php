@@ -16,25 +16,25 @@ class BackendDatabaseTables implements \JsonSerializable, \PSX\Record\Recordable
     /**
      * @param array<string>|null $tables
      */
-    public function setTables(?array $tables) : void
+    public function setTables(?array $tables): void
     {
         $this->tables = $tables;
     }
     /**
      * @return array<string>|null
      */
-    public function getTables() : ?array
+    public function getTables(): ?array
     {
         return $this->tables;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('tables', $this->tables);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

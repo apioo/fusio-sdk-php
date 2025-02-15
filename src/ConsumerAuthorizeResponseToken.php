@@ -17,39 +17,39 @@ class ConsumerAuthorizeResponseToken implements \JsonSerializable, \PSX\Record\R
     #[Key('expires_in')]
     protected ?string $expiresIn = null;
     protected ?string $scope = null;
-    public function setAccessToken(?string $accessToken) : void
+    public function setAccessToken(?string $accessToken): void
     {
         $this->accessToken = $accessToken;
     }
-    public function getAccessToken() : ?string
+    public function getAccessToken(): ?string
     {
         return $this->accessToken;
     }
-    public function setTokenType(?string $tokenType) : void
+    public function setTokenType(?string $tokenType): void
     {
         $this->tokenType = $tokenType;
     }
-    public function getTokenType() : ?string
+    public function getTokenType(): ?string
     {
         return $this->tokenType;
     }
-    public function setExpiresIn(?string $expiresIn) : void
+    public function setExpiresIn(?string $expiresIn): void
     {
         $this->expiresIn = $expiresIn;
     }
-    public function getExpiresIn() : ?string
+    public function getExpiresIn(): ?string
     {
         return $this->expiresIn;
     }
-    public function setScope(?string $scope) : void
+    public function setScope(?string $scope): void
     {
         $this->scope = $scope;
     }
-    public function getScope() : ?string
+    public function getScope(): ?string
     {
         return $this->scope;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -59,7 +59,7 @@ class ConsumerAuthorizeResponseToken implements \JsonSerializable, \PSX\Record\R
         $record->put('scope', $this->scope);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

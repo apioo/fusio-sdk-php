@@ -15,37 +15,37 @@ class BackendDatabaseTableIndex implements \JsonSerializable, \PSX\Record\Record
      * @var array<string>|null
      */
     protected ?array $columns = null;
-    public function setName(?string $name) : void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
-    public function setUnique(?bool $unique) : void
+    public function setUnique(?bool $unique): void
     {
         $this->unique = $unique;
     }
-    public function getUnique() : ?bool
+    public function getUnique(): ?bool
     {
         return $this->unique;
     }
     /**
      * @param array<string>|null $columns
      */
-    public function setColumns(?array $columns) : void
+    public function setColumns(?array $columns): void
     {
         $this->columns = $columns;
     }
     /**
      * @return array<string>|null
      */
-    public function getColumns() : ?array
+    public function getColumns(): ?array
     {
         return $this->columns;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -54,7 +54,7 @@ class BackendDatabaseTableIndex implements \JsonSerializable, \PSX\Record\Record
         $record->put('columns', $this->columns);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

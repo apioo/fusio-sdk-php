@@ -16,39 +16,39 @@ class ConsumerUserJWT implements \JsonSerializable, \PSX\Record\RecordableInterf
     #[Key('refresh_token')]
     protected ?string $refreshToken = null;
     protected ?string $scope = null;
-    public function setToken(?string $token) : void
+    public function setToken(?string $token): void
     {
         $this->token = $token;
     }
-    public function getToken() : ?string
+    public function getToken(): ?string
     {
         return $this->token;
     }
-    public function setExpiresIn(?int $expiresIn) : void
+    public function setExpiresIn(?int $expiresIn): void
     {
         $this->expiresIn = $expiresIn;
     }
-    public function getExpiresIn() : ?int
+    public function getExpiresIn(): ?int
     {
         return $this->expiresIn;
     }
-    public function setRefreshToken(?string $refreshToken) : void
+    public function setRefreshToken(?string $refreshToken): void
     {
         $this->refreshToken = $refreshToken;
     }
-    public function getRefreshToken() : ?string
+    public function getRefreshToken(): ?string
     {
         return $this->refreshToken;
     }
-    public function setScope(?string $scope) : void
+    public function setScope(?string $scope): void
     {
         $this->scope = $scope;
     }
-    public function getScope() : ?string
+    public function getScope(): ?string
     {
         return $this->scope;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -58,7 +58,7 @@ class ConsumerUserJWT implements \JsonSerializable, \PSX\Record\RecordableInterf
         $record->put('scope', $this->scope);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

@@ -16,25 +16,25 @@ class BackendConnectionIntrospectionEntityRow implements \JsonSerializable, \PSX
     /**
      * @param array<string>|null $values
      */
-    public function setValues(?array $values) : void
+    public function setValues(?array $values): void
     {
         $this->values = $values;
     }
     /**
      * @return array<string>|null
      */
-    public function getValues() : ?array
+    public function getValues(): ?array
     {
         return $this->values;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('values', $this->values);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

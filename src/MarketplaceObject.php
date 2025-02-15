@@ -21,87 +21,87 @@ class MarketplaceObject implements \JsonSerializable, \PSX\Record\RecordableInte
     protected ?int $cost = null;
     protected ?\PSX\DateTime\LocalDateTime $updateDate = null;
     protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
-    public function setId(?int $id) : void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
-    public function setName(?string $name) : void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
-    public function setAuthor(?MarketplaceUser $author) : void
+    public function setAuthor(?MarketplaceUser $author): void
     {
         $this->author = $author;
     }
-    public function getAuthor() : ?MarketplaceUser
+    public function getAuthor(): ?MarketplaceUser
     {
         return $this->author;
     }
-    public function setVersion(?string $version) : void
+    public function setVersion(?string $version): void
     {
         $this->version = $version;
     }
-    public function getVersion() : ?string
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-    public function setIcon(?string $icon) : void
+    public function setIcon(?string $icon): void
     {
         $this->icon = $icon;
     }
-    public function getIcon() : ?string
+    public function getIcon(): ?string
     {
         return $this->icon;
     }
-    public function setSummary(?string $summary) : void
+    public function setSummary(?string $summary): void
     {
         $this->summary = $summary;
     }
-    public function getSummary() : ?string
+    public function getSummary(): ?string
     {
         return $this->summary;
     }
-    public function setDescription(?string $description) : void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
-    public function getDescription() : ?string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
-    public function setCost(?int $cost) : void
+    public function setCost(?int $cost): void
     {
         $this->cost = $cost;
     }
-    public function getCost() : ?int
+    public function getCost(): ?int
     {
         return $this->cost;
     }
-    public function setUpdateDate(?\PSX\DateTime\LocalDateTime $updateDate) : void
+    public function setUpdateDate(?\PSX\DateTime\LocalDateTime $updateDate): void
     {
         $this->updateDate = $updateDate;
     }
-    public function getUpdateDate() : ?\PSX\DateTime\LocalDateTime
+    public function getUpdateDate(): ?\PSX\DateTime\LocalDateTime
     {
         return $this->updateDate;
     }
-    public function setInsertDate(?\PSX\DateTime\LocalDateTime $insertDate) : void
+    public function setInsertDate(?\PSX\DateTime\LocalDateTime $insertDate): void
     {
         $this->insertDate = $insertDate;
     }
-    public function getInsertDate() : ?\PSX\DateTime\LocalDateTime
+    public function getInsertDate(): ?\PSX\DateTime\LocalDateTime
     {
         return $this->insertDate;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -117,7 +117,7 @@ class MarketplaceObject implements \JsonSerializable, \PSX\Record\RecordableInte
         $record->put('insertDate', $this->insertDate);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

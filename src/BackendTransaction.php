@@ -18,79 +18,79 @@ class BackendTransaction implements \JsonSerializable, \PSX\Record\RecordableInt
     protected ?\PSX\DateTime\LocalDateTime $periodStart = null;
     protected ?\PSX\DateTime\LocalDateTime $periodEnd = null;
     protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
-    public function setId(?int $id) : void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
-    public function setUserId(?int $userId) : void
+    public function setUserId(?int $userId): void
     {
         $this->userId = $userId;
     }
-    public function getUserId() : ?int
+    public function getUserId(): ?int
     {
         return $this->userId;
     }
-    public function setPlanId(?int $planId) : void
+    public function setPlanId(?int $planId): void
     {
         $this->planId = $planId;
     }
-    public function getPlanId() : ?int
+    public function getPlanId(): ?int
     {
         return $this->planId;
     }
-    public function setTransactionId(?string $transactionId) : void
+    public function setTransactionId(?string $transactionId): void
     {
         $this->transactionId = $transactionId;
     }
-    public function getTransactionId() : ?string
+    public function getTransactionId(): ?string
     {
         return $this->transactionId;
     }
-    public function setAmount(?float $amount) : void
+    public function setAmount(?float $amount): void
     {
         $this->amount = $amount;
     }
-    public function getAmount() : ?float
+    public function getAmount(): ?float
     {
         return $this->amount;
     }
-    public function setPoints(?float $points) : void
+    public function setPoints(?float $points): void
     {
         $this->points = $points;
     }
-    public function getPoints() : ?float
+    public function getPoints(): ?float
     {
         return $this->points;
     }
-    public function setPeriodStart(?\PSX\DateTime\LocalDateTime $periodStart) : void
+    public function setPeriodStart(?\PSX\DateTime\LocalDateTime $periodStart): void
     {
         $this->periodStart = $periodStart;
     }
-    public function getPeriodStart() : ?\PSX\DateTime\LocalDateTime
+    public function getPeriodStart(): ?\PSX\DateTime\LocalDateTime
     {
         return $this->periodStart;
     }
-    public function setPeriodEnd(?\PSX\DateTime\LocalDateTime $periodEnd) : void
+    public function setPeriodEnd(?\PSX\DateTime\LocalDateTime $periodEnd): void
     {
         $this->periodEnd = $periodEnd;
     }
-    public function getPeriodEnd() : ?\PSX\DateTime\LocalDateTime
+    public function getPeriodEnd(): ?\PSX\DateTime\LocalDateTime
     {
         return $this->periodEnd;
     }
-    public function setInsertDate(?\PSX\DateTime\LocalDateTime $insertDate) : void
+    public function setInsertDate(?\PSX\DateTime\LocalDateTime $insertDate): void
     {
         $this->insertDate = $insertDate;
     }
-    public function getInsertDate() : ?\PSX\DateTime\LocalDateTime
+    public function getInsertDate(): ?\PSX\DateTime\LocalDateTime
     {
         return $this->insertDate;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -105,7 +105,7 @@ class BackendTransaction implements \JsonSerializable, \PSX\Record\RecordableInt
         $record->put('insertDate', $this->insertDate);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

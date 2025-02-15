@@ -12,31 +12,31 @@ class BackendStatisticCount implements \JsonSerializable, \PSX\Record\Recordable
     protected ?int $count = null;
     protected ?\PSX\DateTime\LocalDateTime $from = null;
     protected ?\PSX\DateTime\LocalDateTime $to = null;
-    public function setCount(?int $count) : void
+    public function setCount(?int $count): void
     {
         $this->count = $count;
     }
-    public function getCount() : ?int
+    public function getCount(): ?int
     {
         return $this->count;
     }
-    public function setFrom(?\PSX\DateTime\LocalDateTime $from) : void
+    public function setFrom(?\PSX\DateTime\LocalDateTime $from): void
     {
         $this->from = $from;
     }
-    public function getFrom() : ?\PSX\DateTime\LocalDateTime
+    public function getFrom(): ?\PSX\DateTime\LocalDateTime
     {
         return $this->from;
     }
-    public function setTo(?\PSX\DateTime\LocalDateTime $to) : void
+    public function setTo(?\PSX\DateTime\LocalDateTime $to): void
     {
         $this->to = $to;
     }
-    public function getTo() : ?\PSX\DateTime\LocalDateTime
+    public function getTo(): ?\PSX\DateTime\LocalDateTime
     {
         return $this->to;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -45,7 +45,7 @@ class BackendStatisticCount implements \JsonSerializable, \PSX\Record\Recordable
         $record->put('to', $this->to);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

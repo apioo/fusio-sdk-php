@@ -11,23 +11,23 @@ class BackendScopeOperation implements \JsonSerializable, \PSX\Record\Recordable
 {
     protected ?int $operationId = null;
     protected ?bool $allow = null;
-    public function setOperationId(?int $operationId) : void
+    public function setOperationId(?int $operationId): void
     {
         $this->operationId = $operationId;
     }
-    public function getOperationId() : ?int
+    public function getOperationId(): ?int
     {
         return $this->operationId;
     }
-    public function setAllow(?bool $allow) : void
+    public function setAllow(?bool $allow): void
     {
         $this->allow = $allow;
     }
-    public function getAllow() : ?bool
+    public function getAllow(): ?bool
     {
         return $this->allow;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -35,7 +35,7 @@ class BackendScopeOperation implements \JsonSerializable, \PSX\Record\Recordable
         $record->put('allow', $this->allow);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

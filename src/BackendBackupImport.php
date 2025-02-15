@@ -10,22 +10,22 @@ namespace Fusio\Sdk;
 class BackendBackupImport implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $import = null;
-    public function setImport(?string $import) : void
+    public function setImport(?string $import): void
     {
         $this->import = $import;
     }
-    public function getImport() : ?string
+    public function getImport(): ?string
     {
         return $this->import;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('import', $this->import);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

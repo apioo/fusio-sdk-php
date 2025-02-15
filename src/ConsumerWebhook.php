@@ -18,61 +18,61 @@ class ConsumerWebhook implements \JsonSerializable, \PSX\Record\RecordableInterf
      * @var array<ConsumerWebhookResponse>|null
      */
     protected ?array $responses = null;
-    public function setId(?int $id) : void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
-    public function setStatus(?int $status) : void
+    public function setStatus(?int $status): void
     {
         $this->status = $status;
     }
-    public function getStatus() : ?int
+    public function getStatus(): ?int
     {
         return $this->status;
     }
-    public function setEvent(?string $event) : void
+    public function setEvent(?string $event): void
     {
         $this->event = $event;
     }
-    public function getEvent() : ?string
+    public function getEvent(): ?string
     {
         return $this->event;
     }
-    public function setName(?string $name) : void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
-    public function setEndpoint(?string $endpoint) : void
+    public function setEndpoint(?string $endpoint): void
     {
         $this->endpoint = $endpoint;
     }
-    public function getEndpoint() : ?string
+    public function getEndpoint(): ?string
     {
         return $this->endpoint;
     }
     /**
      * @param array<ConsumerWebhookResponse>|null $responses
      */
-    public function setResponses(?array $responses) : void
+    public function setResponses(?array $responses): void
     {
         $this->responses = $responses;
     }
     /**
      * @return array<ConsumerWebhookResponse>|null
      */
-    public function getResponses() : ?array
+    public function getResponses(): ?array
     {
         return $this->responses;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -84,7 +84,7 @@ class ConsumerWebhook implements \JsonSerializable, \PSX\Record\RecordableInterf
         $record->put('responses', $this->responses);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

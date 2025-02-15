@@ -30,73 +30,73 @@ class SystemOAuthConfiguration implements \JsonSerializable, \PSX\Record\Recorda
      */
     #[Key('claims_supported')]
     protected ?array $claimsSupported = null;
-    public function setIssuer(?string $issuer) : void
+    public function setIssuer(?string $issuer): void
     {
         $this->issuer = $issuer;
     }
-    public function getIssuer() : ?string
+    public function getIssuer(): ?string
     {
         return $this->issuer;
     }
-    public function setTokenEndpoint(?string $tokenEndpoint) : void
+    public function setTokenEndpoint(?string $tokenEndpoint): void
     {
         $this->tokenEndpoint = $tokenEndpoint;
     }
-    public function getTokenEndpoint() : ?string
+    public function getTokenEndpoint(): ?string
     {
         return $this->tokenEndpoint;
     }
     /**
      * @param array<string>|null $tokenEndpointAuthMethodsSupported
      */
-    public function setTokenEndpointAuthMethodsSupported(?array $tokenEndpointAuthMethodsSupported) : void
+    public function setTokenEndpointAuthMethodsSupported(?array $tokenEndpointAuthMethodsSupported): void
     {
         $this->tokenEndpointAuthMethodsSupported = $tokenEndpointAuthMethodsSupported;
     }
     /**
      * @return array<string>|null
      */
-    public function getTokenEndpointAuthMethodsSupported() : ?array
+    public function getTokenEndpointAuthMethodsSupported(): ?array
     {
         return $this->tokenEndpointAuthMethodsSupported;
     }
-    public function setUserinfoEndpoint(?string $userinfoEndpoint) : void
+    public function setUserinfoEndpoint(?string $userinfoEndpoint): void
     {
         $this->userinfoEndpoint = $userinfoEndpoint;
     }
-    public function getUserinfoEndpoint() : ?string
+    public function getUserinfoEndpoint(): ?string
     {
         return $this->userinfoEndpoint;
     }
     /**
      * @param array<string>|null $scopesSupported
      */
-    public function setScopesSupported(?array $scopesSupported) : void
+    public function setScopesSupported(?array $scopesSupported): void
     {
         $this->scopesSupported = $scopesSupported;
     }
     /**
      * @return array<string>|null
      */
-    public function getScopesSupported() : ?array
+    public function getScopesSupported(): ?array
     {
         return $this->scopesSupported;
     }
     /**
      * @param array<string>|null $claimsSupported
      */
-    public function setClaimsSupported(?array $claimsSupported) : void
+    public function setClaimsSupported(?array $claimsSupported): void
     {
         $this->claimsSupported = $claimsSupported;
     }
     /**
      * @return array<string>|null
      */
-    public function getClaimsSupported() : ?array
+    public function getClaimsSupported(): ?array
     {
         return $this->claimsSupported;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -108,7 +108,7 @@ class SystemOAuthConfiguration implements \JsonSerializable, \PSX\Record\Recorda
         $record->put('claims_supported', $this->claimsSupported);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

@@ -22,93 +22,93 @@ class ConsumerApp implements \JsonSerializable, \PSX\Record\RecordableInterface
      */
     protected ?array $scopes = null;
     protected ?CommonMetadata $metadata = null;
-    public function setId(?int $id) : void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
-    public function setUserId(?int $userId) : void
+    public function setUserId(?int $userId): void
     {
         $this->userId = $userId;
     }
-    public function getUserId() : ?int
+    public function getUserId(): ?int
     {
         return $this->userId;
     }
-    public function setStatus(?int $status) : void
+    public function setStatus(?int $status): void
     {
         $this->status = $status;
     }
-    public function getStatus() : ?int
+    public function getStatus(): ?int
     {
         return $this->status;
     }
-    public function setName(?string $name) : void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
-    public function setUrl(?string $url) : void
+    public function setUrl(?string $url): void
     {
         $this->url = $url;
     }
-    public function getUrl() : ?string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
-    public function setAppKey(?string $appKey) : void
+    public function setAppKey(?string $appKey): void
     {
         $this->appKey = $appKey;
     }
-    public function getAppKey() : ?string
+    public function getAppKey(): ?string
     {
         return $this->appKey;
     }
-    public function setAppSecret(?string $appSecret) : void
+    public function setAppSecret(?string $appSecret): void
     {
         $this->appSecret = $appSecret;
     }
-    public function getAppSecret() : ?string
+    public function getAppSecret(): ?string
     {
         return $this->appSecret;
     }
-    public function setDate(?string $date) : void
+    public function setDate(?string $date): void
     {
         $this->date = $date;
     }
-    public function getDate() : ?string
+    public function getDate(): ?string
     {
         return $this->date;
     }
     /**
      * @param array<string>|null $scopes
      */
-    public function setScopes(?array $scopes) : void
+    public function setScopes(?array $scopes): void
     {
         $this->scopes = $scopes;
     }
     /**
      * @return array<string>|null
      */
-    public function getScopes() : ?array
+    public function getScopes(): ?array
     {
         return $this->scopes;
     }
-    public function setMetadata(?CommonMetadata $metadata) : void
+    public function setMetadata(?CommonMetadata $metadata): void
     {
         $this->metadata = $metadata;
     }
-    public function getMetadata() : ?CommonMetadata
+    public function getMetadata(): ?CommonMetadata
     {
         return $this->metadata;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -124,7 +124,7 @@ class ConsumerApp implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('metadata', $this->metadata);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

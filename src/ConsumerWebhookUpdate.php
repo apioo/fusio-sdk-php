@@ -12,31 +12,31 @@ class ConsumerWebhookUpdate implements \JsonSerializable, \PSX\Record\Recordable
     protected ?string $event = null;
     protected ?string $name = null;
     protected ?string $endpoint = null;
-    public function setEvent(?string $event) : void
+    public function setEvent(?string $event): void
     {
         $this->event = $event;
     }
-    public function getEvent() : ?string
+    public function getEvent(): ?string
     {
         return $this->event;
     }
-    public function setName(?string $name) : void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
-    public function setEndpoint(?string $endpoint) : void
+    public function setEndpoint(?string $endpoint): void
     {
         $this->endpoint = $endpoint;
     }
-    public function getEndpoint() : ?string
+    public function getEndpoint(): ?string
     {
         return $this->endpoint;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -45,7 +45,7 @@ class ConsumerWebhookUpdate implements \JsonSerializable, \PSX\Record\Recordable
         $record->put('endpoint', $this->endpoint);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

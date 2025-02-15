@@ -12,22 +12,22 @@ class ConsumerUserRefresh implements \JsonSerializable, \PSX\Record\RecordableIn
 {
     #[Key('refresh_token')]
     protected ?string $refreshToken = null;
-    public function setRefreshToken(?string $refreshToken) : void
+    public function setRefreshToken(?string $refreshToken): void
     {
         $this->refreshToken = $refreshToken;
     }
-    public function getRefreshToken() : ?string
+    public function getRefreshToken(): ?string
     {
         return $this->refreshToken;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('refresh_token', $this->refreshToken);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

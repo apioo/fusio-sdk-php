@@ -15,37 +15,37 @@ class ConsumerTokenCreate implements \JsonSerializable, \PSX\Record\RecordableIn
      */
     protected ?array $scopes = null;
     protected ?\PSX\DateTime\LocalDate $expire = null;
-    public function setName(?string $name) : void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
     /**
      * @param array<string>|null $scopes
      */
-    public function setScopes(?array $scopes) : void
+    public function setScopes(?array $scopes): void
     {
         $this->scopes = $scopes;
     }
     /**
      * @return array<string>|null
      */
-    public function getScopes() : ?array
+    public function getScopes(): ?array
     {
         return $this->scopes;
     }
-    public function setExpire(?\PSX\DateTime\LocalDate $expire) : void
+    public function setExpire(?\PSX\DateTime\LocalDate $expire): void
     {
         $this->expire = $expire;
     }
-    public function getExpire() : ?\PSX\DateTime\LocalDate
+    public function getExpire(): ?\PSX\DateTime\LocalDate
     {
         return $this->expire;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -54,7 +54,7 @@ class ConsumerTokenCreate implements \JsonSerializable, \PSX\Record\RecordableIn
         $record->put('expire', $this->expire);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

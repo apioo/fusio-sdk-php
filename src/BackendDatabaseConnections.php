@@ -16,25 +16,25 @@ class BackendDatabaseConnections implements \JsonSerializable, \PSX\Record\Recor
     /**
      * @param array<string>|null $connections
      */
-    public function setConnections(?array $connections) : void
+    public function setConnections(?array $connections): void
     {
         $this->connections = $connections;
     }
     /**
      * @return array<string>|null
      */
-    public function getConnections() : ?array
+    public function getConnections(): ?array
     {
         return $this->connections;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('connections', $this->connections);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }
