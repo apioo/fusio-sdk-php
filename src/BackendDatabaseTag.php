@@ -209,49 +209,6 @@ class BackendDatabaseTag extends TagAbstract
     }
 
     /**
-     * @return BackendDatabaseConnections
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getConnections(): BackendDatabaseConnections
-    {
-        $url = $this->parser->url('/backend/database', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendDatabaseConnections::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode >= 0 && $statusCode <= 999) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
      * @param string $connectionId
      * @param string $tableName
      * @param string $id
@@ -311,11 +268,11 @@ class BackendDatabaseTag extends TagAbstract
      * @param string|null $sortBy
      * @param string|null $sortOrder
      * @param string|null $columns
-     * @return BackendDatabaseRows
+     * @return BackendDatabaseRowCollection
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getRows(string $connectionId, string $tableName, ?int $startIndex = null, ?int $count = null, ?string $filterBy = null, ?string $filterOp = null, ?string $filterValue = null, ?string $sortBy = null, ?string $sortOrder = null, ?string $columns = null): BackendDatabaseRows
+    public function getRows(string $connectionId, string $tableName, ?int $startIndex = null, ?int $count = null, ?string $filterBy = null, ?string $filterOp = null, ?string $filterValue = null, ?string $sortBy = null, ?string $sortOrder = null, ?string $columns = null): BackendDatabaseRowCollection
     {
         $url = $this->parser->url('/backend/database/:connection_id/:table_name/rows', [
             'connection_id' => $connectionId,
@@ -342,7 +299,7 @@ class BackendDatabaseTag extends TagAbstract
             $response = $this->httpClient->request('GET', $url, $options);
             $body = $response->getBody();
 
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendDatabaseRows::class));
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendDatabaseRowCollection::class));
 
             return $data;
         } catch (ClientException $e) {
@@ -412,11 +369,11 @@ class BackendDatabaseTag extends TagAbstract
 
     /**
      * @param string $connectionId
-     * @return BackendDatabaseTables
+     * @return BackendDatabaseTableCollection
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getTables(string $connectionId): BackendDatabaseTables
+    public function getTables(string $connectionId): BackendDatabaseTableCollection
     {
         $url = $this->parser->url('/backend/database/:connection_id', [
             'connection_id' => $connectionId,
@@ -434,7 +391,7 @@ class BackendDatabaseTag extends TagAbstract
             $response = $this->httpClient->request('GET', $url, $options);
             $body = $response->getBody();
 
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendDatabaseTables::class));
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendDatabaseTableCollection::class));
 
             return $data;
         } catch (ClientException $e) {

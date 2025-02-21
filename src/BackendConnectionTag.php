@@ -154,11 +154,12 @@ class BackendConnectionTag extends TagAbstract
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
+     * @param string|null $class
      * @return BackendConnectionCollection
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): BackendConnectionCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $class = null): BackendConnectionCollection
     {
         $url = $this->parser->url('/backend/connection', [
         ]);
@@ -170,6 +171,7 @@ class BackendConnectionTag extends TagAbstract
                 'startIndex' => $startIndex,
                 'count' => $count,
                 'search' => $search,
+                'class' => $class,
             ], [
             ]),
         ];
@@ -267,98 +269,6 @@ class BackendConnectionTag extends TagAbstract
             $body = $response->getBody();
 
             $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonFormContainer::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode >= 0 && $statusCode <= 999) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param string $connectionId
-     * @return BackendConnectionIntrospectionEntities
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getIntrospection(string $connectionId): BackendConnectionIntrospectionEntities
-    {
-        $url = $this->parser->url('/backend/connection/$connection_id<[0-9]+|^~>/introspection', [
-            'connection_id' => $connectionId,
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendConnectionIntrospectionEntities::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode >= 0 && $statusCode <= 999) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param string $connectionId
-     * @param string $entity
-     * @return BackendConnectionIntrospectionEntity
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getIntrospectionForEntity(string $connectionId, string $entity): BackendConnectionIntrospectionEntity
-    {
-        $url = $this->parser->url('/backend/connection/$connection_id<[0-9]+|^~>/introspection/:entity', [
-            'connection_id' => $connectionId,
-            'entity' => $entity,
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendConnectionIntrospectionEntity::class));
 
             return $data;
         } catch (ClientException $e) {
