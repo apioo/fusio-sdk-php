@@ -110,6 +110,14 @@ class BackendTag extends TagAbstract
         );
     }
 
+    public function form(): BackendFormTag
+    {
+        return new BackendFormTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function generator(): BackendGeneratorTag
     {
         return new BackendGeneratorTag(

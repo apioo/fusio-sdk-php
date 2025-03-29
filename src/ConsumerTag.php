@@ -38,6 +38,14 @@ class ConsumerTag extends TagAbstract
         );
     }
 
+    public function form(): ConsumerFormTag
+    {
+        return new ConsumerFormTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function grant(): ConsumerGrantTag
     {
         return new ConsumerGrantTag(
