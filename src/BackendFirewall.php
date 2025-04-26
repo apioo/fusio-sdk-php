@@ -13,7 +13,6 @@ class BackendFirewall implements \JsonSerializable, \PSX\Record\RecordableInterf
     protected ?string $name = null;
     protected ?int $type = null;
     protected ?string $ip = null;
-    protected ?int $mask = null;
     protected ?\PSX\DateTime\LocalDateTime $expire = null;
     protected ?CommonMetadata $metadata = null;
     public function setId(?int $id): void
@@ -48,14 +47,6 @@ class BackendFirewall implements \JsonSerializable, \PSX\Record\RecordableInterf
     {
         return $this->ip;
     }
-    public function setMask(?int $mask): void
-    {
-        $this->mask = $mask;
-    }
-    public function getMask(): ?int
-    {
-        return $this->mask;
-    }
     public function setExpire(?\PSX\DateTime\LocalDateTime $expire): void
     {
         $this->expire = $expire;
@@ -80,7 +71,6 @@ class BackendFirewall implements \JsonSerializable, \PSX\Record\RecordableInterf
         $record->put('name', $this->name);
         $record->put('type', $this->type);
         $record->put('ip', $this->ip);
-        $record->put('mask', $this->mask);
         $record->put('expire', $this->expire);
         $record->put('metadata', $this->metadata);
         return $record;
