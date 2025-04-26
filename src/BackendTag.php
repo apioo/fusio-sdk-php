@@ -110,6 +110,14 @@ class BackendTag extends TagAbstract
         );
     }
 
+    public function firewall(): BackendFirewallTag
+    {
+        return new BackendFirewallTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function form(): BackendFormTag
     {
         return new BackendFormTag(
