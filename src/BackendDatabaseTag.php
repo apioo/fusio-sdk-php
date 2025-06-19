@@ -369,11 +369,13 @@ class BackendDatabaseTag extends TagAbstract
 
     /**
      * @param string $connectionId
+     * @param int|null $startIndex
+     * @param int|null $count
      * @return BackendDatabaseTableCollection
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getTables(string $connectionId): BackendDatabaseTableCollection
+    public function getTables(string $connectionId, ?int $startIndex = null, ?int $count = null): BackendDatabaseTableCollection
     {
         $url = $this->parser->url('/backend/database/:connection_id', [
             'connection_id' => $connectionId,
@@ -383,6 +385,8 @@ class BackendDatabaseTag extends TagAbstract
             'headers' => [
             ],
             'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
             ], [
             ]),
         ];
