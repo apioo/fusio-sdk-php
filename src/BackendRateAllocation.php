@@ -6,14 +6,18 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a rate allocation, in case a request matches it gets assigned to the attached rate')]
 class BackendRateAllocation implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     protected ?int $operationId = null;
     protected ?int $userId = null;
     protected ?int $planId = null;
     protected ?int $appId = null;
+    #[Description('Whether the request is authenticated')]
     protected ?bool $authenticated = null;
     public function setId(?int $id): void
     {

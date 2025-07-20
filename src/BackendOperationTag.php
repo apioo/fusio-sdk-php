@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendOperationTag extends TagAbstract
 {
     /**
+     * Creates a new operation
+     *
      * @param BackendOperationCreate $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class BackendOperationTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing operation
+     *
      * @param string $operationId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -106,6 +110,8 @@ class BackendOperationTag extends TagAbstract
     }
 
     /**
+     * Returns a specific operation
+     *
      * @param string $operationId
      * @return BackendOperation
      * @throws CommonMessageException
@@ -151,6 +157,8 @@ class BackendOperationTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of operations
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -200,6 +208,8 @@ class BackendOperationTag extends TagAbstract
     }
 
     /**
+     * Updates an existing operation
+     *
      * @param string $operationId
      * @param BackendOperationUpdate $payload
      * @return CommonMessage

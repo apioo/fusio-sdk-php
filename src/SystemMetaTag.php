@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class SystemMetaTag extends TagAbstract
 {
     /**
+     * Returns meta information and links about the current installed Fusio version
+     *
      * @return SystemAbout
      * @throws CommonMessageException
      * @throws ClientException
@@ -58,49 +60,8 @@ class SystemMetaTag extends TagAbstract
     }
 
     /**
-     * @return SystemAPICatalog
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getAPICatalog(): SystemAPICatalog
-    {
-        $url = $this->parser->url('/system/api-catalog', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(SystemAPICatalog::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode >= 0 && $statusCode <= 999) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
+     * Debug endpoint which returns the provided data
+     *
      * @param Passthru $payload
      * @return Passthru
      * @throws CommonMessageException
@@ -147,6 +108,8 @@ class SystemMetaTag extends TagAbstract
     }
 
     /**
+     * Health check endpoint which returns information about the health status of the system
+     *
      * @return SystemHealthCheck
      * @throws CommonMessageException
      * @throws ClientException
@@ -190,49 +153,8 @@ class SystemMetaTag extends TagAbstract
     }
 
     /**
-     * @return SystemOAuthConfiguration
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getOAuthConfiguration(): SystemOAuthConfiguration
-    {
-        $url = $this->parser->url('/system/oauth-authorization-server', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(SystemOAuthConfiguration::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode >= 0 && $statusCode <= 999) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
+     * Returns all available routes
+     *
      * @return SystemRoute
      * @throws CommonMessageException
      * @throws ClientException
@@ -276,6 +198,8 @@ class SystemMetaTag extends TagAbstract
     }
 
     /**
+     * Returns details of a specific schema
+     *
      * @param string $name
      * @return SystemSchema
      * @throws CommonMessageException

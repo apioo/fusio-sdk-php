@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendTestTag extends TagAbstract
 {
     /**
+     * Returns a specific test
+     *
      * @param string $testId
      * @return BackendTest
      * @throws CommonMessageException
@@ -60,6 +62,8 @@ class BackendTestTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of tests
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -109,6 +113,8 @@ class BackendTestTag extends TagAbstract
     }
 
     /**
+     * Refresh all tests
+     *
      * @return CommonMessage
      * @throws CommonMessageException
      * @throws ClientException
@@ -152,6 +158,8 @@ class BackendTestTag extends TagAbstract
     }
 
     /**
+     * Run all tests
+     *
      * @return CommonMessage
      * @throws CommonMessageException
      * @throws ClientException
@@ -195,6 +203,8 @@ class BackendTestTag extends TagAbstract
     }
 
     /**
+     * Updates an existing test
+     *
      * @param string $testId
      * @param BackendTest $payload
      * @return CommonMessage

@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendMarketplaceActionTag extends TagAbstract
 {
     /**
+     * Returns a specific marketplace action
+     *
      * @param string $user
      * @param string $name
      * @return MarketplaceAction
@@ -62,6 +64,8 @@ class BackendMarketplaceActionTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of marketplace actions
+     *
      * @param int|null $startIndex
      * @param string|null $query
      * @return MarketplaceActionCollection

@@ -6,10 +6,14 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Represents a concrete action class')]
 class BackendActionIndexEntry implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Human-readable name of the action class')]
     protected ?string $name = null;
+    #[Description('Technical identifier of the action class')]
     protected ?string $class = null;
     public function setName(?string $name): void
     {

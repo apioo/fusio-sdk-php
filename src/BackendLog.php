@@ -6,20 +6,31 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a log entry. Every HTTP requests to the system generates such a log entry.')]
 class BackendLog implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('The remote IP which has initiated the request')]
     protected ?string $ip = null;
+    #[Description('The user agent provided by the HTTP user agent header')]
     protected ?string $userAgent = null;
+    #[Description('The HTTP method i.e. GET or POST')]
     protected ?string $method = null;
+    #[Description('The target path')]
     protected ?string $path = null;
+    #[Description('The provided HTTP headers')]
     protected ?string $header = null;
+    #[Description('The provided HTTP body')]
     protected ?string $body = null;
+    #[Description('Insert date of this request')]
     protected ?\PSX\DateTime\LocalDateTime $date = null;
     /**
      * @var array<BackendLogError>|null
      */
+    #[Description('An array of errors which occurred through this request')]
     protected ?array $errors = null;
     public function setId(?int $id): void
     {

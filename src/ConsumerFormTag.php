@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class ConsumerFormTag extends TagAbstract
 {
     /**
+     * Returns a specific form for the authenticated user
+     *
      * @param string $formId
      * @return ConsumerForm
      * @throws CommonMessageException
@@ -60,6 +62,8 @@ class ConsumerFormTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of forms which are relevant to the authenticated user
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search

@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendSchemaTag extends TagAbstract
 {
     /**
+     * Creates a new schema
+     *
      * @param BackendSchemaCreate $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class BackendSchemaTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing schema
+     *
      * @param string $schemaId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -106,6 +110,8 @@ class BackendSchemaTag extends TagAbstract
     }
 
     /**
+     * Returns a specific schema
+     *
      * @param string $schemaId
      * @return BackendSchema
      * @throws CommonMessageException
@@ -151,6 +157,8 @@ class BackendSchemaTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of schemas
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -245,6 +253,8 @@ class BackendSchemaTag extends TagAbstract
     }
 
     /**
+     * Updates an existing schema
+     *
      * @param string $schemaId
      * @param BackendSchemaUpdate $payload
      * @return CommonMessage
@@ -254,54 +264,6 @@ class BackendSchemaTag extends TagAbstract
     public function update(string $schemaId, BackendSchemaUpdate $payload): CommonMessage
     {
         $url = $this->parser->url('/backend/schema/$schema_id<[0-9]+|^~>', [
-            'schema_id' => $schemaId,
-        ]);
-
-        $options = [
-            'headers' => [
-                'Content-Type' => 'application/json',
-            ],
-            'query' => $this->parser->query([
-            ], [
-            ]),
-            'json' => $payload,
-        ];
-
-        try {
-            $response = $this->httpClient->request('PUT', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode >= 0 && $statusCode <= 999) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param string $schemaId
-     * @param BackendSchemaForm $payload
-     * @return CommonMessage
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function updateForm(string $schemaId, BackendSchemaForm $payload): CommonMessage
-    {
-        $url = $this->parser->url('/backend/schema/form/$schema_id<[0-9]+>', [
             'schema_id' => $schemaId,
         ]);
 

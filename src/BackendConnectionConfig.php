@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends \PSX\Record\Record<mixed>
  */
+#[Description('The connection configuration which contains arbitrary key-value entries')]
 class BackendConnectionConfig extends \PSX\Record\Record
 {
 }

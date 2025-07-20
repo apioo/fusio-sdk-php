@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class ConsumerScopeTag extends TagAbstract
 {
     /**
+     * Returns a paginated list of scopes which are assigned to the authenticated user
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -64,6 +66,8 @@ class ConsumerScopeTag extends TagAbstract
     }
 
     /**
+     * Returns all scopes by category
+     *
      * @return ConsumerScopeCategories
      * @throws CommonMessageException
      * @throws ClientException

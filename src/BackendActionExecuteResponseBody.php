@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends \PSX\Record\Record<mixed>
  */
+#[Description('Represents a response body')]
 class BackendActionExecuteResponseBody extends \PSX\Record\Record
 {
 }

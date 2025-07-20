@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendTenantTag extends TagAbstract
 {
     /**
+     * Removes an existing tenant
+     *
      * @param string $tenantId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -60,6 +62,8 @@ class BackendTenantTag extends TagAbstract
     }
 
     /**
+     * Setup a new tenant
+     *
      * @param string $tenantId
      * @return CommonMessage
      * @throws CommonMessageException

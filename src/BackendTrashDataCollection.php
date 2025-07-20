@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends CommonCollection<BackendTrashData>
  */
+#[Description('A paginated collection of deleted objects')]
 class BackendTrashDataCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

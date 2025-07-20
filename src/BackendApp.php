@@ -6,26 +6,39 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents an app to access the API on-behalf of a user')]
 class BackendApp implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     protected ?int $userId = null;
+    #[Description('Status of the object either 1 = active, 2 = pending, 3 = deactivated or 4 = deleted')]
     protected ?int $status = null;
+    #[Description('Unique name of the object')]
     protected ?string $name = null;
+    #[Description('Url where the app is hosted')]
     protected ?string $url = null;
+    #[Description('Optional URL-encoded parameters of the app i.e. foo=bar&bar=foo')]
     protected ?string $parameters = null;
+    #[Description('The app key also known as client id which is generated on creation')]
     protected ?string $appKey = null;
+    #[Description('The app secret also known as client secret which is generated on creation')]
     protected ?string $appSecret = null;
+    #[Description('Use this parameter to attach key-value data')]
     protected ?CommonMetadata $metadata = null;
+    #[Description('The create date of this object')]
     protected ?\PSX\DateTime\LocalDateTime $date = null;
     /**
      * @var array<string>|null
      */
+    #[Description('A list of assigned scopes for this app')]
     protected ?array $scopes = null;
     /**
      * @var array<BackendToken>|null
      */
+    #[Description('A list of tokens which are assigned to this app')]
     protected ?array $tokens = null;
     public function setId(?int $id): void
     {

@@ -6,13 +6,20 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Represents a request to execute an action')]
 class BackendActionExecuteRequest implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('HTTP method i.e. GET, POST')]
     protected ?string $method = null;
+    #[Description('URL-encoded uri fragments i.e. foo=bar&bar=foo')]
     protected ?string $uriFragments = null;
+    #[Description('URL-encoded query parameters i.e. foo=bar&bar=foo')]
     protected ?string $parameters = null;
+    #[Description('URL-encoded headers i.e. foo=bar&bar=foo')]
     protected ?string $headers = null;
+    #[Description('Request body of this execution')]
     protected ?BackendActionExecuteRequestBody $body = null;
     public function setMethod(?string $method): void
     {

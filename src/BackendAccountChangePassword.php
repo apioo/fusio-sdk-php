@@ -6,11 +6,15 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
 class BackendAccountChangePassword implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('The old password')]
     protected ?string $oldPassword = null;
+    #[Description('The new password')]
     protected ?string $newPassword = null;
+    #[Description('To verify the new password must contain the same value as the new password')]
     protected ?string $verifyPassword = null;
     public function setOldPassword(?string $oldPassword): void
     {

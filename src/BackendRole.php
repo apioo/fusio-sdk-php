@@ -6,15 +6,21 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a role, every user is assigned to a role and all scopes of the role are automatically attached to the user')]
 class BackendRole implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('The assigned category id of this role')]
     protected ?int $categoryId = null;
+    #[Description('Unique name of the object')]
     protected ?string $name = null;
     /**
      * @var array<string>|null
      */
+    #[Description('All scopes which are assigned to this role')]
     protected ?array $scopes = null;
     public function setId(?int $id): void
     {

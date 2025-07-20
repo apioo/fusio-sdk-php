@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendFirewallTag extends TagAbstract
 {
     /**
+     * Creates a new firewall rule
+     *
      * @param BackendFirewallCreate $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class BackendFirewallTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing firewall rule
+     *
      * @param string $firewallId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -106,6 +110,8 @@ class BackendFirewallTag extends TagAbstract
     }
 
     /**
+     * Returns a specific firewall rule
+     *
      * @param string $firewallId
      * @return BackendFirewall
      * @throws CommonMessageException
@@ -151,6 +157,8 @@ class BackendFirewallTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of firewall rules
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -200,6 +208,8 @@ class BackendFirewallTag extends TagAbstract
     }
 
     /**
+     * Updates an existing firewall rule
+     *
      * @param string $firewallId
      * @param BackendFirewallUpdate $payload
      * @return CommonMessage

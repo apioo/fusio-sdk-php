@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendEventTag extends TagAbstract
 {
     /**
+     * Creates a new event
+     *
      * @param BackendEventCreate $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class BackendEventTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing event
+     *
      * @param string $eventId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -106,6 +110,8 @@ class BackendEventTag extends TagAbstract
     }
 
     /**
+     * Returns a specific event
+     *
      * @param string $eventId
      * @return BackendEvent
      * @throws CommonMessageException
@@ -151,6 +157,8 @@ class BackendEventTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of events
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -200,6 +208,8 @@ class BackendEventTag extends TagAbstract
     }
 
     /**
+     * Updates an existing event
+     *
      * @param string $eventId
      * @param BackendEventUpdate $payload
      * @return CommonMessage

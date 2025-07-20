@@ -6,22 +6,29 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a relational table on a database connection')]
 class BackendDatabaseTable implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Name of the table')]
     protected ?string $name = null;
     /**
      * @var array<BackendDatabaseTableColumn>|null
      */
+    #[Description('Available columns on the table')]
     protected ?array $columns = null;
+    #[Description('The primary key column')]
     protected ?string $primaryKey = null;
     /**
      * @var array<BackendDatabaseTableIndex>|null
      */
+    #[Description('Available indices on the table')]
     protected ?array $indexes = null;
     /**
      * @var array<BackendDatabaseTableForeignKeyConstraint>|null
      */
+    #[Description('Available foreign key constraints')]
     protected ?array $foreignKeys = null;
     public function setName(?string $name): void
     {

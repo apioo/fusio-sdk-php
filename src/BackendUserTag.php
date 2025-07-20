@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendUserTag extends TagAbstract
 {
     /**
+     * Creates a new user
+     *
      * @param BackendUserCreate $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class BackendUserTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing user
+     *
      * @param string $userId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -106,6 +110,8 @@ class BackendUserTag extends TagAbstract
     }
 
     /**
+     * Returns a specific user
+     *
      * @param string $userId
      * @return BackendUser
      * @throws CommonMessageException
@@ -151,6 +157,8 @@ class BackendUserTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of users
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -200,6 +208,8 @@ class BackendUserTag extends TagAbstract
     }
 
     /**
+     * Updates an existing user
+     *
      * @param string $userId
      * @param BackendUserUpdate $payload
      * @return CommonMessage

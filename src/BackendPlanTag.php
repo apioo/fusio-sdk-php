@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendPlanTag extends TagAbstract
 {
     /**
+     * Creates a new plan
+     *
      * @param BackendPlanCreate $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class BackendPlanTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing plan
+     *
      * @param string $planId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -106,6 +110,8 @@ class BackendPlanTag extends TagAbstract
     }
 
     /**
+     * Returns a specific plan
+     *
      * @param string $planId
      * @return BackendPlan
      * @throws CommonMessageException
@@ -151,6 +157,8 @@ class BackendPlanTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of plans
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -200,6 +208,8 @@ class BackendPlanTag extends TagAbstract
     }
 
     /**
+     * Updates an existing plan
+     *
      * @param string $planId
      * @param BackendPlanUpdate $payload
      * @return CommonMessage

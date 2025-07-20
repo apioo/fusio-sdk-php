@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class ConsumerIdentityTag extends TagAbstract
 {
     /**
+     * Identity callback endpoint to exchange an access token
+     *
      * @param string $identity
      * @return Passthru
      * @throws CommonMessageException
@@ -60,6 +62,8 @@ class ConsumerIdentityTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of identities which are relevant to the authenticated user
+     *
      * @param int|null $appId
      * @param string|null $appKey
      * @return ConsumerIdentityCollection
@@ -107,6 +111,8 @@ class ConsumerIdentityTag extends TagAbstract
     }
 
     /**
+     * Redirect the user to the configured identity provider
+     *
      * @param string $identity
      * @return Passthru
      * @throws CommonMessageException

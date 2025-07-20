@@ -111,6 +111,8 @@ class BackendGeneratorTag extends TagAbstract
     }
 
     /**
+     * Returns all available generator classes
+     *
      * @return BackendGeneratorIndexProviders
      * @throws CommonMessageException
      * @throws ClientException
@@ -154,6 +156,8 @@ class BackendGeneratorTag extends TagAbstract
     }
 
     /**
+     * Returns the generator config form
+     *
      * @param string $provider
      * @return CommonFormContainer
      * @throws CommonMessageException

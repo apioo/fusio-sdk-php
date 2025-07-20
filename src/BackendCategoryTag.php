@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendCategoryTag extends TagAbstract
 {
     /**
+     * Creates a new category
+     *
      * @param BackendCategoryCreate $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class BackendCategoryTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing category
+     *
      * @param string $categoryId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -106,6 +110,8 @@ class BackendCategoryTag extends TagAbstract
     }
 
     /**
+     * Returns a specific category
+     *
      * @param string $categoryId
      * @return BackendCategory
      * @throws CommonMessageException
@@ -151,6 +157,8 @@ class BackendCategoryTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of categories
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -200,6 +208,8 @@ class BackendCategoryTag extends TagAbstract
     }
 
     /**
+     * Updates an existing category
+     *
      * @param string $categoryId
      * @param BackendCategoryUpdate $payload
      * @return CommonMessage

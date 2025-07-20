@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendConnectionTag extends TagAbstract
 {
     /**
+     * Creates a new connection
+     *
      * @param BackendConnectionCreate $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class BackendConnectionTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing connection
+     *
      * @param string $connectionId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -106,6 +110,8 @@ class BackendConnectionTag extends TagAbstract
     }
 
     /**
+     * Returns a specific connection
+     *
      * @param string $connectionId
      * @return BackendConnection
      * @throws CommonMessageException
@@ -151,6 +157,8 @@ class BackendConnectionTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of connections
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -202,6 +210,8 @@ class BackendConnectionTag extends TagAbstract
     }
 
     /**
+     * Returns all available connection classes
+     *
      * @return BackendConnectionIndex
      * @throws CommonMessageException
      * @throws ClientException
@@ -245,6 +255,8 @@ class BackendConnectionTag extends TagAbstract
     }
 
     /**
+     * Returns the connection config form
+     *
      * @param string|null $class
      * @return CommonFormContainer
      * @throws CommonMessageException
@@ -290,6 +302,8 @@ class BackendConnectionTag extends TagAbstract
     }
 
     /**
+     * Returns a redirect url to start the OAuth2 authorization flow for the given connection
+     *
      * @param string $connectionId
      * @return BackendConnectionRedirectResponse
      * @throws CommonMessageException
@@ -335,6 +349,8 @@ class BackendConnectionTag extends TagAbstract
     }
 
     /**
+     * Updates an existing connection
+     *
      * @param string $connectionId
      * @param BackendConnectionUpdate $payload
      * @return CommonMessage

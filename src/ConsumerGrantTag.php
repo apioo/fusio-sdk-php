@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class ConsumerGrantTag extends TagAbstract
 {
     /**
+     * Deletes an existing grant for an app which was created by the authenticated user
+     *
      * @param string $grantId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -60,6 +62,8 @@ class ConsumerGrantTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of grants which are assigned to the authenticated user
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search

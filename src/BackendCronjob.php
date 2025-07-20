@@ -6,19 +6,29 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a cronjob which can invoke an action at a specific interval')]
 class BackendCronjob implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Unique name of the object')]
     protected ?string $name = null;
+    #[Description('The cron expression i.e. */5 * * * * for every 5 minutes')]
     protected ?string $cron = null;
+    #[Description('The target action which gets invoked')]
     protected ?string $action = null;
+    #[Description('The last execution date')]
     protected ?\PSX\DateTime\LocalDateTime $executeDate = null;
+    #[Description('The last exit code')]
     protected ?int $exitCode = null;
+    #[Description('Use this parameter to attach key-value data')]
     protected ?CommonMetadata $metadata = null;
     /**
      * @var array<BackendCronjobError>|null
      */
+    #[Description('Contains an array of errors in case the cronjob has failed')]
     protected ?array $errors = null;
     public function setId(?int $id): void
     {

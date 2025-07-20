@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendWebhookTag extends TagAbstract
 {
     /**
+     * Creates a new webhook
+     *
      * @param BackendWebhookCreate $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class BackendWebhookTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing webhook
+     *
      * @param string $webhookId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -106,6 +110,8 @@ class BackendWebhookTag extends TagAbstract
     }
 
     /**
+     * Returns a specific webhook
+     *
      * @param string $webhookId
      * @return BackendWebhook
      * @throws CommonMessageException
@@ -151,6 +157,8 @@ class BackendWebhookTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of webhooks
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -200,6 +208,8 @@ class BackendWebhookTag extends TagAbstract
     }
 
     /**
+     * Updates an existing webhook
+     *
      * @param string $webhookId
      * @param BackendWebhookUpdate $payload
      * @return CommonMessage

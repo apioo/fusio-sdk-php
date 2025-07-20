@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends CommonCollection<BackendRole>
  */
+#[Description('A paginated collection of role objects')]
 class BackendRoleCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

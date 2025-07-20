@@ -6,29 +6,49 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents an operation, an operation invokes an action in case a specific HTTP method and path was requested. It defines also schema information about the request and response payload')]
 class BackendOperation implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Status of the object either 1 = active or 0 = deleted')]
     protected ?int $status = null;
+    #[Description('Indicates whether the operation is active')]
     protected ?bool $active = null;
+    #[Description('Indicates whether the operation is public, if false a user must provide an Authorization header with an Bearer access token')]
     protected ?bool $public = null;
+    #[Description('Describes the stability of this operation 0 = deprecated, 1 = experimental, 2 = stable and 3 = legacy')]
     protected ?int $stability = null;
+    #[Description('A short description of this operation, it should explain the operation in a simple and precise way')]
     protected ?string $description = null;
+    #[Description('The target HTTP method i.e. GET or POST')]
     protected ?string $httpMethod = null;
+    #[Description('The target HTTP path i.e. /foo or /product/:product_id')]
     protected ?string $httpPath = null;
+    #[Description('The success HTTP code i.e. 200 or 201')]
     protected ?int $httpCode = null;
+    #[Description('Unique name of the object. It is recommended to group your operations into logical units by using a dot i.e. product.getAll and product.insert which has also an effect on the automatically generated SDK')]
     protected ?string $name = null;
+    #[Description('Describes available query parameters')]
     protected ?BackendOperationParameters $parameters = null;
+    #[Description('Describes the incoming request payload')]
     protected ?string $incoming = null;
+    #[Description('Describes the outgoing response payload')]
     protected ?string $outgoing = null;
+    #[Description('Describes error responses for i.e. client or server errors')]
     protected ?BackendOperationThrows $throws = null;
+    #[Description('The target action to invoke')]
     protected ?string $action = null;
+    #[Description('Costs to invoke this operation. A user can only invoke this operation in case he has enough points')]
     protected ?int $costs = null;
     /**
      * @var array<string>|null
      */
+    #[Description('Scopes which are required to invoke this operation')]
     protected ?array $scopes = null;
+    #[Description('Use this parameter to attach key-value data')]
     protected ?CommonMetadata $metadata = null;
     public function setId(?int $id): void
     {

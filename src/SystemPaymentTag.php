@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class SystemPaymentTag extends TagAbstract
 {
     /**
+     * Payment webhook endpoint after successful purchase of a plan
+     *
      * @param string $provider
      * @return CommonMessage
      * @throws CommonMessageException

@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendAuditTag extends TagAbstract
 {
     /**
+     * Returns a specific audit
+     *
      * @param string $auditId
      * @return BackendAudit
      * @throws CommonMessageException
@@ -60,6 +62,8 @@ class BackendAuditTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of audits
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search

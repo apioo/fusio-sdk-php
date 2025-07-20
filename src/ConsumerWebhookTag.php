@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class ConsumerWebhookTag extends TagAbstract
 {
     /**
+     * Creates a new webhook for the authenticated user
+     *
      * @param ConsumerWebhookCreate $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class ConsumerWebhookTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing webhook for the authenticated user
+     *
      * @param string $webhookId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -106,6 +110,8 @@ class ConsumerWebhookTag extends TagAbstract
     }
 
     /**
+     * Returns a specific webhook for the authenticated user
+     *
      * @param string $webhookId
      * @return ConsumerWebhook
      * @throws CommonMessageException
@@ -151,6 +157,8 @@ class ConsumerWebhookTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of webhooks which are assigned to the authenticated user
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -200,6 +208,8 @@ class ConsumerWebhookTag extends TagAbstract
     }
 
     /**
+     * Updates an existing webhook for the authenticated user
+     *
      * @param string $webhookId
      * @param ConsumerWebhookUpdate $payload
      * @return CommonMessage

@@ -6,16 +6,24 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents an audit which is created every time something was changed at the system')]
 class BackendAudit implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     protected ?BackendApp $app = null;
     protected ?BackendUser $user = null;
+    #[Description('Trigger event of this audit')]
     protected ?string $event = null;
+    #[Description('IP which as issued the request')]
     protected ?string $ip = null;
+    #[Description('Message of this audit event')]
     protected ?string $message = null;
+    #[Description('Content of this adit event')]
     protected ?BackendAuditObject $content = null;
+    #[Description('Insert date of this audit event')]
     protected ?\PSX\DateTime\LocalDateTime $date = null;
     public function setId(?int $id): void
     {

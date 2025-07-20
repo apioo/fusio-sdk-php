@@ -6,15 +6,24 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents the business logic which can be executed either through an operation or cronjob')]
 class BackendAction implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Status of the object either 1 = active or 0 = deleted')]
     protected ?int $status = null;
+    #[Description('Unique name of the object')]
     protected ?string $name = null;
+    #[Description('Underlying class of this action which handles the action logic')]
     protected ?string $class = null;
+    #[Description('Whether to execute the action asynchronously, if true the action directly returns a 202 response and the action is executed later on in the background, useful for expensive operations')]
     protected ?bool $async = null;
+    #[Description('Contains the action specific configuration')]
     protected ?BackendActionConfig $config = null;
+    #[Description('Use this parameter to attach key-value data')]
     protected ?CommonMetadata $metadata = null;
     public function setId(?int $id): void
     {

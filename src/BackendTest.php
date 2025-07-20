@@ -6,10 +6,14 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a test. A test helps to verify that all operations work as expected')]
 class BackendTest implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Status of the object either 1 = pending, 2 = success, 3 = warning, 4 = error, 5 = skipped or 6 = disabled')]
     protected ?int $status = null;
     protected ?string $operationName = null;
     protected ?string $message = null;

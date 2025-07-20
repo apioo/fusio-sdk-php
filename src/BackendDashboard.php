@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Represents an object containing all widget data for the dashboard')]
 class BackendDashboard implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?BackendStatisticChart $errorsPerOperation = null;

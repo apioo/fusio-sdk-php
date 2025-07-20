@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendTrashTag extends TagAbstract
 {
     /**
+     * Returns all deleted records by trash type
+     *
      * @param string $type
      * @param int|null $startIndex
      * @param int|null $count
@@ -66,6 +68,8 @@ class BackendTrashTag extends TagAbstract
     }
 
     /**
+     * Returns all trash types
+     *
      * @return BackendTrashTypes
      * @throws CommonMessageException
      * @throws ClientException
@@ -109,6 +113,8 @@ class BackendTrashTag extends TagAbstract
     }
 
     /**
+     * Restores a previously deleted record
+     *
      * @param string $type
      * @param BackendTrashRestore $payload
      * @return CommonMessage

@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendTokenTag extends TagAbstract
 {
     /**
+     * Returns a specific token
+     *
      * @param string $tokenId
      * @return BackendToken
      * @throws CommonMessageException
@@ -60,6 +62,8 @@ class BackendTokenTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of tokens
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search

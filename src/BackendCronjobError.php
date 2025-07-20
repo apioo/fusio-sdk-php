@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Represents an error which occurred on cronjob execution')]
 class BackendCronjobError implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $message = null;

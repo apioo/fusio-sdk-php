@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class ConsumerAccountTag extends TagAbstract
 {
     /**
+     * Activates an previously registered account through a token which was provided to the user via email
+     *
      * @param ConsumerUserActivate $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class ConsumerAccountTag extends TagAbstract
     }
 
     /**
+     * Authorizes the access of a specific app for the authenticated user
+     *
      * @param ConsumerAuthorizeRequest $payload
      * @return ConsumerAuthorizeResponse
      * @throws CommonMessageException
@@ -107,6 +111,8 @@ class ConsumerAccountTag extends TagAbstract
     }
 
     /**
+     * Change the password for the authenticated user
+     *
      * @param BackendAccountChangePassword $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -153,6 +159,8 @@ class ConsumerAccountTag extends TagAbstract
     }
 
     /**
+     * Change the password after the password reset flow was started
+     *
      * @param ConsumerUserPasswordReset $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -199,6 +207,8 @@ class ConsumerAccountTag extends TagAbstract
     }
 
     /**
+     * Returns a user data for the authenticated user
+     *
      * @return ConsumerUserAccount
      * @throws CommonMessageException
      * @throws ClientException
@@ -242,11 +252,15 @@ class ConsumerAccountTag extends TagAbstract
     }
 
     /**
+     * Returns information about a specific app to start the OAuth2 authorization code flow
+     *
+     * @param string|null $clientId
+     * @param string|null $scope
      * @return ConsumerAuthorizeMeta
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getApp(): ConsumerAuthorizeMeta
+    public function getApp(?string $clientId = null, ?string $scope = null): ConsumerAuthorizeMeta
     {
         $url = $this->parser->url('/consumer/authorize', [
         ]);
@@ -255,6 +269,8 @@ class ConsumerAccountTag extends TagAbstract
             'headers' => [
             ],
             'query' => $this->parser->query([
+                'client_id' => $clientId,
+                'scope' => $scope,
             ], [
             ]),
         ];
@@ -285,6 +301,8 @@ class ConsumerAccountTag extends TagAbstract
     }
 
     /**
+     * User login by providing a username and password
+     *
      * @param ConsumerUserLogin $payload
      * @return ConsumerUserJWT
      * @throws CommonMessageException
@@ -331,6 +349,8 @@ class ConsumerAccountTag extends TagAbstract
     }
 
     /**
+     * Refresh a previously obtained access token
+     *
      * @param ConsumerUserRefresh $payload
      * @return ConsumerUserJWT
      * @throws CommonMessageException
@@ -377,6 +397,8 @@ class ConsumerAccountTag extends TagAbstract
     }
 
     /**
+     * Register a new user account
+     *
      * @param ConsumerUserRegister $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -423,6 +445,8 @@ class ConsumerAccountTag extends TagAbstract
     }
 
     /**
+     * Start the password reset flow
+     *
      * @param ConsumerUserEmail $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -469,6 +493,8 @@ class ConsumerAccountTag extends TagAbstract
     }
 
     /**
+     * Updates user data for the authenticated user
+     *
      * @param ConsumerUserAccount $payload
      * @return CommonMessage
      * @throws CommonMessageException

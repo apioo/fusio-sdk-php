@@ -6,10 +6,14 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a token, this an access token which was requested by a user')]
 class BackendToken implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Status of the object either 1 = active or 2 = deleted')]
     protected ?int $status = null;
     protected ?string $name = null;
     /**

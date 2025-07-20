@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends \PSX\Record\Record<mixed>
  */
+#[Description('The action configuration which contains arbitrary key-value entries')]
 class BackendActionConfig extends \PSX\Record\Record
 {
 }

@@ -6,18 +6,24 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a foreign key constraint on a relational database')]
 class BackendDatabaseTableForeignKeyConstraint implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Name of the foreign key constraint')]
     protected ?string $name = null;
+    #[Description('Name of the foreign table')]
     protected ?string $foreignTable = null;
     /**
      * @var array<string>|null
      */
+    #[Description('Local column names')]
     protected ?array $localColumnNames = null;
     /**
      * @var array<string>|null
      */
+    #[Description('Foreign column names')]
     protected ?array $foreignColumnNames = null;
     public function setName(?string $name): void
     {

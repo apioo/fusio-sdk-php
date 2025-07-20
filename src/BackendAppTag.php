@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendAppTag extends TagAbstract
 {
     /**
+     * Creates a new app
+     *
      * @param BackendAppCreate $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class BackendAppTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing app
+     *
      * @param string $appId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -106,6 +110,8 @@ class BackendAppTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing token from an app
+     *
      * @param string $appId
      * @param string $tokenId
      * @return CommonMessage
@@ -153,6 +159,8 @@ class BackendAppTag extends TagAbstract
     }
 
     /**
+     * Returns a specific app
+     *
      * @param string $appId
      * @return BackendApp
      * @throws CommonMessageException
@@ -198,6 +206,8 @@ class BackendAppTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of apps
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -247,6 +257,8 @@ class BackendAppTag extends TagAbstract
     }
 
     /**
+     * Updates an existing app
+     *
      * @param string $appId
      * @param BackendAppUpdate $payload
      * @return CommonMessage

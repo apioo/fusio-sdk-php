@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendScopeTag extends TagAbstract
 {
     /**
+     * Creates a new scope
+     *
      * @param BackendScopeCreate $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class BackendScopeTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing scope
+     *
      * @param string $scopeId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -106,6 +110,8 @@ class BackendScopeTag extends TagAbstract
     }
 
     /**
+     * Returns a specific scope
+     *
      * @param string $scopeId
      * @return BackendScope
      * @throws CommonMessageException
@@ -151,6 +157,8 @@ class BackendScopeTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of scopes
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -243,6 +251,8 @@ class BackendScopeTag extends TagAbstract
     }
 
     /**
+     * Updates an existing scope
+     *
      * @param string $scopeId
      * @param BackendScopeUpdate $payload
      * @return CommonMessage

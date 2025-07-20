@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendActionTag extends TagAbstract
 {
     /**
+     * Creates a new action
+     *
      * @param BackendActionCreate $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class BackendActionTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing action
+     *
      * @param string $actionId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -106,6 +110,8 @@ class BackendActionTag extends TagAbstract
     }
 
     /**
+     * Executes a specific action
+     *
      * @param string $actionId
      * @param BackendActionExecuteRequest $payload
      * @return BackendActionExecuteResponse
@@ -154,6 +160,8 @@ class BackendActionTag extends TagAbstract
     }
 
     /**
+     * Returns a specific action
+     *
      * @param string $actionId
      * @return BackendAction
      * @throws CommonMessageException
@@ -199,6 +207,8 @@ class BackendActionTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of actions
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -248,6 +258,8 @@ class BackendActionTag extends TagAbstract
     }
 
     /**
+     * Returns all available action classes
+     *
      * @return BackendActionIndex
      * @throws CommonMessageException
      * @throws ClientException
@@ -291,6 +303,8 @@ class BackendActionTag extends TagAbstract
     }
 
     /**
+     * Returns the action config form
+     *
      * @param string|null $class
      * @return CommonFormContainer
      * @throws CommonMessageException
@@ -336,6 +350,8 @@ class BackendActionTag extends TagAbstract
     }
 
     /**
+     * Updates an existing action
+     *
      * @param string $actionId
      * @param BackendActionUpdate $payload
      * @return CommonMessage

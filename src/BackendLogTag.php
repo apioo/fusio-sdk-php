@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendLogTag extends TagAbstract
 {
     /**
+     * Returns a specific log
+     *
      * @param string $logId
      * @return BackendLog
      * @throws CommonMessageException
@@ -60,6 +62,8 @@ class BackendLogTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of logs
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -131,6 +135,8 @@ class BackendLogTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of log errors
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search

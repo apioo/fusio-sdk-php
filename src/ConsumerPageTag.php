@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class ConsumerPageTag extends TagAbstract
 {
     /**
+     * Returns a specific page for the authenticated user
+     *
      * @param string $pageId
      * @return ConsumerPage
      * @throws CommonMessageException
@@ -60,6 +62,8 @@ class ConsumerPageTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of pages which are relevant to the authenticated user
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search

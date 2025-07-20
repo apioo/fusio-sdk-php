@@ -6,13 +6,18 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents an event which can be triggered by an action')]
 class BackendEvent implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Unique name of the object')]
     protected ?string $name = null;
     protected ?string $description = null;
     protected ?string $schema = null;
+    #[Description('Use this parameter to attach key-value data')]
     protected ?CommonMetadata $metadata = null;
     public function setId(?int $id): void
     {

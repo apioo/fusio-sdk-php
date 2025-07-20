@@ -6,25 +6,37 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a user')]
 class BackendUser implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('A role which is assigned to the user')]
     protected ?int $roleId = null;
+    #[Description('A plan which is assigned to the user')]
     protected ?int $planId = null;
+    #[Description('Status of the object either 1 = active, 2 = disabled or 0 = deleted')]
     protected ?int $status = null;
+    #[Description('Unique name of the object')]
     protected ?string $name = null;
+    #[Description('The email address of the user')]
     protected ?string $email = null;
+    #[Description('Points assigned to the user')]
     protected ?int $points = null;
     /**
      * @var array<string>|null
      */
+    #[Description('List of scopes which are assigned to the user')]
     protected ?array $scopes = null;
     /**
      * @var array<BackendApp>|null
      */
     protected ?array $apps = null;
+    #[Description('Use this parameter to attach key-value data')]
     protected ?CommonMetadata $metadata = null;
+    #[Description('The insert date')]
     protected ?\PSX\DateTime\LocalDateTime $date = null;
     public function setId(?int $id): void
     {

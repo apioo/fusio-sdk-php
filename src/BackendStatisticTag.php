@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendStatisticTag extends TagAbstract
 {
     /**
+     * Returns a statistic containing the activities per user
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -86,6 +88,8 @@ class BackendStatisticTag extends TagAbstract
     }
 
     /**
+     * Returns a statistic containing the request count
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -157,6 +161,8 @@ class BackendStatisticTag extends TagAbstract
     }
 
     /**
+     * Returns a statistic containing the errors per operation
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -228,6 +234,8 @@ class BackendStatisticTag extends TagAbstract
     }
 
     /**
+     * Returns a statistic containing the incoming requests
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -299,6 +307,8 @@ class BackendStatisticTag extends TagAbstract
     }
 
     /**
+     * Returns a statistic containing the incoming transactions
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -370,6 +380,8 @@ class BackendStatisticTag extends TagAbstract
     }
 
     /**
+     * Returns a statistic containing the issues tokens
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -441,6 +453,8 @@ class BackendStatisticTag extends TagAbstract
     }
 
     /**
+     * Returns a statistic containing the most used activities
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -512,6 +526,8 @@ class BackendStatisticTag extends TagAbstract
     }
 
     /**
+     * Returns a statistic containing the most used apps
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -583,6 +599,8 @@ class BackendStatisticTag extends TagAbstract
     }
 
     /**
+     * Returns a statistic containing the most used operations
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -654,6 +672,8 @@ class BackendStatisticTag extends TagAbstract
     }
 
     /**
+     * Returns a statistic containing the test coverage
+     *
      * @return BackendStatisticChart
      * @throws CommonMessageException
      * @throws ClientException
@@ -697,6 +717,8 @@ class BackendStatisticTag extends TagAbstract
     }
 
     /**
+     * Returns a statistic containing the time average
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -768,6 +790,8 @@ class BackendStatisticTag extends TagAbstract
     }
 
     /**
+     * Returns a statistic containing the time per operation
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -839,6 +863,8 @@ class BackendStatisticTag extends TagAbstract
     }
 
     /**
+     * Returns a statistic containing the used points
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -910,6 +936,8 @@ class BackendStatisticTag extends TagAbstract
     }
 
     /**
+     * Returns a statistic containing the user registrations
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search

@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendRoleTag extends TagAbstract
 {
     /**
+     * Creates a new role
+     *
      * @param BackendRoleCreate $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class BackendRoleTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing role
+     *
      * @param string $roleId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -106,6 +110,8 @@ class BackendRoleTag extends TagAbstract
     }
 
     /**
+     * Returns a specific role
+     *
      * @param string $roleId
      * @return BackendRole
      * @throws CommonMessageException
@@ -151,6 +157,8 @@ class BackendRoleTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of roles
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -200,6 +208,8 @@ class BackendRoleTag extends TagAbstract
     }
 
     /**
+     * Updates an existing role
+     *
      * @param string $roleId
      * @param BackendRoleUpdate $payload
      * @return CommonMessage

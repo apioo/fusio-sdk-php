@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendIdentityTag extends TagAbstract
 {
     /**
+     * Creates a new identity
+     *
      * @param BackendIdentityCreate $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class BackendIdentityTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing identity
+     *
      * @param string $identityId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -106,6 +110,8 @@ class BackendIdentityTag extends TagAbstract
     }
 
     /**
+     * Returns a specific identity
+     *
      * @param string $identityId
      * @return BackendIdentity
      * @throws CommonMessageException
@@ -151,6 +157,8 @@ class BackendIdentityTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of identities
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -200,6 +208,8 @@ class BackendIdentityTag extends TagAbstract
     }
 
     /**
+     * Returns all available identity classes
+     *
      * @return BackendIdentityIndex
      * @throws CommonMessageException
      * @throws ClientException
@@ -243,6 +253,8 @@ class BackendIdentityTag extends TagAbstract
     }
 
     /**
+     * Returns the identity config form
+     *
      * @param string|null $class
      * @return CommonFormContainer
      * @throws CommonMessageException
@@ -288,6 +300,8 @@ class BackendIdentityTag extends TagAbstract
     }
 
     /**
+     * Updates an existing identity
+     *
      * @param string $identityId
      * @param BackendIdentityUpdate $payload
      * @return CommonMessage

@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class ConsumerTokenTag extends TagAbstract
 {
     /**
+     * Creates a new token for the authenticated user
+     *
      * @param ConsumerTokenCreate $payload
      * @return ConsumerTokenAccessToken
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class ConsumerTokenTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing token for the authenticated user
+     *
      * @param string $tokenId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -106,6 +110,8 @@ class ConsumerTokenTag extends TagAbstract
     }
 
     /**
+     * Returns a specific token for the authenticated user
+     *
      * @param string $tokenId
      * @return ConsumerToken
      * @throws CommonMessageException
@@ -151,6 +157,8 @@ class ConsumerTokenTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of tokens which are assigned to the authenticated user
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -200,6 +208,8 @@ class ConsumerTokenTag extends TagAbstract
     }
 
     /**
+     * Updates an existing token for the authenticated user
+     *
      * @param string $tokenId
      * @param ConsumerTokenUpdate $payload
      * @return ConsumerTokenAccessToken

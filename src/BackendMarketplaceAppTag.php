@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendMarketplaceAppTag extends TagAbstract
 {
     /**
+     * Returns a specific marketplace app
+     *
      * @param string $user
      * @param string $name
      * @return MarketplaceApp
@@ -62,6 +64,8 @@ class BackendMarketplaceAppTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of marketplace apps
+     *
      * @param int|null $startIndex
      * @param string|null $query
      * @return MarketplaceAppCollection

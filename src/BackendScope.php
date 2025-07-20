@@ -6,16 +6,23 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a scope. A scope is assigned to a user and is required to access operations')]
 class BackendScope implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Unique name of the object')]
     protected ?string $name = null;
+    #[Description('Short description of the scope')]
     protected ?string $description = null;
     /**
      * @var array<BackendScopeOperation>|null
      */
+    #[Description('All operations which can be access through this scope')]
     protected ?array $operations = null;
+    #[Description('Use this parameter to attach key-value data')]
     protected ?CommonMetadata $metadata = null;
     public function setId(?int $id): void
     {

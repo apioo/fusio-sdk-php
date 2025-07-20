@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class ConsumerAppTag extends TagAbstract
 {
     /**
+     * Creates a new app for the authenticated user
+     *
      * @param ConsumerAppCreate $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class ConsumerAppTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing app for the authenticated user
+     *
      * @param string $appId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -106,6 +110,8 @@ class ConsumerAppTag extends TagAbstract
     }
 
     /**
+     * Returns a specific app for the authenticated user
+     *
      * @param string $appId
      * @return ConsumerApp
      * @throws CommonMessageException
@@ -151,6 +157,8 @@ class ConsumerAppTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of apps which are assigned to the authenticated user
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -200,6 +208,8 @@ class ConsumerAppTag extends TagAbstract
     }
 
     /**
+     * Updates an existing app for the authenticated user
+     *
      * @param string $appId
      * @param ConsumerAppUpdate $payload
      * @return CommonMessage

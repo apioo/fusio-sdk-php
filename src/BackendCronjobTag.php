@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendCronjobTag extends TagAbstract
 {
     /**
+     * Creates a new cronjob
+     *
      * @param BackendCronjobCreate $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class BackendCronjobTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing cronjob
+     *
      * @param string $cronjobId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -106,6 +110,8 @@ class BackendCronjobTag extends TagAbstract
     }
 
     /**
+     * Returns a specific cronjob
+     *
      * @param string $cronjobId
      * @return BackendCronjob
      * @throws CommonMessageException
@@ -151,6 +157,8 @@ class BackendCronjobTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of cronjobs
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -200,6 +208,8 @@ class BackendCronjobTag extends TagAbstract
     }
 
     /**
+     * Updates an existing cronjob
+     *
      * @param string $cronjobId
      * @param BackendCronjobUpdate $payload
      * @return CommonMessage

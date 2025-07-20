@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendBackupTag extends TagAbstract
 {
     /**
+     * Generates an backup of the current system
+     *
      * @return BackendBackupExport
      * @throws CommonMessageException
      * @throws ClientException
@@ -58,6 +60,8 @@ class BackendBackupTag extends TagAbstract
     }
 
     /**
+     * Imports an backup to the current system
+     *
      * @param BackendBackupImport $payload
      * @return BackendBackupImportResult
      * @throws CommonMessageException

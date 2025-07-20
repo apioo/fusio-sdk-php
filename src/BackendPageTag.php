@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendPageTag extends TagAbstract
 {
     /**
+     * Creates a new page
+     *
      * @param BackendPageCreate $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class BackendPageTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing page
+     *
      * @param string $pageId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -106,6 +110,8 @@ class BackendPageTag extends TagAbstract
     }
 
     /**
+     * Returns a specific page
+     *
      * @param string $pageId
      * @return BackendPage
      * @throws CommonMessageException
@@ -151,6 +157,8 @@ class BackendPageTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of pages
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -200,6 +208,8 @@ class BackendPageTag extends TagAbstract
     }
 
     /**
+     * Updates an existing page
+     *
      * @param string $pageId
      * @param BackendPageUpdate $payload
      * @return CommonMessage

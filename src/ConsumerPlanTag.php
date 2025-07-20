@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class ConsumerPlanTag extends TagAbstract
 {
     /**
+     * Returns a specific plan for the authenticated user
+     *
      * @param string $planId
      * @return ConsumerPlan
      * @throws CommonMessageException
@@ -60,6 +62,8 @@ class ConsumerPlanTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of plans which are relevant to the authenticated user
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search

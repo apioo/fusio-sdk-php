@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendAccountTag extends TagAbstract
 {
     /**
+     * Changes the password of the authenticated user
+     *
      * @param BackendAccountChangePassword $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class BackendAccountTag extends TagAbstract
     }
 
     /**
+     * Returns user data of the authenticated user
+     *
      * @return BackendUser
      * @throws CommonMessageException
      * @throws ClientException
@@ -104,6 +108,8 @@ class BackendAccountTag extends TagAbstract
     }
 
     /**
+     * Updates user data of the authenticated user
+     *
      * @param BackendUserUpdate $payload
      * @return CommonMessage
      * @throws CommonMessageException

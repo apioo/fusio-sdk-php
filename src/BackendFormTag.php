@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendFormTag extends TagAbstract
 {
     /**
+     * Creates a new form
+     *
      * @param BackendFormCreate $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class BackendFormTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing form
+     *
      * @param string $formId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -106,6 +110,8 @@ class BackendFormTag extends TagAbstract
     }
 
     /**
+     * Returns a specific form
+     *
      * @param string $formId
      * @return BackendForm
      * @throws CommonMessageException
@@ -151,6 +157,8 @@ class BackendFormTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of forms
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -200,6 +208,8 @@ class BackendFormTag extends TagAbstract
     }
 
     /**
+     * Updates an existing form
+     *
      * @param string $formId
      * @param BackendFormUpdate $payload
      * @return CommonMessage

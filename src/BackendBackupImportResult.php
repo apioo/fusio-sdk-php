@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Result of a backup import operation')]
 class BackendBackupImportResult implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?bool $success = null;

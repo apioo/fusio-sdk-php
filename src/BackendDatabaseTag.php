@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendDatabaseTag extends TagAbstract
 {
     /**
+     * Creates a new row at a table on a database
+     *
      * @param string $connectionId
      * @param string $tableName
      * @param BackendDatabaseRow $payload
@@ -65,6 +67,8 @@ class BackendDatabaseTag extends TagAbstract
     }
 
     /**
+     * Creates a new table on a database
+     *
      * @param string $connectionId
      * @param BackendDatabaseTable $payload
      * @return CommonMessage
@@ -113,6 +117,8 @@ class BackendDatabaseTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing row at a table on a database
+     *
      * @param string $connectionId
      * @param string $tableName
      * @param string $id
@@ -162,6 +168,8 @@ class BackendDatabaseTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing table on a database
+     *
      * @param string $connectionId
      * @param string $tableName
      * @return CommonMessage
@@ -209,6 +217,8 @@ class BackendDatabaseTag extends TagAbstract
     }
 
     /**
+     * Returns a specific row at a table on a database
+     *
      * @param string $connectionId
      * @param string $tableName
      * @param string $id
@@ -258,6 +268,8 @@ class BackendDatabaseTag extends TagAbstract
     }
 
     /**
+     * Returns paginated rows at a table on a database
+     *
      * @param string $connectionId
      * @param string $tableName
      * @param int|null $startIndex
@@ -321,6 +333,8 @@ class BackendDatabaseTag extends TagAbstract
     }
 
     /**
+     * Returns the schema of a specific table on a database
+     *
      * @param string $connectionId
      * @param string $tableName
      * @return BackendDatabaseTable
@@ -368,6 +382,8 @@ class BackendDatabaseTag extends TagAbstract
     }
 
     /**
+     * Returns all available tables on a database
+     *
      * @param string $connectionId
      * @param int|null $startIndex
      * @param int|null $count
@@ -417,6 +433,8 @@ class BackendDatabaseTag extends TagAbstract
     }
 
     /**
+     * Updates an existing row at a table on a database
+     *
      * @param string $connectionId
      * @param string $tableName
      * @param string $id
@@ -469,6 +487,8 @@ class BackendDatabaseTag extends TagAbstract
     }
 
     /**
+     * Updates an existing table on a database
+     *
      * @param string $connectionId
      * @param string $tableName
      * @param BackendDatabaseTable $payload

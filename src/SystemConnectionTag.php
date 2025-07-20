@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class SystemConnectionTag extends TagAbstract
 {
     /**
+     * Connection OAuth2 callback to authorize a connection
+     *
      * @param string $name
      * @return CommonMessage
      * @throws CommonMessageException

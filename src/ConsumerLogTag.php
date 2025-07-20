@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class ConsumerLogTag extends TagAbstract
 {
     /**
+     * Returns a specific log for the authenticated user
+     *
      * @param string $logId
      * @return ConsumerLog
      * @throws CommonMessageException
@@ -60,6 +62,8 @@ class ConsumerLogTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of logs which are assigned to the authenticated user
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search

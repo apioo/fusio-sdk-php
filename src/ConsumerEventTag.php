@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class ConsumerEventTag extends TagAbstract
 {
     /**
+     * Returns a specific event for the authenticated user
+     *
      * @param string $eventId
      * @return ConsumerEvent
      * @throws CommonMessageException
@@ -60,6 +62,8 @@ class ConsumerEventTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of apps which are assigned to the authenticated user
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search

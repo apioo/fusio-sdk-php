@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class ConsumerPaymentTag extends TagAbstract
 {
     /**
+     * Start the checkout process for a specific plan
+     *
      * @param string $provider
      * @param ConsumerPaymentCheckoutRequest $payload
      * @return ConsumerPaymentCheckoutResponse
@@ -63,6 +65,8 @@ class ConsumerPaymentTag extends TagAbstract
     }
 
     /**
+     * Generates a payment portal link for the authenticated user
+     *
      * @param string $provider
      * @param ConsumerPaymentPortalRequest $payload
      * @return ConsumerPaymentPortalResponse

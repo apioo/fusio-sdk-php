@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends \PSX\Record\Record<string>
  */
+#[Description('Represents available SDK type which can be generated')]
 class BackendSdkTypes extends \PSX\Record\Record
 {
 }

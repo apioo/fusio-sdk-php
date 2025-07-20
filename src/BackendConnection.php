@@ -9,15 +9,21 @@ namespace Fusio\Sdk;
 use PSX\Schema\Attribute\Description;
 use PSX\Schema\Attribute\Key;
 
+#[Description('This object represents a connection to an external system like i.e. a database, message-queue or client-sdk')]
 class BackendConnection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Unique name of the object')]
     protected ?string $name = null;
+    #[Description('Underlying class of this connection which returns a configured client connection i.e. database, message-queue or client-sdk')]
     protected ?string $class = null;
     #[Key('oauth2')]
     #[Description('Indicates whether it is possible to start an OAuth2 authorization code flow on this connection')]
     protected ?bool $oauth = null;
+    #[Description('Contains the connection specific configuration')]
     protected ?BackendConnectionConfig $config = null;
+    #[Description('Use this parameter to attach key-value data')]
     protected ?CommonMetadata $metadata = null;
     public function setId(?int $id): void
     {

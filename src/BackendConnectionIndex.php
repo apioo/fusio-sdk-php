@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Contains all possible classes which can be used at an connection as class')]
 class BackendConnectionIndex implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**

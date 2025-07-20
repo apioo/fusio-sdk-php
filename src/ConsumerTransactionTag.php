@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class ConsumerTransactionTag extends TagAbstract
 {
     /**
+     * Returns a specific transaction for the authenticated user
+     *
      * @param string $transactionId
      * @return ConsumerTransaction
      * @throws CommonMessageException
@@ -60,6 +62,8 @@ class ConsumerTransactionTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of transactions which are assigned to the authenticated user
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search

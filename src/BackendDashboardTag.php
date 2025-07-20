@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendDashboardTag extends TagAbstract
 {
     /**
+     * Returns all available dashboard widgets
+     *
      * @return BackendDashboard
      * @throws CommonMessageException
      * @throws ClientException

@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendSdkTag extends TagAbstract
 {
     /**
+     * Generates a specific SDK
+     *
      * @param BackendSdkGenerate $payload
      * @return BackendSdkMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class BackendSdkTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of SDKs
+     *
      * @return BackendSdkResponse
      * @throws CommonMessageException
      * @throws ClientException

@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendTransactionTag extends TagAbstract
 {
     /**
+     * Returns a specific transaction
+     *
      * @param string $transactionId
      * @return BackendTransaction
      * @throws CommonMessageException
@@ -60,6 +62,8 @@ class BackendTransactionTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of transactions
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search

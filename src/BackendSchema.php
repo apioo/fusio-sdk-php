@@ -6,15 +6,20 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a schema to describe a JSON payload')]
 class BackendSchema implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Status of the object either 1 = active or 0 = deleted')]
     protected ?int $status = null;
+    #[Description('Unique name of the object')]
     protected ?string $name = null;
+    #[Description('The TypeSchema specification to describe a JSON payload')]
     protected ?BackendSchemaSource $source = null;
-    protected ?BackendSchemaForm $form = null;
-    protected ?bool $readonly = null;
+    #[Description('Use this parameter to attach key-value data')]
     protected ?CommonMetadata $metadata = null;
     public function setId(?int $id): void
     {
@@ -48,22 +53,6 @@ class BackendSchema implements \JsonSerializable, \PSX\Record\RecordableInterfac
     {
         return $this->source;
     }
-    public function setForm(?BackendSchemaForm $form): void
-    {
-        $this->form = $form;
-    }
-    public function getForm(): ?BackendSchemaForm
-    {
-        return $this->form;
-    }
-    public function setReadonly(?bool $readonly): void
-    {
-        $this->readonly = $readonly;
-    }
-    public function getReadonly(): ?bool
-    {
-        return $this->readonly;
-    }
     public function setMetadata(?CommonMetadata $metadata): void
     {
         $this->metadata = $metadata;
@@ -80,8 +69,6 @@ class BackendSchema implements \JsonSerializable, \PSX\Record\RecordableInterfac
         $record->put('status', $this->status);
         $record->put('name', $this->name);
         $record->put('source', $this->source);
-        $record->put('form', $this->form);
-        $record->put('readonly', $this->readonly);
         $record->put('metadata', $this->metadata);
         return $record;
     }

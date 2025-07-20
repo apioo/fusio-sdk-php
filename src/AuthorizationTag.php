@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class AuthorizationTag extends TagAbstract
 {
     /**
+     * Returns user data of the current authenticated user
+     *
      * @return BackendUser
      * @throws CommonMessageException
      * @throws ClientException
@@ -58,6 +60,8 @@ class AuthorizationTag extends TagAbstract
     }
 
     /**
+     * Revoke the access token of the current authenticated user
+     *
      * @return CommonMessage
      * @throws CommonMessageException
      * @throws ClientException

@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Export of the complete system configuration')]
 class BackendBackupExport implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $export = null;

@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendRateTag extends TagAbstract
 {
     /**
+     * Creates a new rate limitation
+     *
      * @param BackendRateCreate $payload
      * @return CommonMessage
      * @throws CommonMessageException
@@ -61,6 +63,8 @@ class BackendRateTag extends TagAbstract
     }
 
     /**
+     * Deletes an existing rate
+     *
      * @param string $rateId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -106,6 +110,8 @@ class BackendRateTag extends TagAbstract
     }
 
     /**
+     * Returns a specific rate
+     *
      * @param string $rateId
      * @return BackendRate
      * @throws CommonMessageException
@@ -151,6 +157,8 @@ class BackendRateTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of rate limitations
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -200,6 +208,8 @@ class BackendRateTag extends TagAbstract
     }
 
     /**
+     * Updates an existing rate
+     *
      * @param string $rateId
      * @param BackendRateUpdate $payload
      * @return CommonMessage

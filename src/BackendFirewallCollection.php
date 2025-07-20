@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends CommonCollection<BackendFirewall>
  */
+#[Description('A paginated collection of firewall objects')]
 class BackendFirewallCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

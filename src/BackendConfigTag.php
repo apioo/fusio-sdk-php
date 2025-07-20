@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendConfigTag extends TagAbstract
 {
     /**
+     * Returns a specific config
+     *
      * @param string $configId
      * @return BackendConfig
      * @throws CommonMessageException
@@ -60,6 +62,8 @@ class BackendConfigTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of configuration values
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -109,6 +113,8 @@ class BackendConfigTag extends TagAbstract
     }
 
     /**
+     * Updates an existing config value
+     *
      * @param string $configId
      * @param BackendConfigUpdate $payload
      * @return CommonMessage

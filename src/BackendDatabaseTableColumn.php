@@ -6,19 +6,32 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a column at a relation table')]
 class BackendDatabaseTableColumn implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Name of the column')]
     protected ?string $name = null;
+    #[Description('The column type i.e. integer or string')]
     protected ?string $type = null;
+    #[Description('Optional the max length of the column')]
     protected ?int $length = null;
+    #[Description('Optional the precision of the column')]
     protected ?int $precision = null;
+    #[Description('Optional the scale of the column')]
     protected ?int $scale = null;
+    #[Description('Indicates whether the column is unsigned, relevant for integer types')]
     protected ?bool $unsigned = null;
+    #[Description('Indicates whether the column has a fixed length')]
     protected ?bool $fixed = null;
+    #[Description('Indicates whether the column allows null')]
     protected ?bool $notNull = null;
+    #[Description('Indicates whether this column is an auto increment column')]
     protected ?bool $autoIncrement = null;
+    #[Description('Optional defines the default value')]
     protected mixed $default = null;
+    #[Description('Optional a comment for this column')]
     protected ?string $comment = null;
     public function setName(?string $name): void
     {
