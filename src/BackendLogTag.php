@@ -186,6 +186,8 @@ class BackendLogTag extends TagAbstract
     }
 
     /**
+     * Returns a specific error
+     *
      * @param string $errorId
      * @return BackendLogError
      * @throws CommonMessageException

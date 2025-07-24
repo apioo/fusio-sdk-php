@@ -161,6 +161,8 @@ class BackendMarketplaceAppTag extends TagAbstract
     }
 
     /**
+     * Upgrades an app from the marketplace
+     *
      * @param string $user
      * @param string $name
      * @return MarketplaceMessage

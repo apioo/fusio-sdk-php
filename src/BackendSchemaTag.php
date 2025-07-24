@@ -208,6 +208,8 @@ class BackendSchemaTag extends TagAbstract
     }
 
     /**
+     * Returns a HTML preview of the provided schema
+     *
      * @param string $schemaId
      * @return BackendSchemaPreviewResponse
      * @throws CommonMessageException

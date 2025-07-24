@@ -208,6 +208,8 @@ class BackendScopeTag extends TagAbstract
     }
 
     /**
+     * Returns all available scopes grouped by category
+     *
      * @return BackendScopeCategories
      * @throws CommonMessageException
      * @throws ClientException

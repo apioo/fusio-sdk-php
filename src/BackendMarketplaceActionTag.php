@@ -161,6 +161,8 @@ class BackendMarketplaceActionTag extends TagAbstract
     }
 
     /**
+     * Upgrades an action from the marketplace
+     *
      * @param string $user
      * @param string $name
      * @return CommonMessage

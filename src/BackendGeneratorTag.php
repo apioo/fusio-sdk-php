@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendGeneratorTag extends TagAbstract
 {
     /**
+     * Executes a generator with the provided config
+     *
      * @param string $provider
      * @param BackendGeneratorProvider $payload
      * @return CommonMessage
@@ -63,6 +65,8 @@ class BackendGeneratorTag extends TagAbstract
     }
 
     /**
+     * Generates a changelog of all potential changes if you execute this generator with the provided config
+     *
      * @param string $provider
      * @param BackendGeneratorProviderConfig $payload
      * @return BackendGeneratorProviderChangelog
