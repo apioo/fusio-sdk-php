@@ -33,13 +33,13 @@ class BackendOperation implements \JsonSerializable, \PSX\Record\RecordableInter
     protected ?string $name = null;
     #[Description('Describes available query parameters')]
     protected ?BackendOperationParameters $parameters = null;
-    #[Description('Describes the incoming request payload')]
+    #[Description('Describes the incoming request payload, this must contain a schema name')]
     protected ?string $incoming = null;
-    #[Description('Describes the outgoing response payload')]
+    #[Description('Describes the outgoing response payload, this must contain a schema name')]
     protected ?string $outgoing = null;
     #[Description('Describes error responses for i.e. client or server errors')]
     protected ?BackendOperationThrows $throws = null;
-    #[Description('The target action to invoke')]
+    #[Description('The target action to invoke, this must contain an action name')]
     protected ?string $action = null;
     #[Description('Costs to invoke this operation. A user can only invoke this operation in case he has enough points')]
     protected ?int $costs = null;

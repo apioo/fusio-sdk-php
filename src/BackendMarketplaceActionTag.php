@@ -113,6 +113,8 @@ class BackendMarketplaceActionTag extends TagAbstract
     }
 
     /**
+     * Installs an action from the marketplace
+     *
      * @param MarketplaceInstall $payload
      * @return MarketplaceMessage
      * @throws CommonMessageException
