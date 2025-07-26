@@ -110,6 +110,14 @@ class BackendTag extends TagAbstract
         );
     }
 
+    public function file(): BackendFileTag
+    {
+        return new BackendFileTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function firewall(): BackendFirewallTag
     {
         return new BackendFirewallTag(
