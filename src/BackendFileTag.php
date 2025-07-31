@@ -74,7 +74,7 @@ class BackendFileTag extends TagAbstract
      */
     public function delete(string $connectionId, string $fileId): CommonMessage
     {
-        $url = $this->parser->url('/backend/filesystem/:connection_id/:file_id', [
+        $url = $this->parser->url('/backend/file/:connection_id/:file_id', [
             'connection_id' => $connectionId,
             'file_id' => $fileId,
         ]);
