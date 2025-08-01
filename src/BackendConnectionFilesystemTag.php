@@ -117,11 +117,11 @@ class BackendConnectionFilesystemTag extends TagAbstract
      *
      * @param string $connectionId
      * @param string $fileId
-     * @return void
+     * @return \Psr\Http\Message\StreamInterface
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function get(string $connectionId, string $fileId): void
+    public function get(string $connectionId, string $fileId): \Psr\Http\Message\StreamInterface
     {
         $url = $this->parser->url('/backend/connection/:connection_id/filesystem/:file_id', [
             'connection_id' => $connectionId,
@@ -130,6 +130,7 @@ class BackendConnectionFilesystemTag extends TagAbstract
 
         $options = [
             'headers' => [
+                'Accept' => 'application/octet-stream',
             ],
             'query' => $this->parser->query([
             ], [
@@ -140,6 +141,9 @@ class BackendConnectionFilesystemTag extends TagAbstract
             $response = $this->httpClient->request('GET', $url, $options);
             $body = $response->getBody();
 
+            $data = $body;
+
+            return $data;
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
