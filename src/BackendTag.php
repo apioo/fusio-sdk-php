@@ -94,25 +94,9 @@ class BackendTag extends TagAbstract
         );
     }
 
-    public function database(): BackendDatabaseTag
-    {
-        return new BackendDatabaseTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
     public function event(): BackendEventTag
     {
         return new BackendEventTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function file(): BackendFileTag
-    {
-        return new BackendFileTag(
             $this->httpClient,
             $this->parser
         );

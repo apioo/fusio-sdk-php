@@ -14,6 +14,38 @@ use Sdkgen\Client\TagAbstract;
 
 class BackendConnectionTag extends TagAbstract
 {
+    public function database(): BackendConnectionDatabaseTag
+    {
+        return new BackendConnectionDatabaseTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function filesystem(): BackendConnectionFilesystemTag
+    {
+        return new BackendConnectionFilesystemTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function http(): BackendConnectionHttpTag
+    {
+        return new BackendConnectionHttpTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function sdk(): BackendConnectionSdkTag
+    {
+        return new BackendConnectionSdkTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     /**
      * Creates a new connection
      *
@@ -311,7 +343,7 @@ class BackendConnectionTag extends TagAbstract
      */
     public function getRedirect(string $connectionId): BackendConnectionRedirectResponse
     {
-        $url = $this->parser->url('/backend/connection/$connection_id<[0-9]+|^~>/redirect', [
+        $url = $this->parser->url('/backend/connection/:connection_id/redirect', [
             'connection_id' => $connectionId,
         ]);
 
