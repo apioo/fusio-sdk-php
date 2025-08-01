@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends CommonCollection<BackendRate>
  */
+#[Description('A paginated collection of rate objects')]
 class BackendRateCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

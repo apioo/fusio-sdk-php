@@ -6,100 +6,111 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a log entry. Every HTTP requests to the system generates such a log entry.')]
 class BackendLog implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('The remote IP which has initiated the request')]
     protected ?string $ip = null;
+    #[Description('The user agent provided by the HTTP user agent header')]
     protected ?string $userAgent = null;
+    #[Description('The HTTP method i.e. GET or POST')]
     protected ?string $method = null;
+    #[Description('The target path')]
     protected ?string $path = null;
+    #[Description('The provided HTTP headers')]
     protected ?string $header = null;
+    #[Description('The provided HTTP body')]
     protected ?string $body = null;
+    #[Description('Insert date of this request')]
     protected ?\PSX\DateTime\LocalDateTime $date = null;
     /**
      * @var array<BackendLogError>|null
      */
+    #[Description('An array of errors which occurred through this request')]
     protected ?array $errors = null;
-    public function setId(?int $id) : void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
-    public function setIp(?string $ip) : void
+    public function setIp(?string $ip): void
     {
         $this->ip = $ip;
     }
-    public function getIp() : ?string
+    public function getIp(): ?string
     {
         return $this->ip;
     }
-    public function setUserAgent(?string $userAgent) : void
+    public function setUserAgent(?string $userAgent): void
     {
         $this->userAgent = $userAgent;
     }
-    public function getUserAgent() : ?string
+    public function getUserAgent(): ?string
     {
         return $this->userAgent;
     }
-    public function setMethod(?string $method) : void
+    public function setMethod(?string $method): void
     {
         $this->method = $method;
     }
-    public function getMethod() : ?string
+    public function getMethod(): ?string
     {
         return $this->method;
     }
-    public function setPath(?string $path) : void
+    public function setPath(?string $path): void
     {
         $this->path = $path;
     }
-    public function getPath() : ?string
+    public function getPath(): ?string
     {
         return $this->path;
     }
-    public function setHeader(?string $header) : void
+    public function setHeader(?string $header): void
     {
         $this->header = $header;
     }
-    public function getHeader() : ?string
+    public function getHeader(): ?string
     {
         return $this->header;
     }
-    public function setBody(?string $body) : void
+    public function setBody(?string $body): void
     {
         $this->body = $body;
     }
-    public function getBody() : ?string
+    public function getBody(): ?string
     {
         return $this->body;
     }
-    public function setDate(?\PSX\DateTime\LocalDateTime $date) : void
+    public function setDate(?\PSX\DateTime\LocalDateTime $date): void
     {
         $this->date = $date;
     }
-    public function getDate() : ?\PSX\DateTime\LocalDateTime
+    public function getDate(): ?\PSX\DateTime\LocalDateTime
     {
         return $this->date;
     }
     /**
      * @param array<BackendLogError>|null $errors
      */
-    public function setErrors(?array $errors) : void
+    public function setErrors(?array $errors): void
     {
         $this->errors = $errors;
     }
     /**
      * @return array<BackendLogError>|null
      */
-    public function getErrors() : ?array
+    public function getErrors(): ?array
     {
         return $this->errors;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -114,7 +125,7 @@ class BackendLog implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('errors', $this->errors);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

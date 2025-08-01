@@ -15,6 +15,53 @@ use Sdkgen\Client\TagAbstract;
 class BackendBackupTag extends TagAbstract
 {
     /**
+     * Generates an backup of the current system
+     *
+     * @return BackendBackupExport
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function export(): BackendBackupExport
+    {
+        $url = $this->parser->url('/backend/backup/export', [
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('POST', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendBackupExport::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Imports an backup to the current system
+     *
      * @param BackendBackupImport $payload
      * @return BackendBackupImportResult
      * @throws CommonMessageException
@@ -48,62 +95,7 @@ class BackendBackupTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @return BackendBackupExport
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function export(): BackendBackupExport
-    {
-        $url = $this->parser->url('/backend/backup/export', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('POST', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendBackupExport::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
                 throw new CommonMessageException($data);

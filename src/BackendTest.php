@@ -6,64 +6,68 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a test. A test helps to verify that all operations work as expected')]
 class BackendTest implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Status of the object either 1 = pending, 2 = success, 3 = warning, 4 = error, 5 = skipped or 6 = disabled')]
     protected ?int $status = null;
     protected ?string $operationName = null;
     protected ?string $message = null;
     protected ?string $response = null;
     protected ?BackendTestConfig $config = null;
-    public function setId(?int $id) : void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
-    public function setStatus(?int $status) : void
+    public function setStatus(?int $status): void
     {
         $this->status = $status;
     }
-    public function getStatus() : ?int
+    public function getStatus(): ?int
     {
         return $this->status;
     }
-    public function setOperationName(?string $operationName) : void
+    public function setOperationName(?string $operationName): void
     {
         $this->operationName = $operationName;
     }
-    public function getOperationName() : ?string
+    public function getOperationName(): ?string
     {
         return $this->operationName;
     }
-    public function setMessage(?string $message) : void
+    public function setMessage(?string $message): void
     {
         $this->message = $message;
     }
-    public function getMessage() : ?string
+    public function getMessage(): ?string
     {
         return $this->message;
     }
-    public function setResponse(?string $response) : void
+    public function setResponse(?string $response): void
     {
         $this->response = $response;
     }
-    public function getResponse() : ?string
+    public function getResponse(): ?string
     {
         return $this->response;
     }
-    public function setConfig(?BackendTestConfig $config) : void
+    public function setConfig(?BackendTestConfig $config): void
     {
         $this->config = $config;
     }
-    public function getConfig() : ?BackendTestConfig
+    public function getConfig(): ?BackendTestConfig
     {
         return $this->config;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -75,7 +79,7 @@ class BackendTest implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('config', $this->config);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

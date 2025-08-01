@@ -14,6 +14,46 @@ use Sdkgen\Client\TagAbstract;
 
 class ConsumerTag extends TagAbstract
 {
+    public function account(): ConsumerAccountTag
+    {
+        return new ConsumerAccountTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function app(): ConsumerAppTag
+    {
+        return new ConsumerAppTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function event(): ConsumerEventTag
+    {
+        return new ConsumerEventTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function form(): ConsumerFormTag
+    {
+        return new ConsumerFormTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function grant(): ConsumerGrantTag
+    {
+        return new ConsumerGrantTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function identity(): ConsumerIdentityTag
     {
         return new ConsumerIdentityTag(
@@ -22,9 +62,49 @@ class ConsumerTag extends TagAbstract
         );
     }
 
-    public function account(): ConsumerAccountTag
+    public function log(): ConsumerLogTag
     {
-        return new ConsumerAccountTag(
+        return new ConsumerLogTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function page(): ConsumerPageTag
+    {
+        return new ConsumerPageTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function payment(): ConsumerPaymentTag
+    {
+        return new ConsumerPaymentTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function plan(): ConsumerPlanTag
+    {
+        return new ConsumerPlanTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function scope(): ConsumerScopeTag
+    {
+        return new ConsumerScopeTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function token(): ConsumerTokenTag
+    {
+        return new ConsumerTokenTag(
             $this->httpClient,
             $this->parser
         );
@@ -41,78 +121,6 @@ class ConsumerTag extends TagAbstract
     public function webhook(): ConsumerWebhookTag
     {
         return new ConsumerWebhookTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function token(): ConsumerTokenTag
-    {
-        return new ConsumerTokenTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function scope(): ConsumerScopeTag
-    {
-        return new ConsumerScopeTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function plan(): ConsumerPlanTag
-    {
-        return new ConsumerPlanTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function payment(): ConsumerPaymentTag
-    {
-        return new ConsumerPaymentTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function page(): ConsumerPageTag
-    {
-        return new ConsumerPageTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function log(): ConsumerLogTag
-    {
-        return new ConsumerLogTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function grant(): ConsumerGrantTag
-    {
-        return new ConsumerGrantTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function event(): ConsumerEventTag
-    {
-        return new ConsumerEventTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
-    public function app(): ConsumerAppTag
-    {
-        return new ConsumerAppTag(
             $this->httpClient,
             $this->parser
         );

@@ -15,6 +15,154 @@ use Sdkgen\Client\TagAbstract;
 class BackendMarketplaceActionTag extends TagAbstract
 {
     /**
+     * Returns a specific marketplace action
+     *
+     * @param string $user
+     * @param string $name
+     * @return MarketplaceAction
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function get(string $user, string $name): MarketplaceAction
+    {
+        $url = $this->parser->url('/backend/marketplace/action/:user/:name', [
+            'user' => $user,
+            'name' => $name,
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceAction::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Returns a paginated list of marketplace actions
+     *
+     * @param int|null $startIndex
+     * @param string|null $query
+     * @return MarketplaceActionCollection
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function getAll(?int $startIndex = null, ?string $query = null): MarketplaceActionCollection
+    {
+        $url = $this->parser->url('/backend/marketplace/action', [
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'query' => $query,
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceActionCollection::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Installs an action from the marketplace
+     *
+     * @param MarketplaceInstall $payload
+     * @return MarketplaceMessage
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function install(MarketplaceInstall $payload): MarketplaceMessage
+    {
+        $url = $this->parser->url('/backend/marketplace/action', [
+        ]);
+
+        $options = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
+            'query' => $this->parser->query([
+            ], [
+            ]),
+            'json' => $payload,
+        ];
+
+        try {
+            $response = $this->httpClient->request('POST', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Upgrades an action from the marketplace
+     *
      * @param string $user
      * @param string $name
      * @return CommonMessage
@@ -49,210 +197,10 @@ class BackendMarketplaceActionTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 400) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
                 throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 404) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 410) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param string $user
-     * @param string $name
-     * @return MarketplaceAction
-     * @throws MarketplaceMessageException
-     * @throws ClientException
-     */
-    public function get(string $user, string $name): MarketplaceAction
-    {
-        $url = $this->parser->url('/backend/marketplace/action/:user/:name', [
-            'user' => $user,
-            'name' => $name,
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceAction::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
-
-                throw new MarketplaceMessageException($data);
-            }
-
-            if ($statusCode === 404) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
-
-                throw new MarketplaceMessageException($data);
-            }
-
-            if ($statusCode === 410) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
-
-                throw new MarketplaceMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
-
-                throw new MarketplaceMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param MarketplaceInstall $payload
-     * @return MarketplaceMessage
-     * @throws MarketplaceMessageException
-     * @throws ClientException
-     */
-    public function install(MarketplaceInstall $payload): MarketplaceMessage
-    {
-        $url = $this->parser->url('/backend/marketplace/action', [
-        ]);
-
-        $options = [
-            'headers' => [
-                'Content-Type' => 'application/json',
-            ],
-            'query' => $this->parser->query([
-            ], [
-            ]),
-            'json' => $payload,
-        ];
-
-        try {
-            $response = $this->httpClient->request('POST', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 400) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
-
-                throw new MarketplaceMessageException($data);
-            }
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
-
-                throw new MarketplaceMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
-
-                throw new MarketplaceMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param int|null $startIndex
-     * @param string|null $query
-     * @return MarketplaceActionCollection
-     * @throws MarketplaceMessageException
-     * @throws ClientException
-     */
-    public function getAll(?int $startIndex = null, ?string $query = null): MarketplaceActionCollection
-    {
-        $url = $this->parser->url('/backend/marketplace/action', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-                'startIndex' => $startIndex,
-                'query' => $query,
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceActionCollection::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
-
-                throw new MarketplaceMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
-
-                throw new MarketplaceMessageException($data);
             }
 
             throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);

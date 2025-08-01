@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class AuthorizationTag extends TagAbstract
 {
     /**
+     * Returns user data of the current authenticated user
+     *
      * @return BackendUser
      * @throws CommonMessageException
      * @throws ClientException
@@ -45,7 +47,7 @@ class AuthorizationTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 500) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
                 throw new CommonMessageException($data);
@@ -58,6 +60,8 @@ class AuthorizationTag extends TagAbstract
     }
 
     /**
+     * Revoke the access token of the current authenticated user
+     *
      * @return CommonMessage
      * @throws CommonMessageException
      * @throws ClientException
@@ -88,13 +92,7 @@ class AuthorizationTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 400) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
                 throw new CommonMessageException($data);

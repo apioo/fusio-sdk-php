@@ -15,6 +15,103 @@ use Sdkgen\Client\TagAbstract;
 class BackendAppTag extends TagAbstract
 {
     /**
+     * Creates a new app
+     *
+     * @param BackendAppCreate $payload
+     * @return CommonMessage
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function create(BackendAppCreate $payload): CommonMessage
+    {
+        $url = $this->parser->url('/backend/app', [
+        ]);
+
+        $options = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
+            'query' => $this->parser->query([
+            ], [
+            ]),
+            'json' => $payload,
+        ];
+
+        try {
+            $response = $this->httpClient->request('POST', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Deletes an existing app
+     *
+     * @param string $appId
+     * @return CommonMessage
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function delete(string $appId): CommonMessage
+    {
+        $url = $this->parser->url('/backend/app/$app_id<[0-9]+|^~>', [
+            'app_id' => $appId,
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('DELETE', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Deletes an existing token from an app
+     *
      * @param string $appId
      * @param string $tokenId
      * @return CommonMessage
@@ -49,25 +146,7 @@ class BackendAppTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 404) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 410) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
                 throw new CommonMessageException($data);
@@ -80,141 +159,8 @@ class BackendAppTag extends TagAbstract
     }
 
     /**
-     * @param string $appId
-     * @return CommonMessage
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function delete(string $appId): CommonMessage
-    {
-        $url = $this->parser->url('/backend/app/$app_id<[0-9]+|^~>', [
-            'app_id' => $appId,
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('DELETE', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 404) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 410) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param string $appId
-     * @param BackendAppUpdate $payload
-     * @return CommonMessage
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function update(string $appId, BackendAppUpdate $payload): CommonMessage
-    {
-        $url = $this->parser->url('/backend/app/$app_id<[0-9]+|^~>', [
-            'app_id' => $appId,
-        ]);
-
-        $options = [
-            'headers' => [
-                'Content-Type' => 'application/json',
-            ],
-            'query' => $this->parser->query([
-            ], [
-            ]),
-            'json' => $payload,
-        ];
-
-        try {
-            $response = $this->httpClient->request('PUT', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 400) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 404) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 410) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
+     * Returns a specific app
+     *
      * @param string $appId
      * @return BackendApp
      * @throws CommonMessageException
@@ -247,25 +193,7 @@ class BackendAppTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 404) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 410) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
                 throw new CommonMessageException($data);
@@ -278,64 +206,8 @@ class BackendAppTag extends TagAbstract
     }
 
     /**
-     * @param BackendAppCreate $payload
-     * @return CommonMessage
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function create(BackendAppCreate $payload): CommonMessage
-    {
-        $url = $this->parser->url('/backend/app', [
-        ]);
-
-        $options = [
-            'headers' => [
-                'Content-Type' => 'application/json',
-            ],
-            'query' => $this->parser->query([
-            ], [
-            ]),
-            'json' => $payload,
-        ];
-
-        try {
-            $response = $this->httpClient->request('POST', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 400) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
+     * Returns a paginated list of apps
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -372,13 +244,57 @@ class BackendAppTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 401) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
                 throw new CommonMessageException($data);
             }
 
-            if ($statusCode === 500) {
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Updates an existing app
+     *
+     * @param string $appId
+     * @param BackendAppUpdate $payload
+     * @return CommonMessage
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function update(string $appId, BackendAppUpdate $payload): CommonMessage
+    {
+        $url = $this->parser->url('/backend/app/$app_id<[0-9]+|^~>', [
+            'app_id' => $appId,
+        ]);
+
+        $options = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
+            'query' => $this->parser->query([
+            ], [
+            ]),
+            'json' => $payload,
+        ];
+
+        try {
+            $response = $this->httpClient->request('PUT', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
                 throw new CommonMessageException($data);

@@ -12,31 +12,31 @@ class MarketplaceUser implements \JsonSerializable, \PSX\Record\RecordableInterf
     protected ?int $id = null;
     protected ?string $name = null;
     protected ?bool $verified = null;
-    public function setId(?int $id) : void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
-    public function setName(?string $name) : void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
-    public function setVerified(?bool $verified) : void
+    public function setVerified(?bool $verified): void
     {
         $this->verified = $verified;
     }
-    public function getVerified() : ?bool
+    public function getVerified(): ?bool
     {
         return $this->verified;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -45,7 +45,7 @@ class MarketplaceUser implements \JsonSerializable, \PSX\Record\RecordableInterf
         $record->put('verified', $this->verified);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

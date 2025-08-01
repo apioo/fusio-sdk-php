@@ -18,34 +18,34 @@ class MarketplaceApp extends MarketplaceObject implements \JsonSerializable, \PS
     /**
      * @param array<string>|null $scopes
      */
-    public function setScopes(?array $scopes) : void
+    public function setScopes(?array $scopes): void
     {
         $this->scopes = $scopes;
     }
     /**
      * @return array<string>|null
      */
-    public function getScopes() : ?array
+    public function getScopes(): ?array
     {
         return $this->scopes;
     }
-    public function setDownloadUrl(?string $downloadUrl) : void
+    public function setDownloadUrl(?string $downloadUrl): void
     {
         $this->downloadUrl = $downloadUrl;
     }
-    public function getDownloadUrl() : ?string
+    public function getDownloadUrl(): ?string
     {
         return $this->downloadUrl;
     }
-    public function setHash(?string $hash) : void
+    public function setHash(?string $hash): void
     {
         $this->hash = $hash;
     }
-    public function getHash() : ?string
+    public function getHash(): ?string
     {
         return $this->hash;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = parent::toRecord();
@@ -54,7 +54,7 @@ class MarketplaceApp extends MarketplaceObject implements \JsonSerializable, \PS
         $record->put('hash', $this->hash);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

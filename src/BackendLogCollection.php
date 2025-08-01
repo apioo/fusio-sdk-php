@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends CommonCollection<BackendLog>
  */
+#[Description('A paginated collection of log objects')]
 class BackendLogCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

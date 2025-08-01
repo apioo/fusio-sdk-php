@@ -14,47 +14,47 @@ class ConsumerUserPlan implements \JsonSerializable, \PSX\Record\RecordableInter
     protected ?int $price = null;
     protected ?int $points = null;
     protected ?int $period = null;
-    public function setId(?int $id) : void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
-    public function setName(?string $name) : void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
-    public function setPrice(?int $price) : void
+    public function setPrice(?int $price): void
     {
         $this->price = $price;
     }
-    public function getPrice() : ?int
+    public function getPrice(): ?int
     {
         return $this->price;
     }
-    public function setPoints(?int $points) : void
+    public function setPoints(?int $points): void
     {
         $this->points = $points;
     }
-    public function getPoints() : ?int
+    public function getPoints(): ?int
     {
         return $this->points;
     }
-    public function setPeriod(?int $period) : void
+    public function setPeriod(?int $period): void
     {
         $this->period = $period;
     }
-    public function getPeriod() : ?int
+    public function getPeriod(): ?int
     {
         return $this->period;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -65,7 +65,7 @@ class ConsumerUserPlan implements \JsonSerializable, \PSX\Record\RecordableInter
         $record->put('period', $this->period);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

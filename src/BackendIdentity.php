@@ -6,82 +6,90 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents an identity which allows to authenticate with a remote identity provider')]
 class BackendIdentity implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('The target app for this identity')]
     protected ?int $appId = null;
+    #[Description('Role which is assigned to new users')]
     protected ?int $roleId = null;
+    #[Description('Unique name of the object')]
     protected ?string $name = null;
+    #[Description('An icon for this identity provider')]
     protected ?string $icon = null;
+    #[Description('Underlying class of this identity provider')]
     protected ?string $class = null;
     protected ?BackendIdentityConfig $config = null;
     protected ?bool $allowCreate = null;
-    public function setId(?int $id) : void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
-    public function setAppId(?int $appId) : void
+    public function setAppId(?int $appId): void
     {
         $this->appId = $appId;
     }
-    public function getAppId() : ?int
+    public function getAppId(): ?int
     {
         return $this->appId;
     }
-    public function setRoleId(?int $roleId) : void
+    public function setRoleId(?int $roleId): void
     {
         $this->roleId = $roleId;
     }
-    public function getRoleId() : ?int
+    public function getRoleId(): ?int
     {
         return $this->roleId;
     }
-    public function setName(?string $name) : void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
-    public function setIcon(?string $icon) : void
+    public function setIcon(?string $icon): void
     {
         $this->icon = $icon;
     }
-    public function getIcon() : ?string
+    public function getIcon(): ?string
     {
         return $this->icon;
     }
-    public function setClass(?string $class) : void
+    public function setClass(?string $class): void
     {
         $this->class = $class;
     }
-    public function getClass() : ?string
+    public function getClass(): ?string
     {
         return $this->class;
     }
-    public function setConfig(?BackendIdentityConfig $config) : void
+    public function setConfig(?BackendIdentityConfig $config): void
     {
         $this->config = $config;
     }
-    public function getConfig() : ?BackendIdentityConfig
+    public function getConfig(): ?BackendIdentityConfig
     {
         return $this->config;
     }
-    public function setAllowCreate(?bool $allowCreate) : void
+    public function setAllowCreate(?bool $allowCreate): void
     {
         $this->allowCreate = $allowCreate;
     }
-    public function getAllowCreate() : ?bool
+    public function getAllowCreate(): ?bool
     {
         return $this->allowCreate;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -95,7 +103,7 @@ class BackendIdentity implements \JsonSerializable, \PSX\Record\RecordableInterf
         $record->put('allowCreate', $this->allowCreate);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

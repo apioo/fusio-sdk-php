@@ -21,47 +21,47 @@ abstract class CommonFormElement implements \JsonSerializable, \PSX\Record\Recor
     protected ?string $name = null;
     protected ?string $title = null;
     protected ?string $help = null;
-    public function setType(?string $type) : void
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }
-    public function getType() : ?string
+    public function getType(): ?string
     {
         return $this->type;
     }
-    public function setElement(?string $element) : void
+    public function setElement(?string $element): void
     {
         $this->element = $element;
     }
-    public function getElement() : ?string
+    public function getElement(): ?string
     {
         return $this->element;
     }
-    public function setName(?string $name) : void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
-    public function setTitle(?string $title) : void
+    public function setTitle(?string $title): void
     {
         $this->title = $title;
     }
-    public function getTitle() : ?string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
-    public function setHelp(?string $help) : void
+    public function setHelp(?string $help): void
     {
         $this->help = $help;
     }
-    public function getHelp() : ?string
+    public function getHelp(): ?string
     {
         return $this->help;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -72,7 +72,7 @@ abstract class CommonFormElement implements \JsonSerializable, \PSX\Record\Recor
         $record->put('help', $this->help);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

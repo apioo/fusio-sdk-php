@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendTokenTag extends TagAbstract
 {
     /**
+     * Returns a specific token
+     *
      * @param string $tokenId
      * @return BackendToken
      * @throws CommonMessageException
@@ -47,19 +49,7 @@ class BackendTokenTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 404) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
                 throw new CommonMessageException($data);
@@ -72,6 +62,8 @@ class BackendTokenTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of tokens
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -122,13 +114,7 @@ class BackendTokenTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
                 throw new CommonMessageException($data);

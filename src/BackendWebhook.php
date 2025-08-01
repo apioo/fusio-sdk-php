@@ -6,9 +6,12 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a webhook, a webhook is called in case a specific event was triggered')]
 class BackendWebhook implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     protected ?int $eventId = null;
     protected ?int $userId = null;
@@ -18,61 +21,61 @@ class BackendWebhook implements \JsonSerializable, \PSX\Record\RecordableInterfa
      * @var array<BackendWebhookResponse>|null
      */
     protected ?array $responses = null;
-    public function setId(?int $id) : void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
-    public function setEventId(?int $eventId) : void
+    public function setEventId(?int $eventId): void
     {
         $this->eventId = $eventId;
     }
-    public function getEventId() : ?int
+    public function getEventId(): ?int
     {
         return $this->eventId;
     }
-    public function setUserId(?int $userId) : void
+    public function setUserId(?int $userId): void
     {
         $this->userId = $userId;
     }
-    public function getUserId() : ?int
+    public function getUserId(): ?int
     {
         return $this->userId;
     }
-    public function setName(?string $name) : void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
-    public function setEndpoint(?string $endpoint) : void
+    public function setEndpoint(?string $endpoint): void
     {
         $this->endpoint = $endpoint;
     }
-    public function getEndpoint() : ?string
+    public function getEndpoint(): ?string
     {
         return $this->endpoint;
     }
     /**
      * @param array<BackendWebhookResponse>|null $responses
      */
-    public function setResponses(?array $responses) : void
+    public function setResponses(?array $responses): void
     {
         $this->responses = $responses;
     }
     /**
      * @return array<BackendWebhookResponse>|null
      */
-    public function getResponses() : ?array
+    public function getResponses(): ?array
     {
         return $this->responses;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -84,7 +87,7 @@ class BackendWebhook implements \JsonSerializable, \PSX\Record\RecordableInterfa
         $record->put('responses', $this->responses);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

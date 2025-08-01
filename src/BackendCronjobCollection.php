@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends CommonCollection<BackendCronjob>
  */
+#[Description('A paginated collection of cronjob objects')]
 class BackendCronjobCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

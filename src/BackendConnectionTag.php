@@ -14,33 +14,66 @@ use Sdkgen\Client\TagAbstract;
 
 class BackendConnectionTag extends TagAbstract
 {
+    public function database(): BackendConnectionDatabaseTag
+    {
+        return new BackendConnectionDatabaseTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function filesystem(): BackendConnectionFilesystemTag
+    {
+        return new BackendConnectionFilesystemTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function http(): BackendConnectionHttpTag
+    {
+        return new BackendConnectionHttpTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function sdk(): BackendConnectionSdkTag
+    {
+        return new BackendConnectionSdkTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     /**
-     * @param string $connectionId
-     * @param string $entity
-     * @return BackendConnectionIntrospectionEntity
+     * Creates a new connection
+     *
+     * @param BackendConnectionCreate $payload
+     * @return CommonMessage
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getIntrospectionForEntity(string $connectionId, string $entity): BackendConnectionIntrospectionEntity
+    public function create(BackendConnectionCreate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/connection/$connection_id<[0-9]+|^~>/introspection/:entity', [
-            'connection_id' => $connectionId,
-            'entity' => $entity,
+        $url = $this->parser->url('/backend/connection', [
         ]);
 
         $options = [
             'headers' => [
+                'Content-Type' => 'application/json',
             ],
             'query' => $this->parser->query([
             ], [
             ]),
+            'json' => $payload,
         ];
 
         try {
-            $response = $this->httpClient->request('GET', $url, $options);
+            $response = $this->httpClient->request('POST', $url, $options);
             $body = $response->getBody();
 
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendConnectionIntrospectionEntity::class));
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
             return $data;
         } catch (ClientException $e) {
@@ -49,19 +82,7 @@ class BackendConnectionTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 404) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
                 throw new CommonMessageException($data);
@@ -74,114 +95,8 @@ class BackendConnectionTag extends TagAbstract
     }
 
     /**
-     * @param string $connectionId
-     * @return BackendConnectionIntrospectionEntities
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getIntrospection(string $connectionId): BackendConnectionIntrospectionEntities
-    {
-        $url = $this->parser->url('/backend/connection/$connection_id<[0-9]+|^~>/introspection', [
-            'connection_id' => $connectionId,
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendConnectionIntrospectionEntities::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 404) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param string $connectionId
-     * @return BackendConnectionRedirectResponse
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getRedirect(string $connectionId): BackendConnectionRedirectResponse
-    {
-        $url = $this->parser->url('/backend/connection/$connection_id<[0-9]+|^~>/redirect', [
-            'connection_id' => $connectionId,
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendConnectionRedirectResponse::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
+     * Deletes an existing connection
+     *
      * @param string $connectionId
      * @return CommonMessage
      * @throws CommonMessageException
@@ -214,25 +129,7 @@ class BackendConnectionTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 404) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 410) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
                 throw new CommonMessageException($data);
@@ -245,6 +142,247 @@ class BackendConnectionTag extends TagAbstract
     }
 
     /**
+     * Returns a specific connection
+     *
+     * @param string $connectionId
+     * @return BackendConnection
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function get(string $connectionId): BackendConnection
+    {
+        $url = $this->parser->url('/backend/connection/$connection_id<[0-9]+|^~>', [
+            'connection_id' => $connectionId,
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendConnection::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Returns a paginated list of connections
+     *
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param string|null $class
+     * @return BackendConnectionCollection
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $class = null): BackendConnectionCollection
+    {
+        $url = $this->parser->url('/backend/connection', [
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'class' => $class,
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendConnectionCollection::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Returns all available connection classes
+     *
+     * @return BackendConnectionIndex
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function getClasses(): BackendConnectionIndex
+    {
+        $url = $this->parser->url('/backend/connection/list', [
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendConnectionIndex::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Returns the connection config form
+     *
+     * @param string|null $class
+     * @return CommonFormContainer
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function getForm(?string $class = null): CommonFormContainer
+    {
+        $url = $this->parser->url('/backend/connection/form', [
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+                'class' => $class,
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonFormContainer::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Returns a redirect url to start the OAuth2 authorization flow for the given connection
+     *
+     * @param string $connectionId
+     * @return BackendConnectionRedirectResponse
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function getRedirect(string $connectionId): BackendConnectionRedirectResponse
+    {
+        $url = $this->parser->url('/backend/connection/:connection_id/redirect', [
+            'connection_id' => $connectionId,
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendConnectionRedirectResponse::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Updates an existing connection
+     *
      * @param string $connectionId
      * @param BackendConnectionUpdate $payload
      * @return CommonMessage
@@ -280,307 +418,7 @@ class BackendConnectionTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 400) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 404) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 410) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param string $connectionId
-     * @return BackendConnection
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function get(string $connectionId): BackendConnection
-    {
-        $url = $this->parser->url('/backend/connection/$connection_id<[0-9]+|^~>', [
-            'connection_id' => $connectionId,
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendConnection::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 404) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 410) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param string|null $class
-     * @return CommonFormContainer
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getForm(?string $class = null): CommonFormContainer
-    {
-        $url = $this->parser->url('/backend/connection/form', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-                'class' => $class,
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonFormContainer::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @return BackendConnectionIndex
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getClasses(): BackendConnectionIndex
-    {
-        $url = $this->parser->url('/backend/connection/list', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendConnectionIndex::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param BackendConnectionCreate $payload
-     * @return CommonMessage
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function create(BackendConnectionCreate $payload): CommonMessage
-    {
-        $url = $this->parser->url('/backend/connection', [
-        ]);
-
-        $options = [
-            'headers' => [
-                'Content-Type' => 'application/json',
-            ],
-            'query' => $this->parser->query([
-            ], [
-            ]),
-            'json' => $payload,
-        ];
-
-        try {
-            $response = $this->httpClient->request('POST', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 400) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param int|null $startIndex
-     * @param int|null $count
-     * @param string|null $search
-     * @return BackendConnectionCollection
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): BackendConnectionCollection
-    {
-        $url = $this->parser->url('/backend/connection', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-                'startIndex' => $startIndex,
-                'count' => $count,
-                'search' => $search,
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendConnectionCollection::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
                 throw new CommonMessageException($data);

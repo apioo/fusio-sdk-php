@@ -25,9 +25,9 @@ class Client extends ClientAbstract
         );
     }
 
-    public function system(): SystemTag
+    public function backend(): BackendTag
     {
-        return new SystemTag(
+        return new BackendTag(
             $this->httpClient,
             $this->parser
         );
@@ -41,9 +41,9 @@ class Client extends ClientAbstract
         );
     }
 
-    public function backend(): BackendTag
+    public function system(): SystemTag
     {
-        return new BackendTag(
+        return new SystemTag(
             $this->httpClient,
             $this->parser
         );

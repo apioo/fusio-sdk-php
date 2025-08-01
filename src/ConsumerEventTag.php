@@ -15,6 +15,55 @@ use Sdkgen\Client\TagAbstract;
 class ConsumerEventTag extends TagAbstract
 {
     /**
+     * Returns a specific event for the authenticated user
+     *
+     * @param string $eventId
+     * @return ConsumerEvent
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function get(string $eventId): ConsumerEvent
+    {
+        $url = $this->parser->url('/consumer/event/$event_id<[0-9]+|^~>', [
+            'event_id' => $eventId,
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(ConsumerEvent::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Returns a paginated list of apps which are assigned to the authenticated user
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -51,13 +100,7 @@ class ConsumerEventTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
                 throw new CommonMessageException($data);

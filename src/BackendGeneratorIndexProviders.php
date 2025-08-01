@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Contains all possible classes which can be used at an generator as class')]
 class BackendGeneratorIndexProviders implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
@@ -16,25 +18,25 @@ class BackendGeneratorIndexProviders implements \JsonSerializable, \PSX\Record\R
     /**
      * @param array<BackendGeneratorIndexProvider>|null $providers
      */
-    public function setProviders(?array $providers) : void
+    public function setProviders(?array $providers): void
     {
         $this->providers = $providers;
     }
     /**
      * @return array<BackendGeneratorIndexProvider>|null
      */
-    public function getProviders() : ?array
+    public function getProviders(): ?array
     {
         return $this->providers;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('providers', $this->providers);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

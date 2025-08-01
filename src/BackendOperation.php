@@ -6,181 +6,201 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents an operation, an operation invokes an action in case a specific HTTP method and path was requested. It defines also schema information about the request and response payload')]
 class BackendOperation implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Status of the object either 1 = active or 0 = deleted')]
     protected ?int $status = null;
+    #[Description('Indicates whether the operation is active')]
     protected ?bool $active = null;
+    #[Description('Indicates whether the operation is public, if false a user must provide an Authorization header with an Bearer access token')]
     protected ?bool $public = null;
+    #[Description('Describes the stability of this operation 0 = deprecated, 1 = experimental, 2 = stable and 3 = legacy')]
     protected ?int $stability = null;
+    #[Description('A short description of this operation, it should explain the operation in a simple and precise way')]
     protected ?string $description = null;
+    #[Description('The target HTTP method i.e. GET or POST')]
     protected ?string $httpMethod = null;
+    #[Description('The target HTTP path i.e. /foo or /product/:product_id')]
     protected ?string $httpPath = null;
+    #[Description('The success HTTP code i.e. 200 or 201')]
     protected ?int $httpCode = null;
+    #[Description('Unique name of the object. It is recommended to group your operations into logical units by using a dot i.e. product.getAll and product.insert which has also an effect on the automatically generated SDK')]
     protected ?string $name = null;
+    #[Description('Describes available query parameters')]
     protected ?BackendOperationParameters $parameters = null;
+    #[Description('Describes the incoming request payload, this must contain a schema name')]
     protected ?string $incoming = null;
+    #[Description('Describes the outgoing response payload, this must contain a schema name')]
     protected ?string $outgoing = null;
+    #[Description('Describes error responses for i.e. client or server errors')]
     protected ?BackendOperationThrows $throws = null;
+    #[Description('The target action to invoke, this must contain an action name')]
     protected ?string $action = null;
+    #[Description('Costs to invoke this operation. A user can only invoke this operation in case he has enough points')]
     protected ?int $costs = null;
     /**
      * @var array<string>|null
      */
+    #[Description('Scopes which are required to invoke this operation')]
     protected ?array $scopes = null;
+    #[Description('Use this parameter to attach key-value data')]
     protected ?CommonMetadata $metadata = null;
-    public function setId(?int $id) : void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
-    public function setStatus(?int $status) : void
+    public function setStatus(?int $status): void
     {
         $this->status = $status;
     }
-    public function getStatus() : ?int
+    public function getStatus(): ?int
     {
         return $this->status;
     }
-    public function setActive(?bool $active) : void
+    public function setActive(?bool $active): void
     {
         $this->active = $active;
     }
-    public function getActive() : ?bool
+    public function getActive(): ?bool
     {
         return $this->active;
     }
-    public function setPublic(?bool $public) : void
+    public function setPublic(?bool $public): void
     {
         $this->public = $public;
     }
-    public function getPublic() : ?bool
+    public function getPublic(): ?bool
     {
         return $this->public;
     }
-    public function setStability(?int $stability) : void
+    public function setStability(?int $stability): void
     {
         $this->stability = $stability;
     }
-    public function getStability() : ?int
+    public function getStability(): ?int
     {
         return $this->stability;
     }
-    public function setDescription(?string $description) : void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
-    public function getDescription() : ?string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
-    public function setHttpMethod(?string $httpMethod) : void
+    public function setHttpMethod(?string $httpMethod): void
     {
         $this->httpMethod = $httpMethod;
     }
-    public function getHttpMethod() : ?string
+    public function getHttpMethod(): ?string
     {
         return $this->httpMethod;
     }
-    public function setHttpPath(?string $httpPath) : void
+    public function setHttpPath(?string $httpPath): void
     {
         $this->httpPath = $httpPath;
     }
-    public function getHttpPath() : ?string
+    public function getHttpPath(): ?string
     {
         return $this->httpPath;
     }
-    public function setHttpCode(?int $httpCode) : void
+    public function setHttpCode(?int $httpCode): void
     {
         $this->httpCode = $httpCode;
     }
-    public function getHttpCode() : ?int
+    public function getHttpCode(): ?int
     {
         return $this->httpCode;
     }
-    public function setName(?string $name) : void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
-    public function setParameters(?BackendOperationParameters $parameters) : void
+    public function setParameters(?BackendOperationParameters $parameters): void
     {
         $this->parameters = $parameters;
     }
-    public function getParameters() : ?BackendOperationParameters
+    public function getParameters(): ?BackendOperationParameters
     {
         return $this->parameters;
     }
-    public function setIncoming(?string $incoming) : void
+    public function setIncoming(?string $incoming): void
     {
         $this->incoming = $incoming;
     }
-    public function getIncoming() : ?string
+    public function getIncoming(): ?string
     {
         return $this->incoming;
     }
-    public function setOutgoing(?string $outgoing) : void
+    public function setOutgoing(?string $outgoing): void
     {
         $this->outgoing = $outgoing;
     }
-    public function getOutgoing() : ?string
+    public function getOutgoing(): ?string
     {
         return $this->outgoing;
     }
-    public function setThrows(?BackendOperationThrows $throws) : void
+    public function setThrows(?BackendOperationThrows $throws): void
     {
         $this->throws = $throws;
     }
-    public function getThrows() : ?BackendOperationThrows
+    public function getThrows(): ?BackendOperationThrows
     {
         return $this->throws;
     }
-    public function setAction(?string $action) : void
+    public function setAction(?string $action): void
     {
         $this->action = $action;
     }
-    public function getAction() : ?string
+    public function getAction(): ?string
     {
         return $this->action;
     }
-    public function setCosts(?int $costs) : void
+    public function setCosts(?int $costs): void
     {
         $this->costs = $costs;
     }
-    public function getCosts() : ?int
+    public function getCosts(): ?int
     {
         return $this->costs;
     }
     /**
      * @param array<string>|null $scopes
      */
-    public function setScopes(?array $scopes) : void
+    public function setScopes(?array $scopes): void
     {
         $this->scopes = $scopes;
     }
     /**
      * @return array<string>|null
      */
-    public function getScopes() : ?array
+    public function getScopes(): ?array
     {
         return $this->scopes;
     }
-    public function setMetadata(?CommonMetadata $metadata) : void
+    public function setMetadata(?CommonMetadata $metadata): void
     {
         $this->metadata = $metadata;
     }
-    public function getMetadata() : ?CommonMetadata
+    public function getMetadata(): ?CommonMetadata
     {
         return $this->metadata;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -204,7 +224,7 @@ class BackendOperation implements \JsonSerializable, \PSX\Record\RecordableInter
         $record->put('metadata', $this->metadata);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

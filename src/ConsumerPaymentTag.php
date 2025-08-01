@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class ConsumerPaymentTag extends TagAbstract
 {
     /**
+     * Start the checkout process for a specific plan
+     *
      * @param string $provider
      * @param ConsumerPaymentCheckoutRequest $payload
      * @return ConsumerPaymentCheckoutResponse
@@ -50,13 +52,7 @@ class ConsumerPaymentTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
                 throw new CommonMessageException($data);
@@ -69,6 +65,8 @@ class ConsumerPaymentTag extends TagAbstract
     }
 
     /**
+     * Generates a payment portal link for the authenticated user
+     *
      * @param string $provider
      * @param ConsumerPaymentPortalRequest $payload
      * @return ConsumerPaymentPortalResponse
@@ -104,13 +102,7 @@ class ConsumerPaymentTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
                 throw new CommonMessageException($data);

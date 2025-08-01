@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends CommonCollection<BackendSchema>
  */
+#[Description('A paginated collection of schema objects')]
 class BackendSchemaCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

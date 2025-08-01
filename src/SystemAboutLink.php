@@ -11,23 +11,23 @@ class SystemAboutLink implements \JsonSerializable, \PSX\Record\RecordableInterf
 {
     protected ?string $rel = null;
     protected ?string $href = null;
-    public function setRel(?string $rel) : void
+    public function setRel(?string $rel): void
     {
         $this->rel = $rel;
     }
-    public function getRel() : ?string
+    public function getRel(): ?string
     {
         return $this->rel;
     }
-    public function setHref(?string $href) : void
+    public function setHref(?string $href): void
     {
         $this->href = $href;
     }
-    public function getHref() : ?string
+    public function getHref(): ?string
     {
         return $this->href;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -35,7 +35,7 @@ class SystemAboutLink implements \JsonSerializable, \PSX\Record\RecordableInterf
         $record->put('href', $this->href);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

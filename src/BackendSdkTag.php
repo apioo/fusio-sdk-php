@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendSdkTag extends TagAbstract
 {
     /**
+     * Generates a specific SDK
+     *
      * @param BackendSdkGenerate $payload
      * @return BackendSdkMessage
      * @throws CommonMessageException
@@ -48,19 +50,7 @@ class BackendSdkTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 400) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
                 throw new CommonMessageException($data);
@@ -73,6 +63,8 @@ class BackendSdkTag extends TagAbstract
     }
 
     /**
+     * Returns a paginated list of SDKs
+     *
      * @return BackendSdkResponse
      * @throws CommonMessageException
      * @throws ClientException
@@ -103,13 +95,7 @@ class BackendSdkTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
                 throw new CommonMessageException($data);

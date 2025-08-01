@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends CommonCollection<BackendEvent>
  */
+#[Description('A paginated collection of event objects')]
 class BackendEventCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

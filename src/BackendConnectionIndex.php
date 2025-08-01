@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Contains all possible classes which can be used at an connection as class')]
 class BackendConnectionIndex implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
@@ -16,25 +18,25 @@ class BackendConnectionIndex implements \JsonSerializable, \PSX\Record\Recordabl
     /**
      * @param array<BackendConnectionIndexEntry>|null $connections
      */
-    public function setConnections(?array $connections) : void
+    public function setConnections(?array $connections): void
     {
         $this->connections = $connections;
     }
     /**
      * @return array<BackendConnectionIndexEntry>|null
      */
-    public function getConnections() : ?array
+    public function getConnections(): ?array
     {
         return $this->connections;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('connections', $this->connections);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

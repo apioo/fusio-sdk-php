@@ -16,25 +16,25 @@ class BackendScopeCategories implements \JsonSerializable, \PSX\Record\Recordabl
     /**
      * @param array<BackendScopeCategory>|null $categories
      */
-    public function setCategories(?array $categories) : void
+    public function setCategories(?array $categories): void
     {
         $this->categories = $categories;
     }
     /**
      * @return array<BackendScopeCategory>|null
      */
-    public function getCategories() : ?array
+    public function getCategories(): ?array
     {
         return $this->categories;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('categories', $this->categories);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends CommonCollection<BackendCategory>
  */
+#[Description('A paginated collection of category objects')]
 class BackendCategoryCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

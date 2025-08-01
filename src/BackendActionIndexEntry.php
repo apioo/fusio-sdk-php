@@ -6,28 +6,32 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Represents a concrete action class')]
 class BackendActionIndexEntry implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Human-readable name of the action class')]
     protected ?string $name = null;
+    #[Description('Technical identifier of the action class')]
     protected ?string $class = null;
-    public function setName(?string $name) : void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
-    public function setClass(?string $class) : void
+    public function setClass(?string $class): void
     {
         $this->class = $class;
     }
-    public function getClass() : ?string
+    public function getClass(): ?string
     {
         return $this->class;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -35,7 +39,7 @@ class BackendActionIndexEntry implements \JsonSerializable, \PSX\Record\Recordab
         $record->put('class', $this->class);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

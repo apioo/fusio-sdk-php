@@ -32,137 +32,137 @@ class SystemAbout implements \JsonSerializable, \PSX\Record\RecordableInterface
      * @var array<SystemAboutLink>|null
      */
     protected ?array $links = null;
-    public function setApiVersion(?string $apiVersion) : void
+    public function setApiVersion(?string $apiVersion): void
     {
         $this->apiVersion = $apiVersion;
     }
-    public function getApiVersion() : ?string
+    public function getApiVersion(): ?string
     {
         return $this->apiVersion;
     }
-    public function setTitle(?string $title) : void
+    public function setTitle(?string $title): void
     {
         $this->title = $title;
     }
-    public function getTitle() : ?string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
-    public function setDescription(?string $description) : void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
-    public function getDescription() : ?string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
-    public function setTermsOfService(?string $termsOfService) : void
+    public function setTermsOfService(?string $termsOfService): void
     {
         $this->termsOfService = $termsOfService;
     }
-    public function getTermsOfService() : ?string
+    public function getTermsOfService(): ?string
     {
         return $this->termsOfService;
     }
-    public function setContactName(?string $contactName) : void
+    public function setContactName(?string $contactName): void
     {
         $this->contactName = $contactName;
     }
-    public function getContactName() : ?string
+    public function getContactName(): ?string
     {
         return $this->contactName;
     }
-    public function setContactUrl(?string $contactUrl) : void
+    public function setContactUrl(?string $contactUrl): void
     {
         $this->contactUrl = $contactUrl;
     }
-    public function getContactUrl() : ?string
+    public function getContactUrl(): ?string
     {
         return $this->contactUrl;
     }
-    public function setContactEmail(?string $contactEmail) : void
+    public function setContactEmail(?string $contactEmail): void
     {
         $this->contactEmail = $contactEmail;
     }
-    public function getContactEmail() : ?string
+    public function getContactEmail(): ?string
     {
         return $this->contactEmail;
     }
-    public function setLicenseName(?string $licenseName) : void
+    public function setLicenseName(?string $licenseName): void
     {
         $this->licenseName = $licenseName;
     }
-    public function getLicenseName() : ?string
+    public function getLicenseName(): ?string
     {
         return $this->licenseName;
     }
-    public function setLicenseUrl(?string $licenseUrl) : void
+    public function setLicenseUrl(?string $licenseUrl): void
     {
         $this->licenseUrl = $licenseUrl;
     }
-    public function getLicenseUrl() : ?string
+    public function getLicenseUrl(): ?string
     {
         return $this->licenseUrl;
     }
-    public function setPaymentCurrency(?string $paymentCurrency) : void
+    public function setPaymentCurrency(?string $paymentCurrency): void
     {
         $this->paymentCurrency = $paymentCurrency;
     }
-    public function getPaymentCurrency() : ?string
+    public function getPaymentCurrency(): ?string
     {
         return $this->paymentCurrency;
     }
     /**
      * @param array<string>|null $categories
      */
-    public function setCategories(?array $categories) : void
+    public function setCategories(?array $categories): void
     {
         $this->categories = $categories;
     }
     /**
      * @return array<string>|null
      */
-    public function getCategories() : ?array
+    public function getCategories(): ?array
     {
         return $this->categories;
     }
     /**
      * @param array<string>|null $scopes
      */
-    public function setScopes(?array $scopes) : void
+    public function setScopes(?array $scopes): void
     {
         $this->scopes = $scopes;
     }
     /**
      * @return array<string>|null
      */
-    public function getScopes() : ?array
+    public function getScopes(): ?array
     {
         return $this->scopes;
     }
-    public function setApps(?SystemAboutApps $apps) : void
+    public function setApps(?SystemAboutApps $apps): void
     {
         $this->apps = $apps;
     }
-    public function getApps() : ?SystemAboutApps
+    public function getApps(): ?SystemAboutApps
     {
         return $this->apps;
     }
     /**
      * @param array<SystemAboutLink>|null $links
      */
-    public function setLinks(?array $links) : void
+    public function setLinks(?array $links): void
     {
         $this->links = $links;
     }
     /**
      * @return array<SystemAboutLink>|null
      */
-    public function getLinks() : ?array
+    public function getLinks(): ?array
     {
         return $this->links;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -182,7 +182,7 @@ class SystemAbout implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('links', $this->links);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

@@ -15,6 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class SystemPaymentTag extends TagAbstract
 {
     /**
+     * Payment webhook endpoint after successful purchase of a plan
+     *
      * @param string $provider
      * @return CommonMessage
      * @throws CommonMessageException
@@ -47,7 +49,7 @@ class SystemPaymentTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 500) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
                 throw new CommonMessageException($data);

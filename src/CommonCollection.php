@@ -20,45 +20,45 @@ class CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInter
      * @var array<T>|null
      */
     protected ?array $entry = null;
-    public function setTotalResults(?int $totalResults) : void
+    public function setTotalResults(?int $totalResults): void
     {
         $this->totalResults = $totalResults;
     }
-    public function getTotalResults() : ?int
+    public function getTotalResults(): ?int
     {
         return $this->totalResults;
     }
-    public function setStartIndex(?int $startIndex) : void
+    public function setStartIndex(?int $startIndex): void
     {
         $this->startIndex = $startIndex;
     }
-    public function getStartIndex() : ?int
+    public function getStartIndex(): ?int
     {
         return $this->startIndex;
     }
-    public function setItemsPerPage(?int $itemsPerPage) : void
+    public function setItemsPerPage(?int $itemsPerPage): void
     {
         $this->itemsPerPage = $itemsPerPage;
     }
-    public function getItemsPerPage() : ?int
+    public function getItemsPerPage(): ?int
     {
         return $this->itemsPerPage;
     }
     /**
      * @param array<T>|null $entry
      */
-    public function setEntry(?array $entry) : void
+    public function setEntry(?array $entry): void
     {
         $this->entry = $entry;
     }
     /**
      * @return array<T>|null
      */
-    public function getEntry() : ?array
+    public function getEntry(): ?array
     {
         return $this->entry;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -68,7 +68,7 @@ class CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInter
         $record->put('entry', $this->entry);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

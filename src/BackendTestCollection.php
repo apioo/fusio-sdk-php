@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends CommonCollection<BackendTest>
  */
+#[Description('A paginated collection of test objects')]
 class BackendTestCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

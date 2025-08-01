@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends \PSX\Record\Record<string>
  */
+#[Description('Represents a map of headers')]
 class BackendActionExecuteResponseHeaders extends \PSX\Record\Record
 {
 }

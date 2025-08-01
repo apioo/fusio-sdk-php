@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends CommonCollection<BackendScope>
  */
+#[Description('A paginated collection of scope objects')]
 class BackendScopeCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

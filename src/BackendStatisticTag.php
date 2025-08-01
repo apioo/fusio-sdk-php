@@ -15,979 +15,8 @@ use Sdkgen\Client\TagAbstract;
 class BackendStatisticTag extends TagAbstract
 {
     /**
-     * @param int|null $startIndex
-     * @param int|null $count
-     * @param string|null $search
-     * @param string|null $from
-     * @param string|null $to
-     * @param int|null $operationId
-     * @param int|null $appId
-     * @param int|null $userId
-     * @param string|null $ip
-     * @param string|null $userAgent
-     * @param string|null $method
-     * @param string|null $path
-     * @param string|null $header
-     * @param string|null $body
-     * @return BackendStatisticChart
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getUserRegistrations(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
-    {
-        $url = $this->parser->url('/backend/statistic/user_registrations', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-                'startIndex' => $startIndex,
-                'count' => $count,
-                'search' => $search,
-                'from' => $from,
-                'to' => $to,
-                'operationId' => $operationId,
-                'appId' => $appId,
-                'userId' => $userId,
-                'ip' => $ip,
-                'userAgent' => $userAgent,
-                'method' => $method,
-                'path' => $path,
-                'header' => $header,
-                'body' => $body,
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param int|null $startIndex
-     * @param int|null $count
-     * @param string|null $search
-     * @param string|null $from
-     * @param string|null $to
-     * @param int|null $operationId
-     * @param int|null $appId
-     * @param int|null $userId
-     * @param string|null $ip
-     * @param string|null $userAgent
-     * @param string|null $method
-     * @param string|null $path
-     * @param string|null $header
-     * @param string|null $body
-     * @return BackendStatisticChart
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getUsedPoints(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
-    {
-        $url = $this->parser->url('/backend/statistic/used_points', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-                'startIndex' => $startIndex,
-                'count' => $count,
-                'search' => $search,
-                'from' => $from,
-                'to' => $to,
-                'operationId' => $operationId,
-                'appId' => $appId,
-                'userId' => $userId,
-                'ip' => $ip,
-                'userAgent' => $userAgent,
-                'method' => $method,
-                'path' => $path,
-                'header' => $header,
-                'body' => $body,
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param int|null $startIndex
-     * @param int|null $count
-     * @param string|null $search
-     * @param string|null $from
-     * @param string|null $to
-     * @param int|null $operationId
-     * @param int|null $appId
-     * @param int|null $userId
-     * @param string|null $ip
-     * @param string|null $userAgent
-     * @param string|null $method
-     * @param string|null $path
-     * @param string|null $header
-     * @param string|null $body
-     * @return BackendStatisticChart
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getTimePerOperation(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
-    {
-        $url = $this->parser->url('/backend/statistic/time_per_operation', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-                'startIndex' => $startIndex,
-                'count' => $count,
-                'search' => $search,
-                'from' => $from,
-                'to' => $to,
-                'operationId' => $operationId,
-                'appId' => $appId,
-                'userId' => $userId,
-                'ip' => $ip,
-                'userAgent' => $userAgent,
-                'method' => $method,
-                'path' => $path,
-                'header' => $header,
-                'body' => $body,
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param int|null $startIndex
-     * @param int|null $count
-     * @param string|null $search
-     * @param string|null $from
-     * @param string|null $to
-     * @param int|null $operationId
-     * @param int|null $appId
-     * @param int|null $userId
-     * @param string|null $ip
-     * @param string|null $userAgent
-     * @param string|null $method
-     * @param string|null $path
-     * @param string|null $header
-     * @param string|null $body
-     * @return BackendStatisticChart
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getTimeAverage(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
-    {
-        $url = $this->parser->url('/backend/statistic/time_average', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-                'startIndex' => $startIndex,
-                'count' => $count,
-                'search' => $search,
-                'from' => $from,
-                'to' => $to,
-                'operationId' => $operationId,
-                'appId' => $appId,
-                'userId' => $userId,
-                'ip' => $ip,
-                'userAgent' => $userAgent,
-                'method' => $method,
-                'path' => $path,
-                'header' => $header,
-                'body' => $body,
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @return BackendStatisticChart
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getTestCoverage(): BackendStatisticChart
-    {
-        $url = $this->parser->url('/backend/statistic/test_coverage', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param int|null $startIndex
-     * @param int|null $count
-     * @param string|null $search
-     * @param string|null $from
-     * @param string|null $to
-     * @param int|null $operationId
-     * @param int|null $appId
-     * @param int|null $userId
-     * @param string|null $ip
-     * @param string|null $userAgent
-     * @param string|null $method
-     * @param string|null $path
-     * @param string|null $header
-     * @param string|null $body
-     * @return BackendStatisticChart
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getMostUsedOperations(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
-    {
-        $url = $this->parser->url('/backend/statistic/most_used_operations', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-                'startIndex' => $startIndex,
-                'count' => $count,
-                'search' => $search,
-                'from' => $from,
-                'to' => $to,
-                'operationId' => $operationId,
-                'appId' => $appId,
-                'userId' => $userId,
-                'ip' => $ip,
-                'userAgent' => $userAgent,
-                'method' => $method,
-                'path' => $path,
-                'header' => $header,
-                'body' => $body,
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param int|null $startIndex
-     * @param int|null $count
-     * @param string|null $search
-     * @param string|null $from
-     * @param string|null $to
-     * @param int|null $operationId
-     * @param int|null $appId
-     * @param int|null $userId
-     * @param string|null $ip
-     * @param string|null $userAgent
-     * @param string|null $method
-     * @param string|null $path
-     * @param string|null $header
-     * @param string|null $body
-     * @return BackendStatisticChart
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getMostUsedApps(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
-    {
-        $url = $this->parser->url('/backend/statistic/most_used_apps', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-                'startIndex' => $startIndex,
-                'count' => $count,
-                'search' => $search,
-                'from' => $from,
-                'to' => $to,
-                'operationId' => $operationId,
-                'appId' => $appId,
-                'userId' => $userId,
-                'ip' => $ip,
-                'userAgent' => $userAgent,
-                'method' => $method,
-                'path' => $path,
-                'header' => $header,
-                'body' => $body,
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param int|null $startIndex
-     * @param int|null $count
-     * @param string|null $search
-     * @param string|null $from
-     * @param string|null $to
-     * @param int|null $operationId
-     * @param int|null $appId
-     * @param int|null $userId
-     * @param string|null $ip
-     * @param string|null $userAgent
-     * @param string|null $method
-     * @param string|null $path
-     * @param string|null $header
-     * @param string|null $body
-     * @return BackendStatisticChart
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getMostUsedActivities(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
-    {
-        $url = $this->parser->url('/backend/statistic/most_used_activities', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-                'startIndex' => $startIndex,
-                'count' => $count,
-                'search' => $search,
-                'from' => $from,
-                'to' => $to,
-                'operationId' => $operationId,
-                'appId' => $appId,
-                'userId' => $userId,
-                'ip' => $ip,
-                'userAgent' => $userAgent,
-                'method' => $method,
-                'path' => $path,
-                'header' => $header,
-                'body' => $body,
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param int|null $startIndex
-     * @param int|null $count
-     * @param string|null $search
-     * @param string|null $from
-     * @param string|null $to
-     * @param int|null $operationId
-     * @param int|null $appId
-     * @param int|null $userId
-     * @param string|null $ip
-     * @param string|null $userAgent
-     * @param string|null $method
-     * @param string|null $path
-     * @param string|null $header
-     * @param string|null $body
-     * @return BackendStatisticChart
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getIssuedTokens(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
-    {
-        $url = $this->parser->url('/backend/statistic/issued_tokens', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-                'startIndex' => $startIndex,
-                'count' => $count,
-                'search' => $search,
-                'from' => $from,
-                'to' => $to,
-                'operationId' => $operationId,
-                'appId' => $appId,
-                'userId' => $userId,
-                'ip' => $ip,
-                'userAgent' => $userAgent,
-                'method' => $method,
-                'path' => $path,
-                'header' => $header,
-                'body' => $body,
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param int|null $startIndex
-     * @param int|null $count
-     * @param string|null $search
-     * @param string|null $from
-     * @param string|null $to
-     * @param int|null $operationId
-     * @param int|null $appId
-     * @param int|null $userId
-     * @param string|null $ip
-     * @param string|null $userAgent
-     * @param string|null $method
-     * @param string|null $path
-     * @param string|null $header
-     * @param string|null $body
-     * @return BackendStatisticChart
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getIncomingTransactions(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
-    {
-        $url = $this->parser->url('/backend/statistic/incoming_transactions', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-                'startIndex' => $startIndex,
-                'count' => $count,
-                'search' => $search,
-                'from' => $from,
-                'to' => $to,
-                'operationId' => $operationId,
-                'appId' => $appId,
-                'userId' => $userId,
-                'ip' => $ip,
-                'userAgent' => $userAgent,
-                'method' => $method,
-                'path' => $path,
-                'header' => $header,
-                'body' => $body,
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param int|null $startIndex
-     * @param int|null $count
-     * @param string|null $search
-     * @param string|null $from
-     * @param string|null $to
-     * @param int|null $operationId
-     * @param int|null $appId
-     * @param int|null $userId
-     * @param string|null $ip
-     * @param string|null $userAgent
-     * @param string|null $method
-     * @param string|null $path
-     * @param string|null $header
-     * @param string|null $body
-     * @return BackendStatisticChart
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getIncomingRequests(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
-    {
-        $url = $this->parser->url('/backend/statistic/incoming_requests', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-                'startIndex' => $startIndex,
-                'count' => $count,
-                'search' => $search,
-                'from' => $from,
-                'to' => $to,
-                'operationId' => $operationId,
-                'appId' => $appId,
-                'userId' => $userId,
-                'ip' => $ip,
-                'userAgent' => $userAgent,
-                'method' => $method,
-                'path' => $path,
-                'header' => $header,
-                'body' => $body,
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param int|null $startIndex
-     * @param int|null $count
-     * @param string|null $search
-     * @param string|null $from
-     * @param string|null $to
-     * @param int|null $operationId
-     * @param int|null $appId
-     * @param int|null $userId
-     * @param string|null $ip
-     * @param string|null $userAgent
-     * @param string|null $method
-     * @param string|null $path
-     * @param string|null $header
-     * @param string|null $body
-     * @return BackendStatisticChart
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getErrorsPerOperation(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
-    {
-        $url = $this->parser->url('/backend/statistic/errors_per_operation', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-                'startIndex' => $startIndex,
-                'count' => $count,
-                'search' => $search,
-                'from' => $from,
-                'to' => $to,
-                'operationId' => $operationId,
-                'appId' => $appId,
-                'userId' => $userId,
-                'ip' => $ip,
-                'userAgent' => $userAgent,
-                'method' => $method,
-                'path' => $path,
-                'header' => $header,
-                'body' => $body,
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * @param int|null $startIndex
-     * @param int|null $count
-     * @param string|null $search
-     * @param string|null $from
-     * @param string|null $to
-     * @param int|null $operationId
-     * @param int|null $appId
-     * @param int|null $userId
-     * @param string|null $ip
-     * @param string|null $userAgent
-     * @param string|null $method
-     * @param string|null $path
-     * @param string|null $header
-     * @param string|null $body
-     * @return BackendStatisticCount
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getCountRequests(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticCount
-    {
-        $url = $this->parser->url('/backend/statistic/count_requests', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-                'startIndex' => $startIndex,
-                'count' => $count,
-                'search' => $search,
-                'from' => $from,
-                'to' => $to,
-                'operationId' => $operationId,
-                'appId' => $appId,
-                'userId' => $userId,
-                'ip' => $ip,
-                'userAgent' => $userAgent,
-                'method' => $method,
-                'path' => $path,
-                'header' => $header,
-                'body' => $body,
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticCount::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode === 401) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            if ($statusCode === 500) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
+     * Returns a statistic containing the activities per user
+     *
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
@@ -1046,13 +75,928 @@ class BackendStatisticTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 401) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
                 throw new CommonMessageException($data);
             }
 
-            if ($statusCode === 500) {
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Returns a statistic containing the request count
+     *
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param string|null $from
+     * @param string|null $to
+     * @param int|null $operationId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
+     * @return BackendStatisticCount
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function getCountRequests(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticCount
+    {
+        $url = $this->parser->url('/backend/statistic/count_requests', [
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'operationId' => $operationId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticCount::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Returns a statistic containing the errors per operation
+     *
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param string|null $from
+     * @param string|null $to
+     * @param int|null $operationId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
+     * @return BackendStatisticChart
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function getErrorsPerOperation(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
+    {
+        $url = $this->parser->url('/backend/statistic/errors_per_operation', [
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'operationId' => $operationId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Returns a statistic containing the incoming requests
+     *
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param string|null $from
+     * @param string|null $to
+     * @param int|null $operationId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
+     * @return BackendStatisticChart
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function getIncomingRequests(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
+    {
+        $url = $this->parser->url('/backend/statistic/incoming_requests', [
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'operationId' => $operationId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Returns a statistic containing the incoming transactions
+     *
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param string|null $from
+     * @param string|null $to
+     * @param int|null $operationId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
+     * @return BackendStatisticChart
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function getIncomingTransactions(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
+    {
+        $url = $this->parser->url('/backend/statistic/incoming_transactions', [
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'operationId' => $operationId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Returns a statistic containing the issues tokens
+     *
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param string|null $from
+     * @param string|null $to
+     * @param int|null $operationId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
+     * @return BackendStatisticChart
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function getIssuedTokens(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
+    {
+        $url = $this->parser->url('/backend/statistic/issued_tokens', [
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'operationId' => $operationId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Returns a statistic containing the most used activities
+     *
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param string|null $from
+     * @param string|null $to
+     * @param int|null $operationId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
+     * @return BackendStatisticChart
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function getMostUsedActivities(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
+    {
+        $url = $this->parser->url('/backend/statistic/most_used_activities', [
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'operationId' => $operationId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Returns a statistic containing the most used apps
+     *
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param string|null $from
+     * @param string|null $to
+     * @param int|null $operationId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
+     * @return BackendStatisticChart
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function getMostUsedApps(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
+    {
+        $url = $this->parser->url('/backend/statistic/most_used_apps', [
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'operationId' => $operationId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Returns a statistic containing the most used operations
+     *
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param string|null $from
+     * @param string|null $to
+     * @param int|null $operationId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
+     * @return BackendStatisticChart
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function getMostUsedOperations(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
+    {
+        $url = $this->parser->url('/backend/statistic/most_used_operations', [
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'operationId' => $operationId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Returns a statistic containing the test coverage
+     *
+     * @return BackendStatisticChart
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function getTestCoverage(): BackendStatisticChart
+    {
+        $url = $this->parser->url('/backend/statistic/test_coverage', [
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Returns a statistic containing the time average
+     *
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param string|null $from
+     * @param string|null $to
+     * @param int|null $operationId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
+     * @return BackendStatisticChart
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function getTimeAverage(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
+    {
+        $url = $this->parser->url('/backend/statistic/time_average', [
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'operationId' => $operationId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Returns a statistic containing the time per operation
+     *
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param string|null $from
+     * @param string|null $to
+     * @param int|null $operationId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
+     * @return BackendStatisticChart
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function getTimePerOperation(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
+    {
+        $url = $this->parser->url('/backend/statistic/time_per_operation', [
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'operationId' => $operationId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Returns a statistic containing the used points
+     *
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param string|null $from
+     * @param string|null $to
+     * @param int|null $operationId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
+     * @return BackendStatisticChart
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function getUsedPoints(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
+    {
+        $url = $this->parser->url('/backend/statistic/used_points', [
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'operationId' => $operationId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Returns a statistic containing the user registrations
+     *
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @param string|null $from
+     * @param string|null $to
+     * @param int|null $operationId
+     * @param int|null $appId
+     * @param int|null $userId
+     * @param string|null $ip
+     * @param string|null $userAgent
+     * @param string|null $method
+     * @param string|null $path
+     * @param string|null $header
+     * @param string|null $body
+     * @return BackendStatisticChart
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function getUserRegistrations(?int $startIndex = null, ?int $count = null, ?string $search = null, ?string $from = null, ?string $to = null, ?int $operationId = null, ?int $appId = null, ?int $userId = null, ?string $ip = null, ?string $userAgent = null, ?string $method = null, ?string $path = null, ?string $header = null, ?string $body = null): BackendStatisticChart
+    {
+        $url = $this->parser->url('/backend/statistic/user_registrations', [
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'from' => $from,
+                'to' => $to,
+                'operationId' => $operationId,
+                'appId' => $appId,
+                'userId' => $userId,
+                'ip' => $ip,
+                'userAgent' => $userAgent,
+                'method' => $method,
+                'path' => $path,
+                'header' => $header,
+                'body' => $body,
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendStatisticChart::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
 
                 throw new CommonMessageException($data);

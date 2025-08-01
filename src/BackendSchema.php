@@ -6,64 +6,62 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a schema to describe a JSON payload')]
 class BackendSchema implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Status of the object either 1 = active or 0 = deleted')]
     protected ?int $status = null;
+    #[Description('Unique name of the object')]
     protected ?string $name = null;
+    #[Description('The TypeSchema specification to describe a JSON payload')]
     protected ?BackendSchemaSource $source = null;
-    protected ?BackendSchemaForm $form = null;
+    #[Description('Use this parameter to attach key-value data')]
     protected ?CommonMetadata $metadata = null;
-    public function setId(?int $id) : void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
-    public function setStatus(?int $status) : void
+    public function setStatus(?int $status): void
     {
         $this->status = $status;
     }
-    public function getStatus() : ?int
+    public function getStatus(): ?int
     {
         return $this->status;
     }
-    public function setName(?string $name) : void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
-    public function setSource(?BackendSchemaSource $source) : void
+    public function setSource(?BackendSchemaSource $source): void
     {
         $this->source = $source;
     }
-    public function getSource() : ?BackendSchemaSource
+    public function getSource(): ?BackendSchemaSource
     {
         return $this->source;
     }
-    public function setForm(?BackendSchemaForm $form) : void
-    {
-        $this->form = $form;
-    }
-    public function getForm() : ?BackendSchemaForm
-    {
-        return $this->form;
-    }
-    public function setMetadata(?CommonMetadata $metadata) : void
+    public function setMetadata(?CommonMetadata $metadata): void
     {
         $this->metadata = $metadata;
     }
-    public function getMetadata() : ?CommonMetadata
+    public function getMetadata(): ?CommonMetadata
     {
         return $this->metadata;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -71,11 +69,10 @@ class BackendSchema implements \JsonSerializable, \PSX\Record\RecordableInterfac
         $record->put('status', $this->status);
         $record->put('name', $this->name);
         $record->put('source', $this->source);
-        $record->put('form', $this->form);
         $record->put('metadata', $this->metadata);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

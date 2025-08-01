@@ -11,23 +11,23 @@ class BackendSdkGenerate implements \JsonSerializable, \PSX\Record\RecordableInt
 {
     protected ?string $format = null;
     protected ?string $config = null;
-    public function setFormat(?string $format) : void
+    public function setFormat(?string $format): void
     {
         $this->format = $format;
     }
-    public function getFormat() : ?string
+    public function getFormat(): ?string
     {
         return $this->format;
     }
-    public function setConfig(?string $config) : void
+    public function setConfig(?string $config): void
     {
         $this->config = $config;
     }
-    public function getConfig() : ?string
+    public function getConfig(): ?string
     {
         return $this->config;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -35,7 +35,7 @@ class BackendSdkGenerate implements \JsonSerializable, \PSX\Record\RecordableInt
         $record->put('config', $this->config);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

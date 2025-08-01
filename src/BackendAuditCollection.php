@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends CommonCollection<BackendAudit>
  */
+#[Description('A paginated collection of audit objects')]
 class BackendAuditCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

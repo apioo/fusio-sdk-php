@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends \PSX\Record\Record<mixed>
  */
+#[Description('This object represents a row on a relational table')]
 class BackendDatabaseRow extends \PSX\Record\Record
 {
 }
