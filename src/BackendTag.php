@@ -262,6 +262,14 @@ class BackendTag extends TagAbstract
         );
     }
 
+    public function trigger(): BackendTriggerTag
+    {
+        return new BackendTriggerTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function user(): BackendUserTag
     {
         return new BackendUserTag(
