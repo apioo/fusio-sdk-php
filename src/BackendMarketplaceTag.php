@@ -30,5 +30,13 @@ class BackendMarketplaceTag extends TagAbstract
         );
     }
 
+    public function bundle(): BackendMarketplaceBundleTag
+    {
+        return new BackendMarketplaceBundleTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
 
 }
