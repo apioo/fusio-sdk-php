@@ -54,6 +54,14 @@ class BackendTag extends TagAbstract
         );
     }
 
+    public function bundle(): BackendBundleTag
+    {
+        return new BackendBundleTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function category(): BackendCategoryTag
     {
         return new BackendCategoryTag(
