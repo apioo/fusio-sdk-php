@@ -113,11 +113,11 @@ class BackendBundleTag extends TagAbstract
      * Returns a specific bundle
      *
      * @param string $bundleId
-     * @return BackendEvent
+     * @return BackendBundle
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function get(string $bundleId): BackendEvent
+    public function get(string $bundleId): BackendBundle
     {
         $url = $this->parser->url('/backend/bundle/$bundle_id<[0-9]+|^~>', [
             'bundle_id' => $bundleId,
@@ -135,7 +135,7 @@ class BackendBundleTag extends TagAbstract
             $response = $this->httpClient->request('GET', $url, $options);
             $body = $response->getBody();
 
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendEvent::class));
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendBundle::class));
 
             return $data;
         } catch (ClientException $e) {
