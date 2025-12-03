@@ -211,12 +211,12 @@ class BackendBundleTag extends TagAbstract
      * Updates an existing bundle
      *
      * @param string $bundleId
-     * @param BackendEventUpdate $payload
+     * @param BackendBundleUpdate $payload
      * @return CommonMessage
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function update(string $bundleId, BackendEventUpdate $payload): CommonMessage
+    public function update(string $bundleId, BackendBundleUpdate $payload): CommonMessage
     {
         $url = $this->parser->url('/backend/bundle/$bundle_id<[0-9]+|^~>', [
             'bundle_id' => $bundleId,
