@@ -11,6 +11,7 @@ class MarketplaceMessage implements \JsonSerializable, \PSX\Record\RecordableInt
 {
     protected ?bool $success = null;
     protected ?string $message = null;
+    protected ?string $id = null;
     public function setSuccess(?bool $success): void
     {
         $this->success = $success;
@@ -27,12 +28,21 @@ class MarketplaceMessage implements \JsonSerializable, \PSX\Record\RecordableInt
     {
         return $this->message;
     }
+    public function setId(?string $id): void
+    {
+        $this->id = $id;
+    }
+    public function getId(): ?string
+    {
+        return $this->id;
+    }
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('success', $this->success);
         $record->put('message', $this->message);
+        $record->put('id', $this->id);
         return $record;
     }
     public function jsonSerialize(): object
