@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Represents a concrete option entry')]
 class CommonFormElementSelectOption implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $key = null;
@@ -27,6 +29,9 @@ class CommonFormElementSelectOption implements \JsonSerializable, \PSX\Record\Re
     {
         return $this->value;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

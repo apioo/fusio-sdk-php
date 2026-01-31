@@ -54,6 +54,9 @@ class ConsumerAuthorizeResponse implements \JsonSerializable, \PSX\Record\Record
     {
         return $this->redirectUri;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

@@ -29,6 +29,9 @@ class BackendConnectionIndex implements \JsonSerializable, \PSX\Record\Recordabl
     {
         return $this->connections;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

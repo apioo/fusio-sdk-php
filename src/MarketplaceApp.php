@@ -45,6 +45,9 @@ class MarketplaceApp extends MarketplaceObject implements \JsonSerializable, \PS
     {
         return $this->hash;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

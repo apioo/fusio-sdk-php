@@ -14,6 +14,14 @@ use Sdkgen\Client\TagAbstract;
 
 class BackendConnectionTag extends TagAbstract
 {
+    public function agent(): BackendConnectionAgentTag
+    {
+        return new BackendConnectionAgentTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function database(): BackendConnectionDatabaseTag
     {
         return new BackendConnectionDatabaseTag(

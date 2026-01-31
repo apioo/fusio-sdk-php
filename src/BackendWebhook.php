@@ -75,6 +75,9 @@ class BackendWebhook implements \JsonSerializable, \PSX\Record\RecordableInterfa
     {
         return $this->responses;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

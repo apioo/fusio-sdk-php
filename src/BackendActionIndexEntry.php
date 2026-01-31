@@ -31,6 +31,9 @@ class BackendActionIndexEntry implements \JsonSerializable, \PSX\Record\Recordab
     {
         return $this->class;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

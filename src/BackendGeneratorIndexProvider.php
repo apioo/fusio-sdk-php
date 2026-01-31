@@ -31,6 +31,9 @@ class BackendGeneratorIndexProvider implements \JsonSerializable, \PSX\Record\Re
     {
         return $this->class;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

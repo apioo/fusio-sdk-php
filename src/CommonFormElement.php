@@ -7,8 +7,10 @@
 namespace Fusio\Sdk;
 
 use PSX\Schema\Attribute\DerivedType;
+use PSX\Schema\Attribute\Description;
 use PSX\Schema\Attribute\Discriminator;
 
+#[Description('Form base element')]
 #[Discriminator('type')]
 #[DerivedType(CommonFormElementInput::class, 'http://fusio-project.org/ns/2015/form/input')]
 #[DerivedType(CommonFormElementSelect::class, 'http://fusio-project.org/ns/2015/form/select')]
@@ -16,19 +18,10 @@ use PSX\Schema\Attribute\Discriminator;
 #[DerivedType(CommonFormElementTextArea::class, 'http://fusio-project.org/ns/2015/form/textarea')]
 abstract class CommonFormElement implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
-    protected ?string $type = null;
     protected ?string $element = null;
     protected ?string $name = null;
     protected ?string $title = null;
     protected ?string $help = null;
-    public function setType(?string $type): void
-    {
-        $this->type = $type;
-    }
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
     public function setElement(?string $element): void
     {
         $this->element = $element;
@@ -61,11 +54,13 @@ abstract class CommonFormElement implements \JsonSerializable, \PSX\Record\Recor
     {
         return $this->help;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
-        $record->put('type', $this->type);
         $record->put('element', $this->element);
         $record->put('name', $this->name);
         $record->put('title', $this->title);

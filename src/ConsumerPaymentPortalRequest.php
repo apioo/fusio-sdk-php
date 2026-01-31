@@ -18,6 +18,9 @@ class ConsumerPaymentPortalRequest implements \JsonSerializable, \PSX\Record\Rec
     {
         return $this->returnUrl;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

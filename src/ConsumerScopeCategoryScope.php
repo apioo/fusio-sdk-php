@@ -36,6 +36,9 @@ class ConsumerScopeCategoryScope implements \JsonSerializable, \PSX\Record\Recor
     {
         return $this->description;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

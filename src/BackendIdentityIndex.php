@@ -29,6 +29,9 @@ class BackendIdentityIndex implements \JsonSerializable, \PSX\Record\RecordableI
     {
         return $this->providers;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

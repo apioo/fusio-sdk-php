@@ -92,6 +92,9 @@ class BackendDashboard implements \JsonSerializable, \PSX\Record\RecordableInter
     {
         return $this->userRegistrations;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

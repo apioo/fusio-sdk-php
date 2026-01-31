@@ -61,6 +61,9 @@ class BackendFile implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->lastModified;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

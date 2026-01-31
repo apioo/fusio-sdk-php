@@ -38,6 +38,9 @@ class CommonMessage implements \JsonSerializable, \PSX\Record\RecordableInterfac
     {
         return $this->id;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

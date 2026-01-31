@@ -56,6 +56,9 @@ class MarketplaceCollection implements \JsonSerializable, \PSX\Record\Recordable
     {
         return $this->entry;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

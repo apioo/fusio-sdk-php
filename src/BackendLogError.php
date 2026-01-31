@@ -74,6 +74,9 @@ class BackendLogError implements \JsonSerializable, \PSX\Record\RecordableInterf
     {
         return $this->insertDate;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

@@ -45,6 +45,9 @@ class ConsumerUserRegister implements \JsonSerializable, \PSX\Record\RecordableI
     {
         return $this->captcha;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

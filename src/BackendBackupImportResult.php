@@ -47,6 +47,9 @@ class BackendBackupImportResult implements \JsonSerializable, \PSX\Record\Record
     {
         return $this->logs;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

@@ -18,6 +18,9 @@ class ConsumerUserActivate implements \JsonSerializable, \PSX\Record\RecordableI
     {
         return $this->token;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

@@ -21,7 +21,7 @@ class BackendAction implements \JsonSerializable, \PSX\Record\RecordableInterfac
     protected ?string $class = null;
     #[Description('Whether to execute the action asynchronously, if true the action directly returns a 202 response and the action is executed later on in the background, useful for expensive operations')]
     protected ?bool $async = null;
-    #[Description('Contains the action specific configuration')]
+    #[Description('Contains the action specific configuration. The config depends on the action class, you can get all details of the config format by passing the class to the backend-action-getForm tool')]
     protected ?BackendActionConfig $config = null;
     #[Description('Use this parameter to attach key-value data')]
     protected ?CommonMetadata $metadata = null;
@@ -81,6 +81,9 @@ class BackendAction implements \JsonSerializable, \PSX\Record\RecordableInterfac
     {
         return $this->metadata;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

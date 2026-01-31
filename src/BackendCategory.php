@@ -31,6 +31,9 @@ class BackendCategory implements \JsonSerializable, \PSX\Record\RecordableInterf
     {
         return $this->name;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

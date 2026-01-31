@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Represents a config form with a list of elements')]
 class CommonFormContainer implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
@@ -27,6 +29,9 @@ class CommonFormContainer implements \JsonSerializable, \PSX\Record\RecordableIn
     {
         return $this->element;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

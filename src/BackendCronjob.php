@@ -100,6 +100,9 @@ class BackendCronjob implements \JsonSerializable, \PSX\Record\RecordableInterfa
     {
         return $this->errors;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

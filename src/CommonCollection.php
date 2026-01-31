@@ -58,6 +58,9 @@ class CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInter
     {
         return $this->entry;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

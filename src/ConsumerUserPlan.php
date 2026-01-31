@@ -54,6 +54,9 @@ class ConsumerUserPlan implements \JsonSerializable, \PSX\Record\RecordableInter
     {
         return $this->period;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

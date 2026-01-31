@@ -18,6 +18,9 @@ class MarketplaceBundle extends MarketplaceObject implements \JsonSerializable, 
     {
         return $this->config;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

@@ -27,6 +27,9 @@ class ConsumerUserPasswordReset implements \JsonSerializable, \PSX\Record\Record
     {
         return $this->newPassword;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

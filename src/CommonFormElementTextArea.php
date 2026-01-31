@@ -6,9 +6,12 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Form element which represents a textarea')]
 class CommonFormElementTextArea extends CommonFormElement implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Describes which data is provided at the textarea, this can be i.e. a programming language like php, java or python or also a data format like json')]
     protected ?string $mode = null;
     public function setMode(?string $mode): void
     {
@@ -18,6 +21,9 @@ class CommonFormElementTextArea extends CommonFormElement implements \JsonSerial
     {
         return $this->mode;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

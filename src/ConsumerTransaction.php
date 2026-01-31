@@ -99,6 +99,9 @@ class ConsumerTransaction implements \JsonSerializable, \PSX\Record\RecordableIn
     {
         return $this->insertDate;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

@@ -45,6 +45,9 @@ class BackendScopeCategory implements \JsonSerializable, \PSX\Record\RecordableI
     {
         return $this->scopes;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

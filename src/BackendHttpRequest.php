@@ -60,6 +60,9 @@ class BackendHttpRequest implements \JsonSerializable, \PSX\Record\RecordableInt
     {
         return $this->body;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

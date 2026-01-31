@@ -27,6 +27,9 @@ class ConsumerUserEmail implements \JsonSerializable, \PSX\Record\RecordableInte
     {
         return $this->captcha;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

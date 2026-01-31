@@ -6,12 +6,15 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Form element which represents a select element')]
 class CommonFormElementSelect extends CommonFormElement implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<CommonFormElementSelectOption>|null
      */
+    #[Description('Available options for the select element')]
     protected ?array $options = null;
     /**
      * @param array<CommonFormElementSelectOption>|null $options
@@ -27,6 +30,9 @@ class CommonFormElementSelect extends CommonFormElement implements \JsonSerializ
     {
         return $this->options;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

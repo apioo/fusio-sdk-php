@@ -36,6 +36,9 @@ class ConsumerWebhookCreate implements \JsonSerializable, \PSX\Record\Recordable
     {
         return $this->endpoint;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

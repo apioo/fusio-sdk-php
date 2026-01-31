@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Form element which represents an input tag editor to enter comma-separated values')]
 class CommonFormElementTag extends CommonFormElement implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

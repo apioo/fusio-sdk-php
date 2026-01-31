@@ -72,6 +72,9 @@ class ConsumerWebhook implements \JsonSerializable, \PSX\Record\RecordableInterf
     {
         return $this->responses;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

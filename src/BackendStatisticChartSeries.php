@@ -36,6 +36,9 @@ class BackendStatisticChartSeries implements \JsonSerializable, \PSX\Record\Reco
     {
         return $this->data;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

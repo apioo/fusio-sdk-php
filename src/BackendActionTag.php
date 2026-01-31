@@ -110,7 +110,7 @@ class BackendActionTag extends TagAbstract
     }
 
     /**
-     * Executes a specific action
+     * Executes a specific action. This method should be used to test an action configuration
      *
      * @param string $actionId
      * @param BackendActionExecuteRequest $payload

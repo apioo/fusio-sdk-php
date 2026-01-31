@@ -36,6 +36,9 @@ class MarketplaceBundleEvent implements \JsonSerializable, \PSX\Record\Recordabl
     {
         return $this->schema;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
