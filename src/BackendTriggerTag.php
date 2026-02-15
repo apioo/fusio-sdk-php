@@ -162,11 +162,12 @@ class BackendTriggerTag extends TagAbstract
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
+     * @param int|null $taxonomy
      * @return BackendTriggerCollection
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): BackendTriggerCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null, ?int $taxonomy = null): BackendTriggerCollection
     {
         $url = $this->parser->url('/backend/trigger', [
         ]);
@@ -178,6 +179,7 @@ class BackendTriggerTag extends TagAbstract
                 'startIndex' => $startIndex,
                 'count' => $count,
                 'search' => $search,
+                'taxonomy' => $taxonomy,
             ], [
             ]),
         ];

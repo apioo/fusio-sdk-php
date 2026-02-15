@@ -230,6 +230,14 @@ class BackendTag extends TagAbstract
         );
     }
 
+    public function taxonomy(): BackendTaxonomyTag
+    {
+        return new BackendTaxonomyTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function tenant(): BackendTenantTag
     {
         return new BackendTenantTag(

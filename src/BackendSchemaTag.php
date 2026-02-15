@@ -162,11 +162,12 @@ class BackendSchemaTag extends TagAbstract
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
+     * @param int|null $taxonomy
      * @return BackendSchemaCollection
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): BackendSchemaCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null, ?int $taxonomy = null): BackendSchemaCollection
     {
         $url = $this->parser->url('/backend/schema', [
         ]);
@@ -178,6 +179,7 @@ class BackendSchemaTag extends TagAbstract
                 'startIndex' => $startIndex,
                 'count' => $count,
                 'search' => $search,
+                'taxonomy' => $taxonomy,
             ], [
             ]),
         ];
