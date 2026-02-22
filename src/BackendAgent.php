@@ -8,16 +8,33 @@ namespace Fusio\Sdk;
 
 use PSX\Schema\Attribute\Description;
 
-#[Description('This object represents an agent message')]
+#[Description('This object represents an agent')]
 class BackendAgent implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
-    #[Description('The origin of this message i.e. 1 = user, 2 = assistant or 3 = system')]
-    protected ?int $origin = null;
-    #[Description('The message')]
-    protected ?BackendAgentMessage $message = null;
+    #[Description('The agent connection which should be used')]
+    protected ?int $connection = null;
+    #[Description('The agent type')]
+    protected ?int $type = null;
+    #[Description('Name of the agent')]
+    protected ?string $name = null;
+    #[Description('Description of the agent')]
+    protected ?string $description = null;
+    #[Description('Introduction message')]
+    protected ?string $introduction = null;
+    /**
+     * @var array<string>|null
+     */
+    #[Description('Tools available to this agent')]
+    protected ?array $tools = null;
+    #[Description('Describes the outgoing response payload, this must contain a schema name')]
+    protected ?string $outgoing = null;
+    #[Description('Action which gets invoked for each generated response')]
+    protected ?string $action = null;
     protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
+    #[Description('Use this parameter to attach key-value data')]
+    protected ?CommonMetadata $metadata = null;
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -26,21 +43,75 @@ class BackendAgent implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->id;
     }
-    public function setOrigin(?int $origin): void
+    public function setConnection(?int $connection): void
     {
-        $this->origin = $origin;
+        $this->connection = $connection;
     }
-    public function getOrigin(): ?int
+    public function getConnection(): ?int
     {
-        return $this->origin;
+        return $this->connection;
     }
-    public function setMessage(?BackendAgentMessage $message): void
+    public function setType(?int $type): void
     {
-        $this->message = $message;
+        $this->type = $type;
     }
-    public function getMessage(): ?BackendAgentMessage
+    public function getType(): ?int
     {
-        return $this->message;
+        return $this->type;
+    }
+    public function setName(?string $name): void
+    {
+        $this->name = $name;
+    }
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
+    }
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+    public function setIntroduction(?string $introduction): void
+    {
+        $this->introduction = $introduction;
+    }
+    public function getIntroduction(): ?string
+    {
+        return $this->introduction;
+    }
+    /**
+     * @param array<string>|null $tools
+     */
+    public function setTools(?array $tools): void
+    {
+        $this->tools = $tools;
+    }
+    /**
+     * @return array<string>|null
+     */
+    public function getTools(): ?array
+    {
+        return $this->tools;
+    }
+    public function setOutgoing(?string $outgoing): void
+    {
+        $this->outgoing = $outgoing;
+    }
+    public function getOutgoing(): ?string
+    {
+        return $this->outgoing;
+    }
+    public function setAction(?string $action): void
+    {
+        $this->action = $action;
+    }
+    public function getAction(): ?string
+    {
+        return $this->action;
     }
     public function setInsertDate(?\PSX\DateTime\LocalDateTime $insertDate): void
     {
@@ -50,6 +121,14 @@ class BackendAgent implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->insertDate;
     }
+    public function setMetadata(?CommonMetadata $metadata): void
+    {
+        $this->metadata = $metadata;
+    }
+    public function getMetadata(): ?CommonMetadata
+    {
+        return $this->metadata;
+    }
     /**
      * @return \PSX\Record\RecordInterface<mixed>
      */
@@ -58,9 +137,16 @@ class BackendAgent implements \JsonSerializable, \PSX\Record\RecordableInterface
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('id', $this->id);
-        $record->put('origin', $this->origin);
-        $record->put('message', $this->message);
+        $record->put('connection', $this->connection);
+        $record->put('type', $this->type);
+        $record->put('name', $this->name);
+        $record->put('description', $this->description);
+        $record->put('introduction', $this->introduction);
+        $record->put('tools', $this->tools);
+        $record->put('outgoing', $this->outgoing);
+        $record->put('action', $this->action);
         $record->put('insertDate', $this->insertDate);
+        $record->put('metadata', $this->metadata);
         return $record;
     }
     public function jsonSerialize(): object

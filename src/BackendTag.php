@@ -30,6 +30,14 @@ class BackendTag extends TagAbstract
         );
     }
 
+    public function agent(): BackendAgentTag
+    {
+        return new BackendAgentTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function app(): BackendAppTag
     {
         return new BackendAppTag(

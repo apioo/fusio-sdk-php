@@ -6,47 +6,49 @@
 
 namespace Fusio\Sdk;
 
-use PSX\Schema\Attribute\DerivedType;
 use PSX\Schema\Attribute\Description;
-use PSX\Schema\Attribute\Discriminator;
 
-#[Description('Agent call result')]
-#[Discriminator('type')]
-#[DerivedType(BackendAgentMessageBinary::class, 'binary')]
-#[DerivedType(BackendAgentMessageChoice::class, 'choice')]
-#[DerivedType(BackendAgentMessageObject::class, 'object')]
-#[DerivedType(BackendAgentMessageText::class, 'text')]
-#[DerivedType(BackendAgentMessageToolCall::class, 'tool_call')]
-abstract class BackendAgentMessage implements \JsonSerializable, \PSX\Record\RecordableInterface
+#[Description('This object represents an agent message')]
+class BackendAgentMessage implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
-    #[Description('The result type')]
-    protected ?string $type = null;
-    /**
-     * @var \PSX\Record\Record<mixed>|null
-     */
-    #[Description('Optional result metadata')]
-    protected ?\PSX\Record\Record $metadata = null;
-    public function setType(?string $type): void
+    #[Description('Unique identifier for the object')]
+    protected ?int $id = null;
+    #[Description('The role of this message i.e. user, assistant or system')]
+    protected ?string $role = null;
+    #[Description('The message content')]
+    protected ?BackendAgentContent $content = null;
+    protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
+    public function setId(?int $id): void
     {
-        $this->type = $type;
+        $this->id = $id;
     }
-    public function getType(): ?string
+    public function getId(): ?int
     {
-        return $this->type;
+        return $this->id;
     }
-    /**
-     * @param \PSX\Record\Record<mixed>|null $metadata
-     */
-    public function setMetadata(?\PSX\Record\Record $metadata): void
+    public function setRole(?string $role): void
     {
-        $this->metadata = $metadata;
+        $this->role = $role;
     }
-    /**
-     * @return \PSX\Record\Record<mixed>|null
-     */
-    public function getMetadata(): ?\PSX\Record\Record
+    public function getRole(): ?string
     {
-        return $this->metadata;
+        return $this->role;
+    }
+    public function setContent(?BackendAgentContent $content): void
+    {
+        $this->content = $content;
+    }
+    public function getContent(): ?BackendAgentContent
+    {
+        return $this->content;
+    }
+    public function setInsertDate(?\PSX\DateTime\LocalDateTime $insertDate): void
+    {
+        $this->insertDate = $insertDate;
+    }
+    public function getInsertDate(): ?\PSX\DateTime\LocalDateTime
+    {
+        return $this->insertDate;
     }
     /**
      * @return \PSX\Record\RecordInterface<mixed>
@@ -55,8 +57,10 @@ abstract class BackendAgentMessage implements \JsonSerializable, \PSX\Record\Rec
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
-        $record->put('type', $this->type);
-        $record->put('metadata', $this->metadata);
+        $record->put('id', $this->id);
+        $record->put('role', $this->role);
+        $record->put('content', $this->content);
+        $record->put('insertDate', $this->insertDate);
         return $record;
     }
     public function jsonSerialize(): object

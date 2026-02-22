@@ -15,111 +15,15 @@ use Sdkgen\Client\TagAbstract;
 class BackendConnectionAgentTag extends TagAbstract
 {
     /**
-     * Returns all previous sent messages
-     *
-     * @param string $connectionId
-     * @param string|null $intent
-     * @return BackendAgentCollection
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function get(string $connectionId, ?string $intent = null): BackendAgentCollection
-    {
-        $url = $this->parser->url('/backend/connection/:connection_id/agent', [
-            'connection_id' => $connectionId,
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-                'intent' => $intent,
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendAgentCollection::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode >= 0 && $statusCode <= 999) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * Resets all agent messages
-     *
-     * @param string $connectionId
-     * @return CommonMessage
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function reset(string $connectionId): CommonMessage
-    {
-        $url = $this->parser->url('/backend/connection/:connection_id/agent', [
-            'connection_id' => $connectionId,
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('DELETE', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode >= 0 && $statusCode <= 999) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
      * Sends a message to an agent
      *
      * @param string $connectionId
-     * @param BackendAgentRequest $payload
-     * @return BackendAgentResponse
+     * @param BackendAgentContent $payload
+     * @return BackendAgentContent
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function send(string $connectionId, BackendAgentRequest $payload): BackendAgentResponse
+    public function send(string $connectionId, BackendAgentContent $payload): BackendAgentContent
     {
         $url = $this->parser->url('/backend/connection/:connection_id/agent', [
             'connection_id' => $connectionId,
@@ -139,7 +43,7 @@ class BackendConnectionAgentTag extends TagAbstract
             $response = $this->httpClient->request('POST', $url, $options);
             $body = $response->getBody();
 
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendAgentResponse::class));
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendAgentContent::class));
 
             return $data;
         } catch (ClientException $e) {
