@@ -67,12 +67,11 @@ class ConsumerEventTag extends TagAbstract
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
-     * @param int|null $taxonomy
      * @return ConsumerEventCollection
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null, ?int $taxonomy = null): ConsumerEventCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): ConsumerEventCollection
     {
         $url = $this->parser->url('/consumer/event', [
         ]);
@@ -84,7 +83,6 @@ class ConsumerEventTag extends TagAbstract
                 'startIndex' => $startIndex,
                 'count' => $count,
                 'search' => $search,
-                'taxonomy' => $taxonomy,
             ], [
             ]),
         ];

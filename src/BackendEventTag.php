@@ -162,11 +162,12 @@ class BackendEventTag extends TagAbstract
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
+     * @param int|null $taxonomy
      * @return BackendEventCollection
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): BackendEventCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null, ?int $taxonomy = null): BackendEventCollection
     {
         $url = $this->parser->url('/backend/event', [
         ]);
@@ -178,6 +179,7 @@ class BackendEventTag extends TagAbstract
                 'startIndex' => $startIndex,
                 'count' => $count,
                 'search' => $search,
+                'taxonomy' => $taxonomy,
             ], [
             ]),
         ];
