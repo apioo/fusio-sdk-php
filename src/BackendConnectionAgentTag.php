@@ -18,12 +18,12 @@ class BackendConnectionAgentTag extends TagAbstract
      * Sends a message to an agent
      *
      * @param string $connectionId
-     * @param BackendAgentContent $payload
-     * @return BackendAgentContent
+     * @param BackendAgentInput $payload
+     * @return BackendAgentOutput
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function send(string $connectionId, BackendAgentContent $payload): BackendAgentContent
+    public function send(string $connectionId, BackendAgentInput $payload): BackendAgentOutput
     {
         $url = $this->parser->url('/backend/connection/:connection_id/agent', [
             'connection_id' => $connectionId,
@@ -43,7 +43,7 @@ class BackendConnectionAgentTag extends TagAbstract
             $response = $this->httpClient->request('POST', $url, $options);
             $body = $response->getBody();
 
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendAgentContent::class));
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendAgentOutput::class));
 
             return $data;
         } catch (ClientException $e) {
