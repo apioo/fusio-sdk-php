@@ -11,8 +11,18 @@ use PSX\Schema\Attribute\Description;
 #[Description('This object represents an agent output')]
 class BackendAgentOutput implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Available if the message was persisted')]
+    protected ?string $id = null;
     #[Description('The output')]
     protected ?BackendAgentContent $output = null;
+    public function setId(?string $id): void
+    {
+        $this->id = $id;
+    }
+    public function getId(): ?string
+    {
+        return $this->id;
+    }
     public function setOutput(?BackendAgentContent $output): void
     {
         $this->output = $output;
@@ -28,6 +38,7 @@ class BackendAgentOutput implements \JsonSerializable, \PSX\Record\RecordableInt
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
         $record->put('output', $this->output);
         return $record;
     }
