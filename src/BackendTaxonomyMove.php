@@ -22,6 +22,10 @@ class BackendTaxonomyMove implements \JsonSerializable, \PSX\Record\RecordableIn
     /**
      * @var array<int>|null
      */
+    protected ?array $schemas = null;
+    /**
+     * @var array<int>|null
+     */
     protected ?array $events = null;
     /**
      * @var array<int>|null
@@ -58,6 +62,20 @@ class BackendTaxonomyMove implements \JsonSerializable, \PSX\Record\RecordableIn
     public function getActions(): ?array
     {
         return $this->actions;
+    }
+    /**
+     * @param array<int>|null $schemas
+     */
+    public function setSchemas(?array $schemas): void
+    {
+        $this->schemas = $schemas;
+    }
+    /**
+     * @return array<int>|null
+     */
+    public function getSchemas(): ?array
+    {
+        return $this->schemas;
     }
     /**
      * @param array<int>|null $events
@@ -110,6 +128,7 @@ class BackendTaxonomyMove implements \JsonSerializable, \PSX\Record\RecordableIn
         $record = new \PSX\Record\Record();
         $record->put('operations', $this->operations);
         $record->put('actions', $this->actions);
+        $record->put('schemas', $this->schemas);
         $record->put('events', $this->events);
         $record->put('cronjobs', $this->cronjobs);
         $record->put('triggers', $this->triggers);
