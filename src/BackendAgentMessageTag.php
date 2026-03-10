@@ -68,11 +68,12 @@ class BackendAgentMessageTag extends TagAbstract
      *
      * @param string $agentId
      * @param BackendAgentInput $payload
+     * @param int|null $parent
      * @return BackendAgentOutput
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function submit(string $agentId, BackendAgentInput $payload): BackendAgentOutput
+    public function submit(string $agentId, BackendAgentInput $payload, ?int $parent = null): BackendAgentOutput
     {
         $url = $this->parser->url('/backend/agent/$agent_id<[0-9]+|^~>/message', [
             'agent_id' => $agentId,
@@ -83,6 +84,7 @@ class BackendAgentMessageTag extends TagAbstract
                 'Content-Type' => 'application/json',
             ],
             'query' => $this->parser->query([
+                'parent' => $parent,
             ], [
             ]),
             'json' => $payload,
