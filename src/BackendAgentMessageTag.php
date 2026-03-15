@@ -67,13 +67,13 @@ class BackendAgentMessageTag extends TagAbstract
      * Submits a new agent message
      *
      * @param string $agentId
-     * @param BackendAgentInput $payload
+     * @param CommonAgentInput $payload
      * @param int|null $parent
-     * @return BackendAgentOutput
+     * @return CommonAgentOutput
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function submit(string $agentId, BackendAgentInput $payload, ?int $parent = null): BackendAgentOutput
+    public function submit(string $agentId, CommonAgentInput $payload, ?int $parent = null): CommonAgentOutput
     {
         $url = $this->parser->url('/backend/agent/$agent_id<[0-9]+|^~>/message', [
             'agent_id' => $agentId,
@@ -94,7 +94,7 @@ class BackendAgentMessageTag extends TagAbstract
             $response = $this->httpClient->request('POST', $url, $options);
             $body = $response->getBody();
 
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendAgentOutput::class));
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonAgentOutput::class));
 
             return $data;
         } catch (ClientException $e) {

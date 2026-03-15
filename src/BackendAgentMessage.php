@@ -16,7 +16,7 @@ class BackendAgentMessage implements \JsonSerializable, \PSX\Record\RecordableIn
     #[Description('The role of this message i.e. user, assistant or system')]
     protected ?string $role = null;
     #[Description('The message content')]
-    protected ?BackendAgentContent $content = null;
+    protected ?CommonAgentContent $content = null;
     protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
     public function setId(?int $id): void
     {
@@ -34,11 +34,11 @@ class BackendAgentMessage implements \JsonSerializable, \PSX\Record\RecordableIn
     {
         return $this->role;
     }
-    public function setContent(?BackendAgentContent $content): void
+    public function setContent(?CommonAgentContent $content): void
     {
         $this->content = $content;
     }
-    public function getContent(): ?BackendAgentContent
+    public function getContent(): ?CommonAgentContent
     {
         return $this->content;
     }

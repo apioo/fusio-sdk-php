@@ -12,10 +12,17 @@ use PSX\Schema\Attribute\Discriminator;
 
 #[Description('Form base element')]
 #[Discriminator('type')]
-#[DerivedType(CommonFormElementInput::class, 'http://fusio-project.org/ns/2015/form/input')]
-#[DerivedType(CommonFormElementSelect::class, 'http://fusio-project.org/ns/2015/form/select')]
-#[DerivedType(CommonFormElementTag::class, 'http://fusio-project.org/ns/2015/form/tag')]
-#[DerivedType(CommonFormElementTextArea::class, 'http://fusio-project.org/ns/2015/form/textarea')]
+#[DerivedType(CommonFormElementAction::class, 'action')]
+#[DerivedType(CommonFormElementAgent::class, 'agent')]
+#[DerivedType(CommonFormElementCheckbox::class, 'checkbox')]
+#[DerivedType(CommonFormElementCollection::class, 'collection')]
+#[DerivedType(CommonFormElementConnection::class, 'connection')]
+#[DerivedType(CommonFormElementInput::class, 'input')]
+#[DerivedType(CommonFormElementMap::class, 'map')]
+#[DerivedType(CommonFormElementSelect::class, 'select')]
+#[DerivedType(CommonFormElementTextArea::class, 'textarea')]
+#[DerivedType(CommonFormElementTypeAPI::class, 'typeapi')]
+#[DerivedType(CommonFormElementTypeSchema::class, 'typeschema')]
 abstract class CommonFormElement implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $element = null;
