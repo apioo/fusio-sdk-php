@@ -27,6 +27,8 @@ class BackendAgent implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $introduction = null;
     #[Description('The used temperature default is 1.0')]
     protected ?float $temperature = null;
+    #[Description('Costs per token')]
+    protected ?int $costs = null;
     /**
      * @var array<string>|null
      */
@@ -103,6 +105,14 @@ class BackendAgent implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->temperature;
     }
+    public function setCosts(?int $costs): void
+    {
+        $this->costs = $costs;
+    }
+    public function getCosts(): ?int
+    {
+        return $this->costs;
+    }
     /**
      * @param array<string>|null $tools
      */
@@ -164,6 +174,7 @@ class BackendAgent implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('description', $this->description);
         $record->put('introduction', $this->introduction);
         $record->put('temperature', $this->temperature);
+        $record->put('costs', $this->costs);
         $record->put('tools', $this->tools);
         $record->put('outgoing', $this->outgoing);
         $record->put('action', $this->action);
