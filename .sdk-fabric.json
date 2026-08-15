@@ -1,0 +1,11 @@
+{
+  "typehub_user": "fusio",
+  "typehub_document": "sdk",
+  "github_user": "apioo",
+  "github_repository": "fusio-sdk-php",
+
+  "name": "fusio/sdk",
+  "description": "Fusio PHP SDK managed by SDK Fabric",
+  "namespace": "Fusio\\Sdk",
+  "website": "https://www.fusio-project.org"
+}

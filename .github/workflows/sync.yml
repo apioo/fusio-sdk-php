@@ -1,0 +1,40 @@
+name: Template-Sync
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  sync-template:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Local SDK Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Checkout Central Template Repository
+        uses: actions/checkout@v4
+        with:
+          repository: sdk-fabric/sdk-template-php
+          ref: main
+          path: .template_tmp
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Run Template Sync Script
+        run: python3 .template_tmp/sync.py
+      - name: Clean up Template Clone
+        run: rm -rf .template_tmp
+      - name: Commit and Push Changes Directly
+        run: |
+          git config user.name "sdk-fabric-bot"
+          git config user.email "bot@sdk-fabric.org"
+
+          git add -A
+
+          if git diff --staged --quiet; then
+            echo "No changes detected from template sync."
+          else
+            git commit -m "sync template files"
+            git push origin main
+          fi
