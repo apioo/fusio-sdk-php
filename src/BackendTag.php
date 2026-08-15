@@ -30,6 +30,14 @@ class BackendTag extends TagAbstract
         );
     }
 
+    public function agent(): BackendAgentTag
+    {
+        return new BackendAgentTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function app(): BackendAppTag
     {
         return new BackendAppTag(
@@ -222,9 +230,25 @@ class BackendTag extends TagAbstract
         );
     }
 
+    public function specification(): BackendSpecificationTag
+    {
+        return new BackendSpecificationTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function statistic(): BackendStatisticTag
     {
         return new BackendStatisticTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
+    public function taxonomy(): BackendTaxonomyTag
+    {
+        return new BackendTaxonomyTag(
             $this->httpClient,
             $this->parser
         );

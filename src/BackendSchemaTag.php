@@ -162,13 +162,68 @@ class BackendSchemaTag extends TagAbstract
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
+     * @param int|null $taxonomy
      * @return BackendSchemaCollection
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): BackendSchemaCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null, ?int $taxonomy = null): BackendSchemaCollection
     {
         $url = $this->parser->url('/backend/schema', [
+        ]);
+
+        $options = [
+            'headers' => [
+            ],
+            'query' => $this->parser->query([
+                'startIndex' => $startIndex,
+                'count' => $count,
+                'search' => $search,
+                'taxonomy' => $taxonomy,
+            ], [
+            ]),
+        ];
+
+        try {
+            $response = $this->httpClient->request('GET', $url, $options);
+            $body = $response->getBody();
+
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendSchemaCollection::class));
+
+            return $data;
+        } catch (ClientException $e) {
+            throw $e;
+        } catch (BadResponseException $e) {
+            $body = $e->getResponse()->getBody();
+            $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
+
+            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
+        } catch (\Throwable $e) {
+            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Returns a paginated list of schema commits
+     *
+     * @param string $schemaId
+     * @param int|null $startIndex
+     * @param int|null $count
+     * @param string|null $search
+     * @return BackendSchemaCommitCollection
+     * @throws CommonMessageException
+     * @throws ClientException
+     */
+    public function getCommits(string $schemaId, ?int $startIndex = null, ?int $count = null, ?string $search = null): BackendSchemaCommitCollection
+    {
+        $url = $this->parser->url('/backend/schema/$schema_id<[0-9]+|^~>/commit', [
+            'schema_id' => $schemaId,
         ]);
 
         $options = [
@@ -186,7 +241,7 @@ class BackendSchemaTag extends TagAbstract
             $response = $this->httpClient->request('GET', $url, $options);
             $body = $response->getBody();
 
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendSchemaCollection::class));
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendSchemaCommitCollection::class));
 
             return $data;
         } catch (ClientException $e) {

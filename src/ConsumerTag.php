@@ -22,6 +22,14 @@ class ConsumerTag extends TagAbstract
         );
     }
 
+    public function agent(): ConsumerAgentTag
+    {
+        return new ConsumerAgentTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function app(): ConsumerAppTag
     {
         return new ConsumerAppTag(

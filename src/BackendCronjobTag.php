@@ -162,11 +162,12 @@ class BackendCronjobTag extends TagAbstract
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
+     * @param int|null $taxonomy
      * @return BackendCronjobCollection
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): BackendCronjobCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null, ?int $taxonomy = null): BackendCronjobCollection
     {
         $url = $this->parser->url('/backend/cronjob', [
         ]);
@@ -178,6 +179,7 @@ class BackendCronjobTag extends TagAbstract
                 'startIndex' => $startIndex,
                 'count' => $count,
                 'search' => $search,
+                'taxonomy' => $taxonomy,
             ], [
             ]),
         ];

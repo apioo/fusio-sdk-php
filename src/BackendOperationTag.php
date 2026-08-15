@@ -162,11 +162,12 @@ class BackendOperationTag extends TagAbstract
      * @param int|null $startIndex
      * @param int|null $count
      * @param string|null $search
+     * @param int|null $taxonomy
      * @return BackendOperationCollection
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): BackendOperationCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null, ?int $taxonomy = null): BackendOperationCollection
     {
         $url = $this->parser->url('/backend/operation', [
         ]);
@@ -178,6 +179,7 @@ class BackendOperationTag extends TagAbstract
                 'startIndex' => $startIndex,
                 'count' => $count,
                 'search' => $search,
+                'taxonomy' => $taxonomy,
             ], [
             ]),
         ];
