@@ -1,12 +1,21 @@
 name: Template-Sync
 on:
   workflow_dispatch:
+    inputs:
+      typehub_user:
+        description: 'TypeHub User'
+        required: true
+      typehub_document:
+        description: 'TypeHub Document'
+        required: true
 permissions:
   contents: write
 jobs:
   sync-template:
     runs-on: ubuntu-latest
     steps:
-      - uses: sdk-fabric/sync-action@v0.1.1
+      - uses: sdk-fabric/sync-action@v0.2.0
         with:
           lang: 'php'
+          typehub_user: ${{ inputs.typehub_user }}
+          typehub_document: ${{ inputs.typehub_document }}
