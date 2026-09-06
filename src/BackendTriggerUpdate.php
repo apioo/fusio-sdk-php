@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Request payload to update an existing trigger')]
 class BackendTriggerUpdate extends BackendTrigger implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

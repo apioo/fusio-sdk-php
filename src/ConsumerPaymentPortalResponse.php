@@ -6,9 +6,12 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Response payload containing the customer portal portal link')]
 class ConsumerPaymentPortalResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('URL to access the customer billing self-service portal')]
     protected ?string $redirectUrl = null;
     public function setRedirectUrl(?string $redirectUrl): void
     {

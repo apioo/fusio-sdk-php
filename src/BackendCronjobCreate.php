@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for creating a new cronjob')]
 class BackendCronjobCreate extends BackendCronjob implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

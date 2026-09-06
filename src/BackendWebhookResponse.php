@@ -6,14 +6,22 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Log record representing an execution attempt and delivery response for a webhook target')]
 class BackendWebhookResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the webhook response log entry')]
     protected ?int $id = null;
+    #[Description('Internal status code of the webhook delivery attempt')]
     protected ?int $status = null;
+    #[Description('HTTP status code returned by the remote webhook endpoint')]
     protected ?int $code = null;
+    #[Description('Number of retry attempts executed for this webhook dispatch')]
     protected ?int $attempts = null;
+    #[Description('Error message details if the delivery attempt failed')]
     protected ?string $error = null;
+    #[Description('Timestamp when the webhook dispatch was attempted')]
     protected ?\PSX\DateTime\LocalDateTime $executeDate = null;
     public function setId(?int $id): void
     {

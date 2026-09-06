@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Request payload to create a new webhook subscription')]
 class BackendWebhookCreate extends BackendWebhook implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

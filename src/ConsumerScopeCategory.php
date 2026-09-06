@@ -6,14 +6,19 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Category grouping related API scopes together')]
 class ConsumerScopeCategory implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the scope category')]
     protected ?int $id = null;
+    #[Description('Name of the category grouping')]
     protected ?string $name = null;
     /**
      * @var array<ConsumerScopeCategoryScope>|null
      */
+    #[Description('List of scopes assigned to this category')]
     protected ?array $scopes = null;
     public function setId(?int $id): void
     {

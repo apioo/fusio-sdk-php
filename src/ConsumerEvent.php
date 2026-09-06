@@ -6,13 +6,29 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Represents an event trigger definition within the platform')]
 class ConsumerEvent implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
+    #[Description('Unique identifier for the event')]
     protected ?int $id = null;
+    #[Description('Name of the event')]
     protected ?string $name = null;
+    #[Description('Detailed description of when and why this event fires')]
     protected ?string $description = null;
+    #[Description('Custom metadata key-value mapping')]
     protected ?CommonMetadata $metadata = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -52,6 +68,7 @@ class ConsumerEvent implements \JsonSerializable, \PSX\Record\RecordableInterfac
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('name', $this->name);
         $record->put('description', $this->description);

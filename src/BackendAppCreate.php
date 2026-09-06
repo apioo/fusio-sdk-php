@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for creating a new consumer application')]
 class BackendAppCreate extends BackendApp implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

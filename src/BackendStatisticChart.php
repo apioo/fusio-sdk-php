@@ -6,16 +6,20 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Represents dataset structures formatted for rendering statistic charts')]
 class BackendStatisticChart implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<string>|null
      */
+    #[Description('X-axis labels or time units for the statistic chart')]
     protected ?array $labels = null;
     /**
      * @var array<BackendStatisticChartSeries>|null
      */
+    #[Description('Data series elements displayed within the chart')]
     protected ?array $series = null;
     /**
      * @param array<string>|null $labels

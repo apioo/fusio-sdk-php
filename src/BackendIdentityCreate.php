@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for creating a new identity provider entity')]
 class BackendIdentityCreate extends BackendIdentity implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

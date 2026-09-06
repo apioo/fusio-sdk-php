@@ -6,18 +6,36 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Webhook endpoint subscription definition')]
 class ConsumerWebhook implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
+    #[Description('Unique identifier for the webhook')]
     protected ?int $id = null;
+    #[Description('Status code indicating whether the webhook subscription is active')]
     protected ?int $status = null;
+    #[Description('Target event name triggering this webhook')]
     protected ?string $event = null;
+    #[Description('Descriptive label for the webhook registration')]
     protected ?string $name = null;
+    #[Description('Target HTTP endpoint URL to receive webhook event payloads')]
     protected ?string $endpoint = null;
     /**
      * @var array<ConsumerWebhookResponse>|null
      */
+    #[Description('List of recent delivery attempts and status responses')]
     protected ?array $responses = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -79,6 +97,7 @@ class ConsumerWebhook implements \JsonSerializable, \PSX\Record\RecordableInterf
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('status', $this->status);
         $record->put('event', $this->event);

@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends \PSX\Record\Record<BackendOperationSchema>
  */
+#[Description('Map of path or query parameters accepted by the operation')]
 class BackendOperationParameters extends \PSX\Record\Record
 {
 }

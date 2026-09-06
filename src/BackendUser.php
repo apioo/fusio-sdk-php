@@ -11,6 +11,8 @@ use PSX\Schema\Attribute\Description;
 #[Description('This object represents a user')]
 class BackendUser implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     #[Description('A role which is assigned to the user')]
@@ -33,11 +35,20 @@ class BackendUser implements \JsonSerializable, \PSX\Record\RecordableInterface
     /**
      * @var array<BackendApp>|null
      */
+    #[Description('List of applications associated with or owned by the user')]
     protected ?array $apps = null;
     #[Description('Use this parameter to attach key-value data')]
     protected ?CommonMetadata $metadata = null;
     #[Description('The insert date')]
     protected ?\PSX\DateTime\LocalDateTime $date = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -145,6 +156,7 @@ class BackendUser implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('roleId', $this->roleId);
         $record->put('planId', $this->planId);

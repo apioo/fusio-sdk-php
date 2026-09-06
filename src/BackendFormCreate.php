@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for creating a new form definition')]
 class BackendFormCreate extends BackendForm implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

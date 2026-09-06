@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for creating a new schema definition')]
 class BackendSchemaCreate extends BackendSchema implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

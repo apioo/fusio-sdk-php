@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Request payload to update existing user account information')]
 class BackendUserUpdate extends BackendUser implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

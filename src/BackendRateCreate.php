@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for creating a new rate limit policy')]
 class BackendRateCreate extends BackendRate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

@@ -11,6 +11,7 @@ use PSX\Schema\Attribute\Description;
 #[Description('Import a previously exported system configuration')]
 class BackendBackupImport implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('JSON string containing the system configuration payload to import')]
     protected ?string $import = null;
     public function setImport(?string $import): void
     {

@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends CommonCollection<ConsumerLog>
  */
+#[Description('Collection of access log records')]
 class ConsumerLogCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

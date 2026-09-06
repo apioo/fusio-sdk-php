@@ -11,15 +11,34 @@ use PSX\Schema\Attribute\Description;
 #[Description('Represents an object containing all widget data for the dashboard')]
 class BackendDashboard implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
+    #[Description('Chart showing errors logged per operation over time')]
     protected ?BackendStatisticChart $errorsPerOperation = null;
+    #[Description('Chart showing total incoming HTTP requests over time')]
     protected ?BackendStatisticChart $incomingRequests = null;
+    #[Description('Chart showing total executed transactions over time')]
     protected ?BackendStatisticChart $incomingTransactions = null;
+    #[Description('Chart displaying the most frequently invoked API operations')]
     protected ?BackendStatisticChart $mostUsedOperations = null;
+    #[Description('Chart depicting average execution time per operation')]
     protected ?BackendStatisticChart $timePerOperation = null;
+    #[Description('Chart showing automated test execution and coverage metrics')]
     protected ?BackendStatisticChart $testCoverage = null;
+    #[Description('Chart showing the most active user activity types')]
     protected ?BackendStatisticChart $mostUsedActivities = null;
+    #[Description('Chart breaking down user activity frequencies')]
     protected ?BackendStatisticChart $activitiesPerUser = null;
+    #[Description('Chart tracking user registrations over time')]
     protected ?BackendStatisticChart $userRegistrations = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setErrorsPerOperation(?BackendStatisticChart $errorsPerOperation): void
     {
         $this->errorsPerOperation = $errorsPerOperation;
@@ -99,6 +118,7 @@ class BackendDashboard implements \JsonSerializable, \PSX\Record\RecordableInter
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('errorsPerOperation', $this->errorsPerOperation);
         $record->put('incomingRequests', $this->incomingRequests);
         $record->put('incomingTransactions', $this->incomingTransactions);

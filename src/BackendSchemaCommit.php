@@ -11,6 +11,8 @@ use PSX\Schema\Attribute\Description;
 #[Description('A schema commit which represents a change in the schema source')]
 class BackendSchemaCommit implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     #[Description('The user which has made the change')]
@@ -19,7 +21,16 @@ class BackendSchemaCommit implements \JsonSerializable, \PSX\Record\RecordableIn
     protected ?string $commitHash = null;
     #[Description('The provided schema payload')]
     protected ?BackendSchemaSource $schema = null;
+    #[Description('Timestamp when the schema commit was created')]
     protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -67,6 +78,7 @@ class BackendSchemaCommit implements \JsonSerializable, \PSX\Record\RecordableIn
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('user', $this->user);
         $record->put('commitHash', $this->commitHash);

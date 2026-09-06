@@ -6,12 +6,18 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for registering a new user account')]
 class ConsumerUserRegister implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Full name of the user registering')]
     protected ?string $name = null;
+    #[Description('Email address for the new account')]
     protected ?string $email = null;
+    #[Description('Desired account password')]
     protected ?string $password = null;
+    #[Description('CAPTCHA challenge response token for anti-spam verification')]
     protected ?string $captcha = null;
     public function setName(?string $name): void
     {

@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for updating an existing consumer application')]
 class BackendAppUpdate extends BackendApp implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

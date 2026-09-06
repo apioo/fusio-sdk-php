@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for creating a new action entity')]
 class BackendActionCreate extends BackendAction implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

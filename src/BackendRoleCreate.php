@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for creating a new user role entity')]
 class BackendRoleCreate extends BackendRole implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

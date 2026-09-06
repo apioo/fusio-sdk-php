@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for updating an existing AI agent')]
 class BackendAgentUpdate extends BackendAgent implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

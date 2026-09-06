@@ -11,11 +11,14 @@ use PSX\Schema\Attribute\Description;
 #[Description('Result of a backup import operation')]
 class BackendBackupImportResult implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Indicates whether the backup import operation completed successfully')]
     protected ?bool $success = null;
+    #[Description('Human-readable status or summary message detailing the import result')]
     protected ?string $message = null;
     /**
      * @var array<string>|null
      */
+    #[Description('Execution logs generated during the backup restoration process')]
     protected ?array $logs = null;
     public function setSuccess(?bool $success): void
     {

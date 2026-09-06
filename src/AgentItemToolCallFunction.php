@@ -11,8 +11,11 @@ use PSX\Schema\Attribute\Description;
 #[Description('Concrete values for a function tool call')]
 class AgentItemToolCallFunction implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the function call execution context')]
     protected ?string $id = null;
+    #[Description('The name of the targeted tool or function to execute')]
     protected ?string $name = null;
+    #[Description('JSON string of arguments passed into the function call')]
     protected ?string $arguments = null;
     public function setId(?string $id): void
     {

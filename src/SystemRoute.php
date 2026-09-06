@@ -6,10 +6,22 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
 class SystemRoute implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
+    #[Description('Mapping of API endpoint paths to their supported HTTP methods and handlers')]
     protected ?SystemRoutePath $routes = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setRoutes(?SystemRoutePath $routes): void
     {
         $this->routes = $routes;
@@ -25,6 +37,7 @@ class SystemRoute implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('routes', $this->routes);
         return $record;
     }

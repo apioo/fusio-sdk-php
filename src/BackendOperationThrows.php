@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends \PSX\Record\Record<string>
  */
+#[Description('Map of HTTP error status codes to target schema names')]
 class BackendOperationThrows extends \PSX\Record\Record
 {
 }

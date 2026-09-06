@@ -11,18 +11,33 @@ use PSX\Schema\Attribute\Description;
 #[Description('This object represents a token, this an access token which was requested by a user')]
 class BackendToken implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     #[Description('Status of the object either 1 = active or 2 = deleted')]
     protected ?int $status = null;
+    #[Description('Name or friendly description for the token')]
     protected ?string $name = null;
     /**
      * @var array<string>|null
      */
+    #[Description('List of access scopes granted to this token')]
     protected ?array $scopes = null;
+    #[Description('IP address from which the token was requested')]
     protected ?string $ip = null;
+    #[Description('Expiration timestamp after which the token is invalid')]
     protected ?\PSX\DateTime\LocalDateTime $expire = null;
+    #[Description('Creation timestamp of the token')]
     protected ?\PSX\DateTime\LocalDateTime $date = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -92,6 +107,7 @@ class BackendToken implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('status', $this->status);
         $record->put('name', $this->name);

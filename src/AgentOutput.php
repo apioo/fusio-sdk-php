@@ -13,6 +13,7 @@ class AgentOutput implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Chat id of this conversation')]
     protected ?string $id = null;
+    #[Description('The response payload item produced by the agent')]
     protected ?AgentItem $item = null;
     public function setId(?string $id): void
     {

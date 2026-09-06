@@ -6,19 +6,38 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Personal access token entity generated for consumer access')]
 class ConsumerToken implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
+    #[Description('Unique identifier for the token')]
     protected ?int $id = null;
+    #[Description('Status code indicating if the token is active or revoked')]
     protected ?int $status = null;
+    #[Description('User-assigned label or name for the token')]
     protected ?string $name = null;
     /**
      * @var array<string>|null
      */
+    #[Description('List of scopes assigned to this token')]
     protected ?array $scopes = null;
+    #[Description('IP address restriction associated with the token')]
     protected ?string $ip = null;
+    #[Description('Expiration date of the access token')]
     protected ?\PSX\DateTime\LocalDate $expire = null;
+    #[Description('Creation date of the token')]
     protected ?\PSX\DateTime\LocalDateTime $date = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -88,6 +107,7 @@ class ConsumerToken implements \JsonSerializable, \PSX\Record\RecordableInterfac
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('status', $this->status);
         $record->put('name', $this->name);

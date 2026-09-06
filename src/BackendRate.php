@@ -11,6 +11,8 @@ use PSX\Schema\Attribute\Description;
 #[Description('This object represents a rate limitation, which allows to limit the requests which a user can send')]
 class BackendRate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     #[Description('All rates are applied based on the priority, higher priorities are applied first')]
@@ -28,6 +30,14 @@ class BackendRate implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?array $allocation = null;
     #[Description('Use this parameter to attach key-value data')]
     protected ?CommonMetadata $metadata = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -97,6 +107,7 @@ class BackendRate implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('priority', $this->priority);
         $record->put('name', $this->name);

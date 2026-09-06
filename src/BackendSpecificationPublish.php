@@ -6,11 +6,16 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload defining configuration parameters for publishing an API specification export')]
 class BackendSpecificationPublish implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Target specification format name to output')]
     protected ?string $name = null;
+    #[Description('Optional category or entity filter applied to scope the exported specification')]
     protected ?string $filterName = null;
+    #[Description('Indicates whether the specification output should be rendered as a standalone unit')]
     protected ?bool $standalone = null;
     public function setName(?string $name): void
     {

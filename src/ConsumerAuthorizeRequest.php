@@ -6,14 +6,22 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Parameters sent to initiate an OAuth authorization decision')]
 class ConsumerAuthorizeRequest implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('OAuth 2.0 response type (e.g., code)')]
     protected ?string $responseType = null;
+    #[Description('App key / client ID requesting authorization')]
     protected ?string $clientId = null;
+    #[Description('Callback URI where the authorization response will be delivered')]
     protected ?string $redirectUri = null;
+    #[Description('Space-delimited list of requested scopes')]
     protected ?string $scope = null;
+    #[Description('Opaque value passed to maintain state between request and callback')]
     protected ?string $state = null;
+    #[Description('User decision to grant or deny access')]
     protected ?bool $allow = null;
     public function setResponseType(?string $responseType): void
     {

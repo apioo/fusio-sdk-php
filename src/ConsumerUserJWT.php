@@ -6,15 +6,21 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 use PSX\Schema\Attribute\Key;
 
+#[Description('JWT authentication response containing access credentials')]
 class ConsumerUserJWT implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('JSON Web Token string used for authentication')]
     protected ?string $token = null;
     #[Key('expires_in')]
+    #[Description('Token validity duration in seconds')]
     protected ?int $expiresIn = null;
     #[Key('refresh_token')]
+    #[Description('Refresh token string used to obtain new access tokens')]
     protected ?string $refreshToken = null;
+    #[Description('Space-separated list of granted scopes')]
     protected ?string $scope = null;
     public function setToken(?string $token): void
     {

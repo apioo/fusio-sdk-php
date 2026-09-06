@@ -6,13 +6,17 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('A single data line or bar series for a statistic chart')]
 class BackendStatisticChartSeries implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Name or key identifier for the data series')]
     protected ?string $name = null;
     /**
      * @var array<float>|null
      */
+    #[Description('Numeric data points corresponding to chart labels')]
     protected ?array $data = null;
     public function setName(?string $name): void
     {

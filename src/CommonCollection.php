@@ -13,13 +13,27 @@ use PSX\Schema\Attribute\Description;
 #[Description('Base collection')]
 class CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
+    #[Description('Total number of items available in the entire collection')]
     protected ?int $totalResults = null;
+    #[Description('Zero-based index of the first item contained in the current response')]
     protected ?int $startIndex = null;
+    #[Description('Maximum number of items returned in a single response page')]
     protected ?int $itemsPerPage = null;
     /**
      * @var array<T>|null
      */
+    #[Description('Array containing the actual paginated collection items')]
     protected ?array $entry = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setTotalResults(?int $totalResults): void
     {
         $this->totalResults = $totalResults;
@@ -65,6 +79,7 @@ class CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInter
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('totalResults', $this->totalResults);
         $record->put('startIndex', $this->startIndex);
         $record->put('itemsPerPage', $this->itemsPerPage);

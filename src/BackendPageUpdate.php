@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for updating an existing portal page')]
 class BackendPageUpdate extends BackendPage implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

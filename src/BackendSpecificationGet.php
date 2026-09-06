@@ -6,9 +6,12 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Container delivering the compiled API specification schema object')]
 class BackendSpecificationGet implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('The raw API specification definition schema content')]
     protected mixed $spec = null;
     public function setSpec(mixed $spec): void
     {

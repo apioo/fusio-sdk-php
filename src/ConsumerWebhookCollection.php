@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends CommonCollection<ConsumerWebhook>
  */
+#[Description('Collection of webhook subscriptions')]
 class ConsumerWebhookCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

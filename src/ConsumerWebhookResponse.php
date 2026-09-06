@@ -6,12 +6,18 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Recorded delivery log response for a webhook dispatch')]
 class ConsumerWebhookResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Internal status code of the webhook delivery process')]
     protected ?int $status = null;
+    #[Description('HTTP status code received from the destination endpoint')]
     protected ?int $code = null;
+    #[Description('Number of delivery retry attempts executed')]
     protected ?string $attempts = null;
+    #[Description('Timestamp when the webhook delivery attempt occurred')]
     protected ?string $executeDate = null;
     public function setStatus(?int $status): void
     {

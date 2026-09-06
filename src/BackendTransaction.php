@@ -11,16 +11,34 @@ use PSX\Schema\Attribute\Description;
 #[Description('This object represents a transaction. The system generates a transaction in case a payment was successfully executed')]
 class BackendTransaction implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Unique identifier of the associated user')]
     protected ?int $userId = null;
+    #[Description('Unique identifier of the associated plan')]
     protected ?int $planId = null;
+    #[Description('External reference or gateway transaction identifier')]
     protected ?string $transactionId = null;
+    #[Description('Monetary amount paid for the transaction')]
     protected ?float $amount = null;
+    #[Description('Number of credits or points credited by this transaction')]
     protected ?float $points = null;
+    #[Description('Start timestamp of the active billing period')]
     protected ?\PSX\DateTime\LocalDateTime $periodStart = null;
+    #[Description('End timestamp of the active billing period')]
     protected ?\PSX\DateTime\LocalDateTime $periodEnd = null;
+    #[Description('Creation timestamp of the transaction record')]
     protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -100,6 +118,7 @@ class BackendTransaction implements \JsonSerializable, \PSX\Record\RecordableInt
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('userId', $this->userId);
         $record->put('planId', $this->planId);

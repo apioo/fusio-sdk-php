@@ -6,11 +6,16 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Scope entry within a specific category group')]
 class ConsumerScopeCategoryScope implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the scope')]
     protected ?int $id = null;
+    #[Description('Name key of the scope')]
     protected ?string $name = null;
+    #[Description('Description of access privileges')]
     protected ?string $description = null;
     public function setId(?int $id): void
     {

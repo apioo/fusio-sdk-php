@@ -11,10 +11,21 @@ use PSX\Schema\Attribute\Description;
 #[Description('Contains all possible classes which can be used at an connection as class')]
 class BackendConnectionIndex implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     /**
      * @var array<BackendConnectionIndexEntry>|null
      */
+    #[Description('List of available connection class entries')]
     protected ?array $connections = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     /**
      * @param array<BackendConnectionIndexEntry>|null $connections
      */
@@ -36,6 +47,7 @@ class BackendConnectionIndex implements \JsonSerializable, \PSX\Record\Recordabl
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('connections', $this->connections);
         return $record;
     }

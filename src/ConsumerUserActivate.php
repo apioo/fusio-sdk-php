@@ -6,9 +6,12 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload used to activate a user account via token')]
 class ConsumerUserActivate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Account activation verification token')]
     protected ?string $token = null;
     public function setToken(?string $token): void
     {

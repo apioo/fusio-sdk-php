@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for updating a system configuration entry')]
 class BackendConfigUpdate extends BackendConfig implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

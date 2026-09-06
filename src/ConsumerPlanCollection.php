@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends CommonCollection<ConsumerPlan>
  */
+#[Description('Collection of subscription plans')]
 class ConsumerPlanCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

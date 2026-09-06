@@ -6,12 +6,27 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Response structure detailing the outcome of an SDK generation job')]
 class BackendSdkMessage implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
+    #[Description('Indicates whether the SDK build was completed successfully')]
     protected ?bool $success = null;
+    #[Description('Informational status or diagnostic message regarding SDK generation')]
     protected ?string $message = null;
+    #[Description('Download link to retrieve the generated SDK bundle')]
     protected ?string $link = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setSuccess(?bool $success): void
     {
         $this->success = $success;
@@ -43,6 +58,7 @@ class BackendSdkMessage implements \JsonSerializable, \PSX\Record\RecordableInte
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('success', $this->success);
         $record->put('message', $this->message);
         $record->put('link', $this->link);

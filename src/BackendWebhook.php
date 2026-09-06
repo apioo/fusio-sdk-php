@@ -11,16 +11,31 @@ use PSX\Schema\Attribute\Description;
 #[Description('This object represents a webhook, a webhook is called in case a specific event was triggered')]
 class BackendWebhook implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Unique identifier of the event that triggers this webhook')]
     protected ?int $eventId = null;
+    #[Description('Unique identifier of the user who owns this webhook')]
     protected ?int $userId = null;
+    #[Description('Friendly name or identifier for the webhook configuration')]
     protected ?string $name = null;
+    #[Description('Target HTTP URL where payload notifications will be delivered')]
     protected ?string $endpoint = null;
     /**
      * @var array<BackendWebhookResponse>|null
      */
+    #[Description('Historical log of HTTP responses received from dispatch attempts')]
     protected ?array $responses = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -82,6 +97,7 @@ class BackendWebhook implements \JsonSerializable, \PSX\Record\RecordableInterfa
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('eventId', $this->eventId);
         $record->put('userId', $this->userId);

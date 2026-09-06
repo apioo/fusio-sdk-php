@@ -6,9 +6,12 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Response payload containing the payment provider checkout URI')]
 class ConsumerPaymentCheckoutResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('URL to redirect the user to complete payment authorization')]
     protected ?string $approvalUrl = null;
     public function setApprovalUrl(?string $approvalUrl): void
     {

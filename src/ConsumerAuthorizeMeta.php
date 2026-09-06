@@ -6,14 +6,19 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Metadata for an OAuth authorization request screen')]
 class ConsumerAuthorizeMeta implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Name of the application requesting authorization')]
     protected ?string $name = null;
+    #[Description('Website or documentation URL of the requesting application')]
     protected ?string $url = null;
     /**
      * @var array<ConsumerScope>|null
      */
+    #[Description('List of scopes requested for user consent')]
     protected ?array $scopes = null;
     public function setName(?string $name): void
     {
