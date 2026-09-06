@@ -6,13 +6,26 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Grouped list of scope categories for user authorization forms')]
 class ConsumerScopeCategories implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     /**
      * @var array<ConsumerScopeCategory>|null
      */
+    #[Description('List of scope category definitions')]
     protected ?array $categories = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     /**
      * @param array<ConsumerScopeCategory>|null $categories
      */
@@ -34,6 +47,7 @@ class ConsumerScopeCategories implements \JsonSerializable, \PSX\Record\Recordab
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('categories', $this->categories);
         return $record;
     }

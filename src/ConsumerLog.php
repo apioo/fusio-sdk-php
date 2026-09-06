@@ -6,18 +6,39 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Access log entry recording an incoming HTTP request')]
 class ConsumerLog implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
+    #[Description('Unique identifier for the log entry')]
     protected ?int $id = null;
+    #[Description('ID of the application that authorized the request')]
     protected ?int $appId = null;
+    #[Description('Originating IP address of the caller')]
     protected ?string $ip = null;
+    #[Description('User-Agent header string from the client request')]
     protected ?string $userAgent = null;
+    #[Description('HTTP method of the executed request')]
     protected ?string $method = null;
+    #[Description('URL path requested by the client')]
     protected ?string $path = null;
+    #[Description('HTTP request headers recorded for debugging')]
     protected ?string $header = null;
+    #[Description('HTTP request body payload recorded for debugging')]
     protected ?string $body = null;
+    #[Description('Timestamp when the request occurred')]
     protected ?\PSX\DateTime\LocalDateTime $date = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -97,6 +118,7 @@ class ConsumerLog implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('appId', $this->appId);
         $record->put('ip', $this->ip);

@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for creating a new event entity')]
 class BackendEventCreate extends BackendEvent implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

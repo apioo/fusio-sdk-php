@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for updating an existing connection')]
 class BackendConnectionUpdate extends BackendConnection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

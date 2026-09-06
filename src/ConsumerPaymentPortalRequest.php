@@ -6,9 +6,12 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Request payload to launch the billing management portal')]
 class ConsumerPaymentPortalRequest implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('URL to return to after managing subscription details')]
     protected ?string $returnUrl = null;
     public function setReturnUrl(?string $returnUrl): void
     {

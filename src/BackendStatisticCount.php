@@ -6,11 +6,16 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Represents an aggregated count metric over a specific timeframe')]
 class BackendStatisticCount implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Total aggregated metric count')]
     protected ?int $count = null;
+    #[Description('Start timestamp of the metric aggregation period')]
     protected ?\PSX\DateTime\LocalDateTime $from = null;
+    #[Description('End timestamp of the metric aggregation period')]
     protected ?\PSX\DateTime\LocalDateTime $to = null;
     public function setCount(?int $count): void
     {

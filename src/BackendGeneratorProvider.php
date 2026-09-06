@@ -6,15 +6,21 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Configuration object used to invoke a schema/operation generator')]
 class BackendGeneratorProvider implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Base HTTP path to mount generated operations')]
     protected ?string $path = null;
     /**
      * @var array<string>|null
      */
+    #[Description('Scopes to assign to generated operations')]
     protected ?array $scopes = null;
+    #[Description('Indicates whether generated operations are publicly accessible')]
     protected ?bool $public = null;
+    #[Description('Generator specific configuration key-value pairs')]
     protected ?BackendGeneratorProviderConfig $config = null;
     public function setPath(?string $path): void
     {

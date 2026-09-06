@@ -6,16 +6,35 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Subscription or monetization plan for API consumers')]
 class ConsumerPlan implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
+    #[Description('Unique identifier for the plan')]
     protected ?int $id = null;
+    #[Description('Display name of the plan')]
     protected ?string $name = null;
+    #[Description('Detailed description of plan features and limits')]
     protected ?string $description = null;
+    #[Description('Cost of the plan per billing cycle')]
     protected ?float $price = null;
+    #[Description('Quota points allocated per billing cycle')]
     protected ?int $points = null;
+    #[Description('Billing period interval classification code')]
     protected ?int $period = null;
+    #[Description('Custom metadata key-value mapping')]
     protected ?CommonMetadata $metadata = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -79,6 +98,7 @@ class ConsumerPlan implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('name', $this->name);
         $record->put('description', $this->description);

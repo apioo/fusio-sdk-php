@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends \PSX\Record\Record<mixed>
  */
+#[Description('Arbitrary configuration map for the generator provider')]
 class BackendGeneratorProviderConfig extends \PSX\Record\Record
 {
 }

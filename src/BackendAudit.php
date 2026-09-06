@@ -11,9 +11,13 @@ use PSX\Schema\Attribute\Description;
 #[Description('This object represents an audit which is created every time something was changed at the system')]
 class BackendAudit implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Application context associated with this audit event')]
     protected ?BackendApp $app = null;
+    #[Description('User context associated with this audit event')]
     protected ?BackendUser $user = null;
     #[Description('Trigger event of this audit')]
     protected ?string $event = null;
@@ -25,6 +29,14 @@ class BackendAudit implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?BackendAuditObject $content = null;
     #[Description('Insert date of this audit event')]
     protected ?\PSX\DateTime\LocalDateTime $date = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -96,6 +108,7 @@ class BackendAudit implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('app', $this->app);
         $record->put('user', $this->user);

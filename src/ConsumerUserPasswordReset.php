@@ -6,10 +6,14 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for completing a password reset')]
 class ConsumerUserPasswordReset implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Password reset verification token')]
     protected ?string $token = null;
+    #[Description('New password to set for the account')]
     protected ?string $newPassword = null;
     public function setToken(?string $token): void
     {

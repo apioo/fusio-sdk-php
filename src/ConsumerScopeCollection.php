@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends CommonCollection<ConsumerScope>
  */
+#[Description('Collection of API permission scopes')]
 class ConsumerScopeCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

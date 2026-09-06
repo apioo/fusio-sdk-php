@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends CommonCollection<ConsumerPage>
  */
+#[Description('Collection of content page entries')]
 class ConsumerPageCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

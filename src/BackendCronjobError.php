@@ -11,9 +11,13 @@ use PSX\Schema\Attribute\Description;
 #[Description('Represents an error which occurred on cronjob execution')]
 class BackendCronjobError implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Error message detailing the cause of failure')]
     protected ?string $message = null;
+    #[Description('Stack trace of the error exception')]
     protected ?string $trace = null;
+    #[Description('File path where the execution error occurred')]
     protected ?string $file = null;
+    #[Description('Line number where the execution error occurred')]
     protected ?int $line = null;
     public function setMessage(?string $message): void
     {

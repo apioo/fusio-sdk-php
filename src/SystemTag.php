@@ -14,6 +14,14 @@ use Sdkgen\Client\TagAbstract;
 
 class SystemTag extends TagAbstract
 {
+    public function captcha(): SystemCaptchaTag
+    {
+        return new SystemCaptchaTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function connection(): SystemConnectionTag
     {
         return new SystemConnectionTag(

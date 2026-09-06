@@ -6,9 +6,12 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Request payload to register or create a new user account')]
 class BackendUserCreate extends BackendUser implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Plaintext password for the user account during creation')]
     protected ?string $password = null;
     public function setPassword(?string $password): void
     {

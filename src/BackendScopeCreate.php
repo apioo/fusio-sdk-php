@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for creating a new scope entity')]
 class BackendScopeCreate extends BackendScope implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

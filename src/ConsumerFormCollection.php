@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends CommonCollection<ConsumerForm>
  */
+#[Description('Collection of dynamic form definitions')]
 class ConsumerFormCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

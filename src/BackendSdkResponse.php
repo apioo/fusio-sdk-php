@@ -6,10 +6,23 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Container listing target SDK languages or formats available for generator execution')]
 class BackendSdkResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
+    #[Description('Map of available SDK generator target identifiers to display names')]
     protected ?BackendSdkTypes $types = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setTypes(?BackendSdkTypes $types): void
     {
         $this->types = $types;
@@ -25,6 +38,7 @@ class BackendSdkResponse implements \JsonSerializable, \PSX\Record\RecordableInt
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('types', $this->types);
         return $record;
     }

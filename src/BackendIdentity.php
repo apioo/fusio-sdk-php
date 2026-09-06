@@ -11,6 +11,8 @@ use PSX\Schema\Attribute\Description;
 #[Description('This object represents an identity which allows to authenticate with a remote identity provider')]
 class BackendIdentity implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     #[Description('The target app for this identity')]
@@ -23,8 +25,18 @@ class BackendIdentity implements \JsonSerializable, \PSX\Record\RecordableInterf
     protected ?string $icon = null;
     #[Description('Underlying class of this identity provider')]
     protected ?string $class = null;
+    #[Description('Contains identity provider specific configuration values')]
     protected ?BackendIdentityConfig $config = null;
+    #[Description('Indicates whether a new local user account should be created if it does not exist yet')]
     protected ?bool $allowCreate = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -96,6 +108,7 @@ class BackendIdentity implements \JsonSerializable, \PSX\Record\RecordableInterf
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('appId', $this->appId);
         $record->put('roleId', $this->roleId);

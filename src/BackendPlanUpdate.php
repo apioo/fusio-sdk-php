@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for updating an existing plan definition')]
 class BackendPlanUpdate extends BackendPlan implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

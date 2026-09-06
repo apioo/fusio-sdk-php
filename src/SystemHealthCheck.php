@@ -6,11 +6,24 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
 class SystemHealthCheck implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
+    #[Description('Indicates whether the specific service component is operational')]
     protected ?bool $healthy = null;
+    #[Description('Error details or message explaining why the check failed, if applicable')]
     protected ?string $error = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setHealthy(?bool $healthy): void
     {
         $this->healthy = $healthy;
@@ -34,6 +47,7 @@ class SystemHealthCheck implements \JsonSerializable, \PSX\Record\RecordableInte
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('healthy', $this->healthy);
         $record->put('error', $this->error);
         return $record;

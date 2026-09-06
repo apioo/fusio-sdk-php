@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for updating an existing taxonomy node')]
 class BackendTaxonomyUpdate extends BackendTaxonomy implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

@@ -6,12 +6,15 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Container for grouping available scopes into logical categories')]
 class BackendScopeCategories implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<BackendScopeCategory>|null
      */
+    #[Description('List of scope categories')]
     protected ?array $categories = null;
     /**
      * @param array<BackendScopeCategory>|null $categories

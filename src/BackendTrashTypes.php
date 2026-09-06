@@ -6,12 +6,15 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('List of available entity types that can be restored from the trash')]
 class BackendTrashTypes implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<string>|null
      */
+    #[Description('Array of restorably deleted object type identifiers')]
     protected ?array $types = null;
     /**
      * @param array<string>|null $types

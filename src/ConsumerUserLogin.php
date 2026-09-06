@@ -6,14 +6,19 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Credentials payload for user login')]
 class ConsumerUserLogin implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Username or email address for authentication')]
     protected ?string $username = null;
+    #[Description('User password')]
     protected ?string $password = null;
     /**
      * @var array<string>|null
      */
+    #[Description('Optional list of specific scopes requested for the login session')]
     protected ?array $scopes = null;
     public function setUsername(?string $username): void
     {

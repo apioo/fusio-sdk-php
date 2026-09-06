@@ -11,6 +11,8 @@ use PSX\Schema\Attribute\Description;
 #[Description('This object represents a bundle which contains action, schema, event, cronjob and trigger configurations from you local instance')]
 class BackendBundle implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     #[Description('Unique name of the object')]
@@ -27,6 +29,14 @@ class BackendBundle implements \JsonSerializable, \PSX\Record\RecordableInterfac
     protected ?int $cost = null;
     #[Description('The bundle configuration')]
     protected ?BackendBundleConfig $config = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -98,6 +108,7 @@ class BackendBundle implements \JsonSerializable, \PSX\Record\RecordableInterfac
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('name', $this->name);
         $record->put('version', $this->version);

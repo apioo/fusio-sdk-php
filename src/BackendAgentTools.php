@@ -11,10 +11,21 @@ use PSX\Schema\Attribute\Description;
 #[Description('Represents a collection of available tools')]
 class BackendAgentTools implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     /**
      * @var array<BackendAgentTool>|null
      */
+    #[Description('List of available tools for agent invocation')]
     protected ?array $tools = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     /**
      * @param array<BackendAgentTool>|null $tools
      */
@@ -36,6 +47,7 @@ class BackendAgentTools implements \JsonSerializable, \PSX\Record\RecordableInte
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('tools', $this->tools);
         return $record;
     }

@@ -14,6 +14,7 @@ class BackendGeneratorIndexProviders implements \JsonSerializable, \PSX\Record\R
     /**
      * @var array<BackendGeneratorIndexProvider>|null
      */
+    #[Description('List of available generator provider entries')]
     protected ?array $providers = null;
     /**
      * @param array<BackendGeneratorIndexProvider>|null $providers

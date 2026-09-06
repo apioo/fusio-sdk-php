@@ -11,12 +11,22 @@ use PSX\Schema\Attribute\Description;
 #[Description('This object represents an agent')]
 class ConsumerAgent implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     #[Description('Name of the agent')]
     protected ?string $name = null;
     #[Description('Description of the agent')]
     protected ?string $description = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -48,6 +58,7 @@ class ConsumerAgent implements \JsonSerializable, \PSX\Record\RecordableInterfac
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('name', $this->name);
         $record->put('description', $this->description);

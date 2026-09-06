@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends \PSX\Record\Record<mixed>
  */
+#[Description('Identity provider configuration containing key-value parameters')]
 class BackendIdentityConfig extends \PSX\Record\Record
 {
 }

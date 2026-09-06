@@ -11,6 +11,8 @@ use PSX\Schema\Attribute\Description;
 #[Description('This object represents a schema to describe a JSON payload')]
 class BackendSchema implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     #[Description('Status of the object either 1 = active or 0 = deleted')]
@@ -21,6 +23,14 @@ class BackendSchema implements \JsonSerializable, \PSX\Record\RecordableInterfac
     protected ?BackendSchemaSource $source = null;
     #[Description('Use this parameter to attach key-value data')]
     protected ?CommonMetadata $metadata = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -68,6 +78,7 @@ class BackendSchema implements \JsonSerializable, \PSX\Record\RecordableInterfac
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('status', $this->status);
         $record->put('name', $this->name);

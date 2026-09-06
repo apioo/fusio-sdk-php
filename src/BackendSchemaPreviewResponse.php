@@ -6,9 +6,12 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Response container for a generated schema code preview')]
 class BackendSchemaPreviewResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('The formatted source code preview generated from the schema')]
     protected ?string $preview = null;
     public function setPreview(?string $preview): void
     {

@@ -6,22 +6,44 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Represents a consumer application registered by a user')]
 class ConsumerApp implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
+    #[Description('Unique identifier for the application')]
     protected ?int $id = null;
+    #[Description('Unique identifier of the owning user')]
     protected ?int $userId = null;
+    #[Description('Current operational status of the application')]
     protected ?int $status = null;
+    #[Description('Name of the application')]
     protected ?string $name = null;
+    #[Description('Homepage or callback URL of the application')]
     protected ?string $url = null;
+    #[Description('Client app key used for API authentication')]
     protected ?string $appKey = null;
+    #[Description('Client secret used for API authentication')]
     protected ?string $appSecret = null;
+    #[Description('Creation timestamp of the application')]
     protected ?string $date = null;
     /**
      * @var array<string>|null
      */
+    #[Description('List of scopes assigned to this application')]
     protected ?array $scopes = null;
+    #[Description('Custom key-value metadata associated with the application')]
     protected ?CommonMetadata $metadata = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -115,6 +137,7 @@ class ConsumerApp implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('userId', $this->userId);
         $record->put('status', $this->status);

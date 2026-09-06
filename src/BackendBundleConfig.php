@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends \PSX\Record\Record<mixed>
  */
+#[Description('Configuration settings and resource specs exported within the bundle')]
 class BackendBundleConfig extends \PSX\Record\Record
 {
 }

@@ -6,25 +6,47 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('User profile and subscription status details')]
 class ConsumerUserAccount implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
+    #[Description('Unique identifier for the user account')]
     protected ?int $id = null;
+    #[Description('ID of the user\'s currently active subscription plan')]
     protected ?int $planId = null;
+    #[Description('Operational status code of the user account')]
     protected ?int $status = null;
+    #[Description('Full name of the user')]
     protected ?string $name = null;
+    #[Description('Primary email address associated with the account')]
     protected ?string $email = null;
+    #[Description('Current balance of available execution points/quota')]
     protected ?int $points = null;
     /**
      * @var array<string>|null
      */
+    #[Description('List of scopes assigned directly to the user')]
     protected ?array $scopes = null;
     /**
      * @var array<ConsumerUserPlan>|null
      */
+    #[Description('List of active plan subscriptions for the user')]
     protected ?array $plans = null;
+    #[Description('Custom key-value metadata attached to the account')]
     protected ?CommonMetadata $metadata = null;
+    #[Description('Registration date of the user account')]
     protected ?\PSX\DateTime\LocalDateTime $date = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -124,6 +146,7 @@ class ConsumerUserAccount implements \JsonSerializable, \PSX\Record\RecordableIn
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('planId', $this->planId);
         $record->put('status', $this->status);

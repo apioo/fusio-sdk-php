@@ -6,11 +6,16 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Simplified scope representation within a category view')]
 class BackendScopeCategoryScope implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the scope')]
     protected ?int $id = null;
+    #[Description('Unique name of the scope')]
     protected ?string $name = null;
+    #[Description('Short description explaining the scope purpose')]
     protected ?string $description = null;
     public function setId(?int $id): void
     {

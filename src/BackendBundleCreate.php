@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for creating a new configuration bundle')]
 class BackendBundleCreate extends BackendBundle implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

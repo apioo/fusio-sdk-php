@@ -11,12 +11,22 @@ use PSX\Schema\Attribute\Description;
 #[Description('Represents an action execution response')]
 class BackendActionExecuteResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     #[Description('HTTP status code i.e. 200, 400, etc.')]
     protected ?int $statusCode = null;
     #[Description('The response header returned by the action')]
     protected ?BackendActionExecuteResponseHeaders $headers = null;
     #[Description('The response body returned by the action')]
     protected ?BackendActionExecuteResponseBody $body = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setStatusCode(?int $statusCode): void
     {
         $this->statusCode = $statusCode;
@@ -48,6 +58,7 @@ class BackendActionExecuteResponse implements \JsonSerializable, \PSX\Record\Rec
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('statusCode', $this->statusCode);
         $record->put('headers', $this->headers);
         $record->put('body', $this->body);

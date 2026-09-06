@@ -6,12 +6,18 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Defines primitive type constraints for parameter schema definitions')]
 class BackendOperationSchema implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Description explaining the parameter purpose')]
     protected ?string $description = null;
+    #[Description('Primitive type of the parameter i.e. string or integer')]
     protected ?string $type = null;
+    #[Description('Type formatting detail i.e. date-time or int64')]
     protected ?string $format = null;
+    #[Description('Allowed enumerated string value constraints')]
     protected ?string $enum = null;
     public function setDescription(?string $description): void
     {

@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends CommonCollection<ConsumerIdentity>
  */
+#[Description('Collection of third-party identity providers')]
 class ConsumerIdentityCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

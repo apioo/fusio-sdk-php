@@ -6,16 +6,35 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Dynamic form configuration entity')]
 class ConsumerForm implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
+    #[Description('Unique identifier for the form')]
     protected ?int $id = null;
+    #[Description('Name of the form')]
     protected ?string $name = null;
+    #[Description('Target action path or route triggered on form submission')]
     protected ?string $action = null;
+    #[Description('HTTP method used to submit the form (e.g., POST)')]
     protected ?string $method = null;
+    #[Description('JSON Schema validating form structure and data inputs')]
     protected mixed $jsonSchema = null;
+    #[Description('UI schema defining control layout and widget presentation options')]
     protected mixed $uiSchema = null;
+    #[Description('Custom metadata key-value mapping')]
     protected ?CommonMetadata $metadata = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -79,6 +98,7 @@ class ConsumerForm implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('name', $this->name);
         $record->put('action', $this->action);

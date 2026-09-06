@@ -11,6 +11,7 @@ use PSX\Schema\Attribute\Description;
 #[Description('Export of the complete system configuration')]
 class BackendBackupExport implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Base64 or JSON string containing the exported system configuration payload')]
     protected ?string $export = null;
     public function setExport(?string $export): void
     {

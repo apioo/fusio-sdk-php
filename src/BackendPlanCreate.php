@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for creating a new subscription or point plan')]
 class BackendPlanCreate extends BackendPlan implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

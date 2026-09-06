@@ -6,14 +6,19 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for updating an existing consumer application')]
 class ConsumerAppUpdate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Updated name for the application')]
     protected ?string $name = null;
+    #[Description('Updated URL for the application')]
     protected ?string $url = null;
     /**
      * @var array<string>|null
      */
+    #[Description('Updated list of scopes for the application')]
     protected ?array $scopes = null;
     public function setName(?string $name): void
     {

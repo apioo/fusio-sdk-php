@@ -11,6 +11,8 @@ use PSX\Schema\Attribute\Description;
 #[Description('This object represents a role, every user is assigned to a role and all scopes of the role are automatically attached to the user')]
 class BackendRole implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     #[Description('The assigned category id of this role')]
@@ -22,6 +24,14 @@ class BackendRole implements \JsonSerializable, \PSX\Record\RecordableInterface
      */
     #[Description('All scopes which are assigned to this role')]
     protected ?array $scopes = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -67,6 +77,7 @@ class BackendRole implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('categoryId', $this->categoryId);
         $record->put('name', $this->name);

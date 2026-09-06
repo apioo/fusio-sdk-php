@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends CommonCollection<ConsumerGrant>
  */
+#[Description('Collection of user authorization grant records')]
 class ConsumerGrantCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

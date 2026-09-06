@@ -11,6 +11,7 @@ use PSX\Schema\Attribute\Description;
 #[Description('Redirect response to initiate an OAuth2 flow')]
 class BackendConnectionRedirectResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Target URI to redirect the user for OAuth2 authentication')]
     protected ?string $redirectUri = null;
     public function setRedirectUri(?string $redirectUri): void
     {

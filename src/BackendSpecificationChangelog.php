@@ -6,12 +6,18 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Represents structural changelog differences between specification versions')]
 class BackendSpecificationChangelog implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Specification content corresponding to the current master definition')]
     protected mixed $master = null;
+    #[Description('Specification content corresponding to the target tagged version')]
     protected mixed $tag = null;
+    #[Description('Version identifier for the tag release')]
     protected ?string $version = null;
+    #[Description('Formatted summary detailing API changes between master and tag')]
     protected ?string $changelog = null;
     public function setMaster(mixed $master): void
     {

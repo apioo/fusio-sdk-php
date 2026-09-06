@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for creating a new firewall rule')]
 class BackendFirewallCreate extends BackendFirewall implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

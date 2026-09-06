@@ -6,7 +6,9 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Configuration parameters for executing a test run')]
 class BackendTestConfig extends BackendActionExecuteRequest implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

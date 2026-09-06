@@ -6,9 +6,11 @@
 
 namespace Fusio\Sdk;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends CommonCollection<ConsumerApp>
  */
+#[Description('Collection of consumer applications')]
 class ConsumerAppCollection extends CommonCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

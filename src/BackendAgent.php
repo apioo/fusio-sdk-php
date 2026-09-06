@@ -11,6 +11,8 @@ use PSX\Schema\Attribute\Description;
 #[Description('This object represents an agent')]
 class BackendAgent implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     #[Description('The agent connection which should be used')]
@@ -38,9 +40,18 @@ class BackendAgent implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $outgoing = null;
     #[Description('Action which gets invoked for each generated response')]
     protected ?string $action = null;
+    #[Description('Timestamp when the agent was created')]
     protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
     #[Description('Use this parameter to attach key-value data')]
     protected ?CommonMetadata $metadata = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -166,6 +177,7 @@ class BackendAgent implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('connection', $this->connection);
         $record->put('type', $this->type);
