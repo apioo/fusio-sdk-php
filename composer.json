@@ -1,13 +1,14 @@
 {
   "name": "fusio/sdk",
-  "description": "SDK to talk to the Fusio REST API",
+  "description": "Fusio PHP SDK managed by SDK Fabric",
   "homepage": "https://www.fusio-project.org",
   "license": "MIT",
   "authors": [
     {
       "name": "Christoph Kappestein",
       "email": "christoph.kappestein@gmail.com",
-      "homepage": "https://chrisk.app"
+      "homepage": "https://chrisk.app/",
+      "role": "Developer"
     }
   ],
   "require": {
@@ -16,11 +17,6 @@
   "autoload": {
     "psr-4": {
       "Fusio\\Sdk\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Fusio\\Sdk\\Tests\\": "tests/"
     }
   }
 }
