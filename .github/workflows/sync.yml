@@ -14,7 +14,7 @@ jobs:
   sync-template:
     runs-on: ubuntu-latest
     steps:
-      - uses: sdk-fabric/sync-action@v0.2.0
+      - uses: sdk-fabric/sync-action@v0.2.1
         with:
           lang: 'php'
           typehub_user: ${{ inputs.typehub_user }}
