@@ -820,6 +820,9 @@ $response = $client->consumer()->webhook()->getAll(1, 1, 'search');
 // Updates an existing webhook for the authenticated user.
 $response = $client->consumer()->webhook()->update('webhook_id', new Consumer_WebhookUpdate());
 
+// Endpoint to generate a captcha challenge.
+$response = $client->system()->captcha()->challenge();
+
 // Connection OAuth2 callback to authorize a connection.
 $response = $client->system()->connection()->callback('name');
 
