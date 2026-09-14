@@ -18,12 +18,13 @@ class BackendAgentMessageTag extends TagAbstract
      * Returns a paginated list of agent messages
      *
      * @param string $agentId
+     * @param int|null $refId
      * @param string|null $chatId
      * @return BackendAgentMessageCollection
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getAll(string $agentId, ?string $chatId = null): BackendAgentMessageCollection
+    public function getAll(string $agentId, ?int $refId = null, ?string $chatId = null): BackendAgentMessageCollection
     {
         $url = $this->parser->url('/backend/agent/$agent_id<[0-9]+|^~>/message', [
             'agent_id' => $agentId,
@@ -33,6 +34,7 @@ class BackendAgentMessageTag extends TagAbstract
             'headers' => [
             ],
             'query' => $this->parser->query([
+                'ref_id' => $refId,
                 'chat_id' => $chatId,
             ], [
             ]),
@@ -68,11 +70,12 @@ class BackendAgentMessageTag extends TagAbstract
      *
      * @param string $agentId
      * @param AgentInput $payload
+     * @param int|null $refId
      * @return AgentOutput
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function submit(string $agentId, AgentInput $payload): AgentOutput
+    public function submit(string $agentId, AgentInput $payload, ?int $refId = null): AgentOutput
     {
         $url = $this->parser->url('/backend/agent/$agent_id<[0-9]+|^~>/message', [
             'agent_id' => $agentId,
@@ -83,6 +86,7 @@ class BackendAgentMessageTag extends TagAbstract
                 'Content-Type' => 'application/json',
             ],
             'query' => $this->parser->query([
+                'ref_id' => $refId,
             ], [
             ]),
             'json' => $payload,
