@@ -260,11 +260,14 @@ class BackendActionTag extends TagAbstract
     /**
      * Returns all available action classes
      *
+     * @param bool|null $marketplace
+     * @param int|null $startIndex
+     * @param string|null $search
      * @return BackendActionIndex
      * @throws CommonMessageException
      * @throws ClientException
      */
-    public function getClasses(): BackendActionIndex
+    public function getClasses(?bool $marketplace = null, ?int $startIndex = null, ?string $search = null): BackendActionIndex
     {
         $url = $this->parser->url('/backend/action/list', [
         ]);
@@ -273,6 +276,9 @@ class BackendActionTag extends TagAbstract
             'headers' => [
             ],
             'query' => $this->parser->query([
+                'marketplace' => $marketplace,
+                'startIndex' => $startIndex,
+                'search' => $search,
             ], [
             ]),
         ];
