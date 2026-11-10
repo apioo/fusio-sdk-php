@@ -13,6 +13,8 @@ class BackendActionIndexEntry implements \JsonSerializable, \PSX\Record\Recordab
 {
     #[Description('Human-readable name of the action class')]
     protected ?string $name = null;
+    #[Description('A longer description what the action does')]
+    protected ?string $description = null;
     #[Description('Technical identifier of the action class')]
     protected ?string $class = null;
     public function setName(?string $name): void
@@ -22,6 +24,14 @@ class BackendActionIndexEntry implements \JsonSerializable, \PSX\Record\Recordab
     public function getName(): ?string
     {
         return $this->name;
+    }
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
+    }
+    public function getDescription(): ?string
+    {
+        return $this->description;
     }
     public function setClass(?string $class): void
     {
@@ -39,6 +49,7 @@ class BackendActionIndexEntry implements \JsonSerializable, \PSX\Record\Recordab
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('name', $this->name);
+        $record->put('description', $this->description);
         $record->put('class', $this->class);
         return $record;
     }

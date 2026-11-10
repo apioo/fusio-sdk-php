@@ -12,6 +12,7 @@ use PSX\Schema\Attribute\Description;
 class MarketplaceObject implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
+    protected ?int $visibility = null;
     protected ?string $name = null;
     protected ?MarketplaceUser $author = null;
     protected ?string $version = null;
@@ -28,6 +29,14 @@ class MarketplaceObject implements \JsonSerializable, \PSX\Record\RecordableInte
     public function getId(): ?int
     {
         return $this->id;
+    }
+    public function setVisibility(?int $visibility): void
+    {
+        $this->visibility = $visibility;
+    }
+    public function getVisibility(): ?int
+    {
+        return $this->visibility;
     }
     public function setName(?string $name): void
     {
@@ -109,6 +118,7 @@ class MarketplaceObject implements \JsonSerializable, \PSX\Record\RecordableInte
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('id', $this->id);
+        $record->put('visibility', $this->visibility);
         $record->put('name', $this->name);
         $record->put('author', $this->author);
         $record->put('version', $this->version);

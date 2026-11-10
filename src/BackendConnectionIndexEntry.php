@@ -13,6 +13,8 @@ class BackendConnectionIndexEntry implements \JsonSerializable, \PSX\Record\Reco
 {
     #[Description('Human-readable name of the connection class')]
     protected ?string $name = null;
+    #[Description('A longer description what the connection does')]
+    protected ?string $description = null;
     #[Description('Technical identifier of the connection class')]
     protected ?string $class = null;
     public function setName(?string $name): void
@@ -22,6 +24,14 @@ class BackendConnectionIndexEntry implements \JsonSerializable, \PSX\Record\Reco
     public function getName(): ?string
     {
         return $this->name;
+    }
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
+    }
+    public function getDescription(): ?string
+    {
+        return $this->description;
     }
     public function setClass(?string $class): void
     {
@@ -39,6 +49,7 @@ class BackendConnectionIndexEntry implements \JsonSerializable, \PSX\Record\Reco
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('name', $this->name);
+        $record->put('description', $this->description);
         $record->put('class', $this->class);
         return $record;
     }
