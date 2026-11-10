@@ -10,10 +10,7 @@ namespace Fusio\Sdk;
 class MarketplaceAction extends MarketplaceObject implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $class = null;
-    /**
-     * @var array<FormElement>|null
-     */
-    protected ?array $form = null;
+    protected mixed $form = null;
     protected ?MarketplaceActionConfig $config = null;
     public function setClass(?string $class): void
     {
@@ -23,17 +20,11 @@ class MarketplaceAction extends MarketplaceObject implements \JsonSerializable, 
     {
         return $this->class;
     }
-    /**
-     * @param array<FormElement>|null $form
-     */
-    public function setForm(?array $form): void
+    public function setForm(mixed $form): void
     {
         $this->form = $form;
     }
-    /**
-     * @return array<FormElement>|null
-     */
-    public function getForm(): ?array
+    public function getForm(): mixed
     {
         return $this->form;
     }
