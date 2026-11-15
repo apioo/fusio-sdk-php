@@ -22,6 +22,14 @@ class BackendAgentTag extends TagAbstract
         );
     }
 
+    public function task(): BackendAgentTaskTag
+    {
+        return new BackendAgentTaskTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     /**
      * Creates a new agent
      *
