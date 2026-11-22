@@ -79,6 +79,18 @@ $response = $client->backend()->agent()->message()->getAll('agent_id', 1, 'chat_
 // Submits a new agent message.
 $response = $client->backend()->agent()->message()->submit('agent_id', 1, new Agent_Input());
 
+// Cancels a pending or running agent task.
+$response = $client->backend()->agent()->task()->cancel('agent_id', 'task_id');
+
+// Creates a new agent task which executes the action of the agent in the background, the optional connection is passed to the action i.
+$response = $client->backend()->agent()->task()->create('agent_id', 'connection', new Backend_AgentTaskCreate());
+
+// Returns a specific agent task including all executed steps.
+$response = $client->backend()->agent()->task()->get('agent_id', 'task_id');
+
+// Returns a paginated list of agent tasks of the current user.
+$response = $client->backend()->agent()->task()->getAll('agent_id', 1, 1);
+
 // Updates an existing agent.
 $response = $client->backend()->agent()->update('agent_id', new Backend_AgentUpdate());
 
