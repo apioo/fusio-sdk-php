@@ -72,7 +72,7 @@ class BackendCronjobTag extends TagAbstract
      */
     public function delete(string $cronjobId): CommonMessage
     {
-        $url = $this->parser->url('/backend/cronjob/$cronjob_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/cronjob/:cronjob_id', [
             'cronjob_id' => $cronjobId,
         ]);
 
@@ -119,7 +119,7 @@ class BackendCronjobTag extends TagAbstract
      */
     public function get(string $cronjobId): BackendCronjob
     {
-        $url = $this->parser->url('/backend/cronjob/$cronjob_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/cronjob/:cronjob_id', [
             'cronjob_id' => $cronjobId,
         ]);
 
@@ -220,7 +220,7 @@ class BackendCronjobTag extends TagAbstract
      */
     public function update(string $cronjobId, BackendCronjobUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/cronjob/$cronjob_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/cronjob/:cronjob_id', [
             'cronjob_id' => $cronjobId,
         ]);
 

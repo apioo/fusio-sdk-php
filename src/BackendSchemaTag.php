@@ -72,7 +72,7 @@ class BackendSchemaTag extends TagAbstract
      */
     public function delete(string $schemaId): CommonMessage
     {
-        $url = $this->parser->url('/backend/schema/$schema_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/schema/:schema_id', [
             'schema_id' => $schemaId,
         ]);
 
@@ -119,7 +119,7 @@ class BackendSchemaTag extends TagAbstract
      */
     public function get(string $schemaId): BackendSchema
     {
-        $url = $this->parser->url('/backend/schema/$schema_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/schema/:schema_id', [
             'schema_id' => $schemaId,
         ]);
 
@@ -222,7 +222,7 @@ class BackendSchemaTag extends TagAbstract
      */
     public function getCommits(string $schemaId, ?int $startIndex = null, ?int $count = null, ?string $search = null): BackendSchemaCommitCollection
     {
-        $url = $this->parser->url('/backend/schema/$schema_id<[0-9]+|^~>/commit', [
+        $url = $this->parser->url('/backend/schema/:schema_id/commit', [
             'schema_id' => $schemaId,
         ]);
 
@@ -272,7 +272,7 @@ class BackendSchemaTag extends TagAbstract
      */
     public function getPreview(string $schemaId): BackendSchemaPreviewResponse
     {
-        $url = $this->parser->url('/backend/schema/preview/:schema_id', [
+        $url = $this->parser->url('/backend/schema/:schema_id/preview', [
             'schema_id' => $schemaId,
         ]);
 
@@ -320,7 +320,7 @@ class BackendSchemaTag extends TagAbstract
      */
     public function update(string $schemaId, BackendSchemaUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/schema/$schema_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/schema/:schema_id', [
             'schema_id' => $schemaId,
         ]);
 

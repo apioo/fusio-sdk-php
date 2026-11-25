@@ -24,7 +24,7 @@ class ConsumerTransactionTag extends TagAbstract
      */
     public function get(string $transactionId): ConsumerTransaction
     {
-        $url = $this->parser->url('/consumer/transaction/$transaction_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/consumer/transaction/:transaction_id', [
             'transaction_id' => $transactionId,
         ]);
 

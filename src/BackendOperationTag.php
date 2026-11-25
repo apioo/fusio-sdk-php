@@ -72,7 +72,7 @@ class BackendOperationTag extends TagAbstract
      */
     public function delete(string $operationId): CommonMessage
     {
-        $url = $this->parser->url('/backend/operation/$operation_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/operation/:operation_id', [
             'operation_id' => $operationId,
         ]);
 
@@ -119,7 +119,7 @@ class BackendOperationTag extends TagAbstract
      */
     public function get(string $operationId): BackendOperation
     {
-        $url = $this->parser->url('/backend/operation/$operation_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/operation/:operation_id', [
             'operation_id' => $operationId,
         ]);
 
@@ -220,7 +220,7 @@ class BackendOperationTag extends TagAbstract
      */
     public function update(string $operationId, BackendOperationUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/operation/$operation_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/operation/:operation_id', [
             'operation_id' => $operationId,
         ]);
 

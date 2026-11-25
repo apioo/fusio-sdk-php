@@ -72,7 +72,7 @@ class BackendPageTag extends TagAbstract
      */
     public function delete(string $pageId): CommonMessage
     {
-        $url = $this->parser->url('/backend/page/$page_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/page/:page_id', [
             'page_id' => $pageId,
         ]);
 
@@ -119,7 +119,7 @@ class BackendPageTag extends TagAbstract
      */
     public function get(string $pageId): BackendPage
     {
-        $url = $this->parser->url('/backend/page/$page_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/page/:page_id', [
             'page_id' => $pageId,
         ]);
 
@@ -218,7 +218,7 @@ class BackendPageTag extends TagAbstract
      */
     public function update(string $pageId, BackendPageUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/page/$page_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/page/:page_id', [
             'page_id' => $pageId,
         ]);
 

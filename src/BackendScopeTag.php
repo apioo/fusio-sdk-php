@@ -72,7 +72,7 @@ class BackendScopeTag extends TagAbstract
      */
     public function delete(string $scopeId): CommonMessage
     {
-        $url = $this->parser->url('/backend/scope/$scope_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/scope/:scope_id', [
             'scope_id' => $scopeId,
         ]);
 
@@ -119,7 +119,7 @@ class BackendScopeTag extends TagAbstract
      */
     public function get(string $scopeId): BackendScope
     {
-        $url = $this->parser->url('/backend/scope/$scope_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/scope/:scope_id', [
             'scope_id' => $scopeId,
         ]);
 
@@ -216,7 +216,7 @@ class BackendScopeTag extends TagAbstract
      */
     public function getCategories(): BackendScopeCategories
     {
-        $url = $this->parser->url('/backend/scope/categories', [
+        $url = $this->parser->url('/backend/capability/scope/categories', [
         ]);
 
         $options = [
@@ -263,7 +263,7 @@ class BackendScopeTag extends TagAbstract
      */
     public function update(string $scopeId, BackendScopeUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/scope/$scope_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/scope/:scope_id', [
             'scope_id' => $scopeId,
         ]);
 

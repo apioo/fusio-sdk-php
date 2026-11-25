@@ -24,7 +24,7 @@ class BackendLogTag extends TagAbstract
      */
     public function get(string $logId): BackendLog
     {
-        $url = $this->parser->url('/backend/log/$log_id<[0-9]+>', [
+        $url = $this->parser->url('/backend/log/:log_id', [
             'log_id' => $logId,
         ]);
 
@@ -114,104 +114,6 @@ class BackendLogTag extends TagAbstract
             $body = $response->getBody();
 
             $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendLogCollection::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode >= 0 && $statusCode <= 999) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * Returns a paginated list of log errors
-     *
-     * @param int|null $startIndex
-     * @param int|null $count
-     * @param string|null $search
-     * @return BackendLogErrorCollection
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getAllErrors(?int $startIndex = null, ?int $count = null, ?string $search = null): BackendLogErrorCollection
-    {
-        $url = $this->parser->url('/backend/log/error', [
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-                'startIndex' => $startIndex,
-                'count' => $count,
-                'search' => $search,
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendLogErrorCollection::class));
-
-            return $data;
-        } catch (ClientException $e) {
-            throw $e;
-        } catch (BadResponseException $e) {
-            $body = $e->getResponse()->getBody();
-            $statusCode = $e->getResponse()->getStatusCode();
-
-            if ($statusCode >= 0 && $statusCode <= 999) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
-
-                throw new CommonMessageException($data);
-            }
-
-            throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
-        } catch (\Throwable $e) {
-            throw new ClientException('An unknown error occurred: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * Returns a specific error
-     *
-     * @param string $errorId
-     * @return BackendLogError
-     * @throws CommonMessageException
-     * @throws ClientException
-     */
-    public function getError(string $errorId): BackendLogError
-    {
-        $url = $this->parser->url('/backend/log/error/$error_id<[0-9]+>', [
-            'error_id' => $errorId,
-        ]);
-
-        $options = [
-            'headers' => [
-            ],
-            'query' => $this->parser->query([
-            ], [
-            ]),
-        ];
-
-        try {
-            $response = $this->httpClient->request('GET', $url, $options);
-            $body = $response->getBody();
-
-            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(BackendLogError::class));
 
             return $data;
         } catch (ClientException $e) {

@@ -24,7 +24,7 @@ class ConsumerLogTag extends TagAbstract
      */
     public function get(string $logId): ConsumerLog
     {
-        $url = $this->parser->url('/consumer/log/$log_id<[0-9]+>', [
+        $url = $this->parser->url('/consumer/log/:log_id', [
             'log_id' => $logId,
         ]);
 

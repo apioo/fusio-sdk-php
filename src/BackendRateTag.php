@@ -72,7 +72,7 @@ class BackendRateTag extends TagAbstract
      */
     public function delete(string $rateId): CommonMessage
     {
-        $url = $this->parser->url('/backend/rate/$rate_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/rate/:rate_id', [
             'rate_id' => $rateId,
         ]);
 
@@ -119,7 +119,7 @@ class BackendRateTag extends TagAbstract
      */
     public function get(string $rateId): BackendRate
     {
-        $url = $this->parser->url('/backend/rate/$rate_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/rate/:rate_id', [
             'rate_id' => $rateId,
         ]);
 
@@ -218,7 +218,7 @@ class BackendRateTag extends TagAbstract
      */
     public function update(string $rateId, BackendRateUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/rate/$rate_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/rate/:rate_id', [
             'rate_id' => $rateId,
         ]);
 

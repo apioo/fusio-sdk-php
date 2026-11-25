@@ -24,7 +24,7 @@ class BackendTokenTag extends TagAbstract
      */
     public function get(string $tokenId): BackendToken
     {
-        $url = $this->parser->url('/backend/token/$token_id<[0-9]+>', [
+        $url = $this->parser->url('/backend/token/:token_id', [
             'token_id' => $tokenId,
         ]);
 

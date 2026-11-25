@@ -26,7 +26,7 @@ class BackendAgentMessageTag extends TagAbstract
      */
     public function getAll(string $agentId, ?int $refId = null, ?string $chatId = null): BackendAgentMessageCollection
     {
-        $url = $this->parser->url('/backend/agent/$agent_id<[0-9]+|^~>/message', [
+        $url = $this->parser->url('/backend/agent/:agent_id/message', [
             'agent_id' => $agentId,
         ]);
 
@@ -77,7 +77,7 @@ class BackendAgentMessageTag extends TagAbstract
      */
     public function submit(string $agentId, AgentInput $payload, ?int $refId = null): AgentOutput
     {
-        $url = $this->parser->url('/backend/agent/$agent_id<[0-9]+|^~>/message', [
+        $url = $this->parser->url('/backend/agent/:agent_id/message', [
             'agent_id' => $agentId,
         ]);
 

@@ -72,7 +72,7 @@ class BackendTaxonomyTag extends TagAbstract
      */
     public function delete(string $taxonomyId): CommonMessage
     {
-        $url = $this->parser->url('/backend/taxonomy/$taxonomy_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/taxonomy/:taxonomy_id', [
             'taxonomy_id' => $taxonomyId,
         ]);
 
@@ -119,7 +119,7 @@ class BackendTaxonomyTag extends TagAbstract
      */
     public function get(string $taxonomyId): BackendTaxonomy
     {
-        $url = $this->parser->url('/backend/taxonomy/$taxonomy_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/taxonomy/:taxonomy_id', [
             'taxonomy_id' => $taxonomyId,
         ]);
 
@@ -218,7 +218,7 @@ class BackendTaxonomyTag extends TagAbstract
      */
     public function move(string $taxonomyId, BackendTaxonomyMove $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/taxonomy/$taxonomy_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/taxonomy/:taxonomy_id', [
             'taxonomy_id' => $taxonomyId,
         ]);
 
@@ -268,7 +268,7 @@ class BackendTaxonomyTag extends TagAbstract
      */
     public function update(string $taxonomyId, BackendTaxonomyUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/taxonomy/$taxonomy_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/taxonomy/:taxonomy_id', [
             'taxonomy_id' => $taxonomyId,
         ]);
 

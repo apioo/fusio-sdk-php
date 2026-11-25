@@ -110,6 +110,14 @@ class BackendTag extends TagAbstract
         );
     }
 
+    public function error(): BackendErrorTag
+    {
+        return new BackendErrorTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
     public function event(): BackendEventTag
     {
         return new BackendEventTag(

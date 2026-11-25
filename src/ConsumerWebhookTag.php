@@ -72,7 +72,7 @@ class ConsumerWebhookTag extends TagAbstract
      */
     public function delete(string $webhookId): CommonMessage
     {
-        $url = $this->parser->url('/consumer/webhook/$webhook_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/consumer/webhook/:webhook_id', [
             'webhook_id' => $webhookId,
         ]);
 
@@ -119,7 +119,7 @@ class ConsumerWebhookTag extends TagAbstract
      */
     public function get(string $webhookId): ConsumerWebhook
     {
-        $url = $this->parser->url('/consumer/webhook/$webhook_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/consumer/webhook/:webhook_id', [
             'webhook_id' => $webhookId,
         ]);
 
@@ -218,7 +218,7 @@ class ConsumerWebhookTag extends TagAbstract
      */
     public function update(string $webhookId, ConsumerWebhookUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/consumer/webhook/$webhook_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/consumer/webhook/:webhook_id', [
             'webhook_id' => $webhookId,
         ]);
 

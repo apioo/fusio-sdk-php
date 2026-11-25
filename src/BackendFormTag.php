@@ -72,7 +72,7 @@ class BackendFormTag extends TagAbstract
      */
     public function delete(string $formId): CommonMessage
     {
-        $url = $this->parser->url('/backend/form/$form_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/form/:form_id', [
             'form_id' => $formId,
         ]);
 
@@ -119,7 +119,7 @@ class BackendFormTag extends TagAbstract
      */
     public function get(string $formId): BackendForm
     {
-        $url = $this->parser->url('/backend/form/$form_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/form/:form_id', [
             'form_id' => $formId,
         ]);
 
@@ -218,7 +218,7 @@ class BackendFormTag extends TagAbstract
      */
     public function update(string $formId, BackendFormUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/form/$form_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/form/:form_id', [
             'form_id' => $formId,
         ]);
 

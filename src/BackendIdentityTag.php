@@ -72,7 +72,7 @@ class BackendIdentityTag extends TagAbstract
      */
     public function delete(string $identityId): CommonMessage
     {
-        $url = $this->parser->url('/backend/identity/$identity_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/identity/:identity_id', [
             'identity_id' => $identityId,
         ]);
 
@@ -119,7 +119,7 @@ class BackendIdentityTag extends TagAbstract
      */
     public function get(string $identityId): BackendIdentity
     {
-        $url = $this->parser->url('/backend/identity/$identity_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/identity/:identity_id', [
             'identity_id' => $identityId,
         ]);
 
@@ -216,7 +216,7 @@ class BackendIdentityTag extends TagAbstract
      */
     public function getClasses(): BackendIdentityIndex
     {
-        $url = $this->parser->url('/backend/identity/list', [
+        $url = $this->parser->url('/backend/capability/identity/list', [
         ]);
 
         $options = [
@@ -262,7 +262,7 @@ class BackendIdentityTag extends TagAbstract
      */
     public function getForm(?string $class = null): CommonFormContainer
     {
-        $url = $this->parser->url('/backend/identity/form', [
+        $url = $this->parser->url('/backend/capability/identity/form', [
         ]);
 
         $options = [
@@ -310,7 +310,7 @@ class BackendIdentityTag extends TagAbstract
      */
     public function update(string $identityId, BackendIdentityUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/identity/$identity_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/identity/:identity_id', [
             'identity_id' => $identityId,
         ]);
 

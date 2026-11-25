@@ -72,7 +72,7 @@ class BackendRoleTag extends TagAbstract
      */
     public function delete(string $roleId): CommonMessage
     {
-        $url = $this->parser->url('/backend/role/$role_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/role/:role_id', [
             'role_id' => $roleId,
         ]);
 
@@ -119,7 +119,7 @@ class BackendRoleTag extends TagAbstract
      */
     public function get(string $roleId): BackendRole
     {
-        $url = $this->parser->url('/backend/role/$role_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/role/:role_id', [
             'role_id' => $roleId,
         ]);
 
@@ -218,7 +218,7 @@ class BackendRoleTag extends TagAbstract
      */
     public function update(string $roleId, BackendRoleUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/role/$role_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/role/:role_id', [
             'role_id' => $roleId,
         ]);
 

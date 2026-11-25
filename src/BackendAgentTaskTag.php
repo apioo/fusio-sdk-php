@@ -25,7 +25,7 @@ class BackendAgentTaskTag extends TagAbstract
      */
     public function cancel(string $agentId, string $taskId): CommonMessage
     {
-        $url = $this->parser->url('/backend/agent/$agent_id<[0-9]+|^~>/task/:task_id', [
+        $url = $this->parser->url('/backend/agent/:agent_id/task/:task_id', [
             'agent_id' => $agentId,
             'task_id' => $taskId,
         ]);
@@ -75,7 +75,7 @@ class BackendAgentTaskTag extends TagAbstract
      */
     public function create(string $agentId, BackendAgentTaskCreate $payload, ?string $connection = null): CommonMessage
     {
-        $url = $this->parser->url('/backend/agent/$agent_id<[0-9]+|^~>/task', [
+        $url = $this->parser->url('/backend/agent/:agent_id/task', [
             'agent_id' => $agentId,
         ]);
 
@@ -126,7 +126,7 @@ class BackendAgentTaskTag extends TagAbstract
      */
     public function get(string $agentId, string $taskId): BackendAgentTask
     {
-        $url = $this->parser->url('/backend/agent/$agent_id<[0-9]+|^~>/task/:task_id', [
+        $url = $this->parser->url('/backend/agent/:agent_id/task/:task_id', [
             'agent_id' => $agentId,
             'task_id' => $taskId,
         ]);
@@ -176,7 +176,7 @@ class BackendAgentTaskTag extends TagAbstract
      */
     public function getAll(string $agentId, ?int $startIndex = null, ?int $count = null): BackendAgentTaskCollection
     {
-        $url = $this->parser->url('/backend/agent/$agent_id<[0-9]+|^~>/task', [
+        $url = $this->parser->url('/backend/agent/:agent_id/task', [
             'agent_id' => $agentId,
         ]);
 

@@ -24,7 +24,7 @@ class BackendTransactionTag extends TagAbstract
      */
     public function get(string $transactionId): BackendTransaction
     {
-        $url = $this->parser->url('/backend/transaction/$transaction_id<[0-9]+>', [
+        $url = $this->parser->url('/backend/transaction/:transaction_id', [
             'transaction_id' => $transactionId,
         ]);
 

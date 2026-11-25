@@ -72,7 +72,7 @@ class BackendEventTag extends TagAbstract
      */
     public function delete(string $eventId): CommonMessage
     {
-        $url = $this->parser->url('/backend/event/$event_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/event/:event_id', [
             'event_id' => $eventId,
         ]);
 
@@ -119,7 +119,7 @@ class BackendEventTag extends TagAbstract
      */
     public function get(string $eventId): BackendEvent
     {
-        $url = $this->parser->url('/backend/event/$event_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/event/:event_id', [
             'event_id' => $eventId,
         ]);
 
@@ -220,7 +220,7 @@ class BackendEventTag extends TagAbstract
      */
     public function update(string $eventId, BackendEventUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/event/$event_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/event/:event_id', [
             'event_id' => $eventId,
         ]);
 

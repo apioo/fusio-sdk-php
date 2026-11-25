@@ -24,7 +24,7 @@ class BackendConfigTag extends TagAbstract
      */
     public function get(string $configId): BackendConfig
     {
-        $url = $this->parser->url('/backend/config/$config_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/config/:config_id', [
             'config_id' => $configId,
         ]);
 
@@ -123,7 +123,7 @@ class BackendConfigTag extends TagAbstract
      */
     public function update(string $configId, BackendConfigUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/config/$config_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/config/:config_id', [
             'config_id' => $configId,
         ]);
 

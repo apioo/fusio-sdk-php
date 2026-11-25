@@ -72,7 +72,7 @@ class BackendTriggerTag extends TagAbstract
      */
     public function delete(string $triggerId): CommonMessage
     {
-        $url = $this->parser->url('/backend/trigger/$trigger_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/trigger/:trigger_id', [
             'trigger_id' => $triggerId,
         ]);
 
@@ -119,7 +119,7 @@ class BackendTriggerTag extends TagAbstract
      */
     public function get(string $triggerId): BackendTrigger
     {
-        $url = $this->parser->url('/backend/trigger/$trigger_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/trigger/:trigger_id', [
             'trigger_id' => $triggerId,
         ]);
 
@@ -220,7 +220,7 @@ class BackendTriggerTag extends TagAbstract
      */
     public function update(string $triggerId, BackendTriggerUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/trigger/$trigger_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/trigger/:trigger_id', [
             'trigger_id' => $triggerId,
         ]);
 

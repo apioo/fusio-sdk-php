@@ -72,7 +72,7 @@ class BackendPlanTag extends TagAbstract
      */
     public function delete(string $planId): CommonMessage
     {
-        $url = $this->parser->url('/backend/plan/$plan_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/plan/:plan_id', [
             'plan_id' => $planId,
         ]);
 
@@ -119,7 +119,7 @@ class BackendPlanTag extends TagAbstract
      */
     public function get(string $planId): BackendPlan
     {
-        $url = $this->parser->url('/backend/plan/$plan_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/plan/:plan_id', [
             'plan_id' => $planId,
         ]);
 
@@ -218,7 +218,7 @@ class BackendPlanTag extends TagAbstract
      */
     public function update(string $planId, BackendPlanUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/plan/$plan_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/plan/:plan_id', [
             'plan_id' => $planId,
         ]);
 

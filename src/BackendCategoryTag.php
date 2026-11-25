@@ -72,7 +72,7 @@ class BackendCategoryTag extends TagAbstract
      */
     public function delete(string $categoryId): CommonMessage
     {
-        $url = $this->parser->url('/backend/category/$category_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/category/:category_id', [
             'category_id' => $categoryId,
         ]);
 
@@ -119,7 +119,7 @@ class BackendCategoryTag extends TagAbstract
      */
     public function get(string $categoryId): BackendCategory
     {
-        $url = $this->parser->url('/backend/category/$category_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/category/:category_id', [
             'category_id' => $categoryId,
         ]);
 
@@ -218,7 +218,7 @@ class BackendCategoryTag extends TagAbstract
      */
     public function update(string $categoryId, BackendCategoryUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/category/$category_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/category/:category_id', [
             'category_id' => $categoryId,
         ]);
 

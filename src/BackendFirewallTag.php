@@ -72,7 +72,7 @@ class BackendFirewallTag extends TagAbstract
      */
     public function delete(string $firewallId): CommonMessage
     {
-        $url = $this->parser->url('/backend/firewall/$firewall_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/firewall/:firewall_id', [
             'firewall_id' => $firewallId,
         ]);
 
@@ -119,7 +119,7 @@ class BackendFirewallTag extends TagAbstract
      */
     public function get(string $firewallId): BackendFirewall
     {
-        $url = $this->parser->url('/backend/firewall/$firewall_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/firewall/:firewall_id', [
             'firewall_id' => $firewallId,
         ]);
 
@@ -218,7 +218,7 @@ class BackendFirewallTag extends TagAbstract
      */
     public function update(string $firewallId, BackendFirewallUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/firewall/$firewall_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/firewall/:firewall_id', [
             'firewall_id' => $firewallId,
         ]);
 

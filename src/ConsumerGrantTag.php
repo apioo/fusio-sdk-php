@@ -24,7 +24,7 @@ class ConsumerGrantTag extends TagAbstract
      */
     public function delete(string $grantId): CommonMessage
     {
-        $url = $this->parser->url('/consumer/grant/$grant_id<[0-9]+>', [
+        $url = $this->parser->url('/consumer/grant/:grant_id', [
             'grant_id' => $grantId,
         ]);
 

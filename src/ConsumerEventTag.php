@@ -24,7 +24,7 @@ class ConsumerEventTag extends TagAbstract
      */
     public function get(string $eventId): ConsumerEvent
     {
-        $url = $this->parser->url('/consumer/event/$event_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/consumer/event/:event_id', [
             'event_id' => $eventId,
         ]);
 

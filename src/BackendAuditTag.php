@@ -24,7 +24,7 @@ class BackendAuditTag extends TagAbstract
      */
     public function get(string $auditId): BackendAudit
     {
-        $url = $this->parser->url('/backend/audit/$audit_id<[0-9]+>', [
+        $url = $this->parser->url('/backend/audit/:audit_id', [
             'audit_id' => $auditId,
         ]);
 

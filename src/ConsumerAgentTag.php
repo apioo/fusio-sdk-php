@@ -32,7 +32,7 @@ class ConsumerAgentTag extends TagAbstract
      */
     public function get(string $agentId): ConsumerAgent
     {
-        $url = $this->parser->url('/consumer/agent/$agent_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/consumer/agent/:agent_id', [
             'agent_id' => $agentId,
         ]);
 

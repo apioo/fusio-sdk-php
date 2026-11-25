@@ -26,7 +26,7 @@ class ConsumerAgentMessageTag extends TagAbstract
      */
     public function getAll(string $agentId, ?int $refId = null, ?string $chatId = null): ConsumerAgentMessageCollection
     {
-        $url = $this->parser->url('/consumer/agent/$agent_id<[0-9]+|^~>/message', [
+        $url = $this->parser->url('/consumer/agent/:agent_id/message', [
             'agent_id' => $agentId,
         ]);
 
@@ -77,7 +77,7 @@ class ConsumerAgentMessageTag extends TagAbstract
      */
     public function submit(string $agentId, AgentInput $payload, ?int $refId = null): AgentOutput
     {
-        $url = $this->parser->url('/consumer/agent/$agent_id<[0-9]+|^~>/message', [
+        $url = $this->parser->url('/consumer/agent/:agent_id/message', [
             'agent_id' => $agentId,
         ]);
 

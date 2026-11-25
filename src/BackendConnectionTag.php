@@ -112,7 +112,7 @@ class BackendConnectionTag extends TagAbstract
      */
     public function delete(string $connectionId): CommonMessage
     {
-        $url = $this->parser->url('/backend/connection/$connection_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/connection/:connection_id', [
             'connection_id' => $connectionId,
         ]);
 
@@ -159,7 +159,7 @@ class BackendConnectionTag extends TagAbstract
      */
     public function get(string $connectionId): BackendConnection
     {
-        $url = $this->parser->url('/backend/connection/$connection_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/connection/:connection_id', [
             'connection_id' => $connectionId,
         ]);
 
@@ -258,7 +258,7 @@ class BackendConnectionTag extends TagAbstract
      */
     public function getClasses(): BackendConnectionIndex
     {
-        $url = $this->parser->url('/backend/connection/list', [
+        $url = $this->parser->url('/backend/capability/connection/list', [
         ]);
 
         $options = [
@@ -304,7 +304,7 @@ class BackendConnectionTag extends TagAbstract
      */
     public function getForm(?string $class = null): CommonFormContainer
     {
-        $url = $this->parser->url('/backend/connection/form', [
+        $url = $this->parser->url('/backend/capability/connection/form', [
         ]);
 
         $options = [
@@ -399,7 +399,7 @@ class BackendConnectionTag extends TagAbstract
      */
     public function update(string $connectionId, BackendConnectionUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/connection/$connection_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/connection/:connection_id', [
             'connection_id' => $connectionId,
         ]);
 

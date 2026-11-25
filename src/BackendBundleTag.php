@@ -72,7 +72,7 @@ class BackendBundleTag extends TagAbstract
      */
     public function delete(string $bundleId): CommonMessage
     {
-        $url = $this->parser->url('/backend/bundle/$bundle_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/bundle/:bundle_id', [
             'bundle_id' => $bundleId,
         ]);
 
@@ -119,7 +119,7 @@ class BackendBundleTag extends TagAbstract
      */
     public function get(string $bundleId): BackendBundle
     {
-        $url = $this->parser->url('/backend/bundle/$bundle_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/bundle/:bundle_id', [
             'bundle_id' => $bundleId,
         ]);
 
@@ -217,7 +217,7 @@ class BackendBundleTag extends TagAbstract
      */
     public function publish(string $bundleId): CommonMessage
     {
-        $url = $this->parser->url('/backend/bundle/$bundle_id<[0-9]+|^~>/publish', [
+        $url = $this->parser->url('/backend/bundle/:bundle_id/publish', [
             'bundle_id' => $bundleId,
         ]);
 
@@ -265,7 +265,7 @@ class BackendBundleTag extends TagAbstract
      */
     public function update(string $bundleId, BackendBundleUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/bundle/$bundle_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/bundle/:bundle_id', [
             'bundle_id' => $bundleId,
         ]);
 

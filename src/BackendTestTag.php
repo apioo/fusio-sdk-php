@@ -24,7 +24,7 @@ class BackendTestTag extends TagAbstract
      */
     public function get(string $testId): BackendTest
     {
-        $url = $this->parser->url('/backend/test/$test_id<[0-9]+>', [
+        $url = $this->parser->url('/backend/test/:test_id', [
             'test_id' => $testId,
         ]);
 
@@ -213,7 +213,7 @@ class BackendTestTag extends TagAbstract
      */
     public function update(string $testId, BackendTest $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/test/$test_id<[0-9]+>', [
+        $url = $this->parser->url('/backend/test/:test_id', [
             'test_id' => $testId,
         ]);
 

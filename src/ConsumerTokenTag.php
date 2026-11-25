@@ -72,7 +72,7 @@ class ConsumerTokenTag extends TagAbstract
      */
     public function delete(string $tokenId): CommonMessage
     {
-        $url = $this->parser->url('/consumer/token/$token_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/consumer/token/:token_id', [
             'token_id' => $tokenId,
         ]);
 
@@ -119,7 +119,7 @@ class ConsumerTokenTag extends TagAbstract
      */
     public function get(string $tokenId): ConsumerToken
     {
-        $url = $this->parser->url('/consumer/token/$token_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/consumer/token/:token_id', [
             'token_id' => $tokenId,
         ]);
 
@@ -218,7 +218,7 @@ class ConsumerTokenTag extends TagAbstract
      */
     public function update(string $tokenId, ConsumerTokenUpdate $payload): ConsumerTokenAccessToken
     {
-        $url = $this->parser->url('/consumer/token/$token_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/consumer/token/:token_id', [
             'token_id' => $tokenId,
         ]);
 

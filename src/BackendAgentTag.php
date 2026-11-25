@@ -88,7 +88,7 @@ class BackendAgentTag extends TagAbstract
      */
     public function delete(string $agentId): CommonMessage
     {
-        $url = $this->parser->url('/backend/agent/$agent_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/agent/:agent_id', [
             'agent_id' => $agentId,
         ]);
 
@@ -135,7 +135,7 @@ class BackendAgentTag extends TagAbstract
      */
     public function get(string $agentId): BackendAgent
     {
-        $url = $this->parser->url('/backend/agent/$agent_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/agent/:agent_id', [
             'agent_id' => $agentId,
         ]);
 
@@ -232,7 +232,7 @@ class BackendAgentTag extends TagAbstract
      */
     public function getTools(): BackendAgentTools
     {
-        $url = $this->parser->url('/backend/agent/tools', [
+        $url = $this->parser->url('/backend/capability/agent/tools', [
         ]);
 
         $options = [
@@ -279,7 +279,7 @@ class BackendAgentTag extends TagAbstract
      */
     public function update(string $agentId, BackendAgentUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/agent/$agent_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/agent/:agent_id', [
             'agent_id' => $agentId,
         ]);
 

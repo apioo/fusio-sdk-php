@@ -72,7 +72,7 @@ class BackendActionTag extends TagAbstract
      */
     public function delete(string $actionId): CommonMessage
     {
-        $url = $this->parser->url('/backend/action/$action_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/action/:action_id', [
             'action_id' => $actionId,
         ]);
 
@@ -120,7 +120,7 @@ class BackendActionTag extends TagAbstract
      */
     public function execute(string $actionId, BackendActionExecuteRequest $payload): BackendActionExecuteResponse
     {
-        $url = $this->parser->url('/backend/action/execute/:action_id', [
+        $url = $this->parser->url('/backend/action/:action_id/execute', [
             'action_id' => $actionId,
         ]);
 
@@ -169,7 +169,7 @@ class BackendActionTag extends TagAbstract
      */
     public function get(string $actionId): BackendAction
     {
-        $url = $this->parser->url('/backend/action/$action_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/action/:action_id', [
             'action_id' => $actionId,
         ]);
 
@@ -269,7 +269,7 @@ class BackendActionTag extends TagAbstract
      */
     public function getClasses(?bool $marketplace = null, ?int $startIndex = null, ?string $search = null): BackendActionIndex
     {
-        $url = $this->parser->url('/backend/action/list', [
+        $url = $this->parser->url('/backend/capability/action/list', [
         ]);
 
         $options = [
@@ -321,7 +321,7 @@ class BackendActionTag extends TagAbstract
      */
     public function getCommits(string $actionId, ?int $startIndex = null, ?int $count = null, ?string $search = null): BackendActionCommitCollection
     {
-        $url = $this->parser->url('/backend/action/$action_id<[0-9]+|^~>/commit', [
+        $url = $this->parser->url('/backend/action/:action_id/commit', [
             'action_id' => $actionId,
         ]);
 
@@ -371,7 +371,7 @@ class BackendActionTag extends TagAbstract
      */
     public function getForm(?string $class = null): CommonFormContainer
     {
-        $url = $this->parser->url('/backend/action/form', [
+        $url = $this->parser->url('/backend/capability/action/form', [
         ]);
 
         $options = [
@@ -419,7 +419,7 @@ class BackendActionTag extends TagAbstract
      */
     public function update(string $actionId, BackendActionUpdate $payload): CommonMessage
     {
-        $url = $this->parser->url('/backend/action/$action_id<[0-9]+|^~>', [
+        $url = $this->parser->url('/backend/action/:action_id', [
             'action_id' => $actionId,
         ]);
 
